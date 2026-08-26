@@ -20,9 +20,6 @@
   "dependencies": {
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "^10.5.4",
-    "compression": "^1.8.1",
-    "express": "^5.2.1",
-    "nodemailer": "^9.0.5",
     "postcss": "^8.5.26",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -37,6 +34,9 @@
   },
   "description": "Sito web di Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design per la Sicilia.",
   "optionalDependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
+    "nodemailer": "^9.0.5",
     "sharp": "^0.35.4"
   },
   "engines": {

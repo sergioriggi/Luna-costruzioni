@@ -1,4 +1,4 @@
-import { SITE_URL, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import { SITE_URL, INDIRIZZO_DICHIARATO, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 
 const OG_IMAGE = `${SITE_URL}/media/oasi-aerea-sabbia-bianca-1280.jpg`
 
@@ -14,7 +14,14 @@ export default function Seo({ titolo, descrizione, percorso, immagine = OG_IMAGE
         <>
             <title>{titolo}</title>
             <meta name="description" content={descrizione} />
-            <link rel="canonical" href={url} />
+            {/*
+              Il canonical si dichiara solo se sappiamo da quale indirizzo il
+              sito è servito. Senza VITE_SITE_URL punteremmo al dominio
+              definitivo da un indirizzo che non è quello: un canonical
+              sbagliato manda i motori su una pagina diversa da quella che
+              stanno leggendo, ed è peggio di nessun canonical.
+            */}
+            {INDIRIZZO_DICHIARATO && <link rel="canonical" href={url} />}
             {(noindex || ANTEPRIMA) && (
                 <meta name="robots" content={ANTEPRIMA ? 'noindex, nofollow' : 'noindex, follow'} />
             )}

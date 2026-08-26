@@ -22,7 +22,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { PHOTOS } from './media.config.mjs'
-import { ROCKS_DESIGN, AZIENDA } from '../src/data/site.js'
+import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO } from '../src/data/site.js'
 
 const DIST = path.resolve('./dist')
 
@@ -51,6 +51,9 @@ const FRASI_DELLA_CASA_MADRE = [
 ]
 const errori = []
 const avvisi = []
+
+/** Pagine legali e 404: fuori dai controlli SEO, non sono contenuto. */
+const paginaDiServizio = rel => /^(privacy|cookie-policy|404)[/.]/.test(rel)
 
 async function paginePubblicate(dir = DIST, trovate = []) {
     for (const voce of await fs.readdir(dir, { withFileTypes: true })) {
@@ -113,11 +116,21 @@ for (const file of pagine) {
         }
     }
 
+    // 7. Un'anteprima non deve mai uscire indicizzabile.
+    // Il difetto si è già verificato: l'hosting compila il progetto da sé,
+    // senza VITE_SITE_URL, e il sito si dichiarava di produzione. Da qui in
+    // poi una build del genere non passa la verifica, quindi non va online.
+    if (ANTEPRIMA && !paginaDiServizio(rel) && !/name="robots"[^>]*noindex/i.test(html)) {
+        const causa = INDIRIZZO_DICHIARATO
+            ? `il sito dichiara di essere servito da ${INDIRIZZO_DICHIARATO}, che non è il dominio definitivo`
+            : 'VITE_SITE_URL non è impostata, quindi questa build non è di produzione'
+        errori.push(`${rel}: ${causa}, ma la pagina non dichiara noindex.`)
+    }
+
     // 5. SEO locale: la zona va citata in ogni pagina di contenuto.
     // Si escludono per percorso le pagine legali e il 404: l'anteprima è
     // interamente noindex, quindi il meta tag non è più un criterio utile.
-    const paginaDiServizio = /^(privacy|cookie-policy|404)[/.]/.test(rel)
-    if (!paginaDiServizio && !new RegExp(AZIENDA.zona, 'i').test(html)) {
+    if (!paginaDiServizio(rel) && !new RegExp(AZIENDA.zona, 'i').test(html)) {
         errori.push(`${rel}: la zona di riferimento (${AZIENDA.zona}) non è citata.`)
     }
 }

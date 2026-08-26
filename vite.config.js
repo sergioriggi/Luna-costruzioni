@@ -36,31 +36,22 @@ function anteprimaPreRenderizzata() {
 const BASE = process.env.VITE_BASE || '/'
 
 /**
- * L'HTML di partenza si chiama `sorgente.html`, non `index.html`.
+ * Modello HTML di partenza: `index.html` nella radice, il nome convenzionale
+ * che Vite — e gli hosting con preset Vite — si aspettano di trovare.
  *
- * Il sito compilato viene pubblicato nella radice del repository, dove
- * `index.html` è la home vera: se il modello di Vite si chiamasse allo stesso
- * modo, ogni pubblicazione lo sovrascriverebbe e la compilazione successiva
- * partirebbe da un file già compilato.
+ * Per un periodo il file si è chiamato `sorgente.html`, perché il sito
+ * compilato veniva committato nella radice del repository e lì `index.html`
+ * era la home vera: ogni pubblicazione avrebbe sovrascritto il modello. Ora è
+ * l'hosting a compilare e la radice contiene solo codice, quindi quella
+ * ragione è decaduta. Anzi si è rovesciata: sotto un preset gestito, tenere
+ * una pagina già compilata di nome `index.html` accanto al modello è il
+ * rischio, perché il preset prende `index.html` come ingresso.
  */
-const INGRESSO = fileURLToPath(new URL('./sorgente.html', import.meta.url))
-
-/** In sviluppo la radice serve il modello, come ci si aspetta da un sito. */
-function radiceVersoSorgente() {
-    return {
-        name: 'radice-verso-sorgente',
-        configureServer(server) {
-            server.middlewares.use((req, _res, next) => {
-                if (req.url === '/' || req.url.startsWith('/?')) req.url = '/sorgente.html'
-                next()
-            })
-        },
-    }
-}
+const INGRESSO = fileURLToPath(new URL('./index.html', import.meta.url))
 
 export default defineConfig({
     base: BASE,
-    plugins: [react(), radiceVersoSorgente(), anteprimaPreRenderizzata()],
+    plugins: [react(), anteprimaPreRenderizzata()],
     build: {
         target: 'es2020',
         cssCodeSplit: false,

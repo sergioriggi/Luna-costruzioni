@@ -1,0 +1,69 @@
+# Verifica il progetto a ogni push. **Non pubblica nulla.**
+#
+# La pubblicazione è di Hostinger, che importa il repository con preset Vite e
+# compila da sé: `npm install && npm run build`, servendo `dist/`. Questo
+# workflow esiste per dare un esito visibile sul commit *prima* che l'hosting
+# compili, non per mettere online il sito.
+#
+# Il cancello di conformità vero — quello che impedisce a una build che viola
+# le direttive Piscine Rocks Design di andare online — va messo nel comando di
+# build del pannello Hostinger:
+#
+#     npm ci && npm run build && npm run verifica
+name: Verifica
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verifica:
+    name: Lint, build e conformità
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installa le dipendenze
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Compila
+        env:
+          VITE_BASE: /
+          # L'indirizzo reale lo dichiara Hostinger nelle sue variabili
+          # d'ambiente. Qui si compila con quello del repository se c'è; se non
+          # c'è, `ANTEPRIMA` resta vera e ogni pagina esce `noindex` — è il
+          # verso sicuro, e `npm run verifica` lo controlla.
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
+          VITE_GA4_ID: ${{ vars.VITE_GA4_ID }}
+        run: npm run build
+
+      - name: Conformità alle direttive Piscine Rocks Design
+        run: npm run verifica
+
+      - name: Collaudo del server Node
+        run: npm run verifica:server
+
+      - name: Controlla che la build sia completa
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/.htaccess
+          test -f dist/sitemap.xml
+          test -d dist/media
+          # dist/index.html dev'essere la home pre-renderizzata, non il modello
+          ! grep -q "app-html" dist/index.html
+          grep -q "media-sources" dist/.htaccess
+          echo "Pagine compilate: $(find dist -name index.html | wc -l)"

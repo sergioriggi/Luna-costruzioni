@@ -314,74 +314,59 @@ Rocks Design e non devono portarne il marchio) e lanciare `npm run media`.
 ## Pubblicazione
 
 ```
-main  ──push──▶  GitHub Actions  ──▶  sito compilato nella radice di main  ──▶  Hostinger
+main  ──push──▶  Hostinger (npm install && npm run build)  ──▶  serve dist/
+                 GitHub Actions ──▶ lint, build, conformità  (verifica, non pubblica)
 ```
 
-L'hosting è collegato a GitHub, pubblica **`main`** e copia i file così come
-sono: **non esegue `npm run build`**. Per questo il sito compilato viene
-committato dal workflow nella radice del repository, accanto al codice
-sorgente. Il workflow `.github/workflows/pubblica.yml` fa tutto a ogni push
-su `main`; il suo commit porta `[skip ci]` e usa `GITHUB_TOKEN`, quindi non
-si richiama da solo.
+Hostinger importa il repository con **preset Vite** e compila da sé. Il
+repository contiene quindi **solo codice sorgente**: niente sito compilato
+committato nella radice, niente `.sito-pubblicato`.
 
-### Perché il modello si chiama `sorgente.html`
+`.github/workflows/verifica.yml` esegue lint, build, conformità e collaudo del
+server a ogni push, ma **non pubblica nulla**: serve a dare un esito visibile
+sul commit prima che l'hosting compili.
 
-Nella radice `index.html` è la **home compilata**. Se il modello di Vite si
-chiamasse allo stesso modo, ogni pubblicazione lo sovrascriverebbe e la
-compilazione successiva partirebbe da un file già compilato. Il modello è
-quindi `sorgente.html`; in sviluppo la radice lo serve lo stesso, e
-`npm run dev` funziona come sempre.
+### Che cosa non deve mai finire online
 
-### Che cosa appartiene al sito e che cosa no
+**`public/.htaccess` finisce in `dist/`** e dà a Hostinger gli URL puliti, il
+404 e gli header di cache. Contiene anche le regole che rendono irraggiungibili
+`media-sources/`, `src/`, `scripts/`, `server/` e i file di configurazione:
+regole che sotto il preset Vite sono ridondanti — servendo solo `dist/`, quel
+materiale è già fuori dalla radice servita — ma che restano perché tengono
+aperta la strada di un ritorno all'hosting statico.
 
-Il workflow tiene l'elenco di ciò che ha pubblicato in `.sito-pubblicato`, e
-alla pubblicazione successiva rimuove esattamente quelle voci prima di
-copiare le nuove. Il codice sorgente non viene mai toccato da euristiche.
+`media-sources/` è il punto delicato: contiene le fotografie originali **non
+filigranate** e il catalogo della casa madre, che include immagini delle fasi
+di cantiere — materiale che le direttive Piscine Rocks Design vietano di
+pubblicare. Non entra in `dist/`, e `npm run verifica` lo controlla.
 
-**`public/.htaccess` diventa il `.htaccess` della radice** e rende
-irraggiungibili dal web `media-sources/`, `src/`, `scripts/`, `public/`,
-`.github/` e i file di configurazione. È la parte da non rompere:
-`media-sources/` contiene le fotografie originali **non filigranate** e il
-catalogo della casa madre, che include immagini delle fasi di cantiere —
-materiale che le direttive Piscine Rocks Design vietano di pubblicare.
+### Configurazione su Hostinger — preset Vite
 
-> Servire la radice del repository espone tutto ciò che non è esplicitamente
-> bloccato. È il prezzo di avere una sola branch. Se un giorno il pannello
-> dell'hosting permettesse di scegliere il ramo, pubblicare solo il sito
-> compilato resterebbe la soluzione più pulita.
-
-### Configurazione su Hostinger — oggi: sito statico
-
-hPanel → Avanzate → Git: repository del progetto, ramo **`main`**, cartella
-`public_html`, deploy automatico attivo. Se il deploy automatico è spento, la
-pubblicazione va avviata a mano dopo ogni aggiornamento.
-
-Per questo tipo di sito hPanel **non espone le variabili d'ambiente**: non è
-un'opzione nascosta, è un'altra categoria di prodotto. È la ragione del passo
-successivo.
-
-### Passaggio ad applicazione Node.js
-
-Il repository è già pronto: `app.js`, `npm start` e `server/` esistono, ma sul
-sito statico restano inerti (Apache serve i file compilati e ignora Node).
-
-hPanel → **Siti web → Aggiungi sito → app Node.js** (piani Business e Cloud),
-importazione da GitHub, ramo `main`, e:
+Hostinger importa il repository con **preset Vite** e **compila da sé**: non
+copia file già pronti, esegue `npm install && npm run build` e serve `dist/`.
 
 | Campo | Valore |
 | --- | --- |
-| Versione di Node | 22 |
+| Framework preset | Vite |
+| Ramo | `main` |
+| Radice | `./` |
+| Versione di Node | **22** — Vite 8 dichiara `^20.19.0 \|\| >=22.12.0`, e un Node 20 inferiore a 20.19 non compila |
 | Comando di build | `npm ci && npm run build && npm run verifica` |
-| File di avvio | `app.js` |
 
 Il `npm run verifica` nel comando di build non è ornamentale: **fa fallire il
-deploy se il sito viola le direttive Piscine Rocks Design**, e sostituisce il
-cancello che oggi sta nel workflow GitHub.
+deploy** se il sito viola le direttive Piscine Rocks Design, o se una build non
+di produzione uscisse indicizzabile.
 
-L'app nasce su un dominio provvisorio **diverso** da quello del sito statico:
-va messo in `VITE_SITE_URL`, altrimenti canonical e Open Graph puntano al
-vecchio indirizzo. Il dominio definitivo si imposta **solo dopo** aver staccato
-il sito statico, o si avrebbero due siti indicizzabili con lo stesso canonical.
+Variabili d'ambiente da impostare nel pannello:
+
+| Nome | Valore |
+| --- | --- |
+| `VITE_SITE_URL` | l'indirizzo da cui il sito è **realmente** servito |
+| `VITE_BASE` | `/` |
+| `VITE_GA4_ID` | quando ci sarà un ID Analytics |
+
+`VITE_SITE_URL` non è facoltativa: senza, il sito si considera anteprima ed
+esce interamente `noindex`. Vedi la sezione qui sotto.
 
 ### Indirizzo pubblico e indicizzazione
 

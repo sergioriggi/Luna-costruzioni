@@ -57,8 +57,15 @@ function ripulisciTemplate(template, testa) {
 }
 
 async function run() {
-    // Vite emette il modello con il nome del file di ingresso
-    const template = await fs.readFile(path.join(DIST, 'sorgente.html'), 'utf8')
+    // Vite emette il modello con il nome del file di ingresso: `index.html`.
+    //
+    // Modello e prima destinazione coincidono, quindi l'ordine conta: il
+    // template si legge INTERAMENTE IN MEMORIA qui, prima del ciclo. La rotta
+    // `/` — la prima dell'elenco — riscrive poi lo stesso file con la home
+    // pre-renderizzata. Spostare questa lettura dentro il ciclo, o rileggere
+    // il file più avanti, significherebbe usare come modello una pagina già
+    // compilata.
+    const template = await fs.readFile(path.join(DIST, 'index.html'), 'utf8')
     const { render } = await import(SSR)
 
     for (const rotta of ROTTE) {
@@ -82,8 +89,8 @@ async function run() {
     // 404 servito dalle piattaforme statiche e da Apache (ErrorDocument)
     await fs.copyFile(path.join(DIST, '404', 'index.html'), path.join(DIST, '404.html'))
 
-    // Il modello non fa parte del sito pubblicato
-    await fs.rm(path.join(DIST, 'sorgente.html'), { force: true })
+    // Nessun modello da rimuovere: `dist/index.html` è ora la home vera,
+    // riscritta dalla rotta `/`.
 
     console.log(`\n${ROTTE.length} pagine pre-renderizzate in dist/`)
 }

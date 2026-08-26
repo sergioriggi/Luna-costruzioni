@@ -16,15 +16,33 @@ const indirizzoDaAmbiente =
     (typeof process !== 'undefined' && process.env && process.env.VITE_SITE_URL) ||
     ''
 
-export const SITE_URL = (indirizzoDaAmbiente || DOMINIO_DEFINITIVO).replace(/\/+$/, '')
+/**
+ * L'indirizzo *dichiarato*, distinto da quello di ripiego. La differenza non è
+ * cosmetica: è ciò che permette di distinguere «non è stato configurato» da
+ * «è stato configurato con il dominio definitivo».
+ */
+export const INDIRIZZO_DICHIARATO = indirizzoDaAmbiente.replace(/\/+$/, '')
+
+export const SITE_URL = INDIRIZZO_DICHIARATO || DOMINIO_DEFINITIVO
 
 /**
  * Finché il sito vive su un indirizzo provvisorio è un'anteprima: va tenuto
  * fuori dai motori di ricerca, altrimenti l'indirizzo temporaneo finisce
- * indicizzato e poi compete con il dominio vero. Si disattiva da sé nel
- * momento in cui VITE_SITE_URL diventa il dominio definitivo.
+ * indicizzato e poi compete con il dominio vero.
+ *
+ * ATTENZIONE AL VERSO. Il sito è considerato di produzione **solo** se
+ * VITE_SITE_URL è stata dichiarata e vale esattamente il dominio definitivo.
+ * Se la variabile manca, si assume l'anteprima.
+ *
+ * Prima era il contrario, e il difetto si è visto in produzione: Hostinger
+ * compila il progetto da sé, senza quella variabile, e il sito ripiegava sul
+ * dominio definitivo — quindi si dichiarava sito vero, usciva senza `noindex`
+ * e metteva come canonical un dominio che non rispondeva ancora.
+ *
+ * Una configurazione mancante non può significare «sono il sito di produzione».
+ * Nel dubbio, il sito sta fuori dai motori di ricerca: è l'errore reversibile.
  */
-export const ANTEPRIMA = SITE_URL !== DOMINIO_DEFINITIVO
+export const ANTEPRIMA = INDIRIZZO_DICHIARATO !== DOMINIO_DEFINITIVO
 
 export const AZIENDA = {
     nome: 'Luna Costruzioni srl',

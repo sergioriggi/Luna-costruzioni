@@ -20,7 +20,7 @@ Options -Indexes
 # ─────────────────────────────────────────────────────────────────────────
 RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|dist-ssr|copilot-worktrees|\.github|\.git)(/|$)
 
-<FilesMatch "^(\.sito-pubblicato|sorgente\.html|app\.js|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|\.npmrc|README\.md|\.gitignore|\.env.*)$">
+<FilesMatch "^(app\.js|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|\.npmrc|README\.md|\.gitignore|\.env.*)$">
     Require all denied
 </FilesMatch>
 
