@@ -113,9 +113,11 @@ for (const file of pagine) {
         }
     }
 
-    // 5. SEO locale: la zona va sempre citata nelle pagine indicizzabili
-    const indicizzabile = !html.includes('name="robots" content="noindex')
-    if (indicizzabile && !new RegExp(AZIENDA.zona, 'i').test(html)) {
+    // 5. SEO locale: la zona va citata in ogni pagina di contenuto.
+    // Si escludono per percorso le pagine legali e il 404: l'anteprima è
+    // interamente noindex, quindi il meta tag non è più un criterio utile.
+    const paginaDiServizio = /^(privacy|cookie-policy|404)[/.]/.test(rel)
+    if (!paginaDiServizio && !new RegExp(AZIENDA.zona, 'i').test(html)) {
         errori.push(`${rel}: la zona di riferimento (${AZIENDA.zona}) non è citata.`)
     }
 }

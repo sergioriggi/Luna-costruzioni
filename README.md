@@ -269,13 +269,53 @@ Rocks Design e non devono portarne il marchio) e lanciare `npm run media`.
 
 ## Pubblicazione
 
-`npm run build` produce in `dist/` un sito statico con una cartella per rotta.
-Funziona senza configurazioni particolari su Netlify, Vercel, Cloudflare Pages,
-GitHub Pages, Apache o nginx: basta servire `dist/` con l'index di cartella e
-`404.html` come pagina di errore.
+```
+main (sorgente)  ──push──▶  GitHub Actions  ──▶  ramo deploy (sito compilato)  ──▶  Hostinger
+```
 
-**Non** configurare un fallback SPA verso `index.html`: annullerebbe il
-pre-rendering, restituendo la home per ogni URL.
+L'hosting è collegato a GitHub ma **copia i file così come sono: non esegue
+`npm run build`**. Per questo il ramo `deploy` contiene il sito già compilato,
+mentre `main` resta il codice sorgente. Il workflow
+`.github/workflows/pubblica.yml` fa tutto a ogni push su `main`.
+
+Prima di pubblicare il workflow esegue lint, build, `npm run verifica` e un
+controllo che il risultato contenga davvero `index.html`, `404.html`,
+`.htaccess`, `sitemap.xml` e le immagini. **Se la verifica di conformità
+fallisce non si pubblica nulla.**
+
+### Configurazione su Hostinger
+
+hPanel → Avanzate → Git: repository del progetto, ramo **`deploy`**, cartella
+`public_html`, deploy automatico attivo.
+
+`public/.htaccess` accompagna il sito: 404 personalizzato, compressione, cache
+lunga sugli asset con hash e riconvalida sull'HTML. **Non** configurare un
+fallback SPA verso `index.html`: annullerebbe il pre-rendering, restituendo la
+home per ogni indirizzo.
+
+### Indirizzo pubblico e indicizzazione
+
+`VITE_SITE_URL` dice al build da quale indirizzo il sito è servito: alimenta
+canonical, Open Graph e sitemap. Il workflow oggi usa l'indirizzo provvisorio
+Hostinger.
+
+Finché quell'indirizzo è diverso da `DOMINIO_DEFINITIVO`
+(`src/data/site.js`), il sito si considera **anteprima**: ogni pagina esce con
+`noindex, nofollow` e `robots.txt` chiude tutto. Serve a evitare che
+l'indirizzo temporaneo finisca nell'indice di Google e poi faccia concorrenza
+al dominio vero.
+
+Quando il dominio definitivo è attivo, basta creare la variabile
+`VITE_SITE_URL` in *Settings → Secrets and variables → Actions → Variables*
+con l'indirizzo reale: ha la precedenza sul valore di ripiego e **riapre
+l'indicizzazione da sé**, senza toccare il codice. Se il dominio non è
+`www.lunacostruzioni.it`, aggiornare anche `DOMINIO_DEFINITIVO`.
+
+### Altri hosting
+
+`npm run build` produce in `dist/` un sito statico con una cartella per rotta:
+funziona anche su Netlify, Vercel, Cloudflare Pages o nginx, servendo `dist/`
+con l'index di cartella e `404.html` come pagina di errore.
 
 ---
 

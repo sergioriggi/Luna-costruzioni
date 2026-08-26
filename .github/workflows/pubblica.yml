@@ -43,9 +43,13 @@ jobs:
         env:
           # Il sito è servito dalla radice del dominio
           VITE_BASE: /
-          # Indirizzo pubblico: impostare la variabile VITE_SITE_URL nelle
-          # impostazioni del repository quando il dominio definitivo è attivo
-          VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
+          # Indirizzo pubblico da cui il sito è realmente servito.
+          # Oggi è l'hosting provvisorio; quando il dominio definitivo sarà
+          # attivo basta creare la variabile VITE_SITE_URL nelle impostazioni
+          # del repository (Settings → Secrets and variables → Actions):
+          # ha la precedenza su questo valore di ripiego e riapre
+          # l'indicizzazione da sé.
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://salmon-camel-544200.hostingersite.com' }}
           VITE_ENDPOINT_LEAD: ${{ vars.VITE_ENDPOINT_LEAD }}
           VITE_GA4_ID: ${{ vars.VITE_GA4_ID }}
         run: npm run build

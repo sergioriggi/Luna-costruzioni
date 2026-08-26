@@ -2,7 +2,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { ROTTE } from './rotte.mjs'
-import { SITE_URL } from '../src/data/site.js'
+import { SITE_URL, ANTEPRIMA } from '../src/data/site.js'
 
 const DIST = path.resolve('./dist')
 const oggi = new Date().toISOString().slice(0, 10)
@@ -24,7 +24,13 @@ ${voci
 </urlset>
 `
 
-const robots = `User-agent: *
+// Su indirizzo provvisorio il sito resta fuori dai motori di ricerca
+const robots = ANTEPRIMA
+    ? `# Anteprima su indirizzo provvisorio: non indicizzare.
+User-agent: *
+Disallow: /
+`
+    : `User-agent: *
 Allow: /
 Disallow: /privacy
 Disallow: /cookie-policy
@@ -35,4 +41,4 @@ Sitemap: ${SITE_URL}/sitemap.xml
 await fs.mkdir(DIST, { recursive: true })
 await fs.writeFile(path.join(DIST, 'sitemap.xml'), sitemap)
 await fs.writeFile(path.join(DIST, 'robots.txt'), robots)
-console.log(`✓ sitemap.xml (${voci.length} URL) e robots.txt`)
+console.log(`✓ sitemap.xml (${voci.length} URL) e robots.txt${ANTEPRIMA ? ' — anteprima: robots chiude tutto' : ''}`)

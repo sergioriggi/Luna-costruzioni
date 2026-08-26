@@ -1,4 +1,4 @@
-import { SITE_URL, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import { SITE_URL, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 
 const OG_IMAGE = `${SITE_URL}/media/oasi-aerea-sabbia-bianca-1280.jpg`
 
@@ -15,7 +15,9 @@ export default function Seo({ titolo, descrizione, percorso, immagine = OG_IMAGE
             <title>{titolo}</title>
             <meta name="description" content={descrizione} />
             <link rel="canonical" href={url} />
-            {noindex && <meta name="robots" content="noindex, follow" />}
+            {(noindex || ANTEPRIMA) && (
+                <meta name="robots" content={ANTEPRIMA ? 'noindex, nofollow' : 'noindex, follow'} />
+            )}
 
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content={`${AZIENDA.nome} — ${AZIENDA.attivita}`} />

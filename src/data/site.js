@@ -3,17 +3,28 @@
  * Unica fonte di verità per NAP (Name, Address, Phone), rotte e SEO locale.
  */
 
+/** Dominio definitivo, quello a cui il sito punterà a regime. */
+export const DOMINIO_DEFINITIVO = 'https://www.lunacostruzioni.it'
+
 /**
  * Indirizzo pubblico del sito: alimenta canonical, Open Graph e sitemap.
- * Si può sovrascrivere con VITE_SITE_URL, così l'anteprima su GitHub Pages
- * dichiara il proprio indirizzo invece di quello del dominio definitivo.
+ * Si imposta con VITE_SITE_URL, così l'anteprima su hosting temporaneo
+ * dichiara il proprio indirizzo invece di uno che non risponde ancora.
  */
 const indirizzoDaAmbiente =
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
     (typeof process !== 'undefined' && process.env && process.env.VITE_SITE_URL) ||
     ''
 
-export const SITE_URL = (indirizzoDaAmbiente || 'https://www.lunacostruzioni.it').replace(/\/+$/, '')
+export const SITE_URL = (indirizzoDaAmbiente || DOMINIO_DEFINITIVO).replace(/\/+$/, '')
+
+/**
+ * Finché il sito vive su un indirizzo provvisorio è un'anteprima: va tenuto
+ * fuori dai motori di ricerca, altrimenti l'indirizzo temporaneo finisce
+ * indicizzato e poi compete con il dominio vero. Si disattiva da sé nel
+ * momento in cui VITE_SITE_URL diventa il dominio definitivo.
+ */
+export const ANTEPRIMA = SITE_URL !== DOMINIO_DEFINITIVO
 
 export const AZIENDA = {
     nome: 'Luna Costruzioni srl',
