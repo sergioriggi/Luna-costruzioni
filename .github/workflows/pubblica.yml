@@ -1,12 +1,13 @@
-# Compila il sito e pubblica il risultato sul ramo `deploy`.
+# Compila il sito e pubblica il risultato nella radice di `main`.
 #
-# L'hosting (Hostinger) è collegato a GitHub e copia i file così come sono:
-# non esegue `npm run build`. Per questo il ramo `deploy` contiene il sito
-# già compilato — HTML pre-renderizzato, asset, immagini e .htaccess —
-# mentre `main` resta il codice sorgente.
+# L'hosting (Hostinger) è collegato a GitHub, pubblica il ramo `main` e copia
+# i file così come sono: non esegue `npm run build`. Per questo il sito
+# compilato viene committato nella radice del repository, accanto al codice
+# sorgente. `public/.htaccess` — che diventa il .htaccess della radice —
+# rende irraggiungibili dal web sorgente e materiali non pubblicabili.
 #
-# Configurazione lato Hostinger: hPanel → Avanzate → Git,
-# ramo `deploy`, cartella `public_html`, deploy automatico attivo.
+# Il modello HTML di Vite si chiama `sorgente.html` proprio per non essere
+# sovrascritto dalla home compilata.
 name: Compila e pubblica
 
 on:
@@ -65,18 +66,41 @@ jobs:
           test -f dist/.htaccess
           test -f dist/sitemap.xml
           test -d dist/media
-          echo "Pagine pubblicate: $(find dist -name index.html | wc -l)"
+          ! test -f dist/sorgente.html
+          grep -q "media-sources" dist/.htaccess
+          echo "Pagine compilate: $(find dist -name index.html | wc -l)"
 
-      - name: Pubblica sul ramo deploy
+      - name: Porta il sito compilato nella radice
+        run: |
+          # Si cancella solo ciò che la pubblicazione precedente aveva messo,
+          # elencato in .sito-pubblicato: il codice sorgente non viene toccato
+          # da nessuna euristica.
+          if [ -f .sito-pubblicato ]; then
+            while IFS= read -r voce; do
+              [ -n "$voce" ] && rm -rf -- "$voce"
+            done < .sito-pubblicato
+          fi
+
+          cp -a dist/. .
+
+          # Nuovo elenco di ciò che appartiene al sito pubblicato
+          (cd dist && find . -mindepth 1 -maxdepth 1 -printf '%P\n') | sort > .sito-pubblicato
+
+          rm -rf dist dist-ssr
+          echo "Voci pubblicate nella radice:"
+          cat .sito-pubblicato
+
+      - name: Pubblica
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd dist
-          git init -q
-          git checkout -q -b deploy
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -q -m "Sito compilato da ${GITHUB_SHA::7}"
-          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" deploy
-          echo "Pubblicato sul ramo deploy."
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica al sito compilato."
+            exit 0
+          fi
+          git commit -q -m "Sito compilato da ${GITHUB_SHA::7} [skip ci]"
+          git push origin HEAD:main
+          echo "Sito aggiornato nella radice di main."

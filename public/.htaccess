@@ -4,6 +4,22 @@
 
 Options -Indexes
 
+# ─────────────────────────────────────────────────────────────────────────
+# Il sito compilato vive nella stessa cartella del codice sorgente, perché
+# l'hosting pubblica la radice del repository. Tutto ciò che non fa parte del
+# sito va reso irraggiungibile dal web.
+#
+# `media-sources/` è il punto delicato: contiene le fotografie originali non
+# filigranate e il catalogo della casa madre, che include immagini delle fasi
+# di cantiere. Le direttive Piscine Rocks Design ne vietano la pubblicazione.
+# ─────────────────────────────────────────────────────────────────────────
+RedirectMatch 404 ^/(media-sources|src|scripts|public|node_modules|dist|dist-ssr|copilot-worktrees|\.github|\.git)(/|$)
+
+<FilesMatch "^(\.sito-pubblicato|sorgente\.html|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|README\.md|\.gitignore|\.env.*)$">
+    Require all denied
+</FilesMatch>
+
+
 # Serve /galleria come /galleria/index.html senza redirect,
 # così l'indirizzo resta quello dichiarato nel canonical.
 DirectorySlash Off

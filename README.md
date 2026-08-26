@@ -270,39 +270,47 @@ Rocks Design e non devono portarne il marchio) e lanciare `npm run media`.
 ## Pubblicazione
 
 ```
-main (sorgente)  ──push──▶  GitHub Actions  ──▶  ramo deploy (sito compilato)  ──▶  Hostinger
+main  ──push──▶  GitHub Actions  ──▶  sito compilato nella radice di main  ──▶  Hostinger
 ```
 
-L'hosting è collegato a GitHub ma **copia i file così come sono: non esegue
-`npm run build`**. Per questo il ramo `deploy` contiene il sito già compilato,
-mentre `main` resta il codice sorgente. Il workflow
-`.github/workflows/pubblica.yml` fa tutto a ogni push su `main`.
+L'hosting è collegato a GitHub, pubblica **`main`** e copia i file così come
+sono: **non esegue `npm run build`**. Per questo il sito compilato viene
+committato dal workflow nella radice del repository, accanto al codice
+sorgente. Il workflow `.github/workflows/pubblica.yml` fa tutto a ogni push
+su `main`; il suo commit porta `[skip ci]` e usa `GITHUB_TOKEN`, quindi non
+si richiama da solo.
 
-Prima di pubblicare il workflow esegue lint, build, `npm run verifica` e un
-controllo che il risultato contenga davvero `index.html`, `404.html`,
-`.htaccess`, `sitemap.xml` e le immagini. **Se la verifica di conformità
-fallisce non si pubblica nulla.**
+### Perché il modello si chiama `sorgente.html`
+
+Nella radice `index.html` è la **home compilata**. Se il modello di Vite si
+chiamasse allo stesso modo, ogni pubblicazione lo sovrascriverebbe e la
+compilazione successiva partirebbe da un file già compilato. Il modello è
+quindi `sorgente.html`; in sviluppo la radice lo serve lo stesso, e
+`npm run dev` funziona come sempre.
+
+### Che cosa appartiene al sito e che cosa no
+
+Il workflow tiene l'elenco di ciò che ha pubblicato in `.sito-pubblicato`, e
+alla pubblicazione successiva rimuove esattamente quelle voci prima di
+copiare le nuove. Il codice sorgente non viene mai toccato da euristiche.
+
+**`public/.htaccess` diventa il `.htaccess` della radice** e rende
+irraggiungibili dal web `media-sources/`, `src/`, `scripts/`, `public/`,
+`.github/` e i file di configurazione. È la parte da non rompere:
+`media-sources/` contiene le fotografie originali **non filigranate** e il
+catalogo della casa madre, che include immagini delle fasi di cantiere —
+materiale che le direttive Piscine Rocks Design vietano di pubblicare.
+
+> Servire la radice del repository espone tutto ciò che non è esplicitamente
+> bloccato. È il prezzo di avere una sola branch. Se un giorno il pannello
+> dell'hosting permettesse di scegliere il ramo, pubblicare solo il sito
+> compilato resterebbe la soluzione più pulita.
 
 ### Configurazione su Hostinger
 
-hPanel → Avanzate → Git: repository del progetto, ramo **`deploy`**, cartella
-`public_html`, deploy automatico attivo.
-
-> **Il ramo è la cosa che si sbaglia più facilmente.** Se l'hosting punta su
-> `main` finisce in `public_html` il codice sorgente e il browser mostra
-> `Failed to load module script … MIME type "text/plain"` (sta cercando di
-> eseguire `/src/main.jsx`, che è sorgente non compilato) e un 404 su
-> `%BASE_URL%favicon.svg`, il segnaposto che solo la compilazione sostituisce.
->
-> Per rendere l'errore leggibile, la radice del sorgente contiene
-> `.htaccess` e `_ramo-sbagliato.html`: se `main` viene pubblicato per
-> sbaglio, il visitatore trova una pagina che spiega cosa correggere invece
-> di una schermata bianca. Nessuno dei due file finisce nel sito pubblicato.
-
-`public/.htaccess` accompagna il sito: 404 personalizzato, compressione, cache
-lunga sugli asset con hash e riconvalida sull'HTML. **Non** configurare un
-fallback SPA verso `index.html`: annullerebbe il pre-rendering, restituendo la
-home per ogni indirizzo.
+hPanel → Avanzate → Git: repository del progetto, ramo **`main`**, cartella
+`public_html`, deploy automatico attivo. Se il deploy automatico è spento, la
+pubblicazione va avviata a mano dopo ogni aggiornamento.
 
 ### Indirizzo pubblico e indicizzazione
 

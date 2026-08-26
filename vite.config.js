@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
@@ -34,12 +35,37 @@ function anteprimaPreRenderizzata() {
  */
 const BASE = process.env.VITE_BASE || '/'
 
+/**
+ * L'HTML di partenza si chiama `sorgente.html`, non `index.html`.
+ *
+ * Il sito compilato viene pubblicato nella radice del repository, dove
+ * `index.html` è la home vera: se il modello di Vite si chiamasse allo stesso
+ * modo, ogni pubblicazione lo sovrascriverebbe e la compilazione successiva
+ * partirebbe da un file già compilato.
+ */
+const INGRESSO = fileURLToPath(new URL('./sorgente.html', import.meta.url))
+
+/** In sviluppo la radice serve il modello, come ci si aspetta da un sito. */
+function radiceVersoSorgente() {
+    return {
+        name: 'radice-verso-sorgente',
+        configureServer(server) {
+            server.middlewares.use((req, _res, next) => {
+                if (req.url === '/' || req.url.startsWith('/?')) req.url = '/sorgente.html'
+                next()
+            })
+        },
+    }
+}
+
 export default defineConfig({
     base: BASE,
-    plugins: [react(), anteprimaPreRenderizzata()],
+    plugins: [react(), radiceVersoSorgente(), anteprimaPreRenderizzata()],
     build: {
         target: 'es2020',
         cssCodeSplit: false,
         reportCompressedSize: false,
+        // La chiave `index` fa emettere dist/index.html e asset index-[hash]
+        rollupOptions: { input: { index: INGRESSO } },
     },
 })

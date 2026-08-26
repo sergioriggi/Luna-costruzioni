@@ -57,7 +57,8 @@ function ripulisciTemplate(template, testa) {
 }
 
 async function run() {
-    const template = await fs.readFile(path.join(DIST, 'index.html'), 'utf8')
+    // Vite emette il modello con il nome del file di ingresso
+    const template = await fs.readFile(path.join(DIST, 'sorgente.html'), 'utf8')
     const { render } = await import(SSR)
 
     for (const rotta of ROTTE) {
@@ -78,8 +79,12 @@ async function run() {
         console.log('✓', rotta.percorso)
     }
 
-    // 404 servito dalle piattaforme statiche (Netlify, Vercel, GitHub Pages)
+    // 404 servito dalle piattaforme statiche e da Apache (ErrorDocument)
     await fs.copyFile(path.join(DIST, '404', 'index.html'), path.join(DIST, '404.html'))
+
+    // Il modello non fa parte del sito pubblicato
+    await fs.rm(path.join(DIST, 'sorgente.html'), { force: true })
+
     console.log(`\n${ROTTE.length} pagine pre-renderizzate in dist/`)
 }
 
