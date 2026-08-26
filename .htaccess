@@ -1,0 +1,67 @@
+# Configurazione Apache per l'hosting (Hostinger).
+# Il sito è statico e pre-renderizzato: ogni rotta è una cartella con
+# il proprio index.html. Nessun fallback SPA — annullerebbe il pre-rendering.
+
+Options -Indexes
+
+# ─────────────────────────────────────────────────────────────────────────
+# Il sito compilato vive nella stessa cartella del codice sorgente, perché
+# l'hosting pubblica la radice del repository. Tutto ciò che non fa parte del
+# sito va reso irraggiungibile dal web.
+#
+# `media-sources/` è il punto delicato: contiene le fotografie originali non
+# filigranate e il catalogo della casa madre, che include immagini delle fasi
+# di cantiere. Le direttive Piscine Rocks Design ne vietano la pubblicazione.
+# ─────────────────────────────────────────────────────────────────────────
+RedirectMatch 404 ^/(media-sources|src|scripts|public|node_modules|dist|dist-ssr|copilot-worktrees|\.github|\.git)(/|$)
+
+<FilesMatch "^(\.sito-pubblicato|sorgente\.html|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|README\.md|\.gitignore|\.env.*)$">
+    Require all denied
+</FilesMatch>
+
+
+# Serve /galleria come /galleria/index.html senza redirect,
+# così l'indirizzo resta quello dichiarato nel canonical.
+DirectorySlash Off
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(.*[^/])$ $1/index.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Gli asset compilati portano l'hash nel nome: non cambiano mai
+    <FilesMatch "\.(js|css|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    # Fotografie: stabili ma sostituibili, un mese
+    <FilesMatch "\.(webp|jpg|jpeg|png|svg)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    # L'HTML va sempre riconvalidato, altrimenti gli aggiornamenti non si vedono
+    <FilesMatch "\.html$">
+        Header set Cache-Control "public, max-age=0, must-revalidate"
+    </FilesMatch>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Tipi MIME dichiarati esplicitamente: alcuni hosting condivisi servono i
+# moduli JavaScript come text/plain, e i browser li rifiutano
+# ("Strict MIME type checking is enforced for module scripts").
+AddType text/javascript .js
+AddType text/javascript .mjs
+AddType text/css .css
+AddType application/json .json
+AddType image/svg+xml .svg
+AddType font/woff2 .woff2
+AddType image/webp .webp

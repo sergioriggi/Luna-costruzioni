@@ -1,0 +1,3 @@
+# Anteprima su indirizzo provvisorio: non indicizzare.
+User-agent: *
+Disallow: /
