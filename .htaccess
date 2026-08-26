@@ -1,6 +1,11 @@
-# Configurazione Apache per l'hosting (Hostinger).
-# Il sito è statico e pre-renderizzato: ogni rotta è una cartella con
-# il proprio index.html. Nessun fallback SPA — annullerebbe il pre-rendering.
+# Configurazione Apache per l'hosting statico (Hostinger, Git → public_html).
+# Il sito è pre-renderizzato: ogni rotta è una cartella con il proprio
+# index.html. Nessun fallback SPA — annullerebbe il pre-rendering.
+#
+# ATTENZIONE: quando il sito gira come applicazione Node.js queste regole non
+# vengono lette — le fa `server/sito-statico.js`, che è la traduzione riga per
+# riga di questo file. Le due implementazioni vanno tenute allineate. Questo
+# file resta perché tiene aperta la strada di un ritorno all'hosting statico.
 
 Options -Indexes
 
@@ -13,9 +18,9 @@ Options -Indexes
 # filigranate e il catalogo della casa madre, che include immagini delle fasi
 # di cantiere. Le direttive Piscine Rocks Design ne vietano la pubblicazione.
 # ─────────────────────────────────────────────────────────────────────────
-RedirectMatch 404 ^/(media-sources|src|scripts|public|node_modules|dist|dist-ssr|copilot-worktrees|\.github|\.git)(/|$)
+RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|dist-ssr|copilot-worktrees|\.github|\.git)(/|$)
 
-<FilesMatch "^(\.sito-pubblicato|sorgente\.html|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|README\.md|\.gitignore|\.env.*)$">
+<FilesMatch "^(\.sito-pubblicato|sorgente\.html|app\.js|package(-lock)?\.json|vite\.config\.js|tailwind\.config\.js|postcss\.config\.cjs|\.oxlintrc\.json|\.npmrc|README\.md|\.gitignore|\.env.*)$">
     Require all denied
 </FilesMatch>
 
