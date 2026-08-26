@@ -1,0 +1,281 @@
+/*
+ * Impaginazione della pagina, ripresa dal file approvato `Luna_Costruzioni.dc.html`.
+ *
+ * Nel file di partenza queste regole vivevano in due posti: il blocco <style>
+ * dell'intestazione e gli attributi `style` di ogni elemento. Qui stanno
+ * insieme, con gli stessi identici valori, perché così si possono aggiungere
+ * in fondo i punti di rottura per telefono e tablet: il file originale è
+ * disegnato per lo schermo largo e sotto i 900 px le griglie a colonne fisse
+ * non reggono.
+ *
+ * Ogni classe `pg-` corrisponde a un elemento del file approvato.
+ */
+
+/* ── blocco <style> dell'intestazione ─────────────────────────────────── */
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #161826; }
+a:hover { color: var(--color-accent-300); }
+input:hover, textarea:hover { border-color: var(--color-accent-600); }
+.btn { white-space: nowrap; }
+
+/* ── impianto della pagina ────────────────────────────────────────────── */
+
+.pg {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    overflow-x: hidden;
+}
+
+/* ── testata ──────────────────────────────────────────────────────────── */
+
+.pg-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 40px;
+    background: color-mix(in srgb, #161826 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-divider);
+}
+.pg-marchio { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--color-text); }
+.pg-marchio-nome {
+    font-family: var(--font-heading); font-weight: 500; font-size: 16px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+}
+.pg-marchio-riga { font-size: 11px; letter-spacing: 0.06em; color: var(--color-neutral-500); }
+.pg-nav {
+    display: flex; align-items: center; gap: 22px;
+    margin-left: auto; font-size: 13px;
+    flex-wrap: wrap; row-gap: 10px;
+}
+.pg-nav a, .pg-header .btn, .pg-nav span { white-space: nowrap; }
+.pg-nav-voce { color: var(--color-neutral-400); text-decoration: none; }
+.pg-nav-voce:hover { color: var(--color-accent-300); }
+
+/* Marchio del concessionario: la placchetta segue la direttiva della casa
+   madre (logo nella fascia superiore, con link al sito ufficiale) dentro il
+   riquadro disegnato nel file approvato. */
+.pg-concessionario {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 14px; margin-left: 8px; text-decoration: none;
+    border: 1px solid var(--color-accent-700);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+.pg-concessionario:hover { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
+.pg-concessionario-logo { background: #f5efe6; border-radius: 5px; padding: 4px 6px; display: block; }
+.pg-concessionario-logo img { height: 13px; width: auto; }
+.pg-concessionario-testo { display: flex; flex-direction: column; gap: 1px; }
+.pg-concessionario-ruolo {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-accent-300);
+}
+.pg-concessionario-nome {
+    font-family: var(--font-heading); font-size: 13px;
+    letter-spacing: 0.04em; color: var(--color-text);
+}
+
+/* ── sezione di apertura ──────────────────────────────────────────────── */
+
+.pg-eroe { position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; }
+.pg-eroe-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pg-eroe-velo {
+    position: absolute; inset: 0;
+    background: linear-gradient(75deg, #161826 0%, color-mix(in srgb, #161826 82%, transparent) 38%, transparent 78%);
+}
+.pg-eroe-testo { position: relative; padding: 0 40px 84px; max-width: 780px; }
+.pg-eroe-occhiello {
+    font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--color-accent-300); margin: 0 0 20px;
+}
+.pg-eroe-titolo { font-size: 58px; line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 24px; max-width: 15em; }
+.pg-eroe-sommario { font-size: 17px; line-height: 1.6; color: var(--color-neutral-300); max-width: 34em; margin: 0 0 32px; }
+.pg-azioni { display: flex; flex-wrap: wrap; gap: 12px; }
+.pg-btn-grande { padding: 10px 20px; font-size: 15px; text-decoration: none; }
+
+/* ── fascia «chiavi in mano» ──────────────────────────────────────────── */
+
+.pg-fascia {
+    background: linear-gradient(120deg, var(--color-section) 0%, var(--color-section-glow) 100%);
+    padding: 40px;
+}
+.pg-fascia-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px; max-width: 1180px; }
+.pg-fascia-titolo { font-family: var(--font-heading); font-size: 22px; margin: 0 0 6px; }
+.pg-fascia-testo { margin: 0; font-size: 13px; color: var(--color-accent-200); }
+
+/* ── sezioni ──────────────────────────────────────────────────────────── */
+
+.pg-sezione { padding: 96px 40px; }
+.pg-bordo { border-top: 1px solid var(--color-divider); }
+.pg-occhiello { color: var(--color-accent-300); margin: 0 0 18px; }
+.pg-titolo { font-size: 40px; line-height: 1.08; margin: 0 0 22px; }
+.pg-intro { color: var(--color-neutral-300); margin: 0 0 56px; }
+
+/* ── perché Piscine Rocks Design ──────────────────────────────────────── */
+
+.pg-piscine {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: 64px; align-items: center; max-width: 1400px;
+}
+.pg-definizioni { display: grid; gap: 2px; }
+.pg-definizione {
+    display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px;
+    padding: 20px 0; border-top: 1px solid var(--color-divider);
+}
+.pg-definizione:last-child { border-bottom: 1px solid var(--color-divider); }
+.pg-definizione-nome { font-family: var(--font-heading); margin: 0; font-size: 15px; }
+.pg-definizione-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
+.pg-piscine-foto { width: 100%; height: 620px; object-fit: cover; border-radius: var(--radius-lg); }
+
+/* ── celle affiancate (processo, dubbi) ───────────────────────────────── */
+
+.pg-celle {
+    display: grid; gap: 1px; background: var(--color-divider);
+    border-radius: var(--radius-md); overflow: hidden;
+}
+.pg-celle-strette { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.pg-celle-larghe { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.pg-cella { background: var(--color-bg); padding: 28px 24px 32px; }
+.pg-cella-larga { background: var(--color-bg); padding: 30px 26px 34px; }
+.pg-numero { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent); margin: 0 0 20px; }
+.pg-cella-titolo { font-family: var(--font-heading); font-size: 17px; margin: 0 0 10px; }
+.pg-cella-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
+.pg-etichetta { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-neutral-500); margin: 0 0 10px; }
+.pg-etichetta-accento { color: var(--color-accent-300); }
+.pg-domanda { font-family: var(--font-heading); font-size: 19px; margin: 0 0 22px; }
+.pg-risposta { margin: 0; font-size: 14px; color: var(--color-neutral-300); }
+
+/* ── realizzazioni ────────────────────────────────────────────────────── */
+
+.pg-testata { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
+.pg-testata-nota { margin: 0 0 6px auto; font-size: 14px; color: var(--color-neutral-500); max-width: 24em; }
+.pg-mosaico { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.pg-mosaico img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius-md); }
+.pg-doppia { grid-column: span 2; }
+
+/* ── hotel e resort ───────────────────────────────────────────────────── */
+
+.pg-tre { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-bottom: 44px; }
+.pg-tre-voce { padding-top: 20px; border-top: 1px solid var(--color-accent-700); }
+
+/* ── domande frequenti ────────────────────────────────────────────────── */
+
+.pg-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 0 64px; max-width: 1240px; }
+.pg-faq details { padding: 22px 0; border-top: 1px solid var(--color-divider); }
+.pg-faq details:last-child { border-bottom: 1px solid var(--color-divider); }
+.pg-faq summary { cursor: pointer; font-family: var(--font-heading); font-size: 16px; list-style: none; }
+.pg-faq summary::-webkit-details-marker { display: none; }
+.pg-faq details > p { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-400); max-width: 34em; }
+
+/* ── zona operativa ───────────────────────────────────────────────────── */
+
+.pg-sicilia {
+    display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: 64px; align-items: center; max-width: 1400px;
+}
+.pg-sicilia-foto { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-lg); }
+
+/* ── contatti ─────────────────────────────────────────────────────────── */
+
+.pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; max-width: 1240px; }
+.pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+.pg-recapito-etichetta { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500); }
+.pg-recapito-valore { margin: 4px 0 0; font-family: var(--font-heading); font-size: 18px; }
+.pg-recapito-link {
+    display: inline-block; margin-top: 4px; font-family: var(--font-heading);
+    font-size: 18px; color: var(--color-accent); text-decoration: none;
+}
+.pg-modulo { display: grid; gap: 18px; align-content: start; }
+.pg-coppia { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.pg-invio { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.pg-invio-nota { font-size: 13px; color: var(--color-neutral-500); }
+.pg-esito { margin: 0; font-size: 13px; color: var(--color-accent-300); min-height: 1.4em; }
+.pg-errore { margin: 4px 0 0; font-size: 12px; color: #f0a6a6; }
+.pg-consenso { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--color-neutral-400); }
+.pg-consenso input { margin-top: 2px; accent-color: var(--color-accent); }
+.pg-esca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ── piè di pagina ────────────────────────────────────────────────────── */
+
+.pg-footer { padding: 56px 40px; border-top: 1px solid var(--color-divider); background: var(--color-neutral-900); }
+.pg-footer-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
+.pg-footer-marchio { font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 10px; }
+.pg-footer-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
+.pg-footer-etichetta { margin: 0 0 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500); }
+.pg-footer-voce { margin: 0; font-size: 15px; }
+.pg-footer-link { font-size: 15px; color: var(--color-accent); text-decoration: none; }
+.pg-footer-elenco { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pg-footer-elenco a { font-size: 14px; color: var(--color-neutral-400); text-decoration: none; }
+.pg-footer-elenco a:hover { color: var(--color-text); }
+.pg-copyright { margin: 0; font-size: 12px; color: var(--color-neutral-600); }
+.pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
+
+/* ── schermi stretti ──────────────────────────────────────────────────────
+   Il file approvato è disegnato per lo schermo largo: qui sotto le griglie a
+   colonne fisse si impilano, senza toccare l'aspetto desktop. */
+
+@media (max-width: 1100px) {
+    .pg-eroe-titolo { font-size: 46px; }
+    .pg-titolo { font-size: 34px; }
+    .pg-sezione { padding: 76px 32px; }
+    .pg-piscine, .pg-sicilia { gap: 44px; }
+    .pg-contatti { gap: 48px; }
+}
+
+@media (max-width: 900px) {
+    .pg-header { padding: 12px 20px; gap: 16px; }
+    .pg-nav { gap: 16px; }
+    .pg-eroe { min-height: 520px; }
+    .pg-eroe-testo { padding: 0 20px 56px; }
+    .pg-eroe-titolo { font-size: 34px; }
+    .pg-eroe-sommario { font-size: 15px; }
+    .pg-fascia { padding: 32px 20px; }
+    .pg-sezione { padding: 64px 20px; }
+    .pg-titolo { font-size: 28px; }
+    .pg-intro { margin-bottom: 40px; }
+    .pg-piscine, .pg-sicilia, .pg-contatti { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .pg-piscine-foto { height: 380px; }
+    .pg-sicilia-foto { height: 300px; }
+    .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .pg-footer { padding: 40px 20px; }
+}
+
+@media (max-width: 900px) {
+    /* Sfumatura verticale: su schermo stretto quella a 75° coprirebbe la
+       foto invece del solo lato del testo. */
+    .pg-eroe { min-height: 0; }
+    .pg-eroe-testo { padding: 96px 20px 56px; }
+    .pg-eroe-velo {
+        background: linear-gradient(180deg,
+            color-mix(in srgb, #161826 88%, transparent) 0%,
+            color-mix(in srgb, #161826 68%, transparent) 46%,
+            color-mix(in srgb, #161826 92%, transparent) 100%);
+    }
+}
+
+@media (max-width: 700px) {
+    /* Le ancore restano nel documento ma escono dalla fascia superiore:
+       su telefono occuperebbero mezzo schermo. Restano il marchio del
+       concessionario e il pulsante per chiamare, sulla riga sotto. */
+    .pg-header { flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
+    .pg-marchio-nome { font-size: 14px; }
+    .pg-nav { width: 100%; margin-left: 0; gap: 12px; }
+    .pg-nav-voce { display: none; }
+    /* Del marchio del concessionario resta il logo: la dicitura per esteso
+       è nel titolo del collegamento e nel testo di apertura. */
+    .pg-concessionario { margin-left: 0; }
+    .pg-concessionario-testo { display: none; }
+    .pg-header .btn { margin-left: auto; }
+    .pg-mosaico { grid-template-columns: minmax(0, 1fr); }
+    .pg-doppia { grid-column: auto; }
+    .pg-mosaico img { height: 240px; }
+    .pg-coppia { grid-template-columns: minmax(0, 1fr); }
+    .pg-faq { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}

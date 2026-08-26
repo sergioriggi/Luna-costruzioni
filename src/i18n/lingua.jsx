@@ -53,7 +53,7 @@ export function useLingua() {
     return useContext(ContestoLingua)
 }
 
-/** Selettore di lingua, nello stile del blueprint. */
+/** Selettore di lingua: il gruppo `.seg` del file approvato. */
 export function SelettoreLingua({ className = '' }) {
     const { lingua, setLingua } = useLingua()
     const opzioni = [
@@ -62,26 +62,18 @@ export function SelettoreLingua({ className = '' }) {
     ]
 
     return (
-        <div
-            role="group"
-            aria-label="Lingua / Language"
-            className={`inline-flex overflow-hidden rounded-md border border-testo/[0.16] ${className}`}
-        >
-            {opzioni.map((o, i) => (
-                <button
-                    key={o.codice}
-                    type="button"
-                    lang={o.codice}
-                    onClick={() => setLingua(o.codice)}
-                    aria-pressed={lingua === o.codice}
-                    className={`px-3 py-1.5 text-[13px] transition ${i > 0 ? 'border-l border-testo/[0.16]' : ''} ${
-                        lingua === o.codice
-                            ? 'text-accento shadow-[inset_0_0_0_1px_#9184d9]'
-                            : 'text-neutro-400 hover:bg-testo/[0.07]'
-                    }`}
-                >
+        <div className={`seg ${className}`.trim()} role="group" aria-label="Lingua / Language">
+            {opzioni.map(o => (
+                <label key={o.codice} className="seg-opt" lang={o.codice}>
+                    <input
+                        type="radio"
+                        name="lingua"
+                        value={o.codice}
+                        checked={lingua === o.codice}
+                        onChange={() => setLingua(o.codice)}
+                    />
                     {o.etichetta}
-                </button>
+                </label>
             ))}
         </div>
     )

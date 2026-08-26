@@ -3,6 +3,10 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
+// Nocturne definisce i token e le classi del sistema visivo, `pagina.css`
+// l'impaginazione del file approvato: entrambi dopo Tailwind, così vincono.
+import './nocturne.css'
+import './pagina.css'
 
 const contenitore = document.getElementById('root')
 const albero = (

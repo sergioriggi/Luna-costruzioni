@@ -40,6 +40,9 @@ export const AZIENDA = {
     email: 'info@lunacostruzioni.it',
     piva: '',
     provinciaSede: 'Sicilia',
+    /** Anno del copyright: costante, così il markup statico e quello
+        idratato coincidono anche a cavallo di capodanno. */
+    annoRiferimento: 2026,
 }
 
 /** Sito ufficiale della casa madre: il logo concessionario deve linkare qui. */
