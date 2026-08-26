@@ -288,6 +288,17 @@ fallisce non si pubblica nulla.**
 hPanel → Avanzate → Git: repository del progetto, ramo **`deploy`**, cartella
 `public_html`, deploy automatico attivo.
 
+> **Il ramo è la cosa che si sbaglia più facilmente.** Se l'hosting punta su
+> `main` finisce in `public_html` il codice sorgente e il browser mostra
+> `Failed to load module script … MIME type "text/plain"` (sta cercando di
+> eseguire `/src/main.jsx`, che è sorgente non compilato) e un 404 su
+> `%BASE_URL%favicon.svg`, il segnaposto che solo la compilazione sostituisce.
+>
+> Per rendere l'errore leggibile, la radice del sorgente contiene
+> `.htaccess` e `_ramo-sbagliato.html`: se `main` viene pubblicato per
+> sbaglio, il visitatore trova una pagina che spiega cosa correggere invece
+> di una schermata bianca. Nessuno dei due file finisce nel sito pubblicato.
+
 `public/.htaccess` accompagna il sito: 404 personalizzato, compressione, cache
 lunga sugli asset con hash e riconvalida sull'HTML. **Non** configurare un
 fallback SPA verso `index.html`: annullerebbe il pre-rendering, restituendo la

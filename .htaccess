@@ -1,0 +1,19 @@
+# ATTENZIONE — questo file vale solo per la radice del CODICE SORGENTE.
+#
+# Non finisce mai nel sito pubblicato: la configurazione del sito vero è
+# `public/.htaccess`, che viene copiata in `dist/` durante la compilazione.
+#
+# Serve a un caso solo: se l'hosting viene puntato per errore sul ramo `main`
+# (sorgente) invece che su `deploy` (sito compilato), il visitatore riceve una
+# spiegazione leggibile invece di una pagina bianca con errori di console.
+
+<IfModule mod_dir.c>
+    DirectoryIndex _ramo-sbagliato.html
+</IfModule>
+
+ErrorDocument 404 /_ramo-sbagliato.html
+
+# Il sorgente non va indicizzato in nessun caso
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

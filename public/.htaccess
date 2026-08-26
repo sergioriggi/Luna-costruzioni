@@ -39,5 +39,13 @@ ErrorDocument 404 /404.html
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
+# Tipi MIME dichiarati esplicitamente: alcuni hosting condivisi servono i
+# moduli JavaScript come text/plain, e i browser li rifiutano
+# ("Strict MIME type checking is enforced for module scripts").
+AddType text/javascript .js
+AddType text/javascript .mjs
+AddType text/css .css
+AddType application/json .json
+AddType image/svg+xml .svg
 AddType font/woff2 .woff2
 AddType image/webp .webp
