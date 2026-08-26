@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "optimize": "node scripts/optimize-images.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/genera-sitemap.mjs",
+    "preview": "vite preview",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "brand": "node scripts/build-brand-assets.mjs",
+    "media": "node scripts/prepare-media.mjs",
+    "assets": "npm run brand && npm run media && npm run fonts",
+    "fonts": "node scripts/scarica-font.mjs",
+    "verifica": "node scripts/verifica-conformita.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -25,5 +29,6 @@
     "sharp": "^0.35.4",
     "tailwindcss": "^3.4.19",
     "vite": "^8.2.2"
-  }
+  },
+  "description": "Sito web di Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design per la Sicilia."
 }

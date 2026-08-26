@@ -1,5 +1,107 @@
+@import './fonts.css';
+
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --sabbia: 245 239 230;
+        --acqua: 23 138 137;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-sabbia-50 text-pietra-800 antialiased;
+        font-feature-settings: 'kern' 1, 'liga' 1;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-display text-pietra-900;
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    :focus-visible {
+        @apply outline-none ring-2 ring-acqua-600 ring-offset-2 ring-offset-sabbia-50;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+@layer components {
+    .contenitore {
+        @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    }
+
+    .occhiello {
+        @apply text-xs font-semibold uppercase tracking-[0.22em] text-acqua-700;
+    }
+
+    .titolo-sezione {
+        @apply mt-3 text-3xl leading-tight sm:text-4xl lg:text-[2.75rem];
+    }
+
+    .testo-lungo {
+        @apply text-[1.0625rem] leading-relaxed text-pietra-600;
+    }
+
+    .bottone {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold
+               transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+    }
+
+    .bottone-primario {
+        @apply bottone bg-acqua-700 text-white shadow-lg shadow-acqua-900/20 hover:bg-acqua-800 hover:shadow-xl;
+    }
+
+    .bottone-secondario {
+        @apply bottone border border-pietra-300 bg-white/70 text-pietra-800 hover:border-pietra-400 hover:bg-white;
+    }
+
+    .bottone-chiaro {
+        @apply bottone bg-white/95 text-pietra-900 shadow-lg hover:bg-white;
+    }
+
+    .scheda {
+        @apply rounded-2xl border border-pietra-200/70 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:p-7;
+    }
+
+    .campo {
+        @apply w-full rounded-xl border border-pietra-300 bg-white px-4 py-3 text-[0.95rem] text-pietra-900
+               placeholder:text-pietra-400 focus:border-acqua-600 focus:outline-none focus:ring-2 focus:ring-acqua-600/30;
+    }
+
+    .link-sottile {
+        @apply underline decoration-acqua-600/40 underline-offset-4 transition hover:decoration-acqua-600;
+    }
+}
+
+/* Comparsa progressiva alla prima visualizzazione */
+.rivela {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.rivela.visibile {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rivela { opacity: 1; transform: none; }
+}

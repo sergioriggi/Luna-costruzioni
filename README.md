@@ -1,16 +1,216 @@
-# React + Vite
+# Luna Costruzioni srl — sito web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sito ufficiale di **Luna Costruzioni srl**, *Concessionario Autorizzato Piscine Rocks Design*
+per la **Sicilia**. Realizzato in italiano, con SEO locale sulle nove province siciliane.
 
-Currently, two official plugins are available:
+> Il prodotto venduto è in **Tecnologia Rocks Design®**. Il brevetto e il marchio sono di
+> *Piscine Rocks Design*: Luna Costruzioni srl ne è concessionario autorizzato, **non**
+> l'inventrice. Ogni contenuto del sito rispetta questa distinzione.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Indice
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Avvio rapido](#avvio-rapido)
+- [Struttura del sito](#struttura-del-sito)
+- [Conformità alle direttive Rocks Design](#conformità-alle-direttive-rocks-design)
+- [Pipeline delle immagini](#pipeline-delle-immagini)
+- [SEO](#seo)
+- [Configurazione](#configurazione)
+- [Pubblicazione](#pubblicazione)
+- [Struttura delle cartelle](#struttura-delle-cartelle)
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Avvio rapido
+
+```bash
+npm install
+npm run assets     # logo concessionario, filigrana, immagini, font (una tantum)
+npm run dev        # http://localhost:5173
+```
+
+Per compilare e verificare il sito di produzione:
+
+```bash
+npm run build      # bundle + pre-rendering + sitemap
+npm run verifica   # controllo conformità alle direttive Rocks Design
+npm run preview    # anteprima identica alla produzione
+```
+
+### Script disponibili
+
+| Comando | Cosa fa |
+| --- | --- |
+| `npm run dev` | Server di sviluppo con hot reload |
+| `npm run build` | Bundle, **pre-rendering statico** di tutte le rotte, `sitemap.xml`, `robots.txt` |
+| `npm run preview` | Anteprima di `dist/` che serve le pagine pre-renderizzate come l'hosting |
+| `npm run verifica` | Verifica automatica delle direttive marketing Rocks Design su `dist/` |
+| `npm run brand` | Estrae il logo ufficiale dal catalogo e genera la filigrana |
+| `npm run media` | Genera le immagini responsive filigranate da `media-sources/` |
+| `npm run fonts` | Scarica e self-hosta Marcellus e Inter |
+| `npm run assets` | `brand` + `media` + `fonts` |
+| `npm run lint` | Oxlint |
+
+---
+
+## Struttura del sito
+
+| Rotta | Pagina | Ruolo |
+| --- | --- | --- |
+| `/` | Home | Racconto completo del prodotto + modulo contatto |
+| `/piscine-rocks-design` | La tecnologia | Che cos'è, punti di forza, elementi, ambiente e permessi |
+| `/modelli` | Modelli | Caraibi, Mediterranea, Alpi + le tre sabbie |
+| `/galleria` | Galleria | Tutte le realizzazioni, filtrabili, con lightbox |
+| `/showroom` | Showroom | «Vieni a trovarci presso la nostra sede» |
+| `/come-lavoriamo` | Metodo | I cinque passaggi, dal sopralluogo alla consegna |
+| `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
+| `/contatti` | Contatti | NAP completo + modulo |
+| `/piscine-rocks-design/<provincia>` | 9 pagine locali | Palermo, Catania, Messina, Siracusa, Ragusa, Trapani, Agrigento, Caltanissetta, Enna |
+| `/privacy`, `/cookie-policy` | Note legali | GDPR, `noindex` |
+
+Contenuti e dati stanno in `src/data/`:
+
+- `site.js` — dati aziendali (NAP), province servite, voci di menu, URL del sito;
+- `content.js` — testi editoriali (punti di forza, elementi, modelli, percorso, FAQ);
+- `media.json` — **generato**, manifest delle immagini pubblicate.
+
+Per aggiungere una provincia basta una voce in `PROVINCE`: rotta, pagina locale,
+voce in sitemap e link interni si generano da soli.
+
+---
+
+## Conformità alle direttive Rocks Design
+
+Le direttive del dipartimento marketing sono implementate nel codice, non affidate
+alla memoria di chi aggiorna il sito:
+
+| Direttiva | Implementazione |
+| --- | --- |
+| Logo *Concessionario Autorizzato* nella fascia superiore, con link alla pagina ufficiale | `src/components/BadgeConcessionario.jsx`, presente in header e footer di ogni pagina |
+| Deve essere chiaro che l'azienda è concessionaria, non inventrice | Dichiarato in header, footer, home, pagina tecnologia e ogni pagina provinciale |
+| «piscina naturale» va sempre seguito da «Piscine Rocks Design» | I testi usano **solo** «Piscine Rocks Design»; `npm run verifica` blocca ogni uso isolato |
+| Foto della piscina espositiva in prima pagina con «Vieni a trovarci presso la nostra sede» | Sezione showroom in home + pagina `/showroom` |
+| **Vietato** pubblicare tecnica costruttiva, fasi di cantiere o impianti | I sorgenti stanno in `media-sources/`, **fuori** da `public/`: sul sito arrivano solo le immagini della whitelist in `scripts/media.config.mjs` |
+| Ogni foto deve riportare il marchio Piscine Rocks Design | Filigrana **impressa nel file** da `scripts/prepare-media.mjs`, non sovrapposta via CSS |
+| Indicare sempre la città / zona di riferimento | Nove pagine provinciali + zona citata in ogni pagina indicizzabile (verificato) |
+| Taggare `@piscinerocksdesign` sui social | Indicato in footer e in galleria |
+| Testo leggibile: paragrafi, grassetti, elenchi | Impaginazione tipografica dedicata, elenchi e tabelle di confronto |
+
+Il logo usato è quello **ufficiale**, estratto dal catalogo fornito dalla casa madre
+(`scripts/build-brand-assets.mjs`): nessuna ricostruzione approssimativa del marchio.
+
+### La verifica automatica
+
+`npm run verifica` analizza il sito compilato e fallisce (exit code 1) se trova:
+
+1. una pagina senza logo concessionario nella fascia superiore o senza link al sito ufficiale;
+2. la dicitura «piscina naturale» non seguita da «Piscine Rocks Design»;
+3. un riferimento a `media-sources/`, `/catalogo/` o `/foto/` (materiale non filigranato,
+   che include le foto delle fasi di costruzione);
+4. un'immagine fuori dalla whitelist;
+5. una pagina indicizzabile che non cita la zona di riferimento.
+
+Va eseguita dopo ogni `npm run build`, prima di pubblicare.
+
+---
+
+## Pipeline delle immagini
+
+```
+media-sources/foto/*.jpg          (sorgenti, NON serviti dal sito)
+        │
+        │  scripts/media.config.mjs  ← whitelist: cosa si può pubblicare
+        ▼
+scripts/prepare-media.mjs
+        │  • ridimensiona a 640 / 1280 / 1920 px (mai oltre la risoluzione nativa)
+        │  • imprime la filigrana «PISCINE ROCKS DESIGN»
+        │  • esporta WebP + un JPEG di riserva
+        │  • calcola un segnaposto sfocato (LQIP) inline
+        ▼
+public/media/<slug>-<larghezza>.webp|jpg   +   src/data/media.json
+```
+
+Il componente `src/components/Immagine.jsx` legge il manifest e produce un `<picture>`
+responsive con dimensioni esplicite (niente *layout shift*), `loading="lazy"` di default
+e `fetchPriority="high"` per le immagini di apertura.
+
+**Per aggiungere una foto:** copiala in `media-sources/foto/`, aggiungi una voce in
+`scripts/media.config.mjs` (slug, testo alternativo, tag) e lancia `npm run media`.
+Prima di farlo, verifica che lo scatto non mostri scavi, teli, geotessili, tubazioni,
+locali tecnici o mezzi d'opera: sono contenuti vietati dalla casa madre a tutela del brevetto.
+
+---
+
+## SEO
+
+- **Pre-rendering statico**: ogni rotta è un file HTML completo, con titolo, meta,
+  Open Graph e testi già presenti nella risposta del server. Niente contenuti
+  visibili solo dopo l'esecuzione di JavaScript. In pagina il sito resta una SPA
+  React, che si idrata sull'HTML pre-renderizzato.
+- **Dati strutturati** (`schema.org`): `HomeAndConstructionBusiness` con `areaServed`
+  su tutte le province, `Service` per pagina locale, `FAQPage`, `BreadcrumbList`.
+- **SEO locale**: nove pagine provinciali con testo, FAQ e località specifiche —
+  non testo duplicato con la città sostituita.
+- `sitemap.xml` e `robots.txt` generati dall'elenco rotte (`scripts/rotte.mjs`).
+- **Prestazioni**: font self-hostati, CSS unico, immagini WebP responsive,
+  nessuna richiesta a domini terzi al primo caricamento.
+
+Prima della pubblicazione aggiornare `SITE_URL` in `src/data/site.js` con il dominio reale.
+
+---
+
+## Configurazione
+
+Variabili d'ambiente (file `.env`, vedi `.env.example`):
+
+| Variabile | Effetto se assente |
+| --- | --- |
+| `VITE_ENDPOINT_LEAD` | Il modulo contatti apre il client di posta con i dati compilati: nessun contatto va perso |
+| `VITE_GA4_ID` | Nessuno script di misurazione viene caricato |
+
+Gli script di misurazione partono **solo dopo il consenso** espresso nel banner
+(`src/components/BannerCookie.jsx`): finché l'utente non accetta, il sito non
+carica nulla di profilante.
+
+Dati aziendali da completare in `src/data/site.js` prima del go-live:
+indirizzo della sede, partita IVA ed e-mail definitiva.
+
+---
+
+## Pubblicazione
+
+`npm run build` produce in `dist/` un sito statico con una cartella per rotta.
+Funziona senza configurazioni particolari su Netlify, Vercel, Cloudflare Pages,
+GitHub Pages, Apache o nginx: basta servire `dist/` con l'index di cartella e
+`404.html` come pagina di errore.
+
+**Non** configurare un fallback SPA verso `index.html`: annullerebbe il
+pre-rendering, restituendo la home per ogni URL.
+
+---
+
+## Struttura delle cartelle
+
+```
+media-sources/        sorgenti fotografici e catalogo — non pubblicati
+public/
+  brand/              logo ufficiale estratto + filigrana (generati)
+  fonts/              Marcellus e Inter self-hostati (generati)
+  media/              immagini pubblicate e filigranate (generate)
+scripts/
+  build-brand-assets.mjs   estrae il logo dal catalogo, crea la filigrana
+  media.config.mjs         whitelist fotografica
+  prepare-media.mjs        pipeline immagini
+  scarica-font.mjs         self-hosting dei font
+  rotte.mjs                elenco rotte pubbliche
+  prerender.mjs            pre-rendering statico
+  genera-sitemap.mjs       sitemap.xml e robots.txt
+  verifica-conformita.mjs  controllo direttive Rocks Design
+src/
+  components/         header, footer, moduli, galleria, SEO, immagini
+  data/               dati aziendali, contenuti, manifest immagini
+  pages/              una pagina per rotta
+  entry-server.jsx    ingresso per il pre-rendering
+  main.jsx            ingresso client (idratazione)
+```

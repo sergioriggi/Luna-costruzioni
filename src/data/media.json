@@ -1,0 +1,1049 @@
+[
+  {
+    "slug": "oasi-aerea-sabbia-bianca",
+    "alt": "Vista aerea di una piscina Piscine Rocks Design con spiaggia in sabbia bianca, palme e massi monolitici",
+    "caption": "Spiaggia privata in sabbia bianca e acqua turchese: una Piscina Rocks Design vista dall’alto.",
+    "tags": [
+      "caraibi",
+      "sabbia",
+      "aerea"
+    ],
+    "hero": true,
+    "width": 1600,
+    "height": 900,
+    "aspect": 1.7778,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/oasi-aerea-sabbia-bianca-1280.jpg",
+    "srcset": "/media/oasi-aerea-sabbia-bianca-640.webp 640w, /media/oasi-aerea-sabbia-bianca-1280.webp 1280w, /media/oasi-aerea-sabbia-bianca-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 360
+      },
+      {
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "w": 1600,
+        "h": 900
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwBACdASoUAAsAPwFsrU8rJiQiMAgBYCAJYwCsAB6JT0PQMvip3nE0IAAA/qasM9t75fkog7lbI8KiHH8vqPYlm6rOnLlk0ZcnYnDksyAAAA=="
+  },
+  {
+    "slug": "palme-al-tramonto",
+    "alt": "Piscina Rocks Design al tramonto tra palme e sabbia chiara",
+    "caption": "La luce del tramonto sull’acqua: atmosfera tropicale a pochi passi da casa.",
+    "tags": [
+      "caraibi",
+      "tramonto"
+    ],
+    "hero": true,
+    "width": 1066,
+    "height": 1600,
+    "aspect": 0.6663,
+    "widths": [
+      640,
+      1066
+    ],
+    "fallback": "/media/palme-al-tramonto-1066.jpg",
+    "srcset": "/media/palme-al-tramonto-640.webp 640w, /media/palme-al-tramonto-1066.webp 1066w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 961
+      },
+      {
+        "w": 1066,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoUAB4APwFosFGrJSSisBgIAWAgCWMAsOwO96moW2IVPwlPk2L2lwezjr9JQAD+3xHbDzxECxirGWlB/IZvY3rSLYurdlL1rEGwkKxgd+I9nyPvNU748YDnmfBtZNoeHnYnM1M0blXeOcpY43jXUemvDx5hT2Ot7AcpwfB149nib/ioOVusAAAA"
+  },
+  {
+    "slug": "oasi-con-pontile",
+    "alt": "Piscina Rocks Design con pontile in legno e bordo in massi naturali",
+    "caption": "Ogni piscina Rocks Design nasce sulla morfologia del giardino che la ospita.",
+    "tags": [
+      "caraibi",
+      "aerea"
+    ],
+    "hero": true,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/oasi-con-pontile-1280.jpg",
+    "srcset": "/media/oasi-con-pontile-640.webp 640w, /media/oasi-con-pontile-1280.webp 1280w, /media/oasi-con-pontile-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAwCdASoUAA8APwFqrE8rJiQiMAgBYCAJaACdAAvmaXCUA/xQAP37NTIaH7fduBBstp1a/12aPjI6ebOKZZHuIULl/GFMRS5rTlSpSaAws19Du973CCORwDDN/fbAAAA="
+  },
+  {
+    "slug": "villa-con-spiaggia-in-ghiaia",
+    "alt": "Piscina Rocks Design davanti a una villa, con bordo in ciottoli e massi di granito",
+    "caption": "Acqua cristallina, ciottoli e monoliti: nessuna piscina Rocks Design è uguale a un’altra.",
+    "tags": [
+      "mediterranea",
+      "giorno"
+    ],
+    "hero": true,
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallback": "/media/villa-con-spiaggia-in-ghiaia-1280.jpg",
+    "srcset": "/media/villa-con-spiaggia-in-ghiaia-640.webp 640w, /media/villa-con-spiaggia-in-ghiaia-1280.webp 1280w, /media/villa-con-spiaggia-in-ghiaia-1920.webp 1920w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJQBOgAzIg6iY0yieAAPzJdUPkzAgCdxunDvyhVMp4Oye93FnEegW89obbPhysObRnF0b3lGLOqyRKPd2qUIAA"
+  },
+  {
+    "slug": "notte-luci-e-festa",
+    "alt": "Piscina Rocks Design illuminata di sera durante un ricevimento in giardino",
+    "caption": "Di sera l’illuminazione subacquea trasforma la piscina nel cuore del giardino.",
+    "tags": [
+      "notte",
+      "eventi"
+    ],
+    "hero": false,
+    "width": 930,
+    "height": 1351,
+    "aspect": 0.6884,
+    "widths": [
+      640,
+      930
+    ],
+    "fallback": "/media/notte-luci-e-festa-930.jpg",
+    "srcset": "/media/notte-luci-e-festa-640.webp 640w, /media/notte-luci-e-festa-930.webp 930w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 930
+      },
+      {
+        "w": 930,
+        "h": 1351
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBQCdASoUAB0APu1gqE6ppaQiN/qoATAdiWgAtSFA40jf8Br/gYtIEvq4bgMPlxynSHZOB4AA21wrTMli7p02C8A+UMJw+349RWjxwpzFtT7TuR0QSP0tNIxgeyOEj2D6aKlNXJr8PVBxVK9kJb3JMDsppgUypLxZGUHAYKoRiAAA"
+  },
+  {
+    "slug": "cascata-e-massi-al-crepuscolo",
+    "alt": "Cascata naturale in massi monolitici su una piscina Rocks Design al crepuscolo",
+    "caption": "Le cascate in roccia monolitica regalano il suono dell’acqua in caduta.",
+    "tags": [
+      "cascate",
+      "notte"
+    ],
+    "hero": false,
+    "width": 936,
+    "height": 1466,
+    "aspect": 0.6385,
+    "widths": [
+      640,
+      936
+    ],
+    "fallback": "/media/cascata-e-massi-al-crepuscolo-936.jpg",
+    "srcset": "/media/cascata-e-massi-al-crepuscolo-640.webp 640w, /media/cascata-e-massi-al-crepuscolo-936.webp 936w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 1002
+      },
+      {
+        "w": 936,
+        "h": 1466
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADwBACdASoUAB8APvVmqE6qpaOiMAwBUB6JYgDA/IjBIzwlcSkmblw429nUMbo2nmAA/usydxrzEdRlEBlir6t/W/bLnvsZkLLjniIokGHZiNig6oTjmRM0CGGx8BSGtP/VL30plkMZXg00Xm1lH6K6nGGPDC/eqV7utdFdulRu+n1da3gAAA=="
+  },
+  {
+    "slug": "ricevimento-a-bordo-acqua",
+    "alt": "Festa serale a bordo di una piscina Rocks Design con fuochi d’artificio",
+    "caption": "Uno scenario che vale un evento: la piscina Rocks Design come palcoscenico.",
+    "tags": [
+      "notte",
+      "eventi"
+    ],
+    "hero": false,
+    "width": 938,
+    "height": 1516,
+    "aspect": 0.6187,
+    "widths": [
+      640,
+      938
+    ],
+    "fallback": "/media/ricevimento-a-bordo-acqua-938.jpg",
+    "srcset": "/media/ricevimento-a-bordo-acqua-640.webp 640w, /media/ricevimento-a-bordo-acqua-938.webp 938w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 1034
+      },
+      {
+        "w": 938,
+        "h": 1516
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBQCdASoUACAAPwFysFKrJqSiqAqpYCAJbAC1CNBA8bYzO/3RS0/wyTI6Sv2FDOrM4RG4AP6Ggoh9SnMBeI2njRvoT4ddondOVNZ/fXlCZlXdSAzcDUKah+Enn+pPCHL8egfs8DzISD2DMHB/7CaDZPlrBq/1wOtLkEYthkWmjLmHO71zJtNSvu07M+hsak32Setyl3NNOSUnnJxD8reBmgjxfAAA"
+  },
+  {
+    "slug": "cena-in-giardino",
+    "alt": "Zona pranzo in giardino accanto a una piscina Rocks Design illuminata",
+    "caption": "Il giardino diventa vivibile anche dopo il tramonto.",
+    "tags": [
+      "notte"
+    ],
+    "hero": false,
+    "width": 1201,
+    "height": 1600,
+    "aspect": 0.7506,
+    "widths": [
+      640,
+      1201
+    ],
+    "fallback": "/media/cena-in-giardino-1201.jpg",
+    "srcset": "/media/cena-in-giardino-640.webp 640w, /media/cena-in-giardino-1201.webp 1201w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 1201,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADwBACdASoUABsAPvVmq06qpaQiMAwBUB6JagCdMyS/2ElfLSxL1nftY+1PFuYj7DAA/uve5H9xW5GT3MOj3jJc6aEAZYd9Fv8JEsHFEhqyi8G3vMDCwo7VOYthT1gBnMSuvNCW/AgK3fEl2c5DSt+nNUgeiz4wQChUpOtN3weBVy4AAAA="
+  },
+  {
+    "slug": "acqua-turchese-notturna",
+    "alt": "Piscina Rocks Design con illuminazione subacquea turchese di notte",
+    "caption": null,
+    "tags": [
+      "notte"
+    ],
+    "hero": false,
+    "width": 1201,
+    "height": 1600,
+    "aspect": 0.7506,
+    "widths": [
+      640,
+      1201
+    ],
+    "fallback": "/media/acqua-turchese-notturna-1201.jpg",
+    "srcset": "/media/acqua-turchese-notturna-640.webp 640w, /media/acqua-turchese-notturna-1201.webp 1201w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 1201,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABwBACdASoUABsAPwFmrk8rJSQiMBgMAWAgCWJm71pkrcQar70DGm44k4KDIAD+8WXooPlXwjlvGxVx+6F1PbI/AMTr0x/M+VUNCxB2VfuBgqo15abixH1VsLUlQP/JbHY0M0kaghuMAAAA"
+  },
+  {
+    "slug": "blu-della-sera",
+    "alt": "Piscina Rocks Design all’ora blu con arredi da giardino",
+    "caption": null,
+    "tags": [
+      "notte"
+    ],
+    "hero": false,
+    "width": 1537,
+    "height": 2048,
+    "aspect": 0.7505,
+    "widths": [
+      640,
+      1280,
+      1537
+    ],
+    "fallback": "/media/blu-della-sera-1280.jpg",
+    "srcset": "/media/blu-della-sera-640.webp 640w, /media/blu-della-sera-1280.webp 1280w, /media/blu-della-sera-1537.webp 1537w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 1280,
+        "h": 1706
+      },
+      {
+        "w": 1537,
+        "h": 2048
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQBACdASoUABsAPwFqq08rJiOiMAgBYCAJYgC+SB6XGyspk5XdGV7X+kBhDPjKsAD+7EQ5THCbBCCl8Dn/gUnc1swLvsl0HcrSWZXqmZvrALbIHwlUMKIcls1QdT+R/8Zex9cuBvFFJmZqAAA="
+  },
+  {
+    "slug": "illuminazione-calda-sui-monoliti",
+    "alt": "Monoliti illuminati con luce calda attorno a una piscina Rocks Design",
+    "caption": "La luce radente esalta la texture delle rocce monolitiche.",
+    "tags": [
+      "notte",
+      "monoliti"
+    ],
+    "hero": false,
+    "width": 2048,
+    "height": 1536,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallback": "/media/illuminazione-calda-sui-monoliti-1280.jpg",
+    "srcset": "/media/illuminazione-calda-sui-monoliti-640.webp 640w, /media/illuminazione-calda-sui-monoliti-1280.webp 1280w, /media/illuminazione-calda-sui-monoliti-1920.webp 1920w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoUAA8APwFqrE6rJiQiMAgBYCAJYwCdMoMftE5M1M6tevtzql5KAAD+5Eyjn5nvjADIe2PF83i2COGK7VEB3MmK7FOvQanRBS/vNGIkPNoAAA=="
+  },
+  {
+    "slug": "solarium-in-legno",
+    "alt": "Solarium in legno affacciato su una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "giorno",
+      "mediterranea"
+    ],
+    "hero": false,
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallback": "/media/solarium-in-legno-1280.jpg",
+    "srcset": "/media/solarium-in-legno-640.webp 640w, /media/solarium-in-legno-1280.webp 1280w, /media/solarium-in-legno-1920.webp 1920w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAA8APwFqrU8rJiQiMAgBYCAJZACdLwAA/bk3+73yhHwAAM2ZtJIDUErnjfJk89StjzsyicpBz8x7Y7cVY+8AqvbxjAHSSHllOu5AFIcoWOAAAAA="
+  },
+  {
+    "slug": "spiaggia-di-sabbia-privata",
+    "alt": "Ampia spiaggia in sabbia naturale davanti a una piscina Rocks Design",
+    "caption": "L’effetto spiaggia: sabbia naturale che assorbe e restituisce il calore del sole.",
+    "tags": [
+      "sabbia",
+      "caraibi"
+    ],
+    "hero": false,
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallback": "/media/spiaggia-di-sabbia-privata-1280.jpg",
+    "srcset": "/media/spiaggia-di-sabbia-privata-640.webp 640w, /media/spiaggia-di-sabbia-privata-1280.webp 1280w, /media/spiaggia-di-sabbia-privata-1920.webp 1920w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoUAA8APwFsrU6rJiQiMAgBYCAJYwC7ABYv9JmWEo40QADc3zSgjXHqwkSk/x1bVj9m7rl6bPZ47ElxMWoRclhMbYYAAA=="
+  },
+  {
+    "slug": "bordo-in-legno-e-ciottoli",
+    "alt": "Bordo in legno e ciottoli di una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "giorno",
+      "alpi"
+    ],
+    "hero": false,
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallback": "/media/bordo-in-legno-e-ciottoli-1280.jpg",
+    "srcset": "/media/bordo-in-legno-e-ciottoli-640.webp 640w, /media/bordo-in-legno-e-ciottoli-1280.webp 1280w, /media/bordo-in-legno-e-ciottoli-1920.webp 1920w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAwCdASoUAA8APwFqrk8rJiQiMAgBYCAJYgAASkMaJUmDMshUWwAAAP4c6+kBLTtFksNIzaEWYCP59Y7lDJ7rSm64L6eWjCjaMWu9dXqDgtNNAAA="
+  },
+  {
+    "slug": "ghiaietto-e-acqua-smeraldo",
+    "alt": "Piscina Rocks Design modello Alpi con ghiaietto e acqua color smeraldo",
+    "caption": "Modello Alpi: pietra e ghiaietto per una texture rustica e naturale.",
+    "tags": [
+      "alpi",
+      "giorno"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/ghiaietto-e-acqua-smeraldo-1280.jpg",
+    "srcset": "/media/ghiaietto-e-acqua-smeraldo-640.webp 640w, /media/ghiaietto-e-acqua-smeraldo-1280.webp 1280w, /media/ghiaietto-e-acqua-smeraldo-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoUAA8APwFsrU6rJiQiMAgBYCAJZgCsMoACQv5NazpVTpIAAP7Ad07cQP/CrIPKmlNmiMwPUtX7LXHqX+PfTvdVM5PD/r32q8A+wlTiaryKDAAA"
+  },
+  {
+    "slug": "fondale-illuminato",
+    "alt": "Fondale in sabbia di una piscina Rocks Design illuminato di notte",
+    "caption": "Il fondale in sabbia libera simula il fondale marino, senza intorbidire l’acqua.",
+    "tags": [
+      "notte",
+      "sabbia"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/fondale-illuminato-1280.jpg",
+    "srcset": "/media/fondale-illuminato-640.webp 640w, /media/fondale-illuminato-1280.webp 1280w, /media/fondale-illuminato-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAwCdASoUAA0APwForE6rJaQiMAgBYCAJbACdIA/Cs6RlQ0IYv0NAAP7NV0EHlEw2EqDQAc9XlGIrfGGtuv11mhB+mH4v6U46p6j1RHXJe9URAPZAvqByKYHdXp1GlBzSmij+AAA="
+  },
+  {
+    "slug": "cascata-su-roccia-rossa",
+    "alt": "Cascata su rocce rosse e granito in una piscina Rocks Design",
+    "caption": "Salti d’acqua modellati sulle rocce: ogni cascata è un pezzo unico.",
+    "tags": [
+      "cascate"
+    ],
+    "hero": false,
+    "width": 1024,
+    "height": 1280,
+    "aspect": 0.8,
+    "widths": [
+      640,
+      1024
+    ],
+    "fallback": "/media/cascata-su-roccia-rossa-1024.jpg",
+    "srcset": "/media/cascata-su-roccia-rossa-640.webp 640w, /media/cascata-su-roccia-rossa-1024.webp 1024w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 800
+      },
+      {
+        "w": 1024,
+        "h": 1280
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBQCdASoUABkAPwF0sFKrJqQiqAqpYCAJZACw7BI9P+f7xcsUVX2uF7/cjSaVnhJ72gAA/s3P/KeyQMsnnB71GTh6CRvOiHDvYZQX5bNf9IH4QbD7AKgubqQbKEFdpthRhrFlhVuj8LPiWN3aNnyVALyckEvPtI1t2Qgvr+MEF+sFFzoPmuqIzTThaabKbBVm8AAA"
+  },
+  {
+    "slug": "ombre-di-palme-sulla-sabbia",
+    "alt": "Ombre di palme sulla sabbia bianca attorno a una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "caraibi",
+      "sabbia",
+      "aerea"
+    ],
+    "hero": false,
+    "width": 1080,
+    "height": 1080,
+    "aspect": 1,
+    "widths": [
+      640,
+      1080
+    ],
+    "fallback": "/media/ombre-di-palme-sulla-sabbia-1080.jpg",
+    "srcset": "/media/ombre-di-palme-sulla-sabbia-640.webp 640w, /media/ombre-di-palme-sulla-sabbia-1080.webp 1080w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 640
+      },
+      {
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoUABQAPwF4tFQrJySjKAgBYCAJYwDKtA+DpJ3ZnOGQtxr5srS6YN9LQTgAAP7jwakCUEkyUqar4x5abtVqLZDdqEAeBrdm3kxG8XOwEE8ddsxyzdwLd4OPjRM7fBIwEaMaYnYcUqN4P8j11a3eAAAA"
+  },
+  {
+    "slug": "masso-luminoso-nell-acqua",
+    "alt": "Masso monolitico con anello luminoso immerso in una piscina Rocks Design",
+    "caption": "Dettagli su misura: i monoliti diventano sedute, isole e punti luce.",
+    "tags": [
+      "monoliti",
+      "notte"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/masso-luminoso-nell-acqua-1280.jpg",
+    "srcset": "/media/masso-luminoso-nell-acqua-640.webp 640w, /media/masso-luminoso-nell-acqua-1280.webp 1280w, /media/masso-luminoso-nell-acqua-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAA0APwFqrU6rJiQiMAgBYCAJZQC7AA5iXXfTmqRKAAD+hAP08Zya1GWkLQYyqLz8KJ0rMqsuJPxE3NxoqFuEkzEXf9tUUx1V1AAA"
+  },
+  {
+    "slug": "riflessi-al-tramonto",
+    "alt": "Riflessi caldi al tramonto su una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "tramonto"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/riflessi-al-tramonto-1280.jpg",
+    "srcset": "/media/riflessi-al-tramonto-640.webp 640w, /media/riflessi-al-tramonto-1280.webp 1280w, /media/riflessi-al-tramonto-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoUAA0APwForE6rJaQiMAgBYCAJZQDE2CPqdO84NnnJgAD+zeW3TaFVfTAOv5+7qz7JZ1ZSU+KrB94uUaKL+EulryHBr4AA"
+  },
+  {
+    "slug": "giardino-tropicale",
+    "alt": "Piscina Rocks Design immersa in un giardino tropicale con palme",
+    "caption": null,
+    "tags": [
+      "caraibi"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/giardino-tropicale-1280.jpg",
+    "srcset": "/media/giardino-tropicale-640.webp 640w, /media/giardino-tropicale-1280.webp 1280w, /media/giardino-tropicale-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAwCdASoUAA0APwFsrU8rJiQiMAgBYCAJYwAAUkpp56MoQAD+2esiyJ+Kc98GoRFzmIhApvpF+WBEmQSevq/6EO9dTul9Q+50WjgA"
+  },
+  {
+    "slug": "cascata-e-punto-luce",
+    "alt": "Cascata e masso illuminato in una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "cascate",
+      "monoliti"
+    ],
+    "hero": false,
+    "width": 1066,
+    "height": 1600,
+    "aspect": 0.6663,
+    "widths": [
+      640,
+      1066
+    ],
+    "fallback": "/media/cascata-e-punto-luce-1066.jpg",
+    "srcset": "/media/cascata-e-punto-luce-640.webp 640w, /media/cascata-e-punto-luce-1066.webp 1066w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 961
+      },
+      {
+        "w": 1066,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoUAB4APwF2slQrJyQjKAgBYCAJYwCdAAZZtc7zaPL+yhgSQNIAAP7c9D7feJt/FEKH5d4+/xd/5BQEoyHf6EtzDdmT6+bHIoyOXN1lbv7wek01qN4RTfHd7zADEFftwpJQqCKiFnRfwqyUn2wBdMYLCLQTwBKUJaNT/QJgAAA="
+  },
+  {
+    "slug": "verde-tropicale-sull-acqua",
+    "alt": "Vegetazione tropicale affacciata su una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "caraibi"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/verde-tropicale-sull-acqua-1280.jpg",
+    "srcset": "/media/verde-tropicale-sull-acqua-640.webp 640w, /media/verde-tropicale-sull-acqua-1280.webp 1280w, /media/verde-tropicale-sull-acqua-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoUAA0APwFqrU8rJiQiMAgBYCAJbAC06BGzIMaMf6tl5QAA/un9P2eaNscWbL4qJRZhGci0Wa4x+gc1q1rfuz77lmxZKUjdVruQvUGJrrWTntMbhyCpGkQBXJo1AAAA"
+  },
+  {
+    "slug": "palme-e-monoliti",
+    "alt": "Palme e massi monolitici attorno a una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "caraibi",
+      "monoliti"
+    ],
+    "hero": false,
+    "width": 1066,
+    "height": 1600,
+    "aspect": 0.6663,
+    "widths": [
+      640,
+      1066
+    ],
+    "fallback": "/media/palme-e-monoliti-1066.jpg",
+    "srcset": "/media/palme-e-monoliti-640.webp 640w, /media/palme-e-monoliti-1066.webp 1066w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 961
+      },
+      {
+        "w": 1066,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAQBQCdASoUAB4APwFsrU8rJiQiMAgBYCAJYgCo9Bl/5R4pv6G0kQ1EPGdvKgxe6IIAAP7hTdRWZUo7Ecgk70hJVgwfZysEfB59i4G+OBrbKBdG1yoRfQfF5aECWLgMfjOyuUai/Z3jTd9qp0ew7xOElA+D4//fQqb9edtWKKt/5y6UtO1bCL6L7zu1Ib059i/8AA=="
+  },
+  {
+    "slug": "monolite-al-tramonto",
+    "alt": "Primo piano di un masso monolitico illuminato in una piscina Rocks Design",
+    "caption": "Le splendide rocce monolitiche creano pareti solide e stabili.",
+    "tags": [
+      "monoliti"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1066,
+    "aspect": 1.5009,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/monolite-al-tramonto-1280.jpg",
+    "srcset": "/media/monolite-al-tramonto-640.webp 640w, /media/monolite-al-tramonto-1280.webp 1280w, /media/monolite-al-tramonto-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 426
+      },
+      {
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "w": 1600,
+        "h": 1066
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoUAA0APwFqrU8rJiQiMAgBYCAJZQC7AB39JSZqyvrUWAD+ZpqICP42PdfWPxAE3gKwPY3glzKZ2TpzlhLv/JxuGg83uLhpZH+7T6Ur5NAAAA=="
+  },
+  {
+    "slug": "getto-d-acqua",
+    "alt": "Getto d’acqua su una piscina Rocks Design con spiaggia in sabbia",
+    "caption": null,
+    "tags": [
+      "cascate",
+      "sabbia"
+    ],
+    "hero": false,
+    "width": 1066,
+    "height": 1600,
+    "aspect": 0.6663,
+    "widths": [
+      640,
+      1066
+    ],
+    "fallback": "/media/getto-d-acqua-1066.jpg",
+    "srcset": "/media/getto-d-acqua-640.webp 640w, /media/getto-d-acqua-1066.webp 1066w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 961
+      },
+      {
+        "w": 1066,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQBACdASoUAB4APwFysFCrJySisBgIAWAgCWMAuwAPEs337gFHZzK/hWJ7FR/PAAD+jc0U/HKhk+nsuHbUpoiQ2IpSi3xg0OuFV2PyAHwud+c+lgRO8PfEEzoF7DPpTWkvUgoFsXvu6u9Ioc5PnOu1R8j7mzwAAAA="
+  },
+  {
+    "slug": "acqua-in-movimento",
+    "alt": "Acqua in movimento in una piscina Rocks Design tra palme e rocce",
+    "caption": null,
+    "tags": [
+      "cascate"
+    ],
+    "hero": false,
+    "width": 1066,
+    "height": 1600,
+    "aspect": 0.6663,
+    "widths": [
+      640,
+      1066
+    ],
+    "fallback": "/media/acqua-in-movimento-1066.jpg",
+    "srcset": "/media/acqua-in-movimento-640.webp 640w, /media/acqua-in-movimento-1066.webp 1066w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 961
+      },
+      {
+        "w": 1066,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQBACdASoUAB4APwFysFCrJySisBgIAWAgCWMAuwAPEs337gFHZzK/hWJ7FR/PAAD+jc0U/HKhk+nsuHbUpoiQ2IpSi3xg0OuFV2PyAHwud+c+lgRO8PfEEzoF7DPpTWkvUgoFsXvu6u9Ioc5PnOu1R8j7mzwAAAA="
+  },
+  {
+    "slug": "idromassaggio-naturale",
+    "alt": "Area idromassaggio di una piscina Rocks Design con acqua turchese",
+    "caption": "Aree benessere e idromassaggio integrate nel disegno della vasca.",
+    "tags": [
+      "idromassaggio"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/idromassaggio-naturale-1280.jpg",
+    "srcset": "/media/idromassaggio-naturale-640.webp 640w, /media/idromassaggio-naturale-1280.webp 1280w, /media/idromassaggio-naturale-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBACdASoUAA8APwFqrU8rJiQiMAgBYCAJbACdMoR4GBSnmJdDQt/vtIAA/rBuG90gVMolBIwBsFO7kinilhfS+OjUzTwy1t3fyuGYXy9Zwl1j9emXt1q3YbcewGGkT/pUUkfKoCvlq4r0AAA="
+  },
+  {
+    "slug": "area-benessere-vista-alto",
+    "alt": "Vista dall’alto dell’area idromassaggio di una piscina Rocks Design",
+    "caption": null,
+    "tags": [
+      "idromassaggio",
+      "aerea"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/area-benessere-vista-alto-1280.jpg",
+    "srcset": "/media/area-benessere-vista-alto-640.webp 640w, /media/area-benessere-vista-alto-1280.webp 1280w, /media/area-benessere-vista-alto-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoUAA8APwFqrE6rJiQiMAgBYCAJZACdMoADf4Uwwj+IOvPFAADKn+FO3gUD9eII97AZUJftt2FbigkFNeHUWv9dYmn78c/WxaUHniDrO7iBoHjgL7P3lXqfUxQAAA=="
+  },
+  {
+    "slug": "oasi-con-pontile-e-palme",
+    "alt": "Piscina Rocks Design con pontile in legno, palme e sabbia bianca",
+    "caption": null,
+    "tags": [
+      "caraibi",
+      "aerea"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/oasi-con-pontile-e-palme-1280.jpg",
+    "srcset": "/media/oasi-con-pontile-e-palme-640.webp 640w, /media/oasi-con-pontile-e-palme-1280.webp 1280w, /media/oasi-con-pontile-e-palme-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJbACdACIZjkjqbIF4I9/gAP7NUIjl10m3Dw8TmmMLG0DKJe860ZBqU+S4sKITSNOA7bT+aISMMIIm10tR7qBej/A5s/4r91kAOAAA"
+  },
+  {
+    "slug": "sabbie-naturali-campioni",
+    "alt": "Campioni delle sabbie naturali Rocks Design: Bianco, Giallo e Ticino",
+    "caption": "Le tre sabbie naturali selezionate: Bianco, Giallo e Ticino.",
+    "tags": [
+      "sabbia",
+      "materiali"
+    ],
+    "hero": false,
+    "width": 1600,
+    "height": 1200,
+    "aspect": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1600
+    ],
+    "fallback": "/media/sabbie-naturali-campioni-1280.jpg",
+    "srcset": "/media/sabbie-naturali-campioni-640.webp 640w, /media/sabbie-naturali-campioni-1280.webp 1280w, /media/sabbie-naturali-campioni-1600.webp 1600w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 480
+      },
+      {
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "w": 1600,
+        "h": 1200
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAA8APwFqrU6rJiQiMAgBYCAJQBjehFPdSltngPpAVQAA9i1iSP1sWGZ5e7a/Z8kWlt2bXqy9oD/Im9ZzchvhE9SFy8hPmQczdwTEi20AoAAA"
+  },
+  {
+    "slug": "sabbie-naturali-granulometria",
+    "alt": "Granulometria a confronto delle sabbie naturali Bianco, Giallo e Ticino",
+    "caption": null,
+    "tags": [
+      "sabbia",
+      "materiali"
+    ],
+    "hero": false,
+    "width": 1200,
+    "height": 1600,
+    "aspect": 0.75,
+    "widths": [
+      640,
+      1200
+    ],
+    "fallback": "/media/sabbie-naturali-granulometria-1200.jpg",
+    "srcset": "/media/sabbie-naturali-granulometria-640.webp 640w, /media/sabbie-naturali-granulometria-1200.webp 1200w",
+    "sizes": [
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 1200,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoUABsAPwForU8rJaQiMBgMAWAgCWMAxNgyHop1FjJRn9hpMoERV4jIEcAA/vMdcynhimwLMoOcBA3Ld6hePuNkCX0o3S2WWNmbI5Nlm5j8pITgLcveB4Yie9961qdE8yADFyisLD3My3OPmswQ1wAA"
+  }
+]
