@@ -60,19 +60,19 @@ export default function QuantoCosta() {
                     </h1>
                     <p className="testo-lungo mt-6">
                         È la prima domanda di tutti ed è giusto che lo sia. La risposta onesta è che{' '}
-                        <strong className="font-semibold text-pietra-800">non esiste un listino</strong>: una Piscina
+                        <strong className="font-semibold text-testo">non esiste un listino</strong>: una Piscina
                         Rocks Design non ha misure standard, quindi non ha nemmeno un prezzo standard.
                     </p>
                     <p className="testo-lungo mt-4">
                         Quello che possiamo fare — e che quasi nessuno fa — è dirti in anticipo{' '}
-                        <strong className="font-semibold text-pietra-800">quali sono le voci che spostano il
+                        <strong className="font-semibold text-testo">quali sono le voci che spostano il
                         preventivo</strong>. Se le conosci, quando ricevi un’offerta (la nostra o quella di chiunque
                         altro) sai dove guardare.
                     </p>
                 </Rivela>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Le cinque voci che contano"
                     titolo="Che cosa sposta il prezzo"
@@ -80,7 +80,7 @@ export default function QuantoCosta() {
                 <ol className="mt-12 space-y-5">
                     {FATTORI_COSTO.map((f, i) => (
                         <Rivela as="li" key={f.titolo} delay={i * 70} className="scheda flex flex-col gap-4 sm:flex-row sm:gap-7">
-                            <span className="font-display text-3xl leading-none text-oro-500 sm:w-16">
+                            <span className="font-display text-3xl leading-none text-accento sm:w-16">
                                 {String(i + 1).padStart(2, '0')}
                             </span>
                             <div>
@@ -98,7 +98,7 @@ export default function QuantoCosta() {
                         <Immagine
                             slug="villa-con-spiaggia-in-ghiaia"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -106,7 +106,7 @@ export default function QuantoCosta() {
                         occhiello="Come leggere un preventivo"
                         titolo="Quattro domande da fare a chiunque"
                     >
-                        <ul className="mt-7 space-y-4 text-[1.0625rem] text-pietra-700">
+                        <ul className="mt-7 space-y-4 text-[1.0625rem] text-neutro-300">
                             {[
                                 'Che cosa è incluso oltre alla vasca? Scavo, smaltimento del materiale di risulta, impianti, spiaggia, verde: sono voci che possono valere quanto la piscina.',
                                 'I tempi sono scritti in contratto o detti a voce?',
@@ -114,12 +114,12 @@ export default function QuantoCosta() {
                                 'Che cosa succede dopo la consegna: chi fa l’assistenza, e da quanto lontano arriva?',
                             ].map(v => (
                                 <li key={v} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-oro-500" />
+                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accento" />
                                     {v}
                                 </li>
                             ))}
                         </ul>
-                        <p className="mt-6 text-[0.95rem] leading-relaxed text-pietra-500">
+                        <p className="mt-6 text-[0.95rem] leading-relaxed text-neutro-500">
                             Sono le domande che consigliamo di farci. Valgono anche per gli altri preventivi che stai
                             valutando.
                         </p>
@@ -127,11 +127,11 @@ export default function QuantoCosta() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-pietra-900 text-sabbia-100">
+            <Sezione sfondo="bg-notte-800 text-neutro-200">
                 <div className="mx-auto max-w-3xl text-center">
                     <Rivela>
-                        <p className="occhiello text-acqua-300">In pratica</p>
-                        <h2 className="titolo-sezione text-white">Come si arriva a un numero</h2>
+                        <p className="occhiello text-accento-300">In pratica</p>
+                        <h2 className="titolo-sezione text-testo">Come si arriva a un numero</h2>
                     </Rivela>
                     <ol className="mt-10 grid gap-4 text-left sm:grid-cols-3">
                         {[
@@ -139,27 +139,27 @@ export default function QuantoCosta() {
                             ['Sopralluogo gratuito', 'Circa un’ora in giardino, con i campioni di sabbia al seguito.'],
                             ['Preventivo dettagliato', 'Entro una o due settimane, scomposto voce per voce.'],
                         ].map(([t, d], i) => (
-                            <Rivela as="li" key={t} delay={i * 100} className="rounded-2xl bg-white/5 p-6">
-                                <span className="font-display text-2xl text-oro-400">{i + 1}</span>
-                                <h3 className="mt-2 text-base text-white">{t}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-sabbia-300">{d}</p>
+                            <Rivela as="li" key={t} delay={i * 100} className="rounded-lg bg-testo/[0.05] p-6">
+                                <span className="font-display text-2xl text-accento-300">{i + 1}</span>
+                                <h3 className="mt-2 text-base text-testo">{t}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-neutro-400">{d}</p>
                             </Rivela>
                         ))}
                     </ol>
                     <Rivela className="mt-10">
-                        <Link to="/contatti" className="bottone-chiaro">Inizia dal sopralluogo</Link>
+                        <Link to="/contatti" className="bottone-pieno">Inizia dal sopralluogo</Link>
                     </Rivela>
                 </div>
             </Sezione>
 
             <Sezione>
                 <IntestazioneSezione occhiello="Domande frequenti" titolo="Sui costi, senza giri di parole" />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-pietra-200 border-y border-pietra-200">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
                     {FAQ_COSTO.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-costo">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                                <h3 className="font-display text-lg text-pietra-900 sm:text-xl">{v.domanda}</h3>
-                                <span className="mt-1 shrink-0 text-acqua-700 transition group-open:rotate-45" aria-hidden="true">
+                                <h3 className="font-display text-lg text-testo sm:text-xl">{v.domanda}</h3>
+                                <span className="mt-1 shrink-0 text-accento transition group-open:rotate-45" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                                     </svg>
@@ -171,7 +171,7 @@ export default function QuantoCosta() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                     <IntestazioneSezione
                         occhiello="Preventivo"

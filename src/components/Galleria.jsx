@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Immagine, { tutteLeFoto } from './Immagine'
+import { pubblico, pubblicoSrcset } from '../lib/percorso'
 
 const FILTRI = [
     { tag: null, label: 'Tutte' },
@@ -54,10 +55,10 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                             type="button"
                             onClick={() => setFiltro(f.tag)}
                             aria-pressed={filtro === f.tag}
-                            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                            className={`rounded-md px-4 py-2 text-sm font-medium transition ${
                                 filtro === f.tag
-                                    ? 'bg-pietra-900 text-sabbia-100'
-                                    : 'border border-pietra-300 text-pietra-600 hover:border-pietra-400 hover:text-pietra-900'
+                                    ? 'bg-notte-800 text-neutro-200'
+                                    : 'border border-testo/[0.16] text-neutro-400 hover:border-testo/[0.45] hover:text-testo'
                             }`}
                         >
                             {f.label}
@@ -72,7 +73,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                         <button
                             type="button"
                             onClick={() => setAperta(i)}
-                            className="group block w-full overflow-hidden rounded-2xl text-left shadow-sm transition hover:shadow-morbida"
+                            className="group block w-full overflow-hidden rounded-lg text-left shadow-sm transition hover:shadow-morbida"
                         >
                             <Immagine
                                 slug={f.slug}
@@ -81,7 +82,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                                 imgClassName="transition duration-700 group-hover:scale-105"
                             />
                             {f.caption && (
-                                <span className="block bg-white px-4 py-3 text-sm text-pietra-600">{f.caption}</span>
+                                <span className="block bg-superficie px-4 py-3 text-sm text-neutro-400">{f.caption}</span>
                             )}
                         </button>
                     </li>
@@ -94,7 +95,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
 
             {corrente && (
                 <div
-                    className="fixed inset-0 z-[80] flex items-center justify-center bg-pietra-900/95 p-4"
+                    className="fixed inset-0 z-[80] flex items-center justify-center bg-notte-800/95 p-4"
                     role="dialog"
                     aria-modal="true"
                     aria-label={corrente.alt}
@@ -103,7 +104,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                     <button
                         type="button"
                         onClick={chiudi}
-                        className="absolute right-4 top-4 rounded-full bg-white/10 p-3 text-white hover:bg-white/20"
+                        className="absolute right-4 top-4 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20"
                         aria-label="Chiudi"
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -114,7 +115,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                     <button
                         type="button"
                         onClick={e => { e.stopPropagation(); scorri(-1) }}
-                        className="absolute left-2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 sm:left-6"
+                        className="absolute left-2 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20 sm:left-6"
                         aria-label="Immagine precedente"
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -124,15 +125,15 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
 
                     <figure className="max-h-full w-full max-w-4xl" onClick={e => e.stopPropagation()}>
                         <img
-                            src={corrente.fallback}
-                            srcSet={corrente.srcset}
+                            src={pubblico(corrente.fallback)}
+                            srcSet={pubblicoSrcset(corrente.srcset)}
                             sizes="(min-width: 1024px) 900px, 92vw"
                             alt={corrente.alt}
                             width={corrente.width}
                             height={corrente.height}
                             className="mx-auto max-h-[76vh] w-auto rounded-xl object-contain"
                         />
-                        <figcaption className="mt-4 text-center text-sm text-sabbia-200">
+                        <figcaption className="mt-4 text-center text-sm text-neutro-300">
                             {corrente.caption ?? corrente.alt}
                         </figcaption>
                     </figure>
@@ -140,7 +141,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                     <button
                         type="button"
                         onClick={e => { e.stopPropagation(); scorri(1) }}
-                        className="absolute right-2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 sm:right-6"
+                        className="absolute right-2 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20 sm:right-6"
                         aria-label="Immagine successiva"
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">

@@ -35,7 +35,7 @@ export default function Modelli() {
                     </p>
                     <p className="testo-lungo mt-4">
                         Se non sai da dove partire, la domanda giusta non è «quale mi piace di più in foto» ma{' '}
-                        <strong className="font-semibold text-pietra-800">«che cosa c’è già nel mio giardino»</strong>:
+                        <strong className="font-semibold text-testo">«che cosa c’è già nel mio giardino»</strong>:
                         un ulivo secolare e una palma raccontano storie diverse.
                     </p>
                 </Rivela>
@@ -45,7 +45,7 @@ export default function Modelli() {
                         <Rivela as="li" key={m.slug} delay={i * 110} className="flex">
                             <Link
                                 to={`/modelli/${m.slug}`}
-                                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-morbida"
+                                className="group flex flex-col overflow-hidden rounded-lg bg-superficie shadow-sm transition hover:shadow-morbida"
                             >
                                 <Immagine
                                     slug={m.copertina}
@@ -56,13 +56,13 @@ export default function Modelli() {
                                 />
                                 <div className="flex flex-1 flex-col p-6">
                                     <h2 className="font-display text-2xl">{m.nomeCompleto}</h2>
-                                    <p className="mt-1 text-sm font-medium text-acqua-700">{m.claim}</p>
-                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">{m.sintesi}</p>
-                                    <p className="mt-4 text-sm text-pietra-500">
-                                        <strong className="font-semibold text-pietra-700">Sabbie:</strong>{' '}
+                                    <p className="mt-1 text-sm font-medium text-accento">{m.claim}</p>
+                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{m.sintesi}</p>
+                                    <p className="mt-4 text-sm text-neutro-500">
+                                        <strong className="font-semibold text-neutro-300">Sabbie:</strong>{' '}
                                         {m.sabbie.join(', ')}
                                     </p>
-                                    <span className="mt-auto pt-5 text-sm font-semibold text-acqua-700 group-hover:underline">
+                                    <span className="mt-auto pt-5 text-sm font-semibold text-accento group-hover:underline">
                                         Scopri il {m.nome} →
                                     </span>
                                 </div>
@@ -72,7 +72,7 @@ export default function Modelli() {
                 </ul>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Come si sceglie"
                     titolo="Tre domande, prima ancora del sopralluogo"
@@ -94,7 +94,7 @@ export default function Modelli() {
                     ].map(([t, d], i) => (
                         <Rivela key={t} delay={i * 90} className="scheda">
                             <h3 className="text-lg">{t}</h3>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{d}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{d}</p>
                         </Rivela>
                     ))}
                 </div>
@@ -106,7 +106,7 @@ export default function Modelli() {
                         <Immagine
                             slug="sabbie-naturali-campioni"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -115,10 +115,10 @@ export default function Modelli() {
                         titolo="Prima del modello, viene la sabbia"
                         testo="È il fondale a dare il colore all’acqua: la stessa vasca con sabbia Bianco o Ticino sembra un’altra piscina. Prima di scegliere il modello, vale la pena guardare le tre selezioni."
                     >
-                        <ul className="mt-6 space-y-2 text-[1.0625rem] text-pietra-700">
+                        <ul className="mt-6 space-y-2 text-[1.0625rem] text-neutro-300">
                             {SABBIE.map(s => (
                                 <li key={s.nome} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-oro-500" />
+                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accento" />
                                     <span>
                                         <strong className="font-semibold">{s.nome}</strong> — {s.acqua.toLowerCase()}
                                     </span>

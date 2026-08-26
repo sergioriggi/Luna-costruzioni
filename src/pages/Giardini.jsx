@@ -79,7 +79,7 @@ export default function Giardini() {
                             qualche pianta sopra.
                         </p>
                         <p className="testo-lungo mt-4">
-                            Le realizziamo <strong className="font-semibold text-pietra-800">anche senza piscina</strong>.
+                            Le realizziamo <strong className="font-semibold text-testo">anche senza piscina</strong>.
                             Molti clienti ci chiamano per sistemare il terreno e la piscina arriva due anni dopo — o
                             non arriva affatto, e va benissimo così.
                         </p>
@@ -92,7 +92,7 @@ export default function Giardini() {
                         <Immagine
                             slug="bordo-in-legno-e-ciottoli"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -100,7 +100,7 @@ export default function Giardini() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Che cosa realizziamo"
                     titolo="Sei lavorazioni, una logica sola"
@@ -110,7 +110,7 @@ export default function Giardini() {
                     {LAVORAZIONI.map((l, i) => (
                         <Rivela as="li" key={l.titolo} delay={i * 70} className="scheda">
                             <h2 className="text-lg">{l.titolo}</h2>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{l.testo}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{l.testo}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -122,7 +122,7 @@ export default function Giardini() {
                         <Immagine
                             slug="palme-e-monoliti"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -139,7 +139,7 @@ export default function Giardini() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Dai nostri cantieri"
                     titolo="Pietra, legno e verde attorno all’acqua"

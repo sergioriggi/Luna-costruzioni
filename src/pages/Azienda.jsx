@@ -60,11 +60,11 @@ export default function Azienda() {
                         </p>
                         <p className="testo-lungo mt-4">
                             Oggi facciamo due cose, e le facciamo con le stesse squadre:{' '}
-                            <Link to="/piscine-rocks-design" className="link-sottile font-medium text-pietra-900">
+                            <Link to="/piscine-rocks-design" className="link-sottile font-medium text-testo">
                                 piscine con spiaggia in sabbia
                             </Link>{' '}
                             e{' '}
-                            <Link to="/giardini-e-opere-in-pietra" className="link-sottile font-medium text-pietra-900">
+                            <Link to="/giardini-e-opere-in-pietra" className="link-sottile font-medium text-testo">
                                 giardini e opere in pietra
                             </Link>
                             . In tutta la Sicilia, con un unico referente: {AZIENDA.referente}.
@@ -80,7 +80,7 @@ export default function Azienda() {
                         <Immagine
                             slug="oasi-con-pontile"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -88,7 +88,7 @@ export default function Azienda() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Come lavoriamo"
                     titolo="Quattro impegni, non quattro slogan"
@@ -98,7 +98,7 @@ export default function Azienda() {
                     {IMPEGNI.map((p, i) => (
                         <Rivela as="li" key={p.titolo} delay={i * 80} className="scheda">
                             <h2 className="text-lg">{p.titolo}</h2>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{p.testo}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{p.testo}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -119,7 +119,7 @@ export default function Azienda() {
                                 <li key={p.slug}>
                                     <Link
                                         to={`/piscine-rocks-design/${p.slug}`}
-                                        className="inline-block rounded-full border border-pietra-300 bg-white px-4 py-2 text-sm text-pietra-700 transition hover:border-acqua-500 hover:text-acqua-800"
+                                        className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
                                     >
                                         {p.nome}
                                     </Link>
@@ -128,29 +128,29 @@ export default function Azienda() {
                         </ul>
                     </Rivela>
                     <Rivela delay={120} className="grid grid-cols-2 gap-4">
-                        <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="rounded-2xl shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
-                        <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="mt-10 rounded-2xl shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
+                        <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
+                        <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="mt-10 rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
                     </Rivela>
                 </div>
             </Sezione>
 
             {/* Credenziale: sta qui, non in apertura di pagina */}
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <div className="mx-auto max-w-3xl">
                     <Rivela className="scheda">
                         <p className="occhiello">Una precisazione doverosa</p>
                         <h2 className="mt-3 font-display text-2xl">Le piscine le costruiamo, non le abbiamo inventate</h2>
-                        <p className="mt-4 text-[0.95rem] leading-relaxed text-pietra-600">
-                            La <strong className="font-semibold text-pietra-800">Tecnologia Rocks Design®</strong> —
+                        <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-400">
+                            La <strong className="font-semibold text-testo">Tecnologia Rocks Design®</strong> —
                             brevetto, marchio e standard costruttivi — appartiene a {ROCKS_DESIGN.nome}.{' '}
-                            {AZIENDA.nome} ne è il <strong className="font-semibold text-pietra-800">concessionario
+                            {AZIENDA.nome} ne è il <strong className="font-semibold text-testo">concessionario
                             autorizzato per la {AZIENDA.zona}</strong>: siamo l’impresa che la applica sul territorio,
                             con squadre formate sugli standard della casa madre.
                         </p>
-                        <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">
+                        <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
                             Lo scriviamo perché è giusto sapere chi fa cosa: noi rispondiamo del cantiere e del
                             risultato in Sicilia; la tecnologia ha un altro autore.{' '}
-                            <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="link-sottile font-medium text-pietra-800">
+                            <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="link-sottile font-medium text-testo">
                                 Sito ufficiale {ROCKS_DESIGN.nome}
                             </a>
                         </p>

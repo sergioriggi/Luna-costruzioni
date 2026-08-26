@@ -132,7 +132,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
     if (stato === 'inviato') {
         return (
             <div className="scheda text-center" role="status">
-                <p className="font-display text-2xl text-pietra-900">Grazie, richiesta ricevuta.</p>
+                <p className="font-display text-2xl text-testo">Grazie, richiesta ricevuta.</p>
                 <p className="testo-lungo mx-auto mt-3 max-w-md">
                     {AZIENDA.referente} ti ricontatta entro 24 ore lavorative per fissare il sopralluogo.
                     Se preferisci, puoi chiamarci subito.
@@ -146,7 +146,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
 
     const campoErrore = nome =>
         errori[nome] ? (
-            <p id={`err-${nome}`} className="mt-1.5 text-sm text-red-700">
+            <p id={`err-${nome}`} className="mt-1.5 text-sm text-red-300">
                 {errori[nome]}
             </p>
         ) : null
@@ -164,7 +164,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
     return (
         <form onSubmit={invia} noValidate className="scheda">
             <h2 className={compatto ? 'font-display text-xl' : 'font-display text-2xl sm:text-[1.75rem]'}>{titolo}</h2>
-            <p className="mt-2 text-sm text-pietra-500">
+            <p className="mt-2 text-sm text-neutro-500">
                 Sopralluogo e preventivo sono gratuiti e senza impegno, in tutta la {AZIENDA.zona}.
             </p>
 
@@ -229,7 +229,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                 <div className="sm:col-span-2">
                     <label htmlFor="budget" className="mb-1.5 block text-sm font-medium">
                         Budget orientativo{' '}
-                        <span className="font-normal text-pietra-500">— serve solo a proporti soluzioni realistiche</span>
+                        <span className="font-normal text-neutro-500">— serve solo a proporti soluzioni realistiche</span>
                     </label>
                     <select {...props('budget')}>
                         <option value="">Seleziona…</option>
@@ -260,9 +260,9 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                     onChange={aggiorna}
                     aria-invalid={errori.privacy ? 'true' : undefined}
                     aria-describedby={errori.privacy ? 'err-privacy' : undefined}
-                    className="mt-1 h-4 w-4 rounded border-pietra-400 text-acqua-700 focus:ring-acqua-600"
+                    className="mt-1 h-4 w-4 rounded border-testo/[0.45] text-accento focus:ring-accento"
                 />
-                <label htmlFor="privacy" className="text-sm text-pietra-600">
+                <label htmlFor="privacy" className="text-sm text-neutro-400">
                     Ho letto l’<Link to="/privacy" className="link-sottile">informativa privacy</Link> e acconsento al
                     trattamento dei dati per essere ricontattato. *
                 </label>
@@ -270,7 +270,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
             {campoErrore('privacy')}
 
             {stato === 'errore' && (
-                <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+                <p className="mt-4 rounded-xl bg-red-950/40 px-4 py-3 text-sm text-red-300" role="alert">
                     Invio non riuscito. Chiamaci allo{' '}
                     <a className="font-semibold underline" href={`tel:${AZIENDA.telefonoRaw}`}>{AZIENDA.telefono}</a>{' '}
                     oppure scrivi a{' '}
@@ -291,7 +291,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                     Preferisco WhatsApp
                 </a>
             </div>
-            <p className="mt-3 text-xs text-pietra-500">* Campi obbligatori</p>
+            <p className="mt-3 text-xs text-neutro-500">* Campi obbligatori</p>
         </form>
     )
 }

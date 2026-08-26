@@ -1,58 +1,72 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * Sistema visivo del sito, ripreso dal blueprint approvato (index.html).
+ * Tema scuro: fondo indaco profondo, testo chiaro, accento tenue.
+ * I nomi dei token sono in italiano come il resto del codice.
+ *
+ * @type {import('tailwindcss').Config}
+ */
 export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
             colors: {
-                // sabbia: la palette del catalogo Rocks Design
-                sabbia: {
-                    50: '#FBF8F3',
-                    100: '#F5EFE6',
-                    200: '#EDE3D4',
-                    300: '#E0D2BC',
-                    400: '#CDB99B',
-                    500: '#B99C75',
+                /** Fondo pagina e superfici */
+                notte: {
+                    DEFAULT: '#161826',
+                    800: '#292b31',
+                    900: '#101220',
                 },
-                // pietra: testi e superfici
-                pietra: {
-                    50: '#F7F6F4',
-                    100: '#EDEBE7',
-                    200: '#DCD8D1',
-                    300: '#C2BBB0',
-                    400: '#9A9084',
-                    500: '#7A7065',
-                    600: '#5D544B',
-                    700: '#453E37',
-                    800: '#2F2A25',
-                    900: '#1C1916',
+                superficie: {
+                    DEFAULT: '#232532',
+                    alta: '#2b2e3d',
                 },
-                // acqua: il turchese delle vasche
-                acqua: {
-                    50: '#EFFAF9',
-                    100: '#D5F2F0',
-                    200: '#ABE5E2',
-                    300: '#74D1CE',
-                    400: '#3EB6B4',
-                    500: '#249A99',
-                    600: '#187C7C',
-                    700: '#136463',
-                    800: '#124F4F',
-                    900: '#0F4142',
+                testo: '#e9e9ed',
+
+                /** Rampa neutra, una sola scala di luminosità */
+                neutro: {
+                    100: '#f3f5fe',
+                    200: '#e4e7f5',
+                    300: '#cfd3e5',
+                    400: '#b2b6ca',
+                    500: '#9397ab',
+                    600: '#75798c',
+                    700: '#595d6c',
+                    800: '#3f424d',
+                    900: '#292b31',
                 },
-                oro: {
-                    400: '#C9A96A',
-                    500: '#B08D57',
+
+                /** Accento */
+                accento: {
+                    DEFAULT: '#9184d9',
+                    100: '#f5f4ff',
+                    200: '#e7e5fe',
+                    300: '#d2cefd',
+                    400: '#b5abfc',
+                    500: '#968ae0',
+                    600: '#796cbf',
+                    700: '#5d5294',
+                    800: '#423a6a',
+                    900: '#2b2741',
                 },
             },
             fontFamily: {
-                display: ['Marcellus', 'Cormorant Garamond', 'Georgia', 'Times New Roman', 'serif'],
-                sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                display: ['Inter', 'system-ui', 'sans-serif'],
+                sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            },
+            fontSize: {
+                // scala del blueprint
+                eroe: ['58px', { lineHeight: '1.04', letterSpacing: '-0.025em' }],
+                sezione: ['40px', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
             },
             maxWidth: {
-                prosa: '68ch',
+                prosa: '34em',
+            },
+            borderRadius: {
+                md: '8px',
+                lg: '14px',
             },
             boxShadow: {
-                morbida: '0 24px 60px -28px rgba(28, 25, 22, 0.35)',
+                morbida: '0 24px 60px -28px rgba(0, 0, 0, 0.7)',
             },
         },
     },

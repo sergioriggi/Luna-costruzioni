@@ -11,6 +11,7 @@ import Modello from './pages/Modello'
 import Azienda from './pages/Azienda'
 import Sabbie from './pages/Sabbie'
 import Giardini from './pages/Giardini'
+import HotelResort from './pages/HotelResort'
 import QuantoCosta from './pages/QuantoCosta'
 import GalleriaPagina from './pages/GalleriaPagina'
 import Showroom from './pages/Showroom'
@@ -21,6 +22,7 @@ import Zona from './pages/Zona'
 import Privacy from './pages/Privacy'
 import Cookie from './pages/Cookie'
 import NonTrovata from './pages/NonTrovata'
+import { FornitoreLingua } from './i18n/lingua'
 
 /** Riporta in cima a ogni cambio di rotta, rispettando le ancore interne. */
 function InizioPagina() {
@@ -34,16 +36,17 @@ function InizioPagina() {
 
 export default function App() {
     return (
+        <FornitoreLingua>
         <div className="flex min-h-screen flex-col">
             <a
                 href="#contenuto"
-                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:shadow-lg"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-superficie focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-testo focus:shadow-lg"
             >
                 Vai al contenuto
             </a>
             <InizioPagina />
             <Header />
-            <main id="contenuto" className="flex-1 pb-20 sm:pb-0">
+            <main id="contenuto" className="flex-1 pb-16 sm:pb-0">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/piscine-rocks-design" element={<Tecnologia />} />
@@ -52,6 +55,7 @@ export default function App() {
                     <Route path="/modelli/:modello" element={<Modello />} />
                     <Route path="/sabbie" element={<Sabbie />} />
                     <Route path="/giardini-e-opere-in-pietra" element={<Giardini />} />
+                    <Route path="/hotel-e-resort" element={<HotelResort />} />
                     <Route path="/quanto-costa" element={<QuantoCosta />} />
                     <Route path="/galleria" element={<GalleriaPagina />} />
                     <Route path="/showroom" element={<Showroom />} />
@@ -68,5 +72,6 @@ export default function App() {
             <AzioniRapide />
             <BannerCookie />
         </div>
+        </FornitoreLingua>
     )
 }

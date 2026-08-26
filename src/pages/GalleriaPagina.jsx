@@ -37,9 +37,9 @@ export default function GalleriaPagina() {
                     <Galleria />
                 </Rivela>
 
-                <p className="mt-10 text-sm text-pietra-500">
+                <p className="mt-10 text-sm text-neutro-500">
                     Le immagini riportano il marchio {ROCKS_DESIGN.nome}. Condividendole sui social, taggaci con{' '}
-                    <span className="font-semibold text-pietra-700">{ROCKS_DESIGN.tag}</span>.
+                    <span className="font-semibold text-neutro-300">{ROCKS_DESIGN.tag}</span>.
                 </p>
             </Sezione>
 

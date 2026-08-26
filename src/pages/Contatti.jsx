@@ -35,41 +35,41 @@ export default function Contatti() {
 
                         <dl className="mt-10 space-y-5 text-[1.0625rem]">
                             <div>
-                                <dt className="text-sm text-pietra-500">Azienda</dt>
-                                <dd className="font-medium text-pietra-900">{AZIENDA.nome}</dd>
-                                <dd className="text-sm text-pietra-600">{AZIENDA.ruolo}</dd>
+                                <dt className="text-sm text-neutro-500">Azienda</dt>
+                                <dd className="font-medium text-testo">{AZIENDA.nome}</dd>
+                                <dd className="text-sm text-neutro-400">{AZIENDA.ruolo}</dd>
                             </div>
                             <div>
-                                <dt className="text-sm text-pietra-500">Referente</dt>
-                                <dd className="font-medium text-pietra-900">{AZIENDA.referente}</dd>
+                                <dt className="text-sm text-neutro-500">Referente</dt>
+                                <dd className="font-medium text-testo">{AZIENDA.referente}</dd>
                             </div>
                             <div>
-                                <dt className="text-sm text-pietra-500">Telefono e WhatsApp</dt>
+                                <dt className="text-sm text-neutro-500">Telefono e WhatsApp</dt>
                                 <dd>
-                                    <a className="link-sottile font-medium text-pietra-900" href={`tel:${AZIENDA.telefonoRaw}`}>
+                                    <a className="link-sottile font-medium text-testo" href={`tel:${AZIENDA.telefonoRaw}`}>
                                         {AZIENDA.telefono}
                                     </a>
                                 </dd>
                             </div>
                             <div>
-                                <dt className="text-sm text-pietra-500">E-mail</dt>
+                                <dt className="text-sm text-neutro-500">E-mail</dt>
                                 <dd>
-                                    <a className="link-sottile font-medium text-pietra-900" href={`mailto:${AZIENDA.email}`}>
+                                    <a className="link-sottile font-medium text-testo" href={`mailto:${AZIENDA.email}`}>
                                         {AZIENDA.email}
                                     </a>
                                 </dd>
                             </div>
                             <div>
-                                <dt className="text-sm text-pietra-500">Zona servita</dt>
-                                <dd className="text-pietra-800">
+                                <dt className="text-sm text-neutro-500">Zona servita</dt>
+                                <dd className="text-testo">
                                     {PROVINCE.map(p => p.nome).join(' · ')}
                                 </dd>
                             </div>
                         </dl>
 
-                        <p className="mt-10 rounded-xl border border-pietra-200 bg-white/70 px-5 py-4 text-sm leading-relaxed text-pietra-600">
+                        <p className="mt-10 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             Il marchio e la tecnologia sono di {ROCKS_DESIGN.nome}.{' '}
-                            <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="link-sottile font-medium text-pietra-800">
+                            <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="link-sottile font-medium text-testo">
                                 Visita il sito ufficiale
                             </a>.
                         </p>
@@ -77,7 +77,7 @@ export default function Contatti() {
                         <Immagine
                             slug="riflessi-al-tramonto"
                             ratio="16 / 9"
-                            className="mt-10 rounded-2xl shadow-morbida"
+                            className="mt-10 rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 42vw, 92vw"
                         />
                     </Rivela>

@@ -1,4 +1,5 @@
 import media from '../data/media.json'
+import { pubblico, pubblicoSrcset } from '../lib/percorso'
 
 const indice = new Map(media.map(m => [m.slug, m]))
 
@@ -25,13 +26,20 @@ export default function Immagine({
     imgClassName = '',
     priority = false,
     ratio,
+    /** riempi: l'immagine copre il contenitore, senza imporre proporzioni. */
+    riempi = false,
     children,
 }) {
     const m = foto(slug)
     const aspetto = ratio ?? `${m.width} / ${m.height}`
 
     return (
-        <figure className={`relative overflow-hidden ${className}`} style={{ aspectRatio: aspetto }}>
+        <figure
+            // con `riempi` il posizionamento lo decide chi usa il componente:
+            // non imponiamo `relative`, che vincerebbe su `absolute`.
+            className={`overflow-hidden ${riempi ? '' : 'relative'} ${className}`}
+            style={riempi ? undefined : { aspectRatio: aspetto }}
+        >
             <img
                 src={m.lqip}
                 alt=""
@@ -39,8 +47,8 @@ export default function Immagine({
                 className="absolute inset-0 h-full w-full scale-105 object-cover blur-lg"
             />
             <img
-                src={m.fallback}
-                srcSet={m.srcset}
+                src={pubblico(m.fallback)}
+                srcSet={pubblicoSrcset(m.srcset)}
                 sizes={sizes}
                 alt={m.alt}
                 width={m.width}

@@ -18,9 +18,9 @@ export default function Privacy() {
             />
             <Briciole voci={BRICIOLE} />
             <Sezione>
-                <article className="max-w-prosa space-y-5 text-[1.0625rem] leading-relaxed text-pietra-600">
-                    <h1 className="font-display text-4xl text-pietra-900">Privacy policy</h1>
-                    <p className="text-sm text-pietra-500">
+                <article className="max-w-prosa space-y-5 text-[1.0625rem] leading-relaxed text-neutro-400">
+                    <h1 className="font-display text-4xl text-testo">Privacy policy</h1>
+                    <p className="text-sm text-neutro-500">
                         Informativa ai sensi degli artt. 13-14 del Regolamento UE 2016/679 (GDPR).
                     </p>
 

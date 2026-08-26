@@ -1,10 +1,14 @@
 /**
- * Scarica i font (Marcellus + Inter) da Google Fonts e li salva in
+ * Scarica Inter da Google Fonts e li salva in
  * public/fonts, generando src/fonts.css con i @font-face locali.
  *
  * Servire i font dal proprio dominio evita richieste a server terzi
  * (nessun trasferimento di IP verso Google, rilevante ai fini GDPR)
  * e migliora il tempo di primo rendering.
+ *
+ * I file finiscono in `src/fonts-woff2` e non in `public/`: così Vite li
+ * include nel bundle con l'hash del contenuto e con il `base` corretto,
+ * qualunque sia la cartella da cui il sito viene servito.
  *
  *   npm run fonts
  */
@@ -12,9 +16,9 @@ import fs from 'fs/promises'
 import path from 'path'
 
 const CSS_URL =
-    'https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
-const OUT_FONT = path.resolve('./public/fonts')
+const OUT_FONT = path.resolve('./src/fonts-woff2')
 const OUT_CSS = path.resolve('./src/fonts.css')
 
 // solo i sottoinsiemi utili all'italiano
@@ -48,7 +52,7 @@ for (const blocco of blocchi) {
     font-style: normal;
     font-weight: ${peso ?? 400};
     font-display: swap;
-    src: url('/fonts/${nomeFile}') format('woff2');
+    src: url('./fonts-woff2/${nomeFile}') format('woff2');
     unicode-range: ${intervallo};
 }`)
     console.log('✓', nomeFile)

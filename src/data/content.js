@@ -151,38 +151,148 @@ export const SABBIE = [
 export const PERCORSO = [
     {
         numero: '01',
-        titolo: 'Sopralluogo',
+        titolo: 'Sopralluogo e progetto',
+        titoloEn: 'Site visit and design',
         durata: 'Circa un’ora',
+        durataEn: 'About an hour',
         testo:
-            'Veniamo a vedere il giardino. Misuriamo, controlliamo esposizione, pendenze e da dove possono passare i mezzi, e ti diciamo subito che cosa è realistico fare in quello spazio. Se non è il caso, te lo diciamo lì.',
+            'Veniamo sul posto, misuriamo e ascoltiamo. Dal rilievo nasce il disegno della vasca e di tutto il contorno.',
+        testoEn:
+            'We come out, measure and listen. The survey becomes the drawing of the basin and everything around it.',
     },
     {
         numero: '02',
-        titolo: 'Progetto e preventivo',
-        durata: '1–2 settimane',
+        titolo: 'Scavi',
+        titoloEn: 'Excavation',
+        durata: 'Mezzi nostri',
+        durataEn: 'Our own machines',
         testo:
-            'Definiamo modello, forma, profondità, sabbia, cascate e zone benessere. Il preventivo arriva scomposto voce per voce: sai che cosa stai comprando e che cosa puoi togliere se il budget stringe.',
+            'Scavo e movimentazione terra li eseguiamo noi, con mezzi e maestranze dell’impresa. Nessun subappalto.',
+        testoEn:
+            'We carry out the digging and earthworks ourselves, with our own machines and crews. Nothing subcontracted.',
     },
     {
         numero: '03',
-        titolo: 'Pratiche edilizie',
-        durata: 'Variabile per Comune',
+        titolo: 'Realizzazione',
+        titoloEn: 'Construction',
+        durata: 'Tecnologia Rocks Design®',
+        durataEn: 'Rocks Design Technology',
         testo:
-            'Verifichiamo con te e con il tuo tecnico quale titolo edilizio serve nel tuo Comune e prepariamo la documentazione. Non promettiamo scorciatoie: ti diciamo in anticipo tempi e vincoli reali.',
+            'Realizzazione in Tecnologia Rocks Design® e finiture in pietra: la vasca prende la forma disegnata.',
+        testoEn:
+            'Built in Rocks Design Technology with stone finishes: the basin takes the shape it was drawn.',
     },
     {
         numero: '04',
-        titolo: 'Realizzazione',
-        durata: 'Definita in contratto',
+        titolo: 'Messa in opera',
+        titoloEn: 'Installation',
+        durata: 'Impianti',
+        durataEn: 'Plant',
         testo:
-            'Il cantiere è seguito dalle nostre squadre con la Tecnologia Rocks Design®. Un solo referente per tutta la durata dei lavori, e un giardino restituito pulito.',
+            'Filtrazione, illuminazione e allacciamenti installati e regolati sul posto.',
+        testoEn:
+            'Filtration, lighting and connections installed and tuned on site.',
     },
     {
         numero: '05',
-        titolo: 'Consegna e assistenza',
-        durata: 'Continua',
+        titolo: 'Collaudo e consegna',
+        titoloEn: 'Commissioning and handover',
+        durata: 'Piena e pronta',
+        durataEn: 'Full and ready',
         testo:
-            'Ti consegniamo la piscina in funzione e ti mostriamo di persona come gestirla. Poi restiamo il tuo riferimento in Sicilia per apertura, chiusura stagionale e assistenza.',
+            'Prove di tenuta e funzionamento, primo avviamento e istruzioni d’uso. La piscina si consegna piena e pronta.',
+        testoEn:
+            'Leak and function tests, first start-up and usage instructions. The pool is handed over full and ready.',
+    },
+]
+
+/**
+ * I quattro dubbi che fermano chi vorrebbe una piscina, con l'impegno che
+ * Luna Costruzioni mette per iscritto in preventivo. Sono argomenti di
+ * vendita solo perché sono verificabili: vanno tenuti onesti.
+ */
+export const DUBBI = [
+    {
+        dubbio: '«Non so quanto costerà davvero.»',
+        dubbioEn: '“I have no idea what it will really cost.”',
+        risposta:
+            'Preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo, redatto dopo il sopralluogo e firmato prima di iniziare. Nessuna voce «imprevisti» lasciata aperta.',
+        rispostaEn:
+            'A quote itemised by excavation, construction, installation and commissioning, written after the site visit and signed before work starts. No open-ended contingency line.',
+    },
+    {
+        dubbio: '«Il cantiere mi occupa il giardino per mesi.»',
+        dubbioEn: '“The site will take over my garden for months.”',
+        risposta:
+            'Un’unica impresa in cantiere, con date di inizio e fine concordate in preventivo. Non ci sono squadre diverse che si aspettano a vicenda: scavi e realizzazione sono nostri.',
+        rispostaEn:
+            'One company on site, with start and finish dates agreed in the quote. No separate crews waiting on each other: the digging and the build are both ours.',
+    },
+    {
+        dubbio: '«Dopo la consegna, chi mi assiste?»',
+        dubbioEn: '“Once it is handed over, who helps me?”',
+        risposta:
+            'Siamo il concessionario per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+        rispostaEn:
+            'We are the dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+    },
+    {
+        dubbio: '«Sarà una vasca come tante.»',
+        dubbioEn: '“It will end up looking like every other pool.”',
+        risposta:
+            'La Tecnologia Rocks Design® è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le realizzazioni qui sopra non ce ne sono due uguali.',
+        rispostaEn:
+            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two projects above are the same.',
+    },
+]
+
+/** Argomenti per le strutture ricettive. */
+export const RICETTIVO = [
+    {
+        titolo: 'Cantiere fuori stagione',
+        titoloEn: 'Off-season build',
+        testo: 'Programmiamo scavi e realizzazione nei mesi di chiusura, con date concordate in preventivo.',
+        testoEn: 'We schedule excavation and construction in your closed months, on dates agreed in the quote.',
+    },
+    {
+        titolo: 'Un unico appalto',
+        titoloEn: 'One contract',
+        testo: 'Impresa edile e concessionario nella stessa azienda: nessun coordinamento tra fornitori a tuo carico.',
+        testoEn: 'Contractor and dealer in one company: no supplier coordination left to you.',
+    },
+    {
+        titolo: 'Assistenza dopo il collaudo',
+        titoloEn: 'Support after handover',
+        testo: 'Restiamo il riferimento per impianto e manutenzione: siamo in Sicilia, non a mille chilometri.',
+        testoEn: 'We remain your contact for plant and upkeep: we are in Sicily, not a thousand kilometres away.',
+    },
+]
+
+/** Le quattro garanzie della fascia sotto l'eroe. */
+export const CREDENZIALI = [
+    {
+        titolo: 'Impresa edile',
+        titoloEn: 'Building contractor',
+        testo: 'Scavi e cantiere con mezzi e maestranze nostre.',
+        testoEn: 'Excavation and site work with our own crews and machines.',
+    },
+    {
+        titolo: 'Chiavi in mano',
+        titoloEn: 'Turnkey',
+        testo: 'Dal progetto al collaudo, senza appalti da coordinare.',
+        testoEn: 'From design to commissioning, with no contractors to juggle.',
+    },
+    {
+        titolo: 'Concessionario autorizzato',
+        titoloEn: 'Authorised dealer',
+        testo: 'Piscine Rocks Design per la Sicilia: Tecnologia Rocks Design® brevettata.',
+        testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
+    },
+    {
+        titolo: 'Cantieri eseguiti',
+        titoloEn: 'Completed jobs',
+        testo: 'Operativi da oltre un anno, con diversi cantieri portati a termine.',
+        testoEn: 'Operating for over a year, with several jobs completed.',
     },
 ]
 

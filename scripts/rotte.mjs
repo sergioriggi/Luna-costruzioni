@@ -10,6 +10,7 @@ export const ROTTE = [
     ...MODELLI.map(m => ({ percorso: `/modelli/${m.slug}`, priorita: 0.9, frequenza: 'monthly' })),
     { percorso: '/sabbie', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/giardini-e-opere-in-pietra', priorita: 0.8, frequenza: 'monthly' },
+    { percorso: '/hotel-e-resort', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/quanto-costa', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/galleria', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/showroom', priorita: 0.8, frequenza: 'monthly' },

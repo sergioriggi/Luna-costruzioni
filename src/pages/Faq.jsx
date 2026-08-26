@@ -31,13 +31,13 @@ export default function Faq() {
                     </p>
                 </Rivela>
 
-                <div className="mx-auto mt-12 max-w-3xl divide-y divide-pietra-200 border-y border-pietra-200">
+                <div className="mx-auto mt-12 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
                     {FAQ.map((v, i) => (
                         <Rivela key={v.domanda} delay={i * 50}>
                             <details className="group py-5" name="faq">
                                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-left">
-                                    <h2 className="font-display text-lg text-pietra-900 sm:text-xl">{v.domanda}</h2>
-                                    <span className="mt-1 shrink-0 text-acqua-700 transition group-open:rotate-45" aria-hidden="true">
+                                    <h2 className="font-display text-lg text-testo sm:text-xl">{v.domanda}</h2>
+                                    <span className="mt-1 shrink-0 text-accento transition group-open:rotate-45" aria-hidden="true">
                                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                                             <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                                         </svg>
