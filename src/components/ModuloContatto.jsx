@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AZIENDA, PROVINCE } from '../data/site'
+import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 
 const VUOTO = {
     nome: '',
@@ -48,16 +49,14 @@ const INTERESSI = [
 /**
  * Modulo di richiesta preventivo.
  *
- * L'invio usa l'endpoint definito in VITE_ENDPOINT_LEAD (form service,
- * funzione serverless o CRM). Se la variabile non è configurata il modulo
- * resta funzionante e propone l'invio via e-mail/WhatsApp, senza perdere il contatto.
+ * L'invio passa da `src/lib/invia-lead.js`, che posta su /api/contatti e
+ * ripiega sul client di posta quando dietro non c'è un server. Il contatto
+ * non si perde in nessuno dei due casi.
  */
 export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Richiedi un preventivo su misura', compatto = false }) {
     const [dati, setDati] = useState({ ...VUOTO, provincia: provinciaPreselezionata ?? '' })
     const [errori, setErrori] = useState({})
     const [stato, setStato] = useState('pronto') // pronto | invio | inviato | errore
-
-    const endpoint = import.meta.env.VITE_ENDPOINT_LEAD
 
     const aggiorna = e => {
         const { name, value, type, checked } = e.target
@@ -87,44 +86,12 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
         if (dati.sito) return // bot
 
         setStato('invio')
-        const payload = {
-            ...dati,
-            sito: undefined,
-            origine: typeof window !== 'undefined' ? window.location.pathname : '',
-            inviatoIl: new Date().toISOString(),
-        }
+        const esito = await inviaLead(dati, { oggetto: 'Richiesta preventivo Piscina Rocks Design' })
 
-        if (!endpoint) {
-            // Nessun endpoint configurato: si apre il client di posta con i dati compilati.
-            const corpo = [
-                `Nome: ${dati.nome}`,
-                `E-mail: ${dati.email}`,
-                `Telefono: ${dati.telefono}`,
-                `Zona: ${dati.comune ? dati.comune + ' — ' : ''}${dati.provincia}`,
-                `Interesse: ${dati.interesse}`,
-                `Tipologia: ${dati.tipologia}`,
-                `Dimensione: ${dati.dimensione || 'non indicata'}`,
-                `Budget: ${dati.budget || 'non indicato'}`,
-                '',
-                dati.messaggio,
-            ].join('\n')
-            window.location.href =
-                `mailto:${AZIENDA.email}?subject=${encodeURIComponent('Richiesta preventivo Piscina Rocks Design')}` +
-                `&body=${encodeURIComponent(corpo)}`
-            setStato('inviato')
-            return
-        }
-
-        try {
-            const risposta = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify(payload),
-            })
-            if (!risposta.ok) throw new Error(String(risposta.status))
+        if (esito === INVIATO || esito === RIPIEGO_POSTA) {
             setStato('inviato')
             setDati({ ...VUOTO, provincia: provinciaPreselezionata ?? '' })
-        } catch {
+        } else {
             setStato('errore')
         }
     }

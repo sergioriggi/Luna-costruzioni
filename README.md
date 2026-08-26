@@ -67,6 +67,8 @@ npm run preview    # anteprima identica alla produzione
 | `npm run fonts` | Scarica e self-hosta Marcellus e Inter |
 | `npm run assets` | `brand` + `media` + `fonts` |
 | `npm run lint` | Oxlint |
+| `npm start` | Avvia il server Node che serve `dist/` e l'endpoint contatti |
+| `npm run verifica:server` | Collauda il server: URL puliti, 404, intestazioni, percorsi protetti, API |
 
 ---
 
@@ -237,16 +239,58 @@ Prima della pubblicazione aggiornare `SITE_URL` in `src/data/site.js` con il dom
 
 ## Configurazione
 
-Variabili d'ambiente (file `.env`, vedi `.env.example`):
+Le variabili si dividono in due famiglie, e la differenza non è formale: decide
+**chi può leggerle**. Vedi `.env.example`, che ha la stessa divisione.
+
+### Di compilazione — finiscono nel bundle del browser
+
+Vite incolla nel codice tutto ciò che ha il prefisso `VITE_`, al momento della
+compilazione. Sono quindi **pubbliche**: chiunque le legge dal sorgente della
+pagina. Non metterci mai un segreto.
 
 | Variabile | Effetto se assente |
 | --- | --- |
-| `VITE_ENDPOINT_LEAD` | Il modulo contatti apre il client di posta con i dati compilati: nessun contatto va perso |
+| `VITE_SITE_URL` | Si usa il dominio definitivo; se diverso, il sito si dichiara anteprima e resta `noindex` |
+| `VITE_BASE` | `/` — il sito è servito dalla radice del dominio |
 | `VITE_GA4_ID` | Nessuno script di misurazione viene caricato |
+
+### Di runtime — lette solo dal server Node
+
+Esistono soltanto quando il sito gira come applicazione Node.js. Sull'hosting
+statico non ci sono, e il modulo ripiega sul client di posta del visitatore.
+
+| Variabile | Effetto se assente |
+| --- | --- |
+| `PORT` | 3000 (in produzione la impone l'hosting) |
+| `SMTP_HOST` `SMTP_USER` `SMTP_PASS` | `/api/contatti` risponde 503 e il modulo apre il client di posta: **nessun contatto va perso** |
+| `LEAD_MITTENTE` | Si usa `SMTP_USER`. Dev'essere una casella del dominio, o SPF e DKIM non tornano |
+| `LEAD_DESTINATARIO` | Si usa l'indirizzo aziendale di `src/data/site.js` |
+| `LEAD_LIMITE_INVII` `LEAD_FINESTRA_MINUTI` `LEAD_TETTO_ORARIO` | 5 invii per IP ogni 10 minuti, 60 all'ora in totale |
+
+`VITE_ENDPOINT_LEAD` sopravvive solo come scorciatoia per chi avesse già
+configurato un servizio esterno: senza di essa il modulo posta su
+`/api/contatti`, sulla stessa origine.
 
 Gli script di misurazione partono **solo dopo il consenso** espresso nel banner
 (`src/components/BannerCookie.jsx`): finché l'utente non accetta, il sito non
 carica nulla di profilante.
+
+### Il server Node
+
+`app.js` avvia `server/`, che serve `dist/` e l'endpoint del modulo contatti.
+È la traduzione di `public/.htaccess`: URL puliti senza redirect, 404 reale,
+cache differenziata per estensione, intestazioni di sicurezza e CSP. **Le due
+implementazioni vanno tenute allineate.**
+
+Un guadagno che vale la pena notare: servendo solo `dist/`, il materiale non
+pubblicabile (`media-sources/`, con le foto non filigranate e il catalogo della
+casa madre) non è protetto da una lista di percorsi da ricordarsi di
+aggiornare — è fuori dalla radice servita, e basta.
+
+```
+npm run build && npm start        # http://localhost:3000
+npm run verifica:server           # collaudo automatico
+```
 
 ### Da completare prima del go-live
 
@@ -306,11 +350,38 @@ materiale che le direttive Piscine Rocks Design vietano di pubblicare.
 > dell'hosting permettesse di scegliere il ramo, pubblicare solo il sito
 > compilato resterebbe la soluzione più pulita.
 
-### Configurazione su Hostinger
+### Configurazione su Hostinger — oggi: sito statico
 
 hPanel → Avanzate → Git: repository del progetto, ramo **`main`**, cartella
 `public_html`, deploy automatico attivo. Se il deploy automatico è spento, la
 pubblicazione va avviata a mano dopo ogni aggiornamento.
+
+Per questo tipo di sito hPanel **non espone le variabili d'ambiente**: non è
+un'opzione nascosta, è un'altra categoria di prodotto. È la ragione del passo
+successivo.
+
+### Passaggio ad applicazione Node.js
+
+Il repository è già pronto: `app.js`, `npm start` e `server/` esistono, ma sul
+sito statico restano inerti (Apache serve i file compilati e ignora Node).
+
+hPanel → **Siti web → Aggiungi sito → app Node.js** (piani Business e Cloud),
+importazione da GitHub, ramo `main`, e:
+
+| Campo | Valore |
+| --- | --- |
+| Versione di Node | 22 |
+| Comando di build | `npm ci && npm run build && npm run verifica` |
+| File di avvio | `app.js` |
+
+Il `npm run verifica` nel comando di build non è ornamentale: **fa fallire il
+deploy se il sito viola le direttive Piscine Rocks Design**, e sostituisce il
+cancello che oggi sta nel workflow GitHub.
+
+L'app nasce su un dominio provvisorio **diverso** da quello del sito statico:
+va messo in `VITE_SITE_URL`, altrimenti canonical e Open Graph puntano al
+vecchio indirizzo. Il dominio definitivo si imposta **solo dopo** aver staccato
+il sito statico, o si avrebbero due siti indicizzabili con lo stesso canonical.
 
 ### Indirizzo pubblico e indicizzazione
 

@@ -13,23 +13,33 @@
     "assets": "npm run brand && npm run media && npm run fonts",
     "fonts": "node scripts/scarica-font.mjs",
     "verifica": "node scripts/verifica-conformita.mjs",
-    "media:manifest": "node scripts/prepare-media.mjs --manifest"
+    "media:manifest": "node scripts/prepare-media.mjs --manifest",
+    "start": "node app.js",
+    "verifica:server": "node scripts/verifica-server.mjs"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^6.1.0",
+    "autoprefixer": "^10.5.4",
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
+    "nodemailer": "^9.0.5",
+    "postcss": "^8.5.26",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.2",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.2.2"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.1.0",
-    "autoprefixer": "^10.5.4",
-    "oxlint": "^1.79.0",
-    "postcss": "^8.5.26",
-    "sharp": "^0.35.4",
-    "tailwindcss": "^3.4.19",
-    "vite": "^8.2.2"
+    "oxlint": "^1.79.0"
   },
-  "description": "Sito web di Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design per la Sicilia."
+  "description": "Sito web di Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design per la Sicilia.",
+  "optionalDependencies": {
+    "sharp": "^0.35.4"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
 }

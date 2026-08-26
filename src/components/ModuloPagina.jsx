@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AZIENDA } from '../data/site'
+import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 import { useLingua } from '../i18n/lingua'
 
 const VUOTO = {
@@ -18,17 +19,15 @@ const VUOTO = {
 /**
  * Modulo di contatto della pagina, con i campi del file approvato.
  *
- * L'invio usa l'endpoint in VITE_ENDPOINT_LEAD (form service, funzione
- * serverless o CRM). Se la variabile non è configurata, il modulo apre il
- * client di posta con la richiesta già compilata: il contatto non si perde.
+ * L'invio passa da `src/lib/invia-lead.js`, che posta su /api/contatti e
+ * ripiega sul client di posta quando dietro non c'è un server (hosting
+ * statico) o quando le credenziali SMTP non sono configurate.
  */
 export default function ModuloPagina() {
     const { t } = useLingua()
     const [dati, setDati] = useState(VUOTO)
     const [errori, setErrori] = useState({})
     const [stato, setStato] = useState('pronto') // pronto | invio | inviato | errore
-
-    const endpoint = import.meta.env.VITE_ENDPOINT_LEAD
 
     const aggiorna = e => {
         const { name, value, type, checked } = e.target
@@ -53,36 +52,16 @@ export default function ModuloPagina() {
         setErrori(err)
         if (Object.keys(err).length > 0) return
 
-        const corpo = {
-            nome: dati.nome,
-            telefono: dati.tel,
-            email: dati.email,
-            comune: dati.comune,
-            tipo: dati.tipo,
-            messaggio: dati.messaggio,
-            origine: 'lunacostruzioni.it — modulo pagina iniziale',
-        }
-
-        if (!endpoint) {
-            const testo = Object.entries(corpo).map(([k, v]) => `${k}: ${v}`).join('\n')
-            window.location.href =
-                `mailto:${AZIENDA.email}` +
-                `?subject=${encodeURIComponent('Richiesta sopralluogo — Piscina Rocks Design')}` +
-                `&body=${encodeURIComponent(testo)}`
-            setStato('inviato')
-            return
-        }
-
         setStato('invio')
-        try {
-            const risposta = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify(corpo),
-            })
-            setStato(risposta.ok ? 'inviato' : 'errore')
-            if (risposta.ok) setDati(VUOTO)
-        } catch {
+        const risultato = await inviaLead(
+            { ...dati, consenso: dati.consenso },
+            { oggetto: 'Richiesta sopralluogo — Piscina Rocks Design' },
+        )
+
+        if (risultato === INVIATO || risultato === RIPIEGO_POSTA) {
+            setStato('inviato')
+            setDati(VUOTO)
+        } else {
             setStato('errore')
         }
     }
