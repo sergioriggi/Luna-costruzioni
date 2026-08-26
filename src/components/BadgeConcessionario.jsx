@@ -1,5 +1,6 @@
 import { ROCKS_DESIGN, AZIENDA } from '../data/site'
 import { useLingua } from '../i18n/lingua'
+import { pubblico } from '../lib/percorso'
 
 /**
  * Marchio «Concessionario Autorizzato Piscine Rocks Design».
@@ -23,7 +24,7 @@ export default function BadgeConcessionario({ className = '' }) {
         >
             <span className="rounded-[5px] bg-[#F5EFE6] px-1.5 py-1">
                 <img
-                    src="/brand/rocks-design-logo.png"
+                    src={pubblico("/brand/rocks-design-logo.png")}
                     width="900"
                     height="188"
                     alt={`${ROCKS_DESIGN.nome} — logo ufficiale`}

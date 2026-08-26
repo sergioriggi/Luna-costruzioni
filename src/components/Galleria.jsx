@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Immagine, { tutteLeFoto } from './Immagine'
+import { pubblico, pubblicoSrcset } from '../lib/percorso'
 
 const FILTRI = [
     { tag: null, label: 'Tutte' },
@@ -124,8 +125,8 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
 
                     <figure className="max-h-full w-full max-w-4xl" onClick={e => e.stopPropagation()}>
                         <img
-                            src={corrente.fallback}
-                            srcSet={corrente.srcset}
+                            src={pubblico(corrente.fallback)}
+                            srcSet={pubblicoSrcset(corrente.srcset)}
                             sizes="(min-width: 1024px) 900px, 92vw"
                             alt={corrente.alt}
                             width={corrente.width}

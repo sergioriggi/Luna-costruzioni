@@ -7,7 +7,7 @@ import './index.css'
 const contenitore = document.getElementById('root')
 const albero = (
     <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
             <App />
         </BrowserRouter>
     </StrictMode>

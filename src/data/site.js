@@ -3,7 +3,17 @@
  * Unica fonte di verità per NAP (Name, Address, Phone), rotte e SEO locale.
  */
 
-export const SITE_URL = 'https://www.lunacostruzioni.it'
+/**
+ * Indirizzo pubblico del sito: alimenta canonical, Open Graph e sitemap.
+ * Si può sovrascrivere con VITE_SITE_URL, così l'anteprima su GitHub Pages
+ * dichiara il proprio indirizzo invece di quello del dominio definitivo.
+ */
+const indirizzoDaAmbiente =
+    (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
+    (typeof process !== 'undefined' && process.env && process.env.VITE_SITE_URL) ||
+    ''
+
+export const SITE_URL = (indirizzoDaAmbiente || 'https://www.lunacostruzioni.it').replace(/\/+$/, '')
 
 export const AZIENDA = {
     nome: 'Luna Costruzioni srl',

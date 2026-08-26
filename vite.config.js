@@ -28,7 +28,14 @@ function anteprimaPreRenderizzata() {
     }
 }
 
+/**
+ * `base` configurabile: '/' per un dominio proprio, '/Luna-costruzioni/' per
+ * le GitHub Pages di progetto. Lo imposta il workflow di pubblicazione.
+ */
+const BASE = process.env.VITE_BASE || '/'
+
 export default defineConfig({
+    base: BASE,
     plugins: [react(), anteprimaPreRenderizzata()],
     build: {
         target: 'es2020',

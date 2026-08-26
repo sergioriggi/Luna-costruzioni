@@ -1,0 +1,78 @@
+# Compila il sito e pubblica il risultato sul ramo `deploy`.
+#
+# L'hosting (Hostinger) è collegato a GitHub e copia i file così come sono:
+# non esegue `npm run build`. Per questo il ramo `deploy` contiene il sito
+# già compilato — HTML pre-renderizzato, asset, immagini e .htaccess —
+# mentre `main` resta il codice sorgente.
+#
+# Configurazione lato Hostinger: hPanel → Avanzate → Git,
+# ramo `deploy`, cartella `public_html`, deploy automatico attivo.
+name: Compila e pubblica
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pubblicazione
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    name: Compila, verifica e pubblica
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installa le dipendenze
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Compila
+        env:
+          # Il sito è servito dalla radice del dominio
+          VITE_BASE: /
+          # Indirizzo pubblico: impostare la variabile VITE_SITE_URL nelle
+          # impostazioni del repository quando il dominio definitivo è attivo
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
+          VITE_ENDPOINT_LEAD: ${{ vars.VITE_ENDPOINT_LEAD }}
+          VITE_GA4_ID: ${{ vars.VITE_GA4_ID }}
+        run: npm run build
+
+      # Blocca la pubblicazione se il sito viola le direttive Rocks Design
+      - name: Verifica di conformità
+        run: npm run verifica
+
+      - name: Controlla che il risultato sia completo
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/.htaccess
+          test -f dist/sitemap.xml
+          test -d dist/media
+          echo "Pagine pubblicate: $(find dist -name index.html | wc -l)"
+
+      - name: Pubblica sul ramo deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          git init -q
+          git checkout -q -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Sito compilato da ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" deploy
+          echo "Pubblicato sul ramo deploy."
