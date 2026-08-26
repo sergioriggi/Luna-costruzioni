@@ -3,15 +3,25 @@ import path from 'path'
 import sharp from 'sharp'
 
 const publicDir = path.resolve('./public')
-const srcPaths = [
-  // hero and a selection of gallery images — adjust as needed
-  'public/foto/Immagine WhatsApp 2025-07-24 ore 20.05.57_45dce3cd.jpg',
-  'public/foto/Immagine WhatsApp 2025-07-24 ore 20.05.57_50de26eb.jpg',
-  'public/foto/Immagine WhatsApp 2025-07-24 ore 20.05.57_abd63650.jpg',
-  '/public/catalogo/0001.jpg',
-  '/public/catalogo/0002.jpg',
-  '/public/catalogo/0003.jpg'
-]
+
+// scan public/catalogo and public/foto for images
+async function collectSourcePaths(){
+  const dirs = [path.join(publicDir,'catalogo'), path.join(publicDir,'foto')]
+  const files = []
+  for(const d of dirs){
+    try{
+      const items = await fs.readdir(d)
+      for(const it of items){
+        const full = path.join(d,it)
+        const stat = await fs.stat(full)
+        if(stat.isFile() && /\.(jpe?g|png)$/i.test(it)) files.push(full)
+      }
+    }catch(e){
+      // ignore missing dirs
+    }
+  }
+  return files
+}
 
 async function ensureDir(dir){
   try{ await fs.mkdir(dir, { recursive: true }) }catch(e){}
@@ -25,9 +35,8 @@ async function optimize(){
   const outDir = path.join(publicDir, 'optimized')
   await ensureDir(outDir)
 
-  for(const rel of srcPaths){
-    const src = rel.startsWith('/') ? rel.slice(1) : rel
-    const full = path.resolve(src)
+  const srcFiles = await collectSourcePaths()
+  for(const full of srcFiles){
     try{
       await fs.access(full)
     }catch(e){
