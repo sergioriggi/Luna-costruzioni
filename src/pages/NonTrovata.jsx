@@ -28,7 +28,7 @@ export default function NonTrovata() {
                             <li key={p.slug}>
                                 <Link
                                     to={`/piscine-rocks-design/${p.slug}`}
-                                    className="inline-block rounded-full border border-pietra-300 bg-white px-4 py-2 text-sm text-pietra-700 hover:border-acqua-500"
+                                    className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 hover:border-accento"
                                 >
                                     {p.nome}
                                 </Link>

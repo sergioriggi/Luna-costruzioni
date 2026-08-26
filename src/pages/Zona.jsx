@@ -83,7 +83,7 @@ export default function Zona() {
                         </h1>
                         <p className="testo-lungo mt-6">{p.intro}</p>
                         <p className="testo-lungo mt-4">
-                            <strong className="font-semibold text-pietra-800">{AZIENDA.nome}</strong> è{' '}
+                            <strong className="font-semibold text-testo">{AZIENDA.nome}</strong> è{' '}
                             {AZIENDA.ruolo} per la {AZIENDA.zona}: realizziamo in provincia di {p.nome} piscine in
                             Tecnologia Rocks Design®, la tecnologia brevettata da {ROCKS_DESIGN.nome} di cui siamo
                             licenziatari ufficiali sul territorio.
@@ -101,7 +101,7 @@ export default function Zona() {
                         <Immagine
                             slug={copertina}
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -109,7 +109,7 @@ export default function Zona() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello={`Dove interveniamo in provincia di ${p.nome}`}
                     titolo={`Da ${p.localita[0]} a ${p.localita[p.localita.length - 1]}`}
@@ -119,12 +119,12 @@ export default function Zona() {
                     {p.localita.map(l => (
                         <li
                             key={l}
-                            className="rounded-full border border-pietra-300 bg-white px-4 py-2 text-sm text-pietra-700"
+                            className="rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300"
                         >
                             {l}
                         </li>
                     ))}
-                    <li className="rounded-full border border-pietra-300 bg-white px-4 py-2 text-sm text-pietra-500">
+                    <li className="rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-500">
                         e tutti i comuni della provincia
                     </li>
                 </ul>
@@ -139,13 +139,13 @@ export default function Zona() {
                     {PUNTI_DI_FORZA.map((v, i) => (
                         <Rivela as="li" key={v.titolo} delay={i * 80} className="scheda">
                             <h2 className="text-lg">{v.titolo}</h2>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{v.testo}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{v.testo}</p>
                         </Rivela>
                     ))}
                 </ul>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="I modelli"
                     titolo={`Quale modello scegliere nel ${p.nome === 'Palermo' ? 'palermitano' : `territorio di ${p.nome}`}`}
@@ -155,8 +155,8 @@ export default function Zona() {
                     {MODELLI.map((m, i) => (
                         <Rivela as="li" key={m.slug} delay={i * 90} className="scheda">
                             <h3 className="font-display text-xl">{m.nome}</h3>
-                            <p className="mt-1 text-sm text-acqua-700">{m.claim}</p>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">{m.adatto}</p>
+                            <p className="mt-1 text-sm text-accento">{m.claim}</p>
+                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{m.adatto}</p>
                             <Link to="/modelli" className="link-sottile mt-4 inline-block text-sm font-medium">
                                 Approfondisci
                             </Link>
@@ -178,14 +178,14 @@ export default function Zona() {
                 </Rivela>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione occhiello="Domande frequenti" titolo={`Piscine a ${p.nome}: le risposte`} />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-pietra-200 border-y border-pietra-200">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
                     {faq.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-zona">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                                <h3 className="font-display text-lg text-pietra-900">{v.domanda}</h3>
-                                <span className="mt-1 shrink-0 text-acqua-700 transition group-open:rotate-45" aria-hidden="true">
+                                <h3 className="font-display text-lg text-testo">{v.domanda}</h3>
+                                <span className="mt-1 shrink-0 text-accento transition group-open:rotate-45" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                                     </svg>
@@ -210,14 +210,14 @@ export default function Zona() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <h2 className="font-display text-xl">Altre province in cui operiamo</h2>
                 <ul className="mt-5 flex flex-wrap gap-2.5">
                     {PROVINCE.filter(x => x.slug !== p.slug).map(x => (
                         <li key={x.slug}>
                             <Link
                                 to={`/piscine-rocks-design/${x.slug}`}
-                                className="inline-block rounded-full border border-pietra-300 bg-white px-4 py-2 text-sm text-pietra-700 transition hover:border-acqua-500 hover:text-acqua-800"
+                                className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
                             >
                                 Piscine a {x.nome}
                             </Link>

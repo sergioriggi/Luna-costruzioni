@@ -1,360 +1,446 @@
 import { Link } from 'react-router-dom'
 import Seo, { schemaAzienda, schemaFaq, schemaBriciole } from '../components/Seo'
-import Immagine from '../components/Immagine'
+import Immagine, { tutteLeFoto } from '../components/Immagine'
 import Rivela from '../components/Rivela'
-import Galleria from '../components/Galleria'
 import ModuloContatto from '../components/ModuloContatto'
-import { Sezione, IntestazioneSezione, Cta } from '../components/Sezione'
 import Recensioni from '../components/Recensioni'
-import { AZIENDA, PROVINCE } from '../data/site'
-import { PUNTI_DI_FORZA, ELEMENTI, MODELLI, DIFFERENZE, FAQ, PERCORSO } from '../data/content'
+import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import { CREDENZIALI, PERCORSO, DUBBI, RICETTIVO, FAQ } from '../data/content'
+import { useLingua } from '../i18n/lingua'
 
-const ICONE = {
-    onde: 'M3 9c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0M3 14c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0M3 19c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0',
-    pietra: 'M4 18.5 7 9l5-3.5L18 8l2 10.5Zm3-9.5 5 2.5 6-3M12 11.5 11 18.5',
-    foglia: 'M5 19c0-7 4.5-12 14-12 0 9.5-5 14-12 14M5 19c2.5-3.5 5-5.5 9-7',
-    palma: 'M12 21c0-5 .6-8.6 2-11M12 10c-2.4-2.6-5.4-3-7.5-1.4M12 10c2.4-2.6 5.4-3 7.5-1.4M12 10c0-3 1.6-5 4-5.5M12 10c0-3-1.6-5-4-5.5',
+/** Realizzazioni mostrate a mosaico: solo scatti di piscine, non di materiali. */
+const MOSAICO = tutteLeFoto.filter(f => !f.tags.includes('materiali')).slice(0, 15)
+
+function Sezione({ id, className = '', children }) {
+    return (
+        <section id={id} className={`border-t border-testo/[0.16] py-20 sm:py-24 ${className}`}>
+            <div className="contenitore">{children}</div>
+        </section>
+    )
 }
 
+const CARATTERISTICHE = [
+    {
+        titolo: 'Forme libere',
+        titoloEn: 'Free forms',
+        testo: 'Nessuno stampo e nessun angolo obbligato: ogni vasca è disegnata sul giardino che la ospita.',
+        testoEn: 'No mould, no forced corner: every basin is drawn around the garden that holds it.',
+    },
+    {
+        titolo: 'Pietra e acqua',
+        titoloEn: 'Stone and water',
+        testo: 'Rocce, ghiaia e finiture scelte per reggere il sole forte e la salsedine.',
+        testoEn: 'Rock, gravel and finishes chosen to live with strong sun and salt air.',
+    },
+    {
+        titolo: 'Si vive di sera',
+        titoloEn: 'Made for evenings',
+        testo: 'Illuminazione integrata nelle rocce e nei bordi: resta il centro del giardino anche al buio.',
+        testoEn: 'Lighting set into the rock and the edges: it stays the centre of the garden after dark.',
+    },
+]
+
 export default function Home() {
-    const eroe = 'oasi-aerea-sabbia-bianca'
+    const { t } = useLingua()
 
     return (
         <>
             <Seo
-                titolo="Luna Costruzioni — piscine con spiaggia in sabbia e opere in pietra in Sicilia"
-                descrizione="Piscine effetto spiaggia con fondale in sabbia naturale e pareti in roccia, senza cemento armato. Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia: sopralluogo e preventivo gratuiti a Palermo, Catania, Messina e in tutta l'isola."
+                titolo="Luna Costruzioni srl — Piscine Rocks Design in Sicilia, chiavi in mano"
+                descrizione="Luna Costruzioni srl, impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: sopralluogo, scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere."
                 percorso="/"
                 schema={[
                     schemaAzienda(),
-                    schemaFaq(FAQ.slice(0, 5)),
+                    schemaFaq(FAQ.slice(0, 6)),
                     schemaBriciole([{ to: '/', label: 'Home' }]),
                 ]}
             />
 
-            {/* ————————————————————————— Eroe ————————————————————————— */}
-            <section className="relative isolate">
+            {/* ───────────────────────────── Eroe ───────────────────────────── */}
+            <section id="top" className="relative isolate overflow-hidden">
                 <Immagine
-                    slug={eroe}
+                    slug="illuminazione-calda-sui-monoliti"
                     priority
-                    ratio="16 / 9"
-                    className="h-[78vh] min-h-[520px] w-full sm:h-[86vh]"
+                    riempi
+                    className="absolute inset-0 h-full w-full"
                     sizes="100vw"
                 />
-                {/* doppio velo: verticale per il fondo, orizzontale per il testo sulla sabbia chiara */}
-                <div className="absolute inset-0 bg-gradient-to-t from-pietra-900/90 via-pietra-900/45 to-pietra-900/55" />
-                <div className="absolute inset-0 bg-gradient-to-r from-pietra-900/85 via-pietra-900/35 to-transparent" />
-                <div className="absolute inset-0 flex items-end pb-16 sm:items-center sm:pb-0">
-                    <div className="contenitore">
-                        <div className="max-w-2xl text-white">
-                            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sabbia-200">
-                                {AZIENDA.nome} · piscine e opere in pietra in {AZIENDA.zona}
-                            </p>
-                            <h1 className="mt-4 font-display text-4xl leading-[1.08] text-white [text-shadow:0_2px_24px_rgba(10,25,28,0.55)] sm:text-6xl">
-                                La tua spiaggia privata,<br className="hidden sm:block" /> in giardino.
-                            </h1>
-                            <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-sabbia-100/95 sm:text-lg">
-                                Costruiamo <strong className="font-semibold">piscine con spiaggia in sabbia</strong>:
-                                si entra camminando, senza scaletta, su un fondale di sabbia vera. Nessun catalogo di
-                                misure — misuriamo il tuo giardino e la vasca nasce da lì.
-                            </p>
-                            <div className="mt-8 flex flex-wrap gap-3">
-                                <Link to="/contatti" className="bottone-chiaro">Sopralluogo gratuito</Link>
-                                <Link
-                                    to="/galleria"
-                                    className="bottone border border-white/40 text-white backdrop-blur-sm hover:bg-white/10"
-                                >
-                                    Vedi le nostre realizzazioni
-                                </Link>
-                            </div>
-                            <p className="mt-6 text-xs text-sabbia-200/80">
-                                In Tecnologia Rocks Design® — {AZIENDA.nome} è {AZIENDA.ruolo.toLowerCase()} per
-                                la {AZIENDA.zona}.
-                            </p>
+                <div
+                    aria-hidden="true"
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            'linear-gradient(75deg, #161826 0%, rgba(22,24,38,0.86) 38%, rgba(22,24,38,0.2) 78%)',
+                    }}
+                />
+                <div className="contenitore relative flex min-h-[560px] items-end pb-16 pt-32 sm:min-h-[640px] sm:pb-20">
+                    <div className="max-w-[780px]">
+                        <p className="occhiello">
+                            {t('Piscine Rocks Design in Sicilia', 'Piscine Rocks Design in Sicily')}
+                        </p>
+                        <h1 className="mt-5 max-w-[15em] text-[34px] leading-[1.06] tracking-[-0.025em] sm:text-[44px] lg:text-eroe">
+                            {t(
+                                'La tua Piscina Rocks Design, dal primo scavo al primo bagno.',
+                                'Your Piscine Rocks Design pool, from the first dig to the first swim.',
+                            )}
+                        </h1>
+                        <p className="mt-6 max-w-prosa text-[15px] leading-[1.6] text-neutro-300 sm:text-[17px]">
+                            {t(
+                                `${AZIENDA.nome} è concessionario autorizzato ${ROCKS_DESIGN.nome} per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design® chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.`,
+                                `${AZIENDA.nome} is the authorised ${ROCKS_DESIGN.nome} dealer for Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.`,
+                            )}
+                        </p>
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            <Link to="/contatti" className="bottone-pieno no-underline">
+                                {t('Richiedi un sopralluogo', 'Book a site visit')}
+                            </Link>
+                            <Link to="/galleria" className="bottone-secondario no-underline">
+                                {t('Guarda le realizzazioni', 'See the projects')}
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ————————————————————— Rassicurazioni ————————————————————— */}
-            <div className="border-b border-sabbia-200 bg-sabbia-100">
-                <div className="contenitore grid gap-6 py-8 sm:grid-cols-3">
-                    {[
-                        ['Un solo referente', 'Luciano Naro ti segue dal sopralluogo alla consegna, e risponde anche dopo.'],
-                        ['Su misura, non da catalogo', 'Misuriamo il giardino: forma, profondità e dettagli nascono da lì.'],
-                        ['Tutta la Sicilia', 'Sopralluogo, cantiere e assistenza nelle nove province.'],
-                    ].map(([t, d], i) => (
-                        <Rivela key={t} delay={i * 90} className="flex gap-3">
-                            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-acqua-600" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                                <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            <p className="text-sm leading-relaxed text-pietra-600">
-                                <strong className="block font-semibold text-pietra-900">{t}</strong>
-                                {d}
+            {/* ─────────────────────── Fascia credenziali ─────────────────────── */}
+            <div className="border-y border-testo/[0.16] bg-superficie">
+                <div className="contenitore grid gap-7 py-8 sm:grid-cols-2 lg:grid-cols-4">
+                    {CREDENZIALI.map((c, i) => (
+                        <Rivela key={c.titolo} delay={i * 70}>
+                            <p className="font-display text-[13px] font-medium uppercase tracking-[0.1em] text-accento-300">
+                                {t(c.titolo, c.titoloEn)}
+                            </p>
+                            <p className="mt-2 text-[13px] leading-relaxed text-neutro-400">
+                                {t(c.testo, c.testoEn)}
                             </p>
                         </Rivela>
                     ))}
                 </div>
             </div>
 
-            {/* ————————————————————— Chi siamo / brand ————————————————————— */}
-            <Sezione id="chi-siamo">
-                <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                    <IntestazioneSezione
-                        occhiello="Chi siamo"
-                        titolo="Un'impresa siciliana, due mestieri"
-                        testo="Luna Costruzioni srl muove terra, costruisce muri e posa pietra: è il mestiere da cui veniamo. Da lì arrivano le due cose che facciamo oggi con le stesse squadre — piscine con spiaggia in sabbia e opere in pietra per il giardino — in tutta la Sicilia."
-                    >
-                        <ul className="mt-7 space-y-3 text-[1.0625rem] text-pietra-700">
-                            {[
-                                'Un unico referente per tutto il progetto: Luciano Naro.',
-                                'Piscine e giardini realizzati dalle stesse squadre, in un solo cantiere.',
-                                'Piscina espositiva visitabile su appuntamento.',
-                            ].map(v => (
-                                <li key={v} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-oro-500" />
-                                    {v}
-                                </li>
+            {/* ───────────────────────────── Piscine ───────────────────────────── */}
+            <Sezione id="piscine" className="border-t-0">
+                <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
+                    <Rivela>
+                        <h6 className="occhiello">{t('Perché Piscine Rocks Design', 'Why Piscine Rocks Design')}</h6>
+                        <h2 className="titolo-sezione max-w-[20em]">
+                            {t('Sembra un laghetto. Funziona come una piscina.', 'It looks like a lagoon. It works like a pool.')}
+                        </h2>
+                        <p className="testo-lungo mt-6">
+                            {t(
+                                'Le Piscine Rocks Design non hanno forme di serie: la vasca nasce dal giardino, dalle rocce e dalla luce del posto. Il risultato è un bagno che si vive a piedi nudi, con bordi in pietra e spiagge d’ingresso al posto della scaletta. La Tecnologia Rocks Design® è brevettata: Luna Costruzioni la realizza come concessionario autorizzato.',
+                                'Piscine Rocks Design have no stock shapes: the basin grows out of the garden, the rock and the light of the place. The result is a pool you live barefoot, with stone edges and walk-in beaches instead of a ladder. Rocks Design Technology is patented: Luna Costruzioni builds it as an authorised dealer.',
+                            )}
+                        </p>
+                        <div className="mt-9 grid gap-6 sm:grid-cols-3">
+                            {CARATTERISTICHE.map(c => (
+                                <div key={c.titolo} className="border-l border-accento-700 pl-4">
+                                    <p className="font-display text-[15px] font-medium text-testo">{t(c.titolo, c.titoloEn)}</p>
+                                    <p className="mt-2 text-[13px] leading-relaxed text-neutro-400">{t(c.testo, c.testoEn)}</p>
+                                </div>
                             ))}
-                        </ul>
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/azienda" className="bottone-secondario">Chi siamo</Link>
-                            <Link to="/giardini-e-opere-in-pietra" className="bottone-secondario">Giardini e pietra</Link>
                         </div>
-                    </IntestazioneSezione>
+                        <Link to="/piscine-rocks-design" className="bottone-secondario mt-9 no-underline">
+                            {t('Come sono fatte', 'How they are built')}
+                        </Link>
+                    </Rivela>
 
-                    <Rivela delay={120} className="grid grid-cols-2 gap-4">
-                        <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="rounded-2xl shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
-                        <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="mt-10 rounded-2xl shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
+                    <Rivela delay={120}>
+                        <figure>
+                            <Immagine
+                                slug="oasi-con-pontile"
+                                ratio="4 / 3"
+                                className="rounded-lg"
+                                sizes="(min-width: 1024px) 44vw, 92vw"
+                            />
+                            <figcaption className="mt-2 text-[11px] text-testo/60">
+                                {t('Piscina Rocks Design ultimata e in funzione.', 'A completed, working Piscine Rocks Design pool.')}
+                            </figcaption>
+                        </figure>
                     </Rivela>
                 </div>
             </Sezione>
 
-            {/* ————————————————————— Punti di forza ————————————————————— */}
-            <Sezione sfondo="bg-sabbia-100">
-                <IntestazioneSezione
-                    allineamento="centro"
-                    occhiello="Che cosa cambia"
-                    titolo="Perché non è una piscina come le altre"
-                    testo="Quattro differenze concrete rispetto a una vasca tradizionale in cemento. Le realizziamo in Tecnologia Rocks Design®."
-                />
-                <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {PUNTI_DI_FORZA.map((p, i) => (
-                        <Rivela as="li" key={p.titolo} delay={i * 90} className="scheda">
-                            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-oro-400/60 text-oro-500">
-                                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                                    <path d={ICONE[p.icona]} strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            <h3 className="mt-5 text-lg">{p.titolo}</h3>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{p.testo}</p>
-                        </Rivela>
-                    ))}
-                </ul>
-            </Sezione>
-
-            {/* ————————————————————— Elementi ————————————————————— */}
-            <Sezione id="elementi">
-                <IntestazioneSezione
-                    occhiello="I dettagli naturali"
-                    titolo="Monoliti, sabbie, cascate, idromassaggio"
-                    testo="Sono gli elementi che scegliamo insieme in fase di progetto: definiscono il carattere della tua piscina e il modo in cui la vivrai."
-                />
-                <div className="mt-14 space-y-16">
-                    {ELEMENTI.map((el, i) => (
-                        <Rivela
-                            key={el.slug}
-                            className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-14 ${i % 2 ? 'lg:[&>figure]:order-2' : ''}`}
-                        >
-                            <Immagine
-                                slug={
-                                    { monoliti: 'masso-luminoso-nell-acqua', sabbie: 'ombre-di-palme-sulla-sabbia', cascate: 'cascata-su-roccia-rossa', idromassaggio: 'idromassaggio-naturale' }[el.slug]
-                                }
-                                ratio="4 / 3"
-                                className="rounded-2xl shadow-morbida"
-                                sizes="(min-width: 1024px) 48vw, 92vw"
-                            />
-                            <div>
-                                <p className="occhiello">{el.occhiello}</p>
-                                <h3 className="mt-3 font-display text-2xl sm:text-3xl">{el.titolo}</h3>
-                                <p className="testo-lungo mt-4">{el.testo}</p>
-                            </div>
-                        </Rivela>
-                    ))}
-                </div>
-            </Sezione>
-
-            {/* ————————————————————— Modelli ————————————————————— */}
-            <Sezione sfondo="bg-pietra-900 text-sabbia-100">
-                <Rivela className="max-w-prosa">
-                    <p className="occhiello text-acqua-300">I modelli</p>
-                    <h2 className="titolo-sezione text-white">Da dove partiamo</h2>
-                    <p className="mt-5 text-[1.0625rem] leading-relaxed text-sabbia-300">
-                        Caraibi, Mediterranea, Alpi: tre direzioni progettuali, non tre formati. Servono a decidere
-                        insieme rocce, sabbia e piante; poi ogni vasca prende la sua strada.
+            {/* ───────────────────────────── Processo ───────────────────────────── */}
+            <Sezione id="processo">
+                <Rivela className="max-w-[46em]">
+                    <h6 className="occhiello">{t('Chiavi in mano', 'Turnkey')}</h6>
+                    <h2 className="titolo-sezione">{t('Cinque fasi, un’unica impresa.', 'Five stages, one company.')}</h2>
+                    <p className="testo-lungo mt-6">
+                        {t(
+                            'Luna Costruzioni segue tutto il processo: non ci limitiamo a fornire la piscina, la costruiamo. Scavi, realizzazione, messa in opera e collaudo restano nelle stesse mani, dal preventivo alla consegna.',
+                            'Luna Costruzioni handles the whole process: we do not merely supply the pool, we build it. Excavation, construction, installation and commissioning all stay in the same hands, from quote to handover.',
+                        )}
                     </p>
                 </Rivela>
-                <ul className="mt-14 grid gap-6 lg:grid-cols-3">
-                    {MODELLI.map((m, i) => (
-                        <Rivela as="li" key={m.slug} delay={i * 100} className="overflow-hidden rounded-2xl bg-white/5">
-                            <Link to={`/modelli/${m.slug}`} className="group block">
-                                <Immagine
-                                    slug={m.copertina}
-                                    ratio="4 / 3"
-                                    sizes="(min-width: 1024px) 32vw, 92vw"
-                                    imgClassName="transition duration-700 group-hover:scale-105"
-                                />
-                                <div className="p-6">
-                                    <h3 className="font-display text-xl text-white">{m.nomeCompleto}</h3>
-                                    <p className="mt-1 text-sm text-acqua-200">{m.claim}</p>
-                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-sabbia-300">{m.sintesi}</p>
-                                    <span className="mt-4 inline-block text-sm font-semibold text-white group-hover:underline">
-                                        Scopri il {m.nome} →
-                                    </span>
-                                </div>
-                            </Link>
-                        </Rivela>
-                    ))}
-                </ul>
-                <Rivela className="mt-10">
-                    <Link to="/modelli" className="bottone-chiaro">Approfondisci i modelli</Link>
-                </Rivela>
-            </Sezione>
 
-            {/* ————————————————————— Confronto ————————————————————— */}
-            <Sezione>
-                <IntestazioneSezione
-                    occhiello="Il confronto"
-                    titolo="Piscina tradizionale o con spiaggia in sabbia?"
-                    testo="La differenza non è estetica: cambia il modo di costruire, i materiali e ciò che senti sotto i piedi."
-                />
-                <Rivela className="mt-10 overflow-x-auto">
-                    <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                        <caption className="sr-only">
-                            Confronto tra piscina tradizionale e Piscina Rocks Design
-                        </caption>
-                        <thead>
-                            <tr className="border-b border-pietra-300">
-                                <th scope="col" className="py-4 pr-4 font-semibold text-pietra-500"> </th>
-                                <th scope="col" className="py-4 pr-4 font-semibold text-pietra-500">Piscina tradizionale</th>
-                                <th scope="col" className="py-4 font-semibold text-acqua-700">Piscina Rocks Design</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {DIFFERENZE.map(([voce, tradizionale, rocks]) => (
-                                <tr key={voce} className="border-b border-pietra-200/70">
-                                    <th scope="row" className="py-4 pr-4 font-medium text-pietra-900">{voce}</th>
-                                    <td className="py-4 pr-4 text-pietra-500">{tradizionale}</td>
-                                    <td className="py-4 font-medium text-pietra-800">{rocks}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </Rivela>
-            </Sezione>
-
-            {/* ————————————————————— Showroom ————————————————————— */}
-            <Sezione id="showroom" sfondo="bg-sabbia-100">
-                <IntestazioneSezione
-                    allineamento="centro"
-                    occhiello="La nostra piscina espositiva"
-                    titolo="Vieni a trovarci presso la nostra sede"
-                    testo="Le fotografie raccontano solo una parte. Dal vivo puoi camminare sulla sabbia, toccare i monoliti e capire davvero cosa significa una Piscina Rocks Design. Visita su appuntamento, in Sicilia."
-                />
-                <Rivela className="mt-12">
-                    <Galleria
-                        filtrabile={false}
-                        slugs={['villa-con-spiaggia-in-ghiaia', 'oasi-con-pontile', 'illuminazione-calda-sui-monoliti']}
-                    />
-                </Rivela>
-                <Rivela className="mt-10 flex flex-wrap justify-center gap-3">
-                    <Link to="/showroom" className="bottone-primario">Prenota la visita</Link>
-                    <Link to="/galleria" className="bottone-secondario">Vedi tutte le realizzazioni</Link>
-                </Rivela>
-            </Sezione>
-
-            {/* ————————————————————— Percorso ————————————————————— */}
-            <Sezione>
-                <IntestazioneSezione
-                    occhiello="Come lavoriamo"
-                    titolo="Dal sopralluogo alla prima nuotata"
-                    testo="Cinque passaggi chiari, un unico referente e tempi definiti in contratto."
-                />
-                <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {PERCORSO.map((p, i) => (
-                        <Rivela as="li" key={p.numero} delay={i * 80} className="scheda">
-                            <span className="font-display text-3xl text-oro-500">{p.numero}</span>
-                            <h3 className="mt-3 text-base">{p.titolo}</h3>
-                            {p.durata && <p className="mt-1 text-xs text-pietra-400">{p.durata}</p>}
-                            <p className="mt-2 text-sm leading-relaxed text-pietra-600">{p.testo}</p>
+                        <Rivela as="li" key={p.numero} delay={i * 70} className="scheda">
+                            <p className="font-display text-[13px] tracking-[0.1em] text-accento">{p.numero}</p>
+                            <h3 className="mt-3 font-display text-[17px] font-medium">{t(p.titolo, p.titoloEn)}</h3>
+                            <p className="mt-1 text-[11px] uppercase tracking-[0.1em] text-neutro-500">
+                                {t(p.durata, p.durataEn)}
+                            </p>
+                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{t(p.testo, p.testoEn)}</p>
                         </Rivela>
                     ))}
+                    <Rivela
+                        as="li"
+                        delay={PERCORSO.length * 70}
+                        className="flex flex-col justify-center rounded-md border border-accento-700 bg-accento/[0.08] p-6"
+                    >
+                        <p className="font-display text-[17px] font-medium text-testo">
+                            {t('Un unico appalto.', 'One single contract.')}
+                        </p>
+                        <p className="mt-3 text-[14px] leading-relaxed text-neutro-300">
+                            {t(
+                                'Nessuna squadra esterna da coordinare, nessuno scaricabarile fra fornitori.',
+                                'No outside crews to coordinate, no passing the buck between suppliers.',
+                            )}
+                        </p>
+                        <Link to="/come-lavoriamo" className="bottone-primario mt-6 w-fit no-underline">
+                            {t('Il metodo', 'Our method')}
+                        </Link>
+                    </Rivela>
                 </ol>
             </Sezione>
 
-            {/* ————————————————————— Zone ————————————————————— */}
-            <Sezione sfondo="bg-sabbia-100">
-                <IntestazioneSezione
-                    occhiello="Dove operiamo"
-                    titolo="Lavoriamo in tutte le nove province"
-                    testo="Sopralluogo, progetto, cantiere e assistenza: dalla provincia di Palermo a quella di Enna."
-                />
-                <ul className="mt-10 flex flex-wrap gap-3">
-                    {PROVINCE.map(p => (
-                        <li key={p.slug}>
-                            <Link
-                                to={`/piscine-rocks-design/${p.slug}`}
-                                className="inline-flex items-center gap-2 rounded-full border border-pietra-300 bg-white px-5 py-2.5 text-sm font-medium text-pietra-700 transition hover:border-acqua-500 hover:text-acqua-800"
-                            >
-                                {p.nome}
-                                <span className="text-xs text-pietra-400">{p.sigla}</span>
-                            </Link>
-                        </li>
+            {/* ─────────────────────────── Realizzazioni ─────────────────────────── */}
+            <Sezione id="realizzazioni">
+                <Rivela className="flex flex-wrap items-end justify-between gap-6">
+                    <div className="max-w-[24em]">
+                        <h6 className="occhiello">{t('Realizzazioni', 'Projects')}</h6>
+                        <h2 className="titolo-sezione">
+                            {t('Piscine ultimate, arredate e in funzione.', 'Pools finished, furnished and running.')}
+                        </h2>
+                    </div>
+                    <p className="text-[13px] text-neutro-500">
+                        {t('Ogni immagine è un lavoro consegnato.', 'Every image is a delivered project.')}
+                    </p>
+                </Rivela>
+
+                <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                    {MOSAICO.map((f, i) => (
+                        <Rivela key={f.slug} delay={Math.min(i, 8) * 45}>
+                            <Immagine
+                                slug={f.slug}
+                                ratio="1 / 1"
+                                className="rounded-md"
+                                sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 45vw"
+                            />
+                        </Rivela>
                     ))}
-                </ul>
+                </div>
+
+                <Rivela className="mt-10">
+                    <Link to="/galleria" className="bottone-secondario no-underline">
+                        {t('Apri la galleria completa', 'Open the full gallery')}
+                    </Link>
+                </Rivela>
             </Sezione>
 
-            {/* ————————————————————— Contatto ————————————————————— */}
-            <Sezione id="contatti">
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Parliamone"
-                        titolo="Raccontaci il tuo giardino"
-                        testo="Ti richiamiamo entro 24 ore lavorative. Il sopralluogo e il preventivo sono gratuiti e senza impegno."
-                    >
-                        <dl className="mt-8 space-y-4 text-[1.0625rem]">
-                            <div>
-                                <dt className="text-sm text-pietra-500">Referente</dt>
-                                <dd className="font-medium text-pietra-900">{AZIENDA.referente}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm text-pietra-500">Telefono</dt>
-                                <dd>
-                                    <a className="link-sottile font-medium text-pietra-900" href={`tel:${AZIENDA.telefonoRaw}`}>
-                                        {AZIENDA.telefono}
-                                    </a>
-                                </dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm text-pietra-500">Zona servita</dt>
-                                <dd className="font-medium text-pietra-900">Tutta la Sicilia</dd>
-                            </div>
-                        </dl>
-                    </IntestazioneSezione>
-                    <Rivela delay={100}>
-                        <ModuloContatto />
-                    </Rivela>
+            {/* ───────────────────────── Prima di decidere ───────────────────────── */}
+            <Sezione id="dubbi">
+                <Rivela className="max-w-[46em]">
+                    <h6 className="occhiello">{t('Prima di decidere', 'Before you decide')}</h6>
+                    <h2 className="titolo-sezione">
+                        {t(
+                            'Quattro dubbi fermano chi vuole una piscina. Li mettiamo sul tavolo subito.',
+                            'Four doubts stop people from building a pool. We put them on the table first.',
+                        )}
+                    </h2>
+                    <p className="testo-lungo mt-6">
+                        {t(
+                            'Non sono obiezioni da smontare: sono i motivi reali per cui un preventivo resta nel cassetto. A ciascuno rispondiamo con un impegno che finisce nero su bianco nel contratto.',
+                            'These are not objections to argue away: they are the real reasons a quote stays in a drawer. To each we answer with a commitment that ends up in writing in the contract.',
+                        )}
+                    </p>
+                </Rivela>
+
+                <div className="mt-14 grid gap-5 md:grid-cols-2">
+                    {DUBBI.map((d, i) => (
+                        <Rivela key={d.dubbio} delay={i * 80} className="scheda">
+                            <p className="text-[10px] uppercase tracking-[0.1em] text-neutro-500">
+                                {t('Il dubbio', 'The doubt')}
+                            </p>
+                            <p className="mt-2 font-display text-[17px] font-medium text-testo">
+                                {t(d.dubbio, d.dubbioEn)}
+                            </p>
+                            <p className="mt-5 text-[10px] uppercase tracking-[0.1em] text-accento">
+                                {t('La nostra risposta', 'Our answer')}
+                            </p>
+                            <p className="mt-2 text-[14px] leading-relaxed text-neutro-300">
+                                {t(d.risposta, d.rispostaEn)}
+                            </p>
+                        </Rivela>
+                    ))}
                 </div>
+            </Sezione>
+
+            {/* ─────────────────────────── Hotel e resort ─────────────────────────── */}
+            <Sezione id="hotel">
+                <Rivela className="max-w-[46em]">
+                    <h6 className="occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</h6>
+                    <h2 className="titolo-sezione">
+                        {t(
+                            'Per una struttura ricettiva la piscina è la prima foto che il cliente guarda.',
+                            'For a hospitality business, the pool is the first photo a guest looks at.',
+                        )}
+                    </h2>
+                    <p className="testo-lungo mt-6">
+                        {t(
+                            'Una piscina Rocks Design non somiglia a nessun’altra vasca del territorio: è un motivo per scegliere la struttura e un contenuto che gira sui social dei tuoi ospiti. Lavoriamo con i tempi e i vincoli di chi deve restare aperto.',
+                            'A Piscine Rocks Design pool looks like nothing else nearby: it is a reason to book and content your guests share. We work around the constraints of a business that has to stay open.',
+                        )}
+                    </p>
+                </Rivela>
+
+                <div className="mt-12 grid gap-5 lg:grid-cols-3">
+                    {RICETTIVO.map((r, i) => (
+                        <Rivela key={r.titolo} delay={i * 80} className="scheda">
+                            <h3 className="font-display text-[17px] font-medium">{t(r.titolo, r.titoloEn)}</h3>
+                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{t(r.testo, r.testoEn)}</p>
+                        </Rivela>
+                    ))}
+                </div>
+
+                <Rivela className="mt-10">
+                    <Link to="/hotel-e-resort" className="bottone-primario no-underline">
+                        {t('Richiedi una proposta per la struttura', 'Request a proposal for your property')}
+                    </Link>
+                </Rivela>
+            </Sezione>
+
+            {/* ───────────────────────────── Domande ───────────────────────────── */}
+            <Sezione id="faq">
+                <Rivela className="max-w-[40em]">
+                    <h6 className="occhiello">{t('Domande frequenti', 'Frequently asked')}</h6>
+                    <h2 className="titolo-sezione">
+                        {t('Quello che ci chiedono al primo sopralluogo.', 'What people ask us on the first visit.')}
+                    </h2>
+                </Rivela>
+
+                <div className="mt-12 max-w-[52em] divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                    {FAQ.slice(0, 6).map(v => (
+                        <details key={v.domanda} className="group py-5" name="faq-home">
+                            <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
+                                <h3 className="font-display text-[17px] font-medium text-testo">{v.domanda}</h3>
+                                <span className="mt-1 shrink-0 text-accento transition group-open:rotate-45" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+                                    </svg>
+                                </span>
+                            </summary>
+                            <p className="mt-3 max-w-prosa pr-10 text-[14px] leading-relaxed text-neutro-300">
+                                {v.risposta}
+                            </p>
+                        </details>
+                    ))}
+                </div>
+
+                <Rivela className="mt-8">
+                    <Link to="/domande-frequenti" className="bottone-secondario no-underline">
+                        {t('Tutte le domande', 'All the questions')}
+                    </Link>
+                </Rivela>
             </Sezione>
 
             <Recensioni />
 
-            <Cta
-                titolo="Una piscina che sembra lì da sempre"
-                testo="Scopri come la Tecnologia Rocks Design® può trasformare il tuo giardino in un’oasi privata."
-                primaria={{ to: '/contatti', label: 'Richiedi il sopralluogo' }}
-                secondaria={{ to: '/galleria', label: 'Guarda la galleria' }}
-            />
+            {/* ───────────────────────────── Sicilia ───────────────────────────── */}
+            <Sezione id="sicilia">
+                <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+                    <Rivela>
+                        <Immagine
+                            slug="oasi-aerea-sabbia-bianca"
+                            ratio="4 / 3"
+                            className="rounded-lg"
+                            sizes="(min-width: 1024px) 44vw, 92vw"
+                        />
+                    </Rivela>
+                    <Rivela delay={110}>
+                        <h6 className="occhiello">{t('Zona operativa', 'Where we work')}</h6>
+                        <h2 className="titolo-sezione">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
+                        <p className="testo-lungo mt-6">
+                            {t(
+                                `${AZIENDA.nome} è concessionario autorizzato ${ROCKS_DESIGN.nome} per la Sicilia. Facciamo sopralluoghi e apriamo cantieri su tutta l’isola, per ville private e per strutture ricettive.`,
+                                `${AZIENDA.nome} is the authorised ${ROCKS_DESIGN.nome} dealer for Sicily. We survey and build across the whole island, for private villas and for hotels and guest houses.`,
+                            )}
+                        </p>
+                        <p className="testo-lungo mt-4">
+                            {t(
+                                'Il referente di cantiere è sempre lo stesso, dal primo sopralluogo al collaudo: si parla con una persona, non con un ufficio.',
+                                'The same person follows the job from the first visit to commissioning: you talk to a person, not an office.',
+                            )}
+                        </p>
+                        <ul className="mt-7 flex flex-wrap gap-2">
+                            {PROVINCE.map(p => (
+                                <li key={p.slug}>
+                                    <Link
+                                        to={`/piscine-rocks-design/${p.slug}`}
+                                        className="inline-block rounded-md border border-testo/[0.16] px-3 py-1.5 text-[13px] text-neutro-300 no-underline transition hover:border-accento hover:text-testo"
+                                    >
+                                        {p.nome}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <Link to="/contatti" className="bottone-primario mt-8 no-underline">
+                            {t('Parlane con Luciano', 'Talk to Luciano')}
+                        </Link>
+                    </Rivela>
+                </div>
+            </Sezione>
+
+            {/* ───────────────────────────── Contatti ───────────────────────────── */}
+            <Sezione id="contatti">
+                <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start lg:gap-16">
+                    <Rivela>
+                        <h6 className="occhiello">{t('Contatti', 'Contact')}</h6>
+                        <h2 className="titolo-sezione">{t('Raccontaci il giardino.', 'Tell us about the garden.')}</h2>
+                        <p className="testo-lungo mt-6">
+                            {t(
+                                'Basta il comune e due righe sullo spazio che hai. Fissiamo un sopralluogo e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano.',
+                                'Your town and a couple of lines about your space are enough. We will arrange a visit and tell you what is possible, with timing and costs for the turnkey project.',
+                            )}
+                        </p>
+                        <dl className="mt-9 space-y-5">
+                            <div>
+                                <dt className="text-[11px] uppercase tracking-[0.1em] text-neutro-500">
+                                    {t('Referente', 'Contact person')}
+                                </dt>
+                                <dd className="mt-1 font-display text-[17px] text-testo">{AZIENDA.referente}</dd>
+                            </div>
+                            <div>
+                                <dt className="text-[11px] uppercase tracking-[0.1em] text-neutro-500">
+                                    {t('Telefono', 'Phone')}
+                                </dt>
+                                <dd className="mt-1">
+                                    <a
+                                        href={`tel:${AZIENDA.telefonoRaw}`}
+                                        className="font-display text-[17px] text-testo no-underline hover:text-accento"
+                                    >
+                                        {AZIENDA.telefono}
+                                    </a>
+                                </dd>
+                            </div>
+                        </dl>
+                        <a
+                            href={`https://wa.me/${AZIENDA.whatsapp}`}
+                            target="_blank"
+                            rel="noopener"
+                            className="bottone-secondario mt-6 no-underline"
+                        >
+                            WhatsApp {AZIENDA.telefono}
+                        </a>
+                    </Rivela>
+
+                    <Rivela delay={110}>
+                        <ModuloContatto />
+                    </Rivela>
+                </div>
+            </Sezione>
         </>
     )
 }

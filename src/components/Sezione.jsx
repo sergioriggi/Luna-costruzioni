@@ -23,16 +23,16 @@ export function IntestazioneSezione({ occhiello, titolo, testo, allineamento = '
 
 export function Briciole({ voci }) {
     return (
-        <nav aria-label="Percorso di navigazione" className="border-b border-sabbia-200 bg-sabbia-100/60">
+        <nav aria-label="Percorso di navigazione" className="border-b border-testo/[0.16] bg-superficie">
             <div className="contenitore">
-                <ol className="flex flex-wrap items-center gap-2 py-3 text-xs text-pietra-500">
+                <ol className="flex flex-wrap items-center gap-2 py-3 text-xs text-neutro-500">
                     {voci.map((v, i) => (
                         <li key={v.to} className="flex items-center gap-2">
                             {i > 0 && <span aria-hidden="true">/</span>}
                             {i === voci.length - 1 ? (
-                                <span aria-current="page" className="font-medium text-pietra-700">{v.label}</span>
+                                <span aria-current="page" className="font-medium text-neutro-300">{v.label}</span>
                             ) : (
-                                <Link to={v.to} className="hover:text-pietra-800">{v.label}</Link>
+                                <Link to={v.to} className="hover:text-testo">{v.label}</Link>
                             )}
                         </li>
                     ))}
@@ -45,15 +45,15 @@ export function Briciole({ voci }) {
 export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richiedi un preventivo' }, secondaria }) {
     return (
         <Sezione>
-            <Rivela className="overflow-hidden rounded-3xl bg-pietra-900 px-6 py-14 text-center sm:px-14">
-                <h2 className="font-display text-3xl text-white sm:text-4xl">{titolo}</h2>
-                <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-sabbia-300">{testo}</p>
+            <Rivela className="overflow-hidden rounded-lg bg-notte-800 px-6 py-14 text-center sm:px-14">
+                <h2 className="font-display text-3xl text-testo sm:text-4xl">{titolo}</h2>
+                <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-neutro-400">{testo}</p>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <Link to={primaria.to} className="bottone-chiaro">{primaria.label}</Link>
+                    <Link to={primaria.to} className="bottone-pieno">{primaria.label}</Link>
                     {secondaria && (
                         <Link
                             to={secondaria.to}
-                            className="bottone border border-white/30 text-white hover:bg-white/10"
+                            className="bottone border border-testo/[0.16] text-testo hover:bg-superficie/10"
                         >
                             {secondaria.label}
                         </Link>

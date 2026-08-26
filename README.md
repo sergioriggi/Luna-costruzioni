@@ -1,8 +1,14 @@
 # Luna Costruzioni srl — sito web
 
-Sito ufficiale di **Luna Costruzioni srl**, impresa siciliana specializzata in
-**piscine con spiaggia in sabbia** e **giardini e opere in pietra**. In italiano,
-con SEO locale sulle nove province.
+Sito ufficiale di **Luna Costruzioni srl**: impresa edile e concessionario
+autorizzato Piscine Rocks Design per la **Sicilia**. Realizza la piscina in
+Tecnologia Rocks Design® **chiavi in mano** — sopralluogo, scavi, realizzazione,
+messa in opera e collaudo. Italiano con cambio lingua in inglese, SEO locale
+sulle nove province.
+
+L'impianto visivo e i contenuti della home seguono il **blueprint approvato**
+(`index.html` fornito dal committente): tema scuro, tipografia Inter, sezioni
+`piscine · processo · realizzazioni · dubbi · hotel · faq · sicilia · contatti`.
 
 > **Principio guida — di chi è questo sito**
 >
@@ -68,12 +74,13 @@ npm run preview    # anteprima identica alla produzione
 
 | Rotta | Pagina | Ruolo |
 | --- | --- | --- |
-| `/` | Home | L'offerta di Luna Costruzioni + modulo contatto |
+| `/` | Home | Il blueprint completo: eroe, credenziali, piscine, cinque fasi, realizzazioni, i quattro dubbi, hotel, FAQ, Sicilia, contatti |
 | `/piscine-rocks-design` | Come sono fatte | La tecnologia del prodotto, differenze, ambiente e permessi |
 | `/modelli` | I modelli | Indice: Caraibi, Mediterranea, Alpi |
 | `/modelli/caraibi` `/modelli/mediterranea` `/modelli/alpi` | Pagina per modello | Testo, sabbie consigliate, galleria dedicata |
 | `/sabbie` | Le sabbie | Bianco, Giallo, Ticino e il colore d'acqua che restituiscono |
 | `/giardini-e-opere-in-pietra` | Giardini e pietra | Il secondo mestiere dell'impresa, anche senza piscina |
+| `/hotel-e-resort` | Hotel e resort | Argomenti B2B: cantiere fuori stagione, un solo appalto |
 | `/galleria` | Realizzazioni | Tutte le foto, filtrabili, con lightbox |
 | `/showroom` | Showroom | «Vieni a trovarci presso la nostra sede» |
 | `/quanto-costa` | Quanto costa | Le voci che spostano il preventivo — pagina ad alta intenzione |
@@ -132,6 +139,54 @@ Il logo usato è quello **ufficiale**, estratto dal catalogo fornito dalla casa 
    vicenda nei motori di ricerca.
 
 Va eseguita dopo ogni `npm run build`, prima di pubblicare.
+
+---
+
+## Sistema visivo
+
+Tema scuro, definito una volta in `tailwind.config.js` e usato ovunque:
+
+| Token | Valore | Uso |
+| --- | --- | --- |
+| `notte` | `#161826` | fondo pagina |
+| `notte-800` | `#292b31` | piè di pagina |
+| `superficie` | `#232532` | schede, fasce alternate, campi |
+| `testo` | `#e9e9ed` | testo principale |
+| `neutro-300…600` | rampa | testi secondari |
+| `accento` | `#9184d9` | occhielli, bordi, chiamate all'azione |
+
+I bordi usano `testo/[0.16]`, la stessa trasparenza del blueprint. Tipografia
+**Inter** (300–700), self-hostata in `public/fonts`. Le classi di componente
+— `.bottone-*`, `.scheda`, `.campo`, `.occhiello`, `.titolo-sezione` — stanno
+in `src/index.css`.
+
+> L'accento `#9184d9` arriva dal blueprint. È l'unico token da cambiare se in
+> futuro si vuole virare sul turchese dell'acqua: si tocca `accento` in
+> `tailwind.config.js` e il resto segue.
+
+---
+
+## Bilingue italiano / inglese
+
+`src/i18n/lingua.jsx` espone un contesto e la funzione `t(italiano, inglese)`:
+
+```jsx
+const { t } = useLingua()
+<h2>{t('Cinque fasi, un’unica impresa.', 'Five stages, one company.')}</h2>
+```
+
+Il selettore è nel piè di pagina e la scelta si ricorda nel browser.
+
+**Come è impostato oggi:** l'italiano è la lingua pubblicata — è quello che
+finisce nell'HTML pre-renderizzato e quindi nell'indice di Google. L'inglese è
+un cambio lato client, pensato per i clienti stranieri che cercano una villa o
+gestiscono una struttura ricettiva in Sicilia. Sono tradotte la home, la
+navigazione, il piè di pagina, i moduli e la pagina hotel; le pagine interne
+restano in italiano.
+
+Se in futuro serve che anche l'inglese sia indicizzato, la strada è duplicare
+le rotte sotto `/en/` in `scripts/rotte.mjs` e aggiungere gli `hreflang`: la
+struttura di pre-rendering è già pronta a farlo.
 
 ---
 

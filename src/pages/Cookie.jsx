@@ -18,8 +18,8 @@ export default function Cookie() {
             />
             <Briciole voci={BRICIOLE} />
             <Sezione>
-                <article className="max-w-prosa space-y-5 text-[1.0625rem] leading-relaxed text-pietra-600">
-                    <h1 className="font-display text-4xl text-pietra-900">Cookie policy</h1>
+                <article className="max-w-prosa space-y-5 text-[1.0625rem] leading-relaxed text-neutro-400">
+                    <h1 className="font-display text-4xl text-testo">Cookie policy</h1>
 
                     <h2 className="pt-4 font-display text-2xl">Cookie tecnici</h2>
                     <p>

@@ -37,12 +37,12 @@ export default function ComeLavoriamo() {
                 <ol className="mt-14 space-y-6">
                     {PERCORSO.map((p, i) => (
                         <Rivela as="li" key={p.numero} delay={i * 70} className="scheda flex flex-col gap-4 sm:flex-row sm:gap-8">
-                            <span className="font-display text-4xl leading-none text-oro-500 sm:w-24">{p.numero}</span>
+                            <span className="font-display text-4xl leading-none text-accento sm:w-24">{p.numero}</span>
                             <div>
                                 <div className="flex flex-wrap items-baseline gap-3">
                                     <h2 className="text-xl">{p.titolo}</h2>
                                     {p.durata && (
-                                        <span className="rounded-full bg-sabbia-100 px-3 py-1 text-xs font-medium text-pietra-600">
+                                        <span className="rounded-full bg-superficie px-3 py-1 text-xs font-medium text-neutro-400">
                                             {p.durata}
                                         </span>
                                     )}
@@ -54,13 +54,13 @@ export default function ComeLavoriamo() {
                 </ol>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                     <Rivela>
                         <Immagine
                             slug="oasi-con-pontile"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -69,7 +69,7 @@ export default function ComeLavoriamo() {
                         titolo="Il metodo è della casa madre, il cantiere è nostro"
                         testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e la formazione delle squadre sono suoi. Quello che mettiamo noi è il lavoro sul campo — il sopralluogo, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
                     >
-                        <p className="mt-6 rounded-xl border border-pietra-200 bg-white/70 px-5 py-4 text-sm leading-relaxed text-pietra-600">
+                        <p className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             Per tutela del brevetto {ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di
                             cantiere, delle tecniche costruttive o degli impianti impiegati. Durante il sopralluogo ti
                             spieghiamo di persona ogni passaggio.
@@ -93,8 +93,8 @@ export default function ComeLavoriamo() {
                         'Tempi di realizzazione e modalità di pagamento',
                         'Assistenza post-consegna e stagionalità',
                     ].map((v, i) => (
-                        <Rivela as="li" key={v} delay={i * 60} className="flex gap-3 rounded-xl bg-white/70 px-5 py-4 text-[0.95rem] text-pietra-700 ring-1 ring-pietra-200">
-                            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-acqua-600" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <Rivela as="li" key={v} delay={i * 60} className="flex gap-3 rounded-xl bg-superficie px-5 py-4 text-[0.95rem] text-neutro-300 ring-1 ring-testo/[0.16]">
+                            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-accento" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                 <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             {v}

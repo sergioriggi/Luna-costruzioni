@@ -25,13 +25,20 @@ export default function Immagine({
     imgClassName = '',
     priority = false,
     ratio,
+    /** riempi: l'immagine copre il contenitore, senza imporre proporzioni. */
+    riempi = false,
     children,
 }) {
     const m = foto(slug)
     const aspetto = ratio ?? `${m.width} / ${m.height}`
 
     return (
-        <figure className={`relative overflow-hidden ${className}`} style={{ aspectRatio: aspetto }}>
+        <figure
+            // con `riempi` il posizionamento lo decide chi usa il componente:
+            // non imponiamo `relative`, che vincerebbe su `absolute`.
+            className={`overflow-hidden ${riempi ? '' : 'relative'} ${className}`}
+            style={riempi ? undefined : { aspectRatio: aspetto }}
+        >
             <img
                 src={m.lqip}
                 alt=""

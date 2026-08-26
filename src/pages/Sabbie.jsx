@@ -67,7 +67,7 @@ export default function Sabbie() {
                         <Immagine
                             slug="sabbie-naturali-campioni"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />
@@ -75,7 +75,7 @@ export default function Sabbie() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     allineamento="centro"
                     occhiello="Le tre selezioni"
@@ -86,19 +86,19 @@ export default function Sabbie() {
                         <Rivela as="li" key={s.nome} delay={i * 100} className="scheda flex flex-col">
                             <span
                                 aria-hidden="true"
-                                className="h-16 w-16 rounded-full ring-1 ring-pietra-200"
+                                className="h-16 w-16 rounded-full ring-1 ring-testo/[0.16]"
                                 style={{
                                     background: { Bianco: '#EFE9DC', Giallo: '#DFC48D', Ticino: '#CFCBBC' }[s.nome],
                                 }}
                             />
                             <h2 className="mt-5 font-display text-2xl">Sabbia {s.nome}</h2>
-                            <p className="mt-1 text-sm font-medium text-acqua-700">{s.acqua}</p>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">{s.carattere}</p>
-                            <p className="mt-auto pt-3 text-[0.9rem] leading-relaxed text-pietra-500">{s.nota}</p>
+                            <p className="mt-1 text-sm font-medium text-accento">{s.acqua}</p>
+                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{s.carattere}</p>
+                            <p className="mt-auto pt-3 text-[0.9rem] leading-relaxed text-neutro-500">{s.nota}</p>
                         </Rivela>
                     ))}
                 </ul>
-                <p className="mt-8 text-center text-sm text-pietra-500">
+                <p className="mt-8 text-center text-sm text-neutro-500">
                     I riquadri colorati sono indicativi: nessuno schermo rende fedelmente una sabbia naturale.
                 </p>
             </Sezione>
@@ -109,7 +109,7 @@ export default function Sabbie() {
                         <Immagine
                             slug="sabbie-naturali-granulometria"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -121,7 +121,7 @@ export default function Sabbie() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione occhiello="Come si vede in opera" titolo="Lo stesso materiale, tre risultati" />
                 <Rivela className="mt-12">
                     <Galleria
@@ -133,12 +133,12 @@ export default function Sabbie() {
 
             <Sezione>
                 <IntestazioneSezione occhiello="Domande frequenti" titolo="Sulla sabbia, in particolare" />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-pietra-200 border-y border-pietra-200">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
                     {FAQ_SABBIA.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-sabbia">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                                <h3 className="font-display text-lg text-pietra-900">{v.domanda}</h3>
-                                <span className="mt-1 shrink-0 text-acqua-700 transition group-open:rotate-45" aria-hidden="true">
+                                <h3 className="font-display text-lg text-testo">{v.domanda}</h3>
+                                <span className="mt-1 shrink-0 text-accento transition group-open:rotate-45" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                                     </svg>

@@ -45,7 +45,7 @@ export default function Modello() {
                         <p className="occhiello">{m.claim}</p>
                         <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{m.nomeCompleto}</h1>
                         <p className="testo-lungo mt-6">{m.testo}</p>
-                        <p className="mt-6 rounded-xl bg-acqua-50 px-5 py-4 text-[0.95rem] leading-relaxed text-acqua-900">
+                        <p className="mt-6 rounded-xl bg-accento/[0.08] px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-200">
                             <strong className="font-semibold">Quando ha senso sceglierlo:</strong> {m.adatto}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
@@ -57,7 +57,7 @@ export default function Modello() {
                         <Immagine
                             slug={m.copertina}
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />
@@ -65,7 +65,7 @@ export default function Modello() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Le sabbie di questo modello"
                     titolo={sabbieModello.length > 1 ? 'Due strade possibili' : 'La sabbia che lo caratterizza'}
@@ -75,9 +75,9 @@ export default function Modello() {
                     {sabbieModello.map((s, i) => (
                         <Rivela as="li" key={s.nome} delay={i * 90} className="scheda">
                             <h2 className="font-display text-2xl">Sabbia {s.nome}</h2>
-                            <p className="mt-1 text-sm font-medium text-acqua-700">{s.acqua}</p>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">{s.carattere}</p>
-                            <p className="mt-2 text-[0.9rem] leading-relaxed text-pietra-500">{s.nota}</p>
+                            <p className="mt-1 text-sm font-medium text-accento">{s.acqua}</p>
+                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{s.carattere}</p>
+                            <p className="mt-2 text-[0.9rem] leading-relaxed text-neutro-500">{s.nota}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -93,11 +93,11 @@ export default function Modello() {
                 </Rivela>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione occhiello="Gli altri modelli" titolo="Non è detto che sia questo il tuo" />
                 <ul className="mt-10 grid gap-6 md:grid-cols-2">
                     {altri.map((a, i) => (
-                        <Rivela as="li" key={a.slug} delay={i * 100} className="overflow-hidden rounded-2xl bg-white shadow-sm">
+                        <Rivela as="li" key={a.slug} delay={i * 100} className="overflow-hidden rounded-lg bg-superficie shadow-sm">
                             <Link to={`/modelli/${a.slug}`} className="group block">
                                 <Immagine
                                     slug={a.copertina}
@@ -107,8 +107,8 @@ export default function Modello() {
                                 />
                                 <div className="p-6">
                                     <h3 className="font-display text-xl">{a.nomeCompleto}</h3>
-                                    <p className="mt-1 text-sm text-acqua-700">{a.claim}</p>
-                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">{a.sintesi}</p>
+                                    <p className="mt-1 text-sm text-accento">{a.claim}</p>
+                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{a.sintesi}</p>
                                 </div>
                             </Link>
                         </Rivela>

@@ -115,33 +115,24 @@ export const PROVINCE = [
 ]
 
 /**
- * Navigazione principale: segue il percorso di chi valuta un lavoro
- * (che cosa realizziamo → come viene → quanto costa → chi siamo → contatti),
- * non l'articolazione del catalogo della casa madre.
+ * Navigazione principale, come nel blueprint approvato.
+ * `labelEn` alimenta il cambio di lingua.
  */
 export const NAV = [
-    {
-        to: '/piscine-rocks-design',
-        label: 'Piscine',
-        figli: [
-            { to: '/piscine-rocks-design', label: 'Come sono fatte' },
-            { to: '/modelli/caraibi', label: 'Modello Caraibi' },
-            { to: '/modelli/mediterranea', label: 'Modello Mediterranea' },
-            { to: '/modelli/alpi', label: 'Modello Alpi' },
-            { to: '/sabbie', label: 'Le sabbie' },
-        ],
-    },
-    { to: '/giardini-e-opere-in-pietra', label: 'Giardini e pietra' },
-    { to: '/galleria', label: 'Realizzazioni' },
-    { to: '/showroom', label: 'Showroom' },
-    { to: '/quanto-costa', label: 'Quanto costa' },
-    { to: '/azienda', label: 'Chi siamo' },
-    { to: '/contatti', label: 'Contatti' },
+    { to: '/piscine-rocks-design', label: 'Piscine', labelEn: 'Pools' },
+    { to: '/come-lavoriamo', label: 'Chiavi in mano', labelEn: 'Turnkey' },
+    { to: '/galleria', label: 'Realizzazioni', labelEn: 'Projects' },
+    { to: '/hotel-e-resort', label: 'Hotel e resort', labelEn: 'Hotels' },
+    { to: '/domande-frequenti', label: 'FAQ', labelEn: 'FAQ' },
+    { to: '/azienda', label: 'Sicilia', labelEn: 'Sicily' },
+    { to: '/contatti', label: 'Contatti', labelEn: 'Contact' },
 ]
 
 /** Voci secondarie, presenti nel piè di pagina. */
 export const NAV_SECONDARIA = [
-    { to: '/come-lavoriamo', label: 'Come lavoriamo' },
-    { to: '/domande-frequenti', label: 'Domande frequenti' },
-    { to: '/modelli', label: 'Tutti i modelli' },
+    { to: '/modelli', label: 'I modelli', labelEn: 'Models' },
+    { to: '/sabbie', label: 'Le sabbie', labelEn: 'Sands' },
+    { to: '/giardini-e-opere-in-pietra', label: 'Giardini e opere in pietra', labelEn: 'Gardens and stonework' },
+    { to: '/quanto-costa', label: 'Quanto costa', labelEn: 'Costs' },
+    { to: '/showroom', label: 'Showroom', labelEn: 'Showroom' },
 ]

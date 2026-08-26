@@ -44,7 +44,7 @@ export default function Showroom() {
                         </p>
                         <p className="testo-lungo mt-4">
                             Le visite sono su appuntamento, così da dedicarti tutto il tempo necessario. Chiama{' '}
-                            <a className="link-sottile font-medium text-pietra-900" href={`tel:${AZIENDA.telefonoRaw}`}>
+                            <a className="link-sottile font-medium text-testo" href={`tel:${AZIENDA.telefonoRaw}`}>
                                 {AZIENDA.telefono}
                             </a>{' '}
                             o compila il modulo qui sotto.
@@ -57,7 +57,7 @@ export default function Showroom() {
                         <Immagine
                             slug="villa-con-spiaggia-in-ghiaia"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />
@@ -65,7 +65,7 @@ export default function Showroom() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Perché venire di persona"
                     titolo="Quattro cose che una foto non racconta"
@@ -74,7 +74,7 @@ export default function Showroom() {
                     {MOTIVI.map(([t, d], i) => (
                         <Rivela as="li" key={t} delay={i * 80} className="scheda">
                             <h2 className="text-lg">{t}</h2>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{d}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{d}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -97,7 +97,7 @@ export default function Showroom() {
                 </Rivela>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <div className="mx-auto max-w-2xl">
                     <ModuloContatto titolo="Prenota la tua visita" compatto />
                 </div>

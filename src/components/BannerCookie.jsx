@@ -32,12 +32,12 @@ export default function BannerCookie() {
             role="dialog"
             aria-live="polite"
             aria-label="Preferenze cookie"
-            className="fixed inset-x-3 bottom-24 z-[70] mx-auto max-w-2xl rounded-2xl border border-pietra-200 bg-white p-5 shadow-morbida sm:bottom-6 sm:inset-x-6"
+            className="fixed inset-x-3 bottom-24 z-[70] mx-auto max-w-2xl rounded-lg border border-testo/[0.16] bg-superficie p-5 shadow-morbida sm:bottom-6 sm:inset-x-6"
         >
-            <p className="text-sm leading-relaxed text-pietra-600">
+            <p className="text-sm leading-relaxed text-neutro-400">
                 Usiamo cookie tecnici necessari al funzionamento del sito. Con il tuo consenso attiviamo anche
                 strumenti di misurazione anonima per capire quali contenuti sono più utili.{' '}
-                <Link to="/cookie-policy" className="link-sottile font-medium text-pietra-800">Cookie policy</Link>
+                <Link to="/cookie-policy" className="link-sottile font-medium text-testo">Cookie policy</Link>
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
                 <button type="button" onClick={() => decidi('accettato')} className="bottone-primario px-5 py-2.5">

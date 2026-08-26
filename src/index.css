@@ -5,23 +5,25 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --sabbia: 245 239 230;
-        --acqua: 23 138 137;
-    }
-
     html {
         scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
         -webkit-text-size-adjust: 100%;
+        color-scheme: dark;
     }
 
     body {
-        @apply bg-sabbia-50 text-pietra-800 antialiased;
+        @apply bg-notte text-testo antialiased;
+        font-size: 15px;
+        line-height: 1.55;
         font-feature-settings: 'kern' 1, 'liga' 1;
     }
 
-    h1, h2, h3, h4 {
-        @apply font-display text-pietra-900;
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display text-testo;
+        font-weight: 500;
+        line-height: 1.12;
+        letter-spacing: -0.015em;
         text-wrap: balance;
     }
 
@@ -30,7 +32,11 @@
     }
 
     :focus-visible {
-        @apply outline-none ring-2 ring-acqua-600 ring-offset-2 ring-offset-sabbia-50;
+        @apply outline-none ring-2 ring-accento ring-offset-2 ring-offset-notte;
+    }
+
+    ::selection {
+        background: color-mix(in srgb, #9184d9 30%, transparent);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -44,49 +50,70 @@
 
 @layer components {
     .contenitore {
-        @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+        @apply mx-auto w-full max-w-[1240px] px-6 sm:px-10;
     }
 
+    /* Occhiello: maiuscoletto spaziato sopra i titoli di sezione */
     .occhiello {
-        @apply text-xs font-semibold uppercase tracking-[0.22em] text-acqua-700;
+        @apply font-display text-[11px] font-medium uppercase tracking-[0.16em] text-accento-300 sm:text-xs;
     }
 
     .titolo-sezione {
-        @apply mt-3 text-3xl leading-tight sm:text-4xl lg:text-[2.75rem];
+        @apply mt-4 text-[30px] leading-[1.08] tracking-[-0.02em] sm:text-[34px] lg:text-[40px];
     }
 
     .testo-lungo {
-        @apply text-[1.0625rem] leading-relaxed text-pietra-600;
+        @apply text-[15px] leading-[1.65] text-neutro-300 sm:text-[17px] sm:leading-[1.6];
     }
 
+    /* Bottoni: contorno sottile, riempimento solo al passaggio */
     .bottone {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold
-               transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border
+               border-transparent px-5 py-2.5 font-display text-sm font-medium leading-tight
+               transition disabled:cursor-not-allowed disabled:opacity-45;
     }
 
     .bottone-primario {
-        @apply bottone bg-acqua-700 text-white shadow-lg shadow-acqua-900/20 hover:bg-acqua-800 hover:shadow-xl;
+        @apply bottone border-accento text-accento hover:bg-accento/[0.12] active:bg-accento/[0.22];
     }
 
     .bottone-secondario {
-        @apply bottone border border-pietra-300 bg-white/70 text-pietra-800 hover:border-pietra-400 hover:bg-white;
+        @apply bottone border-testo/[0.16] text-testo hover:bg-testo/[0.07] active:bg-testo/[0.14];
     }
 
-    .bottone-chiaro {
-        @apply bottone bg-white/95 text-pietra-900 shadow-lg hover:bg-white;
+    /* Variante piena, per le chiamate all'azione principali */
+    .bottone-pieno {
+        @apply bottone border-accento bg-accento text-notte hover:bg-accento-400 active:bg-accento-500;
     }
 
     .scheda {
-        @apply rounded-2xl border border-pietra-200/70 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:p-7;
+        @apply rounded-md bg-superficie p-6 sm:p-7;
     }
 
     .campo {
-        @apply w-full rounded-xl border border-pietra-300 bg-white px-4 py-3 text-[0.95rem] text-pietra-900
-               placeholder:text-pietra-400 focus:border-acqua-600 focus:outline-none focus:ring-2 focus:ring-acqua-600/30;
+        @apply w-full rounded-md border border-testo/[0.16] bg-superficie px-3 py-2.5 text-sm
+               text-testo caret-accento placeholder:text-neutro-600
+               hover:border-testo/[0.45] focus:border-accento focus:outline-none;
+    }
+
+    .etichetta {
+        @apply mb-1.5 block text-xs text-testo/70;
     }
 
     .link-sottile {
-        @apply underline decoration-acqua-600/40 underline-offset-4 transition hover:decoration-acqua-600;
+        @apply underline decoration-accento/40 underline-offset-4 transition hover:decoration-accento;
+    }
+
+    /* Riga di separazione che sfuma alle estremità */
+    .riga {
+        @apply h-px border-0;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(233, 233, 237, 0.16) 48px,
+            rgba(233, 233, 237, 0.16) calc(100% - 48px),
+            transparent
+        );
     }
 }
 

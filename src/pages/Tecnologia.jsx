@@ -39,14 +39,14 @@ export default function Tecnologia() {
                             Che cos’è una Piscina Rocks Design
                         </h1>
                         <p className="testo-lungo mt-6">
-                            È una piscina costruita con un <strong className="font-semibold text-pietra-800">brevetto</strong>:
+                            È una piscina costruita con un <strong className="font-semibold text-testo">brevetto</strong>:
                             pareti formate da rocce monolitiche, fondale in sabbia naturale, nessuna opera in cemento
                             armato. L’acqua resta limpida grazie a impianti tecnologici integrati, ma quello che vedi —
                             e che senti sotto i piedi — è materiale naturale.
                         </p>
                         <p className="testo-lungo mt-4">
-                            La tecnologia è di <strong className="font-semibold text-pietra-800">{ROCKS_DESIGN.nome}</strong>.
-                            {' '}{AZIENDA.nome} ne è <strong className="font-semibold text-pietra-800">concessionario
+                            La tecnologia è di <strong className="font-semibold text-testo">{ROCKS_DESIGN.nome}</strong>.
+                            {' '}{AZIENDA.nome} ne è <strong className="font-semibold text-testo">concessionario
                             autorizzato per la {AZIENDA.zona}</strong>: progettiamo e realizziamo sul territorio
                             applicando la Tecnologia Rocks Design®, di cui non siamo inventori ma licenziatari ufficiali.
                         </p>
@@ -61,7 +61,7 @@ export default function Tecnologia() {
                         <Immagine
                             slug="monolite-al-tramonto"
                             ratio="4 / 3"
-                            className="rounded-2xl shadow-morbida"
+                            className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -69,7 +69,7 @@ export default function Tecnologia() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     allineamento="centro"
                     occhiello="I nostri punti di forza"
@@ -79,7 +79,7 @@ export default function Tecnologia() {
                     {PUNTI_DI_FORZA.map((p, i) => (
                         <Rivela as="li" key={p.titolo} delay={i * 80} className="scheda">
                             <h2 className="text-lg">{p.titolo}</h2>
-                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-pietra-600">{p.testo}</p>
+                            <p className="mt-2.5 text-[0.95rem] leading-relaxed text-neutro-400">{p.testo}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -105,7 +105,7 @@ export default function Tecnologia() {
                                     idromassaggio: 'area-benessere-vista-alto',
                                 }[el.slug]}
                                 ratio="4 / 3"
-                                className="rounded-2xl shadow-morbida"
+                                className="rounded-lg shadow-morbida"
                                 sizes="(min-width: 1024px) 48vw, 92vw"
                             />
                             <div>
@@ -118,7 +118,7 @@ export default function Tecnologia() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-sabbia-100">
+            <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello="Ambiente e pratiche edilizie"
                     titolo="Rispetto del terreno, e che cosa comporta davvero"
@@ -126,7 +126,7 @@ export default function Tecnologia() {
                 <div className="mt-10 grid gap-6 lg:grid-cols-2">
                     <Rivela className="scheda">
                         <h3 className="text-lg">Che cosa resta nel terreno</h3>
-                        <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">
+                        <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
                             Non ci sono getti di calcestruzzo né strutture armate: la tenuta dello scavo è affidata ai
                             massi, l’impermeabilizzazione a un telo in EPDM chimicamente inerte. Rispetto a una vasca
                             in cemento cambia sia la quantità di materiale introdotto nel terreno, sia quello che
@@ -135,17 +135,17 @@ export default function Tecnologia() {
                     </Rivela>
                     <Rivela delay={100} className="scheda">
                         <h3 className="text-lg">Permessi: come stanno le cose</h3>
-                        <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">
+                        <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
                             In Italia una piscina interrata richiede un titolo edilizio. Quale, dipende dal Comune, dal
                             piano regolatore, dai vincoli sul lotto e da un quadro giurisprudenziale che non è
                             uniforme: nel 2026 diverse pronunce hanno ribadito che si tratta di nuova costruzione.
                             L’assenza di opere in cemento armato è un elemento che gioca a favore nella valutazione,
-                            ma <strong className="font-semibold text-pietra-800">non è una garanzia automatica</strong>.
+                            ma <strong className="font-semibold text-testo">non è una garanzia automatica</strong>.
                             Verifichiamo la tua situazione insieme al tuo tecnico prima di firmare qualsiasi cosa.
                         </p>
                     </Rivela>
                 </div>
-                <Rivela className="mt-6 rounded-xl border border-pietra-200 bg-white/70 px-5 py-4 text-sm leading-relaxed text-pietra-600">
+                <Rivela className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                     Se qualcuno ti promette una piscina «senza permessi» o «senza pratiche» prima ancora di aver visto
                     il terreno, stai parlando con la persona sbagliata. Anche gli effetti catastali e fiscali vanno
                     valutati caso per caso con il tuo professionista di fiducia.
@@ -161,18 +161,18 @@ export default function Tecnologia() {
                     <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                         <caption className="sr-only">Confronto tra piscina tradizionale e Piscina Rocks Design</caption>
                         <thead>
-                            <tr className="border-b border-pietra-300">
-                                <th scope="col" className="py-4 pr-4 font-semibold text-pietra-500"> </th>
-                                <th scope="col" className="py-4 pr-4 font-semibold text-pietra-500">Piscina tradizionale</th>
-                                <th scope="col" className="py-4 font-semibold text-acqua-700">Piscina Rocks Design</th>
+                            <tr className="border-b border-testo/[0.16]">
+                                <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500"> </th>
+                                <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500">Piscina tradizionale</th>
+                                <th scope="col" className="py-4 font-semibold text-accento">Piscina Rocks Design</th>
                             </tr>
                         </thead>
                         <tbody>
                             {DIFFERENZE.map(([voce, tradizionale, rocks]) => (
-                                <tr key={voce} className="border-b border-pietra-200/70">
-                                    <th scope="row" className="py-4 pr-4 font-medium text-pietra-900">{voce}</th>
-                                    <td className="py-4 pr-4 text-pietra-500">{tradizionale}</td>
-                                    <td className="py-4 font-medium text-pietra-800">{rocks}</td>
+                                <tr key={voce} className="border-b border-testo/[0.16]">
+                                    <th scope="row" className="py-4 pr-4 font-medium text-testo">{voce}</th>
+                                    <td className="py-4 pr-4 text-neutro-500">{tradizionale}</td>
+                                    <td className="py-4 font-medium text-testo">{rocks}</td>
                                 </tr>
                             ))}
                         </tbody>
