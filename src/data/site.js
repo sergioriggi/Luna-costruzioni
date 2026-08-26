@@ -7,6 +7,9 @@ export const SITE_URL = 'https://www.lunacostruzioni.it'
 
 export const AZIENDA = {
     nome: 'Luna Costruzioni srl',
+    nomeBreve: 'Luna Costruzioni',
+    /** Che cosa fa l'azienda: viene prima del marchio del prodotto. */
+    attivita: 'Piscine e opere in pietra in Sicilia',
     ruolo: 'Concessionario Autorizzato Piscine Rocks Design',
     zona: 'Sicilia',
     referente: 'Luciano Naro',
@@ -111,12 +114,34 @@ export const PROVINCE = [
     },
 ]
 
+/**
+ * Navigazione principale: segue il percorso di chi valuta un lavoro
+ * (che cosa realizziamo → come viene → quanto costa → chi siamo → contatti),
+ * non l'articolazione del catalogo della casa madre.
+ */
 export const NAV = [
-    { to: '/', label: 'Home' },
-    { to: '/piscine-rocks-design', label: 'La tecnologia' },
-    { to: '/modelli', label: 'Modelli' },
-    { to: '/galleria', label: 'Galleria' },
+    {
+        to: '/piscine-rocks-design',
+        label: 'Piscine',
+        figli: [
+            { to: '/piscine-rocks-design', label: 'Come sono fatte' },
+            { to: '/modelli/caraibi', label: 'Modello Caraibi' },
+            { to: '/modelli/mediterranea', label: 'Modello Mediterranea' },
+            { to: '/modelli/alpi', label: 'Modello Alpi' },
+            { to: '/sabbie', label: 'Le sabbie' },
+        ],
+    },
+    { to: '/giardini-e-opere-in-pietra', label: 'Giardini e pietra' },
+    { to: '/galleria', label: 'Realizzazioni' },
     { to: '/showroom', label: 'Showroom' },
-    { to: '/domande-frequenti', label: 'FAQ' },
+    { to: '/quanto-costa', label: 'Quanto costa' },
+    { to: '/azienda', label: 'Chi siamo' },
     { to: '/contatti', label: 'Contatti' },
+]
+
+/** Voci secondarie, presenti nel piè di pagina. */
+export const NAV_SECONDARIA = [
+    { to: '/come-lavoriamo', label: 'Come lavoriamo' },
+    { to: '/domande-frequenti', label: 'Domande frequenti' },
+    { to: '/modelli', label: 'Tutti i modelli' },
 ]

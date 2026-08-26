@@ -1,68 +1,80 @@
 /**
  * Contenuti editoriali del sito.
- * I testi riprendono e sviluppano il catalogo ufficiale Piscine Rocks Design:
- * il prodotto è in Tecnologia Rocks Design®, Luna Costruzioni srl ne è
- * concessionario autorizzato per la Sicilia, non l'inventrice.
+ *
+ * NOTA REDAZIONALE — testi originali
+ * ----------------------------------
+ * Tutti i testi di questo file sono scritti ex novo per Luna Costruzioni srl.
+ * Descrivono le stesse caratteristiche tecniche documentate dalla casa madre,
+ * ma non riprendono frasi né dal catalogo Piscine Rocks Design né dal sito
+ * piscinerocksdesign.com. Due ragioni:
+ *   1. il materiale della casa madre è opera sua e resta tale;
+ *   2. i contenuti duplicati fra i siti dei concessionari si penalizzano a
+ *      vicenda nei motori di ricerca: testo proprio significa posizionamento
+ *      proprio.
+ * Chi aggiorna il sito è pregato di mantenere questa regola.
+ *
+ * Il prodotto è in Tecnologia Rocks Design®: Luna Costruzioni srl è
+ * concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.
  */
 
 export const PUNTI_DI_FORZA = [
     {
-        icona: 'stella',
-        titolo: 'Ecocompatibilità',
-        testo:
-            'Rispetto dell’ambiente ed equilibrio tra uomo e natura: le Piscine Rocks Design si distinguono per un impatto ambientale ridottissimo.',
-    },
-    {
         icona: 'onde',
-        titolo: 'Fondale come il mare',
+        titolo: 'Si entra camminando, come al mare',
         testo:
-            'Realizzate con materiali riciclabili e senza cemento. La sabbia libera simula il fondale marino e resta stabile grazie alle rocce, senza generare acqua torbida.',
+            'Niente scaletta, niente gradino di cemento: il fondo digrada dolcemente e sotto i piedi c’è sabbia vera. È la differenza che i bambini notano per primi e che gli adulti non vogliono più abbandonare.',
     },
     {
-        icona: 'documento',
-        titolo: 'Burocrazia semplificata',
+        icona: 'pietra',
+        titolo: 'Pareti in roccia, non in cemento armato',
         testo:
-            'Possibilità di costruzione anche in zone protette. Le Piscine Rocks Design non comportano aumenti di tassazione per l’immobile.',
+            'La struttura è tenuta da massi monolitici scelti uno per uno. Sono loro a dare solidità alla vasca e a contenere la sabbia del fondale, senza getti di calcestruzzo.',
+    },
+    {
+        icona: 'foglia',
+        titolo: 'Materiali naturali e riciclabili',
+        testo:
+            'Pietra, sabbia, ghiaia e un telo in EPDM chimicamente inerte. Il cantiere lascia sul terreno un’impronta molto più leggera di quella di una piscina tradizionale.',
     },
     {
         icona: 'palma',
-        titolo: 'Tecnologia Rocks Design®',
+        titolo: 'Acqua limpida, gestione semplice',
         testo:
-            'Il Brevetto Rocks Design è ciò che distingue una piscina a effetto sabbia dalle altre: la struttura è progettata per restituire una gamma di riflessi cromatici spettacolare.',
+            'Dietro l’aspetto naturale lavorano impianti di filtrazione e sanificazione moderni. L’effetto è quello di una caletta; la manutenzione è quella di una piscina di qualità.',
     },
 ]
 
 export const ELEMENTI = [
     {
         slug: 'monoliti',
-        titolo: 'Monoliti naturali',
-        occhiello: 'Architettura naturale',
+        titolo: 'Massi monolitici',
+        occhiello: 'La struttura',
         testo:
-            'Le splendide rocce monolitiche creano solide pareti che assicurano stabilità alla struttura. Ogni masso viene scelto e posizionato come un’opera d’arte: forme, dimensioni e colori finali dipendono dalle rocce disponibili, ed è questo che rende ogni vasca irripetibile.',
+            'Ogni masso arriva in cantiere con la sua forma, le sue venature e il suo peso. Non si tagliano a misura: si scelgono e si posizionano come si comporrebbe una scultura, tenendo conto di dove batte il sole e di dove ci si siederà. Per questo due vasche non possono somigliarsi davvero, nemmeno volendo.',
         tag: 'monoliti',
     },
     {
         slug: 'sabbie',
         titolo: 'Sabbie naturali',
-        occhiello: 'L’effetto spiaggia',
+        occhiello: 'Il fondale',
         testo:
-            'Le sabbie naturali ricreano nel tuo giardino l’effetto spiaggia tipico delle oasi più esclusive. La sabbia assorbe, mantiene e trasmette al corpo il beneficio del calore dei raggi solari, grazie anche ai preziosi minerali di cui è naturalmente ricca. Puoi scegliere fra tre selezioni: Bianco, Giallo e Ticino.',
+            'Il fondo non è piastrellato né stampato: è sabbia. Scegliendo fra le tre selezioni disponibili — Bianco, Giallo e Ticino — decidi insieme al colore della spiaggia anche quello dell’acqua, perché è il fondale a restituire la tonalità che vedrai. La sabbia trattiene il calore del sole e lo restituisce a chi ci cammina sopra.',
         tag: 'sabbia',
     },
     {
         slug: 'cascate',
-        titolo: 'Cascate naturali',
-        occhiello: 'Il suono dell’acqua',
+        titolo: 'Cascate e giochi d’acqua',
+        occhiello: 'Il suono',
         testo:
-            'Con le cascate naturali potrai beneficiare ogni giorno del suono dell’acqua in caduta, al quale da sempre viene riconosciuto un potere rilassante legato alla meditazione. Ogni salto d’acqua è modellato sui massi realmente posati in opera.',
+            'Un salto d’acqua cambia il modo in cui si vive un giardino: copre il rumore della strada e riempie il silenzio delle sere d’estate. Le cascate vengono disegnate sui massi realmente posati, quindi il percorso dell’acqua nasce in cantiere, non su un catalogo.',
         tag: 'cascate',
     },
     {
         slug: 'idromassaggio',
-        titolo: 'Idromassaggio',
-        occhiello: 'Massaggio naturale',
+        titolo: 'Zone benessere',
+        occhiello: 'Il relax',
         testo:
-            'Le Piscine Rocks Design offrono vere e proprie aree benessere: sedute, panche e zone idromassaggio integrate nel disegno della vasca, disegnate insieme a te in fase di progetto.',
+            'Sedute ricavate nella roccia, panche sommerse a mezz’acqua, bocchette per l’idromassaggio: sono decisioni che si prendono in fase di progetto, misurando dove passerai più tempo. Il risultato è una piccola area termale a cielo aperto.',
         tag: 'idromassaggio',
     },
 ]
@@ -70,114 +82,214 @@ export const ELEMENTI = [
 export const MODELLI = [
     {
         slug: 'caraibi',
-        nome: 'Modello Caraibi',
-        claim: 'Sabbia bianca, palme, acqua turchese.',
+        nome: 'Caraibi',
+        nomeCompleto: 'Modello Caraibi',
+        claim: 'Sabbia chiara, palme, acqua turchese',
+        sintesi:
+            'La versione più scenografica: ampia spiaggia in sabbia chiara, vegetazione a foglia larga e acqua sui toni del turchese.',
         testo:
-            'Il Modello Caraibi è un’ode alla bellezza naturale dei paesaggi tropicali. Combina in modo armonioso gli elementi essenziali del paradiso caraibico per creare un’oasi privata. La sabbia bianca e quella dorata sotto i piedi, insieme all’ombra creata dalle piante tropicali, aggiungono un tocco di autenticità e trasformano il giardino in una destinazione esotica.',
-        adatto: 'Ville con giardino ampio e soleggiato, strutture ricettive, resort.',
+            'Il Caraibi punta tutto sul contrasto fra il chiaro della sabbia e il turchese dell’acqua. Funziona quando c’è spazio per una spiaggia generosa: è lì che si mettono i lettini, ed è lì che si passa metà della giornata. La piantumazione — palme, banani, graminacee — serve a chiudere la scena e a creare ombra dove serve.',
+        adatto: 'Giardini ampi e soleggiati, ville con vista, strutture ricettive che vogliono una piscina riconoscibile in fotografia.',
+        sabbie: ['Bianco', 'Giallo'],
         tag: 'caraibi',
+        copertina: 'oasi-con-pontile-e-palme',
+        galleria: ['oasi-aerea-sabbia-bianca', 'ombre-di-palme-sulla-sabbia', 'palme-al-tramonto', 'giardino-tropicale'],
     },
     {
         slug: 'mediterranea',
-        nome: 'Modello Mediterranea',
-        claim: 'Ulivi, lavanda, pietra e sabbia.',
+        nome: 'Mediterranea',
+        nomeCompleto: 'Modello Mediterranea',
+        claim: 'Ulivi, pietra chiara, profumi',
+        sintesi:
+            'Il modello che in Sicilia si integra con meno sforzo: pietra locale, essenze mediterranee, acqua sui verdi.',
         testo:
-            'Il Modello Mediterranea è un omaggio all’incantevole bellezza del paesaggio costiero mediterraneo: un’armoniosa combinazione di sabbia, pietra e piante mediterranee, tra cui ulivi, lavanda e graminacee, che oltre ad aggiungere un tocco di verde rilasciano profumi calmanti e rilassanti.',
-        adatto: 'Il modello più richiesto in Sicilia: dialoga con ulivi, agrumi e muretti a secco.',
+            'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole — ulivi, lavanda, rosmarino, graminacee. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
+        adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
+        sabbie: ['Giallo', 'Ticino'],
         tag: 'mediterranea',
+        copertina: 'villa-con-spiaggia-in-ghiaia',
+        galleria: ['solarium-in-legno', 'spiaggia-di-sabbia-privata', 'bordo-in-legno-e-ciottoli', 'riflessi-al-tramonto'],
     },
     {
         slug: 'alpi',
-        nome: 'Modello Alpi',
-        claim: 'Pietra, ghiaietto, texture rustica.',
+        nome: 'Alpi',
+        nomeCompleto: 'Modello Alpi',
+        claim: 'Roccia, ghiaietto, acqua smeraldo',
+        sintesi:
+            'Il più sobrio dei tre: prevalgono pietra e ghiaietto, la vegetazione resta rada e l’acqua vira allo smeraldo.',
         testo:
-            'Il Modello Alpi è un tributo alla maestosità e allo splendore delle montagne. L’uso predominante di pietra e ghiaietto emula la rugosità e il fascino della roccia alpina, offrendo una texture naturale e rustica. La varietà di piante come pini e piante grasse, combinata in modo armonioso agli altri elementi naturali, ricrea un piccolo angolo di paradiso.',
-        adatto: 'Case in collina, entroterra e proprietà con vegetazione rada.',
+            'L’Alpi rinuncia alla spiaggia estesa e mette in primo piano la roccia. Ghiaietto al posto della sabbia sui bordi, essenze basse e resistenti, un’acqua che tende al verde profondo dei laghi di montagna. È il modello che regge meglio le pendenze e i giardini piccoli, dove una spiaggia occuperebbe tutto lo spazio.',
+        adatto: 'Terreni in pendenza, giardini contenuti, case in collina e nell’entroterra.',
+        sabbie: ['Ticino'],
         tag: 'alpi',
+        copertina: 'ghiaietto-e-acqua-smeraldo',
+        galleria: ['masso-luminoso-nell-acqua', 'monolite-al-tramonto', 'cascata-e-punto-luce', 'acqua-in-movimento'],
+    },
+]
+
+export const SABBIE = [
+    {
+        nome: 'Bianco',
+        acqua: 'Turchese chiaro, molto luminoso',
+        carattere: 'La scelta più scenografica: massimo contrasto con il verde del giardino.',
+        nota: 'Sotto il sole pieno riflette molto; in Sicilia conviene prevedere zone d’ombra sulla spiaggia.',
+    },
+    {
+        nome: 'Giallo',
+        acqua: 'Verde acqua caldo',
+        carattere: 'La via di mezzo, quella che sceglie la maggior parte dei clienti.',
+        nota: 'Si accorda bene con pietra calcarea e tufo, materiali diffusi nell’edilizia siciliana.',
+    },
+    {
+        nome: 'Ticino',
+        acqua: 'Verde smeraldo profondo',
+        carattere: 'Il tono più naturale, da fiume di montagna.',
+        nota: 'Regge bene la vicinanza a rocce scure e vegetazione fitta.',
     },
 ]
 
 export const PERCORSO = [
     {
         numero: '01',
-        titolo: 'Sopralluogo in Sicilia',
+        titolo: 'Sopralluogo',
+        durata: 'Circa un’ora',
         testo:
-            'Veniamo da te. Misuriamo il giardino, valutiamo esposizione, pendenze, accessi e vegetazione esistente. Non esiste un catalogo di misure: l’opera nasce dalla morfologia del tuo spazio.',
+            'Veniamo a vedere il giardino. Misuriamo, controlliamo esposizione, pendenze e da dove possono passare i mezzi, e ti diciamo subito che cosa è realistico fare in quello spazio. Se non è il caso, te lo diciamo lì.',
     },
     {
         numero: '02',
-        titolo: 'Progetto sartoriale',
+        titolo: 'Progetto e preventivo',
+        durata: '1–2 settimane',
         testo:
-            'Scegliamo insieme modello, forma, profondità, sabbia, cascate e aree idromassaggio. Ti presentiamo il progetto con un preventivo dettagliato e chiaro, voce per voce.',
+            'Definiamo modello, forma, profondità, sabbia, cascate e zone benessere. Il preventivo arriva scomposto voce per voce: sai che cosa stai comprando e che cosa puoi togliere se il budget stringe.',
     },
     {
         numero: '03',
-        titolo: 'Pratiche e permessi',
+        titolo: 'Pratiche edilizie',
+        durata: 'Variabile per Comune',
         testo:
-            'Ti affianchiamo nell’iter autorizzativo. Grazie alla metodologia costruttiva Rocks Design, che non impiega cemento armato, le vasche possono essere equiparate a laghetti e depositi d’acqua: un vantaggio concreto anche in zone protette.',
+            'Verifichiamo con te e con il tuo tecnico quale titolo edilizio serve nel tuo Comune e prepariamo la documentazione. Non promettiamo scorciatoie: ti diciamo in anticipo tempi e vincoli reali.',
     },
     {
         numero: '04',
         titolo: 'Realizzazione',
+        durata: 'Definita in contratto',
         testo:
-            'Il cantiere è seguito dalle nostre squadre con la Tecnologia Rocks Design®. Tempi definiti in contratto e un solo referente per tutta la durata dei lavori.',
+            'Il cantiere è seguito dalle nostre squadre con la Tecnologia Rocks Design®. Un solo referente per tutta la durata dei lavori, e un giardino restituito pulito.',
     },
     {
         numero: '05',
         titolo: 'Consegna e assistenza',
+        durata: 'Continua',
         testo:
-            'Ti consegniamo la piscina in funzione, con istruzioni d’uso e piano di manutenzione. Restiamo il tuo riferimento in Sicilia per assistenza e stagionalità.',
+            'Ti consegniamo la piscina in funzione e ti mostriamo di persona come gestirla. Poi restiamo il tuo riferimento in Sicilia per apertura, chiusura stagionale e assistenza.',
+    },
+]
+
+/**
+ * Voci di costo: nessun listino, ma i fattori che spostano davvero il prezzo.
+ * Serve a qualificare i contatti e a intercettare le ricerche «quanto costa».
+ */
+export const FATTORI_COSTO = [
+    {
+        titolo: 'Dimensione e profondità',
+        testo:
+            'È la voce principale, ma non cresce in modo lineare: raddoppiare la superficie non raddoppia il prezzo. Le vasche molto piccole hanno un costo al metro quadro più alto, perché scavo, impianti e trasporti restano quasi invariati.',
+    },
+    {
+        titolo: 'Accessibilità del giardino',
+        testo:
+            'I massi arrivano con mezzi pesanti. Se il camion e l’escavatore entrano senza problemi si risparmia; se bisogna passare da un cancello stretto, smontare una recinzione o lavorare in pendenza, i tempi si allungano.',
+    },
+    {
+        titolo: 'Modello e selezione delle rocce',
+        testo:
+            'Un Alpi con ghiaietto e vegetazione rada costa meno di un Caraibi con spiaggia estesa e piantumazione tropicale. Anche la scelta dei singoli massi incide: quelli di grande formato richiedono mezzi più impegnativi.',
+    },
+    {
+        titolo: 'Cascate, zone benessere, illuminazione',
+        testo:
+            'Sono le voci che si possono aggiungere dopo. Molti clienti predispongono in fase di cantiere e completano l’anno successivo: costa meno che intervenire da zero.',
+    },
+    {
+        titolo: 'Opere di contorno',
+        testo:
+            'Spiaggia, ciottolati, pontili, solarium in legno, muri di contenimento e verde. Spesso pesano quanto la vasca: vale la pena deciderle insieme fin dall’inizio.',
     },
 ]
 
 export const FAQ = [
     {
-        domanda: 'Che cos’è una Piscina Rocks Design?',
+        domanda: 'Che cos’è esattamente una Piscina Rocks Design?',
         risposta:
-            'È una piscina realizzata con la Tecnologia Rocks Design®: rocce monolitiche a formare le pareti, sabbie naturali sul fondale e nessuna opera in cemento armato. L’acqua è limpida e cristallina grazie a impianti tecnologici integrati. Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia: la tecnologia è brevettata dalla casa madre, noi la realizziamo sul territorio.',
+            'È una piscina realizzata con la Tecnologia Rocks Design®: le pareti sono formate da massi monolitici, il fondale è in sabbia naturale e non ci sono getti di cemento armato. L’acqua è mantenuta limpida da impianti di filtrazione e sanificazione. Il risultato somiglia a una caletta o a un’ansa di fiume, ma è una piscina a tutti gli effetti. La tecnologia è di Piscine Rocks Design; Luna Costruzioni srl è il concessionario autorizzato che la realizza in Sicilia.',
     },
     {
-        domanda: 'In cosa è diversa da una piscina tradizionale?',
+        domanda: 'È la stessa cosa di una biopiscina con le piante?',
         risposta:
-            'Una piscina tradizionale è una vasca in cemento o in pannelli, con forme da catalogo. Una Piscina Rocks Design è un’opera su misura: nessuna è uguale a un’altra, la forma segue il giardino e i materiali sono naturali e riciclabili. Cambia anche la sensazione: si entra in acqua camminando sulla sabbia, come in spiaggia.',
-    },
-    {
-        domanda: 'Serve un permesso? Aumenta la tassazione dell’immobile?',
-        risposta:
-            'Grazie alla metodologia costruttiva, che non impiega cemento armato né materiali nocivi per l’ambiente, le Piscine Rocks Design possono essere equiparate ai laghetti e ai depositi d’acqua, semplificando l’iter dei permessi anche in zone protette. Inoltre non comportano aumenti di tassazione per l’immobile. Ti affianchiamo noi nella verifica caso per caso con il tuo Comune.',
-    },
-    {
-        domanda: 'L’acqua resta limpida con la sabbia sul fondo?',
-        risposta:
-            'Sì. La sabbia libera simula il fondale marino e rimane stabile grazie alle rocce, senza generare acqua torbida. Le vasche utilizzano tecnologie avanzate che garantiscono sempre acque limpide e cristalline.',
+            'No, ed è la confusione più frequente. Le biopiscine depurano l’acqua con la fitodepurazione, cioè con piante acquatiche e zone di rigenerazione. Una Piscina Rocks Design usa impianti tecnologici tradizionali: la parte naturale sono i materiali — pietra, sabbia, ghiaia — non il sistema di trattamento dell’acqua. Per questo l’acqua resta cristallina e la gestione è quella di una piscina normale.',
     },
     {
         domanda: 'Quanto costa una Piscina Rocks Design in Sicilia?',
         risposta:
-            'Non esiste un listino: il prezzo dipende da dimensioni, morfologia del terreno, modello scelto e dagli elementi che decidi di integrare (cascate, idromassaggio, illuminazione, spiaggia in sabbia). Dopo il sopralluogo ti consegniamo un preventivo dettagliato e senza impegno.',
+            'Non esiste un listino, perché non esistono misure standard. Il prezzo dipende da superficie, profondità, accessibilità del giardino, modello scelto e dagli elementi che decidi di integrare. Nella pagina dedicata trovi spiegate tutte le voci che spostano il preventivo; dopo il sopralluogo ricevi un documento dettagliato, gratuito e senza impegno.',
     },
     {
-        domanda: 'Posso vedere dal vivo una Piscina Rocks Design?',
+        domanda: 'Servono permessi? E la piscina fa aumentare le tasse sulla casa?',
         risposta:
-            'Sì. Vieni a trovarci presso la nostra sede in Sicilia: potrai toccare le sabbie naturali, vedere i monoliti e capire davvero la differenza rispetto a una piscina tradizionale. Prenota una visita chiamando Luciano Naro.',
+            'Una piscina interrata richiede un titolo edilizio: quale, dipende dal Comune, dal piano regolatore e dai vincoli sul lotto, e la giurisprudenza in materia è tutt’altro che uniforme. L’assenza di opere in cemento armato è un elemento a favore nella valutazione, ma non è mai una garanzia automatica: chiunque prometta il contrario senza aver visto il tuo terreno sta semplificando troppo. Verifichiamo insieme al tuo tecnico la situazione specifica prima di firmare qualsiasi cosa. Lo stesso vale per gli effetti catastali e fiscali, che vanno valutati caso per caso con il tuo professionista di fiducia.',
+    },
+    {
+        domanda: 'La sabbia sul fondo non intorbidisce l’acqua?',
+        risposta:
+            'No. La sabbia è granulometricamente selezionata e resta stabile, trattenuta dalla conformazione del fondale e dai massi. L’impianto di filtrazione lavora costantemente e l’acqua rimane limpida. Alla consegna ti spieghiamo di persona come si pulisce il fondale: è più semplice di quanto sembri e non richiede di svuotare la vasca.',
+    },
+    {
+        domanda: 'Quanta manutenzione richiede?',
+        risposta:
+            'È paragonabile a quella di una piscina di qualità: controllo periodico dei valori dell’acqua, pulizia e apertura e chiusura stagionale. In Sicilia la stagione è lunga, quindi molti clienti la tengono in funzione da aprile a ottobre. Alla consegna lasciamo istruzioni scritte e restiamo disponibili per l’assistenza.',
     },
     {
         domanda: 'Quanto tempo serve per realizzarla?',
         risposta:
-            'I tempi dipendono dalle dimensioni e dagli accessi al giardino, e vengono definiti in contratto prima dell’inizio dei lavori. In genere una realizzazione richiede alcune settimane: molto meno di un cantiere tradizionale in cemento armato.',
+            'Dipende dalle dimensioni, dagli accessi al giardino e dalle opere di contorno. I tempi vengono messi per iscritto in contratto prima di iniziare, non stimati a voce. In generale un cantiere Rocks Design è più rapido di una piscina tradizionale in cemento armato, perché non ci sono tempi di maturazione dei getti.',
     },
     {
-        domanda: 'Che manutenzione richiede?',
+        domanda: 'Si può fare su un terreno in pendenza?',
         risposta:
-            'La gestione ordinaria è paragonabile a quella di una piscina di qualità: controllo dell’acqua, pulizia e apertura/chiusura stagionale. Alla consegna ti lasciamo istruzioni chiare e restiamo disponibili per l’assistenza in tutta la Sicilia.',
+            'Spesso sì, ed è anzi uno dei casi in cui questa tecnologia dà il meglio: i massi permettono di gestire dislivelli che con una vasca rettangolare richiederebbero muri di contenimento importanti. Il modello Alpi nasce proprio per questi contesti. Serve però un sopralluogo: la pendenza va misurata, non stimata a occhio.',
+    },
+    {
+        domanda: 'Posso vederne una dal vivo prima di decidere?',
+        risposta:
+            'Sì, ed è quello che consigliamo a tutti. Vieni a trovarci presso la nostra sede: potrai camminare sulla sabbia, toccare i massi e vedere l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Le visite sono su appuntamento.',
+    },
+    {
+        domanda: 'Lavorate anche con hotel, agriturismi e b&b?',
+        risposta:
+            'Sì. Per le strutture ricettive una piscina riconoscibile è un argomento di vendita diretto: entra nelle fotografie degli annunci, nelle recensioni e nelle richieste dei clienti. Ci occupiamo anche del coordinamento con i vostri tecnici per gli adempimenti richiesti alle piscine ad uso pubblico.',
     },
 ]
 
 export const DIFFERENZE = [
-    ['Forma', 'Da catalogo, geometrica', 'Su misura sulla morfologia del giardino'],
-    ['Struttura', 'Cemento armato o pannelli', 'Rocce monolitiche, senza cemento'],
-    ['Fondale', 'Piastrelle o telo stampato', 'Sabbie naturali: Bianco, Giallo, Ticino'],
-    ['Ingresso in acqua', 'Scaletta o gradini', 'Spiaggia digradante, come al mare'],
-    ['Impatto ambientale', 'Elevato, materiali non riciclabili', 'Ridottissimo, materiali riciclabili'],
-    ['Inserimento nel paesaggio', 'Elemento aggiunto', 'Sembra esistere da sempre'],
+    ['Forma', 'Rettangolare o da catalogo', 'Disegnata sul giardino, mai due uguali'],
+    ['Struttura', 'Cemento armato o pannelli prefabbricati', 'Massi monolitici, senza getti'],
+    ['Fondale', 'Piastrelle, PVC o telo stampato', 'Sabbia naturale: Bianco, Giallo o Ticino'],
+    ['Ingresso in acqua', 'Scaletta o gradini', 'Spiaggia digradante, si entra camminando'],
+    ['Colore dell’acqua', 'Deciso dal rivestimento', 'Deciso dalla sabbia e dalla profondità'],
+    ['Bordo', 'Marmo, gres o pietra tagliata', 'Roccia, ghiaia e sabbia'],
+    ['Cantiere', 'Tempi di maturazione dei getti', 'Nessun getto: posa a secco degli elementi'],
+    ['Nel paesaggio', 'Elemento aggiunto, riconoscibile', 'Sembra esistere da prima della casa'],
 ]
+
+/**
+ * Recensioni verificate dei clienti siciliani di Luna Costruzioni.
+ *
+ * Da compilare SOLO con recensioni reali e verificabili raccolte dall'azienda
+ * (profilo Google, e-mail di consenso, moduli di soddisfazione). Finché
+ * l'elenco è vuoto la sezione non viene mostrata: meglio una sezione assente
+ * che una testimonianza inventata.
+ *
+ * Formato: { testo, autore, luogo, fonte, data }
+ */
+export const RECENSIONI = []

@@ -22,7 +22,7 @@ export default function Showroom() {
     return (
         <>
             <Seo
-                titolo="Piscina espositiva: vieni a trovarci presso la nostra sede | Luna Costruzioni Sicilia"
+                titolo="Showroom: vieni a trovarci presso la nostra sede | Luna Costruzioni, Sicilia"
                 descrizione="Visita la piscina espositiva Rocks Design di Luna Costruzioni srl in Sicilia. Tocca le sabbie naturali, vedi i monoliti e l'acqua in funzione. Visite su appuntamento."
                 percorso="/showroom"
                 immagine="https://www.lunacostruzioni.it/media/villa-con-spiaggia-in-ghiaia-1280.jpg"

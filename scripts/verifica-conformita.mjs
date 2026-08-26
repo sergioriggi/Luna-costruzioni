@@ -13,7 +13,11 @@
  *     che contiene immagini delle fasi di costruzione;
  *  4. ogni fotografia pubblicata provenga dalla whitelist e porti la
  *     filigrana «Piscine Rocks Design»;
- *  5. ogni pagina indicizzabile dichiari la zona di riferimento (SEO locale).
+ *  5. ogni pagina indicizzabile dichiari la zona di riferimento (SEO locale);
+ *  6. non compaiano frasi riprese alla lettera dal catalogo o dal sito della
+ *     casa madre. Oltre alla questione dei diritti, testi identici a quelli
+ *     di piscinerocksdesign.com o di un altro concessionario si penalizzano
+ *     a vicenda nei motori di ricerca: il testo va scritto, non copiato.
  */
 import fs from 'fs/promises'
 import path from 'path'
@@ -21,6 +25,30 @@ import { PHOTOS } from './media.config.mjs'
 import { ROCKS_DESIGN, AZIENDA } from '../src/data/site.js'
 
 const DIST = path.resolve('./dist')
+
+/**
+ * Frasi tratte dal catalogo e dal sito ufficiale Piscine Rocks Design.
+ * Sono qui come sentinelle: se ricompaiono nel sito, significa che qualcuno
+ * ha incollato del testo invece di scriverlo. Ampliare l'elenco quando si
+ * riceve nuovo materiale dalla casa madre.
+ */
+const FRASI_DELLA_CASA_MADRE = [
+    'splendide rocce monolitiche',
+    'ode alla bellezza naturale',
+    'tributo alla maestosità',
+    'omaggio all’incantevole bellezza',
+    "omaggio all'incantevole bellezza",
+    'fondale come il mare',
+    'crediamo nel rispetto dell’ambiente',
+    'equiparate ai laghetti',
+    'riflessi cromatici',
+    'rumore bianco',
+    'angolo di paradiso',
+    'tre generazioni',
+    'trova il tuo angolo di paradiso',
+    'la musica dell’acqua',
+    'prodotto sartoriale',
+]
 const errori = []
 const avvisi = []
 
@@ -74,6 +102,14 @@ for (const file of pagine) {
     for (const trovato of html.matchAll(/\/media\/([a-z0-9-]+)-\d+\.(webp|jpg)/g)) {
         if (!PHOTOS.some(p => p.slug === trovato[1])) {
             errori.push(`${rel}: immagine fuori whitelist (${trovato[1]}).`)
+        }
+    }
+
+    // 6. nessuna frase ripresa dai materiali della casa madre
+    const minuscolo = testoVisibile.toLowerCase()
+    for (const frase of FRASI_DELLA_CASA_MADRE) {
+        if (minuscolo.includes(frase.toLowerCase())) {
+            errori.push(`${rel}: frase ripresa dai materiali della casa madre («${frase}»): riscriverla.`)
         }
     }
 

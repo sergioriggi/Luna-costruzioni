@@ -12,7 +12,7 @@ export default function Faq() {
     return (
         <>
             <Seo
-                titolo="Domande frequenti sulle Piscine Rocks Design | Luna Costruzioni Sicilia"
+                titolo="Domande frequenti | Luna Costruzioni, Sicilia"
                 descrizione="Permessi, costi, manutenzione, tempi di realizzazione: le risposte alle domande più frequenti sulle Piscine Rocks Design in Sicilia."
                 percorso="/domande-frequenti"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ)]}

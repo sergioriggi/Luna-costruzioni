@@ -23,7 +23,7 @@ function faqLocali(p) {
         {
             domanda: `Servono permessi particolari nel Comune di ${p.nome}?`,
             risposta:
-                'La metodologia costruttiva Rocks Design non impiega cemento armato né materiali nocivi: le vasche possono essere equiparate a laghetti e depositi d’acqua, semplificando l’iter anche in zone protette. Verifichiamo insieme la situazione specifica del tuo lotto con l’ufficio tecnico comunale.',
+                `Sì: una piscina interrata richiede un titolo edilizio, e quale dipende dal regolamento del Comune di ${p.nome}, dai vincoli sul lotto e dal quadro normativo vigente. L’assenza di opere in cemento armato è un elemento a favore nella valutazione, ma non sostituisce la pratica. Verifichiamo la tua situazione specifica con l’ufficio tecnico comunale e con il tuo professionista prima di impegnarti in qualsiasi modo.`,
         },
     ]
 }
@@ -57,8 +57,8 @@ export default function Zona() {
     return (
         <>
             <Seo
-                titolo={`Piscine Rocks Design a ${p.nome} | Luna Costruzioni srl, Concessionario Autorizzato`}
-                descrizione={`Piscine in Tecnologia Rocks Design® in provincia di ${p.nome}: rocce monolitiche, sabbie naturali, senza cemento. Luna Costruzioni srl, concessionario autorizzato Piscine Rocks Design per la Sicilia. Sopralluogo gratuito a ${p.localita.slice(0, 3).join(', ')}.`}
+                titolo={`Piscine con spiaggia in sabbia a ${p.nome} | Luna Costruzioni`}
+                descrizione={`Piscine con spiaggia in sabbia a ${p.nome}: fondale in sabbia naturale, pareti in roccia, niente cemento armato. Luna Costruzioni srl, concessionario autorizzato Piscine Rocks Design per la Sicilia. Sopralluogo e preventivo gratuiti a ${p.localita.slice(0, 3).join(', ')}.`}
                 percorso={`/piscine-rocks-design/${p.slug}`}
                 schema={[
                     schemaBriciole(briciole),

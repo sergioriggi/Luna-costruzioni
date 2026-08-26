@@ -7,6 +7,11 @@ import BannerCookie from './components/BannerCookie'
 import Home from './pages/Home'
 import Tecnologia from './pages/Tecnologia'
 import Modelli from './pages/Modelli'
+import Modello from './pages/Modello'
+import Azienda from './pages/Azienda'
+import Sabbie from './pages/Sabbie'
+import Giardini from './pages/Giardini'
+import QuantoCosta from './pages/QuantoCosta'
 import GalleriaPagina from './pages/GalleriaPagina'
 import Showroom from './pages/Showroom'
 import ComeLavoriamo from './pages/ComeLavoriamo'
@@ -42,7 +47,12 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/piscine-rocks-design" element={<Tecnologia />} />
+                    <Route path="/azienda" element={<Azienda />} />
                     <Route path="/modelli" element={<Modelli />} />
+                    <Route path="/modelli/:modello" element={<Modello />} />
+                    <Route path="/sabbie" element={<Sabbie />} />
+                    <Route path="/giardini-e-opere-in-pietra" element={<Giardini />} />
+                    <Route path="/quanto-costa" element={<QuantoCosta />} />
                     <Route path="/galleria" element={<GalleriaPagina />} />
                     <Route path="/showroom" element={<Showroom />} />
                     <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />

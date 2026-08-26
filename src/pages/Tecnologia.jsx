@@ -15,8 +15,8 @@ export default function Tecnologia() {
     return (
         <>
             <Seo
-                titolo="La Piscina Rocks Design: com’è fatta e perché è diversa | Luna Costruzioni Sicilia"
-                descrizione="Rocce monolitiche, sabbie naturali, nessun cemento armato: la Tecnologia Rocks Design® spiegata. Luna Costruzioni srl, concessionario autorizzato Piscine Rocks Design per la Sicilia."
+                titolo="Come è fatta una piscina di sabbia | Luna Costruzioni, Sicilia"
+                descrizione="Come è fatta una piscina di sabbia in Tecnologia Rocks Design®: pareti in massi monolitici, fondale in sabbia naturale, nessun cemento armato. Differenze con biopiscine e piscine tradizionali. Luna Costruzioni srl, concessionario per la Sicilia."
                 percorso="/piscine-rocks-design"
                 immagine="https://www.lunacostruzioni.it/media/monolite-al-tramonto-1280.jpg"
                 schema={[
@@ -120,31 +120,36 @@ export default function Tecnologia() {
 
             <Sezione sfondo="bg-sabbia-100">
                 <IntestazioneSezione
-                    occhiello="Ambiente e permessi"
-                    titolo="Rispetto del terreno, iter più semplice"
+                    occhiello="Ambiente e pratiche edilizie"
+                    titolo="Rispetto del terreno, e che cosa comporta davvero"
                 />
                 <div className="mt-10 grid gap-6 lg:grid-cols-2">
                     <Rivela className="scheda">
-                        <h3 className="text-lg">Rispetto e stabilità</h3>
+                        <h3 className="text-lg">Che cosa resta nel terreno</h3>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">
-                            Le Piscine Rocks Design riducono notevolmente l’impatto ambientale rispetto alle piscine
-                            tradizionali. Il rispetto per il terreno è garantito dalla totale assenza di opere in
-                            cemento o altri materiali strutturali invasivi; la stabilità dello scavo è assicurata dalle
-                            pareti realizzate con rocce monolitiche. Le impermeabilizzazioni a contatto con il terreno
-                            usano un EPDM chimicamente stabile, inerte e senza additivi inquinanti.
+                            Non ci sono getti di calcestruzzo né strutture armate: la tenuta dello scavo è affidata ai
+                            massi, l’impermeabilizzazione a un telo in EPDM chimicamente inerte. Rispetto a una vasca
+                            in cemento cambia sia la quantità di materiale introdotto nel terreno, sia quello che
+                            resterebbe da smaltire in caso di rimozione futura.
                         </p>
                     </Rivela>
                     <Rivela delay={100} className="scheda">
-                        <h3 className="text-lg">Permessi anche in zone protette</h3>
+                        <h3 className="text-lg">Permessi: come stanno le cose</h3>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-pietra-600">
-                            Grazie alla metodologia costruttiva, che non implica in alcun modo l’uso di cemento armato
-                            né di materiali nocivi per l’ambiente, le Piscine Rocks Design possono essere equiparate ai
-                            laghetti e ai depositi d’acqua: questo facilita il processo per ottenere i permessi di
-                            costruzione anche in zone protette. Inoltre non comportano aumenti di tassazione per
-                            l’immobile.
+                            In Italia una piscina interrata richiede un titolo edilizio. Quale, dipende dal Comune, dal
+                            piano regolatore, dai vincoli sul lotto e da un quadro giurisprudenziale che non è
+                            uniforme: nel 2026 diverse pronunce hanno ribadito che si tratta di nuova costruzione.
+                            L’assenza di opere in cemento armato è un elemento che gioca a favore nella valutazione,
+                            ma <strong className="font-semibold text-pietra-800">non è una garanzia automatica</strong>.
+                            Verifichiamo la tua situazione insieme al tuo tecnico prima di firmare qualsiasi cosa.
                         </p>
                     </Rivela>
                 </div>
+                <Rivela className="mt-6 rounded-xl border border-pietra-200 bg-white/70 px-5 py-4 text-sm leading-relaxed text-pietra-600">
+                    Se qualcuno ti promette una piscina «senza permessi» o «senza pratiche» prima ancora di aver visto
+                    il terreno, stai parlando con la persona sbagliata. Anche gli effetti catastali e fiscali vanno
+                    valutati caso per caso con il tuo professionista di fiducia.
+                </Rivela>
             </Sezione>
 
             <Sezione>

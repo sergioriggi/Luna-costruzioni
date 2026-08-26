@@ -8,7 +8,12 @@
  * «PISCINE ROCKS DESIGN», come prescritto dalle direttive del
  * dipartimento marketing Rocks Design.
  *
- *   npm run media
+ *   npm run media              rigenera immagini e manifest
+ *   npm run media -- --manifest rigenera solo src/data/media.json
+ *
+ * La modalità `--manifest` serve quando cambiano solo i testi (alt, didascalie,
+ * tag): evita di ricodificare centinaia di file identici e di sporcare la
+ * cronologia del repository con 20 MB di differenze binarie.
  */
 import fs from 'fs/promises'
 import path from 'path'
@@ -40,6 +45,8 @@ async function lqip(src) {
     return `data:image/webp;base64,${buf.toString('base64')}`
 }
 
+const soloManifest = process.argv.includes('--manifest')
+
 async function run() {
     await fs.mkdir(OUT_DIR, { recursive: true })
     await fs.mkdir(path.dirname(DATA_FILE), { recursive: true })
@@ -65,6 +72,10 @@ async function run() {
 
         const sources = []
         for (const w of widths) {
+            if (soloManifest) {
+                sources.push(w)
+                continue
+            }
             const base = sharp(src).rotate().resize({ width: w, withoutEnlargement: true })
             const composited = photo.noWatermark
                 ? base
@@ -99,7 +110,11 @@ async function run() {
     }
 
     await fs.writeFile(DATA_FILE, JSON.stringify(manifest, null, 2) + '\n')
-    console.log(`\n${manifest.length} immagini pubblicate in public/media, manifest in src/data/media.json`)
+    console.log(
+        soloManifest
+            ? `\nManifest aggiornato per ${manifest.length} immagini (file grafici invariati).`
+            : `\n${manifest.length} immagini pubblicate in public/media, manifest in src/data/media.json`,
+    )
 }
 
 run().catch(err => { console.error(err); process.exit(1) })

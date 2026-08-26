@@ -14,7 +14,7 @@ export default function ComeLavoriamo() {
     return (
         <>
             <Seo
-                titolo="Come lavoriamo: dal sopralluogo alla consegna | Luna Costruzioni Sicilia"
+                titolo="Come lavoriamo, dal sopralluogo alla consegna | Luna Costruzioni, Sicilia"
                 descrizione="Cinque passaggi per la tua Piscina Rocks Design in Sicilia: sopralluogo, progetto sartoriale, pratiche e permessi, realizzazione, consegna e assistenza. Un unico referente."
                 percorso="/come-lavoriamo"
                 schema={schemaBriciole(BRICIOLE)}
@@ -39,7 +39,14 @@ export default function ComeLavoriamo() {
                         <Rivela as="li" key={p.numero} delay={i * 70} className="scheda flex flex-col gap-4 sm:flex-row sm:gap-8">
                             <span className="font-display text-4xl leading-none text-oro-500 sm:w-24">{p.numero}</span>
                             <div>
-                                <h2 className="text-xl">{p.titolo}</h2>
+                                <div className="flex flex-wrap items-baseline gap-3">
+                                    <h2 className="text-xl">{p.titolo}</h2>
+                                    {p.durata && (
+                                        <span className="rounded-full bg-sabbia-100 px-3 py-1 text-xs font-medium text-pietra-600">
+                                            {p.durata}
+                                        </span>
+                                    )}
+                                </div>
                                 <p className="testo-lungo mt-2">{p.testo}</p>
                             </div>
                         </Rivela>
@@ -58,9 +65,9 @@ export default function ComeLavoriamo() {
                         />
                     </Rivela>
                     <IntestazioneSezione
-                        occhiello="Tradizione e innovazione"
-                        titolo="Chi manovra le rocce"
-                        testo="Le Piscine Rocks Design sono realizzate nel rispetto di una tradizione di famiglia che lavora e manovra rocce monolitiche da tre generazioni. Seppur create con elementi naturali e inserite armonicamente nel contesto circostante, usufruiscono di tecnologie avanzate che ne consentono il perfetto funzionamento, garantendo sempre acque limpide e cristalline."
+                        occhiello="Chi fa cosa"
+                        titolo="Il metodo è della casa madre, il cantiere è nostro"
+                        testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e la formazione delle squadre sono suoi. Quello che mettiamo noi è il lavoro sul campo — il sopralluogo, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
                     >
                         <p className="mt-6 rounded-xl border border-pietra-200 bg-white/70 px-5 py-4 text-sm leading-relaxed text-pietra-600">
                             Per tutela del brevetto {ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di

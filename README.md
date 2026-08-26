@@ -1,11 +1,20 @@
 # Luna Costruzioni srl — sito web
 
-Sito ufficiale di **Luna Costruzioni srl**, *Concessionario Autorizzato Piscine Rocks Design*
-per la **Sicilia**. Realizzato in italiano, con SEO locale sulle nove province siciliane.
+Sito ufficiale di **Luna Costruzioni srl**, impresa siciliana specializzata in
+**piscine con spiaggia in sabbia** e **giardini e opere in pietra**. In italiano,
+con SEO locale sulle nove province.
 
-> Il prodotto venduto è in **Tecnologia Rocks Design®**. Il brevetto e il marchio sono di
-> *Piscine Rocks Design*: Luna Costruzioni srl ne è concessionario autorizzato, **non**
-> l'inventrice. Ogni contenuto del sito rispetta questa distinzione.
+> **Principio guida — di chi è questo sito**
+>
+> È il sito del *concessionario*, non quello della casa madre. Il cliente deve capire
+> in tre secondi che sta parlando con **Luna Costruzioni**, un'impresa che opera in
+> Sicilia. Il marchio **Piscine Rocks Design** compare come *tecnologia del prodotto*
+> e come *credenziale*, mai come intestazione del sito.
+>
+> In pratica: Luna Costruzioni apre ogni titolo di pagina e domina la testata; il logo
+> del concessionario sta accanto al nome, non al suo posto. Il brevetto e il marchio
+> sono di *Piscine Rocks Design*, di cui Luna Costruzioni è concessionario autorizzato
+> per la Sicilia — **non** l'inventrice — e il sito lo dichiara apertamente.
 
 ---
 
@@ -48,6 +57,7 @@ npm run preview    # anteprima identica alla produzione
 | `npm run verifica` | Verifica automatica delle direttive marketing Rocks Design su `dist/` |
 | `npm run brand` | Estrae il logo ufficiale dal catalogo e genera la filigrana |
 | `npm run media` | Genera le immagini responsive filigranate da `media-sources/` |
+| `npm run media:manifest` | Rigenera solo `src/data/media.json` (quando cambiano didascalie o tag) |
 | `npm run fonts` | Scarica e self-hosta Marcellus e Inter |
 | `npm run assets` | `brand` + `media` + `fonts` |
 | `npm run lint` | Oxlint |
@@ -58,13 +68,18 @@ npm run preview    # anteprima identica alla produzione
 
 | Rotta | Pagina | Ruolo |
 | --- | --- | --- |
-| `/` | Home | Racconto completo del prodotto + modulo contatto |
-| `/piscine-rocks-design` | La tecnologia | Che cos'è, punti di forza, elementi, ambiente e permessi |
-| `/modelli` | Modelli | Caraibi, Mediterranea, Alpi + le tre sabbie |
-| `/galleria` | Galleria | Tutte le realizzazioni, filtrabili, con lightbox |
+| `/` | Home | L'offerta di Luna Costruzioni + modulo contatto |
+| `/piscine-rocks-design` | Come sono fatte | La tecnologia del prodotto, differenze, ambiente e permessi |
+| `/modelli` | I modelli | Indice: Caraibi, Mediterranea, Alpi |
+| `/modelli/caraibi` `/modelli/mediterranea` `/modelli/alpi` | Pagina per modello | Testo, sabbie consigliate, galleria dedicata |
+| `/sabbie` | Le sabbie | Bianco, Giallo, Ticino e il colore d'acqua che restituiscono |
+| `/giardini-e-opere-in-pietra` | Giardini e pietra | Il secondo mestiere dell'impresa, anche senza piscina |
+| `/galleria` | Realizzazioni | Tutte le foto, filtrabili, con lightbox |
 | `/showroom` | Showroom | «Vieni a trovarci presso la nostra sede» |
-| `/come-lavoriamo` | Metodo | I cinque passaggi, dal sopralluogo alla consegna |
+| `/quanto-costa` | Quanto costa | Le voci che spostano il preventivo — pagina ad alta intenzione |
+| `/come-lavoriamo` | Metodo | I cinque passaggi, con le durate |
 | `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
+| `/azienda` | Chi siamo | L'impresa, gli impegni, le province |
 | `/contatti` | Contatti | NAP completo + modulo |
 | `/piscine-rocks-design/<provincia>` | 9 pagine locali | Palermo, Catania, Messina, Siracusa, Ragusa, Trapani, Agrigento, Caltanissetta, Enna |
 | `/privacy`, `/cookie-policy` | Note legali | GDPR, `noindex` |
@@ -87,6 +102,8 @@ alla memoria di chi aggiorna il sito:
 
 | Direttiva | Implementazione |
 | --- | --- |
+| Gerarchia: il sito è del concessionario | Luna Costruzioni apre ogni `<title>`, domina la testata ed è il soggetto dei testi; `og:site_name` è l'impresa, non il marchio |
+| Testi propri, non copiati | Ogni riga è scritta ex novo. `npm run verifica` fallisce se ricompare una frase del catalogo o del sito della casa madre |
 | Logo *Concessionario Autorizzato* nella fascia superiore, con link alla pagina ufficiale | `src/components/BadgeConcessionario.jsx`, presente in header e footer di ogni pagina |
 | Deve essere chiaro che l'azienda è concessionaria, non inventrice | Dichiarato in header, footer, home, pagina tecnologia e ogni pagina provinciale |
 | «piscina naturale» va sempre seguito da «Piscine Rocks Design» | I testi usano **solo** «Piscine Rocks Design»; `npm run verifica` blocca ogni uso isolato |
@@ -109,7 +126,10 @@ Il logo usato è quello **ufficiale**, estratto dal catalogo fornito dalla casa 
 3. un riferimento a `media-sources/`, `/catalogo/` o `/foto/` (materiale non filigranato,
    che include le foto delle fasi di costruzione);
 4. un'immagine fuori dalla whitelist;
-5. una pagina indicizzabile che non cita la zona di riferimento.
+5. una pagina indicizzabile che non cita la zona di riferimento;
+6. una frase ripresa alla lettera dal catalogo o dal sito della casa madre — oltre alla
+   questione dei diritti, testi identici fra i siti dei concessionari si penalizzano a
+   vicenda nei motori di ricerca.
 
 Va eseguita dopo ogni `npm run build`, prima di pubblicare.
 
@@ -173,8 +193,22 @@ Gli script di misurazione partono **solo dopo il consenso** espresso nel banner
 (`src/components/BannerCookie.jsx`): finché l'utente non accetta, il sito non
 carica nulla di profilante.
 
-Dati aziendali da completare in `src/data/site.js` prima del go-live:
-indirizzo della sede, partita IVA ed e-mail definitiva.
+### Da completare prima del go-live
+
+In `src/data/site.js`: dominio reale (`SITE_URL`), indirizzo della sede,
+partita IVA ed e-mail definitiva.
+
+In `src/data/content.js`: l'array `RECENSIONI` è **vuoto di proposito**. Va
+riempito solo con recensioni reali e verificabili raccolte dall'azienda: finché
+resta vuoto la sezione non viene mostrata. Nessuna testimonianza inventata.
+
+**Fotografie mancanti.** Le immagini disponibili ritraggono piscine e le opere di
+contorno realizzate insieme a esse. Per la pagina `/giardini-e-opere-in-pietra`
+servono scatti di lavori autonomi — muri a secco, pavimentazioni, terrazzamenti
+senza piscina — altrimenti la pagina promette un servizio che le foto non
+documentano. Una volta disponibili: copiarli in `media-sources/foto/`, aggiungere
+la voce in `scripts/media.config.mjs` con `noWatermark: true` (non sono opere
+Rocks Design e non devono portarne il marchio) e lanciare `npm run media`.
 
 ---
 

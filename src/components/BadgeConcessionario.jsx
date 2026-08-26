@@ -14,22 +14,22 @@ export default function BadgeConcessionario({ compatto = false, className = '' }
             target="_blank"
             rel="noopener"
             title={`Sito ufficiale ${ROCKS_DESIGN.nome} — ${AZIENDA.nome} è concessionario autorizzato per la ${AZIENDA.zona}`}
-            className={`group flex items-center gap-2.5 rounded-xl bg-sabbia-100 px-3 py-1.5 ring-1 ring-sabbia-300/70
-                        transition hover:bg-sabbia-200/80 hover:ring-sabbia-400 ${className}`}
+            className={`group flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 transition
+                        ${compatto ? 'hover:bg-sabbia-100' : 'bg-sabbia-100 ring-1 ring-sabbia-300/70 hover:bg-sabbia-200/80'} ${className}`}
         >
             <img
                 src="/brand/rocks-design-logo.png"
                 width="900"
                 height="188"
                 alt="Piscine Rocks Design — logo ufficiale"
-                className={compatto ? 'h-7 w-auto sm:h-8' : 'h-9 w-auto sm:h-10'}
+                className={compatto ? 'h-5 w-auto sm:h-6' : 'h-9 w-auto sm:h-10'}
             />
-            <span className={`hidden border-l border-sabbia-400/70 pl-3 leading-tight ${compatto ? 'xl:block' : 'sm:block'}`}>
-                <span className="block text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-pietra-500">
+            <span className={`hidden leading-tight ${compatto ? '2xl:block' : 'sm:block'}`}>
+                <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-pietra-400">
                     Concessionario autorizzato
                 </span>
-                <span className="block text-[0.78rem] font-semibold text-pietra-800">
-                    {compatto ? AZIENDA.zona : `${AZIENDA.zona} · ${AZIENDA.nome}`}
+                <span className="block text-[0.72rem] font-medium text-pietra-600">
+                    {compatto ? `Piscine Rocks Design · ${AZIENDA.zona}` : `${AZIENDA.zona} · ${AZIENDA.nome}`}
                 </span>
             </span>
         </a>

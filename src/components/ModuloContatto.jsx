@@ -9,11 +9,33 @@ const VUOTO = {
     provincia: '',
     comune: '',
     interesse: 'Nuova piscina Rocks Design',
+    tipologia: 'Abitazione privata',
+    dimensione: '',
+    budget: '',
     messaggio: '',
     privacy: false,
     // honeypot anti-spam: se compilato, la richiesta viene scartata
     sito: '',
 }
+
+/** Campi di qualificazione: fanno risparmiare un giro di telefonate. */
+const TIPOLOGIE = ['Abitazione privata', 'Struttura ricettiva', 'Ristorante o locale', 'Altro']
+
+const DIMENSIONI = [
+    'Non lo so ancora',
+    'Fino a 30 m² d’acqua',
+    'Tra 30 e 60 m²',
+    'Tra 60 e 100 m²',
+    'Oltre 100 m²',
+]
+
+const BUDGET = [
+    'Preferisco non indicarlo',
+    'Sto ancora valutando',
+    'Fino a 50.000 €',
+    'Tra 50.000 e 100.000 €',
+    'Oltre 100.000 €',
+]
 
 const INTERESSI = [
     'Nuova piscina Rocks Design',
@@ -80,6 +102,9 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                 `Telefono: ${dati.telefono}`,
                 `Zona: ${dati.comune ? dati.comune + ' — ' : ''}${dati.provincia}`,
                 `Interesse: ${dati.interesse}`,
+                `Tipologia: ${dati.tipologia}`,
+                `Dimensione: ${dati.dimensione || 'non indicata'}`,
+                `Budget: ${dati.budget || 'non indicato'}`,
                 '',
                 dati.messaggio,
             ].join('\n')
@@ -183,6 +208,32 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                     <label htmlFor="interesse" className="mb-1.5 block text-sm font-medium">Di cosa hai bisogno?</label>
                     <select {...props('interesse')}>
                         {INTERESSI.map(i => <option key={i} value={i}>{i}</option>)}
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="tipologia" className="mb-1.5 block text-sm font-medium">Dove va realizzata</label>
+                    <select {...props('tipologia')}>
+                        {TIPOLOGIE.map(t => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="dimensione" className="mb-1.5 block text-sm font-medium">Dimensione indicativa</label>
+                    <select {...props('dimensione')}>
+                        <option value="">Seleziona…</option>
+                        {DIMENSIONI.map(d => <option key={d} value={d}>{d}</option>)}
+                    </select>
+                </div>
+
+                <div className="sm:col-span-2">
+                    <label htmlFor="budget" className="mb-1.5 block text-sm font-medium">
+                        Budget orientativo{' '}
+                        <span className="font-normal text-pietra-500">— serve solo a proporti soluzioni realistiche</span>
+                    </label>
+                    <select {...props('budget')}>
+                        <option value="">Seleziona…</option>
+                        {BUDGET.map(b => <option key={b} value={b}>{b}</option>)}
                     </select>
                 </div>
 

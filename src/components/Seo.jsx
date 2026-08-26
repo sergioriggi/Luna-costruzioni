@@ -18,7 +18,7 @@ export default function Seo({ titolo, descrizione, percorso, immagine = OG_IMAGE
             {noindex && <meta name="robots" content="noindex, follow" />}
 
             <meta property="og:type" content="website" />
-            <meta property="og:site_name" content={`${AZIENDA.nome} — ${AZIENDA.ruolo}`} />
+            <meta property="og:site_name" content={`${AZIENDA.nome} — ${AZIENDA.attivita}`} />
             <meta property="og:locale" content="it_IT" />
             <meta property="og:title" content={titolo} />
             <meta property="og:description" content={descrizione} />
@@ -49,7 +49,7 @@ export function schemaAzienda() {
         '@type': 'HomeAndConstructionBusiness',
         '@id': `${SITE_URL}/#azienda`,
         name: AZIENDA.nome,
-        description: `${AZIENDA.ruolo} per la ${AZIENDA.zona}. Progettazione e realizzazione di piscine in Tecnologia Rocks Design®.`,
+        description: `Impresa siciliana specializzata in piscine con spiaggia in sabbia e opere in pietra. ${AZIENDA.ruolo} per la ${AZIENDA.zona}.`,
         url: SITE_URL,
         telephone: AZIENDA.telefonoRaw,
         email: AZIENDA.email,
@@ -65,7 +65,14 @@ export function schemaAzienda() {
             name: `Provincia di ${p.nome}`,
         })),
         brand: { '@type': 'Brand', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
-        knowsAbout: ['Piscine Rocks Design', 'Tecnologia Rocks Design', 'piscine con spiaggia in sabbia'],
+        knowsAbout: [
+            'Piscine Rocks Design',
+            'Tecnologia Rocks Design',
+            'piscine con spiaggia in sabbia',
+            'piscine effetto spiaggia',
+            'piscine di sabbia',
+            'cascate da giardino in roccia naturale',
+        ],
         sameAs: [ROCKS_DESIGN.sito, ROCKS_DESIGN.instagram],
     }
 }

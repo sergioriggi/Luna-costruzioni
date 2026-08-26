@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { AZIENDA, ROCKS_DESIGN, SOCIAL, PROVINCE, NAV } from '../data/site'
+import { AZIENDA, ROCKS_DESIGN, SOCIAL, PROVINCE, NAV, NAV_SECONDARIA } from '../data/site'
 import BadgeConcessionario from './BadgeConcessionario'
 
 export default function Footer() {
@@ -67,18 +67,13 @@ export default function Footer() {
                 <div>
                     <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-sabbia-100">Pagine</h2>
                     <ul className="mt-4 grid gap-2 text-sm">
-                        {NAV.filter(v => v.to !== '/').map(v => (
+                        {[...NAV, ...NAV_SECONDARIA].map(v => (
                             <li key={v.to}>
                                 <Link className="link-sottile hover:text-white" to={v.to}>
                                     {v.label}
                                 </Link>
                             </li>
                         ))}
-                        <li>
-                            <Link className="link-sottile hover:text-white" to="/come-lavoriamo">
-                                Come lavoriamo
-                            </Link>
-                        </li>
                     </ul>
 
                     <h2 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-sabbia-100">

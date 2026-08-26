@@ -5,13 +5,14 @@ import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ModuloContatto from '../components/ModuloContatto'
 import { Sezione, IntestazioneSezione, Cta } from '../components/Sezione'
-import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import Recensioni from '../components/Recensioni'
+import { AZIENDA, PROVINCE } from '../data/site'
 import { PUNTI_DI_FORZA, ELEMENTI, MODELLI, DIFFERENZE, FAQ, PERCORSO } from '../data/content'
 
 const ICONE = {
-    stella: 'm12 3.5 2.4 5.2 5.6.7-4.1 3.9 1 5.6-4.9-2.7-4.9 2.7 1-5.6L4 9.4l5.6-.7Z',
-    onde: 'M3 8c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0M3 13c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0M3 18c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0',
-    documento: 'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h4',
+    onde: 'M3 9c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0M3 14c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0M3 19c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0',
+    pietra: 'M4 18.5 7 9l5-3.5L18 8l2 10.5Zm3-9.5 5 2.5 6-3M12 11.5 11 18.5',
+    foglia: 'M5 19c0-7 4.5-12 14-12 0 9.5-5 14-12 14M5 19c2.5-3.5 5-5.5 9-7',
     palma: 'M12 21c0-5 .6-8.6 2-11M12 10c-2.4-2.6-5.4-3-7.5-1.4M12 10c2.4-2.6 5.4-3 7.5-1.4M12 10c0-3 1.6-5 4-5.5M12 10c0-3-1.6-5-4-5.5',
 }
 
@@ -21,8 +22,8 @@ export default function Home() {
     return (
         <>
             <Seo
-                titolo="Piscine Rocks Design in Sicilia | Luna Costruzioni srl — Concessionario Autorizzato"
-                descrizione="Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia. Piscine su misura in Tecnologia Rocks Design®: rocce monolitiche, sabbie naturali, niente cemento. Sopralluogo gratuito a Palermo, Catania, Messina e in tutta l'isola."
+                titolo="Luna Costruzioni — piscine con spiaggia in sabbia e opere in pietra in Sicilia"
+                descrizione="Piscine effetto spiaggia con fondale in sabbia naturale e pareti in roccia, senza cemento armato. Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia: sopralluogo e preventivo gratuiti a Palermo, Catania, Messina e in tutta l'isola."
                 percorso="/"
                 schema={[
                     schemaAzienda(),
@@ -47,25 +48,29 @@ export default function Home() {
                     <div className="contenitore">
                         <div className="max-w-2xl text-white">
                             <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sabbia-200">
-                                Concessionario autorizzato {ROCKS_DESIGN.nome} · {AZIENDA.zona}
+                                {AZIENDA.nome} · piscine e opere in pietra in {AZIENDA.zona}
                             </p>
                             <h1 className="mt-4 font-display text-4xl leading-[1.08] text-white [text-shadow:0_2px_24px_rgba(10,25,28,0.55)] sm:text-6xl">
                                 La tua spiaggia privata,<br className="hidden sm:block" /> in giardino.
                             </h1>
                             <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-sabbia-100/95 sm:text-lg">
-                                Rocce monolitiche, sabbie naturali e acqua cristallina. Le{' '}
-                                <strong className="font-semibold">Piscine Rocks Design</strong> non hanno un catalogo:
-                                ogni vasca nasce sulla morfologia del tuo giardino, come un abito su misura.
+                                Costruiamo <strong className="font-semibold">piscine con spiaggia in sabbia</strong>:
+                                si entra camminando, senza scaletta, su un fondale di sabbia vera. Nessun catalogo di
+                                misure — misuriamo il tuo giardino e la vasca nasce da lì.
                             </p>
                             <div className="mt-8 flex flex-wrap gap-3">
                                 <Link to="/contatti" className="bottone-chiaro">Sopralluogo gratuito</Link>
                                 <Link
-                                    to="/piscine-rocks-design"
+                                    to="/galleria"
                                     className="bottone border border-white/40 text-white backdrop-blur-sm hover:bg-white/10"
                                 >
-                                    Scopri la tecnologia
+                                    Vedi le nostre realizzazioni
                                 </Link>
                             </div>
+                            <p className="mt-6 text-xs text-sabbia-200/80">
+                                In Tecnologia Rocks Design® — {AZIENDA.nome} è {AZIENDA.ruolo.toLowerCase()} per
+                                la {AZIENDA.zona}.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -75,9 +80,9 @@ export default function Home() {
             <div className="border-b border-sabbia-200 bg-sabbia-100">
                 <div className="contenitore grid gap-6 py-8 sm:grid-cols-3">
                     {[
-                        ['Tecnologia brevettata', 'Realizziamo in Tecnologia Rocks Design®, su licenza della casa madre.'],
-                        ['Progetto sartoriale', 'Nessun catalogo: forma, misura e dettagli nascono dal tuo giardino.'],
-                        ['Tutta la Sicilia', 'Sopralluogo e assistenza nelle nove province siciliane.'],
+                        ['Un solo referente', 'Luciano Naro ti segue dal sopralluogo alla consegna, e risponde anche dopo.'],
+                        ['Su misura, non da catalogo', 'Misuriamo il giardino: forma, profondità e dettagli nascono da lì.'],
+                        ['Tutta la Sicilia', 'Sopralluogo, cantiere e assistenza nelle nove province.'],
                     ].map(([t, d], i) => (
                         <Rivela key={t} delay={i * 90} className="flex gap-3">
                             <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-acqua-600" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -97,13 +102,13 @@ export default function Home() {
                 <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                     <IntestazioneSezione
                         occhiello="Chi siamo"
-                        titolo="Il concessionario Piscine Rocks Design per la Sicilia"
-                        testo="Luna Costruzioni srl porta in Sicilia la Tecnologia Rocks Design®. Il brevetto e la tecnologia sono di Piscine Rocks Design: noi siamo il concessionario ufficiale che progetta, realizza e assiste sul territorio, dal sopralluogo alla consegna."
+                        titolo="Un'impresa siciliana, due mestieri"
+                        testo="Luna Costruzioni srl muove terra, costruisce muri e posa pietra: è il mestiere da cui veniamo. Da lì arrivano le due cose che facciamo oggi con le stesse squadre — piscine con spiaggia in sabbia e opere in pietra per il giardino — in tutta la Sicilia."
                     >
                         <ul className="mt-7 space-y-3 text-[1.0625rem] text-pietra-700">
                             {[
                                 'Un unico referente per tutto il progetto: Luciano Naro.',
-                                'Rocce monolitiche manovrate da una tradizione di famiglia lunga tre generazioni.',
+                                'Piscine e giardini realizzati dalle stesse squadre, in un solo cantiere.',
                                 'Piscina espositiva visitabile su appuntamento.',
                             ].map(v => (
                                 <li key={v} className="flex gap-3">
@@ -112,7 +117,10 @@ export default function Home() {
                                 </li>
                             ))}
                         </ul>
-                        <Link to="/come-lavoriamo" className="bottone-secondario mt-8">Come lavoriamo</Link>
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            <Link to="/azienda" className="bottone-secondario">Chi siamo</Link>
+                            <Link to="/giardini-e-opere-in-pietra" className="bottone-secondario">Giardini e pietra</Link>
+                        </div>
                     </IntestazioneSezione>
 
                     <Rivela delay={120} className="grid grid-cols-2 gap-4">
@@ -126,9 +134,9 @@ export default function Home() {
             <Sezione sfondo="bg-sabbia-100">
                 <IntestazioneSezione
                     allineamento="centro"
-                    occhiello="I nostri punti di forza"
-                    titolo="Perché una Piscina Rocks Design"
-                    testo="Quattro caratteristiche che distinguono la Tecnologia Rocks Design® da qualsiasi piscina tradizionale."
+                    occhiello="Che cosa cambia"
+                    titolo="Perché non è una piscina come le altre"
+                    testo="Quattro differenze concrete rispetto a una vasca tradizionale in cemento. Le realizziamo in Tecnologia Rocks Design®."
                 />
                 <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {PUNTI_DI_FORZA.map((p, i) => (
@@ -180,25 +188,31 @@ export default function Home() {
             <Sezione sfondo="bg-pietra-900 text-sabbia-100">
                 <Rivela className="max-w-prosa">
                     <p className="occhiello text-acqua-300">I modelli</p>
-                    <h2 className="titolo-sezione text-white">Tre interpretazioni della stessa tecnologia</h2>
+                    <h2 className="titolo-sezione text-white">Da dove partiamo</h2>
                     <p className="mt-5 text-[1.0625rem] leading-relaxed text-sabbia-300">
-                        Caraibi, Mediterranea, Alpi: il punto di partenza del progetto. Da lì ogni piscina prende
-                        una strada diversa, perché nessuna Piscina Rocks Design è uguale a un’altra.
+                        Caraibi, Mediterranea, Alpi: tre direzioni progettuali, non tre formati. Servono a decidere
+                        insieme rocce, sabbia e piante; poi ogni vasca prende la sua strada.
                     </p>
                 </Rivela>
                 <ul className="mt-14 grid gap-6 lg:grid-cols-3">
                     {MODELLI.map((m, i) => (
                         <Rivela as="li" key={m.slug} delay={i * 100} className="overflow-hidden rounded-2xl bg-white/5">
-                            <Immagine
-                                slug={{ caraibi: 'palme-al-tramonto', mediterranea: 'villa-con-spiaggia-in-ghiaia', alpi: 'ghiaietto-e-acqua-smeraldo' }[m.slug]}
-                                ratio="4 / 3"
-                                sizes="(min-width: 1024px) 32vw, 92vw"
-                            />
-                            <div className="p-6">
-                                <h3 className="font-display text-xl text-white">{m.nome}</h3>
-                                <p className="mt-1 text-sm text-acqua-200">{m.claim}</p>
-                                <p className="mt-3 text-[0.95rem] leading-relaxed text-sabbia-300">{m.testo}</p>
-                            </div>
+                            <Link to={`/modelli/${m.slug}`} className="group block">
+                                <Immagine
+                                    slug={m.copertina}
+                                    ratio="4 / 3"
+                                    sizes="(min-width: 1024px) 32vw, 92vw"
+                                    imgClassName="transition duration-700 group-hover:scale-105"
+                                />
+                                <div className="p-6">
+                                    <h3 className="font-display text-xl text-white">{m.nomeCompleto}</h3>
+                                    <p className="mt-1 text-sm text-acqua-200">{m.claim}</p>
+                                    <p className="mt-3 text-[0.95rem] leading-relaxed text-sabbia-300">{m.sintesi}</p>
+                                    <span className="mt-4 inline-block text-sm font-semibold text-white group-hover:underline">
+                                        Scopri il {m.nome} →
+                                    </span>
+                                </div>
+                            </Link>
                         </Rivela>
                     ))}
                 </ul>
@@ -211,7 +225,7 @@ export default function Home() {
             <Sezione>
                 <IntestazioneSezione
                     occhiello="Il confronto"
-                    titolo="Piscina tradizionale o Piscina Rocks Design?"
+                    titolo="Piscina tradizionale o con spiaggia in sabbia?"
                     testo="La differenza non è estetica: cambia il modo di costruire, i materiali e ciò che senti sotto i piedi."
                 />
                 <Rivela className="mt-10 overflow-x-auto">
@@ -271,6 +285,7 @@ export default function Home() {
                         <Rivela as="li" key={p.numero} delay={i * 80} className="scheda">
                             <span className="font-display text-3xl text-oro-500">{p.numero}</span>
                             <h3 className="mt-3 text-base">{p.titolo}</h3>
+                            {p.durata && <p className="mt-1 text-xs text-pietra-400">{p.durata}</p>}
                             <p className="mt-2 text-sm leading-relaxed text-pietra-600">{p.testo}</p>
                         </Rivela>
                     ))}
@@ -281,8 +296,8 @@ export default function Home() {
             <Sezione sfondo="bg-sabbia-100">
                 <IntestazioneSezione
                     occhiello="Dove operiamo"
-                    titolo="Piscine Rocks Design in tutta la Sicilia"
-                    testo="Sopralluogo, progetto, realizzazione e assistenza nelle nove province siciliane."
+                    titolo="Lavoriamo in tutte le nove province"
+                    testo="Sopralluogo, progetto, cantiere e assistenza: dalla provincia di Palermo a quella di Enna."
                 />
                 <ul className="mt-10 flex flex-wrap gap-3">
                     {PROVINCE.map(p => (
@@ -331,6 +346,8 @@ export default function Home() {
                     </Rivela>
                 </div>
             </Sezione>
+
+            <Recensioni />
 
             <Cta
                 titolo="Una piscina che sembra lì da sempre"
