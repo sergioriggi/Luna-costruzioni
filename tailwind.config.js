@@ -1,6 +1,7 @@
 /**
  * Sistema visivo del sito, ripreso dal blueprint approvato (index.html).
- * Tema scuro: fondo indaco profondo, testo chiaro, accento tenue.
+ * Tema scuro: fondo blu notte, testo chiaro, accento turchese —
+ * il colore dell'acqua della piscina.
  * I nomi dei token sono in italiano come il resto del codice.
  *
  * @type {import('tailwindcss').Config}
@@ -10,43 +11,49 @@ export default {
     theme: {
         extend: {
             colors: {
+                /**
+                 * Stessa palette di `src/nocturne.css`, che è la fonte di
+                 * verità: le due vanno tenute allineate. Qui i nomi sono in
+                 * italiano perché li usano le pagine di approfondimento.
+                 */
+
                 /** Fondo pagina e superfici */
                 notte: {
-                    DEFAULT: '#161826',
-                    800: '#292b31',
-                    900: '#101220',
+                    DEFAULT: '#12202b',
+                    800: '#2e434c',
+                    900: '#1a2a33',
                 },
                 superficie: {
-                    DEFAULT: '#232532',
-                    alta: '#2b2e3d',
+                    DEFAULT: '#1b2f3c',
+                    alta: '#24404f',
                 },
-                testo: '#e9e9ed',
+                testo: '#eef6f7',
 
                 /** Rampa neutra, una sola scala di luminosità */
                 neutro: {
-                    100: '#f3f5fe',
-                    200: '#e4e7f5',
-                    300: '#cfd3e5',
-                    400: '#b2b6ca',
-                    500: '#9397ab',
-                    600: '#75798c',
-                    700: '#595d6c',
-                    800: '#3f424d',
-                    900: '#292b31',
+                    100: '#f2f8f9',
+                    200: '#e2eef0',
+                    300: '#cbdfe3',
+                    400: '#a9c5cb',
+                    500: '#8aa8b0',
+                    600: '#6f8b95',
+                    700: '#526972',
+                    800: '#2e434c',
+                    900: '#1a2a33',
                 },
 
-                /** Accento */
+                /** Accento: il turchese dell'acqua */
                 accento: {
-                    DEFAULT: '#9184d9',
-                    100: '#f5f4ff',
-                    200: '#e7e5fe',
-                    300: '#d2cefd',
-                    400: '#b5abfc',
-                    500: '#968ae0',
-                    600: '#796cbf',
-                    700: '#5d5294',
-                    800: '#423a6a',
-                    900: '#2b2741',
+                    DEFAULT: '#38c6c0',
+                    100: '#eefbfa',
+                    200: '#d3f5f2',
+                    300: '#a9ece7',
+                    400: '#6fdcd5',
+                    500: '#38c6c0',
+                    600: '#22a49f',
+                    700: '#1a8380',
+                    800: '#14615f',
+                    900: '#103f3f',
                 },
             },
             fontFamily: {

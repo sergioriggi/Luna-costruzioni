@@ -152,6 +152,99 @@ export default function QuantoCosta() {
                 </div>
             </Sezione>
 
+
+            {/*
+              Bonus ristrutturazione. Va detto con onestà: Luna Costruzioni
+              costruisce soprattutto piscine nuove, e su una piscina nuova la
+              detrazione di norma NON spetta. Presentarla come un vantaggio
+              generico sarebbe fuorviante e si ritorcerebbe contro in fase di
+              preventivo. Qui si spiega quando spetta davvero.
+            */}
+            <Sezione>
+                <IntestazioneSezione
+                    occhiello="Agevolazioni fiscali"
+                    titolo="Bonus ristrutturazione: quando si applica davvero"
+                >
+                    <p className="testo-lungo mt-6 max-w-prosa">
+                        Se rifai una piscina che hai già, puoi recuperare una parte della spesa con la
+                        detrazione IRPEF per le ristrutturazioni edilizie. Vale la pena saperlo prima di
+                        chiedere il preventivo, perché cambia il conto finale.
+                    </p>
+                </IntestazioneSezione>
+
+                <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                    {[
+                        ['50%', 'sull’abitazione principale', 'Aliquota in vigore per le spese sostenute entro il 31 dicembre 2026.'],
+                        ['36%', 'sulle seconde case', 'Stessa scadenza. Dal 2027 le due aliquote scendono a 36% e 30%.'],
+                        ['96.000 €', 'tetto di spesa per unità immobiliare', 'La detrazione si recupera in 10 quote annuali di pari importo.'],
+                    ].map(([n, etichetta, nota], i) => (
+                        <Rivela key={n} delay={i * 100} className="scheda">
+                            <p className="font-display text-3xl text-accento">{n}</p>
+                            <p className="mt-1 text-sm text-testo">{etichetta}</p>
+                            <p className="mt-3 text-sm leading-relaxed text-neutro-400">{nota}</p>
+                        </Rivela>
+                    ))}
+                </div>
+
+                <div className="mt-10 grid gap-8 lg:grid-cols-2">
+                    <Rivela>
+                        <h2 className="font-display text-xl text-testo">Lavori ammessi</h2>
+                        <ul className="mt-4 grid gap-2.5 text-[15px] leading-relaxed text-neutro-300">
+                            {[
+                                'Rifacimento del rivestimento interno o della vasca.',
+                                'Sostituzione o miglioramento degli impianti di filtrazione e ricircolo.',
+                                'Rinnovo del solarium, dei bordi e della pavimentazione esterna.',
+                                'Installazione di impianti di riscaldamento, illuminazione o idromassaggio.',
+                                'Riparazione e rinforzo della struttura per cedimenti.',
+                            ].map(v => (
+                                <li key={v} className="flex gap-3">
+                                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accento" />
+                                    {v}
+                                </li>
+                            ))}
+                        </ul>
+                    </Rivela>
+
+                    <Rivela delay={100}>
+                        <h2 className="font-display text-xl text-testo">Le due regole per non perderlo</h2>
+                        <dl className="mt-4 grid gap-5 text-[15px] leading-relaxed">
+                            <div>
+                                <dt className="text-testo">Bonifico parlante</dt>
+                                <dd className="mt-1 text-neutro-300">
+                                    Va usato il bonifico specifico per ristrutturazioni edilizie, con la causale
+                                    corretta, il codice fiscale di chi porta in detrazione e la partita IVA
+                                    dell’impresa. Un bonifico ordinario fa perdere il beneficio.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt className="text-testo">Manutenzione straordinaria</dt>
+                                <dd className="mt-1 text-neutro-300">
+                                    L’intervento sulla piscina esistente deve configurarsi come manutenzione
+                                    straordinaria o restauro e risanamento conservativo. La manutenzione
+                                    ordinaria non rientra.
+                                </dd>
+                            </div>
+                        </dl>
+                    </Rivela>
+                </div>
+
+                <Rivela className="mt-10 rounded-lg border border-accento-700 bg-accento/[0.06] p-6 sm:p-7">
+                    <p className="font-display text-lg text-testo">
+                        Una piscina nuova, di norma, non rientra nel bonus
+                    </p>
+                    <p className="testo-lungo mt-3 max-w-prosa text-[15px]">
+                        La sola realizzazione di una piscina da zero non dà diritto alla detrazione, a meno
+                        che non faccia parte di un intervento più ampio di ristrutturazione dell’edificio.
+                        Preferiamo dirtelo subito: se qualcuno ti promette il 50% su una piscina nuova in
+                        giardino, ti sta vendendo un’aspettativa che l’Agenzia delle Entrate non conferma.
+                    </p>
+                    <p className="mt-4 max-w-prosa text-sm leading-relaxed text-neutro-500">
+                        Aliquote e regole aggiornate al 2026. Non siamo consulenti fiscali: la valutazione
+                        del tuo caso va fatta con il tuo commercialista o con un CAF, prima di firmare.
+                    </p>
+                </Rivela>
+            </Sezione>
+
             <Sezione>
                 <IntestazioneSezione occhiello="Domande frequenti" titolo="Sui costi, senza giri di parole" />
                 <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">

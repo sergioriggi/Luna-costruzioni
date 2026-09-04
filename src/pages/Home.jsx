@@ -126,9 +126,9 @@ const DUBBI = [
         domanda: '«Non so quanto costerà davvero.»',
         domandaEn: '“I have no idea what it will really cost.”',
         risposta:
-            'Preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo, redatto dopo il sopralluogo e firmato prima di iniziare. Nessuna voce «imprevisti» aperta.',
+            'Preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo, redatto dopo il sopralluogo e firmato prima di iniziare. Nessuna voce «imprevisti» aperta. Il disbrigo delle pratiche, se lo affidi a noi, è una voce a parte: la vedi e decidi.',
         rispostaEn:
-            'A quote itemised by excavation, construction, installation and commissioning, written after the site visit and signed before work starts. No open-ended contingency line.',
+            'A quote itemised by excavation, construction, installation and commissioning, written after the site visit and signed before work starts. No open-ended contingency line. Permit paperwork, if you hand it to us, is a separate line you can see and decide on.',
     },
     {
         domanda: '«Il cantiere mi occupa il giardino per mesi.»',
@@ -208,9 +208,9 @@ const DOMANDE = [
         domanda: 'Servono permessi?',
         domandaEn: 'Do I need permits?',
         risposta:
-            'Le pratiche edilizie legate all’intervento le seguiamo noi. Cosa serve esattamente dipende dal tuo Comune: la verifica fa parte del sopralluogo, prima del preventivo.',
+            'Dipende dal tuo Comune, e la verifica fa parte del sopralluogo: te lo diciamo prima del preventivo, non dopo. Le pratiche possiamo seguirle noi — è un servizio a parte, che quotiamo separatamente e attivi solo se vuoi.',
         rispostaEn:
-            'We handle the building paperwork for the job. What is required depends on your municipality: we check it during the site visit, before quoting.',
+            'It depends on your municipality, and we check during the site visit: you know before the quote, not after. We can handle the paperwork for you — it is a separate service, quoted on its own, and entirely optional.',
     },
     {
         domanda: 'Va bene anche un giardino piccolo?',
@@ -219,6 +219,14 @@ const DOMANDE = [
             'La forma non è a catalogo, quindi si adatta allo spazio che c’è. Il vincolo vero è l’accesso dei mezzi al giardino: lo valutiamo in sopralluogo e te lo diciamo subito.',
         rispostaEn:
             'The shape is not from a catalogue, so it adapts to the space you have. The real constraint is machine access to the garden: we assess it on site and tell you straight away.',
+    },
+    {
+        domanda: 'Ci sono agevolazioni fiscali?',
+        domandaEn: 'Are there tax breaks?',
+        risposta:
+            'Se rifai una piscina che hai già, sì: la detrazione IRPEF per ristrutturazioni vale il 50% sull’abitazione principale e il 36% sulle seconde case, entro 96.000 € per unità immobiliare, in 10 quote annuali. Su una piscina nuova in giardino, di norma, non spetta. Ne parliamo apertamente in sopralluogo.',
+        rispostaEn:
+            'If you are renovating a pool you already have, yes: the Italian renovation tax deduction is 50% on a main home and 36% on second homes, up to €96,000 per property, spread over ten years. On a brand-new garden pool it normally does not apply. We are upfront about this at the site visit.',
     },
     {
         domanda: 'Che manutenzione richiede?',

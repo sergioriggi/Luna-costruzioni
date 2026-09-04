@@ -14,7 +14,7 @@
 /* ── blocco <style> dell'intestazione ─────────────────────────────────── */
 
 html { scroll-behavior: smooth; }
-body { margin: 0; background: #161826; }
+body { margin: 0; background: var(--color-bg); }
 a:hover { color: var(--color-accent-300); }
 input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .btn { white-space: nowrap; }
@@ -40,7 +40,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     align-items: center;
     gap: 28px;
     padding: 14px 40px;
-    background: color-mix(in srgb, #161826 88%, transparent);
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-divider);
 }
@@ -88,7 +88,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-eroe-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pg-eroe-velo {
     position: absolute; inset: 0;
-    background: linear-gradient(75deg, #161826 0%, color-mix(in srgb, #161826 82%, transparent) 38%, transparent 78%);
+    background: linear-gradient(75deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 38%, transparent 78%);
 }
 .pg-eroe-testo { position: relative; padding: 0 40px 84px; max-width: 780px; }
 .pg-eroe-occhiello {
@@ -214,7 +214,8 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-footer-elenco { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .pg-footer-elenco a { font-size: 14px; color: var(--color-neutral-400); text-decoration: none; }
 .pg-footer-elenco a:hover { color: var(--color-text); }
-.pg-copyright { margin: 0; font-size: 12px; color: var(--color-neutral-600); }
+/* neutro-500 e non 600: a 12px sul fondo del footer il 600 si ferma a 4,08:1 */
+.pg-copyright { margin: 0; font-size: 12px; color: var(--color-neutral-500); }
 .pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
 
 /* ── schermi stretti ──────────────────────────────────────────────────────
@@ -254,9 +255,9 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-eroe-testo { padding: 96px 20px 56px; }
     .pg-eroe-velo {
         background: linear-gradient(180deg,
-            color-mix(in srgb, #161826 88%, transparent) 0%,
-            color-mix(in srgb, #161826 68%, transparent) 46%,
-            color-mix(in srgb, #161826 92%, transparent) 100%);
+            color-mix(in srgb, var(--color-bg) 88%, transparent) 0%,
+            color-mix(in srgb, var(--color-bg) 68%, transparent) 46%,
+            color-mix(in srgb, var(--color-bg) 92%, transparent) 100%);
     }
 }
 

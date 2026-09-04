@@ -347,7 +347,7 @@ export const FAQ = [
     {
         domanda: 'Servono permessi? E la piscina fa aumentare le tasse sulla casa?',
         risposta:
-            'Una piscina interrata richiede un titolo edilizio: quale, dipende dal Comune, dal piano regolatore e dai vincoli sul lotto, e la giurisprudenza in materia è tutt’altro che uniforme. L’assenza di opere in cemento armato è un elemento a favore nella valutazione, ma non è mai una garanzia automatica: chiunque prometta il contrario senza aver visto il tuo terreno sta semplificando troppo. Verifichiamo insieme al tuo tecnico la situazione specifica prima di firmare qualsiasi cosa. Lo stesso vale per gli effetti catastali e fiscali, che vanno valutati caso per caso con il tuo professionista di fiducia.',
+            'Una piscina interrata richiede un titolo edilizio: quale, dipende dal Comune, dal piano regolatore e dai vincoli sul lotto, e la giurisprudenza in materia è tutt’altro che uniforme. L’assenza di opere in cemento armato è un elemento a favore nella valutazione, ma non è mai una garanzia automatica: chiunque prometta il contrario senza aver visto il tuo terreno sta semplificando troppo. Verifichiamo insieme al tuo tecnico la situazione specifica prima di firmare qualsiasi cosa. Il disbrigo delle pratiche possiamo occuparcene noi: è un servizio opzionale, quotato a parte rispetto ai lavori. Lo stesso vale per gli effetti catastali e fiscali, che vanno valutati caso per caso con il tuo professionista di fiducia.',
     },
     {
         domanda: 'La sabbia sul fondo non intorbidisce l’acqua?',
