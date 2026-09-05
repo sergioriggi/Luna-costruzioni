@@ -66,4 +66,20 @@ jobs:
           # dist/index.html dev'essere la home pre-renderizzata, non il modello
           ! grep -q "app-html" dist/index.html
           grep -q "media-sources" dist/.htaccess
-          echo "Pagine compilate: $(find dist -name index.html | wc -l)"
+
+      # Il riepilogo si legge dal telefono senza aprire i log: è lì che si
+      # guarda un run, non nello scroll di duecento righe di build.
+      - name: Riepilogo
+        if: always()
+        run: |
+          {
+            echo "## Verifica del codice"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Pagine compilate | $(find dist -name 'index.html' 2>/dev/null | wc -l) |"
+            echo "| Indicizzazione | $(grep -qi 'noindex' dist/index.html 2>/dev/null && echo 'anteprima (noindex)' || echo 'produzione (indicizzabile)') |"
+            echo "| robots.txt | $(head -c 60 dist/robots.txt 2>/dev/null | tr '\n' ' ') |"
+            echo
+            echo "Il sito **pubblicato** è un'altra cosa: si controlla con il workflow «Controllo del sito pubblicato»."
+          } >> "$GITHUB_STEP_SUMMARY"

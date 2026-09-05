@@ -15,7 +15,8 @@
     "verifica": "node scripts/verifica-conformita.mjs",
     "media:manifest": "node scripts/prepare-media.mjs --manifest",
     "start": "node app.js",
-    "verifica:server": "node scripts/verifica-server.mjs"
+    "verifica:server": "node scripts/verifica-server.mjs",
+    "verifica:online": "node scripts/verifica-online.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.1.0",

@@ -334,6 +334,16 @@ committato nella radice, niente `.sito-pubblicato`.
 server a ogni push, ma **non pubblica nulla**: serve a dare un esito visibile
 sul commit prima che l'hosting compili.
 
+`.github/workflows/online.yml` fa l'altra metà: interroga il **sito
+pubblicato** — pagine, indicizzazione, metadati, sitemap, materiale riservato —
+e si lancia a richiesta, anche dal telefono. Lo stesso controllo in locale:
+`npm run verifica:online https://indirizzo-del-sito`.
+
+> **Chi non ha un terminale** — iPad, iPhone, o semplicemente voglia di non
+> aprirne uno — trova in **[DAL-TELEFONO.md](DAL-TELEFONO.md)** chi esegue
+> cosa, i tre campi da compilare in hPanel e l'ordine da rispettare il giorno
+> del go-live.
+
 ### Che cosa non deve mai finire online
 
 **`public/.htaccess` finisce in `dist/`** e dà a Hostinger gli URL puliti, il
@@ -379,8 +389,8 @@ esce interamente `noindex`. Vedi la sezione qui sotto.
 ### Indirizzo pubblico e indicizzazione
 
 `VITE_SITE_URL` dice al build da quale indirizzo il sito è servito: alimenta
-canonical, Open Graph e sitemap. Il workflow oggi usa l'indirizzo provvisorio
-Hostinger.
+canonical, Open Graph e sitemap. Oggi non è impostata da nessuna parte, quindi
+il sito pubblicato è a tutti gli effetti un'anteprima.
 
 Finché quell'indirizzo è diverso da `DOMINIO_DEFINITIVO`
 (`src/data/site.js`), il sito si considera **anteprima**: ogni pagina esce con
@@ -388,11 +398,20 @@ Finché quell'indirizzo è diverso da `DOMINIO_DEFINITIVO`
 l'indirizzo temporaneo finisca nell'indice di Google e poi faccia concorrenza
 al dominio vero.
 
-Quando il dominio definitivo è attivo, basta creare la variabile
-`VITE_SITE_URL` in *Settings → Secrets and variables → Actions → Variables*
-con l'indirizzo reale: ha la precedenza sul valore di ripiego e **riapre
-l'indicizzazione da sé**, senza toccare il codice. Se il dominio non è
-`www.lunacostruzioni.it`, aggiornare anche `DOMINIO_DEFINITIVO`.
+Quando il dominio definitivo è attivo, `VITE_SITE_URL` va impostata **nel
+pannello Hostinger**, con il solo indirizzo sulla riga: è Hostinger a compilare
+il sito pubblicato, quindi è la sua variabile a contare. Ha la precedenza sul
+valore di ripiego e **riapre l'indicizzazione da sé**, senza toccare il codice.
+
+La variabile omonima in *Settings → Secrets and variables → Actions →
+Variables* vale solo per le build di GitHub Actions, che non pubblicano nulla:
+impostarla lì e non su Hostinger lascia il sito online in anteprima, e la CI
+verde a dire il contrario. Se il dominio non è `www.lunacostruzioni.it`,
+aggiornare anche `DOMINIO_DEFINITIVO`.
+
+Dopo il passaggio, `npm run verifica:online https://www.lunacostruzioni.it`
+(o il workflow *Controllo del sito pubblicato*) conferma che l'indicizzazione
+si è davvero riaperta sul sito vero.
 
 ### Altri hosting
 

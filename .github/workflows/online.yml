@@ -1,0 +1,39 @@
+# Controllo del sito PUBBLICATO, a richiesta.
+#
+# `verifica.yml` controlla il codice a ogni push. Questo controlla il sito che
+# risponde a un cliente: fra i due c'è la build di Hostinger con le sue
+# variabili d'ambiente, che non stanno nel repository e che ci hanno già rotto
+# il sito una volta.
+#
+# Si lancia con un tocco dall'app GitHub — Actions → «Controllo del sito
+# pubblicato» → Run workflow — senza terminale e senza npm.
+#
+# Nessun `npm ci`: lo script non ha dipendenze (vedi la sua intestazione),
+# quindi il controllo finisce in pochi secondi e non c'è un'installazione che
+# possa fallire e far sembrare rotto il sito.
+name: Controllo del sito pubblicato
+
+on:
+  workflow_dispatch:
+    inputs:
+      indirizzo:
+        description: Indirizzo da controllare (il dominio definitivo quando sarà attivo)
+        required: true
+        default: https://salmon-camel-544200.hostingersite.com
+
+permissions:
+  contents: read
+
+jobs:
+  online:
+    name: Interroga il sito
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Controlla il sito
+        run: node scripts/verifica-online.mjs "${{ inputs.indirizzo }}"
