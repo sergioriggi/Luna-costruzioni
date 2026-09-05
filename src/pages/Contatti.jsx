@@ -15,7 +15,7 @@ export default function Contatti() {
         <>
             <Seo
                 titolo="Contatti: sopralluogo e preventivo gratuiti | Luna Costruzioni, Sicilia"
-                descrizione="Contatta Luna Costruzioni srl, concessionario autorizzato Piscine Rocks Design per la Sicilia. Referente Luciano Naro, +39 340 490 0710. Sopralluogo e preventivo gratuiti."
+                descrizione="Contatta Luna Costruzioni S.r.l.s., concessionario autorizzato Piscine Rocks Design per la Sicilia. Referente Luciano Naro, +39 340 490 0710. Sopralluogo e preventivo gratuiti."
                 percorso="/contatti"
                 schema={[schemaAzienda(), schemaBriciole(BRICIOLE)]}
             />

@@ -44,9 +44,9 @@ export default function HotelResort() {
         <>
             <Seo
                 titolo="Piscine per hotel, resort e B&B in Sicilia | Luna Costruzioni"
-                descrizione="Piscine Rocks Design per strutture ricettive in Sicilia: cantiere fuori stagione, un unico appalto, assistenza dopo il collaudo. Luna Costruzioni srl, impresa edile e concessionario autorizzato."
+                descrizione="Piscine Rocks Design per strutture ricettive in Sicilia: cantiere fuori stagione, un unico appalto, assistenza dopo il collaudo. Luna Costruzioni S.r.l.s., impresa edile e concessionario autorizzato."
                 percorso="/hotel-e-resort"
-                immagine="https://www.lunacostruzioni.it/media/oasi-con-pontile-e-palme-1280.jpg"
+                immagine="oasi-con-pontile-e-palme-1280.jpg"
                 schema={[
                     schemaBriciole(BRICIOLE),
                     schemaServizio({

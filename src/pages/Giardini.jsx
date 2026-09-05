@@ -50,9 +50,9 @@ export default function Giardini() {
         <>
             <Seo
                 titolo="Giardini e opere in pietra in Sicilia | Luna Costruzioni"
-                descrizione="Muri a secco, pavimentazioni in pietra, terrazzamenti, verde e illuminazione esterna. Luna Costruzioni srl progetta e realizza giardini e opere in pietra in tutta la Sicilia, anche indipendentemente dalla piscina."
+                descrizione="Muri a secco, pavimentazioni in pietra, terrazzamenti, verde e illuminazione esterna. Luna Costruzioni S.r.l.s. progetta e realizza giardini e opere in pietra in tutta la Sicilia, anche indipendentemente dalla piscina."
                 percorso="/giardini-e-opere-in-pietra"
-                immagine="https://www.lunacostruzioni.it/media/bordo-in-legno-e-ciottoli-1280.jpg"
+                immagine="bordo-in-legno-e-ciottoli-1280.jpg"
                 schema={[
                     schemaBriciole(BRICIOLE),
                     schemaServizio({

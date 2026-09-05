@@ -22,6 +22,9 @@ export const ROTTE = [
         priorita: 0.8,
         frequenza: 'monthly',
     })),
+    // Conferma dopo l'invio del modulo: fuori dalla sitemap e noindex, non è
+    // una pagina da far trovare su Google. Serve come indirizzo di conversione.
+    { percorso: '/grazie', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },
     { percorso: '/privacy', priorita: 0.1, frequenza: 'yearly', esclusaDaSitemap: true },
     { percorso: '/cookie-policy', priorita: 0.1, frequenza: 'yearly', esclusaDaSitemap: true },
     { percorso: '/404', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },

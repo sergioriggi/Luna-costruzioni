@@ -58,7 +58,7 @@ export default function Zona() {
         <>
             <Seo
                 titolo={`Piscine con spiaggia in sabbia a ${p.nome} | Luna Costruzioni`}
-                descrizione={`Piscine con spiaggia in sabbia a ${p.nome}: fondale in sabbia naturale, pareti in roccia, niente cemento armato. Luna Costruzioni srl, concessionario autorizzato Piscine Rocks Design per la Sicilia. Sopralluogo e preventivo gratuiti a ${p.localita.slice(0, 3).join(', ')}.`}
+                descrizione={`Piscine con spiaggia in sabbia a ${p.nome}: fondale in sabbia naturale, pareti in roccia, niente cemento armato. Luna Costruzioni S.r.l.s., concessionario autorizzato Piscine Rocks Design per la Sicilia. Sopralluogo e preventivo gratuiti a ${p.localita.slice(0, 3).join(', ')}.`}
                 percorso={`/piscine-rocks-design/${p.slug}`}
                 schema={[
                     schemaBriciole(briciole),

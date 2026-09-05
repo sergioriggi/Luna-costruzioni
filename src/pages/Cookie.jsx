@@ -11,8 +11,8 @@ export default function Cookie() {
     return (
         <>
             <Seo
-                titolo="Cookie policy | Luna Costruzioni srl"
-                descrizione="Informativa sull'uso dei cookie sul sito di Luna Costruzioni srl."
+                titolo="Cookie policy | Luna Costruzioni S.r.l.s."
+                descrizione="Informativa sull'uso dei cookie sul sito di Luna Costruzioni S.r.l.s.."
                 percorso="/cookie-policy"
                 noindex
             />

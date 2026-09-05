@@ -35,10 +35,12 @@ const FASCIA = [
         testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
     },
     {
-        titolo: 'Numerosi progetti',
-        titoloEn: 'Many projects',
-        testo: 'Operativi da oltre un anno, con diversi cantieri eseguiti.',
-        testoEn: 'Operating for over a year, with several jobs completed.',
+        // Vedi la nota in `content.js`: l'impresa è attiva dal 2021, e dire
+        // «da oltre un anno» buttava via quattro anni di storia.
+        titolo: 'Impresa dal 2021',
+        titoloEn: 'Building since 2021',
+        testo: 'Impresa edile attiva dal 2021, con cantieri conclusi in tutta la Sicilia.',
+        testoEn: 'A building firm trading since 2021, with completed projects across Sicily.',
     },
 ]
 
@@ -142,9 +144,9 @@ const DUBBI = [
         domanda: '«Dopo la consegna, chi mi assiste?»',
         domandaEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Luna Costruzioni srl è concessionario per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+            'Luna Costruzioni S.r.l.s. è concessionario per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
         rispostaEn:
-            'Luna Costruzioni srl is the dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+            'Luna Costruzioni S.r.l.s. is the dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
     },
     {
         domanda: '«Sarà una vasca come tante.»',
@@ -244,8 +246,8 @@ export default function Home() {
     return (
         <div className="pg">
             <Seo
-                titolo="Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design in Sicilia"
-                descrizione="Luna Costruzioni srl, impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: progetto, scavi, realizzazione, messa in opera e collaudo chiavi in mano. Piscina espositiva visitabile in sede."
+                titolo="Luna Costruzioni S.r.l.s. — Concessionario Autorizzato Piscine Rocks Design in Sicilia"
+                descrizione="Luna Costruzioni S.r.l.s., impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: progetto, scavi, realizzazione, messa in opera e collaudo chiavi in mano. Piscina espositiva visitabile in sede."
                 percorso="/"
                 schema={[
                     schemaAzienda(),
@@ -276,8 +278,8 @@ export default function Home() {
                     </h1>
                     <p className="pg-eroe-sommario">
                         {t(
-                            'Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
-                            'Luna Costruzioni srl is the authorised Piscine Rocks Design dealer for Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
+                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
+                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
                         )}
                     </p>
                     <div className="pg-azioni">
@@ -482,8 +484,8 @@ export default function Home() {
                     <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
                         {t(
-                            'Luna Costruzioni srl è concessionario autorizzato Piscine Rocks Design per la Sicilia. Facciamo sopralluoghi e apriamo cantieri su tutta l’isola, per ville private e per strutture ricettive.',
-                            'Luna Costruzioni srl is the authorised Piscine Rocks Design dealer for Sicily. We survey and build across the whole island, for private villas and for hotels and guest houses.',
+                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Facciamo sopralluoghi e apriamo cantieri su tutta l’isola, per ville private e per strutture ricettive.',
+                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily. We survey and build across the whole island, for private villas and for hotels and guest houses.',
                         )}
                     </p>
                     <p style={{ color: 'var(--color-neutral-400)', maxWidth: '34em', margin: '0 0 32px', fontSize: 14 }}>

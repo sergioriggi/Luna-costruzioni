@@ -117,18 +117,26 @@
     }
 }
 
-/* Comparsa progressiva alla prima visualizzazione */
-.rivela {
+/*
+ * Comparsa progressiva alla prima visualizzazione.
+ *
+ * Le regole valgono SOLO sotto `.js-anima`, che `main.jsx` mette sulla radice
+ * un istante prima di idratare. Senza JavaScript — o nel tempo che il bundle
+ * arriva — il contenuto è semplicemente visibile: prima non lo era, e l'intero
+ * blocco sopra la piega di ogni pagina interna restava trasparente finché il
+ * JavaScript non partiva, rimandando l'LCP senza motivo.
+ */
+.js-anima .rivela {
     opacity: 0;
     transform: translateY(18px);
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-.rivela.visibile {
+.js-anima .rivela.visibile {
     opacity: 1;
     transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .rivela { opacity: 1; transform: none; }
+    .js-anima .rivela { opacity: 1; transform: none; }
 }

@@ -1,12 +1,33 @@
 import { SITE_URL, INDIRIZZO_DICHIARATO, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 
-const OG_IMAGE = `${SITE_URL}/media/oasi-aerea-sabbia-bianca-1280.jpg`
+/** Immagine di condivisione predefinita: solo il nome del file. */
+const OG_IMAGE = 'oasi-aerea-sabbia-bianca-1280.jpg'
+
+/**
+ * Costruisce l'URL assoluto di un'immagine di condivisione.
+ *
+ * Le pagine passano il solo nome del file. Otto di loro incollavano l'URL
+ * completo con il dominio definitivo scritto a mano — un dominio che non
+ * risponde: su qualunque altro host, cioè oggi, quelle immagini davano 404 e
+ * le anteprime social e su Meta uscivano senza immagine. Passando dal nome del
+ * file, l'indirizzo lo decide `SITE_URL` e segue l'host che serve davvero.
+ *
+ * Un URL assoluto passato di proposito resta onorato: serve per immagini
+ * ospitate altrove.
+ */
+export function risolviImmagine(immagine) {
+    if (!immagine) return `${SITE_URL}/media/${OG_IMAGE}`
+    if (/^https?:\/\//i.test(immagine)) return immagine
+    if (immagine.startsWith('/')) return `${SITE_URL}${immagine}`
+    return `${SITE_URL}/media/${immagine}`
+}
 
 /**
  * React 19 solleva automaticamente <title>, <meta> e <link> nel <head>,
  * quindi ogni pagina può dichiarare qui i propri metadati.
  */
-export default function Seo({ titolo, descrizione, percorso, immagine = OG_IMAGE, noindex = false, schema }) {
+export default function Seo({ titolo, descrizione, percorso, immagine, noindex = false, schema }) {
+    const immagineAssoluta = risolviImmagine(immagine)
     const url = percorso === '/' ? `${SITE_URL}/` : `${SITE_URL}${percorso}`
     const blocchi = Array.isArray(schema) ? schema : schema ? [schema] : []
 
@@ -32,13 +53,13 @@ export default function Seo({ titolo, descrizione, percorso, immagine = OG_IMAGE
             <meta property="og:title" content={titolo} />
             <meta property="og:description" content={descrizione} />
             <meta property="og:url" content={url} />
-            <meta property="og:image" content={immagine} />
+            <meta property="og:image" content={immagineAssoluta} />
             <meta property="og:image:alt" content="Piscina realizzata in Tecnologia Rocks Design" />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={titolo} />
             <meta name="twitter:description" content={descrizione} />
-            <meta name="twitter:image" content={immagine} />
+            <meta name="twitter:image" content={immagineAssoluta} />
 
             {blocchi.map((blocco, i) => (
                 <script
@@ -62,13 +83,19 @@ export function schemaAzienda() {
         url: SITE_URL,
         telephone: AZIENDA.telefonoRaw,
         email: AZIENDA.email,
-        image: OG_IMAGE,
+        image: risolviImmagine(OG_IMAGE),
         logo: `${SITE_URL}/brand/rocks-design-logo.png`,
         address: {
             '@type': 'PostalAddress',
-            addressRegion: 'Sicilia',
+            streetAddress: AZIENDA.sede.via,
+            addressLocality: AZIENDA.sede.comune,
+            postalCode: AZIENDA.sede.cap,
+            addressRegion: AZIENDA.sede.siglaProvincia,
             addressCountry: 'IT',
         },
+        vatID: AZIENDA.piva,
+        taxID: AZIENDA.piva,
+        foundingDate: AZIENDA.fondazione,
         areaServed: PROVINCE.map(p => ({
             '@type': 'AdministrativeArea',
             name: `Provincia di ${p.nome}`,

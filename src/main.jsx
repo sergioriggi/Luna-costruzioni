@@ -8,6 +8,12 @@ import './index.css'
 import './nocturne.css'
 import './pagina.css'
 
+// Da qui in poi le comparse progressive sono attive. Prima di questa riga il
+// contenuto è visibile: è ciò che permette alla prima pittura di non aspettare
+// il JavaScript. Va messa prima di idratare, così `Rivela` marca visibile in un
+// effetto di layout ciò che è già in viewport e non si vede alcun lampeggio.
+document.documentElement.classList.add('js-anima')
+
 const contenitore = document.getElementById('root')
 const albero = (
     <StrictMode>

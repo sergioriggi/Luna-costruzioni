@@ -36,9 +36,9 @@ export default function Sabbie() {
         <>
             <Seo
                 titolo="Le sabbie: Bianco, Giallo e Ticino | Luna Costruzioni, Sicilia"
-                descrizione="Bianco, Giallo, Ticino: le tre sabbie naturali di una piscina in Tecnologia Rocks Design® e il colore d'acqua che restituiscono. Guida alla scelta con Luna Costruzioni srl, Sicilia."
+                descrizione="Bianco, Giallo, Ticino: le tre sabbie naturali di una piscina in Tecnologia Rocks Design® e il colore d'acqua che restituiscono. Guida alla scelta con Luna Costruzioni S.r.l.s., Sicilia."
                 percorso="/sabbie"
-                immagine="https://www.lunacostruzioni.it/media/sabbie-naturali-campioni-1280.jpg"
+                immagine="sabbie-naturali-campioni-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_SABBIA)]}
             />
             <Briciole voci={BRICIOLE} />

@@ -216,6 +216,16 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-footer-elenco a:hover { color: var(--color-text); }
 /* neutro-500 e non 600: a 12px sul fondo del footer il 600 si ferma a 4,08:1 */
 .pg-copyright { margin: 0; font-size: 12px; color: var(--color-neutral-500); }
+/* Note legali obbligatorie: piccole ma leggibili, non nascoste. */
+.pg-note-legali {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-neutral-500);
+    max-width: 80em;
+}
+.pg-note-legali a { color: var(--color-neutral-400); text-decoration: none; }
+.pg-note-legali a:hover { color: var(--color-accent-300); }
 .pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
 
 /* ── schermi stretti ──────────────────────────────────────────────────────
@@ -280,3 +290,15 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-coppia { grid-template-columns: minmax(0, 1fr); }
     .pg-faq { grid-template-columns: minmax(0, 1fr); gap: 0; }
 }
+
+/* Riga delle province in fondo al piè di pagina: collegamenti fitti ma
+   leggibili, senza rubare una colonna alla griglia. */
+.pg-footer-province {
+    margin: 0 0 24px;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--color-neutral-500);
+}
+.pg-footer-province .pg-footer-etichetta { display: inline; margin: 0 6px 0 0; }
+.pg-footer-province a { color: var(--color-neutral-400); text-decoration: none; }
+.pg-footer-province a:hover { color: var(--color-accent-300); }

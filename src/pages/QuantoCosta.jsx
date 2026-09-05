@@ -47,7 +47,7 @@ export default function QuantoCosta() {
                 titolo="Quanto costa una piscina con spiaggia in sabbia | Luna Costruzioni, Sicilia"
                 descrizione="Che cosa determina davvero il prezzo di una piscina in Tecnologia Rocks Design®: dimensione, accessibilità del giardino, modello, cascate e opere di contorno. Sopralluogo e preventivo gratuiti in tutta la Sicilia."
                 percorso="/quanto-costa"
-                immagine="https://www.lunacostruzioni.it/media/villa-con-spiaggia-in-ghiaia-1280.jpg"
+                immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_COSTO)]}
             />
             <Briciole voci={BRICIOLE} />

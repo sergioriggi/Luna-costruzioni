@@ -1,6 +1,6 @@
-# Luna Costruzioni srl — sito web
+# Luna Costruzioni S.r.l.s. — sito web
 
-Sito ufficiale di **Luna Costruzioni srl**: impresa edile e concessionario
+Sito ufficiale di **Luna Costruzioni S.r.l.s.**: impresa edile e concessionario
 autorizzato Piscine Rocks Design per la **Sicilia**. Realizza la piscina in
 Tecnologia Rocks Design® **chiavi in mano** — sopralluogo, scavi, realizzazione,
 messa in opera e collaudo. Italiano con cambio lingua in inglese, SEO locale
@@ -64,7 +64,7 @@ npm run preview    # anteprima identica alla produzione
 | `npm run brand` | Estrae il logo ufficiale dal catalogo e genera la filigrana |
 | `npm run media` | Genera le immagini responsive filigranate da `media-sources/` |
 | `npm run media:manifest` | Rigenera solo `src/data/media.json` (quando cambiano didascalie o tag) |
-| `npm run fonts` | Scarica e self-hosta Marcellus e Inter |
+| `npm run fonts` | Scarica e self-hosta Inter |
 | `npm run assets` | `brand` + `media` + `fonts` |
 | `npm run lint` | Oxlint |
 | `npm start` | Avvia il server Node che serve `dist/` e l'endpoint contatti |
@@ -146,25 +146,33 @@ Va eseguita dopo ogni `npm run build`, prima di pubblicare.
 
 ## Sistema visivo
 
-Tema scuro, definito una volta in `tailwind.config.js` e usato ovunque:
+Tema scuro. La fonte di verità è **`src/nocturne.css`**, che definisce i token
+CSS; `tailwind.config.js` li rispecchia con nomi italiani per le pagine di
+approfondimento. **Le due vanno tenute allineate.**
 
 | Token | Valore | Uso |
 | --- | --- | --- |
-| `notte` | `#161826` | fondo pagina |
-| `notte-800` | `#292b31` | piè di pagina |
-| `superficie` | `#232532` | schede, fasce alternate, campi |
-| `testo` | `#e9e9ed` | testo principale |
+| `notte` / `--color-bg` | `#12202b` | fondo pagina, blu notte di mare |
+| `notte-900` / `--color-neutral-900` | `#1a2a33` | piè di pagina |
+| `superficie` / `--color-surface` | `#1b2f3c` | schede, fasce alternate, campi |
+| `testo` / `--color-text` | `#eef6f7` | testo principale |
 | `neutro-300…600` | rampa | testi secondari |
-| `accento` | `#9184d9` | occhielli, bordi, chiamate all'azione |
+| `accento` / `--color-accent` | `#38c6c0` | occhielli, bordi, chiamate all'azione |
+| `--color-section` → `--color-section-glow` | `#123f4a` → `#17605f` | fascia «chiavi in mano» |
 
 I bordi usano `testo/[0.16]`, la stessa trasparenza del blueprint. Tipografia
-**Inter** (300–700), self-hostata in `public/fonts`. Le classi di componente
+**Inter** (300–700), inclusa nel bundle da `src/fonts-woff2/`: nessuna
+richiesta a terze parti, nessun consenso cookie da chiedere per i font. Le classi di componente
 — `.bottone-*`, `.scheda`, `.campo`, `.occhiello`, `.titolo-sezione` — stanno
 in `src/index.css`.
 
-> L'accento `#9184d9` arriva dal blueprint. È l'unico token da cambiare se in
-> futuro si vuole virare sul turchese dell'acqua: si tocca `accento` in
-> `tailwind.config.js` e il resto segue.
+> Il fondo resta scuro di proposito: è ciò che fa risaltare le fotografie
+> delle piscine, che sono la cosa che vende. Un tema chiaro renderebbe il sito
+> più luminoso e le foto più piatte.
+>
+> Ogni coppia testo/fondo è verificata a contrasto WCAG AA. Se cambi un token,
+> ricontrolla almeno il testo della fascia sul capo chiaro del gradiente e il
+> copyright sul piè di pagina: sono le due che passano per prime sotto soglia.
 
 ---
 
@@ -400,7 +408,7 @@ con l'index di cartella e `404.html` come pagina di errore.
 media-sources/        sorgenti fotografici e catalogo — non pubblicati
 public/
   brand/              logo ufficiale estratto + filigrana (generati)
-  fonts/              Marcellus e Inter self-hostati (generati)
+  (i font Inter stanno in src/fonts-woff2/, non qui: entrano nel bundle)
   media/              immagini pubblicate e filigranate (generate)
 scripts/
   build-brand-assets.mjs   estrae il logo dal catalogo, crea la filigrana

@@ -3,6 +3,14 @@
  * Unica fonte di verità per NAP (Name, Address, Phone), rotte e SEO locale.
  */
 
+/**
+ * Anno di compilazione, iniettato da Vite (`define`). Fuori dal bundle — cioè
+ * negli script di build che importano questo file direttamente da Node — la
+ * costante non esiste, quindi si ripiega sull'anno corrente.
+ */
+const ANNO_DI_COMPILAZIONE =
+    typeof __ANNO_COMPILAZIONE__ !== 'undefined' ? __ANNO_COMPILAZIONE__ : new Date().getFullYear()
+
 /** Dominio definitivo, quello a cui il sito punterà a regime. */
 export const DOMINIO_DEFINITIVO = 'https://www.lunacostruzioni.it'
 
@@ -17,11 +25,44 @@ const indirizzoDaAmbiente =
     ''
 
 /**
+ * Un indirizzo è accettabile solo se è un URL http(s) pulito.
+ *
+ * Non è una precauzione teorica: nel pannello dell'hosting `VITE_SITE_URL` è
+ * finita a contenere l'intera riga di istruzioni, separatore compreso —
+ * «https://…hostingersite.com · VITE_BASE = /». La build non se n'è accorta,
+ * perché la stringa *contiene* un URL plausibile, e ha pubblicato quella roba
+ * come canonical di ogni pagina e come `<loc>` di tutte le 25 voci della
+ * sitemap.
+ *
+ * Qui si rifiuta tutto ciò che non è esattamente un indirizzo: spazi ovunque,
+ * query, frammento, protocollo diverso da http(s). Un valore rifiutato non
+ * viene «corretto» né usato a metà — si ignora, e il sito ricade in anteprima,
+ * che è l'errore reversibile.
+ */
+function indirizzoValido(grezzo) {
+    const v = String(grezzo ?? '').trim()
+    if (!v || /\s/.test(v)) return ''
+    let u
+    try {
+        u = new URL(v)
+    } catch {
+        return ''
+    }
+    if (u.protocol !== 'https:' && u.protocol !== 'http:') return ''
+    if (u.search || u.hash) return ''
+    // Un host senza punto non è un dominio pubblico (vale anche per «localhost»,
+    // che non ha senso come indirizzo canonico di un sito pubblicato).
+    if (!u.hostname.includes('.')) return ''
+    // Si tiene solo schema + host + eventuale sottocartella, senza barra finale.
+    return `${u.origin}${u.pathname}`.replace(/\/+$/, '')
+}
+
+/**
  * L'indirizzo *dichiarato*, distinto da quello di ripiego. La differenza non è
  * cosmetica: è ciò che permette di distinguere «non è stato configurato» da
  * «è stato configurato con il dominio definitivo».
  */
-export const INDIRIZZO_DICHIARATO = indirizzoDaAmbiente.replace(/\/+$/, '')
+export const INDIRIZZO_DICHIARATO = indirizzoValido(indirizzoDaAmbiente)
 
 export const SITE_URL = INDIRIZZO_DICHIARATO || DOMINIO_DEFINITIVO
 
@@ -44,8 +85,21 @@ export const SITE_URL = INDIRIZZO_DICHIARATO || DOMINIO_DEFINITIVO
  */
 export const ANTEPRIMA = INDIRIZZO_DICHIARATO !== DOMINIO_DEFINITIVO
 
+/**
+ * Dati societari come risultano dalla visura camerale (CCIAA Caltanissetta,
+ * documento T 449148583).
+ *
+ * ATTENZIONE ALLA DATA: la visura è stata estratta il 14/09/2021. Tutto ciò
+ * che segue è autorevole a quella data, ma capitale sociale, sede e oggetto
+ * sociale possono essere cambiati da allora. Prima di usarli per la verifica
+ * aziendale su Google Ads o su Meta serve una visura recente.
+ *
+ * La forma giuridica è **S.r.l.s.**, non «srl»: il sito la sbagliava ovunque.
+ */
 export const AZIENDA = {
-    nome: 'Luna Costruzioni srl',
+    nome: 'Luna Costruzioni S.r.l.s.',
+    /** Ragione sociale per esteso, per le note legali. */
+    ragioneSociale: 'LUNA COSTRUZIONI SOCIETÀ A RESPONSABILITÀ LIMITATA SEMPLIFICATA',
     nomeBreve: 'Luna Costruzioni',
     /** Che cosa fa l'azienda: viene prima del marchio del prodotto. */
     attivita: 'Piscine e opere in pietra in Sicilia',
@@ -56,11 +110,48 @@ export const AZIENDA = {
     telefonoRaw: '+393404900710',
     whatsapp: '393404900710',
     email: 'info@lunacostruzioni.it',
-    piva: '',
-    provinciaSede: 'Sicilia',
-    /** Anno del copyright: costante, così il markup statico e quello
-        idratato coincidono anche a cavallo di capodanno. */
-    annoRiferimento: 2026,
+
+    /** Partita IVA, codice fiscale e numero di iscrizione coincidono. */
+    piva: '02078730856',
+    rea: 'CL-118312',
+    pec: 'lunacostruzioni.srls@pec.it',
+    capitaleSociale: '2.000,00 €',
+    capitaleVersato: true,
+
+    /**
+     * Sede legale. La pubblicazione è un obbligo di legge (art. 2250 c.c.),
+     * non una scelta di marketing: una società deve indicare sul proprio sito
+     * sede, ufficio del registro, numero REA e capitale sociale.
+     *
+     * DA CHIARIRE con Luciano: se Via Speranza 42 è la sua abitazione, non va
+     * presentata come luogo visitabile. Il sito invita a «venire a trovarci»:
+     * l'indirizzo legale nelle note in fondo è dovuto, ma un indirizzo
+     * showroom è un'altra cosa e va confermato.
+     */
+    sede: {
+        via: 'Via Speranza 42',
+        cap: '93017',
+        comune: 'San Cataldo',
+        siglaProvincia: 'CL',
+    },
+
+    /** Data dell'atto costitutivo; l'attività è iniziata il 10/02/2021. */
+    fondazione: '2021-02-02',
+    annoFondazione: 2021,
+
+    provinciaSede: 'Caltanissetta',
+    /** La regione resta separata: `zona` alimenta il controllo di SEO locale. */
+    regione: 'Sicilia',
+    /**
+     * Anno del copyright.
+     *
+     * Non si usa `new Date()` a runtime: il markup pre-renderizzato e quello
+     * idratato devono coincidere, e a cavallo di capodanno differirebbero.
+     * Prima era una costante scritta a mano, che andava ricordata ogni anno;
+     * ora la inietta Vite in fase di compilazione (`define` in vite.config.js),
+     * quindi è l'anno della pubblicazione ed è identica ovunque.
+     */
+    annoRiferimento: ANNO_DI_COMPILAZIONE,
 }
 
 /** Sito ufficiale della casa madre: il logo concessionario deve linkare qui. */

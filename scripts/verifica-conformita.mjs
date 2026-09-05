@@ -133,6 +133,37 @@ for (const file of pagine) {
     if (!paginaDiServizio(rel) && !new RegExp(AZIENDA.zona, 'i').test(html)) {
         errori.push(`${rel}: la zona di riferimento (${AZIENDA.zona}) non è citata.`)
     }
+
+    // 8. Gli indirizzi dichiarati devono essere URL, non testo.
+    // Una VITE_SITE_URL corrotta è arrivata in produzione senza far rumore:
+    // conteneva l'intera riga di istruzioni, e siccome *conteneva* un URL
+    // plausibile la build è passata. Ogni canonical e ogni og:url portavano
+    // quella stringa. Ora un valore del genere fa fallire la verifica.
+    for (const attributo of ['canonical', 'og:url', 'og:image', 'twitter:image']) {
+        const espressione =
+            attributo === 'canonical'
+                ? /<link[^>]+rel="canonical"[^>]+href="([^"]*)"/gi
+                : new RegExp(`<meta[^>]+(?:property|name)="${attributo}"[^>]+content="([^"]*)"`, 'gi')
+        for (const trovato of html.matchAll(espressione)) {
+            const valore = trovato[1]
+            if (!/^https?:\/\/[^\s"'<>]+$/.test(valore)) {
+                errori.push(`${rel}: ${attributo} non è un URL assoluto ben formato («${valore}»).`)
+            }
+        }
+    }
+}
+
+// 8-bis. Stesso controllo sulla sitemap: è il file che i motori leggono per
+// primo, e un <loc> malformato invalida l'intera voce.
+try {
+    const sitemap = await fs.readFile(path.join(DIST, 'sitemap.xml'), 'utf8')
+    for (const trovato of sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)) {
+        if (!/^https?:\/\/[^\s]+$/.test(trovato[1])) {
+            errori.push(`sitemap.xml: <loc> malformato («${trovato[1]}»).`)
+        }
+    }
+} catch {
+    errori.push('sitemap.xml assente in dist/.')
 }
 
 // 4-bis. la filigrana è impressa da prepare-media.mjs su ogni foto di piscina

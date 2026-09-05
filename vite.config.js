@@ -51,6 +51,9 @@ const INGRESSO = fileURLToPath(new URL('./index.html', import.meta.url))
 
 export default defineConfig({
     base: BASE,
+    // L'anno del copyright viene fissato alla compilazione: a runtime
+    // differirebbe fra markup pre-renderizzato e markup idratato.
+    define: { __ANNO_COMPILAZIONE__: new Date().getFullYear() },
     plugins: [react(), anteprimaPreRenderizzata()],
     build: {
         target: 'es2020',

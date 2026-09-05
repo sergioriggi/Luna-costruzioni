@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AZIENDA, PROVINCE } from '../data/site'
 import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 
@@ -54,6 +54,7 @@ const INTERESSI = [
  * non si perde in nessuno dei due casi.
  */
 export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Richiedi un preventivo su misura', compatto = false }) {
+    const navigate = useNavigate()
     const [dati, setDati] = useState({ ...VUOTO, provincia: provinciaPreselezionata ?? '' })
     const [errori, setErrori] = useState({})
     const [stato, setStato] = useState('pronto') // pronto | invio | inviato | errore
@@ -88,21 +89,33 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
         setStato('invio')
         const esito = await inviaLead(dati, { oggetto: 'Richiesta preventivo Piscina Rocks Design' })
 
-        if (esito === INVIATO || esito === RIPIEGO_POSTA) {
-            setStato('inviato')
+        // Due esiti diversi, due schermate diverse. Sul ripiego `mailto` la
+        // richiesta non è ancora partita: si è solo aperto il programma di
+        // posta del visitatore. Dirgli «ricevuta» lo lascerebbe ad aspettare
+        // una chiamata che non arriverà mai.
+        if (esito === INVIATO) {
             setDati({ ...VUOTO, provincia: provinciaPreselezionata ?? '' })
+            navigate('/grazie')
+        } else if (esito === RIPIEGO_POSTA) {
+            setStato('posta')
         } else {
             setStato('errore')
         }
     }
 
-    if (stato === 'inviato') {
+    if (stato === 'posta') {
         return (
-            <div className="scheda text-center" role="status">
-                <p className="font-display text-2xl text-testo">Grazie, richiesta ricevuta.</p>
-                <p className="testo-lungo mx-auto mt-3 max-w-md">
-                    {AZIENDA.referente} ti ricontatta entro 24 ore lavorative per fissare il sopralluogo.
-                    Se preferisci, puoi chiamarci subito.
+            <div className="scheda" role="status">
+                <p className="font-display text-2xl text-testo">Manca un passaggio.</p>
+                <p className="testo-lungo mt-3">
+                    Abbiamo aperto il tuo programma di posta con la richiesta già compilata:
+                    <strong className="text-testo"> premi Invia</strong> perché ci arrivi. Finché non lo
+                    fai, non l’abbiamo ricevuta.
+                </p>
+                <p className="testo-lungo mt-3">
+                    Se non si è aperto nulla, scrivici a{' '}
+                    <a href={`mailto:${AZIENDA.email}`} className="link-sottile text-accento">{AZIENDA.email}</a>{' '}
+                    oppure chiamaci: è la via più rapida.
                 </p>
                 <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario mt-6">
                     Chiama {AZIENDA.telefono}

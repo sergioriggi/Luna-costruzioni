@@ -23,9 +23,9 @@ export default function Showroom() {
         <>
             <Seo
                 titolo="Showroom: vieni a trovarci presso la nostra sede | Luna Costruzioni, Sicilia"
-                descrizione="Visita la piscina espositiva Rocks Design di Luna Costruzioni srl in Sicilia. Tocca le sabbie naturali, vedi i monoliti e l'acqua in funzione. Visite su appuntamento."
+                descrizione="Visita la piscina espositiva Rocks Design di Luna Costruzioni S.r.l.s. in Sicilia. Tocca le sabbie naturali, vedi i monoliti e l'acqua in funzione. Visite su appuntamento."
                 percorso="/showroom"
-                immagine="https://www.lunacostruzioni.it/media/villa-con-spiaggia-in-ghiaia-1280.jpg"
+                immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={schemaBriciole(BRICIOLE)}
             />
             <Briciole voci={BRICIOLE} />

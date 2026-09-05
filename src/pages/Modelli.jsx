@@ -15,7 +15,7 @@ export default function Modelli() {
         <>
             <Seo
                 titolo="I tre modelli di piscina: Caraibi, Mediterranea, Alpi | Luna Costruzioni"
-                descrizione="Caraibi, Mediterranea, Alpi: tre modi di interpretare una piscina con spiaggia in sabbia. Guida alla scelta in base a giardino, esposizione e vegetazione. Luna Costruzioni srl, concessionario autorizzato per la Sicilia."
+                descrizione="Caraibi, Mediterranea, Alpi: tre modi di interpretare una piscina con spiaggia in sabbia. Guida alla scelta in base a giardino, esposizione e vegetazione. Luna Costruzioni S.r.l.s., concessionario autorizzato per la Sicilia."
                 percorso="/modelli"
                 schema={schemaBriciole(BRICIOLE)}
             />

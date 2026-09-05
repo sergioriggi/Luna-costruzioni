@@ -38,10 +38,10 @@ export default function Azienda() {
     return (
         <>
             <Seo
-                titolo="Chi siamo | Luna Costruzioni srl, impresa di costruzioni in Sicilia"
-                descrizione="Luna Costruzioni srl è un'impresa siciliana specializzata in piscine con spiaggia in sabbia e opere in pietra. Referente Luciano Naro. Sopralluogo e preventivo gratuiti in tutte le province."
+                titolo="Chi siamo | Luna Costruzioni S.r.l.s., impresa di costruzioni in Sicilia"
+                descrizione="Luna Costruzioni S.r.l.s. è un'impresa siciliana specializzata in piscine con spiaggia in sabbia e opere in pietra. Referente Luciano Naro. Sopralluogo e preventivo gratuiti in tutte le province."
                 percorso="/azienda"
-                immagine="https://www.lunacostruzioni.it/media/oasi-con-pontile-1280.jpg"
+                immagine="oasi-con-pontile-1280.jpg"
                 schema={[schemaAzienda(), schemaBriciole(BRICIOLE)]}
             />
             <Briciole voci={BRICIOLE} />

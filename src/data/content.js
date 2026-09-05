@@ -3,7 +3,7 @@
  *
  * NOTA REDAZIONALE — testi originali
  * ----------------------------------
- * Tutti i testi di questo file sono scritti ex novo per Luna Costruzioni srl.
+ * Tutti i testi di questo file sono scritti ex novo per Luna Costruzioni S.r.l.s..
  * Descrivono le stesse caratteristiche tecniche documentate dalla casa madre,
  * ma non riprendono frasi né dal catalogo Piscine Rocks Design né dal sito
  * piscinerocksdesign.com. Due ragioni:
@@ -13,7 +13,7 @@
  *      proprio.
  * Chi aggiorna il sito è pregato di mantenere questa regola.
  *
- * Il prodotto è in Tecnologia Rocks Design®: Luna Costruzioni srl è
+ * Il prodotto è in Tecnologia Rocks Design®: Luna Costruzioni S.r.l.s. è
  * concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.
  */
 
@@ -289,10 +289,20 @@ export const CREDENZIALI = [
         testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
     },
     {
-        titolo: 'Cantieri eseguiti',
-        titoloEn: 'Completed jobs',
-        testo: 'Operativi da oltre un anno, con diversi cantieri portati a termine.',
-        testoEn: 'Operating for over a year, with several jobs completed.',
+        /*
+         * Diceva «operativi da oltre un anno». L'impresa è attiva dal febbraio
+         * 2021: su un acquisto da decine di migliaia di euro gli anni di
+         * attività sono uno dei pochi segnali di affidabilità disponibili, e
+         * quella formula ne buttava via quattro.
+         *
+         * Il numero di cantieri resta generico di proposito, finché Luciano non
+         * dà una cifra che può sostenere: un numero inventato è peggio di
+         * nessun numero.
+         */
+        titolo: 'Impresa dal 2021',
+        titoloEn: 'Building since 2021',
+        testo: 'Impresa edile attiva dal 2021, con cantieri conclusi in tutta la Sicilia.',
+        testoEn: 'A building firm trading since 2021, with completed projects across Sicily.',
     },
 ]
 
@@ -332,7 +342,7 @@ export const FAQ = [
     {
         domanda: 'Che cos’è esattamente una Piscina Rocks Design?',
         risposta:
-            'È una piscina realizzata con la Tecnologia Rocks Design®: le pareti sono formate da massi monolitici, il fondale è in sabbia naturale e non ci sono getti di cemento armato. L’acqua è mantenuta limpida da impianti di filtrazione e sanificazione. Il risultato somiglia a una caletta o a un’ansa di fiume, ma è una piscina a tutti gli effetti. La tecnologia è di Piscine Rocks Design; Luna Costruzioni srl è il concessionario autorizzato che la realizza in Sicilia.',
+            'È una piscina realizzata con la Tecnologia Rocks Design®: le pareti sono formate da massi monolitici, il fondale è in sabbia naturale e non ci sono getti di cemento armato. L’acqua è mantenuta limpida da impianti di filtrazione e sanificazione. Il risultato somiglia a una caletta o a un’ansa di fiume, ma è una piscina a tutti gli effetti. La tecnologia è di Piscine Rocks Design; Luna Costruzioni S.r.l.s. è il concessionario autorizzato che la realizza in Sicilia.',
     },
     {
         domanda: 'È la stessa cosa di una biopiscina con le piante?',

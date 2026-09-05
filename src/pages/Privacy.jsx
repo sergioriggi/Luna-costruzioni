@@ -11,7 +11,7 @@ export default function Privacy() {
     return (
         <>
             <Seo
-                titolo="Privacy policy | Luna Costruzioni srl"
+                titolo="Privacy policy | Luna Costruzioni S.r.l.s."
                 descrizione="Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)."
                 percorso="/privacy"
                 noindex

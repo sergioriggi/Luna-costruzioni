@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AZIENDA } from '../data/site'
 import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 import { useLingua } from '../i18n/lingua'
@@ -25,6 +25,7 @@ const VUOTO = {
  */
 export default function ModuloPagina() {
     const { t } = useLingua()
+    const navigate = useNavigate()
     const [dati, setDati] = useState(VUOTO)
     const [errori, setErrori] = useState({})
     const [stato, setStato] = useState('pronto') // pronto | invio | inviato | errore
@@ -58,9 +59,16 @@ export default function ModuloPagina() {
             { oggetto: 'Richiesta sopralluogo — Piscina Rocks Design' },
         )
 
-        if (risultato === INVIATO || risultato === RIPIEGO_POSTA) {
+        // I due esiti non sono la stessa cosa e non vanno confusi: sul ripiego
+        // `mailto` si è solo aperto il programma di posta del visitatore, che
+        // potrebbe non premere mai «Invia». Dirgli «richiesta ricevuta» sarebbe
+        // falso, e lo lascerebbe ad aspettare una chiamata che non arriverà.
+        if (risultato === INVIATO) {
             setStato('inviato')
             setDati(VUOTO)
+            navigate('/grazie')
+        } else if (risultato === RIPIEGO_POSTA) {
+            setStato('posta')
         } else {
             setStato('errore')
         }
@@ -69,12 +77,17 @@ export default function ModuloPagina() {
     const esito =
         stato === 'inviato'
             ? t('Grazie, ti richiamiamo a breve.', 'Thanks — we will call you back shortly.')
-            : stato === 'errore'
+            : stato === 'posta'
               ? t(
-                    `Invio non riuscito: chiamaci al ${AZIENDA.telefono}.`,
-                    `Could not send: please call us on ${AZIENDA.telefono}.`,
+                    'Abbiamo aperto il tuo programma di posta con la richiesta già scritta: premi Invia per farcela arrivare. Se non si è aperto nulla, scrivici o chiamaci.',
+                    'We have opened your email program with the request already written: press Send so it reaches us. If nothing opened, write or call us instead.',
                 )
-              : ''
+              : stato === 'errore'
+                ? t(
+                      `Invio non riuscito: chiamaci al ${AZIENDA.telefono}.`,
+                      `Could not send: please call us on ${AZIENDA.telefono}.`,
+                  )
+                : ''
 
     return (
         <form className="pg-modulo" onSubmit={invia} noValidate>

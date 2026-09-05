@@ -21,6 +21,7 @@ import Contatti from './pages/Contatti'
 import Zona from './pages/Zona'
 import Privacy from './pages/Privacy'
 import Cookie from './pages/Cookie'
+import Grazie from './pages/Grazie'
 import NonTrovata from './pages/NonTrovata'
 import { FornitoreLingua } from './i18n/lingua'
 
@@ -63,6 +64,7 @@ export default function App() {
                     <Route path="/domande-frequenti" element={<Faq />} />
                     <Route path="/contatti" element={<Contatti />} />
                     <Route path="/piscine-rocks-design/:provincia" element={<Zona />} />
+                    <Route path="/grazie" element={<Grazie />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/cookie-policy" element={<Cookie />} />
                     <Route path="*" element={<NonTrovata />} />

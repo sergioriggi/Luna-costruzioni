@@ -7,7 +7,7 @@ export default function NonTrovata() {
     return (
         <>
             <Seo
-                titolo="Pagina non trovata | Luna Costruzioni srl"
+                titolo="Pagina non trovata | Luna Costruzioni S.r.l.s."
                 descrizione="La pagina che cerchi non esiste o è stata spostata."
                 percorso="/404"
                 noindex
