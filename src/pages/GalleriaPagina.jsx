@@ -13,7 +13,7 @@ export default function GalleriaPagina() {
     return (
         <>
             <Seo
-                titolo="Le nostre realizzazioni in Sicilia | Luna Costruzioni"
+                titolo="Galleria Piscine Rocks Design | Luna Costruzioni, Sicilia"
                 descrizione="Fotografie di Piscine Rocks Design: monoliti, sabbie naturali, cascate, aree idromassaggio e illuminazione notturna. Realizzazioni in Tecnologia Rocks Design®."
                 percorso="/galleria"
                 schema={schemaBriciole(BRICIOLE)}

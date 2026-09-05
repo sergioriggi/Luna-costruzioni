@@ -87,7 +87,7 @@ export default function Modello() {
             </Sezione>
 
             <Sezione>
-                <IntestazioneSezione occhiello="Realizzazioni" titolo={`${m.nomeCompleto} in Sicilia e non solo`} />
+                <IntestazioneSezione occhiello="Realizzazioni" titolo={`${m.nomeCompleto}, come si presenta ultimata`} />
                 <Rivela className="mt-12">
                     <Galleria filtrabile={false} slugs={m.galleria} />
                 </Rivela>

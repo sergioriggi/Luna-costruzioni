@@ -383,7 +383,7 @@ export default function Home() {
                         </h2>
                     </div>
                     <p className="pg-testata-nota">
-                        {t('Ogni immagine è un progetto consegnato.', 'Every image is a delivered project.')}
+                        {t('Ogni immagine è una Piscina Rocks Design ultimata.', 'Every image is a finished Piscine Rocks Design pool.')}
                     </p>
                 </div>
                 <div className="pg-mosaico">

@@ -84,7 +84,26 @@ export function schemaAzienda() {
         telephone: AZIENDA.telefonoRaw,
         email: AZIENDA.email,
         image: risolviImmagine(OG_IMAGE),
-        logo: `${SITE_URL}/brand/rocks-design-logo.png`,
+        /*
+         * Qui mancano DI PROPOSITO `logo` e `sameAs`, e non vanno rimessi
+         * finché Luna non ha cose proprie da dichiarare.
+         *
+         * `sameAs` in schema.org AFFERMA IDENTITÀ: dice «questa entità è anche
+         * quel profilo». Puntandolo al sito e all'Instagram della casa madre,
+         * il markup dichiarava a Google che Luna Costruzioni *è* Piscine Rocks
+         * Design. Non è una sfumatura di comunicazione: è una dichiarazione
+         * falsa scritta in dati strutturati.
+         *
+         * `logo` aveva lo stesso difetto in forma più tenue: il logo della
+         * casa madre dichiarato come logo di Luna.
+         *
+         * La relazione vera — Luna realizza un prodotto altrui su licenza —
+         * resta espressa da `brand`, qui sotto, che è il campo giusto. Un
+         * campo assente è corretto; uno sbagliato no.
+         *
+         * Quando esisteranno profili social di Luna, quei due campi tornano
+         * con i valori DI LUNA.
+         */
         address: {
             '@type': 'PostalAddress',
             streetAddress: AZIENDA.sede.via,
@@ -109,7 +128,6 @@ export function schemaAzienda() {
             'piscine di sabbia',
             'cascate da giardino in roccia naturale',
         ],
-        sameAs: [ROCKS_DESIGN.sito, ROCKS_DESIGN.instagram],
     }
 }
 

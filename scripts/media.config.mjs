@@ -1,5 +1,5 @@
 /**
- * WHITELIST FOTOGRAFICA — Luna Costruzioni srl / Piscine Rocks Design
+ * WHITELIST FOTOGRAFICA — Luna Costruzioni S.r.l.s. / Piscine Rocks Design
  * =====================================================================
  * Solo le immagini elencate qui vengono pubblicate sul sito.
  *
@@ -12,6 +12,22 @@
  * I file sorgente vivono in `media-sources/` e NON sono serviti dal sito.
  * Prima di aggiungere una voce, verificare che lo scatto non riveli
  * scavi, teli, geotessili, tubazioni, locali tecnici o mezzi d'opera.
+ *
+ * ── PROVENIENZA: PERCHÉ I TESTI NON DICONO «LE NOSTRE, IN SICILIA» ───────
+ * I metadati EXIF degli originali collocano gli scatti in provincia di
+ * Varese, e i file del pacchetto di marca hanno gli EXIF rimossi del tutto:
+ * indizi coerenti con materiale fornito dalla casa madre, non con cantieri
+ * siciliani di Luna.
+ *
+ * Finché la provenienza non è accertata, i testi attorno a queste immagini
+ * affermano solo ciò che è verificabile — che sono Piscine Rocks Design
+ * ultimate e in funzione — e non rivendicano né il luogo né la paternità.
+ * Riguarda `GalleriaPagina.jsx`, `Home.jsx`, `Modello.jsx` e `Giardini.jsx`.
+ *
+ * NON è una limitazione da tenere per sempre: «le nostre realizzazioni in
+ * Sicilia» vende molto più di «Piscine Rocks Design». Appena Luciano
+ * fornisce fotografie di cantieri suoi, quelle vanno aggiunte qui e i testi
+ * possono tornare a rivendicare quello che a quel punto è vero.
  */
 
 export const SOURCE_DIR = 'media-sources/foto'
