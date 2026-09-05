@@ -28,8 +28,11 @@ export default function GalleriaPagina() {
                     </h1>
                     <p className="testo-lungo mt-6">
                         Ogni immagine mostra una vasca diversa: forma, rocce e sabbia cambiano ogni volta. Usa i filtri
-                        per modello o per dettaglio. Tutte le fotografie sono di piscine realizzate in Tecnologia
-                        Rocks Design®.
+                        per modello o per dettaglio.
+                    </p>
+                    <p className="testo-lungo mt-4">
+                        Sono fotografie del produttore: mostrano piscine realizzate in Tecnologia Rocks Design®, cioè
+                        il prodotto che costruiamo. La tua non sarà una di queste — sarà disegnata sul tuo giardino.
                     </p>
                 </Rivela>
 
@@ -47,7 +50,7 @@ export default function GalleriaPagina() {
                 titolo="Ti immagini la tua, qui dentro?"
                 testo="Raccontaci il tuo giardino: dal sopralluogo nasce un progetto che non somiglia a nessun altro."
                 primaria={{ to: '/contatti', label: 'Richiedi un preventivo' }}
-                secondaria={{ to: '/showroom', label: 'Visita lo showroom' }}
+                secondaria={{ to: '/showroom', label: 'Vedine una dal vivo' }}
             />
         </>
     )

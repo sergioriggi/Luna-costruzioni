@@ -59,7 +59,8 @@ export default function Azienda() {
                             quando abbiamo incontrato le piscine con fondale in sabbia, ci siamo trovati a casa.
                         </p>
                         <p className="testo-lungo mt-4">
-                            Oggi facciamo due cose, e le facciamo con le stesse squadre:{' '}
+                            Da concessionari autorizzati Piscine Rocks Design portiamo quel mestiere in due
+                            direzioni, con le stesse squadre e gli stessi mezzi:{' '}
                             <Link to="/piscine-rocks-design" className="link-sottile font-medium text-testo">
                                 piscine con spiaggia in sabbia
                             </Link>{' '}
@@ -73,7 +74,7 @@ export default function Azienda() {
                             <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
                                 Chiama {AZIENDA.referente}
                             </a>
-                            <Link to="/showroom" className="bottone-secondario">Vieni a trovarci</Link>
+                            <Link to="/showroom" className="bottone-secondario">Vedine una dal vivo</Link>
                         </div>
                     </Rivela>
                     <Rivela delay={120}>
@@ -163,7 +164,7 @@ export default function Azienda() {
                     <IntestazioneSezione
                         occhiello="Parliamone"
                         titolo="Il modo più rapido per capirci è vederci"
-                        testo={`Mezz'ora nella nostra piscina espositiva chiarisce più di dieci pagine di sito. Oppure raccontaci il tuo progetto qui: ${AZIENDA.referente} risponde entro 24 ore lavorative.`}
+                        testo={`Mezz'ora davanti a una Piscina Rocks Design chiarisce più di dieci pagine di sito, e la visita la organizziamo noi. Oppure raccontaci il tuo progetto qui: ${AZIENDA.referente} risponde entro 24 ore lavorative.`}
                     />
                     <Rivela delay={100}>
                         <ModuloContatto titolo="Scrivici" />

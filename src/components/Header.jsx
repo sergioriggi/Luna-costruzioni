@@ -6,7 +6,7 @@ import { pubblico, BASE_URL } from '../lib/percorso'
 const ANCORE = [
     { id: 'piscine', label: 'Piscine', labelEn: 'Pools' },
     { id: 'processo', label: 'Chiavi in mano', labelEn: 'Turnkey' },
-    { id: 'realizzazioni', label: 'Realizzazioni', labelEn: 'Projects' },
+    { id: 'realizzazioni', label: 'Le piscine', labelEn: 'The pools' },
     { id: 'dubbi', label: 'Prima di decidere', labelEn: 'Before you decide' },
     { id: 'hotel', label: 'Hotel e resort', labelEn: 'Hotels' },
     { id: 'faq', label: 'FAQ', labelEn: 'FAQ' },

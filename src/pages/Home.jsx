@@ -35,12 +35,12 @@ const FASCIA = [
         testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
     },
     {
-        // Vedi la nota in `content.js`: l'impresa è attiva dal 2021, e dire
-        // «da oltre un anno» buttava via quattro anni di storia.
-        titolo: 'Impresa dal 2021',
-        titoloEn: 'Building since 2021',
-        testo: 'Impresa edile attiva dal 2021, con cantieri conclusi in tutta la Sicilia.',
-        testoEn: 'A building firm trading since 2021, with completed projects across Sicily.',
+        // Vedi la nota estesa in `content.js` (CREDENZIALI): la credenziale
+        // vera sono i cantieri edili, non piscine già realizzate.
+        titolo: 'Cantieri dal 2021',
+        titoloEn: 'On site since 2021',
+        testo: 'Cinque anni di movimento terra e opere edili, più la formazione Rocks Design.',
+        testoEn: 'Five years of earthmoving and building work, plus Rocks Design training.',
     },
 ]
 
@@ -152,9 +152,9 @@ const DUBBI = [
         domanda: '«Sarà una vasca come tante.»',
         domandaEn: '“It will end up looking like every other pool.”',
         risposta:
-            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Nelle realizzazioni qui sopra non ce ne sono due uguali.',
+            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le piscine qui sopra non ce ne sono due uguali, e la tua non somiglierà a nessuna di quelle.',
         rispostaEn:
-            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two projects above are the same.',
+            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two pools above are alike, and yours will not resemble any of them.',
     },
 ]
 
@@ -247,7 +247,7 @@ export default function Home() {
         <div className="pg">
             <Seo
                 titolo="Luna Costruzioni S.r.l.s. — Concessionario Autorizzato Piscine Rocks Design in Sicilia"
-                descrizione="Luna Costruzioni S.r.l.s., impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: progetto, scavi, realizzazione, messa in opera e collaudo chiavi in mano. Piscina espositiva visitabile in sede."
+                descrizione="Luna Costruzioni S.r.l.s., impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: progetto, scavi, realizzazione, messa in opera e collaudo chiavi in mano. Sopralluogo gratuito in tutta l'isola."
                 percorso="/"
                 schema={[
                     schemaAzienda(),
@@ -287,7 +287,7 @@ export default function Home() {
                             {t('Richiedi un sopralluogo', 'Book a site visit')}
                         </a>
                         <a className="btn btn-secondary pg-btn-grande" href="#realizzazioni">
-                            {t('Guarda le realizzazioni', 'See the projects')}
+                            {t('Guarda le piscine', 'See the pools')}
                         </a>
                     </div>
                 </div>
@@ -336,12 +336,18 @@ export default function Home() {
                         sizes="(max-width: 900px) 100vw, 45vw"
                         alt="Piscina Rocks Design con bordo in pietra e pontile in legno"
                     />
-                    {/* Direttiva Piscine Rocks Design: la piscina espositiva va
-                        segnalata in prima pagina, con l'invito a venirci a trovare. */}
+                    {/*
+                      Direttiva Piscine Rocks Design: la piscina espositiva va
+                      segnalata in prima pagina, con l'invito ad andarla a vedere.
+                      La piscina espositiva è quella della casa madre, in
+                      Lombardia — non di Luna, che non ha una sede visitabile.
+                      Diceva «vieni a trovarci presso la nostra sede», che
+                      mandava i clienti all'abitazione del titolare.
+                    */}
                     <figcaption>
                         {t(
-                            'Piscina Rocks Design ultimata e in funzione. Vieni a trovarci presso la nostra sede.',
-                            'A completed, working Piscine Rocks Design pool. Come and see ours at our premises.',
+                            'Piscina Rocks Design ultimata e in funzione. Organizziamo la visita alla piscina espositiva Piscine Rocks Design: vieni a vederla con noi.',
+                            'A completed, working Piscine Rocks Design pool. We arrange visits to the Piscine Rocks Design showroom pool — come and see it with us.',
                         )}
                     </figcaption>
                 </figure>
@@ -374,7 +380,7 @@ export default function Home() {
             <section id="realizzazioni" className="pg-sezione pg-bordo">
                 <div className="pg-testata">
                     <div>
-                        <h6 className="pg-occhiello">{t('Realizzazioni', 'Projects')}</h6>
+                        <h6 className="pg-occhiello">{t('Le piscine Rocks Design', 'Piscine Rocks Design')}</h6>
                         <h2 className="pg-titolo" style={{ margin: 0, maxWidth: '20em' }}>
                             {t(
                                 'Piscine Rocks Design ultimate, arredate e in funzione.',
@@ -383,7 +389,7 @@ export default function Home() {
                         </h2>
                     </div>
                     <p className="pg-testata-nota">
-                        {t('Ogni immagine è una Piscina Rocks Design ultimata.', 'Every image is a finished Piscine Rocks Design pool.')}
+                        {t('Fotografie di Piscine Rocks Design realizzate: è il prodotto che costruiamo per te.', 'Photographs of built Piscine Rocks Design pools: this is the product we build for you.')}
                     </p>
                 </div>
                 <div className="pg-mosaico">

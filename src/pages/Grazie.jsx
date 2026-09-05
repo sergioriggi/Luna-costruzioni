@@ -58,7 +58,7 @@ export default function Grazie() {
                     </div>
 
                     <p className="mt-10 text-sm text-neutro-500">
-                        Nel frattempo puoi <Link to="/galleria" className="link-sottile text-accento">vedere le realizzazioni</Link>{' '}
+                        Nel frattempo puoi <Link to="/galleria" className="link-sottile text-accento">vedere le piscine Rocks Design</Link>{' '}
                         oppure leggere <Link to="/quanto-costa" className="link-sottile text-accento">che cosa sposta il prezzo</Link>.
                     </p>
                 </div>

@@ -17,7 +17,7 @@ export default function NonTrovata() {
                     <p className="occhiello">Errore 404</p>
                     <h1 className="titolo-sezione">Questa pagina non esiste</h1>
                     <p className="testo-lungo mt-5">
-                        Forse cercavi la galleria delle realizzazioni o la pagina della tua provincia.
+                        Forse cercavi la galleria delle piscine o la pagina della tua provincia.
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-3">
                         <Link to="/" className="bottone-primario">Torna alla home</Link>

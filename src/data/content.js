@@ -240,9 +240,9 @@ export const DUBBI = [
         dubbio: '«Sarà una vasca come tante.»',
         dubbioEn: '“It will end up looking like every other pool.”',
         risposta:
-            'La Tecnologia Rocks Design® è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le realizzazioni qui sopra non ce ne sono due uguali.',
+            'La Tecnologia Rocks Design® è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le piscine qui sopra non ce ne sono due uguali.',
         rispostaEn:
-            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two projects above are the same.',
+            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two pools above are the same.',
     },
 ]
 
@@ -290,19 +290,24 @@ export const CREDENZIALI = [
     },
     {
         /*
-         * Diceva «operativi da oltre un anno». L'impresa è attiva dal febbraio
-         * 2021: su un acquisto da decine di migliaia di euro gli anni di
-         * attività sono uno dei pochi segnali di affidabilità disponibili, e
-         * quella formula ne buttava via quattro.
+         * Questa voce porta la credenziale VERA, e va tenuta precisa.
          *
-         * Il numero di cantieri resta generico di proposito, finché Luciano non
-         * dà una cifra che può sostenere: un numero inventato è peggio di
-         * nessun numero.
+         * Luna Costruzioni non ha ancora realizzato una piscina: ha fatto il
+         * corso Rocks Design ed è concessionaria autorizzata. Ciò che ha
+         * davvero alle spalle sono cinque anni di cantieri EDILI — movimento
+         * terra, scavi, costruzioni — e per un cliente che deve affidare un
+         * cantiere è l'argomento più solido disponibile: la piscina la posa
+         * chi scava di mestiere, non un rivenditore che subappalta.
+         *
+         * Non scrivere qui numeri di piscine, né lasciare formule ambigue tipo
+         * «cantieri conclusi» accanto a una galleria di piscine: si legge come
+         * un'esperienza che non c'è. Quando la prima piscina sarà finita,
+         * questa voce si potrà riscrivere — e sarà una bella notizia.
          */
-        titolo: 'Impresa dal 2021',
-        titoloEn: 'Building since 2021',
-        testo: 'Impresa edile attiva dal 2021, con cantieri conclusi in tutta la Sicilia.',
-        testoEn: 'A building firm trading since 2021, with completed projects across Sicily.',
+        titolo: 'Cantieri dal 2021',
+        titoloEn: 'On site since 2021',
+        testo: 'Cinque anni di movimento terra e opere edili in Sicilia, più la formazione Rocks Design sulla tecnologia.',
+        testoEn: 'Five years of earthmoving and building work in Sicily, plus Rocks Design training on the technology.',
     },
 ]
 
@@ -382,7 +387,7 @@ export const FAQ = [
     {
         domanda: 'Posso vederne una dal vivo prima di decidere?',
         risposta:
-            'Sì, ed è quello che consigliamo a tutti. Vieni a trovarci presso la nostra sede: potrai camminare sulla sabbia, toccare i massi e vedere l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Le visite sono su appuntamento.',
+            'Sì, ed è quello che consigliamo a tutti. La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Dalla Sicilia è un viaggio, lo sappiamo: la visita la organizziamo noi e ti accompagniamo. Se preferisci partire da qualcosa di più vicino, il sopralluogo in giardino è gratuito.',
     },
     {
         domanda: 'Lavorate anche con hotel, agriturismi e b&b?',

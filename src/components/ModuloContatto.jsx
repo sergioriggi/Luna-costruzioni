@@ -40,7 +40,7 @@ const BUDGET = [
 
 const INTERESSI = [
     'Nuova piscina Rocks Design',
-    'Visita alla piscina espositiva',
+    'Vedere una piscina dal vivo',
     'Preventivo e sopralluogo',
     'Struttura ricettiva / progetto commerciale',
     'Altro',

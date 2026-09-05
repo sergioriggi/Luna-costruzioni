@@ -58,10 +58,10 @@ export default function Sabbie() {
                         </p>
                         <p className="testo-lungo mt-4">
                             Sono disponibili tre selezioni. La scelta si fa dal vivo, mettendo i campioni sotto il sole
-                            del tuo giardino o durante una visita alla nostra piscina espositiva: è l’unico modo
-                            onesto per decidere.
+                            del tuo giardino: è l’unico modo onesto per decidere, perché il colore dell’acqua dipende
+                            da quanta luce prende il fondale.
                         </p>
-                        <Link to="/showroom" className="bottone-primario mt-8">Vieni a vederle</Link>
+                        <Link to="/showroom" className="bottone-primario mt-8">Vedine una dal vivo</Link>
                     </Rivela>
                     <Rivela delay={120}>
                         <Immagine

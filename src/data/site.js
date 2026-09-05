@@ -123,10 +123,12 @@ export const AZIENDA = {
      * non una scelta di marketing: una società deve indicare sul proprio sito
      * sede, ufficio del registro, numero REA e capitale sociale.
      *
-     * DA CHIARIRE con Luciano: se Via Speranza 42 è la sua abitazione, non va
-     * presentata come luogo visitabile. Il sito invita a «venire a trovarci»:
-     * l'indirizzo legale nelle note in fondo è dovuto, ma un indirizzo
-     * showroom è un'altra cosa e va confermato.
+     * CHIARITO: Via Speranza 42 è l'abitazione di Luciano. L'indirizzo resta
+     * quindi dove la legge lo vuole — le note legali in fondo alla pagina —
+     * e sparisce da tutto il resto: non compare come `streetAddress` nello
+     * schema LocalBusiness (vedi il commento in `src/components/Seo.jsx`) e
+     * nessuna pagina invita più a passare «in sede». La piscina espositiva da
+     * visitare è quella di Piscine Rocks Design, in Lombardia.
      */
     sede: {
         via: 'Via Speranza 42',
@@ -254,7 +256,7 @@ export const PROVINCE = [
 export const NAV = [
     { to: '/piscine-rocks-design', label: 'Piscine', labelEn: 'Pools' },
     { to: '/come-lavoriamo', label: 'Chiavi in mano', labelEn: 'Turnkey' },
-    { to: '/galleria', label: 'Realizzazioni', labelEn: 'Projects' },
+    { to: '/galleria', label: 'Le piscine', labelEn: 'The pools' },
     { to: '/hotel-e-resort', label: 'Hotel e resort', labelEn: 'Hotels' },
     { to: '/domande-frequenti', label: 'FAQ', labelEn: 'FAQ' },
     { to: '/azienda', label: 'Sicilia', labelEn: 'Sicily' },
@@ -267,5 +269,5 @@ export const NAV_SECONDARIA = [
     { to: '/sabbie', label: 'Le sabbie', labelEn: 'Sands' },
     { to: '/giardini-e-opere-in-pietra', label: 'Giardini e opere in pietra', labelEn: 'Gardens and stonework' },
     { to: '/quanto-costa', label: 'Quanto costa', labelEn: 'Costs' },
-    { to: '/showroom', label: 'Showroom', labelEn: 'Showroom' },
+    { to: '/showroom', label: 'Piscina espositiva', labelEn: 'Display pool' },
 ]

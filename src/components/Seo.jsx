@@ -104,9 +104,26 @@ export function schemaAzienda() {
          * Quando esisteranno profili social di Luna, quei due campi tornano
          * con i valori DI LUNA.
          */
+
+        /*
+         * Manca DI PROPOSITO anche `streetAddress`: Via Speranza 42 è
+         * l'abitazione privata del titolare, non una sede visitabile. In un
+         * HomeAndConstructionBusiness quel campo è proprio ciò che alimenta le
+         * schede luogo e spinge Google a proporre indicazioni stradali e orari
+         * di apertura: mandare un cliente al citofono di casa sarebbe un
+         * errore, non una sfumatura SEO.
+         *
+         * Restano comune, CAP, provincia e nazione: danno il segnale
+         * territoriale che serve al posizionamento locale senza indicare una
+         * porta a cui presentarsi. Restano anche `vatID`, `taxID` e
+         * `foundingDate`: identificano l'impresa, non un luogo dove andare.
+         *
+         * La via resta invece nelle note legali del piè di pagina, dove
+         * l'art. 2250 c.c. la impone: quello è un obbligo di trasparenza
+         * verso chi contratta, non un invito a passare.
+         */
         address: {
             '@type': 'PostalAddress',
-            streetAddress: AZIENDA.sede.via,
             addressLocality: AZIENDA.sede.comune,
             postalCode: AZIENDA.sede.cap,
             addressRegion: AZIENDA.sede.siglaProvincia,

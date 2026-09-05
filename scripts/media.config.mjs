@@ -14,20 +14,26 @@
  * scavi, teli, geotessili, tubazioni, locali tecnici o mezzi d'opera.
  *
  * ── PROVENIENZA: PERCHÉ I TESTI NON DICONO «LE NOSTRE, IN SICILIA» ───────
- * I metadati EXIF degli originali collocano gli scatti in provincia di
- * Varese, e i file del pacchetto di marca hanno gli EXIF rimossi del tutto:
- * indizi coerenti con materiale fornito dalla casa madre, non con cantieri
- * siciliani di Luna.
+ * Queste fotografie sono materiale di Piscine Rocks Design, non cantieri di
+ * Luna. Gli EXIF che le collocano in provincia di Varese non erano
+ * un'anomalia: è dove sta la casa madre, piscina espositiva compresa.
  *
- * Finché la provenienza non è accertata, i testi attorno a queste immagini
- * affermano solo ciò che è verificabile — che sono Piscine Rocks Design
- * ultimate e in funzione — e non rivendicano né il luogo né la paternità.
- * Riguarda `GalleriaPagina.jsx`, `Home.jsx`, `Modello.jsx` e `Giardini.jsx`.
+ * Il motivo per cui la distinzione conta: **Luna Costruzioni non ha ancora
+ * realizzato una piscina.** È un'impresa edile attiva dal 2021 — movimento
+ * terra, scavi, opere edili — che ha fatto il corso Rocks Design ed è
+ * concessionaria autorizzata. Sa costruirle; non ne ha ancora costruite.
  *
- * NON è una limitazione da tenere per sempre: «le nostre realizzazioni in
- * Sicilia» vende molto più di «Piscine Rocks Design». Appena Luciano
- * fornisce fotografie di cantieri suoi, quelle vanno aggiunte qui e i testi
- * possono tornare a rivendicare quello che a quel punto è vero.
+ * Perciò i testi attorno a queste immagini affermano solo ciò che è vero:
+ * sono Piscine Rocks Design ultimate e in funzione, cioè il PRODOTTO che
+ * Luna realizza. Nessuna rivendicazione di paternità né di luogo. Riguarda
+ * `GalleriaPagina.jsx`, `Home.jsx`, `Modello.jsx`, `Giardini.jsx` e
+ * `Showroom.jsx`.
+ *
+ * NON è una limitazione da tenere per sempre — anzi, è la prima cosa da
+ * cambiare quando cambierà la realtà: «le nostre realizzazioni in Sicilia»
+ * vende molto più di «Piscine Rocks Design». Appena il primo cantiere è
+ * concluso, quelle foto vanno aggiunte qui e i testi possono rivendicare
+ * quello che a quel punto sarà vero.
  */
 
 export const SOURCE_DIR = 'media-sources/foto'
