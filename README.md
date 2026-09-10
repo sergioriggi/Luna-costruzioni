@@ -83,8 +83,8 @@ npm run preview    # anteprima identica alla produzione
 | `/sabbie` | Le sabbie | Bianco, Giallo, Ticino e il colore d'acqua che restituiscono |
 | `/giardini-e-opere-in-pietra` | Giardini e pietra | Il secondo mestiere dell'impresa, anche senza piscina |
 | `/hotel-e-resort` | Hotel e resort | Argomenti B2B: cantiere fuori stagione, un solo appalto |
-| `/galleria` | Realizzazioni | Tutte le foto, filtrabili, con lightbox |
-| `/showroom` | Showroom | «Vieni a trovarci presso la nostra sede» |
+| `/galleria` | Le piscine | Le fotografie del produttore, filtrabili, con lightbox |
+| `/showroom` | Piscina espositiva | La vasca espositiva **di Piscine Rocks Design**, in Lombardia: Luna organizza e accompagna la visita |
 | `/quanto-costa` | Quanto costa | Le voci che spostano il preventivo — pagina ad alta intenzione |
 | `/come-lavoriamo` | Metodo | I cinque passaggi, con le durate |
 | `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
@@ -116,7 +116,7 @@ alla memoria di chi aggiorna il sito:
 | Logo *Concessionario Autorizzato* nella fascia superiore, con link alla pagina ufficiale | `src/components/BadgeConcessionario.jsx`, presente in header e footer di ogni pagina |
 | Deve essere chiaro che l'azienda è concessionaria, non inventrice | Dichiarato in header, footer, home, pagina tecnologia e ogni pagina provinciale |
 | «piscina naturale» va sempre seguito da «Piscine Rocks Design» | I testi usano **solo** «Piscine Rocks Design»; `npm run verifica` blocca ogni uso isolato |
-| Foto della piscina espositiva in prima pagina con «Vieni a trovarci presso la nostra sede» | Sezione showroom in home + pagina `/showroom` |
+| Foto della piscina espositiva in prima pagina, con invito a vederla | Sezione in home + pagina `/showroom`. Il soggetto è la piscina espositiva **della casa madre**: Luna non ha una sede visitabile, e l'indirizzo legale è un'abitazione privata |
 | **Vietato** pubblicare tecnica costruttiva, fasi di cantiere o impianti | I sorgenti stanno in `media-sources/`, **fuori** da `public/`: sul sito arrivano solo le immagini della whitelist in `scripts/media.config.mjs` |
 | Ogni foto deve riportare il marchio Piscine Rocks Design | Filigrana **impressa nel file** da `scripts/prepare-media.mjs`, non sovrapposta via CSS |
 | Indicare sempre la città / zona di riferimento | Nove pagine provinciali + zona citata in ogni pagina indicizzabile (verificato) |
@@ -369,11 +369,27 @@ copia file già pronti, esegue `npm install && npm run build` e serve `dist/`.
 | Ramo | `main` |
 | Radice | `./` |
 | Versione di Node | **22** — Vite 8 dichiara `^20.19.0 \|\| >=22.12.0`, e un Node 20 inferiore a 20.19 non compila |
-| Comando di build | `npm ci && npm run build && npm run verifica` |
+| Comando di build | `npm ci --omit=dev && npm run build && npm run verifica` |
 
 Il `npm run verifica` nel comando di build non è ornamentale: **fa fallire il
 deploy** se il sito viola le direttive Piscine Rocks Design, o se una build non
 di produzione uscisse indicizzabile.
+
+`--omit=dev` non è un'ottimizzazione: è ciò che tiene fuori dalla macchina di
+produzione il server Node, la posta e `sharp`, che alla build non servono. Sono
+in `devDependencies` per questo. Codice installato e mai eseguito resta
+comunque codice che qualcuno scansiona e segnala: dal 2026 lo scanner di
+Hostinger apriva sei vulnerabilità in `nodemailer` e `qs`, tutte in un server
+che sotto il preset Vite non parte nemmeno. Senza quei pacchetti l'installazione
+scende da 246 a 91 pacchetti.
+
+**Non usare `--omit=optional`**: i binari nativi di rolldown (il compilatore di
+Vite 8) sono dichiarati come dipendenze *opzionali* del loro pacchetto, e
+saltandoli la build si ferma con «Cannot find native binding».
+
+Il giorno che il sito passasse a un'esecuzione Node vera — server attivo per
+spedire il modulo via SMTP — il comando torna a essere `npm ci` pieno: lì quei
+pacchetti servono davvero.
 
 Variabili d'ambiente da impostare nel pannello:
 

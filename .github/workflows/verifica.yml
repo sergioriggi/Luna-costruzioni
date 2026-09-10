@@ -36,6 +36,14 @@ jobs:
       - name: Installa le dipendenze
         run: npm ci
 
+      # Blocca solo su un guasto GRAVE in ciò che finisce davvero nel sito
+      # (`dependencies`). Gli strumenti di compilazione e il server Node stanno
+      # in `devDependencies`, non girano in produzione, e un avviso medio lì
+      # non deve tingere di rosso un commit che non c'entra: quello si legge
+      # nel riepilogo, qui sotto.
+      - name: Vulnerabilità nelle dipendenze del sito
+        run: npm audit --omit=dev --audit-level=high
+
       - name: Lint
         run: npm run lint
 
@@ -80,6 +88,8 @@ jobs:
             echo "| Pagine compilate | $(find dist -name 'index.html' 2>/dev/null | wc -l) |"
             echo "| Indicizzazione | $(grep -qi 'noindex' dist/index.html 2>/dev/null && echo 'anteprima (noindex)' || echo 'produzione (indicizzabile)') |"
             echo "| robots.txt | $(head -c 60 dist/robots.txt 2>/dev/null | tr '\n' ' ') |"
+            echo "| Vulnerabilità (sito) | $(npm audit --omit=dev --json 2>/dev/null | python3 -c 'import json,sys; v=json.load(sys.stdin)["metadata"]["vulnerabilities"]; print(", ".join(f"{k}: {n}" for k, n in v.items() if n) or "nessuna")') |"
+            echo "| Vulnerabilità (tutto, anche strumenti) | $(npm audit --json 2>/dev/null | python3 -c 'import json,sys; v=json.load(sys.stdin)["metadata"]["vulnerabilities"]; print(", ".join(f"{k}: {n}" for k, n in v.items() if n) or "nessuna")') |"
             echo
             echo "Il sito **pubblicato** è un'altra cosa: si controlla con il workflow «Controllo del sito pubblicato»."
           } >> "$GITHUB_STEP_SUMMARY"

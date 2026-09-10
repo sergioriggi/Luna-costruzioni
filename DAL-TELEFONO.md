@@ -1,7 +1,7 @@
 # Gestire il sito da iPad e iPhone
 
 Nessuna operazione su questo sito richiede un terminale. Se da qualche parte
-trovi scritto `npm ci && npm run build && npm run verifica`, **non è un comando
+trovi scritto `npm ci --omit=dev && npm run build && npm run verifica`, **non è un comando
 da eseguire tu**: è testo da incollare in un campo del pannello Hostinger, e a
 eseguirlo sono i loro server a ogni push.
 
@@ -23,7 +23,7 @@ compreso, e ogni canonical del sito puntava a quella stringa.
 **Comando di build:**
 
 ```
-npm ci && npm run build && npm run verifica
+npm ci --omit=dev && npm run build && npm run verifica
 ```
 
 Quel `npm run verifica` in coda non è ornamentale: è il cancello che **fa
