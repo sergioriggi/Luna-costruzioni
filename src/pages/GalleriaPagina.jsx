@@ -51,6 +51,7 @@ export default function GalleriaPagina() {
                 testo="Raccontaci il tuo giardino: dal sopralluogo nasce un progetto che non somiglia a nessun altro."
                 primaria={{ to: '/contatti', label: 'Richiedi un preventivo' }}
                 secondaria={{ to: '/showroom', label: 'Vedine una dal vivo' }}
+                whatsapp
             />
         </>
     )

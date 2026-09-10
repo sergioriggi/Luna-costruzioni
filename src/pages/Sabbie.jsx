@@ -155,6 +155,7 @@ export default function Sabbie() {
                 testo={`Durante il sopralluogo mettiamo le tre sabbie sotto il sole del tuo terreno. In tutta la ${AZIENDA.zona}, gratis.`}
                 primaria={{ to: '/contatti', label: 'Prenota il sopralluogo' }}
                 secondaria={{ to: '/modelli', label: 'Vedi i modelli' }}
+                whatsapp
             />
         </>
     )

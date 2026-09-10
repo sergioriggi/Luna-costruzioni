@@ -108,6 +108,7 @@ export default function ComeLavoriamo() {
                 testo="Gratuito e senza impegno, in tutta la Sicilia. Da lì nasce il progetto."
                 primaria={{ to: '/contatti', label: 'Prenota il sopralluogo' }}
                 secondaria={{ to: '/domande-frequenti', label: 'Leggi le FAQ' }}
+                whatsapp
             />
         </>
     )

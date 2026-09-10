@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Rivela from './Rivela'
+import BottoneWhatsApp from './BottoneWhatsApp'
 
 export function Sezione({ id, className = '', sfondo = '', children }) {
     return (
@@ -42,7 +43,16 @@ export function Briciole({ voci }) {
     )
 }
 
-export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richiedi un preventivo' }, secondaria }) {
+/**
+ * Blocco di chiusura di una pagina.
+ *
+ * `whatsapp` aggiunge il tasto per scrivere subito: serve alle pagine che non
+ * ospitano il modulo di contatto, dove l'unica strada era un rimando a
+ * /contatti — e quel modulo, finché la casella non è attiva, non consegna
+ * niente. Su telefono la barra in basso c'è già; su computer, senza questo,
+ * non c'era nulla.
+ */
+export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richiedi un preventivo' }, secondaria, whatsapp = false }) {
     return (
         <Sezione>
             <Rivela className="overflow-hidden rounded-lg bg-notte-800 px-6 py-14 text-center sm:px-14">
@@ -57,6 +67,12 @@ export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richi
                         >
                             {secondaria.label}
                         </Link>
+                    )}
+                    {whatsapp && (
+                        <BottoneWhatsApp
+                            icona
+                            className="bottone border border-testo/[0.16] text-testo hover:bg-superficie/10"
+                        />
                     )}
                 </div>
             </Rivela>

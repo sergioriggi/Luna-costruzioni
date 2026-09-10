@@ -4,6 +4,7 @@ import Galleria from '../components/Galleria'
 import Rivela from '../components/Rivela'
 import ModuloContatto from '../components/ModuloContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
+import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 
 /*
@@ -71,14 +72,7 @@ export default function Showroom() {
                             <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
                                 Chiama {AZIENDA.telefono}
                             </a>
-                            <a
-                                href={`https://wa.me/${AZIENDA.whatsapp}`}
-                                target="_blank"
-                                rel="noopener"
-                                className="bottone-secondario"
-                            >
-                                Scrivi su WhatsApp
-                            </a>
+                            <BottoneWhatsApp />
                         </div>
                     </Rivela>
                     <Rivela delay={120}>

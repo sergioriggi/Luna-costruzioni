@@ -1,6 +1,7 @@
 import Seo, { schemaAzienda, schemaFaq, schemaBriciole } from '../components/Seo'
 import Foto from '../components/Foto'
 import ModuloPagina from '../components/ModuloPagina'
+import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 
@@ -530,15 +531,9 @@ export default function Home() {
                                 {AZIENDA.telefono}
                             </a>
                         </div>
-                        <a
-                            className="btn btn-secondary"
-                            href={`https://wa.me/${AZIENDA.whatsapp}`}
-                            target="_blank"
-                            rel="noopener"
-                            style={{ textDecoration: 'none', justifyContent: 'flex-start', padding: '10px 16px' }}
-                        >
+                        <BottoneWhatsApp className="btn btn-secondary pg-recapito-whatsapp">
                             WhatsApp {AZIENDA.telefono}
-                        </a>
+                        </BottoneWhatsApp>
                     </div>
                 </div>
                 <ModuloPagina />

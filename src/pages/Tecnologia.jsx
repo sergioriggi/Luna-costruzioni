@@ -185,6 +185,7 @@ export default function Tecnologia() {
                 testo="Bastano un sopralluogo e una chiacchierata. Ti diciamo subito cosa è possibile fare, e a quali condizioni."
                 primaria={{ to: '/contatti', label: 'Prenota il sopralluogo' }}
                 secondaria={{ to: '/modelli', label: 'Vedi i modelli' }}
+                whatsapp
             />
         </>
     )

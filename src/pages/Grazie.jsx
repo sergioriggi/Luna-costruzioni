@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import { Sezione } from '../components/Sezione'
+import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA } from '../data/site'
 
 /**
@@ -47,14 +48,7 @@ export default function Grazie() {
                         <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-pieno">
                             Chiama {AZIENDA.telefono}
                         </a>
-                        <a
-                            href={`https://wa.me/${AZIENDA.whatsapp}`}
-                            target="_blank"
-                            rel="noopener"
-                            className="bottone-secondario"
-                        >
-                            Scrivi su WhatsApp
-                        </a>
+                        <BottoneWhatsApp />
                     </div>
 
                     <p className="mt-10 text-sm text-neutro-500">

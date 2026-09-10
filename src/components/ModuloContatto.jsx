@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AZIENDA, PROVINCE } from '../data/site'
 import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
+import BottoneWhatsApp from './BottoneWhatsApp'
 
 const VUOTO = {
     nome: '',
@@ -117,9 +118,18 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                     <a href={`mailto:${AZIENDA.email}`} className="link-sottile text-accento">{AZIENDA.email}</a>{' '}
                     oppure chiamaci: è la via più rapida.
                 </p>
-                <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario mt-6">
-                    Chiama {AZIENDA.telefono}
-                </a>
+                {/*
+                  * Qui l'invio non è riuscito, quindi si offrono i due canali
+                  * che funzionano di sicuro: il telefono e WhatsApp. La
+                  * casella non è ancora attiva — proporre solo la mail
+                  * significherebbe mandare il contatto nel vuoto due volte.
+                  */}
+                <div className="mt-6 flex flex-wrap gap-3">
+                    <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
+                        Chiama {AZIENDA.telefono}
+                    </a>
+                    <BottoneWhatsApp icona />
+                </div>
             </div>
         )
     }
@@ -262,14 +272,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                 <button type="submit" className="bottone-primario" disabled={stato === 'invio'}>
                     {stato === 'invio' ? 'Invio in corso…' : 'Richiedi il sopralluogo'}
                 </button>
-                <a
-                    href={`https://wa.me/${AZIENDA.whatsapp}`}
-                    target="_blank"
-                    rel="noopener"
-                    className="bottone-secondario"
-                >
-                    Preferisco WhatsApp
-                </a>
+                <BottoneWhatsApp>Preferisco WhatsApp</BottoneWhatsApp>
             </div>
             <p className="mt-3 text-xs text-neutro-500">* Campi obbligatori</p>
         </form>

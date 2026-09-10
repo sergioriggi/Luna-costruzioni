@@ -135,6 +135,7 @@ export default function Modelli() {
                 testo="È normale, e non è un problema: dopo il sopralluogo ti diciamo quale modello sfrutta meglio quello che hai già."
                 primaria={{ to: '/contatti', label: 'Richiedi il sopralluogo' }}
                 secondaria={{ to: '/quanto-costa', label: 'Quanto costa' }}
+                whatsapp
             />
         </>
     )

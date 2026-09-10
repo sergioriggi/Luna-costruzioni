@@ -192,6 +192,8 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     display: inline-block; margin-top: 4px; font-family: var(--font-heading);
     font-size: 18px; color: var(--color-accent); text-decoration: none;
 }
+/* Il tasto WhatsApp del riquadro recapiti: prima erano stili in linea. */
+.pg-recapito-whatsapp { text-decoration: none; justify-content: flex-start; padding: 10px 16px; }
 .pg-modulo { display: grid; gap: 18px; align-content: start; }
 .pg-coppia { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .pg-invio { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
