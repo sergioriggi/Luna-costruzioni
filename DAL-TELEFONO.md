@@ -12,9 +12,9 @@ eseguirlo sono i loro server a ogni push.
 | Claude, in sessione | build, lint, conformità, prove nel browser | nella conversazione |
 | GitHub Actions | gli stessi controlli a ogni push su `main` | ✓ o ✗ accanto al commit, app GitHub |
 | Hostinger | compila e pubblica a ogni push su `main` | log di deploy in hPanel |
-| Tu | tre campi in hPanel, una volta sola | moduli web |
+| Tu | quattro campi in hPanel, una volta sola | moduli web |
 
-## I tre campi in hPanel
+## I campi in hPanel
 
 Uno per riga, mai copiati da una tabella: la prima volta `VITE_SITE_URL` è
 finita in produzione con dentro l'intera riga di istruzioni, separatore
@@ -37,10 +37,22 @@ qualunque cosa compili.
 /
 ```
 
-**Variabile `VITE_SITE_URL`:** si lascia **vuota** finché il dominio non è
-pagato e attivo. Vuota significa «anteprima», e l'anteprima è il verso sicuro:
-tutte le pagine escono `noindex` e nessun indirizzo provvisorio finisce
-nell'indice di Google a fare concorrenza al dominio vero.
+**Variabile `VITE_SITE_URL`:**
+
+```
+https://www.lunacostruzioni.it
+```
+
+Solo l'indirizzo, niente barra finale, niente altro sulla riga. È la variabile
+che dice al sito di non essere più un'anteprima: senza, ogni pagina esce
+`noindex` e `robots.txt` chiude tutto. Dall'11 settembre 2026 è impostata e il
+sito è indicizzabile.
+
+**Variabile `VITE_WEB3FORMS_KEY`:** la chiave di Web3Forms, il servizio che
+consegna i moduli alla casella senza bisogno di un server. Si crea su
+web3forms.com indicando `info@lunacostruzioni.it`. È pubblica per progetto —
+finisce nel codice del browser, come vuole la loro documentazione — quindi non
+trattarla come una password, ma non riusarla altrove.
 
 La versione di Node può restare quella impostata: 20.19 o superiore va bene.
 
@@ -109,8 +121,11 @@ niente sembri rotto.
 4. Lancia il **Controllo del sito pubblicato** con il nuovo indirizzo. Deve
    essere tutto verde: se `robots.txt` chiude ancora tutto, il punto 2 non ha
    fatto effetto.
-5. Attiva la casella `info@lunacostruzioni.it`. Finché non esiste, il modulo di
-   contatto apre il programma di posta del visitatore invece di spedire.
+5. Crea la chiave su **web3forms.com** indicando `info@lunacostruzioni.it`,
+   conferma dalla mail che ti arriva, e mettila in hPanel come
+   `VITE_WEB3FORMS_KEY`. È ciò che fa **partire davvero** le richieste dal
+   modulo: finché quella riga è vuota, il modulo apre il programma di posta del
+   visitatore e la richiesta parte solo se lui si ricorda di premere Invia.
 
 Se il dominio finale non fosse `www.lunacostruzioni.it`, va aggiornato anche
 `DOMINIO_DEFINITIVO` in `src/data/site.js` — chiedilo a Claude in sessione, è

@@ -60,6 +60,15 @@ export default function Privacy() {
                         riguardi aspetti tecnici di competenza della casa madre, i dati strettamente necessari possono
                         essere condivisi con {ROCKS_DESIGN.nome}. Non vendiamo né cediamo i dati a terzi.
                     </p>
+                    <p>
+                        L’invio dei moduli è gestito da <strong>Web3Forms</strong>, che inoltra il contenuto della
+                        richiesta alla nostra casella di posta senza conservarlo. Il servizio opera su server situati
+                        negli <strong>Stati Uniti</strong>: compilando il modulo i dati transitano quindi fuori dallo
+                        Spazio economico europeo, sulla base del consenso che presti al momento dell’invio (art. 49.1.a
+                        GDPR). Se preferisci evitarlo, puoi scriverci direttamente a{' '}
+                        <a href={`mailto:${AZIENDA.email}`} className="link-sottile text-accento">{AZIENDA.email}</a>{' '}
+                        oppure chiamare: il risultato per te è lo stesso.
+                    </p>
 
                     <h2 className="pt-4 font-display text-2xl">I tuoi diritti</h2>
                     <p>
