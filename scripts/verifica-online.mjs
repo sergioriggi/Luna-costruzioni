@@ -303,6 +303,34 @@ for (const p of servite) {
 }
 riepilogo.push([eseguito(direttiveOk), 'Direttive Rocks Design', 'logo in testata, marchio sempre citato'])
 
+// ─────────────── 5-bis. il modulo pubblicato consegna davvero ───────────────
+
+/*
+ * Stesso guasto silenzioso del controllo in `verifica-conformita.mjs`, ma
+ * misurato sul sito vero: se il servizio d'invio sparisce dal bundle, il
+ * modulo torna ad aprire il programma di posta e le richieste smettono di
+ * arrivare senza che nulla sembri rotto. Qui si guarda il codice che il
+ * browser scarica davvero, non quello che abbiamo compilato noi.
+ */
+let moduloConsegna = null
+if (servite.length > 0) {
+    const bundle = servite[0].corpo.match(/assets\/index-[A-Za-z0-9_-]+\.js/)?.[0]
+    if (!bundle) {
+        moduloConsegna = false
+        errori.push('Non trovo il bundle JavaScript nella pagina: impossibile verificare il modulo.')
+    } else {
+        const codice = await chiedi(`${ORIGINE}/${bundle}`)
+        moduloConsegna = codice.stato === 200 && codice.corpo.includes('api.web3forms.com')
+        if (!moduloConsegna) {
+            errori.push(
+                'Il modulo pubblicato non consegna: nel bundle manca il servizio di invio. ' +
+                    'Le richieste stanno ripiegando sul programma di posta del visitatore.',
+            )
+        }
+    }
+}
+riepilogo.push([eseguito(moduloConsegna), 'Il modulo consegna', moduloConsegna ? 'servizio di invio presente' : 'assente'])
+
 // ──────────────────── 6. il materiale riservato non si scarica ────────────────────
 
 /*

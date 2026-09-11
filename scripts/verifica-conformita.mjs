@@ -166,6 +166,46 @@ try {
     errori.push('sitemap.xml assente in dist/.')
 }
 
+/*
+ * 9. In produzione il modulo deve poter consegnare.
+ *
+ * Il guasto contro cui esiste questo controllo è silenzioso, ed è il peggiore
+ * di tutti: se la chiave del servizio manca, il compilatore elimina il ramo e
+ * il modulo torna ad aprire il programma di posta del visitatore. Nessun
+ * errore, nessuna pagina rotta — solo richieste che smettono di arrivare,
+ * senza che nessuno se ne accorga per settimane.
+ *
+ * Basta poco per provocarlo: una `VITE_WEB3FORMS_KEY` **vuota** fra le
+ * variabili del pannello vince sul file versionato, ed è un errore che si fa
+ * incollando una riga di troppo. Verificato.
+ *
+ * Non si cerca la chiave — cambierebbe a ogni rotazione — ma l'indirizzo del
+ * servizio: se il ramo è stato eliminato, dal bundle sparisce anche quello.
+ * Solo in produzione: in anteprima e in locale il ripiego è legittimo.
+ */
+if (!ANTEPRIMA) {
+    const assets = path.join(DIST, 'assets')
+    let consegna = false
+    try {
+        for (const file of await fs.readdir(assets)) {
+            if (!file.endsWith('.js')) continue
+            if ((await fs.readFile(path.join(assets, file), 'utf8')).includes('api.web3forms.com')) {
+                consegna = true
+                break
+            }
+        }
+    } catch {
+        errori.push('Cartella dist/assets assente: build incompleta.')
+    }
+    if (!consegna) {
+        errori.push(
+            'Il modulo non consegna: nel bundle non c\'è il servizio di invio. ' +
+                'Manca VITE_WEB3FORMS_KEY, oppure è stata impostata vuota nel pannello ' +
+                '(una variabile vuota vince sul file .env.production).',
+        )
+    }
+}
+
 // 4-bis. la filigrana è impressa da prepare-media.mjs su ogni foto di piscina
 const senzaFiligrana = PHOTOS.filter(p => p.noWatermark && !p.tags.includes('materiali'))
 if (senzaFiligrana.length > 0) {
