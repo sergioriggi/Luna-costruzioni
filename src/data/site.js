@@ -165,9 +165,19 @@ export const ROCKS_DESIGN = {
     email: 'info@rocksgardens.it',
 }
 
+/**
+ * Profili social **di Luna Costruzioni**.
+ *
+ * Fino all'11 settembre 2026 questa costante elencava Facebook e Instagram
+ * della casa madre. Non l'aveva ancora cablata nessun componente, quindi il
+ * danno non si vedeva, ma era la stessa falsità d'identità tolta da `sameAs`:
+ * i profili del produttore presentati come i nostri.
+ *
+ * Qui vanno solo profili che appartengono a Luna. Quelli di Piscine Rocks
+ * Design stanno in `ROCKS_DESIGN`, dove il ruolo è dichiarato per quello che è.
+ */
 export const SOCIAL = [
-    { nome: 'Facebook', url: 'https://www.facebook.com/piscinerocksdesign' },
-    { nome: 'Instagram', url: ROCKS_DESIGN.instagram },
+    { nome: 'Instagram', url: 'https://www.instagram.com/lunacostruzioni/' },
 ]
 
 /**

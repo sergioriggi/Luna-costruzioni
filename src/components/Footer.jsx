@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { AZIENDA, ROCKS_DESIGN, NAV, NAV_SECONDARIA, PROVINCE } from '../data/site'
+import { AZIENDA, ROCKS_DESIGN, NAV, NAV_SECONDARIA, PROVINCE, SOCIAL } from '../data/site'
 import { useLingua, SelettoreLingua } from '../i18n/lingua'
 
 export default function Footer() {
@@ -32,6 +32,21 @@ export default function Footer() {
                     <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="pg-footer-link">
                         piscinerocksdesign.com
                     </a>
+                </div>
+
+                <div>
+                    <p className="pg-footer-etichetta">{t('Seguici', 'Follow us')}</p>
+                    {SOCIAL.map(profilo => (
+                        <a
+                            key={profilo.url}
+                            href={profilo.url}
+                            target="_blank"
+                            rel="noopener"
+                            className="pg-footer-link"
+                        >
+                            {profilo.nome}
+                        </a>
+                    ))}
                 </div>
 
                 {/*

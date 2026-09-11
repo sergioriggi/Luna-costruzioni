@@ -1,4 +1,4 @@
-import { SITE_URL, INDIRIZZO_DICHIARATO, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import { SITE_URL, INDIRIZZO_DICHIARATO, ANTEPRIMA, AZIENDA, ROCKS_DESIGN, PROVINCE, SOCIAL } from '../data/site'
 
 /** Immagine di condivisione predefinita: solo il nome del file. */
 const OG_IMAGE = 'oasi-aerea-sabbia-bianca-1280.jpg'
@@ -85,25 +85,24 @@ export function schemaAzienda() {
         email: AZIENDA.email,
         image: risolviImmagine(OG_IMAGE),
         /*
-         * Qui mancano DI PROPOSITO `logo` e `sameAs`, e non vanno rimessi
-         * finché Luna non ha cose proprie da dichiarare.
-         *
          * `sameAs` in schema.org AFFERMA IDENTITÀ: dice «questa entità è anche
-         * quel profilo». Puntandolo al sito e all'Instagram della casa madre,
-         * il markup dichiarava a Google che Luna Costruzioni *è* Piscine Rocks
-         * Design. Non è una sfumatura di comunicazione: è una dichiarazione
-         * falsa scritta in dati strutturati.
+         * quel profilo». Puntandolo al sito e all'Instagram della casa madre —
+         * com'era fino a settembre 2026 — il markup dichiarava a Google che
+         * Luna Costruzioni *è* Piscine Rocks Design: una dichiarazione falsa
+         * scritta in dati strutturati, non una sfumatura di comunicazione.
          *
-         * `logo` aveva lo stesso difetto in forma più tenue: il logo della
-         * casa madre dichiarato come logo di Luna.
+         * Ora che Luna ha un profilo proprio il campo torna, con i valori di
+         * Luna e nient'altro: `SOCIAL` contiene solo ciò che le appartiene.
+         *
+         * `logo` invece resta fuori, ed è la stessa ragione di prima: l'unico
+         * logo nel progetto è quello di Piscine Rocks Design, e dichiararlo
+         * come logo di Luna sarebbe di nuovo un'identità sbagliata. Rientra il
+         * giorno che esiste un marchio di Luna, non prima.
          *
          * La relazione vera — Luna realizza un prodotto altrui su licenza —
-         * resta espressa da `brand`, qui sotto, che è il campo giusto. Un
-         * campo assente è corretto; uno sbagliato no.
-         *
-         * Quando esisteranno profili social di Luna, quei due campi tornano
-         * con i valori DI LUNA.
+         * resta espressa da `brand`, qui sotto, che è il campo giusto.
          */
+        sameAs: SOCIAL.map(profilo => profilo.url),
 
         /*
          * Manca DI PROPOSITO anche `streetAddress`: Via Speranza 42 è
