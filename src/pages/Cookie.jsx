@@ -30,9 +30,17 @@ export default function Cookie() {
 
                     <h2 className="pt-4 font-display text-2xl">Cookie statistici e di marketing</h2>
                     <p>
-                        Strumenti di misurazione e remarketing (ad esempio Google Analytics 4 o Meta Pixel) vengono
-                        attivati <strong>solo dopo il tuo consenso esplicito</strong> tramite il banner. Finché non
-                        accetti, nessuno script di profilazione viene caricato.
+                        Questi strumenti vengono attivati <strong>solo dopo il tuo consenso esplicito</strong> tramite
+                        il banner. Finché non accetti, nessuno script di profilazione viene caricato: non è una
+                        formula di cortesia, è il modo in cui il sito è costruito.
+                    </p>
+                    <p>
+                        Oggi è attivo <strong>Google Ads</strong> (identificativo AW-18447146211), fornito da Google
+                        Ireland Ltd. Serve a due cose: capire quali annunci portano richieste di preventivo, e
+                        permettere di riproporti i nostri annunci su altri siti (remarketing). I cookie che imposta
+                        sono di tipo pubblicitario e di profilazione, con durata fino a novanta giorni. Eventuali
+                        strumenti futuri — per esempio Google Analytics o Meta Pixel — passeranno dallo stesso
+                        banner e verranno elencati qui.
                     </p>
 
                     <h2 className="pt-4 font-display text-2xl">Come revocare il consenso</h2>

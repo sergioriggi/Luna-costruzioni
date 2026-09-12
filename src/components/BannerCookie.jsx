@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 const CHIAVE = 'luna-consenso-cookie'
 
 /**
- * Banner cookie minimale e conforme: nessuno script di misurazione viene
- * caricato prima del consenso esplicito. Se in futuro si aggiungono GA4 o
- * Meta Pixel, vanno inizializzati dentro `attivaMisurazione()`.
+ * Banner cookie minimale e conforme: nessuno script di misurazione né di
+ * pubblicità viene caricato prima del consenso esplicito. Ogni strumento
+ * nuovo — Meta Pixel, o altro — va inizializzato dentro `attivaMisurazione()`
+ * e da nessun'altra parte.
  */
 export default function BannerCookie() {
     const [visibile, setVisibile] = useState(false)
@@ -36,7 +37,8 @@ export default function BannerCookie() {
         >
             <p className="text-sm leading-relaxed text-neutro-400">
                 Usiamo cookie tecnici necessari al funzionamento del sito. Con il tuo consenso attiviamo anche
-                strumenti di misurazione anonima per capire quali contenuti sono più utili.{' '}
+                i cookie di Google Ads, che ci dicono quali annunci portano richieste e permettono di
+                ripresentarti i nostri.{' '}
                 <Link to="/cookie-policy" className="link-sottile font-medium text-testo">Cookie policy</Link>
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -51,19 +53,37 @@ export default function BannerCookie() {
     )
 }
 
-/** Punto unico di attivazione degli script di misurazione (oggi nessuno). */
+/**
+ * Punto unico di attivazione degli script di misurazione e pubblicità.
+ *
+ * `gtag.js` si carica **una volta sola** e poi si configura per ciascun
+ * identificatore: è così che è fatto. Oggi c'è Google Ads; il giorno che
+ * arriva anche Analytics convivono senza toccare altro.
+ *
+ * Perché qui e non in `index.html`, dove lo snippet di Google dice di
+ * incollarlo: nella pagina partirebbe al primo caricamento, cioè **prima**
+ * del consenso. Per cookie pubblicitari non si può.
+ */
 function attivaMisurazione() {
-    const id = import.meta.env.VITE_GA4_ID
-    if (!id || typeof window === 'undefined' || window.__ga4Attivo) return
+    if (typeof window === 'undefined' || window.__misurazioneAttiva) return
 
-    window.__ga4Attivo = true
+    const identificatori = [
+        import.meta.env.VITE_GOOGLE_ADS_ID,
+        import.meta.env.VITE_GA4_ID,
+    ].filter(Boolean)
+    if (identificatori.length === 0) return
+
+    window.__misurazioneAttiva = true
     const s = document.createElement('script')
     s.async = true
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${identificatori[0]}`
     document.head.appendChild(s)
 
     window.dataLayer = window.dataLayer || []
     window.gtag = function gtag() { window.dataLayer.push(arguments) }
     window.gtag('js', new Date())
-    window.gtag('config', id, { anonymize_ip: true })
+    for (const id of identificatori) {
+        // `anonymize_ip` vale per Analytics; su un ID Ads è ignorato.
+        window.gtag('config', id, { anonymize_ip: true })
+    }
 }

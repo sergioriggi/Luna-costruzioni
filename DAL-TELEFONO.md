@@ -12,7 +12,7 @@ eseguirlo sono i loro server a ogni push.
 | Claude, in sessione | build, lint, conformità, prove nel browser | nella conversazione |
 | GitHub Actions | gli stessi controlli a ogni push su `main` | ✓ o ✗ accanto al commit, app GitHub |
 | Hostinger | compila e pubblica a ogni push su `main` | log di deploy in hPanel |
-| Tu | quattro campi in hPanel, una volta sola | moduli web |
+| Tu | due campi in hPanel, una volta sola | moduli web |
 
 ## I campi in hPanel
 
@@ -48,11 +48,12 @@ che dice al sito di non essere più un'anteprima: senza, ogni pagina esce
 `noindex` e `robots.txt` chiude tutto. Dall'11 settembre 2026 è impostata e il
 sito è indicizzabile.
 
-**Variabile `VITE_WEB3FORMS_KEY`:** la chiave di Web3Forms, il servizio che
-consegna i moduli alla casella senza bisogno di un server. Si crea su
-web3forms.com indicando `info@lunacostruzioni.it`. È pubblica per progetto —
-finisce nel codice del browser, come vuole la loro documentazione — quindi non
-trattarla come una password, ma non riusarla altrove.
+**Non servono altri campi.** La chiave di Web3Forms e l'identificatore di
+Google Ads stanno nel repository, in `.env.production`: sono pubblici per
+natura — finiscono comunque nel codice del browser — e lì si rileggono, si
+ritrovano e la CI compila esattamente ciò che va online. **Non aggiungerli
+qui**: una riga vuota nel pannello vincerebbe sul file e li spegnerebbe in
+silenzio.
 
 La versione di Node può restare quella impostata: 20.19 o superiore va bene.
 

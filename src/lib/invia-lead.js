@@ -1,4 +1,5 @@
 import { AZIENDA } from '../data/site'
+import { segnalaConversione } from './conversione'
 
 /**
  * Invio di una richiesta di contatto.
@@ -113,6 +114,19 @@ async function inviaConWeb3Forms(dati, oggetto) {
 }
 
 /**
+ * Un solo posto in cui «la richiesta è arrivata» diventa vero.
+ *
+ * La conversione si segnala qui e non nei componenti perché i moduli del sito
+ * sono due e i trasporti possibili anche: mettendola sui rami di successo del
+ * punto unico d'invio, vale per tutti **per costruzione**, e nessuno può
+ * dimenticarsene aggiungendo un modulo nuovo.
+ */
+function confermato() {
+    segnalaConversione()
+    return INVIATO
+}
+
+/**
  * @returns {Promise<'inviato'|'mailto'|'errore'>}
  *   `mailto` significa che il client di posta è già stato aperto.
  */
@@ -131,7 +145,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         } catch {
             riuscito = false
         }
-        if (riuscito) return INVIATO
+        if (riuscito) return confermato()
         apriClientDiPosta(dati, oggetto)
         return RIPIEGO_POSTA
     }
@@ -153,7 +167,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         return ERRORE // rete assente o richiesta bloccata
     }
 
-    if (risposta.ok) return INVIATO
+    if (risposta.ok) return confermato()
 
     // 404: nessun server dietro (hosting statico). 503: server presente ma
     // senza credenziali SMTP. In entrambi i casi il contatto va salvato.

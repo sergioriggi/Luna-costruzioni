@@ -313,6 +313,7 @@ riepilogo.push([eseguito(direttiveOk), 'Direttive Rocks Design', 'logo in testat
  * browser scarica davvero, non quello che abbiamo compilato noi.
  */
 let moduloConsegna = null
+let bundleCodice = ''
 if (servite.length > 0) {
     const bundle = servite[0].corpo.match(/assets\/index-[A-Za-z0-9_-]+\.js/)?.[0]
     if (!bundle) {
@@ -320,6 +321,7 @@ if (servite.length > 0) {
         errori.push('Non trovo il bundle JavaScript nella pagina: impossibile verificare il modulo.')
     } else {
         const codice = await chiedi(`${ORIGINE}/${bundle}`)
+        bundleCodice = codice.stato === 200 ? codice.corpo : ''
         moduloConsegna = codice.stato === 200 && codice.corpo.includes('api.web3forms.com')
         if (!moduloConsegna) {
             errori.push(
@@ -330,6 +332,28 @@ if (servite.length > 0) {
     }
 }
 riepilogo.push([eseguito(moduloConsegna), 'Il modulo consegna', moduloConsegna ? 'servizio di invio presente' : 'assente'])
+
+/*
+ * Stesso ragionamento per il tag pubblicitario: se l'identificatore Ads si
+ * perde, il tag non si carica, Ads smette di ricevere dati e le campagne
+ * continuano a spendere ottimizzando su niente. Anche qui il guasto non si
+ * vede da nessuna parte se non lo si cerca.
+ *
+ * Si controlla la presenza del tag e del prefisso `AW-`, non l'identificatore
+ * esatto: cambia se un giorno cambia l'account, e un controllo che si rompe
+ * quando cambi account è un controllo che qualcuno disattiva.
+ */
+let tagAds = null
+if (servite.length > 0 && bundleCodice) {
+    tagAds = bundleCodice.includes('googletagmanager.com/gtag/js') && /AW-\d+/.test(bundleCodice)
+    if (!tagAds) {
+        avvisi.push(
+            'Nel bundle pubblicato non c\'è il tag di Google Ads: le campagne non ricevono dati. ' +
+                'Se non hai ancora attivato la pubblicità è normale.',
+        )
+    }
+}
+riepilogo.push([eseguito(tagAds), 'Tag Google Ads', tagAds ? 'presente' : 'assente (vedi note)'])
 
 // ──────────────────── 6. il materiale riservato non si scarica ────────────────────
 
