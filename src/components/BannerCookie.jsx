@@ -12,9 +12,25 @@ const CHIAVE = 'luna-consenso-cookie'
 export default function BannerCookie() {
     const [visibile, setVisibile] = useState(false)
 
+    /**
+     * Il consenso dura oltre la visita in cui è stato dato.
+     *
+     * Prima qui si decideva solo se mostrare il banner, e `attivaMisurazione()`
+     * partiva soltanto dal clic su «Accetta». Chi aveva già acconsentito in una
+     * visita precedente tornava sul sito senza `gtag`: nessun tag, nessun
+     * pubblico, e soprattutto nessuna conversione al ritorno dal modulo — cioè
+     * proprio il percorso normale di chi clicca l'annuncio, guarda, se ne va e
+     * torna a chiedere il preventivo.
+     *
+     * La scelta salvata va quindi riapplicata a ogni caricamento: «accettato»
+     * riattiva la misurazione, «rifiutato» non attiva nulla e non ripropone il
+     * banner.
+     */
     useEffect(() => {
         try {
-            if (!localStorage.getItem(CHIAVE)) setVisibile(true)
+            const scelta = localStorage.getItem(CHIAVE)
+            if (!scelta) setVisibile(true)
+            else if (scelta === 'accettato') attivaMisurazione()
         } catch {
             /* storage non disponibile: non mostriamo nulla */
         }
