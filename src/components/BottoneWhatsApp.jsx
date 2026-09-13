@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { linkWhatsApp, etichettaPagina } from '../lib/whatsapp'
+import { segnalaConversione } from '../lib/conversione'
 
 /** L'icona sta qui perché il tasto è uno solo: prima era incollata a mano. */
 export function IconaWhatsApp({ className = 'h-5 w-5' }) {
@@ -35,6 +36,7 @@ export default function BottoneWhatsApp({
             target="_blank"
             rel="noopener"
             className={className}
+            onClick={() => segnalaConversione('whatsapp')}
         >
             {icona && <IconaWhatsApp />}
             {children}

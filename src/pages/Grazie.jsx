@@ -3,6 +3,7 @@ import Seo from '../components/Seo'
 import { Sezione } from '../components/Sezione'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA } from '../data/site'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 /**
  * Pagina di conferma dopo un invio andato a buon fine.
@@ -45,9 +46,7 @@ export default function Grazie() {
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-pieno">
-                            Chiama {AZIENDA.telefono}
-                        </a>
+                        <BottoneTelefono className="bottone-pieno">Chiama {AZIENDA.telefono}</BottoneTelefono>
                         <BottoneWhatsApp />
                     </div>
 

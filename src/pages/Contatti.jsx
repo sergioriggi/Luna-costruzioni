@@ -4,6 +4,7 @@ import Rivela from '../components/Rivela'
 import Immagine from '../components/Immagine'
 import { Sezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -46,9 +47,7 @@ export default function Contatti() {
                             <div>
                                 <dt className="text-sm text-neutro-500">Telefono e WhatsApp</dt>
                                 <dd>
-                                    <a className="link-sottile font-medium text-testo" href={`tel:${AZIENDA.telefonoRaw}`}>
-                                        {AZIENDA.telefono}
-                                    </a>
+                                    <BottoneTelefono className="link-sottile font-medium text-testo" />
                                 </dd>
                             </div>
                             <div>

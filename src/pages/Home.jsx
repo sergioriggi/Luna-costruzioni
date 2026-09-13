@@ -4,6 +4,7 @@ import ModuloPagina from '../components/ModuloPagina'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 /*
  * Pagina iniziale: riproduce il file approvato `Luna_Costruzioni.dc.html`,
@@ -527,9 +528,7 @@ export default function Home() {
                         </div>
                         <div>
                             <p className="pg-recapito-etichetta">{t('Telefono', 'Phone')}</p>
-                            <a href={`tel:${AZIENDA.telefonoRaw}`} className="pg-recapito-link">
-                                {AZIENDA.telefono}
-                            </a>
+                            <BottoneTelefono className="pg-recapito-link" />
                         </div>
                         <BottoneWhatsApp className="btn btn-secondary pg-recapito-whatsapp">
                             WhatsApp {AZIENDA.telefono}

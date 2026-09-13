@@ -5,6 +5,7 @@ import Rivela from '../components/Rivela'
 import ModuloContatto from '../components/ModuloContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -71,9 +72,7 @@ export default function Azienda() {
                             . In tutta la Sicilia, con un unico referente: {AZIENDA.referente}.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
-                                Chiama {AZIENDA.referente}
-                            </a>
+                            <BottoneTelefono className="bottone-primario">Chiama {AZIENDA.referente}</BottoneTelefono>
                             <Link to="/showroom" className="bottone-secondario">Vedine una dal vivo</Link>
                         </div>
                     </Rivela>

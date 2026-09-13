@@ -1,5 +1,6 @@
 import { AZIENDA } from '../data/site'
 import BottoneWhatsApp from './BottoneWhatsApp'
+import BottoneTelefono from './BottoneTelefono'
 
 /** Barra di contatto sempre raggiungibile: su mobile è fissata in basso. */
 export default function AzioniRapide() {
@@ -12,15 +13,12 @@ export default function AzioniRapide() {
                 >
                     WhatsApp
                 </BottoneWhatsApp>
-                <a
-                    href={`tel:${AZIENDA.telefonoRaw}`}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-md bg-accento px-5 py-3 text-sm font-semibold text-notte shadow-lg"
-                >
+                <BottoneTelefono className="flex flex-1 items-center justify-center gap-2 rounded-md bg-accento px-5 py-3 text-sm font-semibold text-notte shadow-lg">
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                         <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3Z" strokeLinejoin="round" />
                     </svg>
                     {AZIENDA.telefono}
-                </a>
+                </BottoneTelefono>
             </div>
         </div>
     )

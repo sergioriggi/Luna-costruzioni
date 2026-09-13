@@ -1,6 +1,7 @@
 import Seo from '../components/Seo'
 import { Sezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -29,7 +30,7 @@ export default function Privacy() {
                         {AZIENDA.nome}, {AZIENDA.ruolo} per la {AZIENDA.zona}. Per ogni richiesta relativa ai tuoi dati
                         puoi scrivere a{' '}
                         <a className="link-sottile" href={`mailto:${AZIENDA.email}`}>{AZIENDA.email}</a> o chiamare il{' '}
-                        <a className="link-sottile" href={`tel:${AZIENDA.telefonoRaw}`}>{AZIENDA.telefono}</a>.
+                        <BottoneTelefono className="link-sottile" />.
                     </p>
 
                     <h2 className="pt-4 font-display text-2xl">Dati raccolti e finalità</h2>

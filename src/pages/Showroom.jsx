@@ -6,6 +6,7 @@ import ModuloContatto from '../components/ModuloContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 /*
  * La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: NON è
@@ -69,9 +70,7 @@ export default function Showroom() {
                             senso proseguire.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
-                                Chiama {AZIENDA.telefono}
-                            </a>
+                            <BottoneTelefono className="bottone-primario">Chiama {AZIENDA.telefono}</BottoneTelefono>
                             <BottoneWhatsApp />
                         </div>
                     </Rivela>

@@ -8,6 +8,7 @@ import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { RICETTIVO } from '../data/content'
 import { AZIENDA } from '../data/site'
 import { useLingua } from '../i18n/lingua'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -79,9 +80,7 @@ export default function HotelResort() {
                             <Link to="/contatti" className="bottone-pieno no-underline">
                                 {t('Richiedi una proposta', 'Request a proposal')}
                             </Link>
-                            <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-secondario no-underline">
-                                {AZIENDA.telefono}
-                            </a>
+                            <BottoneTelefono className="bottone-secondario no-underline" />
                         </div>
                     </Rivela>
                     <Rivela delay={120}>

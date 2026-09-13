@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { AZIENDA, ROCKS_DESIGN, NAV, NAV_SECONDARIA, PROVINCE, SOCIAL } from '../data/site'
 import { useLingua, SelettoreLingua } from '../i18n/lingua'
+import BottoneTelefono from './BottoneTelefono'
 
 export default function Footer() {
     const { t } = useLingua()
@@ -22,9 +23,7 @@ export default function Footer() {
                 <div>
                     <p className="pg-footer-etichetta">{t('Referente', 'Contact person')}</p>
                     <p className="pg-footer-voce">{AZIENDA.referente}</p>
-                    <a href={`tel:${AZIENDA.telefonoRaw}`} className="pg-footer-link">
-                        {AZIENDA.telefono}
-                    </a>
+                    <BottoneTelefono className="pg-footer-link" />
                 </div>
 
                 <div>

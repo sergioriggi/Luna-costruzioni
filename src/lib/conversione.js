@@ -12,9 +12,9 @@
  * `inviaLead()` quando il servizio ha confermato di aver preso la richiesta.
  *
  * ── Due silenzi voluti ───────────────────────────────────────────────────
- * 1. Senza `VITE_GOOGLE_ADS_CONVERSIONE` non succede nulla. L'etichetta si
- *    copia dal pannello Ads quando si crea l'azione di conversione; finché non
- *    c'è, il sito costruisce i pubblici ma non conta i contatti.
+ * 1. Senza l'etichetta dell'azione non succede nulla. Si copia dal pannello Ads
+ *    quando si crea l'azione di conversione; finché non c'è, il sito costruisce
+ *    i pubblici ma non conta quel contatto.
  * 2. Senza consenso `window.gtag` non esiste — il tag si carica solo dopo
  *    «Accetta» (`src/components/BannerCookie.jsx`) — e l'evento non parte.
  *    Conseguenza da mettere in conto: i numeri di Ads saranno **più bassi**
@@ -22,8 +22,19 @@
  *    mestiere, non un guasto.
  */
 
-/** Formato atteso: `AW-XXXXXXXXXX/EtichettaDellaConversione`. */
-const CONVERSIONE = import.meta.env.VITE_GOOGLE_ADS_CONVERSIONE || ''
+/**
+ * Le tre azioni di conversione, formato `AW-XXXXXXXXXX/Etichetta`.
+ *
+ * Scritte una per una e non lette da una mappa dinamica: Vite sostituisce
+ * `import.meta.env.VITE_QUALCOSA` alla compilazione solo se il nome è
+ * letterale. `import.meta.env[nome]` non verrebbe sostituito e resterebbe
+ * vuoto in produzione — un guasto che in sviluppo non si vede.
+ */
+const AZIONI = {
+    modulo: import.meta.env.VITE_GOOGLE_ADS_CONVERSIONE || '',
+    whatsapp: import.meta.env.VITE_GOOGLE_ADS_CONVERSIONE_WHATSAPP || '',
+    telefono: import.meta.env.VITE_GOOGLE_ADS_CONVERSIONE_TELEFONO || '',
+}
 
 /**
  * Valore attribuito a una richiesta, in euro.
@@ -37,20 +48,34 @@ const CONVERSIONE = import.meta.env.VITE_GOOGLE_ADS_CONVERSIONE || ''
  */
 const VALORE = Number(import.meta.env.VITE_GOOGLE_ADS_VALORE || 1)
 
-export function segnalaConversione() {
-    if (!CONVERSIONE) return false
+/**
+ * @param {'modulo'|'whatsapp'|'telefono'} azione
+ *
+ * Il valore in euro accompagna **solo** l'invio del modulo. Un clic su
+ * «chiama» o su WhatsApp non è una conversazione avvenuta: su mobile capita
+ * spesso di aprire e riattaccare. Dichiararlo con lo stesso valore di una
+ * richiesta arrivata in casella direbbe a Google che valgono uguale, e
+ * un'offerta basata sul valore comincerebbe a comprare clic invece di
+ * contatti. Restano conversioni — si contano — ma senza prezzo.
+ *
+ * Per lo stesso motivo, nel pannello Ads conviene tenere **primaria solo**
+ * l'azione del modulo: è l'unica su cui l'offerta automatica deve imparare.
+ * Quella è una spunta nel pannello, non una riga di codice.
+ */
+export function segnalaConversione(azione = 'modulo') {
+    const invio = AZIONI[azione]
+    if (!invio) return false
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return false
 
     try {
         window.gtag('event', 'conversion', {
-            send_to: CONVERSIONE,
-            value: VALORE,
-            currency: 'EUR',
+            send_to: invio,
+            ...(azione === 'modulo' ? { value: VALORE, currency: 'EUR' } : {}),
         })
         return true
     } catch {
-        // Misurare non deve mai rompere l'invio: un contatto vale più di un
-        // conteggio, e qui siamo già dopo la conferma del servizio.
+        // Misurare non deve mai rompere un contatto: né l'invio del modulo, né
+        // l'apertura del telefono o di WhatsApp.
         return false
     }
 }

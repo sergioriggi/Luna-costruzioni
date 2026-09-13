@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AZIENDA, PROVINCE } from '../data/site'
 import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 import BottoneWhatsApp from './BottoneWhatsApp'
+import BottoneTelefono from './BottoneTelefono'
 
 const VUOTO = {
     nome: '',
@@ -125,9 +126,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                   * significherebbe mandare il contatto nel vuoto due volte.
                   */}
                 <div className="mt-6 flex flex-wrap gap-3">
-                    <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-primario">
-                        Chiama {AZIENDA.telefono}
-                    </a>
+                    <BottoneTelefono className="bottone-primario">Chiama {AZIENDA.telefono}</BottoneTelefono>
                     <BottoneWhatsApp icona />
                 </div>
             </div>
@@ -262,7 +261,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
             {stato === 'errore' && (
                 <p className="mt-4 rounded-xl bg-red-950/40 px-4 py-3 text-sm text-red-300" role="alert">
                     Invio non riuscito. Chiamaci allo{' '}
-                    <a className="font-semibold underline" href={`tel:${AZIENDA.telefonoRaw}`}>{AZIENDA.telefono}</a>{' '}
+                    <BottoneTelefono className="font-semibold underline" />{' '}
                     oppure scrivi a{' '}
                     <a className="font-semibold underline" href={`mailto:${AZIENDA.email}`}>{AZIENDA.email}</a>.
                 </p>

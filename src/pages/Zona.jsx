@@ -7,6 +7,7 @@ import ModuloContatto from '../components/ModuloContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 import { PUNTI_DI_FORZA, MODELLI } from '../data/content'
+import BottoneTelefono from '../components/BottoneTelefono'
 
 /** FAQ declinate sulla provincia: risposte locali, non testo duplicato. */
 function faqLocali(p) {
@@ -92,9 +93,7 @@ export default function Zona() {
                             <Link to="/contatti" className="bottone-primario">
                                 Sopralluogo gratuito a {p.nome}
                             </Link>
-                            <a href={`tel:${AZIENDA.telefonoRaw}`} className="bottone-secondario">
-                                {AZIENDA.telefono}
-                            </a>
+                            <BottoneTelefono className="bottone-secondario" />
                         </div>
                     </Rivela>
                     <Rivela delay={120}>

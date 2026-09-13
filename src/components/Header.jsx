@@ -1,6 +1,7 @@
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 import { pubblico, BASE_URL } from '../lib/percorso'
+import BottoneTelefono from './BottoneTelefono'
 
 /** Ancore della pagina unica, come nel file approvato. */
 const ANCORE = [
@@ -71,10 +72,10 @@ export default function Header() {
                     </span>
                 </a>
 
-                <a className="btn btn-primary" href={`tel:${AZIENDA.telefonoRaw}`} style={{ textDecoration: 'none' }}>
+                <BottoneTelefono className="btn btn-primary" style={{ textDecoration: 'none' }}>
                     <IconaTelefono />
                     340 490 0710
-                </a>
+                </BottoneTelefono>
             </nav>
         </header>
     )
