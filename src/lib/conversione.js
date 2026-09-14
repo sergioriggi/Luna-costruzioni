@@ -8,8 +8,11 @@
  * automatica, conversioni finte non sono un numero sbagliato in un rapporto:
  * sono il criterio su cui Google decide come spendere i soldi.
  *
- * L'evento parte quindi dall'unico punto che conosce la verità: il ritorno di
- * `inviaLead()` quando il servizio ha confermato di aver preso la richiesta.
+ * L'evento del modulo parte quindi dall'unico punto che conosce la verità: il
+ * ritorno di `inviaLead()` quando il servizio ha confermato di aver preso la
+ * richiesta. I clic su «chiama» e su WhatsApp partono invece dai due componenti
+ * che li rendono — `BottoneTelefono` e `BottoneWhatsApp` — al momento del clic:
+ * lì la verità è il clic stesso.
  *
  * ── Due silenzi voluti ───────────────────────────────────────────────────
  * 1. Senza l'etichetta dell'azione non succede nulla. Si copia dal pannello Ads
@@ -49,8 +52,6 @@ const AZIONI = {
 const VALORE = Number(import.meta.env.VITE_GOOGLE_ADS_VALORE || 1)
 
 /**
- * @param {'modulo'|'whatsapp'|'telefono'} azione
- *
  * Il valore in euro accompagna **solo** l'invio del modulo. Un clic su
  * «chiama» o su WhatsApp non è una conversazione avvenuta: su mobile capita
  * spesso di aprire e riattaccare. Dichiararlo con lo stesso valore di una
@@ -61,6 +62,8 @@ const VALORE = Number(import.meta.env.VITE_GOOGLE_ADS_VALORE || 1)
  * Per lo stesso motivo, nel pannello Ads conviene tenere **primaria solo**
  * l'azione del modulo: è l'unica su cui l'offerta automatica deve imparare.
  * Quella è una spunta nel pannello, non una riga di codice.
+ *
+ * @param {'modulo'|'whatsapp'|'telefono'} azione
  */
 export function segnalaConversione(azione = 'modulo') {
     const invio = AZIONI[azione]

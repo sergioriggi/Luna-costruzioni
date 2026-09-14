@@ -107,6 +107,8 @@ export const AZIENDA = {
     zona: 'Sicilia',
     referente: 'Luciano Naro',
     telefono: '+39 340 490 0710',
+    /** Forma locale, senza prefisso: la testata la mostra così nel file approvato. */
+    telefonoBreve: '340 490 0710',
     telefonoRaw: '+393404900710',
     whatsapp: '393404900710',
     email: 'info@lunacostruzioni.it',

@@ -72,9 +72,9 @@ export default function Header() {
                     </span>
                 </a>
 
-                <BottoneTelefono className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                <BottoneTelefono className="btn btn-primary">
                     <IconaTelefono />
-                    340 490 0710
+                    {AZIENDA.telefonoBreve}
                 </BottoneTelefono>
             </nav>
         </header>

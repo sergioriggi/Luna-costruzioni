@@ -116,10 +116,11 @@ async function inviaConWeb3Forms(dati, oggetto) {
 /**
  * Un solo posto in cui «la richiesta è arrivata» diventa vero.
  *
- * La conversione si segnala qui e non nei componenti perché i moduli del sito
- * sono due e i trasporti possibili anche: mettendola sui rami di successo del
- * punto unico d'invio, vale per tutti **per costruzione**, e nessuno può
- * dimenticarsene aggiungendo un modulo nuovo.
+ * La conversione del modulo si segnala qui e non nei moduli perché i moduli
+ * del sito sono due e i trasporti possibili anche: mettendola sui rami di
+ * successo del punto unico d'invio, vale per tutti **per costruzione**, e
+ * nessuno può dimenticarsene aggiungendo un modulo nuovo. Lo stesso principio,
+ * per i clic, vive in `BottoneTelefono` e `BottoneWhatsApp`.
  */
 function confermato() {
     segnalaConversione()

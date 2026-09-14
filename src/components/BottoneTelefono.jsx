@@ -14,20 +14,24 @@ import { segnalaConversione } from '../lib/conversione'
  * Il numero non si scrive: viene da `AZIENDA`, unica fonte. `children` regge i
  * casi diversi — icona più numero nella barra mobile, solo il numero altrove.
  *
+ * Le proprietà accettate sono solo queste due, come in `BottoneWhatsApp`: un
+ * `onClick` o un `href` passati dall'esterno sostituirebbero in silenzio la
+ * misura o il numero, cioè proprio ciò che il componente esiste per garantire.
+ *
  * Nessun `preventDefault`, nessuna attesa artificiale prima di aprire il
- * telefono: su `tel:` la pagina resta viva mentre si apre il compositore, e
- * l'evento parte comunque. Ritardare l'apertura per essere certi della misura
- * sarebbe far pagare al cliente il conteggio.
+ * telefono. In prova il clic su `tel:` ha fatto ripartire la pagina, ma
+ * l'evento è arrivato lo stesso: `gtag` lo consegna prima che la pagina se
+ * ne vada. Ritardare l'apertura per essere certi della misura sarebbe far
+ * pagare al cliente il conteggio.
  */
-export default function BottoneTelefono({ className = '', children, ...resto }) {
+export default function BottoneTelefono({ className = '', children = AZIENDA.telefono }) {
     return (
         <a
             href={`tel:${AZIENDA.telefonoRaw}`}
             className={className}
             onClick={() => segnalaConversione('telefono')}
-            {...resto}
         >
-            {children ?? AZIENDA.telefono}
+            {children}
         </a>
     )
 }
