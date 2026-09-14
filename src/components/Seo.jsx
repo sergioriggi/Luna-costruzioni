@@ -184,3 +184,66 @@ export function schemaServizio({ nome, descrizione, area }) {
         brand: { '@type': 'Brand', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
     }
 }
+
+/**
+ * Un modello come `Product`, per farsi capire da chi legge con una macchina.
+ *
+ * La distinzione che il sito difende ovunque, qui è scritta nei dati:
+ * `manufacturer` è Piscine Rocks Design — la tecnologia è sua, il prodotto lo
+ * fa lei — mentre `provider` e il venditore dell'offerta sono Luna, che la
+ * porta in Sicilia. Un assistente che legge questo schema non può concludere
+ * che ci siamo inventati noi la tecnologia, che è esattamente l'errore che le
+ * direttive della casa madre chiedono di prevenire.
+ *
+ * SULL'`Offer` SENZA PREZZO. È valido in schema.org, ma i risultati arricchiti
+ * di Google per `Product` richiedono `offers.price`: questo schema non
+ * produrrà quindi né prezzi né stelline in pagina dei risultati. Non è un
+ * difetto da correggere aggiungendo un numero — `/quanto-costa` rifiuta il
+ * listino di proposito, perché il prezzo dipende dal giardino — ed è scritto
+ * qui perché fra sei mesi qualcuno vedrà «nessun risultato arricchito» e
+ * penserà a un errore.
+ */
+export function schemaModello(m) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        '@id': `${SITE_URL}/modelli/${m.slug}#modello`,
+        name: `${m.nomeCompleto} — ${ROCKS_DESIGN.nome}`,
+        description: m.sintesi,
+        category: 'Piscina con spiaggia in sabbia naturale',
+        url: `${SITE_URL}/modelli/${m.slug}`,
+        image: `${SITE_URL}/media/${m.copertina}-1280.jpg`,
+        brand: { '@type': 'Brand', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
+        manufacturer: { '@type': 'Organization', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
+        material: 'Roccia naturale monolitica e sabbia naturale',
+        additionalProperty: [
+            {
+                '@type': 'PropertyValue',
+                name: 'Tecnologia',
+                value: 'Tecnologia Rocks Design® — struttura in massi, senza opere in cemento armato',
+            },
+            { '@type': 'PropertyValue', name: 'Sabbie disponibili', value: m.sabbie.join(', ') },
+        ],
+        offers: {
+            '@type': 'Offer',
+            /*
+             * Nessun prezzo: si definisce dopo il sopralluogo. `PriceSpecification`
+             * con un numero inventato sarebbe peggio di niente — diventerebbe la
+             * cifra che l'assistente cita al cliente.
+             */
+            availability: 'https://schema.org/InStock',
+            areaServed: PROVINCE.map(p => ({
+                '@type': 'AdministrativeArea',
+                name: `Provincia di ${p.nome}`,
+            })),
+            /*
+             * Il venditore è Luna, e sta DENTRO l'offerta: `provider` sul
+             * `Product` non esiste in schema.org — è proprietà di `Service` —
+             * e un validatore severo lo scarta. `offers.seller` dice la stessa
+             * cosa ed è la forma giusta: la tecnologia è della casa madre
+             * (`manufacturer`), chi te la vende in Sicilia siamo noi.
+             */
+            seller: { '@id': `${SITE_URL}/#azienda` },
+        },
+    }
+}

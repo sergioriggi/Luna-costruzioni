@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
+import Seo, { schemaBriciole, schemaModello, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
@@ -35,6 +35,11 @@ export default function Modello() {
                         descrizione: m.sintesi,
                         area: 'Sicilia',
                     }),
+                    // Il `Service` dice che cosa facciamo noi; il `Product` dice
+                    // che cosa si compra e di chi è la tecnologia. Servono
+                    // entrambi: il secondo è quello che impedisce di attribuire
+                    // a Luna l'invenzione della Tecnologia Rocks Design.
+                    schemaModello(m),
                 ]}
             />
             <Briciole voci={briciole} />

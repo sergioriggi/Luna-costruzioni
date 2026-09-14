@@ -280,6 +280,42 @@ if (!robotsOk) {
 }
 riepilogo.push([robotsOk, 'robots.txt', nostro ? 'prodotto dalla build' : 'imposto dall\'hosting'])
 
+/*
+ * llms.txt: la mappa dell'entità per gli assistenti conversazionali.
+ *
+ * In produzione deve esserci, e deve essere il nostro. In anteprima NON deve
+ * esserci: `genera-llms.mjs` lo sopprime di proposito, perché un indirizzo
+ * provvisorio non pubblica la carta d'identità del sito. Controllare il verso
+ * in entrambe le direzioni serve a intercettare la stessa classe di guasto di
+ * `robots.txt` — file generato, assenza silenziosa, nessun sintomo visibile.
+ */
+const llms = await chiedi(`${ORIGINE}/llms.txt`)
+const llmsNostro = /Rocks Design/i.test(llms.corpo) && /Concessionario Autorizzato/i.test(llms.corpo)
+let llmsOk = true
+if (PRODUZIONE) {
+    if (llms.stato !== 200) {
+        llmsOk = false
+        errori.push(`llms.txt risponde ${llms.stato}: gli assistenti non trovano la scheda dell'azienda.`)
+    } else if (!llmsNostro) {
+        llmsOk = false
+        errori.push('llms.txt risponde 200 ma non contiene la scheda prodotta dalla build.')
+    }
+} else if (llms.stato === 200 && llmsNostro) {
+    llmsOk = false
+    errori.push(`llms.txt è pubblicato su ${ORIGINE}, che non è il dominio definitivo: elenca indirizzi che non sono questi.`)
+}
+riepilogo.push([
+    llmsOk,
+    'llms.txt',
+    PRODUZIONE
+        ? llmsOk
+            ? 'pubblicato'
+            : `stato ${llms.stato}`
+        : llmsOk
+          ? 'assente, come deve essere in anteprima'
+          : 'pubblicato su un indirizzo provvisorio',
+])
+
 // ──────────────── 5. direttive Piscine Rocks Design, sul sito vero ────────────────
 
 let direttiveOk = true

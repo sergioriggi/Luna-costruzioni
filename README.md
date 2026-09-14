@@ -48,7 +48,7 @@ npm run dev        # http://localhost:5173
 Per compilare e verificare il sito di produzione:
 
 ```bash
-npm run build      # bundle + pre-rendering + sitemap
+npm run build      # bundle + pre-rendering + sitemap + llms.txt
 npm run verifica   # controllo conformità alle direttive Rocks Design
 npm run preview    # anteprima identica alla produzione
 ```
@@ -58,7 +58,7 @@ npm run preview    # anteprima identica alla produzione
 | Comando | Cosa fa |
 | --- | --- |
 | `npm run dev` | Server di sviluppo con hot reload |
-| `npm run build` | Bundle, **pre-rendering statico** di tutte le rotte, `sitemap.xml`, `robots.txt` |
+| `npm run build` | Bundle, **pre-rendering statico** di tutte le rotte, `sitemap.xml`, `robots.txt`, `llms.txt` |
 | `npm run preview` | Anteprima di `dist/` che serve le pagine pre-renderizzate come l'hosting |
 | `npm run verifica` | Verifica automatica delle direttive marketing Rocks Design su `dist/` |
 | `npm run brand` | Estrae il logo ufficiale dal catalogo e genera la filigrana |
@@ -234,10 +234,17 @@ locali tecnici o mezzi d'opera: sono contenuti vietati dalla casa madre a tutela
   visibili solo dopo l'esecuzione di JavaScript. In pagina il sito resta una SPA
   React, che si idrata sull'HTML pre-renderizzato.
 - **Dati strutturati** (`schema.org`): `HomeAndConstructionBusiness` con `areaServed`
-  su tutte le province, `Service` per pagina locale, `FAQPage`, `BreadcrumbList`.
+  su tutte le province, `Service` per pagina locale, `Product` per i tre modelli
+  (con `manufacturer` sulla casa madre e Luna come venditore), `FAQPage`,
+  `BreadcrumbList`.
 - **SEO locale**: nove pagine provinciali con testo, FAQ e località specifiche —
   non testo duplicato con la città sostituita.
-- `sitemap.xml` e `robots.txt` generati dall'elenco rotte (`scripts/rotte.mjs`).
+- `sitemap.xml`, `robots.txt` e `llms.txt` generati dall'elenco rotte
+  (`scripts/rotte.mjs`).
+- **Assistenti conversazionali**: `robots.txt` li ammette per nome e `llms.txt`
+  pubblica la mappa dell'entità — chi è Luna, di chi è la tecnologia, che cosa
+  il sito non afferma. Solo in produzione: su indirizzo provvisorio non viene
+  emesso.
 - **Prestazioni**: font self-hostati, CSS unico, immagini WebP responsive,
   nessuna richiesta a domini terzi al primo caricamento.
 
@@ -453,6 +460,7 @@ scripts/
   rotte.mjs                elenco rotte pubbliche
   prerender.mjs            pre-rendering statico
   genera-sitemap.mjs       sitemap.xml e robots.txt
+  genera-llms.mjs          llms.txt, la mappa per gli assistenti
   verifica-conformita.mjs  controllo direttive Rocks Design
 src/
   components/         header, footer, moduli, galleria, SEO, immagini
