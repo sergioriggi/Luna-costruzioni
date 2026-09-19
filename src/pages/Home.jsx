@@ -146,9 +146,9 @@ const DUBBI = [
         domanda: '«Dopo la consegna, chi mi assiste?»',
         domandaEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Luna Costruzioni S.r.l.s. è concessionario per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+            'Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
         rispostaEn:
-            'Luna Costruzioni S.r.l.s. is the dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+            'Luna Costruzioni S.r.l.s. is an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
     },
     {
         domanda: '«Sarà una vasca come tante.»',

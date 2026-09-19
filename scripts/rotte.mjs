@@ -12,6 +12,7 @@ export const ROTTE = [
     { percorso: '/giardini-e-opere-in-pietra', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/hotel-e-resort', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/quanto-costa', priorita: 0.9, frequenza: 'monthly' },
+    { percorso: '/piscina-in-cemento-o-rocks-design', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/galleria', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/showroom', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/come-lavoriamo', priorita: 0.7, frequenza: 'yearly' },

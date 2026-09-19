@@ -232,9 +232,9 @@ export const DUBBI = [
         dubbio: '«Dopo la consegna, chi mi assiste?»',
         dubbioEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Siamo il concessionario per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+            'Siamo concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
         rispostaEn:
-            'We are the dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+            'We are an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
     },
     {
         dubbio: '«Sarà una vasca come tante.»',
@@ -405,6 +405,151 @@ export const DIFFERENZE = [
     ['Bordo', 'Marmo, gres o pietra tagliata', 'Roccia, ghiaia e sabbia'],
     ['Cantiere', 'Tempi di maturazione dei getti', 'Nessun getto: posa a secco degli elementi'],
     ['Nel paesaggio', 'Elemento aggiunto, riconoscibile', 'Sembra esistere da prima della casa'],
+]
+
+/**
+ * Il confronto con la piscina in cemento, sull'asse della DECISIONE.
+ *
+ * Non duplica `DIFFERENZE` qui sopra: quella tabella sta su
+ * /piscine-rocks-design e confronta la FISICA delle due piscine — struttura,
+ * fondale, bordo. Questa risponde a un'altra domanda, l'unica per cui la
+ * gente cerca davvero: «quale delle due scelgo?». Se un giorno le due
+ * tabelle cominciano a somigliarsi, è il segno che una delle due ha cambiato
+ * mestiere e va rimessa a posto.
+ *
+ * REGOLA DI QUESTO BLOCCO — si confronta solo ciò che è verificabile.
+ * In Italia la pubblicità comparativa è lecita (D.Lgs. 145/2007, art. 4) a
+ * condizione che confronti caratteristiche oggettive, pertinenti e
+ * verificabili, e che non denigri il prodotto altrui. È lo stesso vincolo che
+ * rende la pagina credibile: un confronto in cui l'altro non vince mai su
+ * niente non convince chi sta davvero scegliendo.
+ *
+ * Tre cose che qui NON si possono affermare, perché il sito stesso dice il
+ * contrario altrove — ed è il verso giusto:
+ *   • costa meno (vedi la FAQ in src/pages/QuantoCosta.jsx: gli ordini di
+ *     grandezza sono confrontabili);
+ *   • si mantiene con meno lavoro (stessa filtrazione, stesso trattamento);
+ *   • ha bisogno di meno permessi (serve un titolo edilizio in entrambi i
+ *     casi; l'assenza di cemento armato aiuta la valutazione, non esonera).
+ *
+ * Una riga su durata e rifacimento sarebbe l'argomento più forte della
+ * tabella. Non c'è, e non va aggiunta a sensazione: servono dati sulla vita
+ * utile del telo in esercizio e sui cicli di rifacimento di una vasca in
+ * cemento. Senza quelli è esattamente il tipo di confronto che l'art. 4
+ * esclude.
+ */
+export const CONFRONTO_CEMENTO = [
+    [
+        'Costo',
+        'Molto variabile secondo dimensione e finiture',
+        'Ordini di grandezza confrontabili, a parità di superficie e finitura',
+    ],
+    [
+        'Tempi di cantiere',
+        'I getti vanno fatti maturare prima di proseguire',
+        'Nessun getto: gli elementi si posano a secco',
+    ],
+    [
+        'Permesso edilizio',
+        'Serve. Quale, dipende dal Comune e dai vincoli sul lotto',
+        'Serve lo stesso: niente cemento armato aiuta, non esonera',
+    ],
+    [
+        'Manutenzione',
+        'Filtrazione, trattamento dell’acqua, pulizia di fondo',
+        'Le stesse operazioni, con gli stessi impianti',
+    ],
+    [
+        'Forma e profondità',
+        'Qualunque: anche corsie e fondali a quota costante',
+        'Disegnata sul giardino; non si fanno corsie',
+    ],
+    [
+        'Ingresso in acqua',
+        'Scaletta o gradini',
+        'Spiaggia digradante: si entra camminando',
+    ],
+    [
+        'Giardino occupato',
+        'Poco oltre il bordo della vasca',
+        'Di più: la spiaggia è parte della piscina, non un contorno',
+    ],
+    [
+        'Chi la costruisce in Sicilia',
+        'Molte imprese: preventivi facili da mettere a confronto',
+        'Solo un concessionario autorizzato Piscine Rocks Design',
+    ],
+]
+
+/** «Scegli il cemento se…» — scritte per essere lette una accanto all'altra. */
+export const QUANDO_CEMENTO = [
+    'Vuoi nuotare sul serio: vasche, lunghezza costante, profondità uniforme.',
+    'Il giardino è piccolo e vuoi più acqua possibile nello spazio che hai.',
+    'Vuoi chiedere tre preventivi e confrontarli in una settimana.',
+    'Ti servono copertura a tapparella o accessori a catalogo, pensati per vasche rettangolari.',
+]
+
+/** «Scegli una Piscina Rocks Design se…» — stessa lunghezza, stesso registro. */
+export const QUANDO_ROCKS = [
+    'Vuoi entrare in acqua camminando: con bambini piccoli, o con chi non nuota, cambia tutto.',
+    'Il giardino ha una forma o una pendenza che una vasca rettangolare non rispetta.',
+    'Vuoi che la piscina sembri esistesse da prima della casa.',
+    'Ti interessa un colore dell’acqua deciso dalla sabbia e non da un telo stampato.',
+]
+
+/**
+ * Dove il cemento vince davvero.
+ *
+ * Questa sezione è il motore di credibilità della pagina, non una concessione
+ * di cortesia: è ciò che rende leggibile tutto il resto. Va tenuta specifica —
+ * quattro vantaggi concreti — e va aggiornata se cambia il prodotto, non
+ * annacquata se qualcuno la trova scomoda.
+ */
+export const VANTAGGI_CEMENTO = [
+    {
+        titolo: 'Qualunque forma, qualunque profondità',
+        testo:
+            'Un getto armato prende la geometria che gli si dà: venticinque metri in linea retta, un fondale a quota costante, un bordo a sfioro su un lato solo. Una Piscina Rocks Design nasce dal terreno e dai massi disponibili, e quella libertà non ce l’ha. Se in acqua ci vuoi nuotare per allenarti, il cemento è la risposta giusta.',
+    },
+    {
+        titolo: 'Occupa meno giardino',
+        testo:
+            'A parità di acqua, la spiaggia digradante chiede superficie in più. È la parte migliore della piscina, ma resta superficie: in un giardino piccolo una vasca rettangolare rende di più al metro quadro, e in certi lotti è l’unica che ci sta.',
+    },
+    {
+        titolo: 'Più preventivi da confrontare',
+        testo:
+            'Le imprese che costruiscono piscine in cemento sono tante, in ogni provincia siciliana. È un mercato maturo, e questo è un vantaggio reale per chi compra: si chiedono tre offerte e si confrontano voce per voce. Una Piscina Rocks Design la realizza solo un concessionario autorizzato, quindi quel confronto non si può fare allo stesso modo.',
+    },
+    {
+        titolo: 'Accessori a catalogo',
+        testo:
+            'Coperture a tapparella, teli invernali, robot di pulizia: il mercato è costruito attorno a vasche rettangolari di misure ricorrenti. Su un perimetro irregolare alcune soluzioni vanno adattate su misura e altre non si applicano affatto.',
+    },
+]
+
+/** Dove vince la Piscina Rocks Design. Stessa forma, stessa misura. */
+export const VANTAGGI_ROCKS = [
+    {
+        titolo: 'Si entra camminando',
+        testo:
+            'Niente scaletta e niente gradino: il fondo digrada e sotto i piedi c’è sabbia. È la differenza che si nota per prima con i bambini piccoli, con chi non nuota e con chi ha problemi di mobilità — persone per cui una scaletta verticale è la ragione per cui la piscina resta inutilizzata.',
+    },
+    {
+        titolo: 'La forma segue il terreno',
+        testo:
+            'In Sicilia quasi ogni giardino ha una pendenza, un albero da salvare, un muro a secco che vale più della piscina. Una vasca rettangolare impone la propria geometria e chiede al terreno di adeguarsi; qui è il contrario, e su un lotto difficile spesso è ciò che rende il progetto possibile.',
+    },
+    {
+        titolo: 'Nessun getto da far maturare',
+        testo:
+            'Gli elementi si posano a secco. Sparisce la sequenza casseri-getto-maturazione-disarmo, che in una piscina in cemento detta i tempi di tutto il cantiere e non si può accelerare.',
+    },
+    {
+        titolo: 'Non si legge come un elemento aggiunto',
+        testo:
+            'Pietra, sabbia e ghiaia sono gli stessi materiali del paesaggio siciliano. A lavoro finito la vasca non sembra posata sul giardino: sembra la ragione per cui il giardino è fatto così.',
+    },
 ]
 
 /**

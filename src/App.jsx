@@ -13,6 +13,7 @@ import Sabbie from './pages/Sabbie'
 import Giardini from './pages/Giardini'
 import HotelResort from './pages/HotelResort'
 import QuantoCosta from './pages/QuantoCosta'
+import ConfrontoCemento from './pages/ConfrontoCemento'
 import GalleriaPagina from './pages/GalleriaPagina'
 import Showroom from './pages/Showroom'
 import ComeLavoriamo from './pages/ComeLavoriamo'
@@ -58,6 +59,7 @@ export default function App() {
                     <Route path="/giardini-e-opere-in-pietra" element={<Giardini />} />
                     <Route path="/hotel-e-resort" element={<HotelResort />} />
                     <Route path="/quanto-costa" element={<QuantoCosta />} />
+                    <Route path="/piscina-in-cemento-o-rocks-design" element={<ConfrontoCemento />} />
                     <Route path="/galleria" element={<GalleriaPagina />} />
                     <Route path="/showroom" element={<Showroom />} />
                     <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />

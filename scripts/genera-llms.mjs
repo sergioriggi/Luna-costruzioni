@@ -66,6 +66,7 @@ const TITOLI = {
     '/galleria': 'Galleria delle realizzazioni',
     '/showroom': 'La piscina espositiva',
     '/domande-frequenti': 'Domande frequenti',
+    '/piscina-in-cemento-o-rocks-design': 'Piscina in cemento o Piscina Rocks Design?',
 }
 
 const NOTE = {
@@ -77,6 +78,7 @@ const NOTE = {
     '/giardini-e-opere-in-pietra': 'Cascate, laghetti e opere in pietra naturale, anche senza piscina.',
     '/hotel-e-resort': 'Piscine Rocks Design per strutture ricettive.',
     '/quanto-costa': 'Che cosa sposta davvero il prezzo. Nessun listino: i preventivi si fanno dopo il sopralluogo.',
+    '/piscina-in-cemento-o-rocks-design': 'Confronto a due facce fra piscina tradizionale in cemento e Piscina Rocks Design: costi, tempi, permessi, manutenzione, forma — compreso dove conviene il cemento.',
     '/galleria': 'Fotografie di Piscine Rocks Design ultimate, realizzate dalla casa madre.',
     '/showroom': 'La piscina espositiva e come organizzare la visita.',
     '/come-lavoriamo': 'Il percorso dal sopralluogo al collaudo, chiavi in mano.',

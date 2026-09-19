@@ -279,5 +279,6 @@ export const NAV_SECONDARIA = [
     { to: '/sabbie', label: 'Le sabbie', labelEn: 'Sands' },
     { to: '/giardini-e-opere-in-pietra', label: 'Giardini e opere in pietra', labelEn: 'Gardens and stonework' },
     { to: '/quanto-costa', label: 'Quanto costa', labelEn: 'Costs' },
+    { to: '/piscina-in-cemento-o-rocks-design', label: 'Cemento o Rocks Design', labelEn: 'Concrete or Rocks Design' },
     { to: '/showroom', label: 'Piscina espositiva', labelEn: 'Display pool' },
 ]
