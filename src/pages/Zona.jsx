@@ -142,6 +142,14 @@ export default function Zona() {
                         </Rivela>
                     ))}
                 </ul>
+                <Rivela className="mt-8 max-w-prosa text-[0.95rem] leading-relaxed text-neutro-400">
+                    Se stai ancora valutando se abbia senso, il{' '}
+                    <Link to="/piscina-in-cemento-o-rocks-design" className="link-sottile font-medium text-accento">
+                        confronto con la piscina in cemento
+                    </Link>{' '}
+                    mette le due a fianco voce per voce, e dice anche in quali casi il cemento resta la scelta
+                    migliore.
+                </Rivela>
             </Sezione>
 
             <Sezione sfondo="bg-superficie">

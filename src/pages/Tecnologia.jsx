@@ -178,6 +178,21 @@ export default function Tecnologia() {
                         </tbody>
                     </table>
                 </Rivela>
+                {/*
+                  Questa tabella confronta la FISICA delle due piscine e risponde
+                  a «com'è fatta». Chi invece deve ancora scegliere fra le due ha
+                  bisogno di un'altra risposta, e ha una pagina sua: senza questo
+                  rimando le due si farebbero concorrenza sulla stessa ricerca.
+                */}
+                <Rivela className="mt-8 max-w-prosa rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-400">
+                    Qui sopra c’è <strong className="font-medium text-testo">come sono fatte</strong>. Se la domanda
+                    è invece <strong className="font-medium text-testo">quale delle due scegliere</strong> — costi,
+                    tempi, permessi, manutenzione, e dove conviene davvero il cemento — il confronto completo sta in
+                    una pagina a parte.{' '}
+                    <Link to="/piscina-in-cemento-o-rocks-design" className="link-sottile font-medium text-accento">
+                        Piscina in cemento o Piscina Rocks Design?
+                    </Link>
+                </Rivela>
             </Sezione>
 
             <Cta

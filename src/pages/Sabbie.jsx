@@ -51,7 +51,9 @@ export default function Sabbie() {
                             È la sabbia a decidere il colore dell’acqua
                         </h1>
                         <p className="testo-lungo mt-6">
-                            In una piscina tradizionale il colore lo dà il rivestimento: un telo azzurro fa acqua
+                            In una{' '}
+                            <Link to="/piscina-in-cemento-o-rocks-design" className="link-sottile">piscina tradizionale</Link>{' '}
+                            il colore lo dà il rivestimento: un telo azzurro fa acqua
                             azzurra, un mosaico scuro fa acqua scura. Qui funziona diversamente. Il fondale è sabbia
                             vera, e la tonalità che vedrai nasce dall’incontro fra il colore dei granelli, la
                             profondità e la luce del posto.

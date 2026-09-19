@@ -26,7 +26,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Costa più o meno di una piscina tradizionale?',
         risposta:
-            'A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte.',
+            'A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».',
     },
     {
         domanda: 'Si può fare a lotti?',
@@ -262,6 +262,13 @@ export default function QuantoCosta() {
                         </details>
                     ))}
                 </div>
+                <Rivela className="mx-auto mt-8 max-w-3xl text-center text-[0.95rem] leading-relaxed text-neutro-400">
+                    Stai ancora decidendo fra le due?{' '}
+                    <Link to="/piscina-in-cemento-o-rocks-design" className="link-sottile font-medium text-accento">
+                        Il confronto con la piscina in cemento
+                    </Link>{' '}
+                    mette a fianco costi, tempi, permessi e manutenzione — e dice anche dove il cemento vince.
+                </Rivela>
             </Sezione>
 
             <Sezione sfondo="bg-superficie">
