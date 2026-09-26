@@ -85,6 +85,20 @@ async function extractLogo() {
         .toFile(path.join(OUT, 'rocks-design-logo.png'))
 
     console.log('✓ public/brand/rocks-design-logo.png')
+
+    /*
+     * Variante per la testata, dove il logo è reso a 62×13 px CSS.
+     * Il PNG da 900 px serve ancora — come apple-touch-icon e come fallback
+     * dell'`img` dentro il `<picture>` di Header.jsx, che i due script di
+     * verifica cercano per nome — ma scaricarlo a ogni pagina costava 125 KB
+     * sopra la piega, in concorrenza con il CSS. 240 px coprono fino a
+     * DPR 3,8 e pesano meno di 10 KB.
+     */
+    await sharp(path.join(OUT, 'rocks-design-logo.png'))
+        .resize({ width: 240, withoutEnlargement: true })
+        .webp({ quality: 88, effort: 6 })
+        .toFile(path.join(OUT, 'rocks-design-logo-240.webp'))
+    console.log('✓ public/brand/rocks-design-logo-240.webp')
 }
 
 async function buildWatermark() {

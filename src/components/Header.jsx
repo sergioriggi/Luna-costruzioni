@@ -57,12 +57,36 @@ export default function Header() {
                     className="pg-concessionario"
                 >
                     <span className="pg-concessionario-logo">
-                        <img
-                            src={pubblico('/brand/rocks-design-logo.png')}
-                            width="900"
-                            height="188"
-                            alt={`${ROCKS_DESIGN.nome} — logo ufficiale`}
-                        />
+                        {/*
+                          Il logo è reso a 62×13 px CSS, e il PNG che lo
+                          produce è 900×188 per 125 KB: quattordici volte più
+                          grande del necessario, scaricato su OGNI pagina e
+                          sopra la piega. Nella cascata di /quanto-costa
+                          occupava la banda da 895 a 1987 ms, in concorrenza
+                          con il CSS — e finché il CSS non arriva non c'è
+                          prima pittura, quindi non c'è LCP.
+                          La WebP da 240 px copre fino a DPR 3,8 e pesa 9,4 KB.
+
+                          Il PNG resta come `src` dell'`img`, e non è solo
+                          cortesia verso i browser antichi: `verifica-conformita.mjs`
+                          e `verifica-online.mjs` cercano esattamente la stringa
+                          `/brand/rocks-design-logo.png` nella testata, perché la
+                          direttiva della casa madre impone quel logo lì. Se un
+                          giorno si sposta il fallback, vanno aggiornati anche
+                          quei due controlli. Serve ancora anche come
+                          apple-touch-icon in index.html, quindi il PNG grande
+                          non va rimpicciolito.
+                        */}
+                        <picture>
+                            <source type="image/webp" srcSet={pubblico('/brand/rocks-design-logo-240.webp')} />
+                            <img
+                                src={pubblico('/brand/rocks-design-logo.png')}
+                                width="900"
+                                height="188"
+                                decoding="async"
+                                alt={`${ROCKS_DESIGN.nome} — logo ufficiale`}
+                            />
+                        </picture>
                     </span>
                     <span className="pg-concessionario-testo">
                         <span className="pg-concessionario-ruolo">

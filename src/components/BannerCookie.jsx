@@ -86,10 +86,25 @@ export default function BannerCookie() {
             aria-label={t('Preferenze cookie', 'Cookie preferences')}
             className="fixed inset-x-3 bottom-24 z-[70] mx-auto max-w-2xl rounded-lg border border-testo/[0.16] bg-superficie p-5 shadow-morbida sm:bottom-6 sm:inset-x-6"
         >
+            {/*
+              QUESTO TESTO È CORTO DI PROPOSITO, e non per stile.
+              Il banner è `position: fixed`, quindi sta sempre in viewport e
+              compete per l'LCP. Misurato su /quanto-costa a 412×823: con il
+              testo lungo di prima occupava 47.229 px² e batteva di un soffio
+              il paragrafo di apertura della pagina (45.045 px²), diventando
+              l'elemento LCP — con la sua comparsa legata all'idratazione,
+              cioè tardi. Accorciato, l'LCP torna sul testo prerenderizzato,
+              che dipinge alla prima pittura.
+              Il margine oggi è ampio, ma non infinito: allungando questo
+              paragrafo fino a superare ~45.000 px² su telefono si riporta
+              l'LCP sul banner senza che nulla sembri rotto. Il dettaglio su
+              cookie e Consent Mode sta nella cookie policy, linkata qui
+              sotto — quello è il posto giusto per allungarlo.
+            */}
             <p className="text-sm leading-relaxed text-neutro-400">
                 {t(
-                    'Usiamo cookie tecnici necessari al funzionamento del sito. Il tag di Google è attivo in modalità anonima: senza il tuo consenso non installa cookie. Con «Accetta» attiviamo i cookie di Google Ads e Analytics, che ci dicono quali annunci portano richieste.',
-                    'We use technical cookies required for the site to work. Google’s tag runs in anonymous mode: without your consent it sets no cookies. With “Accept” we enable the Google Ads and Analytics cookies, which tell us which ads bring enquiries.',
+                    'Senza il tuo consenso il tag di Google non installa cookie. Con «Accetta» attivi Google Ads e Analytics.',
+                    'Without your consent, Google’s tag sets no cookies. With “Accept” you enable Google Ads and Analytics.',
                 )}{' '}
                 <Link to="/cookie-policy" className="link-sottile font-medium text-testo">
                     {t('Cookie policy', 'Cookie policy')}
