@@ -120,23 +120,44 @@
 /*
  * Comparsa progressiva alla prima visualizzazione.
  *
- * Le regole valgono SOLO sotto `.js-anima`, che `main.jsx` mette sulla radice
- * un istante prima di idratare. Senza JavaScript — o nel tempo che il bundle
- * arriva — il contenuto è semplicemente visibile: prima non lo era, e l'intero
- * blocco sopra la piega di ogni pagina interna restava trasparente finché il
- * JavaScript non partiva, rimandando l'LCP senza motivo.
+ * REGOLA DI FONDO: qui NIENTE è nascosto per difetto. Nessuna regola tocca
+ * `.rivela` da sola. Un elemento diventa invisibile solo se `Rivela` gli
+ * aggiunge `nascosta`, e lo fa esclusivamente per ciò che sta SOTTO la piega.
+ *
+ * ── Perché non basta un interruttore globale ─────────────────────────────
+ * Prima queste regole vivevano sotto `.js-anima`, una classe che `main.jsx`
+ * metteva sulla radice un istante prima di idratare. Sembrava prudente — senza
+ * JavaScript niente si nasconde — ma apriva una finestra: fra l'aggiunta della
+ * classe e l'effetto di layout che rimetteva `visibile`, TUTTI gli elementi
+ * erano a `opacity: 0`, compresi quelli sopra la piega. Se il browser dipinge
+ * in quella finestra — e accade quando il bundle arriva presto rispetto al
+ * CSS, cioè proprio nei laboratori di misura — la prima pittura trova il testo
+ * invisibile e l'LCP slitta all'idratazione. Verificato: quel paragrafo
+ * prerenderizzato mostrava 280-490 ms di «element render delay», che per un
+ * testo statico dovrebbero essere zero.
+ *
+ * Togliendo l'interruttore globale la finestra non esiste più: sopra la piega
+ * non si aggiunge mai nulla, quindi non c'è nessun istante in cui il contenuto
+ * possa essere nascosto, per nessun ordine di arrivo delle risorse.
+ *
+ * `anima` resta anche dopo che `nascosta` è stata togliata, altrimenti la
+ * transizione svanirebbe insieme alla classe e l'elemento comparirebbe di
+ * scatto invece di entrare.
  */
-.js-anima .rivela {
+.rivela.nascosta {
     opacity: 0;
     transform: translateY(18px);
+}
+
+.rivela.anima {
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-.js-anima .rivela.visibile {
-    opacity: 1;
-    transform: none;
-}
-
+/*
+ * `Rivela` non aggiunge le classi quando la preferenza è «riduci»: questo
+ * blocco è la seconda cintura, per il caso in cui qualcuno le metta a mano.
+ */
 @media (prefers-reduced-motion: reduce) {
-    .js-anima .rivela { opacity: 1; transform: none; }
+    .rivela.nascosta { opacity: 1; transform: none; }
+    .rivela.anima { transition: none; }
 }

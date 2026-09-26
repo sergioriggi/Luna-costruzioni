@@ -8,11 +8,12 @@ import './index.css'
 import './nocturne.css'
 import './pagina.css'
 
-// Da qui in poi le comparse progressive sono attive. Prima di questa riga il
-// contenuto è visibile: è ciò che permette alla prima pittura di non aspettare
-// il JavaScript. Va messa prima di idratare, così `Rivela` marca visibile in un
-// effetto di layout ciò che è già in viewport e non si vede alcun lampeggio.
-document.documentElement.classList.add('js-anima')
+// Qui c'era `document.documentElement.classList.add('js-anima')`, che accendeva
+// le comparse progressive per tutta la pagina in un colpo. Era il difetto: fra
+// quella riga e l'effetto di layout di `Rivela` ogni elemento restava a
+// `opacity: 0`, sopra la piega compresa, e una pittura in quella finestra
+// spostava l'LCP all'idratazione. Ora è `Rivela` a nascondere soltanto ciò che
+// sta sotto la piega — vedi il commento in `src/index.css`.
 
 const contenitore = document.getElementById('root')
 const albero = (
