@@ -204,6 +204,43 @@ if (!ANTEPRIMA) {
                 '(una variabile vuota vince sul file .env.production).',
         )
     }
+
+    /*
+     * 9-bis. Il Consent Mode deve essere nel bundle.
+     *
+     * Stessa famiglia di guasto del controllo qui sopra, e stessa invisibilità.
+     * Se qualcuno riordina `caricaTag()` o rimuove il consenso predefinito, il
+     * tag continua a funzionare: nessuna pagina si rompe, nessun errore in
+     * console. Cambia solo che Google smette di ricevere i segnali anonimi di
+     * chi rifiuta — cioè circa due visite su tre — e l'offerta automatica torna
+     * al buio. Nessuno se ne accorgerebbe per settimane.
+     *
+     * Si cercano due stringhe che esistono solo se il consenso predefinito è
+     * stato dichiarato: `ad_storage` e `wait_for_update`. Non gli ID, che
+     * cambiano, e non l'ordine delle righe, che da qui non si vede: per
+     * l'ordine serve un browser, e lo prova il collaudo con Chromium.
+     */
+    let consenso = false
+    try {
+        for (const file of await fs.readdir(assets)) {
+            if (!file.endsWith('.js')) continue
+            const codice = await fs.readFile(path.join(assets, file), 'utf8')
+            if (codice.includes('ad_storage') && codice.includes('wait_for_update')) {
+                consenso = true
+                break
+            }
+        }
+    } catch {
+        /* l'assenza di dist/assets è già segnalata qui sopra */
+    }
+    if (!consenso) {
+        errori.push(
+            'Consent Mode assente dal bundle: mancano «ad_storage» e/o «wait_for_update». ' +
+                'Senza il consenso predefinito Google non riceve i segnali anonimi di chi ' +
+                'rifiuta, e l\'offerta automatica di Ads resta senza dati. ' +
+                'Vedi src/components/BannerCookie.jsx.',
+        )
+    }
 }
 
 // 4-bis. la filigrana è impressa da prepare-media.mjs su ogni foto di piscina

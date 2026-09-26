@@ -267,7 +267,7 @@ pagina. Non metterci mai un segreto.
 | --- | --- |
 | `VITE_SITE_URL` | Si usa il dominio definitivo; se diverso, il sito si dichiara anteprima e resta `noindex` |
 | `VITE_BASE` | `/` — il sito è servito dalla radice del dominio |
-| `VITE_GA4_ID` | Nessuno script di misurazione viene caricato |
+| `VITE_GA4_ID` | Analytics non viene configurato; il tag di Google parte comunque se c'è un ID Ads |
 
 ### Di runtime — lette solo dal server Node
 
@@ -286,9 +286,14 @@ statico non ci sono, e il modulo ripiega sul client di posta del visitatore.
 configurato un servizio esterno: senza di essa il modulo posta su
 `/api/contatti`, sulla stessa origine.
 
-Gli script di misurazione partono **solo dopo il consenso** espresso nel banner
-(`src/components/BannerCookie.jsx`): finché l'utente non accetta, il sito non
-carica nulla di profilante.
+Il sito usa **Consent Mode v2 in modalità avanzata**
+(`src/components/BannerCookie.jsx`): il tag di Google si carica a ogni visita
+ma parte con il consenso **negato**. Finché l'utente non accetta non viene
+installato alcun cookie e a Google arrivano solo segnali anonimi, da cui stima
+le conversioni. Fino al 26 settembre 2026 il comportamento era l'opposto — il
+tag partiva solo dopo «Accetta» — e la misura non vedeva circa due visite su
+tre. Se si torna indietro su quel file, vanno rimesse a posto anche le due
+informative, che oggi descrivono questo comportamento.
 
 ### Il server Node
 
@@ -404,7 +409,7 @@ Variabili d'ambiente da impostare nel pannello:
 | --- | --- |
 | `VITE_SITE_URL` | l'indirizzo da cui il sito è **realmente** servito |
 | `VITE_BASE` | `/` |
-| `VITE_GA4_ID` | quando ci sarà un ID Analytics |
+| `VITE_GA4_ID` | l'ID Analytics (in produzione sta fra le variabili di Hostinger) |
 
 `VITE_SITE_URL` non è facoltativa: senza, il sito si considera anteprima ed
 esce interamente `noindex`. Vedi la sezione qui sotto.

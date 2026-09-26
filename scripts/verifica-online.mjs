@@ -380,6 +380,7 @@ riepilogo.push([eseguito(moduloConsegna), 'Il modulo consegna', moduloConsegna ?
  * quando cambi account è un controllo che qualcuno disattiva.
  */
 let tagAds = null
+let consentMode = null
 if (servite.length > 0 && bundleCodice) {
     tagAds = bundleCodice.includes('googletagmanager.com/gtag/js') && /AW-\d+/.test(bundleCodice)
     if (!tagAds) {
@@ -388,8 +389,34 @@ if (servite.length > 0 && bundleCodice) {
                 'Se non hai ancora attivato la pubblicità è normale.',
         )
     }
+
+    /*
+     * Il Consent Mode, sul bundle davvero servito.
+     *
+     * Il gemello di questo controllo sta in `verifica-conformita.mjs` e guarda
+     * `dist/`, cioè ciò che abbiamo compilato noi. Questo guarda ciò che scarica
+     * un cliente: in mezzo c'è la build di Hostinger, che con le sue variabili
+     * d'ambiente ha già prodotto un bundle diverso dal nostro una volta.
+     *
+     * Se queste stringhe sparissero, il sito continuerebbe a funzionare e a
+     * misurare chi accetta. Si perderebbe solo la parte anonima — circa due
+     * visite su tre — senza un sintomo visibile da nessuna parte.
+     */
+    consentMode = bundleCodice.includes('ad_storage') && bundleCodice.includes('wait_for_update')
+    if (!consentMode) {
+        errori.push(
+            'Consent Mode assente dal bundle pubblicato: mancano «ad_storage» e/o ' +
+                '«wait_for_update». Chi rifiuta il consenso non viene misurato affatto, ' +
+                'nemmeno in forma anonima, e Ads ottimizza senza dati.',
+        )
+    }
 }
 riepilogo.push([eseguito(tagAds), 'Tag Google Ads', tagAds ? 'presente' : 'assente (vedi note)'])
+riepilogo.push([
+    eseguito(consentMode),
+    'Consent Mode v2',
+    consentMode ? 'consenso negato per difetto' : 'assente',
+])
 
 // ──────────────────── 6. il materiale riservato non si scarica ────────────────────
 

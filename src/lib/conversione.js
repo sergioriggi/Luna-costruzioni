@@ -15,11 +15,20 @@
  * 1. Senza l'etichetta dell'azione non succede nulla. Si copia dal pannello Ads
  *    quando si crea l'azione di conversione; finché non c'è, il sito costruisce
  *    i pubblici ma non conta quel contatto.
- * 2. Senza consenso `window.gtag` non esiste — il tag si carica solo dopo
- *    «Accetta» (`src/components/BannerCookie.jsx`) — e l'evento non parte.
- *    Conseguenza da mettere in conto: i numeri di Ads saranno **più bassi**
- *    delle richieste che arrivano in casella. È il banner che fa il suo
- *    mestiere, non un guasto.
+ * 2. Senza etichetta, nessun evento. Il consenso invece non è più un silenzio:
+ *    dal 26 settembre 2026 il sito usa il Consent Mode v2 in modalità avanzata
+ *    (`src/components/BannerCookie.jsx`), quindi `window.gtag` esiste sempre e
+ *    la conversione parte anche da chi ha rifiutato — in forma anonima, senza
+ *    cookie e senza identificatore del clic, come un ping che dice «è arrivata
+ *    una richiesta» e nient'altro. Google la usa per stimare in aggregato le
+ *    conversioni che non può attribuire.
+ *
+ *    Prima qui c'era scritto il contrario, e la previsione che ne seguiva —
+ *    «i numeri di Ads saranno più bassi delle richieste in casella» — non vale
+ *    più: ora comprendono anche una quota stimata. Per la stessa ragione la
+ *    guardia qui sotto (`typeof window.gtag !== 'function'`) non è più il
+ *    filtro del consenso; resta a coprire il caso in cui nessun
+ *    identificatore sia configurato, cioè locale e anteprima.
  */
 
 /**
