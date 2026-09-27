@@ -190,18 +190,40 @@ export function schemaServizio({ nome, descrizione, area }) {
  *
  * La distinzione che il sito difende ovunque, qui è scritta nei dati:
  * `manufacturer` è Piscine Rocks Design — la tecnologia è sua, il prodotto lo
- * fa lei — mentre `provider` e il venditore dell'offerta sono Luna, che la
- * porta in Sicilia. Un assistente che legge questo schema non può concludere
- * che ci siamo inventati noi la tecnologia, che è esattamente l'errore che le
+ * fa lei. Un assistente che legge questo schema non può concludere che ci
+ * siamo inventati noi la tecnologia, che è esattamente l'errore che le
  * direttive della casa madre chiedono di prevenire.
  *
- * SULL'`Offer` SENZA PREZZO. È valido in schema.org, ma i risultati arricchiti
- * di Google per `Product` richiedono `offers.price`: questo schema non
- * produrrà quindi né prezzi né stelline in pagina dei risultati. Non è un
- * difetto da correggere aggiungendo un numero — `/quanto-costa` rifiuta il
- * listino di proposito, perché il prezzo dipende dal giardino — ed è scritto
- * qui perché fra sei mesi qualcuno vedrà «nessun risultato arricchito» e
- * penserà a un errore.
+ * ── NON RIMETTERE `offers` QUI. È stata tolta di proposito ───────────────
+ * Prima c'era, senza prezzo, e questo commento diceva che un `Offer` senza
+ * prezzo «resta valido in schema.org» e avrebbe semplicemente prodotto nessun
+ * risultato arricchito. Era sbagliato, e Google l'ha detto: il 27 settembre
+ * 2026 Search Console ha aperto DUE segnalazioni di errore su queste tre
+ * pagine — «Snippet prodotto» e «Schede commercianti» — entrambe con gravità
+ * ERROR e lo stesso messaggio, «è necessario specificare `price` o
+ * `priceSpecification`». Un `Offer` senza prezzo non è un'offerta silenziosa:
+ * è un'offerta rotta, e dichiarare un'offerta obbliga a dichiarare un prezzo.
+ *
+ * Il prezzo non si può mettere: `/quanto-costa` rifiuta il listino di
+ * proposito, perché dipende dal giardino. Quindi non si dichiara l'offerta.
+ *
+ * Che cosa se n'è andato con lei, e dove sta adesso:
+ *  - `areaServed` sulle nove province → già in `schemaServizio` e nel
+ *    `LocalBusiness` di `schemaAzienda`, sulla stessa pagina;
+ *  - `seller` su Luna → `schemaServizio` ha `provider` su Luna, ed è il tipo
+ *    giusto per un servizio senza prezzo. (Era proprio per salvare quel
+ *    `seller` che avevo tenuto `offers`, dopo aver tolto un `provider` non
+ *    valido da qui: la strada giusta era il `Service`, non l'`Offer`.)
+ *  - `availability: InStock` → su una piscina su misura non diceva nulla.
+ *
+ * Resta da sapere che Google, per uno snippet prodotto, chiede almeno uno fra
+ * `offers`, `review` e `aggregateRating`. Non avendo né recensioni né
+ * valutazioni — `RECENSIONI` in `src/data/content.js` è vuoto di proposito,
+ * solo recensioni vere — è possibile che resti un AVVISO al posto
+ * dell'errore. È accettabile: un avviso non squalifica nulla. Se un giorno
+ * desse fastidio, la mossa è togliere l'intero `Product` e lasciare `Service`
+ * più `BreadcrumbList`, che non hanno requisiti di prezzo — non rimettere
+ * `offers`.
  */
 export function schemaModello(m) {
     return {
@@ -224,26 +246,5 @@ export function schemaModello(m) {
             },
             { '@type': 'PropertyValue', name: 'Sabbie disponibili', value: m.sabbie.join(', ') },
         ],
-        offers: {
-            '@type': 'Offer',
-            /*
-             * Nessun prezzo: si definisce dopo il sopralluogo. `PriceSpecification`
-             * con un numero inventato sarebbe peggio di niente — diventerebbe la
-             * cifra che l'assistente cita al cliente.
-             */
-            availability: 'https://schema.org/InStock',
-            areaServed: PROVINCE.map(p => ({
-                '@type': 'AdministrativeArea',
-                name: `Provincia di ${p.nome}`,
-            })),
-            /*
-             * Il venditore è Luna, e sta DENTRO l'offerta: `provider` sul
-             * `Product` non esiste in schema.org — è proprietà di `Service` —
-             * e un validatore severo lo scarta. `offers.seller` dice la stessa
-             * cosa ed è la forma giusta: la tecnologia è della casa madre
-             * (`manufacturer`), chi te la vende in Sicilia siamo noi.
-             */
-            seller: { '@id': `${SITE_URL}/#azienda` },
-        },
     }
 }
