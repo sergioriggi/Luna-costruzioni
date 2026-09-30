@@ -148,13 +148,13 @@ export default function Giardini() {
                 <Rivela className="mt-12">
                     <Galleria
                         filtrabile={false}
-                        slugs={[
-                            'bordo-in-legno-e-ciottoli',
-                            'solarium-in-legno',
-                            'ghiaietto-e-acqua-smeraldo',
-                            'palme-e-monoliti',
-                            'giardino-tropicale',
-                            'illuminazione-calda-sui-monoliti',
+                        voci={[
+                            { slug: 'bordo-in-legno-e-ciottoli', didascalia: 'Deck in legno posato a spina, con una fascia di ciottoli fra il legno e l’acqua.' },
+                            { slug: 'solarium-in-legno', didascalia: 'Un solarium in legno su tutto un lato: è lì che si mettono i lettini.' },
+                            { slug: 'ghiaietto-e-acqua-smeraldo', didascalia: 'Lastre di pietra posate come gradini, in mezzo al ghiaietto della riva.' },
+                            { slug: 'palme-e-monoliti', didascalia: 'Un masso lasciato da solo sulla sabbia: la pietra usata come arredo del giardino.' },
+                            { slug: 'giardino-tropicale', didascalia: 'Sabbia, palme e banani portati fino al bordo dell’acqua.' },
+                            { slug: 'illuminazione-calda-sui-monoliti', didascalia: 'Luci a terra tra i massi del bordo: il giardino si usa anche di sera.' },
                         ]}
                     />
                 </Rivela>

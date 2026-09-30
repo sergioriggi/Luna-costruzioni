@@ -347,7 +347,7 @@ export default function Home() {
                       Diceva «vieni a trovarci presso la nostra sede», che
                       mandava i clienti all'abitazione del titolare.
                     */}
-                    <figcaption>
+                    <figcaption data-didascalia="">
                         {t(
                             'Piscina Rocks Design ultimata e in funzione. Organizziamo la visita alla piscina espositiva Piscine Rocks Design: vieni a vederla con noi.',
                             'A completed, working Piscine Rocks Design pool. We arrange visits to the Piscine Rocks Design showroom pool — come and see it with us.',

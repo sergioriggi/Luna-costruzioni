@@ -12,7 +12,9 @@
  *      l'unica ripetizione ammessa: si conta a parte e non entra nell'elenco;
  *   2. quante volte compare «sopralluogo» (e «sopralluoghi») in ogni pagina —
  *      obiettivo: 3 o meno;
- *   3. la somiglianza fra ogni coppia di pagine — obiettivo: sotto il 60%.
+ *   3. la somiglianza fra ogni coppia di pagine — obiettivo: sotto il 60%;
+ *   4. le didascalie delle foto (elementi marcati `data-didascalia`) presenti
+ *      su più di una pagina — obiettivo: nessuna.
  *
  * La somiglianza è l'indice di Jaccard sulle sequenze di 5 parole consecutive
  * del testo di <main>, riquadro finale compreso: una misura severa, perché
@@ -88,6 +90,14 @@ function testoDiMain(html) {
     return { blocchi, testo: tutti.join(' '), cta }
 }
 
+function didascalie(html) {
+    const m = /<main\b[^>]*>([\s\S]*?)<\/main>/i.exec(html)
+    if (!m) return []
+    return [...m[1].matchAll(/<([a-z]+)\b[^>]*\bdata-didascalia\b[^>]*>([\s\S]*?)<\/\1>/gi)].map(x =>
+        decodifica(x[2].replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim(),
+    )
+}
+
 function pagina(percorso) {
     const file =
         percorso === '/' ? path.join(DIST, 'index.html') : path.join(DIST, percorso.slice(1), 'index.html')
@@ -114,8 +124,9 @@ if (!fs.existsSync(path.join(DIST, 'index.html'))) {
 }
 
 const pagine = ROTTE.filter(r => !ESCLUSE.has(r.percorso)).map(r => {
-    const { blocchi, testo, cta } = testoDiMain(pagina(r.percorso))
-    return { percorso: r.percorso, blocchi, testo, cta, shingle: shingle(testo) }
+    const html = pagina(r.percorso)
+    const { blocchi, testo, cta } = testoDiMain(html)
+    return { percorso: r.percorso, blocchi, testo, cta, shingle: shingle(testo), didascalie: didascalie(html) }
 })
 
 let violazioni = 0
@@ -166,6 +177,19 @@ console.log('   le dieci più simili:')
 for (const [a, b, v] of coppie.slice(0, 10)) {
     console.log(`   ${v >= MAX_SOMIGLIANZA ? '✗' : '✓'} ${(v * 100).toFixed(1).padStart(5)}%  ${a}  ↔  ${b}`)
 }
+
+// 4. Didascalie
+const didascaliaDove = new Map()
+for (const p of pagine) {
+    for (const d of new Set(p.didascalie)) {
+        if (!didascaliaDove.has(d)) didascaliaDove.set(d, new Set())
+        didascaliaDove.get(d).add(p.percorso)
+    }
+}
+const didascalieRipetute = [...didascaliaDove].filter(([, s]) => s.size > 1)
+violazioni += didascalieRipetute.length
+console.log(`\n4. Didascalie su più di una pagina (obiettivo: nessuna): ${didascalieRipetute.length} su ${didascaliaDove.size} didascalie distinte`)
+for (const [d, s] of didascalieRipetute) console.log(`   ${s.size} pagine · «${d}» (${[...s].join(', ')})`)
 
 console.log(`\n${violazioni ? `✗ ${violazioni} obiettivi non rispettati` : '✓ tutti gli obiettivi rispettati'}`)
 if (SEVERO && violazioni) process.exit(1)

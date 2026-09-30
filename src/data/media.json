@@ -2,7 +2,7 @@
   {
     "slug": "oasi-aerea-sabbia-bianca",
     "alt": "Vista aerea di una piscina Piscine Rocks Design con spiaggia in sabbia bianca, palme e massi monolitici",
-    "caption": "Vista dall’alto: la spiaggia occupa più superficie della vasca, ed è dove si passa la giornata.",
+    "caption": "Vista dall’alto: la spiaggia di sabbia bianca gira tutta attorno alla vasca, e le palme ci fanno ombra.",
     "tags": [
       "caraibi",
       "sabbia",
@@ -38,7 +38,7 @@
   {
     "slug": "palme-al-tramonto",
     "alt": "Piscina Rocks Design al tramonto tra palme e sabbia chiara",
-    "caption": "La luce del tramonto sull’acqua: atmosfera tropicale a pochi passi da casa.",
+    "caption": "Palme e massi su una spiaggia di sabbia chiara, con un pontile basso in legno sul bordo dell’acqua.",
     "tags": [
       "caraibi",
       "tramonto"
@@ -68,7 +68,7 @@
   {
     "slug": "oasi-con-pontile",
     "alt": "Piscina Rocks Design con pontile in legno e bordo in massi naturali",
-    "caption": "Il perimetro segue il terreno esistente invece di imporgli una geometria.",
+    "caption": "Vasca a forma libera davanti a una dépendance in legno, con due getti che partono dai massi.",
     "tags": [
       "caraibi",
       "aerea"
@@ -103,7 +103,7 @@
   {
     "slug": "villa-con-spiaggia-in-ghiaia",
     "alt": "Piscina Rocks Design davanti a una villa, con bordo in ciottoli e massi di granito",
-    "caption": "Ciottoli, massi e acqua bassa: il bordo non è una linea, è una fascia.",
+    "caption": "Ghiaia e massi al posto del bordo piastrellato: verso la riva l’acqua si fa bassa.",
     "tags": [
       "mediterranea",
       "giorno"
@@ -138,7 +138,7 @@
   {
     "slug": "notte-luci-e-festa",
     "alt": "Piscina Rocks Design illuminata di sera durante un ricevimento in giardino",
-    "caption": "Di sera l’illuminazione subacquea trasforma la piscina nel cuore del giardino.",
+    "caption": "Festa in giardino: luci appese sopra il prato e la vasca illuminata dal fondo.",
     "tags": [
       "notte",
       "eventi"
@@ -168,7 +168,7 @@
   {
     "slug": "cascata-e-massi-al-crepuscolo",
     "alt": "Cascata naturale in massi monolitici su una piscina Rocks Design al crepuscolo",
-    "caption": "Di sera resta il suono dell’acqua: copre il rumore di fondo del quartiere.",
+    "caption": "Una cascatella tra i massi, allestita al crepuscolo per un matrimonio.",
     "tags": [
       "cascate",
       "notte"
@@ -198,7 +198,7 @@
   {
     "slug": "ricevimento-a-bordo-acqua",
     "alt": "Festa serale a bordo di una piscina Rocks Design con fuochi d’artificio",
-    "caption": "Uno scenario che vale un evento: la piscina Rocks Design come palcoscenico.",
+    "caption": "Il taglio della torta a bordo acqua, con la cascata e le fontane di luce alle spalle.",
     "tags": [
       "notte",
       "eventi"
@@ -228,7 +228,7 @@
   {
     "slug": "cena-in-giardino",
     "alt": "Zona pranzo in giardino accanto a una piscina Rocks Design illuminata",
-    "caption": "Il giardino diventa vivibile anche dopo il tramonto.",
+    "caption": "Cena sotto gli ombrelloni, con la vasca accesa in primo piano.",
     "tags": [
       "notte"
     ],
@@ -257,7 +257,7 @@
   {
     "slug": "acqua-turchese-notturna",
     "alt": "Piscina Rocks Design con illuminazione subacquea turchese di notte",
-    "caption": null,
+    "caption": "Di notte la luce subacquea fa turchese l’acqua e lascia al buio il giardino intorno.",
     "tags": [
       "notte"
     ],
@@ -286,7 +286,7 @@
   {
     "slug": "blu-della-sera",
     "alt": "Piscina Rocks Design all’ora blu con arredi da giardino",
-    "caption": null,
+    "caption": "Tavolo apparecchiato oltre il bordo in ghiaia, con sfere luminose posate tra i ciottoli.",
     "tags": [
       "notte"
     ],
@@ -320,7 +320,7 @@
   {
     "slug": "illuminazione-calda-sui-monoliti",
     "alt": "Monoliti illuminati con luce calda attorno a una piscina Rocks Design",
-    "caption": "La luce radente esalta la texture delle rocce monolitiche.",
+    "caption": "A sera, luce calda sui massi del bordo e luce fredda sotto l’acqua.",
     "tags": [
       "notte",
       "monoliti"
@@ -355,7 +355,7 @@
   {
     "slug": "solarium-in-legno",
     "alt": "Solarium in legno affacciato su una piscina Rocks Design",
-    "caption": null,
+    "caption": "Solarium in doghe di legno con i lettini; sul lato opposto la riva è in ghiaia.",
     "tags": [
       "giorno",
       "mediterranea"
@@ -390,7 +390,7 @@
   {
     "slug": "spiaggia-di-sabbia-privata",
     "alt": "Ampia spiaggia in sabbia naturale davanti a una piscina Rocks Design",
-    "caption": "Sabbia vera fin dentro l’acqua: si entra camminando, senza scaletta.",
+    "caption": "Spiaggia di sabbia davanti alla casa: in acqua si scende camminando, tra massi tondi.",
     "tags": [
       "sabbia",
       "caraibi"
@@ -425,7 +425,7 @@
   {
     "slug": "bordo-in-legno-e-ciottoli",
     "alt": "Bordo in legno e ciottoli di una piscina Rocks Design",
-    "caption": null,
+    "caption": "Da un lato il deck in legno, dall’altro ciottoli grigi e massi arrotondati.",
     "tags": [
       "giorno",
       "alpi"
@@ -460,7 +460,7 @@
   {
     "slug": "ghiaietto-e-acqua-smeraldo",
     "alt": "Piscina Rocks Design modello Alpi con ghiaietto e acqua color smeraldo",
-    "caption": "Modello Alpi: ghiaietto al posto della spiaggia, acqua sui verdi profondi.",
+    "caption": "Ghiaietto sulla riva e lastre di pietra che scendono nell’acqua verde come gradini.",
     "tags": [
       "alpi",
       "giorno"
@@ -495,7 +495,7 @@
   {
     "slug": "fondale-illuminato",
     "alt": "Fondale in sabbia di una piscina Rocks Design illuminato di notte",
-    "caption": "Il colore dell’acqua nasce dal fondale: cambia sabbia, cambia tonalità.",
+    "caption": "Fondale in sabbia illuminato di notte, con due massi luminosi posati nell’acqua.",
     "tags": [
       "notte",
       "sabbia"
@@ -530,7 +530,7 @@
   {
     "slug": "cascata-su-roccia-rossa",
     "alt": "Cascata su rocce rosse e granito in una piscina Rocks Design",
-    "caption": "Il percorso dell’acqua viene disegnato sui massi già posati, non prima.",
+    "caption": "Una lama d’acqua che scende da una lastra appoggiata su due massi.",
     "tags": [
       "cascate"
     ],
@@ -559,7 +559,7 @@
   {
     "slug": "ombre-di-palme-sulla-sabbia",
     "alt": "Ombre di palme sulla sabbia bianca attorno a una piscina Rocks Design",
-    "caption": null,
+    "caption": "Dall’alto: palme basse piantate nella sabbia bianca, con le ombre corte di mezzogiorno.",
     "tags": [
       "caraibi",
       "sabbia",
@@ -590,7 +590,7 @@
   {
     "slug": "masso-luminoso-nell-acqua",
     "alt": "Masso monolitico con anello luminoso immerso in una piscina Rocks Design",
-    "caption": "Lo stesso masso fa da seduta, da isola e da corpo illuminante.",
+    "caption": "Due massi cinti da un anello di luce, con una cascatella sullo sfondo.",
     "tags": [
       "monoliti",
       "notte"
@@ -625,7 +625,7 @@
   {
     "slug": "riflessi-al-tramonto",
     "alt": "Riflessi caldi al tramonto su una piscina Rocks Design",
-    "caption": null,
+    "caption": "Massi luminosi e cascata al tramonto, riflessi sull’acqua ferma.",
     "tags": [
       "tramonto"
     ],
@@ -659,7 +659,7 @@
   {
     "slug": "giardino-tropicale",
     "alt": "Piscina Rocks Design immersa in un giardino tropicale con palme",
-    "caption": null,
+    "caption": "L’acqua arriva a filo della spiaggia; dietro, palme e banani.",
     "tags": [
       "caraibi"
     ],
@@ -693,7 +693,7 @@
   {
     "slug": "cascata-e-punto-luce",
     "alt": "Cascata e masso illuminato in una piscina Rocks Design",
-    "caption": null,
+    "caption": "Il punto luce sta dentro il masso: di sera fa da lampada, di giorno resta una roccia.",
     "tags": [
       "cascate",
       "monoliti"
@@ -723,7 +723,7 @@
   {
     "slug": "verde-tropicale-sull-acqua",
     "alt": "Vegetazione tropicale affacciata su una piscina Rocks Design",
-    "caption": null,
+    "caption": "Banani e palme illuminati dal basso sopra la spiaggia, di notte.",
     "tags": [
       "caraibi"
     ],
@@ -757,7 +757,7 @@
   {
     "slug": "palme-e-monoliti",
     "alt": "Palme e massi monolitici attorno a una piscina Rocks Design",
-    "caption": null,
+    "caption": "Un masso lasciato da solo sulla sabbia, tra palme e piante a foglia larga.",
     "tags": [
       "caraibi",
       "monoliti"
@@ -787,7 +787,7 @@
   {
     "slug": "monolite-al-tramonto",
     "alt": "Primo piano di un masso monolitico illuminato in una piscina Rocks Design",
-    "caption": "Un masso scelto, non tagliato: forma e venature decidono dove andrà a finire.",
+    "caption": "Un masso solo, con la fascia di luce: forma e venature sono quelle naturali della pietra.",
     "tags": [
       "monoliti"
     ],
@@ -821,7 +821,7 @@
   {
     "slug": "getto-d-acqua",
     "alt": "Getto d’acqua su una piscina Rocks Design con spiaggia in sabbia",
-    "caption": null,
+    "caption": "Riva curva in sabbia chiara e ghiaia, vista da dietro un getto d’acqua.",
     "tags": [
       "cascate",
       "sabbia"
@@ -851,7 +851,7 @@
   {
     "slug": "acqua-in-movimento",
     "alt": "Acqua in movimento in una piscina Rocks Design tra palme e rocce",
-    "caption": null,
+    "caption": "Gli spruzzi del getto in primo piano muovono la superficie davanti alla riva.",
     "tags": [
       "cascate"
     ],
@@ -880,7 +880,7 @@
   {
     "slug": "idromassaggio-naturale",
     "alt": "Area idromassaggio di una piscina Rocks Design con acqua turchese",
-    "caption": "La zona idromassaggio si decide a progetto, misurando dove starai davvero.",
+    "caption": "Getti d’acqua che partono dal deck in legno e sedute ricavate tra i massi, visti dall’alto.",
     "tags": [
       "idromassaggio"
     ],
@@ -914,7 +914,7 @@
   {
     "slug": "area-benessere-vista-alto",
     "alt": "Vista dall’alto dell’area idromassaggio di una piscina Rocks Design",
-    "caption": null,
+    "caption": "Dall’alto: quattro getti a cascata sotto il deck e massi sommersi su cui sedersi.",
     "tags": [
       "idromassaggio",
       "aerea"
@@ -949,7 +949,7 @@
   {
     "slug": "oasi-con-pontile-e-palme",
     "alt": "Piscina Rocks Design con pontile in legno, palme e sabbia bianca",
-    "caption": null,
+    "caption": "Passerella in legno sull’acqua, dépendance sul fondo e palme sulla spiaggia bianca.",
     "tags": [
       "caraibi",
       "aerea"
@@ -984,7 +984,7 @@
   {
     "slug": "sabbie-naturali-campioni",
     "alt": "Campioni delle sabbie naturali Rocks Design: Bianco, Giallo e Ticino",
-    "caption": "Le tre selezioni a confronto: Bianco, Giallo e Ticino.",
+    "caption": "I campioni delle tre sabbie in barattolo: Bianco, Giallo e Ticino.",
     "tags": [
       "sabbia",
       "materiali"
@@ -1019,7 +1019,7 @@
   {
     "slug": "sabbie-naturali-granulometria",
     "alt": "Granulometria a confronto delle sabbie naturali Bianco, Giallo e Ticino",
-    "caption": null,
+    "caption": "Le tre sabbie sparse su un foglio per confrontare la grana: Ticino, Giallo e Bianco.",
     "tags": [
       "sabbia",
       "materiali"

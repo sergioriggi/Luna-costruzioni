@@ -110,13 +110,13 @@ export default function Showroom() {
                 <Rivela className="mt-12">
                     <Galleria
                         filtrabile={false}
-                        slugs={[
-                            'villa-con-spiaggia-in-ghiaia',
-                            'oasi-con-pontile',
-                            'illuminazione-calda-sui-monoliti',
-                            'solarium-in-legno',
-                            'bordo-in-legno-e-ciottoli',
-                            'spiaggia-di-sabbia-privata',
+                        voci={[
+                            { slug: 'villa-con-spiaggia-in-ghiaia', didascalia: 'La riva in ghiaia: in foto sembra piatta, dal vivo si vede quanto è bassa l’acqua.' },
+                            { slug: 'oasi-con-pontile', didascalia: 'Una vasca con i getti accesi. Il rumore dell’acqua, in fotografia, non si sente.' },
+                            { slug: 'illuminazione-calda-sui-monoliti', didascalia: 'Luce calda sui massi, fredda sotto l’acqua: la differenza si coglie solo di persona.' },
+                            { slug: 'solarium-in-legno', didascalia: 'Le doghe del solarium e la ghiaia accanto: materiali da toccare, non solo da guardare.' },
+                            { slug: 'bordo-in-legno-e-ciottoli', didascalia: 'Legno, ciottoli e massi tondi uno accanto all’altro, come sono a lavoro finito.' },
+                            { slug: 'spiaggia-di-sabbia-privata', didascalia: 'La sabbia sotto i piedi è la cosa che una fotografia non restituisce.' },
                         ]}
                     />
                 </Rivela>

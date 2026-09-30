@@ -97,7 +97,7 @@ export default function Sicilia() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
-                        <p className="mt-3 text-sm text-neutro-500">
+                        <p data-didascalia="" className="mt-3 text-sm text-neutro-500">
                             Una piscina della casa madre in Lombardia: ghiaia e massi al posto del bordo, acqua bassa
                             dove si entra. Materiali che in un giardino siciliano non stonano.
                         </p>

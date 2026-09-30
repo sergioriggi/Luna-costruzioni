@@ -132,13 +132,31 @@ export default function HotelResort() {
                 <Rivela className="mt-12">
                     <Galleria
                         filtrabile={false}
-                        slugs={[
-                            'oasi-aerea-sabbia-bianca',
-                            'palme-al-tramonto',
-                            'notte-luci-e-festa',
-                            'ricevimento-a-bordo-acqua',
-                            'giardino-tropicale',
-                            'cena-in-giardino',
+                        voci={[
+                            {
+                                slug: 'oasi-aerea-sabbia-bianca',
+                                didascalia: t('Dall’alto la vasca si riconosce subito: è l’inquadratura che finisce negli annunci.', 'From above the pool is recognisable at once: the shot that ends up in the listings.'),
+                            },
+                            {
+                                slug: 'palme-al-tramonto',
+                                didascalia: t('Spiaggia, palme e pontile: i lettini degli ospiti vanno direttamente sulla sabbia.', 'Beach, palms and a low jetty: the guests’ loungers go straight onto the sand.'),
+                            },
+                            {
+                                slug: 'notte-luci-e-festa',
+                                didascalia: t('Una festa serale attorno all’acqua: la vasca accesa illumina tutto il prato.', 'An evening party around the water: the lit pool lights up the whole lawn.'),
+                            },
+                            {
+                                slug: 'ricevimento-a-bordo-acqua',
+                                didascalia: t('Un matrimonio: la torta si taglia davanti alla cascata.', 'A wedding: the cake is cut in front of the waterfall.'),
+                            },
+                            {
+                                slug: 'giardino-tropicale',
+                                didascalia: t('Nel pomeriggio: acqua a filo della sabbia e verde fitto alle spalle.', 'Late afternoon: water level with the sand, dense greenery behind.'),
+                            },
+                            {
+                                slug: 'cena-in-giardino',
+                                didascalia: t('Cena all’aperto a bordo acqua, sotto gli ombrelloni, con la vasca illuminata.', 'Dinner outdoors by the water, under the parasols, with the pool lit.'),
+                            },
                         ]}
                     />
                 </Rivela>

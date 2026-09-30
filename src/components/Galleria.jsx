@@ -13,14 +13,34 @@ const FILTRI = [
     { tag: 'notte', label: 'Illuminazione' },
 ]
 
-export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-cols-3' }) {
+/**
+ * Galleria con lightbox.
+ *
+ * Senza `voci` mostra tutte le fotografie con la didascalia del manifest
+ * (media.json): è la pagina /galleria, ed è l'unico posto dove quelle
+ * didascalie si leggono.
+ *
+ * Con `voci` — `[{ slug, didascalia }]` — mostra solo quelle foto, e la
+ * didascalia la scrive la pagina che le usa. È obbligatoria: la stessa
+ * didascalia su più pagine era uno dei testi più ripetuti del sito, e una
+ * foto sulla pagina delle sabbie va raccontata per la sabbia, non come in
+ * galleria.
+ */
+export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-cols-3' }) {
     const [filtro, setFiltro] = useState(null)
     const [aperta, setAperta] = useState(null)
 
     const foto = useMemo(() => {
-        const base = slugs ? slugs.map(s => tutteLeFoto.find(f => f.slug === s)).filter(Boolean) : tutteLeFoto
+        const base = voci
+            ? voci.map(v => {
+                  const f = tutteLeFoto.find(x => x.slug === v.slug)
+                  if (!f) throw new Error(`Immagine non trovata nel manifest: ${v.slug}`)
+                  if (!v.didascalia) throw new Error(`Manca la didascalia di pagina per ${v.slug}`)
+                  return { ...f, caption: v.didascalia }
+              })
+            : tutteLeFoto
         return filtro ? base.filter(f => f.tags.includes(filtro)) : base
-    }, [filtro, slugs])
+    }, [filtro, voci])
 
     const chiudi = useCallback(() => setAperta(null), [])
     const scorri = useCallback(
@@ -82,7 +102,7 @@ export default function Galleria({ filtrabile = true, slugs, colonne = 'md:grid-
                                 imgClassName="transition duration-700 group-hover:scale-105"
                             />
                             {f.caption && (
-                                <span className="block bg-superficie px-4 py-3 text-sm text-neutro-400">{f.caption}</span>
+                                <span data-didascalia="" className="block bg-superficie px-4 py-3 text-sm text-neutro-400">{f.caption}</span>
                             )}
                         </button>
                     </li>

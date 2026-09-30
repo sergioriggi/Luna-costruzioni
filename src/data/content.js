@@ -105,7 +105,13 @@ export const MODELLI = [
         },
         tag: 'caraibi',
         copertina: 'oasi-con-pontile-e-palme',
-        galleria: ['oasi-aerea-sabbia-bianca', 'ombre-di-palme-sulla-sabbia', 'palme-al-tramonto', 'giardino-tropicale'],
+        /** Didascalie scritte per questa pagina: le foto sono della casa madre, in Lombardia. */
+        galleria: [
+            { slug: 'oasi-aerea-sabbia-bianca', didascalia: 'Un Caraibi visto dall’alto: la spiaggia chiara prende più spazio dell’acqua.' },
+            { slug: 'ombre-di-palme-sulla-sabbia', didascalia: 'Le palme piantate nella sabbia fanno l’ombra che una spiaggia chiara chiede.' },
+            { slug: 'palme-al-tramonto', didascalia: 'Il pontile basso chiude la spiaggia verso l’acqua; dietro, palme e massi grandi.' },
+            { slug: 'giardino-tropicale', didascalia: 'Banani e palme fanno da quinta: è la vegetazione a dire che è un Caraibi.' },
+        ],
     },
     {
         slug: 'mediterranea',
@@ -124,7 +130,12 @@ export const MODELLI = [
         },
         tag: 'mediterranea',
         copertina: 'villa-con-spiaggia-in-ghiaia',
-        galleria: ['solarium-in-legno', 'spiaggia-di-sabbia-privata', 'bordo-in-legno-e-ciottoli', 'riflessi-al-tramonto'],
+        galleria: [
+            { slug: 'solarium-in-legno', didascalia: 'Deck in legno per i lettini e ghiaia sul lato opposto: niente palme, niente esotico.' },
+            { slug: 'spiaggia-di-sabbia-privata', didascalia: 'Sabbia chiara e massi tondi davanti a una casa di campagna, senza piante tropicali.' },
+            { slug: 'bordo-in-legno-e-ciottoli', didascalia: 'Legno e ciottoli grigi: materiali che in un giardino di campagna ci sono già.' },
+            { slug: 'riflessi-al-tramonto', didascalia: 'Al tramonto l’acqua prende il verde dei massi e della ghiaia che la circondano.' },
+        ],
     },
     {
         slug: 'alpi',
@@ -142,7 +153,12 @@ export const MODELLI = [
         },
         tag: 'alpi',
         copertina: 'ghiaietto-e-acqua-smeraldo',
-        galleria: ['masso-luminoso-nell-acqua', 'monolite-al-tramonto', 'cascata-e-punto-luce', 'acqua-in-movimento'],
+        galleria: [
+            { slug: 'masso-luminoso-nell-acqua', didascalia: 'Massi grigi e un salto d’acqua tra i sassi: l’Alpi mette la roccia davanti a tutto.' },
+            { slug: 'monolite-al-tramonto', didascalia: 'Un solo masso nell’acqua ferma, con la fascia di luce per la sera.' },
+            { slug: 'cascata-e-punto-luce', didascalia: 'Punti luce nei massi e una cascata sullo sfondo, senza spiaggia estesa.' },
+            { slug: 'acqua-in-movimento', didascalia: 'Il getto muove l’acqua davanti ai massi scuri della riva.' },
+        ],
     },
 ]
 

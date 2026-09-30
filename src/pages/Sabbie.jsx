@@ -128,7 +128,11 @@ export default function Sabbie() {
                 <Rivela className="mt-12">
                     <Galleria
                         filtrabile={false}
-                        slugs={['ombre-di-palme-sulla-sabbia', 'spiaggia-di-sabbia-privata', 'fondale-illuminato']}
+                        voci={[
+                            { slug: 'ombre-di-palme-sulla-sabbia', didascalia: 'Sabbia chiara vista dall’alto: a mezzogiorno l’ombra la fanno solo le palme.' },
+                            { slug: 'spiaggia-di-sabbia-privata', didascalia: 'La sabbia continua sotto l’acqua: dove finisce la spiaggia comincia il fondale.' },
+                            { slug: 'fondale-illuminato', didascalia: 'Di notte la luce subacquea mostra il fondale in sabbia e il colore che dà all’acqua.' },
+                        ]}
                     />
                 </Rivela>
             </Sezione>
