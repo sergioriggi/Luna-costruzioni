@@ -98,6 +98,11 @@ export const MODELLI = [
             'Il Caraibi punta tutto sul contrasto fra il chiaro della sabbia e il turchese dell’acqua. Funziona quando c’è spazio per una spiaggia generosa: è lì che si mettono i lettini, ed è lì che si passa metà della giornata. La piantumazione — palme, banani, graminacee — serve a chiudere la scena e a creare ombra dove serve.',
         adatto: 'Giardini ampi e soleggiati, ville con vista, strutture ricettive che vogliono una piscina riconoscibile in fotografia.',
         sabbie: ['Bianco', 'Giallo'],
+        /** Che cosa fa ogni sabbia su QUESTO modello: le schede generali stanno su /sabbie. */
+        noteSabbie: {
+            Bianco: 'Dà il turchese più acceso, quello che si vede nelle foto del Caraibi. Sulla spiaggia larga di questo modello serve ombra: palme o una pergola, decise a progetto.',
+            Giallo: 'Sposta l’acqua verso il verde e abbaglia meno. Nei giardini esposti a sud per tutto il pomeriggio è la scelta più comoda, anche se la foto è meno bianca.',
+        },
         tag: 'caraibi',
         copertina: 'oasi-con-pontile-e-palme',
         galleria: ['oasi-aerea-sabbia-bianca', 'ombre-di-palme-sulla-sabbia', 'palme-al-tramonto', 'giardino-tropicale'],
@@ -113,6 +118,10 @@ export const MODELLI = [
             'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole — ulivi, lavanda, rosmarino, graminacee. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
         adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
         sabbie: ['Giallo', 'Ticino'],
+        noteSabbie: {
+            Giallo: 'Accanto a tufo, calcare e muri a secco sparisce nel giardino: la vasca sembra una conca che c’era già prima della casa.',
+            Ticino: 'Porta l’acqua sul verde scuro e sta bene sotto ulivi e carrubi, dove l’ombra è fitta e la luce arriva filtrata dalle foglie.',
+        },
         tag: 'mediterranea',
         copertina: 'villa-con-spiaggia-in-ghiaia',
         galleria: ['solarium-in-legno', 'spiaggia-di-sabbia-privata', 'bordo-in-legno-e-ciottoli', 'riflessi-al-tramonto'],
@@ -128,6 +137,9 @@ export const MODELLI = [
             'L’Alpi rinuncia alla spiaggia estesa e mette in primo piano la roccia. Ghiaietto al posto della sabbia sui bordi, essenze basse e resistenti, un’acqua che tende al verde profondo dei laghi di montagna. È il modello che regge meglio le pendenze e i giardini piccoli, dove una spiaggia occuperebbe tutto lo spazio.',
         adatto: 'Terreni in pendenza, giardini contenuti, case in collina e nell’entroterra.',
         sabbie: ['Ticino'],
+        noteSabbie: {
+            Ticino: 'È la sabbia prevista per questo modello. Con ghiaietto e massi scuri porta l’acqua sul verde profondo di un lago di montagna, senza riflessi chiari sul fondo.',
+        },
         tag: 'alpi',
         copertina: 'ghiaietto-e-acqua-smeraldo',
         galleria: ['masso-luminoso-nell-acqua', 'monolite-al-tramonto', 'cascata-e-punto-luce', 'acqua-in-movimento'],
