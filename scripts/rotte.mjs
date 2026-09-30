@@ -1,5 +1,4 @@
 /** Elenco delle rotte pubbliche: alimenta prerender, sitemap e controlli. */
-import { PROVINCE } from '../src/data/site.js'
 import { MODELLI } from '../src/data/content.js'
 
 export const ROTTE = [
@@ -18,11 +17,9 @@ export const ROTTE = [
     { percorso: '/come-lavoriamo', priorita: 0.7, frequenza: 'yearly' },
     { percorso: '/domande-frequenti', priorita: 0.7, frequenza: 'monthly' },
     { percorso: '/contatti', priorita: 0.9, frequenza: 'yearly' },
-    ...PROVINCE.map(p => ({
-        percorso: `/piscine-rocks-design/${p.slug}`,
-        priorita: 0.8,
-        frequenza: 'monthly',
-    })),
+    // Una pagina per tutta l'isola, con una sezione per provincia. Le nove
+    // pagine provinciali di prima rispondono 301 verso la loro ancora.
+    { percorso: '/piscine-rocks-design/sicilia', priorita: 0.8, frequenza: 'monthly' },
     // Conferma dopo l'invio del modulo: fuori dalla sitemap e noindex, non è
     // una pagina da far trovare su Google. Serve come indirizzo di conversione.
     { percorso: '/grazie', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },

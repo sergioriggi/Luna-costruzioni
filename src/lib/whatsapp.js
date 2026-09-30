@@ -31,12 +31,24 @@ const ECCEZIONI = {
     '/galleria': 'Galleria',
 }
 
-export function etichettaPagina(percorso = '') {
+/**
+ * `ancora` è il frammento dell'indirizzo, con o senza `#`: sulla pagina
+ * Sicilia dice da quale provincia arriva il cliente (`#enna` → «Sicilia —
+ * Enna»). Si accettano anche i nove indirizzi provinciali di prima, che il
+ * server ridirige ma che possono ancora circolare in vecchi link.
+ */
+export function etichettaPagina(percorso = '', ancora = '') {
     const pulito = percorso.replace(/\/+$/, '') || '/'
     if (pulito in ECCEZIONI) return ECCEZIONI[pulito]
 
-    const provincia = PROVINCE.find(p => pulito === `/piscine-rocks-design/${p.slug}`)
-    if (provincia) return provincia.nome
+    if (pulito === '/piscine-rocks-design/sicilia') {
+        const slug = String(ancora).replace(/^#/, '')
+        const provincia = PROVINCE.find(p => p.slug === slug)
+        return provincia ? `Sicilia — ${provincia.nome}` : 'Sicilia'
+    }
+
+    const vecchia = PROVINCE.find(p => pulito === `/piscine-rocks-design/${p.slug}`)
+    if (vecchia) return `Sicilia — ${vecchia.nome}`
 
     const modello = MODELLI.find(m => pulito === `/modelli/${m.slug}`)
     if (modello) return modello.nomeCompleto ?? modello.nome

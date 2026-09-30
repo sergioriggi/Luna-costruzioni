@@ -181,8 +181,13 @@ export const SOCIAL = [
 ]
 
 /**
- * Province servite: alimentano le pagine locali e lo schema areaServed.
- * «Aggiungi sempre la tua città»: ogni pagina ripete la zona di riferimento.
+ * Province servite: alimentano la pagina /piscine-rocks-design/sicilia (una
+ * sezione per provincia, con ancora `#slug`), il menù del modulo, lo schema
+ * areaServed, WhatsApp e llms.txt.
+ *
+ * `intro` è l'unico testo davvero locale: deve dire una cosa che vale per
+ * quella provincia e non per le altre. Mai frasi che facciano pensare a
+ * piscine già costruite lì: in Sicilia non ne abbiamo ancora consegnata una.
  */
 export const PROVINCE = [
     {
@@ -190,7 +195,7 @@ export const PROVINCE = [
         nome: 'Palermo',
         sigla: 'PA',
         intro:
-            'Dalla costa di Mondello alle ville dell’entroterra palermitano, una Piscina Rocks Design trasforma il giardino in una spiaggia privata, senza cemento e senza il cantiere infinito di una piscina tradizionale.',
+            'Tra Mondello, Cefalù e le ville di Monreale e Bagheria i giardini sono spesso piccoli e chiusi da muri. Qui conta prima di tutto come entrano i mezzi: un cancello stretto sposta tempi e costi più della dimensione della vasca.',
         localita: ['Mondello', 'Bagheria', 'Cefalù', 'Carini', 'Monreale', 'Termini Imerese'],
     },
     {
@@ -198,7 +203,7 @@ export const PROVINCE = [
         nome: 'Catania',
         sigla: 'CT',
         intro:
-            'Tra l’Etna e il mare Ionio, le rocce monolitiche delle Piscine Rocks Design dialogano naturalmente con la pietra lavica del paesaggio catanese.',
+            'Sulle pendici dell’Etna sotto il terreno si trova spesso roccia lavica, e lo scavo va valutato prima del disegno. In compenso la pietra scura del posto sta bene accanto ai massi della piscina.',
         localita: ['Aci Castello', 'Acireale', 'Mascalucia', 'Giarre', 'Caltagirone', 'Bronte'],
     },
     {
@@ -206,7 +211,7 @@ export const PROVINCE = [
         nome: 'Messina',
         sigla: 'ME',
         intro:
-            'Dalle colline dei Nebrodi alle ville affacciate sullo Stretto, realizziamo Piscine Rocks Design che seguono la pendenza naturale del terreno.',
+            'Tra i Nebrodi, Taormina e le colline sullo Stretto quasi ogni lotto è in pendenza. Una vasca in massi segue il terreno invece di chiedere muri di contenimento alti: è il caso in cui questa tecnologia rende di più.',
         localita: ['Taormina', 'Milazzo', 'Barcellona Pozzo di Gotto', 'Sant’Agata di Militello', 'Capo d’Orlando'],
     },
     {
@@ -214,7 +219,7 @@ export const PROVINCE = [
         nome: 'Siracusa',
         sigla: 'SR',
         intro:
-            'Nel barocco del Val di Noto una Piscina Rocks Design si inserisce senza stonare: pietra, sabbia e acqua, gli stessi materiali del paesaggio ibleo.',
+            'Nel Val di Noto il calcare chiaro è nei muri, nelle case e nelle strade. La sabbia Giallo si accorda con calcare e tufo, e lascia alla piscina i colori che il posto ha già.',
         localita: ['Noto', 'Avola', 'Augusta', 'Floridia', 'Marzamemi'],
     },
     {
@@ -222,7 +227,7 @@ export const PROVINCE = [
         nome: 'Ragusa',
         sigla: 'RG',
         intro:
-            'Masserie, ville di campagna e resort del ragusano: la Piscina Rocks Design è la scelta di chi vuole un’oasi che sembri lì da sempre.',
+            'Nel ragusano i terreni sono divisi da muri a secco e le case di campagna sono spesso masserie, tra carrubi e ulivi. È il contesto per cui è pensato il modello Mediterranea: pietra calda e piante che crescono già da sole.',
         localita: ['Modica', 'Scicli', 'Marina di Ragusa', 'Vittoria', 'Comiso'],
     },
     {
@@ -230,7 +235,7 @@ export const PROVINCE = [
         nome: 'Trapani',
         sigla: 'TP',
         intro:
-            'Dal sale di Marsala alle alture di Erice, portiamo in provincia di Trapani piscine in Tecnologia Rocks Design con spiaggia in sabbia naturale.',
+            'Da Marsala a Castellammare del Golfo vento e salsedine arrivano fino ai giardini. Massi, sabbia e ghiaia reggono il sale senza problemi; la scelta delicata è quella delle piante intorno alla vasca.',
         localita: ['Marsala', 'Erice', 'Mazara del Vallo', 'Alcamo', 'Castellammare del Golfo'],
     },
     {
@@ -238,7 +243,7 @@ export const PROVINCE = [
         nome: 'Agrigento',
         sigla: 'AG',
         intro:
-            'Il bianco della Scala dei Turchi ispira le sabbie naturali delle Piscine Rocks Design che realizziamo nell’agrigentino.',
+            'Nell’agrigentino il riferimento per il colore è la marna bianca della Scala dei Turchi, a Realmonte. La sabbia Bianco è quella che le si avvicina di più, con un’avvertenza: al sole pieno riflette molto, e sulla spiaggia servono zone d’ombra.',
         localita: ['Sciacca', 'Licata', 'Favara', 'Realmonte', 'Menfi'],
     },
     {
@@ -246,7 +251,7 @@ export const PROVINCE = [
         nome: 'Caltanissetta',
         sigla: 'CL',
         intro:
-            'Nel cuore della Sicilia, dove l’estate è lunga, una Piscina Rocks Design è un investimento che si gode da aprile a ottobre.',
+            'È la provincia in cui l’impresa è nata e lavora dal 2021. Nell’entroterra nisseno l’estate è lunga e calda: una piscina qui si usa da aprile a ottobre, e l’ombra conta quanto l’acqua.',
         localita: ['Gela', 'Niscemi', 'San Cataldo', 'Mazzarino'],
     },
     {
@@ -254,7 +259,7 @@ export const PROVINCE = [
         nome: 'Enna',
         sigla: 'EN',
         intro:
-            'Tra i borghi e le campagne ennesi realizziamo Piscine Rocks Design che rispettano il terreno: nessuna opera in cemento armato.',
+            'È la provincia più alta dell’isola: in collina l’inverno è freddo e la stagione dei bagni è più corta che sulla costa. Per questo la vasca va messa dove il sole arriva presto e resta a lungo.',
         localita: ['Piazza Armerina', 'Nicosia', 'Leonforte', 'Aidone'],
     },
 ]

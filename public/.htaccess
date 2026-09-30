@@ -25,6 +25,17 @@ RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|d
 </FilesMatch>
 
 
+# Le nove pagine provinciali di prima sono diventate sezioni di una pagina
+# sola. Ogni vecchio indirizzo risponde 301 verso la sua ancora, così link e
+# posizioni già acquisiti passano alla pagina nuova. `NE` serve perché il `#`
+# arrivi al browser com'è, invece di diventare `%23`.
+# Tenere l'elenco allineato a PROVINCE in src/data/site.js: lo controlla
+# `npm run verifica`.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^piscine-rocks-design/(palermo|catania|messina|siracusa|ragusa|trapani|agrigento|caltanissetta|enna)(/|/index\.html)?$ /piscine-rocks-design/sicilia#$1 [R=301,NE,L]
+</IfModule>
+
 # Serve /galleria come /galleria/index.html senza redirect,
 # così l'indirizzo resta quello dichiarato nel canonical.
 DirectorySlash Off

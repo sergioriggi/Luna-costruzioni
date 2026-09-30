@@ -118,7 +118,7 @@ export default function Azienda() {
                             {PROVINCE.map(p => (
                                 <li key={p.slug}>
                                     <Link
-                                        to={`/piscine-rocks-design/${p.slug}`}
+                                        to={`/piscine-rocks-design/sicilia#${p.slug}`}
                                         className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
                                     >
                                         {p.nome}

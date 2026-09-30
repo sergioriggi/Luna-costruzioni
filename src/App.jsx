@@ -19,18 +19,30 @@ import Showroom from './pages/Showroom'
 import ComeLavoriamo from './pages/ComeLavoriamo'
 import Faq from './pages/Faq'
 import Contatti from './pages/Contatti'
-import Zona from './pages/Zona'
+import Sicilia from './pages/Sicilia'
+import VecchiaProvincia from './pages/VecchiaProvincia'
 import Privacy from './pages/Privacy'
 import Cookie from './pages/Cookie'
 import Grazie from './pages/Grazie'
 import NonTrovata from './pages/NonTrovata'
 import { FornitoreLingua } from './i18n/lingua'
 
-/** Riporta in cima a ogni cambio di rotta, rispettando le ancore interne. */
+/**
+ * Riporta in cima a ogni cambio di rotta. Con un'ancora (`/piscine-rocks-design/sicilia#enna`)
+ * porta invece alla sezione: su un caricamento completo lo fa già il browser,
+ * su una navigazione interna no.
+ */
 function InizioPagina() {
     const { pathname, hash } = useLocation()
     useEffect(() => {
-        if (hash) return
+        if (hash) {
+            let bersaglio = null
+            try {
+                bersaglio = document.getElementById(decodeURIComponent(hash.slice(1)))
+            } catch { /* ancora malformata: si resta dove si è */ }
+            bersaglio?.scrollIntoView()
+            return
+        }
         window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' })
     }, [pathname, hash])
     return null
@@ -65,7 +77,8 @@ export default function App() {
                     <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />
                     <Route path="/domande-frequenti" element={<Faq />} />
                     <Route path="/contatti" element={<Contatti />} />
-                    <Route path="/piscine-rocks-design/:provincia" element={<Zona />} />
+                    <Route path="/piscine-rocks-design/sicilia" element={<Sicilia />} />
+                    <Route path="/piscine-rocks-design/:provincia" element={<VecchiaProvincia />} />
                     <Route path="/grazie" element={<Grazie />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/cookie-policy" element={<Cookie />} />

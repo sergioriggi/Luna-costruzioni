@@ -37,11 +37,24 @@ const chiedi = (percorso, opzioni = {}) =>
     verifica('/ è pre-renderizzata', corpo.includes('Luna Costruzioni'))
 }
 
-for (const percorso of ['/galleria', '/galleria/', '/quanto-costa', '/piscine-rocks-design/palermo']) {
+for (const percorso of ['/galleria', '/galleria/', '/quanto-costa', '/piscine-rocks-design/sicilia']) {
     const r = await chiedi(percorso)
     verifica(`${percorso} risponde 200 senza redirect`, r.status === 200, `ricevuto ${r.status}`)
     const corpo = await r.text()
     verifica(`${percorso} porta markup pre-renderizzato`, corpo.includes('<h1') || corpo.includes('<h2'))
+}
+
+// ── vecchie pagine provinciali: 301 verso l'ancora ─────────────────────
+for (const percorso of ['/piscine-rocks-design/palermo', '/piscine-rocks-design/enna/', '/piscine-rocks-design/agrigento/index.html']) {
+    const r = await chiedi(percorso)
+    const slug = percorso.split('/')[2]
+    verifica(`${percorso} risponde 301`, r.status === 301, `ricevuto ${r.status}`)
+    verifica(`${percorso} porta a #${slug}`, (r.headers.get('location') ?? '') === `/piscine-rocks-design/sicilia#${slug}`,
+        r.headers.get('location') ?? 'nessun Location')
+}
+{
+    const r = await chiedi('/piscine-rocks-design/inesistente')
+    verifica('/piscine-rocks-design/inesistente resta 404', r.status === 404, `ricevuto ${r.status}`)
 }
 
 // ── asset ────────────────────────────────────────────────────────────────

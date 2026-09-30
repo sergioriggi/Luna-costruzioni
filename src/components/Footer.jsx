@@ -74,15 +74,15 @@ export default function Footer() {
             </div>
 
             {/*
-              Le nove pagine provinciali sono il motore della ricerca locale, ed
-              erano collegate da nessuna parte. Una riga sola, in fondo.
+              Le nove province portano alla loro sezione della pagina Sicilia.
+              Una riga sola, in fondo.
             */}
             <p className="pg-footer-province">
                 <span className="pg-footer-etichetta">{t('Dove lavoriamo', 'Where we work')}</span>{' '}
                 {PROVINCE.map((p, i) => (
                     <span key={p.slug}>
                         {i > 0 && ' · '}
-                        <Link to={`/piscine-rocks-design/${p.slug}`}>{p.nome}</Link>
+                        <Link to={`/piscine-rocks-design/sicilia#${p.slug}`}>{p.nome}</Link>
                     </span>
                 ))}
             </p>

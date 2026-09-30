@@ -90,7 +90,7 @@ npm run preview    # anteprima identica alla produzione
 | `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
 | `/azienda` | Chi siamo | L'impresa, gli impegni, le province |
 | `/contatti` | Contatti | NAP completo + modulo |
-| `/piscine-rocks-design/<provincia>` | 9 pagine locali | Palermo, Catania, Messina, Siracusa, Ragusa, Trapani, Agrigento, Caltanissetta, Enna |
+| `/piscine-rocks-design/sicilia` | Sicilia | Una pagina per tutta l'isola: il testo comune una volta sola, poi una sezione per provincia con ancora (`#palermo`, `#catania`, …). I vecchi `/piscine-rocks-design/<provincia>` rispondono 301 verso l'ancora |
 | `/privacy`, `/cookie-policy` | Note legali | GDPR, `noindex` |
 
 Contenuti e dati stanno in `src/data/`:
@@ -99,8 +99,9 @@ Contenuti e dati stanno in `src/data/`:
 - `content.js` — testi editoriali (punti di forza, elementi, modelli, percorso, FAQ);
 - `media.json` — **generato**, manifest delle immagini pubblicate.
 
-Per aggiungere una provincia basta una voce in `PROVINCE`: rotta, pagina locale,
-voce in sitemap e link interni si generano da soli.
+Per aggiungere una provincia basta una voce in `PROVINCE` (sezione della pagina
+Sicilia, menù del modulo, schema, link nel piè di pagina) più il suo slug nella
+regola di redirect di `public/.htaccess`: `npm run verifica` segnala se manca.
 
 ---
 

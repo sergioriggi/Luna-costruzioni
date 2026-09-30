@@ -22,7 +22,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { PHOTOS } from './media.config.mjs'
-import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO } from '../src/data/site.js'
+import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE } from '../src/data/site.js'
 
 const DIST = path.resolve('./dist')
 
@@ -241,6 +241,26 @@ if (!ANTEPRIMA) {
                 'Vedi src/components/BannerCookie.jsx.',
         )
     }
+}
+
+// 10. Le vecchie pagine provinciali devono rispondere 301, non 404.
+// L'hosting statico legge solo il .htaccess, dove l'elenco è scritto a mano:
+// una provincia aggiunta a PROVINCE e dimenticata lì perderebbe il redirect.
+try {
+    const htaccess = await fs.readFile(path.join(DIST, '.htaccess'), 'utf8')
+    const regola = htaccess.match(/RewriteRule \^piscine-rocks-design\/\(([a-z|]+)\)/)
+    const elencate = new Set(regola ? regola[1].split('|') : [])
+    const mancanti = PROVINCE.filter(p => !elencate.has(p.slug)).map(p => p.slug)
+    if (!regola) errori.push('.htaccess: manca il redirect 301 delle vecchie pagine provinciali.')
+    else if (mancanti.length) errori.push(`.htaccess: province senza redirect 301: ${mancanti.join(', ')}.`)
+    for (const p of PROVINCE) {
+        try {
+            await fs.access(path.join(DIST, 'piscine-rocks-design', p.slug, 'index.html'))
+            errori.push(`dist/piscine-rocks-design/${p.slug}/ esiste ancora: la pagina vecchia oscurerebbe il redirect.`)
+        } catch { /* assente, come deve */ }
+    }
+} catch {
+    errori.push('.htaccess assente in dist/.')
 }
 
 // 4-bis. la filigrana è impressa da prepare-media.mjs su ogni foto di piscina

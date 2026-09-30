@@ -17,6 +17,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import express from 'express'
 import compression from 'compression'
+import { PROVINCE } from '../src/data/site.js'
 
 const ANNO = 31536000
 const MESE = 2592000
@@ -89,6 +90,20 @@ export function montaSito(app, { cartellaSito, politicaContenuti }) {
     })
 
     app.use(compression({ threshold: 1024 }))
+
+    /**
+     * Le nove pagine provinciali di prima: 301 verso la loro sezione della
+     * pagina Sicilia. Stessa regola del `RewriteRule … [R=301,NE]` nel
+     * .htaccess; qui l'elenco viene da `PROVINCE`, quindi non può divergere.
+     */
+    const vecchieProvince = new Set(PROVINCE.map(p => p.slug))
+    app.use((req, res, avanti) => {
+        if (req.method !== 'GET' && req.method !== 'HEAD') return avanti()
+        const m = /^\/piscine-rocks-design\/([a-z]+)(?:\/|\/index\.html)?$/.exec(req.path)
+        if (!m || !vecchieProvince.has(m[1])) return avanti()
+        res.setHeader('Cache-Control', 'public, max-age=86400')
+        return res.redirect(301, `/piscine-rocks-design/sicilia#${m[1]}`)
+    })
 
     /**
      * URL puliti: `/galleria` serve `dist/galleria/index.html` **senza

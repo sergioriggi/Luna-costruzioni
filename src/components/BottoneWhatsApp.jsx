@@ -36,7 +36,15 @@ export default function BottoneWhatsApp({
             target="_blank"
             rel="noopener"
             className={className}
-            onClick={() => segnalaConversione('whatsapp')}
+            onClick={e => {
+                // L'ancora (#enna sulla pagina Sicilia) non esiste nel markup
+                // pre-renderizzato: si aggiunge al messaggio solo al clic, così
+                // l'idratazione trova lo stesso href del server.
+                if (!pagina && window.location.hash) {
+                    e.currentTarget.href = linkWhatsApp(etichettaPagina(pathname, window.location.hash))
+                }
+                segnalaConversione('whatsapp')
+            }}
         >
             {icona && <IconaWhatsApp />}
             {children}

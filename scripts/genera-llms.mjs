@@ -6,7 +6,7 @@
  * conversazionale deve ricostruire *chi siamo* prima di poterci nominare in
  * una risposta, e lo fa da qualunque cosa trovi — spesso male. Questo file
  * mette in un posto solo, in chiaro e senza markup, le cose che il sito dice
- * già sparse fra ventisette pagine: che il prodotto è in Tecnologia Rocks
+ * già sparse fra tutte le pagine: che il prodotto è in Tecnologia Rocks
  * Design, che l'inventore è la casa madre, che Luna è il concessionario
  * autorizzato per la Sicilia, e che le fotografie non sono di piscine nostre.
  *
@@ -23,7 +23,7 @@
  *
  * In ANTEPRIMA il file non viene emesso. Stesso verso di sicurezza del resto:
  * un indirizzo provvisorio non deve pubblicare la carta d'identità del sito,
- * con dentro ventisette indirizzi che a regime saranno altrove.
+ * con dentro indirizzi che a regime saranno altrove.
  */
 import fs from 'fs/promises'
 import path from 'path'
@@ -86,9 +86,11 @@ const NOTE = {
     '/contatti': 'Come chiederci un sopralluogo: modulo, telefono, WhatsApp.',
 }
 
+/** La pagina che raccoglie le nove province, ciascuna con la sua ancora. */
+const SICILIA = '/piscine-rocks-design/sicilia'
+
 function titolo(percorso) {
-    const provincia = PROVINCE.find(p => percorso === `/piscine-rocks-design/${p.slug}`)
-    if (provincia) return `Piscine Rocks Design in provincia di ${provincia.nome}`
+    if (percorso === SICILIA) return `Piscine Rocks Design in ${AZIENDA.zona}, provincia per provincia`
     const modello = MODELLI.find(m => percorso === `/modelli/${m.slug}`)
     if (modello) return modello.nomeCompleto
     if (percorso in TITOLI) return TITOLI[percorso]
@@ -96,8 +98,7 @@ function titolo(percorso) {
 }
 
 function nota(percorso) {
-    const provincia = PROVINCE.find(p => percorso === `/piscine-rocks-design/${p.slug}`)
-    if (provincia) return `Zona servita: ${provincia.localita.join(', ')}.`
+    if (percorso === SICILIA) return 'Permessi, costi e stagione in Sicilia, e una sezione per ognuna delle nove province.'
     const modello = MODELLI.find(m => percorso === `/modelli/${m.slug}`)
     if (modello) return modello.sintesi
     return NOTE[percorso] ?? ''
@@ -124,7 +125,7 @@ const elenco = percorsi =>
         .map(v => `- [${v.titolo}](${indirizzo(v.percorso)}): ${v.nota}`)
         .join('\n')
 
-const provinciale = p => p.startsWith('/piscine-rocks-design/')
+const provinciale = p => p === SICILIA
 const modello = p => p.startsWith('/modelli/')
 
 const testo = `# ${AZIENDA.nome}
@@ -171,6 +172,7 @@ ${elenco(modello)}
 ## Le province servite
 
 ${elenco(provinciale)}
+${PROVINCE.map(p => `  - [Provincia di ${p.nome}](${indirizzo(SICILIA)}#${p.slug}): ${p.localita.join(', ')}.`).join('\n')}
 
 ## Come si viene contattati
 
