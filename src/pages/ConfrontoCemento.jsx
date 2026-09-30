@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo, { schemaBriciole, schemaFaq } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import {
     CONFRONTO_CEMENTO,
@@ -11,7 +11,6 @@ import {
     VANTAGGI_CEMENTO,
     VANTAGGI_ROCKS,
 } from '../data/content'
-import { AZIENDA } from '../data/site'
 
 /**
  * «Piscina in cemento o Piscina Rocks Design?»
@@ -69,12 +68,12 @@ const FAQ_CONFRONTO = [
     {
         domanda: 'Ci si può nuotare o è solo scenografica?',
         risposta:
-            'Ci si nuota: è una piscina a tutti gli effetti, con profondità di nuoto e impianti veri. Quello che non è, è una vasca da allenamento: non ci sono corsie, la lunghezza non è costante e il fondale non è a quota uniforme. Se il tuo obiettivo è fare vasche a cronometro, una piscina in cemento ti serve meglio, e te lo diciamo prima del sopralluogo invece che dopo.',
+            'Ci si nuota: è una piscina a tutti gli effetti, con profondità di nuoto e impianti veri. Quello che non è, è una vasca da allenamento: non ci sono corsie, la lunghezza non è costante e il fondale non è a quota uniforme. Se il tuo obiettivo è fare vasche a cronometro, una piscina in cemento ti serve meglio, e te lo diciamo già al telefono.',
     },
     {
         domanda: 'Come faccio a vederne una prima di decidere?',
         risposta:
-            'La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia, e la visita la organizziamo noi. Se preferisci partire da qualcosa di più vicino, il sopralluogo in giardino è gratuito e portiamo i campioni di sabbia con noi.',
+            'La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia, e la visita la organizziamo noi. Se preferisci partire da qualcosa di più vicino, veniamo noi nel tuo giardino con i campioni di sabbia.',
     },
 ]
 
@@ -297,18 +296,12 @@ export default function ConfrontoCemento() {
                 </div>
             </Sezione>
 
-            <Sezione sfondo="bg-superficie">
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Il modo più rapido per decidere"
-                        titolo="Facci vedere il giardino"
-                        testo={`Un’ora sul posto dice più di qualsiasi tabella: ${AZIENDA.referente} misura lo spazio e ti dice subito quale delle due strade ha senso nel tuo caso — anche quando la risposta è la piscina in cemento. Sopralluogo e preventivo gratuiti in tutta la ${AZIENDA.zona}.`}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo="Prenota il sopralluogo" />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello="Il modo più rapido per decidere"
+                titolo="Facci vedere il giardino"
+                testo="Un’ora sul posto dice più di qualsiasi tabella: misuriamo lo spazio e ti diciamo quale delle due strade ha senso nel tuo caso, anche quando la risposta è la piscina in cemento."
+                modulo={{ titolo: 'Cemento o Rocks Design, nel mio giardino' }}
+            />
         </>
     )
 }

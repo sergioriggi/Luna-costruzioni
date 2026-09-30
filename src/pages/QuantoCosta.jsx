@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 import Seo, { schemaBriciole, schemaFaq } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { FATTORI_COSTO } from '../data/content'
-import { AZIENDA } from '../data/site'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -16,12 +15,12 @@ const FAQ_COSTO = [
     {
         domanda: 'Perché non pubblicate un listino?',
         risposta:
-            'Perché non esistono due vasche uguali e un prezzo a metro quadro, in questo settore, dice poco: lo stesso progetto in un giardino accessibile e in uno raggiungibile solo a mano ha costi molto diversi. Un listino sarebbe rassicurante da leggere e sistematicamente sbagliato. Preferiamo spiegare che cosa sposta il preventivo e dare un numero reale dopo il sopralluogo.',
+            'Perché non esistono due vasche uguali e un prezzo a metro quadro, in questo settore, dice poco: lo stesso progetto in un giardino accessibile e in uno raggiungibile solo a mano ha costi molto diversi. Un listino sarebbe rassicurante da leggere e sistematicamente sbagliato. Preferiamo spiegare che cosa sposta il preventivo e dare un numero reale dopo aver visto il giardino.',
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
         risposta:
-            'No. Veniamo a vedere il giardino, misuriamo e prepariamo il preventivo senza alcun costo e senza impegno. Se dal sopralluogo emerge che quello spazio non è adatto, te lo diciamo subito: è capitato e continuerà a capitare.',
+            'No. Veniamo a vedere il giardino, misuriamo e prepariamo il preventivo senza alcun costo e senza impegno. Se misurando viene fuori che quello spazio non è adatto, te lo diciamo subito: è capitato e continuerà a capitare.',
     },
     {
         domanda: 'Costa più o meno di una piscina tradizionale?',
@@ -136,7 +135,7 @@ export default function QuantoCosta() {
                     <ol className="mt-10 grid gap-4 text-left sm:grid-cols-3">
                         {[
                             ['Chiami o scrivi', 'Ti facciamo due domande al telefono per capire se ha senso muoverci.'],
-                            ['Sopralluogo gratuito', 'Circa un’ora in giardino, con i campioni di sabbia al seguito.'],
+                            ['Un’ora in giardino', 'Misuriamo, guardiamo da dove entrano i mezzi e portiamo i campioni di sabbia.'],
                             ['Preventivo dettagliato', 'Entro una o due settimane, scomposto voce per voce.'],
                         ].map(([t, d], i) => (
                             <Rivela as="li" key={t} delay={i * 100} className="rounded-lg bg-testo/[0.05] p-6">
@@ -147,7 +146,7 @@ export default function QuantoCosta() {
                         ))}
                     </ol>
                     <Rivela className="mt-10">
-                        <Link to="/contatti" className="bottone-pieno">Inizia dal sopralluogo</Link>
+                        <Link to="/contatti" className="bottone-pieno">Comincia da una telefonata</Link>
                     </Rivela>
                 </div>
             </Sezione>
@@ -271,18 +270,12 @@ export default function QuantoCosta() {
                 </Rivela>
             </Sezione>
 
-            <Sezione sfondo="bg-superficie">
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Preventivo"
-                        titolo="Dicci due cose e ti diamo un ordine di grandezza"
-                        testo={`Più dettagli ci dai — superficie disponibile, budget indicativo, accessi — più il primo riscontro sarà preciso. ${AZIENDA.referente} ti risponde entro 24 ore lavorative.`}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo="Richiedi il preventivo" />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello="Preventivo"
+                titolo="Dicci due cose e ti diamo un ordine di grandezza"
+                testo="Più dettagli ci dai — superficie disponibile, budget indicativo, accessi — più il primo riscontro sarà preciso."
+                modulo={{ titolo: 'Richiedi il preventivo' }}
+            />
         </>
     )
 }

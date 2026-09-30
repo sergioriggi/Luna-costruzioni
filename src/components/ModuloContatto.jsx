@@ -40,12 +40,17 @@ const BUDGET = [
     'Oltre 100.000 €',
 ]
 
+/**
+ * `valore` è ciò che arriva nella richiesta e non cambia: chi legge le mail
+ * riconosce le voci di sempre. `etichetta` è ciò che si legge nel menù, e
+ * qui «sopralluogo» si toglie perché il modulo lo nomina già due volte.
+ */
 const INTERESSI = [
-    'Nuova piscina Rocks Design',
-    'Vedere una piscina dal vivo',
-    'Preventivo e sopralluogo',
-    'Struttura ricettiva / progetto commerciale',
-    'Altro',
+    { valore: 'Nuova piscina Rocks Design', etichetta: 'Nuova piscina Rocks Design' },
+    { valore: 'Vedere una piscina dal vivo', etichetta: 'Vedere una piscina dal vivo' },
+    { valore: 'Preventivo e sopralluogo', etichetta: 'Un preventivo per il mio giardino' },
+    { valore: 'Struttura ricettiva / progetto commerciale', etichetta: 'Struttura ricettiva / progetto commerciale' },
+    { valore: 'Altro', etichetta: 'Altro' },
 ]
 
 /**
@@ -196,7 +201,7 @@ export default function ModuloContatto({ provinciaPreselezionata, titolo = 'Rich
                 <div className="sm:col-span-2">
                     <label htmlFor="interesse" className="mb-1.5 block text-sm font-medium">Di cosa hai bisogno?</label>
                     <select {...props('interesse')}>
-                        {INTERESSI.map(i => <option key={i} value={i}>{i}</option>)}
+                        {INTERESSI.map(i => <option key={i.valore} value={i.valore}>{i.etichetta}</option>)}
                     </select>
                 </div>
 

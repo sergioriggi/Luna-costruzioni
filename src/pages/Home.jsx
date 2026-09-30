@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Seo, { schemaAzienda, schemaFaq, schemaBriciole } from '../components/Seo'
 import Foto from '../components/Foto'
 import ModuloPagina from '../components/ModuloPagina'
@@ -130,9 +131,9 @@ const DUBBI = [
         domanda: '«Non so quanto costerà davvero.»',
         domandaEn: '“I have no idea what it will really cost.”',
         risposta:
-            'Preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo, redatto dopo il sopralluogo e firmato prima di iniziare. Nessuna voce «imprevisti» aperta. Il disbrigo delle pratiche, se lo affidi a noi, è una voce a parte: la vedi e decidi.',
+            'Preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo, scritto dopo aver visto il giardino e firmato prima di iniziare. Nessuna voce «imprevisti» aperta. Il disbrigo delle pratiche, se lo affidi a noi, è una voce a parte: la vedi e decidi.',
         rispostaEn:
-            'A quote itemised by excavation, construction, installation and commissioning, written after the site visit and signed before work starts. No open-ended contingency line. Permit paperwork, if you hand it to us, is a separate line you can see and decide on.',
+            'A quote itemised by excavation, construction, installation and commissioning, written once we have seen the garden and signed before work starts. No open-ended contingency line. Permit paperwork, if you hand it to us, is a separate line you can see and decide on.',
     },
     {
         domanda: '«Il cantiere mi occupa il giardino per mesi.»',
@@ -146,9 +147,9 @@ const DUBBI = [
         domanda: '«Dopo la consegna, chi mi assiste?»',
         domandaEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+            'Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso che è venuto a vedere il giardino la prima volta. Un numero, non un centralino.',
         rispostaEn:
-            'Luna Costruzioni S.r.l.s. is an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+            'Luna Costruzioni S.r.l.s. is an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who first came to see your garden. One number, not a call centre.',
     },
     {
         domanda: '«Sarà una vasca come tante.»',
@@ -196,9 +197,9 @@ const DOMANDE = [
         domanda: 'Quanto costa?',
         domandaEn: 'What does it cost?',
         risposta:
-            'Dipende da dimensioni, accessibilità del giardino e finiture. Dopo il sopralluogo ricevi un preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo: sai cosa paghi e per cosa.',
+            'Dipende da dimensioni, accessibilità del giardino e finiture. Quando abbiamo visto il giardino ricevi un preventivo con voci separate per scavi, realizzazione, messa in opera e collaudo: sai cosa paghi e per cosa.',
         rispostaEn:
-            'It depends on size, garden access and finishes. After the site visit you get a quote itemised by excavation, construction, installation and commissioning: you know what you are paying for.',
+            'It depends on size, garden access and finishes. Once we have seen the garden you get a quote itemised by excavation, construction, installation and commissioning: you know what you are paying for.',
     },
     {
         domanda: 'Chi fa gli scavi?',
@@ -212,15 +213,15 @@ const DOMANDE = [
         domanda: 'Servono permessi?',
         domandaEn: 'Do I need permits?',
         risposta:
-            'Dipende dal tuo Comune, e la verifica fa parte del sopralluogo: te lo diciamo prima del preventivo, non dopo. Le pratiche possiamo seguirle noi — è un servizio a parte, che quotiamo separatamente e attivi solo se vuoi.',
+            'Dipende dal tuo Comune, e lo verifichiamo noi: te lo diciamo prima del preventivo, non dopo. Le pratiche possiamo seguirle noi — è un servizio a parte, che quotiamo separatamente e attivi solo se vuoi.',
         rispostaEn:
-            'It depends on your municipality, and we check during the site visit: you know before the quote, not after. We can handle the paperwork for you — it is a separate service, quoted on its own, and entirely optional.',
+            'It depends on your municipality, and we check it for you: you know before the quote, not after. We can handle the paperwork for you — it is a separate service, quoted on its own, and entirely optional.',
     },
     {
         domanda: 'Va bene anche un giardino piccolo?',
         domandaEn: 'Does it work in a small garden?',
         risposta:
-            'La forma non è a catalogo, quindi si adatta allo spazio che c’è. Il vincolo vero è l’accesso dei mezzi al giardino: lo valutiamo in sopralluogo e te lo diciamo subito.',
+            'La forma non è a catalogo, quindi si adatta allo spazio che c’è. Il vincolo vero è l’accesso dei mezzi al giardino: lo valutiamo sul posto e te lo diciamo subito.',
         rispostaEn:
             'The shape is not from a catalogue, so it adapts to the space you have. The real constraint is machine access to the garden: we assess it on site and tell you straight away.',
     },
@@ -228,9 +229,9 @@ const DOMANDE = [
         domanda: 'Ci sono agevolazioni fiscali?',
         domandaEn: 'Are there tax breaks?',
         risposta:
-            'Se rifai una piscina che hai già, sì: la detrazione IRPEF per ristrutturazioni vale il 50% sull’abitazione principale e il 36% sulle seconde case, entro 96.000 € per unità immobiliare, in 10 quote annuali. Su una piscina nuova in giardino, di norma, non spetta. Ne parliamo apertamente in sopralluogo.',
+            'Se rifai una piscina che hai già, sì: la detrazione IRPEF per ristrutturazioni vale il 50% sull’abitazione principale e il 36% sulle seconde case, entro 96.000 € per unità immobiliare, in 10 quote annuali. Su una piscina nuova in giardino, di norma, non spetta: meglio saperlo prima del preventivo che dopo.',
         rispostaEn:
-            'If you are renovating a pool you already have, yes: the Italian renovation tax deduction is 50% on a main home and 36% on second homes, up to €96,000 per property, spread over ten years. On a brand-new garden pool it normally does not apply. We are upfront about this at the site visit.',
+            'If you are renovating a pool you already have, yes: the Italian renovation tax deduction is 50% on a main home and 36% on second homes, up to €96,000 per property, spread over ten years. On a brand-new garden pool it normally does not apply: better to know before the quote than after.',
     },
     {
         domanda: 'Che manutenzione richiede?',
@@ -286,7 +287,7 @@ export default function Home() {
                     </p>
                     <div className="pg-azioni">
                         <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                            {t('Richiedi un sopralluogo', 'Book a site visit')}
+                            {t('Chiedi un preventivo', 'Ask for a quote')}
                         </a>
                         <a className="btn btn-secondary pg-btn-grande" href="#realizzazioni">
                             {t('Guarda le piscine', 'See the pools')}
@@ -465,7 +466,7 @@ export default function Home() {
             <section id="faq" className="pg-sezione pg-bordo">
                 <h6 className="pg-occhiello">{t('Domande frequenti', 'Frequently asked')}</h6>
                 <h2 className="pg-titolo" style={{ marginBottom: 48, maxWidth: '20em' }}>
-                    {t('Quello che ci chiedono al primo sopralluogo.', 'What people ask us on the first visit.')}
+                    {t('Quello che ci chiedono prima di ogni preventivo.', 'What people ask us before any quote.')}
                 </h2>
                 <div className="pg-faq">
                     {DOMANDE.map(d => (
@@ -492,24 +493,30 @@ export default function Home() {
                     <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
                         {t(
-                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Facciamo sopralluoghi e apriamo cantieri su tutta l’isola, per ville private e per strutture ricettive.',
-                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily. We survey and build across the whole island, for private villas and for hotels and guest houses.',
+                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
+                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
                         )}
                     </p>
                     <p style={{ color: 'var(--color-neutral-400)', maxWidth: '34em', margin: '0 0 32px', fontSize: 14 }}>
                         {t(
-                            'Il referente di cantiere è sempre lo stesso, dal primo sopralluogo al collaudo: si parla con una persona, non con un ufficio.',
+                            'Il referente di cantiere è sempre lo stesso, dalla prima visita in giardino al collaudo: si parla con una persona, non con un ufficio.',
                             'The same person follows the job from the first visit to commissioning: you talk to a person, not an office.',
                         )}
                     </p>
-                    <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                        {t('Parlane con Luciano', 'Talk to Luciano')}
-                    </a>
+                    <div className="pg-azioni">
+                        <a className="btn btn-primary pg-btn-grande" href="#contatti">
+                            {t('Parlane con Luciano', 'Talk to Luciano')}
+                        </a>
+                        <Link className="btn btn-secondary pg-btn-grande" to="/piscine-rocks-design/sicilia">
+                            {t('Provincia per provincia', 'Province by province')}
+                        </Link>
+                    </div>
                 </div>
             </section>
 
             {/* ─────────────────────────────  contatti ──────────────────────── */}
-            <section id="contatti" className="pg-sezione pg-bordo pg-contatti">
+            {/* Riquadro finale: `data-cta-finale` lo riconosce scripts/misura-ripetizioni.mjs. */}
+            <section id="contatti" className="pg-sezione pg-bordo pg-contatti" data-cta-finale="">
                 <div>
                     <h6 className="pg-occhiello">{t('Contatti', 'Contact')}</h6>
                     <h2 className="pg-titolo" style={{ maxWidth: '18em' }}>
@@ -517,8 +524,8 @@ export default function Home() {
                     </h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '32em', margin: '0 0 36px' }}>
                         {t(
-                            'Basta il comune e due righe sullo spazio che hai. Fissiamo un sopralluogo e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano.',
-                            'Your town and a couple of lines about your space are enough. We will arrange a visit and tell you what is possible, with timing and costs for the turnkey project.',
+                            `Basta il comune e due righe sullo spazio che hai. Fissiamo un sopralluogo, gratuito come il preventivo, e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano. ${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
+                            `Your town and a couple of lines about your space are enough. We will arrange a site visit, free like the quote, and tell you what is possible, with timing and costs for the turnkey project. ${AZIENDA.referente} will call you back within 24 working hours.`,
                         )}
                     </p>
                     <div className="pg-recapiti">

@@ -30,8 +30,8 @@ export default function Contatti() {
                             Parliamo del tuo giardino
                         </h1>
                         <p className="testo-lungo mt-6">
-                            Sopralluogo e preventivo sono gratuiti e senza impegno, in tutta la {AZIENDA.zona}.
-                            Ti richiamiamo entro 24 ore lavorative.
+                            Modulo, telefono o WhatsApp: dall’altra parte c’è sempre la stessa persona, non un
+                            centralino. Dicci in che comune si trova il terreno e che cosa hai in mente.
                         </p>
 
                         <dl className="mt-10 space-y-5 text-[1.0625rem]">
@@ -81,8 +81,10 @@ export default function Contatti() {
                         />
                     </Rivela>
 
-                    <Rivela delay={110}>
+                    {/* Il riquadro di contatto, come in fondo alle altre pagine. */}
+                    <Rivela delay={110} data-cta-finale="">
                         <ModuloContatto />
+                        <p className="mt-4 text-sm text-neutro-400">{AZIENDA.referente} ti richiama entro 24 ore lavorative.</p>
                     </Rivela>
                 </div>
             </Sezione>

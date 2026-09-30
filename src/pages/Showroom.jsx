@@ -123,8 +123,12 @@ export default function Showroom() {
             </Sezione>
 
             <Sezione sfondo="bg-superficie">
-                <div className="mx-auto max-w-2xl">
+                {/* Riquadro finale di contatto (vedi scripts/misura-ripetizioni.mjs). */}
+                <div className="mx-auto max-w-2xl" data-cta-finale="">
                     <ModuloContatto titolo="Parliamone" compatto />
+                    <p className="mt-4 text-center text-sm text-neutro-400">
+                        {AZIENDA.referente} ti richiama entro 24 ore lavorative.
+                    </p>
                 </div>
             </Sezione>
         </>

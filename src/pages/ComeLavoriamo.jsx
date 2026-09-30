@@ -25,7 +25,7 @@ export default function ComeLavoriamo() {
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">Il metodo</p>
                     <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
-                        Dal sopralluogo alla prima nuotata
+                        Dal primo incontro alla prima nuotata
                     </h1>
                     <p className="testo-lungo mt-6">
                         Una piscina è un investimento importante: hai diritto a sapere in anticipo cosa succede, quando
@@ -67,12 +67,12 @@ export default function ComeLavoriamo() {
                     <IntestazioneSezione
                         occhiello="Chi fa cosa"
                         titolo="Il metodo è della casa madre, il cantiere è nostro"
-                        testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e la formazione delle squadre sono suoi. Quello che mettiamo noi è il lavoro sul campo — il sopralluogo, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
+                        testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e la formazione delle squadre sono suoi. Quello che mettiamo noi è il lavoro sul campo — le misure in giardino, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
                     >
                         <p className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             Per tutela del brevetto {ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di
-                            cantiere, delle tecniche costruttive o degli impianti impiegati. Durante il sopralluogo ti
-                            spieghiamo di persona ogni passaggio.
+                            cantiere, delle tecniche costruttive o degli impianti impiegati. Ogni passaggio te lo
+                            spieghiamo di persona, in giardino.
                         </p>
                     </IntestazioneSezione>
                 </div>
@@ -104,9 +104,9 @@ export default function ComeLavoriamo() {
             </Sezione>
 
             <Cta
-                titolo="Iniziamo dal sopralluogo"
-                testo="Gratuito e senza impegno, in tutta la Sicilia. Da lì nasce il progetto."
-                primaria={{ to: '/contatti', label: 'Prenota il sopralluogo' }}
+                titolo="Il primo passo è vedere il terreno"
+                testo="Il sopralluogo non costa nulla e non ti impegna a niente: è da lì che nasce il disegno della vasca."
+                primaria={{ to: '/contatti', label: 'Fissa un appuntamento' }}
                 secondaria={{ to: '/domande-frequenti', label: 'Leggi le FAQ' }}
                 whatsapp
             />

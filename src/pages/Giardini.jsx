@@ -3,7 +3,7 @@ import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { AZIENDA } from '../data/site'
 
@@ -84,7 +84,7 @@ export default function Giardini() {
                             non arriva affatto, e va benissimo così.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/contatti" className="bottone-primario">Chiedi un sopralluogo</Link>
+                            <Link to="/contatti" className="bottone-primario">Chiedi un preventivo</Link>
                             <Link to="/piscine-rocks-design" className="bottone-secondario">Vedi anche le piscine</Link>
                         </div>
                     </Rivela>
@@ -160,18 +160,12 @@ export default function Giardini() {
                 </Rivela>
             </Sezione>
 
-            <Sezione>
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Preventivo"
-                        titolo="Raccontaci che terreno hai"
-                        testo={`Pendenza, esposizione, accessi: bastano un sopralluogo e una chiacchierata per capire che cosa ha senso fare. Gratuito, in tutta la ${AZIENDA.zona}.`}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo="Richiedi un sopralluogo" />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello="Preventivo"
+                titolo="Raccontaci che terreno hai"
+                testo="Pendenza, esposizione, accessi: con due righe e qualche foto capiamo già che cosa ha senso fare, con la piscina o senza."
+                modulo={{ titolo: 'Muri, terrazzamenti, pietra' }}
+            />
         </>
     )
 }

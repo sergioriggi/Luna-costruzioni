@@ -3,10 +3,9 @@ import Seo, { schemaBriciole, schemaModello, schemaServizio } from '../component
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { MODELLI, SABBIE } from '../data/content'
-import { AZIENDA } from '../data/site'
 
 export default function Modello() {
     const { modello } = useParams()
@@ -120,18 +119,12 @@ export default function Modello() {
                 </p>
             </Sezione>
 
-            <Sezione>
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Preventivo"
-                        titolo={`Un ${m.nome} nel tuo giardino`}
-                        testo={`${AZIENDA.referente} viene a misurare lo spazio e ti dice subito se questo modello è quello giusto. Sopralluogo e preventivo gratuiti in tutta la ${AZIENDA.zona}.`}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo={`Richiedi un progetto ${m.nome}`} />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello="Preventivo"
+                titolo={`Un ${m.nome} nel tuo giardino`}
+                testo={`Mandaci due righe su spazio ed esposizione: capiamo presto se il ${m.nome} ci sta, o se ti conviene un altro modello.`}
+                modulo={{ titolo: `Richiedi un progetto ${m.nome}` }}
+            />
         </>
     )
 }

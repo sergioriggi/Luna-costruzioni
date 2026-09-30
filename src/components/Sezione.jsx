@@ -53,7 +53,10 @@ export function Briciole({ voci }) {
  * non c'era nulla.
  */
 export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richiedi un preventivo' }, secondaria, whatsapp = false }) {
+    // `data-cta-finale`: è il riquadro di chiusura, che la misura delle
+    // ripetizioni (scripts/misura-ripetizioni.mjs) conta a parte.
     return (
+        <div data-cta-finale="">
         <Sezione>
             <Rivela className="overflow-hidden rounded-lg bg-notte-800 px-6 py-14 text-center sm:px-14">
                 <h2 className="font-display text-3xl text-testo sm:text-4xl">{titolo}</h2>
@@ -77,5 +80,6 @@ export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richi
                 </div>
             </Rivela>
         </Sezione>
+        </div>
     )
 }

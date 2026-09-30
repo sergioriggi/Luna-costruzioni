@@ -2,6 +2,7 @@ import Rivela from './Rivela'
 import ModuloContatto from './ModuloContatto'
 import { Sezione, IntestazioneSezione } from './Sezione'
 import { AZIENDA } from '../data/site'
+import { useLingua } from '../i18n/lingua'
 
 /**
  * Il riquadro finale con il modulo di contatto.
@@ -19,12 +20,18 @@ import { AZIENDA } from '../data/site'
  * questo blocco a parte.
  */
 export default function ChiusuraContatto({ id = 'contatti', occhiello, titolo, testo, modulo = {} }) {
+    const { t } = useLingua()
     return (
         <div data-cta-finale="">
             <Sezione id={id}>
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                     <IntestazioneSezione occhiello={occhiello} titolo={titolo} testo={testo}>
-                        <p className="testo-lungo mt-4">{AZIENDA.referente} ti richiama entro 24 ore lavorative.</p>
+                        <p className="testo-lungo mt-4">
+                            {t(
+                                `${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
+                                `${AZIENDA.referente} will call you back within 24 working hours.`,
+                            )}
+                        </p>
                     </IntestazioneSezione>
                     <Rivela delay={100}>
                         <ModuloContatto {...modulo} />

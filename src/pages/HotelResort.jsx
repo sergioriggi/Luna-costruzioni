@@ -3,10 +3,9 @@ import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { RICETTIVO } from '../data/content'
-import { AZIENDA } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 import BottoneTelefono from '../components/BottoneTelefono'
 
@@ -145,21 +144,15 @@ export default function HotelResort() {
                 </Rivela>
             </Sezione>
 
-            <Sezione>
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello={t('Proposta', 'Proposal')}
-                        titolo={t('Parliamo della vostra struttura', 'Let’s talk about your property')}
-                        testo={t(
-                            `Indicateci periodo di chiusura, spazio disponibile e numero di camere: ${AZIENDA.referente} vi richiama per fissare il sopralluogo.`,
-                            `Tell us your closed season, the space available and how many rooms you have: ${AZIENDA.referente} will call you back to arrange a site visit.`,
-                        )}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo={t('Richiedi una proposta', 'Request a proposal')} />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello={t('Proposta', 'Proposal')}
+                titolo={t('Parliamo della vostra struttura', 'Let’s talk about your property')}
+                testo={t(
+                    'Indicateci periodo di chiusura, spazio disponibile e numero di camere: da lì si capisce se il cantiere sta tutto nei mesi in cui siete chiusi.',
+                    'Tell us your closed season, the space available and how many rooms you have: that tells us whether the whole build fits into the months you are closed.',
+                )}
+                modulo={{ titolo: t('Richiedi una proposta', 'Request a proposal') }}
+            />
         </>
     )
 }

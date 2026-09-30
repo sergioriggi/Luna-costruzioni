@@ -210,7 +210,7 @@ export default function Sicilia() {
                 occhiello="Preventivo"
                 titolo="In che comune è il giardino?"
                 testo="Con il comune e due righe sullo spazio capiamo già se ci sono vincoli da controllare e quanto è lontano il cantiere."
-                modulo={{ titolo: 'Richiedi il preventivo' }}
+                modulo={{ titolo: 'Preventivo per il mio comune' }}
             />
         </>
     )

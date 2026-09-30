@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo, { schemaAzienda, schemaBriciole } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
-import ModuloContatto from '../components/ModuloContatto'
+import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 import BottoneTelefono from '../components/BottoneTelefono'
@@ -110,7 +110,7 @@ export default function Azienda() {
                         <p className="occhiello">Dove lavoriamo</p>
                         <h2 className="titolo-sezione">Tutta la Sicilia, davvero</h2>
                         <p className="testo-lungo mt-5">
-                            Non è una formula di rito: raggiungiamo le nove province per il sopralluogo, il cantiere e
+                            Non è una formula di rito: raggiungiamo le nove province per il cantiere e per
                             l’assistenza negli anni successivi. Se il tuo terreno è fuori mano te lo diciamo prima di
                             partire, insieme a che cosa comporta sui tempi.
                         </p>
@@ -158,18 +158,12 @@ export default function Azienda() {
                 </div>
             </Sezione>
 
-            <Sezione>
-                <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                    <IntestazioneSezione
-                        occhiello="Parliamone"
-                        titolo="Il modo più rapido per capirci è vederci"
-                        testo={`Mezz'ora davanti a una Piscina Rocks Design chiarisce più di dieci pagine di sito, e la visita la organizziamo noi. Oppure raccontaci il tuo progetto qui: ${AZIENDA.referente} risponde entro 24 ore lavorative.`}
-                    />
-                    <Rivela delay={100}>
-                        <ModuloContatto titolo="Scrivici" />
-                    </Rivela>
-                </div>
-            </Sezione>
+            <ChiusuraContatto
+                occhiello="Parliamone"
+                titolo="Da dove partiamo?"
+                testo="Scrivici che cosa hai in mente e dove: una piscina, un giardino in pietra o tutte e due. Molte cose si chiariscono già al telefono, prima ancora di venire."
+                modulo={{ titolo: 'Scrivici' }}
+            />
         </>
     )
 }

@@ -376,7 +376,7 @@ export const FAQ = [
     {
         domanda: 'Quanto costa una Piscina Rocks Design in Sicilia?',
         risposta:
-            'Non esiste un listino, perché non esistono misure standard. Il prezzo dipende da superficie, profondità, accessibilità del giardino, modello scelto e dagli elementi che decidi di integrare. Nella pagina dedicata trovi spiegate tutte le voci che spostano il preventivo; dopo il sopralluogo ricevi un documento dettagliato, gratuito e senza impegno.',
+            'Non esiste un listino, perché non esistono misure standard. Il prezzo dipende da superficie, profondità, accessibilità del giardino, modello scelto e dagli elementi che decidi di integrare. Nella pagina dedicata trovi spiegate tutte le voci che spostano il preventivo; quando abbiamo visto il giardino ricevi un documento dettagliato, voce per voce.',
     },
     {
         domanda: 'Servono permessi? E la piscina fa aumentare le tasse sulla casa?',
@@ -401,12 +401,12 @@ export const FAQ = [
     {
         domanda: 'Si può fare su un terreno in pendenza?',
         risposta:
-            'Spesso sì, ed è anzi uno dei casi in cui questa tecnologia dà il meglio: i massi permettono di gestire dislivelli che con una vasca rettangolare richiederebbero muri di contenimento importanti. Il modello Alpi nasce proprio per questi contesti. Serve però un sopralluogo: la pendenza va misurata, non stimata a occhio.',
+            'Spesso sì, ed è anzi uno dei casi in cui questa tecnologia dà il meglio: i massi permettono di gestire dislivelli che con una vasca rettangolare richiederebbero muri di contenimento importanti. Il modello Alpi nasce proprio per questi contesti. Serve però vedere il terreno: la pendenza va misurata, non stimata a occhio.',
     },
     {
         domanda: 'Posso vederne una dal vivo prima di decidere?',
         risposta:
-            'Sì, ed è quello che consigliamo a tutti. La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Dalla Sicilia è un viaggio, lo sappiamo: la visita la organizziamo noi e ti accompagniamo. Se preferisci partire da qualcosa di più vicino, il sopralluogo in giardino è gratuito.',
+            'Sì, ed è quello che consigliamo a tutti. La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Dalla Sicilia è un viaggio, lo sappiamo: la visita la organizziamo noi e ti accompagniamo. Se preferisci partire da qualcosa di più vicino, veniamo noi a vedere il tuo giardino.',
     },
     {
         domanda: 'Lavorate anche con hotel, agriturismi e b&b?',
