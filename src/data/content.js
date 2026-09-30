@@ -17,6 +17,13 @@
  * concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.
  */
 
+/**
+ * Le caratteristiche del prodotto, una per una.
+ *
+ * Si mostrano SOLO su /piscine-rocks-design (Tecnologia.jsx). Ripetute su
+ * altre pagine erano diventate il blocco di testo più duplicato del sito:
+ * altrove si rimanda a quella pagina con una frase, e basta.
+ */
 export const PUNTI_DI_FORZA = [
     {
         icona: 'onde',
@@ -531,9 +538,9 @@ export const VANTAGGI_CEMENTO = [
 /** Dove vince la Piscina Rocks Design. Stessa forma, stessa misura. */
 export const VANTAGGI_ROCKS = [
     {
-        titolo: 'Si entra camminando',
+        titolo: 'Chi non nuota entra lo stesso',
         testo:
-            'Niente scaletta e niente gradino: il fondo digrada e sotto i piedi c’è sabbia. È la differenza che si nota per prima con i bambini piccoli, con chi non nuota e con chi ha problemi di mobilità — persone per cui una scaletta verticale è la ragione per cui la piscina resta inutilizzata.',
+            'Con una vasca in cemento chi ha bambini piccoli, chi non nuota o chi fatica a camminare resta sul bordo, perché la scaletta verticale è l’unico modo di entrare. Con la spiaggia digradante ci si bagna a piccoli passi, fin dove si tocca.',
     },
     {
         titolo: 'La forma segue il terreno',

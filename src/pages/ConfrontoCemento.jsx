@@ -221,6 +221,13 @@ export default function ConfrontoCemento() {
                                 </li>
                             ))}
                         </ul>
+                        <p className="mt-8 text-[0.95rem] leading-relaxed text-neutro-400">
+                            Come sono fatte pareti, fondo e impianti lo spiega la pagina{' '}
+                            <Link to="/piscine-rocks-design" className="link-sottile font-medium text-accento">
+                                La Piscina Rocks Design
+                            </Link>
+                            .
+                        </p>
                     </IntestazioneSezione>
                 </div>
             </Sezione>
