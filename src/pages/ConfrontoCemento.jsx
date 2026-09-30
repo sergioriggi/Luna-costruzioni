@@ -71,9 +71,9 @@ const FAQ_CONFRONTO = [
             'Ci si nuota: è una piscina a tutti gli effetti, con profondità di nuoto e impianti veri. Quello che non è, è una vasca da allenamento: non ci sono corsie, la lunghezza non è costante e il fondale non è a quota uniforme. Se il tuo obiettivo è fare vasche a cronometro, una piscina in cemento ti serve meglio, e te lo diciamo già al telefono.',
     },
     {
-        domanda: 'Come faccio a vederne una prima di decidere?',
+        domanda: 'Come so se il risultato mi piacerà più di una vasca in cemento?',
         risposta:
-            'La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia, e la visita la organizziamo noi. Se preferisci partire da qualcosa di più vicino, veniamo noi nel tuo giardino con i campioni di sabbia.',
+            'Guardando sul tuo terreno le parti che decidi tu. I campioni di sabbia li portiamo in giardino e li confronti con la luce di casa tua; la forma della vasca viene disegnata sulle misure reali del lotto, spiaggia compresa, prima di firmare. Se davanti al disegno ti accorgi che volevi una vasca per nuotare, è il momento giusto per scegliere il cemento.',
     },
 ]
 

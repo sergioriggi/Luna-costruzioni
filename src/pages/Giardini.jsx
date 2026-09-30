@@ -143,7 +143,7 @@ export default function Giardini() {
                 <IntestazioneSezione
                     occhiello="Opere di contorno"
                     titolo="Pietra, legno e verde attorno all’acqua"
-                    testo="Le immagini qui sotto mostrano le opere di contorno che accompagnano una Piscina Rocks Design: bordi, solarium, ghiaie e illuminazione."
+                    testo="Le immagini qui sotto mostrano le opere di contorno attorno a una Piscina Rocks Design: bordi, solarium, ghiaie e illuminazione."
                 />
                 <Rivela className="mt-12">
                     <Galleria

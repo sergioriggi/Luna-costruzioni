@@ -99,6 +99,11 @@ export function montaSito(app, { cartellaSito, politicaContenuti }) {
     const vecchieProvince = new Set(PROVINCE.map(p => p.slug))
     app.use((req, res, avanti) => {
         if (req.method !== 'GET' && req.method !== 'HEAD') return avanti()
+        // La pagina della piscina espositiva non c'è più: stessa regola del .htaccess.
+        if (/^\/showroom(?:\/|\/index\.html)?$/.test(req.path)) {
+            res.setHeader('Cache-Control', 'public, max-age=86400')
+            return res.redirect(301, '/galleria')
+        }
         const m = /^\/piscine-rocks-design\/([a-z]+)(?:\/|\/index\.html)?$/.exec(req.path)
         if (!m || !vecchieProvince.has(m[1])) return avanti()
         res.setHeader('Cache-Control', 'public, max-age=86400')

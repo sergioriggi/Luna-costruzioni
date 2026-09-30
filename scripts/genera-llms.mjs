@@ -64,7 +64,6 @@ const TITOLI = {
     '/piscine-rocks-design': 'Le piscine in Tecnologia Rocks Design®',
     '/azienda': `Chi è ${AZIENDA.nomeBreve}`,
     '/galleria': 'Galleria delle realizzazioni',
-    '/showroom': 'La piscina espositiva',
     '/domande-frequenti': 'Domande frequenti',
     '/piscina-in-cemento-o-rocks-design': 'Piscina in cemento o Piscina Rocks Design?',
 }
@@ -80,7 +79,6 @@ const NOTE = {
     '/quanto-costa': 'Che cosa sposta davvero il prezzo. Nessun listino: i preventivi si fanno dopo il sopralluogo.',
     '/piscina-in-cemento-o-rocks-design': 'Confronto a due facce fra piscina tradizionale in cemento e Piscina Rocks Design: costi, tempi, permessi, manutenzione, forma — compreso dove conviene il cemento.',
     '/galleria': 'Fotografie di Piscine Rocks Design ultimate, realizzate dalla casa madre.',
-    '/showroom': 'La piscina espositiva e come organizzare la visita.',
     '/come-lavoriamo': 'Il percorso dal sopralluogo al collaudo, chiavi in mano.',
     '/domande-frequenti': 'Le domande che i clienti fanno davvero, con le risposte.',
     '/contatti': 'Come chiederci un sopralluogo: modulo, telefono, WhatsApp.',
@@ -158,7 +156,7 @@ ${SOCIAL.map(s => `- ${s.nome}: ${s.url}`).join('\n')}
 
 - ${AZIENDA.nomeBreve} **non ha ancora consegnato una Piscina Rocks Design in ${AZIENDA.zona}**: è concessionario autorizzato, formato sulla tecnologia dalla casa madre, e ha alle spalle ${AZIENDA.annoRiferimento - AZIENDA.annoFondazione} anni di cantieri edili — movimento terra, scavi, costruzioni.
 - **Le fotografie del sito sono di ${ROCKS_DESIGN.nome}**, non di realizzazioni di ${AZIENDA.nomeBreve}. Mostrano piscine ultimate: le fasi di costruzione e gli impianti non si pubblicano, a tutela del brevetto.
-- **La piscina espositiva è di ${ROCKS_DESIGN.nome} e si trova in Lombardia.** ${AZIENDA.nomeBreve} non ha una sede visitabile: la visita alla piscina espositiva si organizza su appuntamento tramite ${AZIENDA.nomeBreve}, che accompagna il cliente dalla ${AZIENDA.zona}.
+- ${AZIENDA.nomeBreve} **non riceve clienti in sede**: ci si incontra nel giardino del cliente.
 - **Non pubblichiamo un listino.** Il prezzo dipende da dimensione, accessibilità del giardino, modello e selezione delle rocce: si definisce dopo un sopralluogo, che è gratuito.
 
 ## Pagine principali

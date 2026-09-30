@@ -33,6 +33,8 @@ RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|d
 # `npm run verifica`.
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    # La vecchia pagina /showroom non c'è più (decisione del 30/09/2026).
+    RewriteRule ^showroom(/|/index\.html)?$ /galleria [R=301,L]
     RewriteRule ^piscine-rocks-design/(palermo|catania|messina|siracusa|ragusa|trapani|agrigento|caltanissetta|enna)(/|/index\.html)?$ /piscine-rocks-design/sicilia#$1 [R=301,NE,L]
 </IfModule>
 

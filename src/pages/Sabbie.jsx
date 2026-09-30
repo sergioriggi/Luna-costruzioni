@@ -17,7 +17,7 @@ const FAQ_SABBIA = [
     {
         domanda: 'La sabbia si può cambiare dopo?',
         risposta:
-            'Sostituire la sabbia di una vasca già realizzata è un intervento possibile ma oneroso, e cambia il colore dell’acqua di tutta la piscina. Per questo la scelta si fa a progetto, guardando i campioni dal vivo e non a schermo: i tre toni sullo schermo di un telefono si somigliano molto più di quanto si somiglino davvero.',
+            'Sostituire la sabbia di una vasca già realizzata è un intervento possibile ma oneroso, e cambia il colore dell’acqua di tutta la piscina. Per questo la scelta si fa a progetto, guardando i campioni di persona e non a schermo: i tre toni sullo schermo di un telefono si somigliano molto più di quanto si somiglino davvero.',
     },
     {
         domanda: 'La sabbia scotta sotto il sole siciliano?',
@@ -59,11 +59,10 @@ export default function Sabbie() {
                             profondità e la luce del posto.
                         </p>
                         <p className="testo-lungo mt-4">
-                            Sono disponibili tre selezioni. La scelta si fa dal vivo, mettendo i campioni sotto il sole
+                            Sono disponibili tre selezioni. La scelta si fa di persona, mettendo i campioni sotto il sole
                             del tuo giardino: è l’unico modo onesto per decidere, perché il colore dell’acqua dipende
                             da quanta luce prende il fondale.
                         </p>
-                        <Link to="/showroom" className="bottone-primario mt-8">Vedine una dal vivo</Link>
                     </Rivela>
                     <Rivela delay={120}>
                         <Immagine

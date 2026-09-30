@@ -52,6 +52,11 @@ for (const percorso of ['/piscine-rocks-design/palermo', '/piscine-rocks-design/
     verifica(`${percorso} porta a #${slug}`, (r.headers.get('location') ?? '') === `/piscine-rocks-design/sicilia#${slug}`,
         r.headers.get('location') ?? 'nessun Location')
 }
+for (const percorso of ['/showroom', '/showroom/']) {
+    const r = await chiedi(percorso)
+    verifica(`${percorso} risponde 301`, r.status === 301, `ricevuto ${r.status}`)
+    verifica(`${percorso} porta a /galleria`, r.headers.get('location') === '/galleria', r.headers.get('location') ?? 'nessun Location')
+}
 {
     const r = await chiedi('/piscine-rocks-design/inesistente')
     verifica('/piscine-rocks-design/inesistente resta 404', r.status === 404, `ricevuto ${r.status}`)

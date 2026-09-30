@@ -420,9 +420,9 @@ export const FAQ = [
             'Spesso sì, ed è anzi uno dei casi in cui questa tecnologia dà il meglio: i massi permettono di gestire dislivelli che con una vasca rettangolare richiederebbero muri di contenimento importanti. Il modello Alpi nasce proprio per questi contesti. Serve però vedere il terreno: la pendenza va misurata, non stimata a occhio.',
     },
     {
-        domanda: 'Posso vederne una dal vivo prima di decidere?',
+        domanda: 'Come faccio a capire come sarà prima di firmare?',
         risposta:
-            'Sì, ed è quello che consigliamo a tutti. La piscina espositiva è quella di Piscine Rocks Design, in Lombardia: si cammina sulla sabbia, si toccano i massi, si vede l’acqua in funzione. Mezz’ora sul posto chiarisce più di qualsiasi fotografia. Dalla Sicilia è un viaggio, lo sappiamo: la visita la organizziamo noi e ti accompagniamo. Se preferisci partire da qualcosa di più vicino, veniamo noi a vedere il tuo giardino.',
+            'Da due cose che vedi nel tuo giardino. Al sopralluogo Luciano Naro porta i campioni delle tre sabbie e li mette sotto il sole del tuo terreno, perché il colore dell’acqua nasce da lì. Poi il progetto disegna la forma della vasca sulle misure vere del giardino, con spiaggia, massi e accessi. Le fotografie del sito mostrano il prodotto; la tua piscina la vedi nel disegno, prima di firmare.',
     },
     {
         domanda: 'Lavorate anche con hotel, agriturismi e b&b?',

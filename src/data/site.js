@@ -127,8 +127,9 @@ export const AZIENDA = {
      * quindi dove la legge lo vuole — le note legali in fondo alla pagina —
      * e sparisce da tutto il resto: non compare come `streetAddress` nello
      * schema LocalBusiness (vedi il commento in `src/components/Seo.jsx`) e
-     * nessuna pagina invita più a passare «in sede». La piscina espositiva da
-     * visitare è quella di Piscine Rocks Design, in Lombardia.
+     * nessuna pagina invita più a passare «in sede». Né il sito propone visite
+     * altrove: dal 30/09/2026 non si invita più a vedere piscine della casa
+     * madre.
      */
     sede: {
         via: 'Via Speranza 42',
@@ -285,5 +286,4 @@ export const NAV_SECONDARIA = [
     { to: '/giardini-e-opere-in-pietra', label: 'Giardini e opere in pietra', labelEn: 'Gardens and stonework' },
     { to: '/quanto-costa', label: 'Quanto costa', labelEn: 'Costs' },
     { to: '/piscina-in-cemento-o-rocks-design', label: 'Cemento o Rocks Design', labelEn: 'Concrete or Rocks Design' },
-    { to: '/showroom', label: 'Piscina espositiva', labelEn: 'Display pool' },
 ]

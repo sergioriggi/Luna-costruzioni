@@ -73,7 +73,6 @@ export default function Azienda() {
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
                             <BottoneTelefono className="bottone-primario">Chiama {AZIENDA.referente}</BottoneTelefono>
-                            <Link to="/showroom" className="bottone-secondario">Vedine una dal vivo</Link>
                         </div>
                     </Rivela>
                     <Rivela delay={120}>

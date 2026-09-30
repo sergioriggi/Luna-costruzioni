@@ -253,6 +253,14 @@ try {
     const mancanti = PROVINCE.filter(p => !elencate.has(p.slug)).map(p => p.slug)
     if (!regola) errori.push('.htaccess: manca il redirect 301 delle vecchie pagine provinciali.')
     else if (mancanti.length) errori.push(`.htaccess: province senza redirect 301: ${mancanti.join(', ')}.`)
+    // /showroom non esiste più: 301 verso /galleria, e nessuna pagina rimasta.
+    if (!/RewriteRule \^showroom\S* \/galleria \[R=301/.test(htaccess)) {
+        errori.push('.htaccess: manca il redirect 301 da /showroom a /galleria.')
+    }
+    try {
+        await fs.access(path.join(DIST, 'showroom', 'index.html'))
+        errori.push('dist/showroom/ esiste ancora: la pagina è stata tolta e va solo ridiretta.')
+    } catch { /* assente, come deve */ }
     for (const p of PROVINCE) {
         try {
             await fs.access(path.join(DIST, 'piscine-rocks-design', p.slug, 'index.html'))

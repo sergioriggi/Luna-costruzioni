@@ -47,7 +47,6 @@ const BUDGET = [
  */
 const INTERESSI = [
     { valore: 'Nuova piscina Rocks Design', etichetta: 'Nuova piscina Rocks Design' },
-    { valore: 'Vedere una piscina dal vivo', etichetta: 'Vedere una piscina dal vivo' },
     { valore: 'Preventivo e sopralluogo', etichetta: 'Un preventivo per il mio giardino' },
     { valore: 'Struttura ricettiva / progetto commerciale', etichetta: 'Struttura ricettiva / progetto commerciale' },
     { valore: 'Altro', etichetta: 'Altro' },

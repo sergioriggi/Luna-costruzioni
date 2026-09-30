@@ -13,7 +13,6 @@ export const ROTTE = [
     { percorso: '/quanto-costa', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/piscina-in-cemento-o-rocks-design', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/galleria', priorita: 0.8, frequenza: 'monthly' },
-    { percorso: '/showroom', priorita: 0.8, frequenza: 'monthly' },
     { percorso: '/come-lavoriamo', priorita: 0.7, frequenza: 'yearly' },
     { percorso: '/domande-frequenti', priorita: 0.7, frequenza: 'monthly' },
     { percorso: '/contatti', priorita: 0.9, frequenza: 'yearly' },

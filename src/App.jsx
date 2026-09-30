@@ -15,7 +15,6 @@ import HotelResort from './pages/HotelResort'
 import QuantoCosta from './pages/QuantoCosta'
 import ConfrontoCemento from './pages/ConfrontoCemento'
 import GalleriaPagina from './pages/GalleriaPagina'
-import Showroom from './pages/Showroom'
 import ComeLavoriamo from './pages/ComeLavoriamo'
 import Faq from './pages/Faq'
 import Contatti from './pages/Contatti'
@@ -73,7 +72,6 @@ export default function App() {
                     <Route path="/quanto-costa" element={<QuantoCosta />} />
                     <Route path="/piscina-in-cemento-o-rocks-design" element={<ConfrontoCemento />} />
                     <Route path="/galleria" element={<GalleriaPagina />} />
-                    <Route path="/showroom" element={<Showroom />} />
                     <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />
                     <Route path="/domande-frequenti" element={<Faq />} />
                     <Route path="/contatti" element={<Contatti />} />

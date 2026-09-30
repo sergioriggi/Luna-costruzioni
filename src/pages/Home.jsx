@@ -340,17 +340,15 @@ export default function Home() {
                         alt="Piscina Rocks Design con bordo in pietra e pontile in legno"
                     />
                     {/*
-                      Direttiva Piscine Rocks Design: la piscina espositiva va
-                      segnalata in prima pagina, con l'invito ad andarla a vedere.
-                      La piscina espositiva è quella della casa madre, in
-                      Lombardia — non di Luna, che non ha una sede visitabile.
-                      Diceva «vieni a trovarci presso la nostra sede», che
-                      mandava i clienti all'abitazione del titolare.
+                      Qui c'era l'invito a visitare la piscina della casa madre
+                      in Lombardia. Tolto per decisione del 30/09/2026: il sito
+                      non propone più visite né viaggi. Resta la didascalia
+                      della foto, che dice che cosa si vede.
                     */}
                     <figcaption data-didascalia="">
                         {t(
-                            'Piscina Rocks Design ultimata e in funzione. Organizziamo la visita alla piscina espositiva Piscine Rocks Design: vieni a vederla con noi.',
-                            'A completed, working Piscine Rocks Design pool. We arrange visits to the Piscine Rocks Design showroom pool — come and see it with us.',
+                            'Una Piscina Rocks Design ultimata e in funzione: bordo in massi, due getti che partono dalla roccia e una dépendance in legno alle spalle.',
+                            'A finished, working Piscine Rocks Design pool: a rock edge, two jets rising from the stone and a timber annexe behind.',
                         )}
                     </figcaption>
                 </figure>

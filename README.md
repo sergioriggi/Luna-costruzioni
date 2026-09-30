@@ -84,7 +84,6 @@ npm run preview    # anteprima identica alla produzione
 | `/giardini-e-opere-in-pietra` | Giardini e pietra | Il secondo mestiere dell'impresa, anche senza piscina |
 | `/hotel-e-resort` | Hotel e resort | Argomenti B2B: cantiere fuori stagione, un solo appalto |
 | `/galleria` | Le piscine | Le fotografie del produttore, filtrabili, con lightbox |
-| `/showroom` | Piscina espositiva | La vasca espositiva **di Piscine Rocks Design**, in Lombardia: Luna organizza e accompagna la visita |
 | `/quanto-costa` | Quanto costa | Le voci che spostano il preventivo — pagina ad alta intenzione |
 | `/come-lavoriamo` | Metodo | I cinque passaggi, con le durate |
 | `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
@@ -117,7 +116,7 @@ alla memoria di chi aggiorna il sito:
 | Logo *Concessionario Autorizzato* nella fascia superiore, con link alla pagina ufficiale | `src/components/BadgeConcessionario.jsx`, presente in header e footer di ogni pagina |
 | Deve essere chiaro che l'azienda è concessionaria, non inventrice | Dichiarato in header, footer, home, pagina tecnologia e ogni pagina provinciale |
 | «piscina naturale» va sempre seguito da «Piscine Rocks Design» | I testi usano **solo** «Piscine Rocks Design»; `npm run verifica` blocca ogni uso isolato |
-| Foto della piscina espositiva in prima pagina, con invito a vederla | Sezione in home + pagina `/showroom`. Il soggetto è la piscina espositiva **della casa madre**: Luna non ha una sede visitabile, e l'indirizzo legale è un'abitazione privata |
+| Foto della piscina espositiva in prima pagina, con invito a vederla | **Non applicata**, per decisione del 30/09/2026: il sito non propone visite né viaggi. La vecchia `/showroom` risponde 301 verso `/galleria`. Luna non ha una sede visitabile, e l'indirizzo legale è un'abitazione privata |
 | **Vietato** pubblicare tecnica costruttiva, fasi di cantiere o impianti | I sorgenti stanno in `media-sources/`, **fuori** da `public/`: sul sito arrivano solo le immagini della whitelist in `scripts/media.config.mjs` |
 | Ogni foto deve riportare il marchio Piscine Rocks Design | Filigrana **impressa nel file** da `scripts/prepare-media.mjs`, non sovrapposta via CSS |
 | Indicare sempre la città / zona di riferimento | Nove pagine provinciali + zona citata in ogni pagina indicizzabile (verificato) |
