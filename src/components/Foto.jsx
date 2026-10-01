@@ -1,5 +1,6 @@
 import media from '../data/media.json'
 import { pubblico, pubblicoSrcset } from '../lib/percorso'
+import { SCHERMO_STRETTO } from '../lib/schermi'
 
 const indice = new Map(media.map(m => [m.slug, m]))
 
@@ -9,8 +10,6 @@ export function scheda(slug) {
     return m
 }
 
-/** Sotto questa larghezza il browser preferisce il ritaglio verticale. */
-const SCHERMO_STRETTO = '(max-width: 900px)'
 
 /**
  * Immagine come nel file approvato: un solo <img>, con la classe `.lighten`
@@ -61,3 +60,4 @@ export default function Foto({ slug, className = '', sizes = '100vw', priority =
         </picture>
     )
 }
+

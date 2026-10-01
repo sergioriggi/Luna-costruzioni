@@ -23,6 +23,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import { PHOTOS } from './media.config.mjs'
 import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE } from '../src/data/site.js'
+import { ROTTE } from './rotte.mjs'
 
 /** Nomi di file ammessi in `/media/` (senza larghezza ed estensione). */
 const NOMI_AMMESSI = new Set(PHOTOS.flatMap(p => (p.verticale ? [p.slug, `${p.slug}-verticale`] : [p.slug])))
@@ -307,6 +308,39 @@ try {
     }
 } catch {
     errori.push('.htaccess assente in dist/.')
+}
+
+// 11. Le precariche della foto d'apertura devono combaciare con la foto.
+// Se un domani cambia lo srcset in Foto.jsx e non in prerender.mjs, il
+// browser scaricherebbe la precarica E poi l'immagine vera: il doppio dei
+// byte proprio sull'LCP. Si controlla che ogni srcset precaricato compaia
+// identico nel <body>, e che non ci siano due precariche senza media
+// complementari.
+for (const rotta of ROTTE.filter(r => r.fotoApertura)) {
+    const file = rotta.percorso === '/' ? 'index.html' : path.join(rotta.percorso.slice(1), 'index.html')
+    let html = ''
+    try {
+        html = await fs.readFile(path.join(DIST, file), 'utf8')
+    } catch {
+        errori.push(`${file}: pagina assente, non si possono controllare le precariche.`)
+        continue
+    }
+    const testa = html.slice(0, html.indexOf('</head>'))
+    const corpo = html.slice(html.indexOf('</head>'))
+    const precariche = [...testa.matchAll(/<link rel="preload" as="image"[^>]*>/g)].map(([tag]) => [
+        tag,
+        (tag.match(/ media="([^"]*)"/) ?? [])[1],
+        (tag.match(/ imagesrcset="([^"]*)"/) ?? [])[1] ?? '',
+    ])
+    if (precariche.length === 0) errori.push(`${file}: manca la precarica della foto d'apertura (${rotta.fotoApertura}).`)
+    for (const [, , srcset] of precariche) {
+        if (!corpo.includes(`srcSet="${srcset}"`)) {
+            errori.push(`${file}: la precarica «${srcset.slice(0, 60)}…» non corrisponde a nessuna immagine della pagina.`)
+        }
+    }
+    if (precariche.length > 1 && precariche.some(([, media]) => !media)) {
+        errori.push(`${file}: più precariche della stessa foto senza media: il telefono le scaricherebbe tutte.`)
+    }
 }
 
 // 4-bis. la filigrana è impressa da prepare-media.mjs su ogni foto di piscina

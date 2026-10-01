@@ -2,7 +2,8 @@
 import { MODELLI } from '../src/data/content.js'
 
 export const ROTTE = [
-    { percorso: '/', priorita: 1.0, frequenza: 'monthly' },
+    // `fotoApertura`: la foto dell'eroe, che prerender.mjs precarica nel <head>.
+    { percorso: '/', priorita: 1.0, frequenza: 'monthly', fotoApertura: 'illuminazione-calda-sui-monoliti' },
     { percorso: '/piscine-rocks-design', priorita: 0.9, frequenza: 'monthly' },
     { percorso: '/azienda', priorita: 0.7, frequenza: 'yearly' },
     { percorso: '/modelli', priorita: 0.9, frequenza: 'monthly' },

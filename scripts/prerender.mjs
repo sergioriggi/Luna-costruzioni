@@ -11,6 +11,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { ROTTE } from './rotte.mjs'
+import { SCHERMO_STRETTO, SCHERMO_LARGO } from '../src/lib/schermi.js'
 
 const ROOT = path.resolve('.')
 const DIST = path.join(ROOT, 'dist')
@@ -56,6 +57,43 @@ function ripulisciTemplate(template, testa) {
     return out
 }
 
+/**
+ * Precariche della foto d'apertura, scritte direttamente nel <head>.
+ *
+ * Senza, il browser scopre l'immagine solo quando legge il <body> — e, per il
+ * <picture>, dopo aver valutato la <source>: su telefono era il primo ritardo
+ * dell'LCP. Con la precarica parte insieme al CSS.
+ *
+ * Due <link> con media complementari, uno per variante, con lo stesso srcset
+ * e lo stesso sizes (100vw) che usa `Foto.jsx`: il browser ne usa uno solo, e
+ * quando poi incontra il <picture> riconosce il file già in arrivo. Mai
+ * entrambe le varianti sullo stesso schermo.
+ *
+ * Perché qui e non in un componente React: un <link rel="preload"> reso da
+ * React finiva nel <head> spostato da questo script, ma al client React lo
+ * cercava altrove e l'idratazione della home falliva (errore #418). La
+ * precarica serve solo all'HTML del primo caricamento: è il suo posto.
+ */
+const MEDIA = JSON.parse(await fs.readFile(path.join(ROOT, 'src', 'data', 'media.json'), 'utf8'))
+const BASE = (process.env.VITE_BASE || '/').replace(/\/$/, '')
+const conBase = srcset =>
+    srcset
+        .split(',')
+        .map(voce => {
+            const [url, ...resto] = voce.trim().split(/\s+/)
+            return [BASE + url, ...resto].join(' ')
+        })
+        .join(', ')
+
+export function precaricheFoto(slug) {
+    const m = MEDIA.find(x => x.slug === slug)
+    if (!m) throw new Error(`fotoApertura sconosciuta: ${slug}`)
+    const link = (srcset, media) =>
+        `<link rel="preload" as="image" type="image/webp"${media ? ` media="${media}"` : ''} imagesrcset="${conBase(srcset)}" imagesizes="100vw" fetchpriority="high">`
+    if (!m.verticale) return [link(m.srcset)]
+    return [link(m.verticale.srcset, SCHERMO_STRETTO), link(m.srcset, SCHERMO_LARGO)]
+}
+
 async function run() {
     // Vite emette il modello con il nome del file di ingresso: `index.html`.
     //
@@ -72,7 +110,16 @@ async function run() {
         const reso = render(rotta.percorso)
         const { testa, corpo } = separaTestaCorpo(reso)
 
-        const html = ripulisciTemplate(template, testa)
+        // Le precariche vanno prima del CSS e del JavaScript nel <head>: il
+        // browser le mette in coda nell'ordine in cui le legge.
+        const precariche = rotta.fotoApertura ? precaricheFoto(rotta.fotoApertura) : []
+        let modello = ripulisciTemplate(template, testa)
+        if (precariche.length) {
+            const primoAsset = modello.search(/<script type="module"|<link rel="(?:stylesheet|modulepreload)"/)
+            const dove = primoAsset >= 0 ? primoAsset : modello.indexOf(CHIUSURA_HEAD)
+            modello = modello.slice(0, dove) + precariche.join('\n    ') + '\n    ' + modello.slice(dove)
+        }
+        const html = modello
             .replace(CHIUSURA_HEAD, `  ${testa.join('\n    ')}\n  ${CHIUSURA_HEAD}`)
             .replace(SEGNAPOSTO, corpo)
 
