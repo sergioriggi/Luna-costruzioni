@@ -155,11 +155,34 @@ for (const file of pagine) {
 
 // 8-bis. Stesso controllo sulla sitemap: è il file che i motori leggono per
 // primo, e un <loc> malformato invalida l'intera voce.
+//
+// 8-ter. Sitemap e `noindex` devono dire la stessa cosa. Una pagina che si
+// dichiara `noindex, follow` (le note legali, /grazie, il 404) non deve stare
+// nella sitemap, e ogni pagina indicizzabile deve starci: è la regola con cui
+// privacy e cookie policy sono tenute fuori di proposito (vedi rotte.mjs).
+// In anteprima tutto esce `noindex, nofollow`: quel caso non conta.
 try {
     const sitemap = await fs.readFile(path.join(DIST, 'sitemap.xml'), 'utf8')
+    const inSitemap = new Set()
     for (const trovato of sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)) {
         if (!/^https?:\/\/[^\s]+$/.test(trovato[1])) {
             errori.push(`sitemap.xml: <loc> malformato («${trovato[1]}»).`)
+            continue
+        }
+        const percorso = new URL(trovato[1]).pathname.replace(/\/$/, '') || '/'
+        inSitemap.add(percorso)
+    }
+    for (const file of pagine) {
+        const rel = path.relative(DIST, file)
+        if (rel === '404.html') continue // copia di 404/index.html per Apache
+        const percorso = '/' + rel.replace(/\/?index\.html$/, '')
+        const html = await fs.readFile(file, 'utf8')
+        const esclusaDiProposito = /name="robots"[^>]*content="noindex, follow"/i.test(html)
+        if (esclusaDiProposito && inSitemap.has(percorso)) {
+            errori.push(`sitemap.xml elenca ${percorso}, che si dichiara noindex: una delle due va cambiata.`)
+        }
+        if (!esclusaDiProposito && !ANTEPRIMA && !inSitemap.has(percorso)) {
+            errori.push(`${percorso} è indicizzabile ma manca dalla sitemap.`)
         }
     }
 } catch {

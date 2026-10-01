@@ -22,6 +22,12 @@ export const ROTTE = [
     // Conferma dopo l'invio del modulo: fuori dalla sitemap e noindex, non è
     // una pagina da far trovare su Google. Serve come indirizzo di conversione.
     { percorso: '/grazie', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },
+    // Le note legali restano fuori dalla sitemap DI PROPOSITO (decisione del
+    // 1° ottobre 2026). Le pagine escono `noindex` e robots.txt le chiude: una
+    // sitemap che le elencasse direbbe ai motori «indicizzate questa» e la
+    // pagina stessa «no» — Search Console lo segnala come errore. La regola è
+    // una sola: una rotta sta nella sitemap se e solo se è indicizzabile, e
+    // `npm run verifica` la controlla in entrambi i versi.
     { percorso: '/privacy', priorita: 0.1, frequenza: 'yearly', esclusaDaSitemap: true },
     { percorso: '/cookie-policy', priorita: 0.1, frequenza: 'yearly', esclusaDaSitemap: true },
     { percorso: '/404', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },
