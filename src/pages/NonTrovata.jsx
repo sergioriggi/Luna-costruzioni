@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../lib/instradamento'
 import Seo from '../components/Seo'
 import { Sezione } from '../components/Sezione'
 import { PROVINCE } from '../data/site'

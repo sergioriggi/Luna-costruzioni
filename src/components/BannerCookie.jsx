@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../lib/instradamento'
 import { useLingua } from '../i18n/lingua'
 
 export const CHIAVE = 'luna-consenso-cookie'

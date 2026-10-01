@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from '../lib/instradamento'
 import { AZIENDA } from '../data/site'
 import { inviaLead, INVIATO, RIPIEGO_POSTA } from '../lib/invia-lead'
 import { useLingua } from '../i18n/lingua'

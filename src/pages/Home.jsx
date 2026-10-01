@@ -1,11 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../lib/instradamento'
 import Seo, { schemaAzienda, schemaFaq, schemaBriciole } from '../components/Seo'
+import { Suspense } from 'react'
 import Foto from '../components/Foto'
-import ModuloPagina from '../components/ModuloPagina'
+import pigra, { aInattivita } from '../lib/pigra'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 import BottoneTelefono from '../components/BottoneTelefono'
+
+/**
+ * Il modulo in fondo alla pagina si scarica a pagina caricata, quando il
+ * browser è libero: è lontano dalla piega e non deve contendere banda e
+ * processore alla foto d'apertura. Il suo HTML c'è comunque da subito
+ * (pre-renderizzato); diventa interattivo appena arriva il codice.
+ */
+const ModuloPagina = pigra(() => import('../components/ModuloPagina'), { attendi: aInattivita })
 
 /*
  * Pagina iniziale: riproduce il file approvato `Luna_Costruzioni.dc.html`,
@@ -540,7 +549,9 @@ export default function Home() {
                         </BottoneWhatsApp>
                     </div>
                 </div>
-                <ModuloPagina />
+                <Suspense fallback={null}>
+                    <ModuloPagina />
+                </Suspense>
             </section>
 
             {/* Il ruolo di concessionario, per esteso: la tecnologia è della casa madre. */}

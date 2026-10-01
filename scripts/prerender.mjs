@@ -107,7 +107,7 @@ async function run() {
     const { render } = await import(SSR)
 
     for (const rotta of ROTTE) {
-        const reso = render(rotta.percorso)
+        const reso = await render(rotta.percorso)
         const { testa, corpo } = separaTestaCorpo(reso)
 
         // Le precariche vanno prima del CSS e del JavaScript nel <head>: il

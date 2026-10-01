@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation } from '../lib/instradamento'
 import { linkWhatsApp, etichettaPagina } from '../lib/whatsapp'
 import { segnalaConversione } from '../lib/conversione'
 

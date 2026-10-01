@@ -60,4 +60,3 @@ export default function Foto({ slug, className = '', sizes = '100vw', priority =
         </picture>
     )
 }
-

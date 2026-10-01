@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../lib/instradamento'
 import Rivela from './Rivela'
 import BottoneWhatsApp from './BottoneWhatsApp'
 

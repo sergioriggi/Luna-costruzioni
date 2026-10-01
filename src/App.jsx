@@ -1,30 +1,54 @@
-import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Suspense, useEffect } from 'react'
+import { Routes, Route, useLocation, matchPath } from './lib/instradamento'
+import pigra from './lib/pigra'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AzioniRapide from './components/AzioniRapide'
 import BannerCookie from './components/BannerCookie'
 import Home from './pages/Home'
-import Tecnologia from './pages/Tecnologia'
-import Modelli from './pages/Modelli'
-import Modello from './pages/Modello'
-import Azienda from './pages/Azienda'
-import Sabbie from './pages/Sabbie'
-import Giardini from './pages/Giardini'
-import HotelResort from './pages/HotelResort'
-import QuantoCosta from './pages/QuantoCosta'
-import ConfrontoCemento from './pages/ConfrontoCemento'
-import GalleriaPagina from './pages/GalleriaPagina'
-import ComeLavoriamo from './pages/ComeLavoriamo'
-import Faq from './pages/Faq'
-import Contatti from './pages/Contatti'
-import Sicilia from './pages/Sicilia'
-import VecchiaProvincia from './pages/VecchiaProvincia'
-import Privacy from './pages/Privacy'
-import Cookie from './pages/Cookie'
 import Grazie from './pages/Grazie'
-import NonTrovata from './pages/NonTrovata'
 import { FornitoreLingua } from './i18n/lingua'
+
+/**
+ * Le rotte del sito.
+ *
+ * Solo la home (e /grazie, la pagina di conversione, che non va toccata) sta
+ * nel JavaScript principale: ogni altra pagina è un pezzo a parte, scaricato
+ * quando serve. Chi apre il sito dalla home non paga il codice di diciotto
+ * pagine che magari non vedrà. Vedi `src/lib/pigra.jsx` per come resta intatta
+ * l'idratazione delle pagine pre-renderizzate.
+ *
+ * L'ordine conta: le rotte si confrontano dall'alto, la prima che combacia
+ * vince (`/piscine-rocks-design/sicilia` prima di `/:provincia`).
+ */
+const ROTTE = [
+    ['/', Home],
+    ['/piscine-rocks-design', pigra(() => import('./pages/Tecnologia'))],
+    ['/azienda', pigra(() => import('./pages/Azienda'))],
+    ['/modelli', pigra(() => import('./pages/Modelli'))],
+    ['/modelli/:modello', pigra(() => import('./pages/Modello'))],
+    ['/sabbie', pigra(() => import('./pages/Sabbie'))],
+    ['/giardini-e-opere-in-pietra', pigra(() => import('./pages/Giardini'))],
+    ['/hotel-e-resort', pigra(() => import('./pages/HotelResort'))],
+    ['/quanto-costa', pigra(() => import('./pages/QuantoCosta'))],
+    ['/piscina-in-cemento-o-rocks-design', pigra(() => import('./pages/ConfrontoCemento'))],
+    ['/galleria', pigra(() => import('./pages/GalleriaPagina'))],
+    ['/come-lavoriamo', pigra(() => import('./pages/ComeLavoriamo'))],
+    ['/domande-frequenti', pigra(() => import('./pages/Faq'))],
+    ['/contatti', pigra(() => import('./pages/Contatti'))],
+    ['/piscine-rocks-design/sicilia', pigra(() => import('./pages/Sicilia'))],
+    ['/piscine-rocks-design/:provincia', pigra(() => import('./pages/VecchiaProvincia'))],
+    ['/grazie', Grazie],
+    ['/privacy', pigra(() => import('./pages/Privacy'))],
+    ['/cookie-policy', pigra(() => import('./pages/Cookie'))],
+    ['*', pigra(() => import('./pages/NonTrovata'))],
+]
+
+/** Scarica il codice della pagina che risponde a `pathname`, se è pigra. */
+export function precaricaRotta(pathname) {
+    const [, Pagina] = ROTTE.find(([percorso]) => matchPath(percorso, pathname))
+    return Pagina.precarica?.() ?? Promise.resolve()
+}
 
 /**
  * Riporta in cima a ogni cambio di rotta. Con un'ancora (`/piscine-rocks-design/sicilia#enna`)
@@ -60,28 +84,16 @@ export default function App() {
             <InizioPagina />
             <Header />
             <main id="contenuto" className="flex-1 pb-16 sm:pb-0">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/piscine-rocks-design" element={<Tecnologia />} />
-                    <Route path="/azienda" element={<Azienda />} />
-                    <Route path="/modelli" element={<Modelli />} />
-                    <Route path="/modelli/:modello" element={<Modello />} />
-                    <Route path="/sabbie" element={<Sabbie />} />
-                    <Route path="/giardini-e-opere-in-pietra" element={<Giardini />} />
-                    <Route path="/hotel-e-resort" element={<HotelResort />} />
-                    <Route path="/quanto-costa" element={<QuantoCosta />} />
-                    <Route path="/piscina-in-cemento-o-rocks-design" element={<ConfrontoCemento />} />
-                    <Route path="/galleria" element={<GalleriaPagina />} />
-                    <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />
-                    <Route path="/domande-frequenti" element={<Faq />} />
-                    <Route path="/contatti" element={<Contatti />} />
-                    <Route path="/piscine-rocks-design/sicilia" element={<Sicilia />} />
-                    <Route path="/piscine-rocks-design/:provincia" element={<VecchiaProvincia />} />
-                    <Route path="/grazie" element={<Grazie />} />
-                    <Route path="/privacy" element={<Privacy />} />
-                    <Route path="/cookie-policy" element={<Cookie />} />
-                    <Route path="*" element={<NonTrovata />} />
-                </Routes>
+                {/* Il confine serve alla navigazione verso una pagina non ancora
+                    scaricata: la rotta cambia dentro una transizione, quindi a
+                    schermo resta la pagina di prima finché non arriva il codice. */}
+                <Suspense fallback={null}>
+                    <Routes>
+                        {ROTTE.map(([percorso, Pagina]) => (
+                            <Route key={percorso} path={percorso} element={<Pagina />} />
+                        ))}
+                    </Routes>
+                </Suspense>
             </main>
             <Footer />
             <AzioniRapide />

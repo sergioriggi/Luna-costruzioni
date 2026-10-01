@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import App from './App.jsx'
+import { BrowserRouter } from './lib/instradamento'
+import App, { precaricaRotta } from './App.jsx'
 import './index.css'
 // Nocturne definisce i token e le classi del sistema visivo, `pagina.css`
 // l'impaginazione del file approvato: entrambi dopo Tailwind, così vincono.
@@ -26,8 +26,21 @@ const albero = (
 
 // Le pagine sono pre-renderizzate in fase di build: se il markup è già
 // presente si idrata, altrimenti si esegue un render classico.
-if (contenitore.hasChildNodes()) {
-    hydrateRoot(contenitore, albero)
-} else {
-    createRoot(contenitore).render(albero)
-}
+//
+// Prima di idratare si scarica il codice della pagina corrente (le pagine
+// diverse dalla home sono pezzi separati, vedi App.jsx): così il primo render
+// del client produce lo stesso markup del server. Se il pezzo non arriva —
+// rete persa a metà — si idrata lo stesso: la pagina resta quella del server
+// e React ritenta quando il codice c'è.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+const percorso = window.location.pathname.slice(base.length) || '/'
+
+precaricaRotta(percorso)
+    .catch(() => {})
+    .then(() => {
+        if (contenitore.hasChildNodes()) {
+            hydrateRoot(contenitore, albero)
+        } else {
+            createRoot(contenitore).render(albero)
+        }
+    })

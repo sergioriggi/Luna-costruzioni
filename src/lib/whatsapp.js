@@ -1,5 +1,5 @@
 import { AZIENDA, NAV, NAV_SECONDARIA, PROVINCE } from '../data/site'
-import { MODELLI } from '../data/content'
+import { MODELLI } from '../data/modelli'
 
 /**
  * Il link di WhatsApp, costruito in un posto solo.

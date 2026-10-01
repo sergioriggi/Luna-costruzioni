@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../lib/instradamento'
 import { AZIENDA, ROCKS_DESIGN, NAV, NAV_SECONDARIA, PROVINCE, SOCIAL } from '../data/site'
 import { useLingua, SelettoreLingua } from '../i18n/lingua'
 import BottoneTelefono from './BottoneTelefono'
