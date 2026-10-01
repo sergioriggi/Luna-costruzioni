@@ -14,8 +14,8 @@ export default function ComeLavoriamo() {
     return (
         <>
             <Seo
-                titolo="Come lavoriamo, dal sopralluogo alla consegna | Luna Costruzioni, Sicilia"
-                descrizione="Cinque passaggi per la tua Piscina Rocks Design in Sicilia: sopralluogo, progetto sartoriale, pratiche e permessi, realizzazione, consegna e assistenza. Un unico referente."
+                titolo="Come costruiamo una piscina in Sicilia | Luna Costruzioni"
+                descrizione="Chiavi in mano, cinque fasi: rilievo e disegno, scavi con mezzi nostri, posa in Tecnologia Rocks Design®, impianti, collaudo. Consegna a vasca piena."
                 percorso="/come-lavoriamo"
                 schema={schemaBriciole(BRICIOLE)}
             />

@@ -50,8 +50,8 @@ export default function Sicilia() {
     return (
         <>
             <Seo
-                titolo="Piscine Rocks Design in Sicilia, nelle nove province | Luna Costruzioni"
-                descrizione="Piscine con spiaggia in sabbia e pareti in roccia in tutta la Sicilia: Palermo, Catania, Messina, Siracusa, Ragusa, Trapani, Agrigento, Caltanissetta, Enna. Permessi, costi e cosa conta in ogni provincia. Luna Costruzioni S.r.l.s., concessionario autorizzato Piscine Rocks Design."
+                titolo="Piscine Rocks Design nelle nove province | Luna Costruzioni"
+                descrizione="Nove province: cosa cambia in Sicilia per una piscina con spiaggia in sabbia e pareti in roccia, tra roccia lavica, calcare, vento e pendenze."
                 percorso={PERCORSO_SICILIA}
                 schema={[
                     schemaBriciole(BRICIOLE),

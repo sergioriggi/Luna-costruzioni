@@ -15,8 +15,8 @@ export default function Tecnologia() {
     return (
         <>
             <Seo
-                titolo="Come è fatta una piscina di sabbia | Luna Costruzioni, Sicilia"
-                descrizione="Come è fatta una piscina di sabbia in Tecnologia Rocks Design®: pareti in massi monolitici, fondale in sabbia naturale, nessun cemento armato. Differenze con biopiscine e piscine tradizionali. Luna Costruzioni S.r.l.s., concessionario autorizzato per la Sicilia."
+                titolo="Com’è fatta una Piscina Rocks Design | Luna Costruzioni"
+                descrizione="Pareti in massi monolitici, fondale in sabbia naturale, niente cemento armato: la Tecnologia Rocks Design® spiegata dal concessionario per la Sicilia."
                 percorso="/piscine-rocks-design"
                 immagine="monolite-al-tramonto-1280.jpg"
                 schema={[

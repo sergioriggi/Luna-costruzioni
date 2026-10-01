@@ -81,8 +81,8 @@ export default function ConfrontoCemento() {
     return (
         <>
             <Seo
-                titolo="Piscina in cemento o Piscina Rocks Design? Il confronto | Luna Costruzioni, Sicilia"
-                descrizione="Confronto onesto fra una piscina tradizionale in cemento e una Piscina Rocks Design: costi, tempi, permessi, manutenzione e forma. Compreso dove conviene il cemento. Luna Costruzioni S.r.l.s., concessionario autorizzato per la Sicilia."
+                titolo="Piscina in cemento o Piscina Rocks Design | Luna Costruzioni"
+                descrizione="Cemento o Rocks Design: costi, tempi, permessi e forma, dove vince il cemento (corsie, giardini piccoli) e chi costruisce le due piscine in Sicilia."
                 percorso="/piscina-in-cemento-o-rocks-design"
                 immagine="spiaggia-di-sabbia-privata-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_CONFRONTO)]}

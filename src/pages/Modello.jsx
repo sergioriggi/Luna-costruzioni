@@ -23,8 +23,8 @@ export default function Modello() {
     return (
         <>
             <Seo
-                titolo={`${m.nomeCompleto}: piscina con spiaggia in sabbia | Luna Costruzioni, Sicilia`}
-                descrizione={`${m.sintesi} Realizzato in Tecnologia Rocks Design® da Luna Costruzioni S.r.l.s., concessionario autorizzato per la Sicilia. Sopralluogo e preventivo gratuiti.`}
+                titolo={m.seo.titolo}
+                descrizione={m.seo.descrizione}
                 percorso={`/modelli/${m.slug}`}
                 immagine={`${m.copertina}-1280.jpg`}
                 schema={[

@@ -249,8 +249,8 @@ export default function Home() {
     return (
         <div className="pg">
             <Seo
-                titolo="Luna Costruzioni S.r.l.s. — Concessionario Autorizzato Piscine Rocks Design in Sicilia"
-                descrizione="Luna Costruzioni S.r.l.s., impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: progetto, scavi, realizzazione, messa in opera e collaudo chiavi in mano. Sopralluogo gratuito in tutta l'isola."
+                titolo="Luna Costruzioni | Piscine Rocks Design in tutta la Sicilia"
+                descrizione="Impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: piscina con spiaggia in sabbia chiavi in mano, scavi con mezzi propri."
                 percorso="/"
                 schema={[
                     schemaAzienda(),

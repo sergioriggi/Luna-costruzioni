@@ -89,6 +89,11 @@ export const ELEMENTI = [
 export const MODELLI = [
     {
         slug: 'caraibi',
+        /** <title> (≤60) e description (≤150) della pagina del modello. */
+        seo: {
+            titolo: 'Modello Caraibi: piscina, sabbia e palme | Luna Costruzioni',
+            descrizione: 'Spiaggia larga in sabbia Bianco o Giallo, palme e banani, acqua turchese o verde: il Modello Caraibi è per giardini ampi e soleggiati in Sicilia.',
+        },
         nome: 'Caraibi',
         nomeCompleto: 'Modello Caraibi',
         claim: 'Sabbia chiara, palme, acqua turchese',
@@ -115,6 +120,11 @@ export const MODELLI = [
     },
     {
         slug: 'mediterranea',
+        /** <title> (≤60) e description (≤150) della pagina del modello. */
+        seo: {
+            titolo: 'Modello Mediterranea, piscina tra ulivi | Luna Costruzioni',
+            descrizione: 'Ulivi, pietra chiara, acqua sui verdi: il Modello Mediterranea è la piscina con spiaggia in sabbia Giallo o Ticino per masserie e agrumeti di Sicilia.',
+        },
         nome: 'Mediterranea',
         nomeCompleto: 'Modello Mediterranea',
         claim: 'Ulivi, pietra chiara, profumi',
@@ -139,6 +149,11 @@ export const MODELLI = [
     },
     {
         slug: 'alpi',
+        /** <title> (≤60) e description (≤150) della pagina del modello. */
+        seo: {
+            titolo: 'Modello Alpi: piscina con acqua smeraldo | Luna Costruzioni',
+            descrizione: 'Roccia in primo piano, ghiaietto sui bordi, essenze basse, sabbia Ticino e acqua smeraldo: il Modello Alpi regge pendii e giardini piccoli in Sicilia.',
+        },
         nome: 'Alpi',
         nomeCompleto: 'Modello Alpi',
         claim: 'Roccia, ghiaietto, acqua smeraldo',

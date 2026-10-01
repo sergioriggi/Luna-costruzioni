@@ -12,8 +12,8 @@ export default function Faq() {
     return (
         <>
             <Seo
-                titolo="Domande frequenti | Luna Costruzioni, Sicilia"
-                descrizione="Permessi, costi, manutenzione, tempi di realizzazione: le risposte alle domande più frequenti sulle Piscine Rocks Design in Sicilia."
+                titolo="Domande frequenti sulla piscina di sabbia | Luna Costruzioni"
+                descrizione="Serve il permesso per una piscina di sabbia? Quanto costa? La sabbia intorbidisce l’acqua? È una biopiscina? Le risposte per chi vive in Sicilia."
                 percorso="/domande-frequenti"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ)]}
             />

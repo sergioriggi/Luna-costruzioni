@@ -50,7 +50,7 @@ export default function Giardini() {
         <>
             <Seo
                 titolo="Giardini e opere in pietra in Sicilia | Luna Costruzioni"
-                descrizione="Muri a secco, pavimentazioni in pietra, terrazzamenti, verde e illuminazione esterna. Luna Costruzioni S.r.l.s. progetta e realizza giardini e opere in pietra in tutta la Sicilia, anche indipendentemente dalla piscina."
+                descrizione="Muri a secco e di contenimento, terrazzamenti, pavimentazioni in pietra, verde, pergolati e luci. Anche senza piscina, con mezzi e squadre nostre."
                 percorso="/giardini-e-opere-in-pietra"
                 immagine="bordo-in-legno-e-ciottoli-1280.jpg"
                 schema={[

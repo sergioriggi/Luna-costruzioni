@@ -13,8 +13,8 @@ export default function GalleriaPagina() {
     return (
         <>
             <Seo
-                titolo="Galleria Piscine Rocks Design | Luna Costruzioni, Sicilia"
-                descrizione="Fotografie di Piscine Rocks Design: monoliti, sabbie naturali, cascate, aree idromassaggio e illuminazione notturna. Realizzazioni in Tecnologia Rocks Design®."
+                titolo="Foto di Piscine Rocks Design | Luna Costruzioni, Sicilia"
+                descrizione="Foto del produttore Piscine Rocks Design: massi, spiagge in sabbia, cascate, idromassaggio, luci notturne. Il prodotto che costruiamo per la Sicilia."
                 percorso="/galleria"
                 schema={schemaBriciole(BRICIOLE)}
             />

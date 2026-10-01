@@ -134,7 +134,18 @@ for (const file of pagine) {
         errori.push(`${rel}: la zona di riferimento (${AZIENDA.zona}) non è citata.`)
     }
 
-    // 8. Gli indirizzi dichiarati devono essere URL, non testo.
+    // 8. <title> e description dentro i limiti che Google mostra per intero:
+    // 60 e 150 caratteri. Oltre, il risultato esce troncato con i puntini e
+    // la parte che restava fuori — spesso il nome dell'impresa — non si legge.
+    // Si misura con `.length`, come fa il browser.
+    const titolo = (html.match(/<title>([^<]*)<\/title>/i) ?? [])[1] ?? ''
+    const descrizione = (html.match(/<meta\s+name="description"\s+content="([^"]*)"/i) ?? [])[1] ?? ''
+    if (!titolo) errori.push(`${rel}: manca il <title>.`)
+    else if (titolo.length > 60) errori.push(`${rel}: <title> di ${titolo.length} caratteri, il massimo è 60.`)
+    if (!descrizione) errori.push(`${rel}: manca la meta description.`)
+    else if (descrizione.length > 150) errori.push(`${rel}: description di ${descrizione.length} caratteri, il massimo è 150.`)
+
+    // 9. Gli indirizzi dichiarati devono essere URL, non testo.
     // Una VITE_SITE_URL corrotta è arrivata in produzione senza far rumore:
     // conteneva l'intera riga di istruzioni, e siccome *conteneva* un URL
     // plausibile la build è passata. Ogni canonical e ogni og:url portavano
@@ -153,10 +164,10 @@ for (const file of pagine) {
     }
 }
 
-// 8-bis. Stesso controllo sulla sitemap: è il file che i motori leggono per
+// 9-bis. Stesso controllo sulla sitemap: è il file che i motori leggono per
 // primo, e un <loc> malformato invalida l'intera voce.
 //
-// 8-ter. Sitemap e `noindex` devono dire la stessa cosa. Una pagina che si
+// 9-ter. Sitemap e `noindex` devono dire la stessa cosa. Una pagina che si
 // dichiara `noindex, follow` (le note legali, /grazie, il 404) non deve stare
 // nella sitemap, e ogni pagina indicizzabile deve starci: è la regola con cui
 // privacy e cookie policy sono tenute fuori di proposito (vedi rotte.mjs).
