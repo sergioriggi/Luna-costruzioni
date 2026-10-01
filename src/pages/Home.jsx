@@ -408,7 +408,7 @@ export default function Home() {
                             key={voce.slug}
                             slug={voce.slug}
                             className={voce.doppia ? 'pg-doppia' : ''}
-                            sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 50vw, 33vw"
                         />
                     ))}
                 </div>

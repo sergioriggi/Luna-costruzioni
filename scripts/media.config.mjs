@@ -298,5 +298,5 @@ export const PHOTOS = [
     },
 ]
 
-export const WIDTHS = [640, 960, 1280, 1920]
+export const WIDTHS = [480, 640, 960, 1280, 1920]
 export const FALLBACK_WIDTH = 1280
