@@ -36,7 +36,20 @@
 
 export const SOURCE_DIR = 'media-sources/foto'
 
-/** @type {{slug:string,file:string,alt:string,caption?:string,tags:string[],hero?:boolean}[]} */
+/**
+ * `verticale` (facoltativo) chiede alla pipeline anche un ritaglio verticale
+ * dello stesso scatto, pubblicato come `<slug>-verticale-<w>.webp`: serve a
+ * chi mostra la foto in una scatola alta e stretta (il telefono) senza fargli
+ * scaricare l'intera orizzontale per poi buttarne via due terzi.
+ *  - proporzione: [larghezza, altezza] del ritaglio, es. [2, 3];
+ *  - larghezze:   larghezze pubblicate, in px;
+ *  - posizione:   dove tagliare (`position`/`gravity` di sharp: 'centre',
+ *                 'attention', 'entropy', 'left', 'top'…).
+ * Il punto di rottura a cui il browser sceglie il ritaglio non sta qui ma nel
+ * componente che lo usa (`Foto.jsx`).
+ *
+ * @type {{slug:string,file:string,alt:string,caption?:string,tags:string[],hero?:boolean,noWatermark?:boolean,verticale?:{proporzione:[number,number],larghezze:number[],posizione:string}}[]}
+ */
 export const PHOTOS = [
     {
         slug: 'oasi-aerea-sabbia-bianca',
@@ -118,6 +131,15 @@ export const PHOTOS = [
         alt: 'Monoliti illuminati con luce calda attorno a una piscina Rocks Design',
         caption: 'A sera, luce calda sui massi del bordo e luce fredda sotto l’acqua.',
         tags: ['notte', 'monoliti'],
+        // È l'apertura della home. Su telefono (≤900px) la scatola è circa 2:3
+        // e `object-fit: cover` butta via i due terzi dell'orizzontale: meglio
+        // un ritaglio verticale dedicato. Le larghezze sono 1× e 2× di un
+        // telefono da 390–430px; ci si ferma al 2× DI PROPOSITO anche per gli
+        // schermi 3×, perché la foto sta sotto il velo (`.pg-eroe-velo`, 68–92%
+        // di copertura) e il dettaglio in più non si vedrebbe: costerebbe solo
+        // byte sul primo caricamento. Il taglio al centro tiene in quadro il
+        // monolite illuminato a sinistra, la vasca e i massi caldi a destra.
+        verticale: { proporzione: [2, 3], larghezze: [420, 840], posizione: 'centre' },
     },
     {
         slug: 'solarium-in-legno',

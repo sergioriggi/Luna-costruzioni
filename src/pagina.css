@@ -86,6 +86,10 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 
 .pg-eroe { position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; }
 .pg-eroe-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Quando Foto.jsx avvolge l'<img> in un <picture> (ritaglio verticale per il
+   telefono), il contenitore non deve diventare un figlio flex di .pg-eroe: lo
+   si fa sparire dal layout e l'<img> resta posato su `inset: 0` come prima. */
+.pg-eroe picture { display: contents; }
 .pg-eroe-velo {
     position: absolute; inset: 0;
     background: linear-gradient(75deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 38%, transparent 78%);

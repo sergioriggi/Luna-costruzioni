@@ -24,6 +24,9 @@ import path from 'path'
 import { PHOTOS } from './media.config.mjs'
 import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE } from '../src/data/site.js'
 
+/** Nomi di file ammessi in `/media/` (senza larghezza ed estensione). */
+const NOMI_AMMESSI = new Set(PHOTOS.flatMap(p => (p.verticale ? [p.slug, `${p.slug}-verticale`] : [p.slug])))
+
 const DIST = path.resolve('./dist')
 
 /**
@@ -101,9 +104,10 @@ for (const file of pagine) {
         }
     }
 
-    // 4. immagini solo dalla whitelist
+    // 4. immagini solo dalla whitelist: lo slug di ogni foto, più
+    //    «<slug>-verticale» per chi ha dichiarato il ritaglio verticale
     for (const trovato of html.matchAll(/\/media\/([a-z0-9-]+)-\d+\.(webp|jpg)/g)) {
-        if (!PHOTOS.some(p => p.slug === trovato[1])) {
+        if (!NOMI_AMMESSI.has(trovato[1])) {
             errori.push(`${rel}: immagine fuori whitelist (${trovato[1]}).`)
         }
     }

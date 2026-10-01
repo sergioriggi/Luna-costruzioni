@@ -350,7 +350,16 @@
         "h": 1440
       }
     ],
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoUAA8APwFqrE6rJiQiMAgBYCAJYwCdMoMftE5M1M6tevtzql5KAAD+5Eyjn5nvjADIe2PF83i2COGK7VEB3MmK7FOvQanRBS/vNGIkPNoAAA=="
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoUAA8APwFqrE6rJiQiMAgBYCAJYwCdMoMftE5M1M6tevtzql5KAAD+5Eyjn5nvjADIe2PF83i2COGK7VEB3MmK7FOvQanRBS/vNGIkPNoAAA==",
+    "verticale": {
+      "width": 840,
+      "height": 1260,
+      "widths": [
+        420,
+        840
+      ],
+      "srcset": "/media/illuminazione-calda-sui-monoliti-verticale-420.webp 420w, /media/illuminazione-calda-sui-monoliti-verticale-840.webp 840w"
+    }
   },
   {
     "slug": "solarium-in-legno",
