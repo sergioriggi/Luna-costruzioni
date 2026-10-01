@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import './fonts-riserva.css';
 
 @tailwind base;
 @tailwind components;

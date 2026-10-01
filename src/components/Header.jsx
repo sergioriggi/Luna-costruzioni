@@ -38,11 +38,15 @@ export default function Header() {
             </a>
 
             <nav className="pg-nav" aria-label={t('Navigazione principale', 'Main navigation')}>
-                {ANCORE.map(voce => (
-                    <a key={voce.id} href={`${casa}#${voce.id}`} className="pg-nav-voce">
-                        {t(voce.label, voce.labelEn)}
-                    </a>
-                ))}
+                {/* Le ancore in una fascia propria: se lo spazio non basta
+                    scorrono di lato invece di andare a capo (vedi pagina.css). */}
+                <span className="pg-nav-ancore">
+                    {ANCORE.map(voce => (
+                        <a key={voce.id} href={`${casa}#${voce.id}`} className="pg-nav-voce">
+                            {t(voce.label, voce.labelEn)}
+                        </a>
+                    ))}
+                </span>
 
                 {/*
                   Direttiva Piscine Rocks Design: il logo di concessionario

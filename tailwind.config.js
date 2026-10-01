@@ -57,8 +57,8 @@ export default {
                 },
             },
             fontFamily: {
-                display: ['Inter', 'system-ui', 'sans-serif'],
-                sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+                display: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', 'sans-serif'],
+                sans: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
             },
             fontSize: {
                 // scala del blueprint

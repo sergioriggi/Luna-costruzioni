@@ -1,0 +1,41 @@
+/*
+ * Caratteri di riserva con le misure di Inter.
+ *
+ * Finché Inter non è arrivato il testo si disegna con un carattere di
+ * sistema; quando Inter arriva (`font-display: swap`) il testo va a capo in
+ * punti diversi e la pagina salta. Era lo spostamento misurato da PageSpeed
+ * (CLS 0,668 su desktop): sul server di prova il carattere di sistema era più
+ * largo di Inter, ogni paragrafo occupava più righe e al cambio tutto risaliva.
+ *
+ * Qui si dichiara un carattere locale riscalato perché occupi lo stesso
+ * spazio di Inter: larghezza media (`size-adjust`) e altezza di riga
+ * (`ascent`/`descent-override`). Al cambio il testo resta dov'era.
+ *
+ * I valori sono MISURATI, non copiati: larghezza media dei glifi di Inter 400
+ * e del carattere locale su un brano dei testi del sito, metriche verticali
+ * di Inter (ascent 1984, descent 494, unità 2048) divise per il fattore di
+ * scala. Si ripete il calcolo se cambia il carattere del sito.
+ *
+ * Due famiglie, perché un solo `size-adjust` non vale per caratteri diversi:
+ * il browser usa la prima di cui trova il file sul sistema.
+ */
+
+/* Arial e i suoi equivalenti metrici (Liberation Sans su Linux, Arimo). */
+@font-face {
+    font-family: 'Inter riserva';
+    src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Arimo');
+    size-adjust: 106.41%;
+    ascent-override: 91.04%;
+    descent-override: 22.67%;
+    line-gap-override: 0%;
+}
+
+/* DejaVu Sans: il carattere di sistema dei Linux senza Arial. */
+@font-face {
+    font-family: 'Inter riserva DejaVu';
+    src: local('DejaVu Sans'), local('DejaVuSans');
+    size-adjust: 94.17%;
+    ascent-override: 102.88%;
+    descent-override: 25.62%;
+    line-gap-override: 0%;
+}

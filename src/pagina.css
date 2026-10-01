@@ -44,18 +44,40 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-divider);
 }
-.pg-marchio { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--color-text); }
+.pg-marchio { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--color-text); flex-shrink: 0; }
 .pg-marchio-nome {
     font-family: var(--font-heading); font-weight: 500; font-size: 16px;
     letter-spacing: 0.14em; text-transform: uppercase;
 }
 .pg-marchio-riga { font-size: 11px; letter-spacing: 0.06em; color: var(--color-neutral-500); }
+/*
+ * La testata ha sempre la stessa altezza, qualunque carattere stia usando.
+ *
+ * Prima il menù andava a capo quando non ci stava, e fra 900 e 1400 px ci
+ * stava per pochi pixel: con Inter su due righe, con il carattere di sistema
+ * (prima che Inter arrivasse) su una. All'arrivo di Inter la testata passava
+ * da 51 a 91 px e tutta la pagina scendeva di 40: è il CLS 0,668 misurato da
+ * PageSpeed su ogni pagina. Ora niente va a capo: il nome non si spezza, e se
+ * le ancore non ci stanno scorrono di lato nella loro fascia. Il logo del
+ * concessionario e il telefono restano sempre visibili.
+ */
 .pg-nav {
     display: flex; align-items: center; gap: 22px;
     margin-left: auto; font-size: 13px;
-    flex-wrap: wrap; row-gap: 10px;
+    min-width: 0;
 }
-.pg-nav a, .pg-header .btn, .pg-nav span { white-space: nowrap; }
+.pg-nav-ancore {
+    display: flex; align-items: center; gap: 22px;
+    min-width: 0; overflow-x: auto; scrollbar-width: none;
+    /* Quando le ancore scorrono, l'ultima sfuma invece di apparire troncata. */
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+/* Da 1200 px in su le ancore ci stanno tutte (misurato): niente sfumatura. */
+@media (min-width: 1200px) { .pg-nav-ancore { mask-image: none; } }
+.pg-nav-ancore::-webkit-scrollbar { display: none; }
+.pg-nav a, .pg-header .btn, .pg-nav span, .pg-marchio-nome { white-space: nowrap; }
+.pg-concessionario, .pg-header .btn { flex-shrink: 0; }
+
 .pg-nav-voce { color: var(--color-neutral-400); text-decoration: none; }
 .pg-nav-voce:hover { color: var(--color-accent-300); }
 
@@ -80,6 +102,14 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-concessionario-nome {
     font-family: var(--font-heading); font-size: 13px;
     letter-spacing: 0.04em; color: var(--color-text);
+}
+
+/* Sotto i 1400 px la dicitura del concessionario lascerebbe il menù senza
+   spazio: resta il logo, e la dicitura per esteso è nel titolo del
+   collegamento e nel testo d'apertura (come su telefono). */
+/* (Dopo la regola di base della dicitura, altrimenti quella vincerebbe.) */
+@media (max-width: 1399px) {
+    .pg-concessionario-testo { display: none; }
 }
 
 /* ── sezione di apertura ──────────────────────────────────────────────── */
@@ -248,7 +278,10 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 
 @media (max-width: 900px) {
     .pg-header { padding: 12px 20px; gap: 16px; }
-    .pg-nav { gap: 16px; }
+    .pg-nav, .pg-nav-ancore { gap: 16px; }
+    /* Fra 701 e 900 px il nome a 16 px lascerebbe al menù troppo poco: con un
+       carattere di riserva largo il logo e il telefono uscirebbero di lato. */
+    .pg-marchio-nome { font-size: 14px; }
     .pg-eroe { min-height: 520px; }
     .pg-eroe-testo { padding: 0 20px 56px; }
     .pg-eroe-titolo { font-size: 34px; }
@@ -284,7 +317,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-header { flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
     .pg-marchio-nome { font-size: 14px; }
     .pg-nav { width: 100%; margin-left: 0; gap: 12px; }
-    .pg-nav-voce { display: none; }
+    .pg-nav-voce, .pg-nav-ancore { display: none; }
     /* Del marchio del concessionario resta il logo: la dicitura per esteso
        è nel titolo del collegamento e nel testo di apertura. */
     .pg-concessionario { margin-left: 0; }
