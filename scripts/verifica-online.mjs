@@ -258,7 +258,7 @@ riepilogo.push([sitemapOk, 'Sitemap', sitemap.stato === 200 ? `${attese} indiriz
  */
 const robots = await chiedi(`${ORIGINE}/robots.txt`)
 const chiudeTutto = /^\s*Disallow:\s*\/\s*$/m.test(robots.corpo)
-const nostro = /Anteprima su indirizzo provvisorio/.test(robots.corpo) || /Disallow:\s*\/privacy/.test(robots.corpo)
+const nostro = /Anteprima su indirizzo provvisorio/.test(robots.corpo) || /La scheda per gli assistenti conversazionali/.test(robots.corpo)
 let robotsOk = robots.stato === 200
 if (!robotsOk) {
     errori.push(`robots.txt risponde ${robots.stato}.`)

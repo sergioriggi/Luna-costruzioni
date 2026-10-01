@@ -57,9 +57,12 @@ ${voci
  *   direttiva. Il file si fa trovare perché è linkato e perché sta
  *   all'indirizzo convenzionale, non per quella riga.
  *
- * Le due pagine legali restano escluse anche qui: non aggiungono nulla a chi
- * cerca di capire che cosa facciamo, e un assistente che le citasse al posto
- * di una pagina di prodotto sprecherebbe la risposta.
+ * Nessun `Disallow` per /privacy e /cookie-policy, né qui né sotto: c'erano
+ * fino al 1° ottobre 2026, e impedivano proprio ciò che volevano ottenere.
+ * Una pagina bloccata da robots.txt non viene letta, quindi il suo
+ * `noindex` resta invisibile e l'indirizzo può comparire nei risultati lo
+ * stesso, scoperto dai link del piè di pagina. Ora i motori le leggono e
+ * trovano `noindex, follow`: escono dall'indice e i link si seguono.
  */
 const ASSISTENTI = [
     'GPTBot',
@@ -82,8 +85,6 @@ const ASSISTENTI = [
 const GRUPPO_ASSISTENTI = `# Assistenti conversazionali: ammessi di proposito.
 ${ASSISTENTI.map(a => `User-agent: ${a}`).join('\n')}
 Allow: /
-Disallow: /privacy
-Disallow: /cookie-policy
 `
 
 // Su indirizzo provvisorio il sito resta fuori dai motori di ricerca
@@ -94,8 +95,6 @@ Disallow: /
 `
     : `User-agent: *
 Allow: /
-Disallow: /privacy
-Disallow: /cookie-policy
 
 ${GRUPPO_ASSISTENTI}
 Sitemap: ${SITE_URL}/sitemap.xml
