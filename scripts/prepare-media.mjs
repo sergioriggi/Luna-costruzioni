@@ -71,7 +71,7 @@ const rifai = process.argv.includes('--rifai')
  * `resize` già impostato. Applica la regola incrementale: se il file c'è
  * e non si è chiesto `--rifai`, non lo tocca. Ritorna i nomi scritti.
  */
-async function codifica(ridimensionata, photo, nome, width, conJpeg) {
+async function codifica(ridimensionata, photo, nome, width, conJpeg, qualita = 74) {
     const webp = path.join(OUT_DIR, `${nome}.webp`)
     const jpg = path.join(OUT_DIR, `${nome}.jpg`)
     const daFare = []
@@ -84,7 +84,7 @@ async function codifica(ridimensionata, photo, nome, width, conJpeg) {
         : ridimensionata.composite([{ input: await watermarkFor(width), gravity: 'southeast' }])
 
     const pipeline = composited.clone()
-    if (daFare.includes('webp')) await pipeline.clone().webp({ quality: 74 }).toFile(webp)
+    if (daFare.includes('webp')) await pipeline.clone().webp({ quality: qualita }).toFile(webp)
     if (daFare.includes('jpg')) await pipeline.clone().jpeg({ quality: 80, mozjpeg: true }).toFile(jpg)
     return daFare.map(ext => `${nome}.${ext}`)
 }
@@ -126,7 +126,7 @@ async function run() {
         // a quella proporzione.
         let verticale = null
         if (photo.verticale) {
-            const { proporzione: [pw, ph], larghezze, posizione } = photo.verticale
+            const { proporzione: [pw, ph], larghezze, posizione, qualita } = photo.verticale
             // senza larghezze `Math.max()` darebbe -Infinity e il manifest
             // uscirebbe sbagliato in silenzio: meglio fermarsi subito
             if (!larghezze?.length) throw new Error(`${photo.slug}: \`verticale.larghezze\` è vuoto, servono una o più larghezze in px`)
@@ -140,7 +140,7 @@ async function run() {
                 const base = sharp(src).rotate().resize({ width: w, height: alto(w), fit: 'cover', position: posizione })
                 // Niente JPEG di riserva: la <source> che usa il ritaglio è solo
                 // WebP e l'<img> conserva come `src` il JPEG dell'orizzontale.
-                nuovi.push(...await codifica(base, photo, nomeV(w), w, false))
+                nuovi.push(...await codifica(base, photo, nomeV(w), w, false, qualita))
             }
             verticale = {
                 width: wMax,

@@ -44,11 +44,15 @@ export const SOURCE_DIR = 'media-sources/foto'
  *  - proporzione: [larghezza, altezza] del ritaglio, es. [2, 3];
  *  - larghezze:   larghezze pubblicate, in px;
  *  - posizione:   dove tagliare (`position`/`gravity` di sharp: 'centre',
- *                 'attention', 'entropy', 'left', 'top'…).
+ *                 'attention', 'entropy', 'left', 'top'…);
+ *  - qualita:     qualità WebP del ritaglio (facoltativa, 74 come le altre).
+ * Cambiando `qualita` o `posizione` i file vanno rifatti: la pipeline è
+ * incrementale, quindi si cancellano i `-verticale-*` e si rilancia
+ * `npm run media`.
  * Il punto di rottura a cui il browser sceglie il ritaglio non sta qui ma nel
  * componente che lo usa (`Foto.jsx`).
  *
- * @type {{slug:string,file:string,alt:string,caption?:string,tags:string[],hero?:boolean,noWatermark?:boolean,verticale?:{proporzione:[number,number],larghezze:number[],posizione:string}}[]}
+ * @type {{slug:string,file:string,alt:string,caption?:string,tags:string[],hero?:boolean,noWatermark?:boolean,verticale?:{proporzione:[number,number],larghezze:number[],posizione:string,qualita?:number}}[]}
  */
 export const PHOTOS = [
     {
@@ -139,7 +143,9 @@ export const PHOTOS = [
         // di copertura) e il dettaglio in più non si vedrebbe: costerebbe solo
         // byte sul primo caricamento. Il taglio al centro tiene in quadro il
         // monolite illuminato a sinistra, la vasca e i massi caldi a destra.
-        verticale: { proporzione: [2, 3], larghezze: [420, 840], posizione: 'centre' },
+        // Qualità 64 invece di 74 per lo stesso motivo del 2×: sotto il velo
+        // la differenza non si vede, e sull'apertura del telefono ogni KB è LCP.
+        verticale: { proporzione: [2, 3], larghezze: [420, 840], posizione: 'centre', qualita: 64 },
     },
     {
         slug: 'solarium-in-legno',
@@ -292,5 +298,5 @@ export const PHOTOS = [
     },
 ]
 
-export const WIDTHS = [640, 1280, 1920]
+export const WIDTHS = [640, 960, 1280, 1920]
 export const FALLBACK_WIDTH = 1280

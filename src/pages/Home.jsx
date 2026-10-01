@@ -336,7 +336,7 @@ export default function Home() {
                     <Foto
                         slug="oasi-con-pontile"
                         className="pg-piscine-foto"
-                        sizes="(max-width: 900px) 100vw, 45vw"
+                        sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
                         alt="Piscina Rocks Design con bordo in pietra e pontile in legno"
                     />
                     {/*
@@ -482,7 +482,7 @@ export default function Home() {
                     <Foto
                         slug="verde-tropicale-sull-acqua"
                         className="pg-sicilia-foto"
-                        sizes="(max-width: 900px) 100vw, 45vw"
+                        sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
                         alt="Piscina Rocks Design ultimata, con vegetazione affacciata sull’acqua"
                     />
                 </figure>

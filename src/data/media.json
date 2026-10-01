@@ -14,15 +14,20 @@
     "aspect": 1.7778,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/oasi-aerea-sabbia-bianca-1280.jpg",
-    "srcset": "/media/oasi-aerea-sabbia-bianca-640.webp 640w, /media/oasi-aerea-sabbia-bianca-1280.webp 1280w, /media/oasi-aerea-sabbia-bianca-1600.webp 1600w",
+    "srcset": "/media/oasi-aerea-sabbia-bianca-640.webp 640w, /media/oasi-aerea-sabbia-bianca-960.webp 960w, /media/oasi-aerea-sabbia-bianca-1280.webp 1280w, /media/oasi-aerea-sabbia-bianca-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 360
+      },
+      {
+        "w": 960,
+        "h": 540
       },
       {
         "w": 1280,
@@ -49,14 +54,19 @@
     "aspect": 0.6663,
     "widths": [
       640,
+      960,
       1066
     ],
     "fallback": "/media/palme-al-tramonto-1066.jpg",
-    "srcset": "/media/palme-al-tramonto-640.webp 640w, /media/palme-al-tramonto-1066.webp 1066w",
+    "srcset": "/media/palme-al-tramonto-640.webp 640w, /media/palme-al-tramonto-960.webp 960w, /media/palme-al-tramonto-1066.webp 1066w",
     "sizes": [
       {
         "w": 640,
         "h": 961
+      },
+      {
+        "w": 960,
+        "h": 1441
       },
       {
         "w": 1066,
@@ -79,15 +89,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/oasi-con-pontile-1280.jpg",
-    "srcset": "/media/oasi-con-pontile-640.webp 640w, /media/oasi-con-pontile-1280.webp 1280w, /media/oasi-con-pontile-1600.webp 1600w",
+    "srcset": "/media/oasi-con-pontile-640.webp 640w, /media/oasi-con-pontile-960.webp 960w, /media/oasi-con-pontile-1280.webp 1280w, /media/oasi-con-pontile-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -114,15 +129,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1920
     ],
     "fallback": "/media/villa-con-spiaggia-in-ghiaia-1280.jpg",
-    "srcset": "/media/villa-con-spiaggia-in-ghiaia-640.webp 640w, /media/villa-con-spiaggia-in-ghiaia-1280.webp 1280w, /media/villa-con-spiaggia-in-ghiaia-1920.webp 1920w",
+    "srcset": "/media/villa-con-spiaggia-in-ghiaia-640.webp 640w, /media/villa-con-spiaggia-in-ghiaia-960.webp 960w, /media/villa-con-spiaggia-in-ghiaia-1280.webp 1280w, /media/villa-con-spiaggia-in-ghiaia-1920.webp 1920w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -238,14 +258,19 @@
     "aspect": 0.7506,
     "widths": [
       640,
+      960,
       1201
     ],
     "fallback": "/media/cena-in-giardino-1201.jpg",
-    "srcset": "/media/cena-in-giardino-640.webp 640w, /media/cena-in-giardino-1201.webp 1201w",
+    "srcset": "/media/cena-in-giardino-640.webp 640w, /media/cena-in-giardino-960.webp 960w, /media/cena-in-giardino-1201.webp 1201w",
     "sizes": [
       {
         "w": 640,
         "h": 853
+      },
+      {
+        "w": 960,
+        "h": 1279
       },
       {
         "w": 1201,
@@ -267,14 +292,19 @@
     "aspect": 0.7506,
     "widths": [
       640,
+      960,
       1201
     ],
     "fallback": "/media/acqua-turchese-notturna-1201.jpg",
-    "srcset": "/media/acqua-turchese-notturna-640.webp 640w, /media/acqua-turchese-notturna-1201.webp 1201w",
+    "srcset": "/media/acqua-turchese-notturna-640.webp 640w, /media/acqua-turchese-notturna-960.webp 960w, /media/acqua-turchese-notturna-1201.webp 1201w",
     "sizes": [
       {
         "w": 640,
         "h": 853
+      },
+      {
+        "w": 960,
+        "h": 1279
       },
       {
         "w": 1201,
@@ -296,15 +326,20 @@
     "aspect": 0.7505,
     "widths": [
       640,
+      960,
       1280,
       1537
     ],
     "fallback": "/media/blu-della-sera-1280.jpg",
-    "srcset": "/media/blu-della-sera-640.webp 640w, /media/blu-della-sera-1280.webp 1280w, /media/blu-della-sera-1537.webp 1537w",
+    "srcset": "/media/blu-della-sera-640.webp 640w, /media/blu-della-sera-960.webp 960w, /media/blu-della-sera-1280.webp 1280w, /media/blu-della-sera-1537.webp 1537w",
     "sizes": [
       {
         "w": 640,
         "h": 853
+      },
+      {
+        "w": 960,
+        "h": 1279
       },
       {
         "w": 1280,
@@ -331,15 +366,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1920
     ],
     "fallback": "/media/illuminazione-calda-sui-monoliti-1280.jpg",
-    "srcset": "/media/illuminazione-calda-sui-monoliti-640.webp 640w, /media/illuminazione-calda-sui-monoliti-1280.webp 1280w, /media/illuminazione-calda-sui-monoliti-1920.webp 1920w",
+    "srcset": "/media/illuminazione-calda-sui-monoliti-640.webp 640w, /media/illuminazione-calda-sui-monoliti-960.webp 960w, /media/illuminazione-calda-sui-monoliti-1280.webp 1280w, /media/illuminazione-calda-sui-monoliti-1920.webp 1920w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -375,15 +415,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1920
     ],
     "fallback": "/media/solarium-in-legno-1280.jpg",
-    "srcset": "/media/solarium-in-legno-640.webp 640w, /media/solarium-in-legno-1280.webp 1280w, /media/solarium-in-legno-1920.webp 1920w",
+    "srcset": "/media/solarium-in-legno-640.webp 640w, /media/solarium-in-legno-960.webp 960w, /media/solarium-in-legno-1280.webp 1280w, /media/solarium-in-legno-1920.webp 1920w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -410,15 +455,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1920
     ],
     "fallback": "/media/spiaggia-di-sabbia-privata-1280.jpg",
-    "srcset": "/media/spiaggia-di-sabbia-privata-640.webp 640w, /media/spiaggia-di-sabbia-privata-1280.webp 1280w, /media/spiaggia-di-sabbia-privata-1920.webp 1920w",
+    "srcset": "/media/spiaggia-di-sabbia-privata-640.webp 640w, /media/spiaggia-di-sabbia-privata-960.webp 960w, /media/spiaggia-di-sabbia-privata-1280.webp 1280w, /media/spiaggia-di-sabbia-privata-1920.webp 1920w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -445,15 +495,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1920
     ],
     "fallback": "/media/bordo-in-legno-e-ciottoli-1280.jpg",
-    "srcset": "/media/bordo-in-legno-e-ciottoli-640.webp 640w, /media/bordo-in-legno-e-ciottoli-1280.webp 1280w, /media/bordo-in-legno-e-ciottoli-1920.webp 1920w",
+    "srcset": "/media/bordo-in-legno-e-ciottoli-640.webp 640w, /media/bordo-in-legno-e-ciottoli-960.webp 960w, /media/bordo-in-legno-e-ciottoli-1280.webp 1280w, /media/bordo-in-legno-e-ciottoli-1920.webp 1920w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -480,15 +535,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/ghiaietto-e-acqua-smeraldo-1280.jpg",
-    "srcset": "/media/ghiaietto-e-acqua-smeraldo-640.webp 640w, /media/ghiaietto-e-acqua-smeraldo-1280.webp 1280w, /media/ghiaietto-e-acqua-smeraldo-1600.webp 1600w",
+    "srcset": "/media/ghiaietto-e-acqua-smeraldo-640.webp 640w, /media/ghiaietto-e-acqua-smeraldo-960.webp 960w, /media/ghiaietto-e-acqua-smeraldo-1280.webp 1280w, /media/ghiaietto-e-acqua-smeraldo-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -515,15 +575,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/fondale-illuminato-1280.jpg",
-    "srcset": "/media/fondale-illuminato-640.webp 640w, /media/fondale-illuminato-1280.webp 1280w, /media/fondale-illuminato-1600.webp 1600w",
+    "srcset": "/media/fondale-illuminato-640.webp 640w, /media/fondale-illuminato-960.webp 960w, /media/fondale-illuminato-1280.webp 1280w, /media/fondale-illuminato-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -549,14 +614,19 @@
     "aspect": 0.8,
     "widths": [
       640,
+      960,
       1024
     ],
     "fallback": "/media/cascata-su-roccia-rossa-1024.jpg",
-    "srcset": "/media/cascata-su-roccia-rossa-640.webp 640w, /media/cascata-su-roccia-rossa-1024.webp 1024w",
+    "srcset": "/media/cascata-su-roccia-rossa-640.webp 640w, /media/cascata-su-roccia-rossa-960.webp 960w, /media/cascata-su-roccia-rossa-1024.webp 1024w",
     "sizes": [
       {
         "w": 640,
         "h": 800
+      },
+      {
+        "w": 960,
+        "h": 1200
       },
       {
         "w": 1024,
@@ -580,14 +650,19 @@
     "aspect": 1,
     "widths": [
       640,
+      960,
       1080
     ],
     "fallback": "/media/ombre-di-palme-sulla-sabbia-1080.jpg",
-    "srcset": "/media/ombre-di-palme-sulla-sabbia-640.webp 640w, /media/ombre-di-palme-sulla-sabbia-1080.webp 1080w",
+    "srcset": "/media/ombre-di-palme-sulla-sabbia-640.webp 640w, /media/ombre-di-palme-sulla-sabbia-960.webp 960w, /media/ombre-di-palme-sulla-sabbia-1080.webp 1080w",
     "sizes": [
       {
         "w": 640,
         "h": 640
+      },
+      {
+        "w": 960,
+        "h": 960
       },
       {
         "w": 1080,
@@ -610,15 +685,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/masso-luminoso-nell-acqua-1280.jpg",
-    "srcset": "/media/masso-luminoso-nell-acqua-640.webp 640w, /media/masso-luminoso-nell-acqua-1280.webp 1280w, /media/masso-luminoso-nell-acqua-1600.webp 1600w",
+    "srcset": "/media/masso-luminoso-nell-acqua-640.webp 640w, /media/masso-luminoso-nell-acqua-960.webp 960w, /media/masso-luminoso-nell-acqua-1280.webp 1280w, /media/masso-luminoso-nell-acqua-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -644,15 +724,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/riflessi-al-tramonto-1280.jpg",
-    "srcset": "/media/riflessi-al-tramonto-640.webp 640w, /media/riflessi-al-tramonto-1280.webp 1280w, /media/riflessi-al-tramonto-1600.webp 1600w",
+    "srcset": "/media/riflessi-al-tramonto-640.webp 640w, /media/riflessi-al-tramonto-960.webp 960w, /media/riflessi-al-tramonto-1280.webp 1280w, /media/riflessi-al-tramonto-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -678,15 +763,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/giardino-tropicale-1280.jpg",
-    "srcset": "/media/giardino-tropicale-640.webp 640w, /media/giardino-tropicale-1280.webp 1280w, /media/giardino-tropicale-1600.webp 1600w",
+    "srcset": "/media/giardino-tropicale-640.webp 640w, /media/giardino-tropicale-960.webp 960w, /media/giardino-tropicale-1280.webp 1280w, /media/giardino-tropicale-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -713,14 +803,19 @@
     "aspect": 0.6663,
     "widths": [
       640,
+      960,
       1066
     ],
     "fallback": "/media/cascata-e-punto-luce-1066.jpg",
-    "srcset": "/media/cascata-e-punto-luce-640.webp 640w, /media/cascata-e-punto-luce-1066.webp 1066w",
+    "srcset": "/media/cascata-e-punto-luce-640.webp 640w, /media/cascata-e-punto-luce-960.webp 960w, /media/cascata-e-punto-luce-1066.webp 1066w",
     "sizes": [
       {
         "w": 640,
         "h": 961
+      },
+      {
+        "w": 960,
+        "h": 1441
       },
       {
         "w": 1066,
@@ -742,15 +837,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/verde-tropicale-sull-acqua-1280.jpg",
-    "srcset": "/media/verde-tropicale-sull-acqua-640.webp 640w, /media/verde-tropicale-sull-acqua-1280.webp 1280w, /media/verde-tropicale-sull-acqua-1600.webp 1600w",
+    "srcset": "/media/verde-tropicale-sull-acqua-640.webp 640w, /media/verde-tropicale-sull-acqua-960.webp 960w, /media/verde-tropicale-sull-acqua-1280.webp 1280w, /media/verde-tropicale-sull-acqua-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -777,14 +877,19 @@
     "aspect": 0.6663,
     "widths": [
       640,
+      960,
       1066
     ],
     "fallback": "/media/palme-e-monoliti-1066.jpg",
-    "srcset": "/media/palme-e-monoliti-640.webp 640w, /media/palme-e-monoliti-1066.webp 1066w",
+    "srcset": "/media/palme-e-monoliti-640.webp 640w, /media/palme-e-monoliti-960.webp 960w, /media/palme-e-monoliti-1066.webp 1066w",
     "sizes": [
       {
         "w": 640,
         "h": 961
+      },
+      {
+        "w": 960,
+        "h": 1441
       },
       {
         "w": 1066,
@@ -806,15 +911,20 @@
     "aspect": 1.5009,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/monolite-al-tramonto-1280.jpg",
-    "srcset": "/media/monolite-al-tramonto-640.webp 640w, /media/monolite-al-tramonto-1280.webp 1280w, /media/monolite-al-tramonto-1600.webp 1600w",
+    "srcset": "/media/monolite-al-tramonto-640.webp 640w, /media/monolite-al-tramonto-960.webp 960w, /media/monolite-al-tramonto-1280.webp 1280w, /media/monolite-al-tramonto-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 426
+      },
+      {
+        "w": 960,
+        "h": 640
       },
       {
         "w": 1280,
@@ -841,14 +951,19 @@
     "aspect": 0.6663,
     "widths": [
       640,
+      960,
       1066
     ],
     "fallback": "/media/getto-d-acqua-1066.jpg",
-    "srcset": "/media/getto-d-acqua-640.webp 640w, /media/getto-d-acqua-1066.webp 1066w",
+    "srcset": "/media/getto-d-acqua-640.webp 640w, /media/getto-d-acqua-960.webp 960w, /media/getto-d-acqua-1066.webp 1066w",
     "sizes": [
       {
         "w": 640,
         "h": 961
+      },
+      {
+        "w": 960,
+        "h": 1441
       },
       {
         "w": 1066,
@@ -870,14 +985,19 @@
     "aspect": 0.6663,
     "widths": [
       640,
+      960,
       1066
     ],
     "fallback": "/media/acqua-in-movimento-1066.jpg",
-    "srcset": "/media/acqua-in-movimento-640.webp 640w, /media/acqua-in-movimento-1066.webp 1066w",
+    "srcset": "/media/acqua-in-movimento-640.webp 640w, /media/acqua-in-movimento-960.webp 960w, /media/acqua-in-movimento-1066.webp 1066w",
     "sizes": [
       {
         "w": 640,
         "h": 961
+      },
+      {
+        "w": 960,
+        "h": 1441
       },
       {
         "w": 1066,
@@ -899,15 +1019,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/idromassaggio-naturale-1280.jpg",
-    "srcset": "/media/idromassaggio-naturale-640.webp 640w, /media/idromassaggio-naturale-1280.webp 1280w, /media/idromassaggio-naturale-1600.webp 1600w",
+    "srcset": "/media/idromassaggio-naturale-640.webp 640w, /media/idromassaggio-naturale-960.webp 960w, /media/idromassaggio-naturale-1280.webp 1280w, /media/idromassaggio-naturale-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -934,15 +1059,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/area-benessere-vista-alto-1280.jpg",
-    "srcset": "/media/area-benessere-vista-alto-640.webp 640w, /media/area-benessere-vista-alto-1280.webp 1280w, /media/area-benessere-vista-alto-1600.webp 1600w",
+    "srcset": "/media/area-benessere-vista-alto-640.webp 640w, /media/area-benessere-vista-alto-960.webp 960w, /media/area-benessere-vista-alto-1280.webp 1280w, /media/area-benessere-vista-alto-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -969,15 +1099,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/oasi-con-pontile-e-palme-1280.jpg",
-    "srcset": "/media/oasi-con-pontile-e-palme-640.webp 640w, /media/oasi-con-pontile-e-palme-1280.webp 1280w, /media/oasi-con-pontile-e-palme-1600.webp 1600w",
+    "srcset": "/media/oasi-con-pontile-e-palme-640.webp 640w, /media/oasi-con-pontile-e-palme-960.webp 960w, /media/oasi-con-pontile-e-palme-1280.webp 1280w, /media/oasi-con-pontile-e-palme-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -1004,15 +1139,20 @@
     "aspect": 1.3333,
     "widths": [
       640,
+      960,
       1280,
       1600
     ],
     "fallback": "/media/sabbie-naturali-campioni-1280.jpg",
-    "srcset": "/media/sabbie-naturali-campioni-640.webp 640w, /media/sabbie-naturali-campioni-1280.webp 1280w, /media/sabbie-naturali-campioni-1600.webp 1600w",
+    "srcset": "/media/sabbie-naturali-campioni-640.webp 640w, /media/sabbie-naturali-campioni-960.webp 960w, /media/sabbie-naturali-campioni-1280.webp 1280w, /media/sabbie-naturali-campioni-1600.webp 1600w",
     "sizes": [
       {
         "w": 640,
         "h": 480
+      },
+      {
+        "w": 960,
+        "h": 720
       },
       {
         "w": 1280,
@@ -1039,14 +1179,19 @@
     "aspect": 0.75,
     "widths": [
       640,
+      960,
       1200
     ],
     "fallback": "/media/sabbie-naturali-granulometria-1200.jpg",
-    "srcset": "/media/sabbie-naturali-granulometria-640.webp 640w, /media/sabbie-naturali-granulometria-1200.webp 1200w",
+    "srcset": "/media/sabbie-naturali-granulometria-640.webp 640w, /media/sabbie-naturali-granulometria-960.webp 960w, /media/sabbie-naturali-granulometria-1200.webp 1200w",
     "sizes": [
       {
         "w": 640,
         "h": 853
+      },
+      {
+        "w": 960,
+        "h": 1280
       },
       {
         "w": 1200,
