@@ -50,13 +50,12 @@ ${voci
  *   rinuncia all'addestramento: ammetterli non cambia di una virgola la
  *   scansione, dichiara soltanto che non ci opponiamo all'uso dei contenuti.
  *   Innocuo e coerente con il resto, ma non è ciò che porta citazioni.
- * - `LLM-Content:` NON è una direttiva standard di robots.txt. Oggi non la
- *   legge nessun crawler; le righe sconosciute vengono ignorate, quindi non
- *   rompe niente. Sta qui perché costa zero ed è un'ipotesi ragionevole sul
- *   futuro — ma è una scommessa, non un meccanismo. Chi la ritrova fra un
- *   anno deve sapere che non ha mai fatto nulla di misurabile: il file
- *   `llms.txt` si fa trovare perché è linkato e perché sta all'indirizzo
- *   convenzionale, non per questa riga.
+ * - `LLM-Content:` NON è una direttiva standard di robots.txt: non la legge
+ *   nessun crawler. Per un periodo è stata emessa come riga vera, nella
+ *   speranza che lo diventasse; dal 1° ottobre 2026 sta in un commento, così
+ *   l'indirizzo di `llms.txt` resta scritto nel file senza spacciarsi per una
+ *   direttiva. Il file si fa trovare perché è linkato e perché sta
+ *   all'indirizzo convenzionale, non per quella riga.
  *
  * Le due pagine legali restano escluse anche qui: non aggiungono nulla a chi
  * cerca di capire che cosa facciamo, e un assistente che le citasse al posto
@@ -100,7 +99,8 @@ Disallow: /cookie-policy
 
 ${GRUPPO_ASSISTENTI}
 Sitemap: ${SITE_URL}/sitemap.xml
-LLM-Content: ${SITE_URL}/llms.txt
+# La scheda per gli assistenti conversazionali sta in ${SITE_URL}/llms.txt
+# («LLM-Content» non è una direttiva standard, quindi resta un commento).
 `
 
 await fs.mkdir(DIST, { recursive: true })
