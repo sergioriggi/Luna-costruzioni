@@ -29,6 +29,26 @@
  *    guardia qui sotto (`typeof window.gtag !== 'function'`) non è più il
  *    filtro del consenso; resta a coprire il caso in cui nessun
  *    identificatore sia configurato, cioè locale e anteprima.
+ *
+ * ── Due destinatari, due eventi ──────────────────────────────────────────
+ * Dal 2 ottobre 2026 l'invio del modulo parte due volte, una per ciascun
+ * sistema, perché i due contano cose diverse e non si vedevano a vicenda:
+ *
+ *  - `conversion` verso Google Ads (`send_to` = etichetta dell'azione): è ciò
+ *    su cui l'offerta automatica impara;
+ *  - `generate_lead` verso GA4 (`send_to` = ID di misurazione): è ciò che si
+ *    vede in Analytics, e il numero da confrontare con le richieste arrivate
+ *    in casella. Prima GA4 non riceveva nessun evento dal modulo: la
+ *    conversione andava solo ad Ads, e un azzeramento si leggeva male — non
+ *    si distingueva «nessuno ha scritto» da «il modulo non misura».
+ *
+ * Sono indipendenti: manca l'etichetta di Ads e GA4 conta lo stesso, manca
+ * l'ID di GA4 e Ads conta lo stesso. `generate_lead` è l'evento consigliato da
+ * Google per questo caso; per usarlo come obiettivo va segnato come evento
+ * chiave in Analytics (Amministrazione → Eventi), un passaggio del pannello.
+ * Senza `value`: il valore in euro è un segnaposto e in GA4 finirebbe nei
+ * ricavi come se fosse denaro. Solo per il modulo: telefono e WhatsApp sono
+ * clic, non richieste, e GA4 registra già i clic.
  */
 
 /**
@@ -58,6 +78,13 @@ const AZIONI = {
 const VALORE = Number(import.meta.env.VITE_GOOGLE_ADS_VALORE || 1)
 
 /**
+ * ID di misurazione di GA4, a cui va `generate_lead`. Letterale per lo stesso
+ * motivo di `AZIONI`. In produzione sta fra le variabili del pannello
+ * Hostinger, non in `.env.production`: vuoto in locale e in anteprima.
+ */
+const GA4 = import.meta.env.VITE_GA4_ID || ''
+
+/**
  * @param {'modulo'|'whatsapp'|'telefono'} azione
  *
  * Il valore in euro accompagna **solo** l'invio del modulo. Un clic su
@@ -72,19 +99,30 @@ const VALORE = Number(import.meta.env.VITE_GOOGLE_ADS_VALORE || 1)
  * Quella è una spunta nel pannello, non una riga di codice.
  */
 export function segnalaConversione(azione = 'modulo') {
-    const invio = AZIONI[azione]
-    if (!invio) return false
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return false
 
-    try {
-        window.gtag('event', 'conversion', {
-            send_to: invio,
-            ...(azione === 'modulo' ? { value: VALORE, currency: 'EUR' } : {}),
-        })
-        return true
-    } catch {
-        // Misurare non deve mai rompere un contatto: né l'invio del modulo, né
-        // l'apertura del telefono o di WhatsApp.
-        return false
+    // Ogni destinatario ha il proprio `try`: misurare non deve mai rompere un
+    // contatto — né l'invio del modulo, né l'apertura del telefono o di
+    // WhatsApp — e un errore verso uno non deve togliere l'altro.
+    let partito = false
+
+    const invio = AZIONI[azione]
+    if (invio) {
+        try {
+            window.gtag('event', 'conversion', {
+                send_to: invio,
+                ...(azione === 'modulo' ? { value: VALORE, currency: 'EUR' } : {}),
+            })
+            partito = true
+        } catch { /* ignorato */ }
     }
+
+    if (azione === 'modulo' && GA4) {
+        try {
+            window.gtag('event', 'generate_lead', { send_to: GA4 })
+            partito = true
+        } catch { /* ignorato */ }
+    }
+
+    return partito
 }
