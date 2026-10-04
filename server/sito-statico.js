@@ -92,6 +92,31 @@ export function montaSito(app, { cartellaSito, politicaContenuti }) {
     app.use(compression({ threshold: 1024 }))
 
     /**
+     * Un solo host, come la prima regola del .htaccess.
+     *
+     * Questo file è la traduzione riga per riga di `public/.htaccess` per
+     * quando il sito gira come applicazione Node: se una regola sta solo in
+     * uno dei due, le due modalità di hosting si comportano diversamente e il
+     * difetto si scopre cambiando modalità, cioè nel momento peggiore.
+     *
+     * Dietro un proxy l'host vero sta in `x-forwarded-host`, non in `host`.
+     * Il protocollo non si tocca, per la stessa ragione scritta nel .htaccess:
+     * il ciclo è impossibile perché la condizione cade appena l'host è quello
+     * giusto.
+     */
+    const HOST_CANONICO = 'www.lunacostruzioni.it'
+    app.use((req, res, avanti) => {
+        if (req.method !== 'GET' && req.method !== 'HEAD') return avanti()
+        const host = (req.headers['x-forwarded-host'] || req.headers.host || '').split(',')[0].trim().toLowerCase()
+        // Senza intestazione host non si inventa una destinazione.
+        if (!host || host === HOST_CANONICO) return avanti()
+        // In locale (localhost, 127.0.0.1, porte di sviluppo) non si reindirizza.
+        if (/^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(host)) return avanti()
+        res.setHeader('Cache-Control', 'public, max-age=86400')
+        return res.redirect(301, `https://${HOST_CANONICO}${req.originalUrl}`)
+    })
+
+    /**
      * Le nove pagine provinciali di prima: 301 verso la loro sezione della
      * pagina Sicilia. Stessa regola del `RewriteRule … [R=301,NE]` nel
      * .htaccess; qui l'elenco viene da `PROVINCE`, quindi non può divergere.

@@ -151,6 +151,11 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                             alt={corrente.alt}
                             width={corrente.width}
                             height={corrente.height}
+                            // `async` e non `lazy`: il lightbox si apre su clic,
+                            // l'immagine deve partire subito — ma decodificarla
+                            // fuori dal thread principale evita lo scatto
+                            // dell'animazione di apertura su telefono.
+                            decoding="async"
                             className="mx-auto max-h-[76vh] w-auto rounded-xl object-contain"
                         />
                         <figcaption className="mt-4 text-center text-sm text-neutro-300">

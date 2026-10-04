@@ -185,66 +185,35 @@ export function schemaServizio({ nome, descrizione, area }) {
     }
 }
 
-/**
- * Un modello come `Product`, per farsi capire da chi legge con una macchina.
+/*
+ * ── PERCHÉ NON C'È UN `Product` SULLE PAGINE DEI MODELLI ────────────────
  *
- * La distinzione che il sito difende ovunque, qui è scritta nei dati:
- * `manufacturer` è Piscine Rocks Design — la tecnologia è sua, il prodotto lo
- * fa lei. Un assistente che legge questo schema non può concludere che ci
- * siamo inventati noi la tecnologia, che è esattamente l'errore che le
- * direttive della casa madre chiedono di prevenire.
+ * Qui c'era `schemaModello()`, che emetteva un `Product`. È stata rimossa il
+ * 4 ottobre 2026, dopo due tentativi sbagliati che vale la pena non ripetere.
  *
- * ── NON RIMETTERE `offers` QUI. È stata tolta di proposito ───────────────
- * Prima c'era, senza prezzo, e questo commento diceva che un `Offer` senza
- * prezzo «resta valido in schema.org» e avrebbe semplicemente prodotto nessun
- * risultato arricchito. Era sbagliato, e Google l'ha detto: il 27 settembre
- * 2026 Search Console ha aperto DUE segnalazioni di errore su queste tre
- * pagine — «Snippet prodotto» e «Schede commercianti» — entrambe con gravità
- * ERROR e lo stesso messaggio, «è necessario specificare `price` o
- * `priceSpecification`». Un `Offer` senza prezzo non è un'offerta silenziosa:
- * è un'offerta rotta, e dichiarare un'offerta obbliga a dichiarare un prezzo.
+ * 1. Prima il `Product` aveva un `offers` senza prezzo. Search Console ha
+ *    aperto due segnalazioni con gravità ERROR — «Snippet prodotto» e «Schede
+ *    commercianti» — con lo stesso messaggio: «è necessario specificare
+ *    `price` o `priceSpecification`». Dichiarare un'offerta obbliga a
+ *    dichiarare un prezzo.
+ * 2. Allora `offers` è stato tolto. Ma Google, per uno snippet prodotto,
+ *    pretende almeno uno fra `offers`, `review` e `aggregateRating`, e non
+ *    abbiamo nessuno dei tre: `RECENSIONI` in `src/data/content.js` è vuoto di
+ *    proposito, perché ci vanno solo recensioni vere.
  *
- * Il prezzo non si può mettere: `/quanto-costa` rifiuta il listino di
- * proposito, perché dipende dal giardino. Quindi non si dichiara l'offerta.
+ * Il prezzo non si può mettere: `/quanto-costa` rifiuta il listino perché
+ * dipende dal giardino, dagli accessi e dai massi. Un `Product` senza prezzo
+ * non è catalogabile da Google, quindi non si dichiara un `Product`.
  *
- * Che cosa se n'è andato con lei, e dove sta adesso:
- *  - `areaServed` sulle nove province → già in `schemaServizio` e nel
- *    `LocalBusiness` di `schemaAzienda`, sulla stessa pagina;
- *  - `seller` su Luna → `schemaServizio` ha `provider` su Luna, ed è il tipo
- *    giusto per un servizio senza prezzo. (Era proprio per salvare quel
- *    `seller` che avevo tenuto `offers`, dopo aver tolto un `provider` non
- *    valido da qui: la strada giusta era il `Service`, non l'`Offer`.)
- *  - `availability: InStock` → su una piscina su misura non diceva nulla.
+ * Dove è finita l'attribuzione della tecnologia, che era il senso di quello
+ * schema: nel nodo `Service` della stessa pagina. `schemaServizio` qui sopra
+ * porta già `brand` su Piscine Rocks Design e `provider` su Luna, e
+ * `src/pages/Modello.jsx` gli passa una `description` che dice a parole chi ha
+ * inventato la tecnologia e chi la realizza in Sicilia. `Service` non ammette
+ * `material` né `additionalProperty` — verificato sul vocabolario schema.org,
+ * non a memoria — quindi la tecnologia sta nel testo e in `serviceType`.
  *
- * Resta da sapere che Google, per uno snippet prodotto, chiede almeno uno fra
- * `offers`, `review` e `aggregateRating`. Non avendo né recensioni né
- * valutazioni — `RECENSIONI` in `src/data/content.js` è vuoto di proposito,
- * solo recensioni vere — è possibile che resti un AVVISO al posto
- * dell'errore. È accettabile: un avviso non squalifica nulla. Se un giorno
- * desse fastidio, la mossa è togliere l'intero `Product` e lasciare `Service`
- * più `BreadcrumbList`, che non hanno requisiti di prezzo — non rimettere
- * `offers`.
+ * Se serve un giorno un risultato arricchito su queste pagine, la strada è
+ * `review`/`aggregateRating` con recensioni reali, non un `Product` muto e
+ * non un prezzo inventato.
  */
-export function schemaModello(m) {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        '@id': `${SITE_URL}/modelli/${m.slug}#modello`,
-        name: `${m.nomeCompleto} — ${ROCKS_DESIGN.nome}`,
-        description: m.sintesi,
-        category: 'Piscina con spiaggia in sabbia naturale',
-        url: `${SITE_URL}/modelli/${m.slug}`,
-        image: `${SITE_URL}/media/${m.copertina}-1280.jpg`,
-        brand: { '@type': 'Brand', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
-        manufacturer: { '@type': 'Organization', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
-        material: 'Roccia naturale monolitica e sabbia naturale',
-        additionalProperty: [
-            {
-                '@type': 'PropertyValue',
-                name: 'Tecnologia',
-                value: 'Tecnologia Rocks Design® — struttura in massi, senza opere in cemento armato',
-            },
-            { '@type': 'PropertyValue', name: 'Sabbie disponibili', value: m.sabbie.join(', ') },
-        ],
-    }
-}

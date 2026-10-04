@@ -25,6 +25,34 @@ RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|d
 </FilesMatch>
 
 
+# ─────────────────────────────────────────────────────────────────────────
+#  UN SOLO HOST. Questa regola va prima di ogni altra.
+#
+#  Fino al 4 ottobre 2026 `https://lunacostruzioni.it` rispondeva 200 invece
+#  di reindirizzare: il sito era servito identico su due host, e siccome tutti
+#  i link interni sono relativi, un crawler che entrava da quello senza www
+#  non ne usciva più. Google l'ha segnalato due volte — «Alternative page with
+#  proper canonical tag» e «Page with redirect» — e la convalida aperta il 18
+#  settembre non poteva chiudersi.
+#
+#  NON si tocca il protocollo, ed è deliberato. Una condizione su `%{HTTPS}`
+#  è il modo classico di fabbricare un ciclo infinito su un hosting che
+#  termina il TLS a monte, dove quella variabile può risultare sempre `off`.
+#  Qui il ciclo non è possibile per costruzione: la condizione è falsa appena
+#  l'host è quello giusto, quindi la regola non si richiama mai. Il passaggio
+#  da http a https lo fa già Hostinger.
+#
+#  Sta prima dei reindirizzamenti di contenuto qui sotto perché un vecchio
+#  indirizzo chiesto sull'host sbagliato non deve atterrare su una pagina
+#  nuova dell'host sbagliato.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} !^www\.lunacostruzioni\.it$ [NC]
+    RewriteRule ^ https://www.lunacostruzioni.it%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+
 # Le nove pagine provinciali di prima sono diventate sezioni di una pagina
 # sola. Ogni vecchio indirizzo risponde 301 verso la sua ancora, così link e
 # posizioni già acquisiti passano alla pagina nuova. `NE` serve perché il `#`

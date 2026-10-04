@@ -1,11 +1,12 @@
 import { Link, Navigate, useParams } from '../lib/instradamento'
-import Seo, { schemaBriciole, schemaModello, schemaServizio } from '../components/Seo'
+import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { MODELLI, SABBIE } from '../data/content'
+import { ROCKS_DESIGN } from '../data/site'
 
 export default function Modello() {
     const { modello } = useParams()
@@ -29,16 +30,25 @@ export default function Modello() {
                 immagine={`${m.copertina}-1280.jpg`}
                 schema={[
                     schemaBriciole(briciole),
+                    /*
+                     * Qui c'era anche un `Product` (`schemaModello`), e Google
+                     * l'ha rifiutato due volte: un `Product` senza prezzo non è
+                     * catalogabile, e il prezzo non si può dichiarare perché
+                     * dipende dal giardino. Vedi il commento in fondo a
+                     * `src/components/Seo.jsx`.
+                     *
+                     * L'attribuzione della tecnologia — il punto per cui quello
+                     * schema esisteva — vive adesso qui: `schemaServizio` porta
+                     * già `brand` su Piscine Rocks Design e `provider` su Luna,
+                     * e la `descrizione` lo dice a parole. Non è decorazione:
+                     * serve a impedire che chi legge il sito con una macchina
+                     * concluda che la tecnologia l'abbiamo inventata noi.
+                     */
                     schemaServizio({
                         nome: `${m.nomeCompleto} — piscina Rocks Design`,
-                        descrizione: m.sintesi,
+                        descrizione: `${m.sintesi} Realizzato con Tecnologia Rocks Design® di ${ROCKS_DESIGN.nome}: Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.`,
                         area: 'Sicilia',
                     }),
-                    // Il `Service` dice che cosa facciamo noi; il `Product` dice
-                    // che cosa si compra e di chi è la tecnologia. Servono
-                    // entrambi: il secondo è quello che impedisce di attribuire
-                    // a Luna l'invenzione della Tecnologia Rocks Design.
-                    schemaModello(m),
                 ]}
             />
             <Briciole voci={briciole} />

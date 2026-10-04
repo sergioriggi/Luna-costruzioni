@@ -44,6 +44,14 @@ export default function Immagine({
                 src={m.lqip}
                 alt=""
                 aria-hidden="true"
+                // Le dimensioni per correttezza, non per il CLS: questo
+                // segnaposto è `absolute inset-0` dentro un <figure> che ha già
+                // `aspect-ratio`, quindi non può spostare nulla. Dichiararle
+                // evita che il browser le deduca dal data-URI, e tiene l'elemento
+                // coerente con l'<img> vera qui sotto.
+                width={m.width}
+                height={m.height}
+                decoding="async"
                 className="absolute inset-0 h-full w-full scale-105 object-cover blur-lg"
             />
             <img
