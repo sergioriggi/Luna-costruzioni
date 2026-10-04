@@ -348,21 +348,54 @@ riepilogo.push([eseguito(direttiveOk), 'Direttive Rocks Design', 'logo in testat
  * arrivare senza che nulla sembri rotto. Qui si guarda il codice che il
  * browser scarica davvero, non quello che abbiamo compilato noi.
  */
+/*
+ * ── IL CODICE NON È PIÙ UN FILE SOLO ────────────────────────────────────
+ * Questo controllo guardava solo `assets/index-*.js`. Il 4 ottobre 2026 ha
+ * dato un falso allarme — «il modulo non consegna» su un modulo che
+ * consegnava benissimo — perché il JavaScript è stato spezzato in pezzi
+ * caricati su richiesta, e `api.web3forms.com` è finito in
+ * `assets/invia-lead-*.js`, importato dinamicamente e quindi assente
+ * dall'HTML. Provato nel browser: il pezzo viene scaricato, il `POST` parte,
+ * la pagina arriva a /grazie.
+ *
+ * Un controllo che grida al lupo è peggio di nessun controllo: alla seconda
+ * volta lo si disattiva, e il giorno che il guasto è vero nessuno guarda.
+ * Quindi adesso si raccolgono TUTTI i pezzi: quelli citati nell'HTML e quelli
+ * citati per nome dentro gli altri pezzi, che è il modo in cui un'importazione
+ * dinamica si dichiara. Due passate bastano per la profondità attuale.
+ */
+async function raccogliPezzi(html) {
+    const nomi = new Set([...html.matchAll(/assets\/[A-Za-z0-9_.-]+\.js/g)].map(m => m[0]))
+    const codice = new Map()
+    for (let passata = 0; passata < 2; passata++) {
+        const daPrendere = [...nomi].filter(n => !codice.has(n))
+        if (daPrendere.length === 0) break
+        const esiti = await inCoda(daPrendere, async n => ({ n, ...(await chiedi(`${ORIGINE}/${n}`)) }))
+        for (const e of esiti) {
+            codice.set(e.n, e.stato === 200 ? e.corpo : '')
+            for (const m of e.corpo.matchAll(/assets\/[A-Za-z0-9_.-]+\.js/g)) nomi.add(m[0])
+        }
+    }
+    return codice
+}
+
 let moduloConsegna = null
 let bundleCodice = ''
 if (servite.length > 0) {
-    const bundle = servite[0].corpo.match(/assets\/index-[A-Za-z0-9_-]+\.js/)?.[0]
-    if (!bundle) {
+    const pezzi = await raccogliPezzi(servite[0].corpo)
+    bundleCodice = [...pezzi.values()].join('\n')
+    const vuoti = [...pezzi.entries()].filter(([, c]) => !c).map(([n]) => n)
+    for (const v of vuoti) errori.push(`Pezzo JavaScript non raggiungibile: /${v}`)
+    if (pezzi.size === 0) {
         moduloConsegna = false
-        errori.push('Non trovo il bundle JavaScript nella pagina: impossibile verificare il modulo.')
+        errori.push('Non trovo nessun file JavaScript nella pagina: impossibile verificare il modulo.')
     } else {
-        const codice = await chiedi(`${ORIGINE}/${bundle}`)
-        bundleCodice = codice.stato === 200 ? codice.corpo : ''
-        moduloConsegna = codice.stato === 200 && codice.corpo.includes('api.web3forms.com')
+        moduloConsegna = bundleCodice.includes('api.web3forms.com')
         if (!moduloConsegna) {
             errori.push(
-                'Il modulo pubblicato non consegna: nel bundle manca il servizio di invio. ' +
-                    'Le richieste stanno ripiegando sul programma di posta del visitatore.',
+                `Il modulo pubblicato non consegna: in nessuno dei ${pezzi.size} pezzi JavaScript ` +
+                    'c\'è il servizio di invio. Le richieste stanno ripiegando sul programma di ' +
+                    'posta del visitatore.',
             )
         }
     }
