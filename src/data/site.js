@@ -177,6 +177,31 @@ export const ROCKS_DESIGN = {
  * Qui vanno solo profili che appartengono a Luna. Quelli di Piscine Rocks
  * Design stanno in `ROCKS_DESIGN`, dove il ruolo è dichiarato per quello che è.
  */
+/**
+ * Prezzo di partenza, confermato per iscritto da Luciano Naro e approvato da
+ * Sergio il 5 ottobre 2026.
+ *
+ * PERCHÉ STA QUI E NON NELLE PAGINE. La cifra serve su /quanto-costa, nella FAQ
+ * globale, sulla pagina Sicilia e in `llms.txt`: quattro posti. Scritta a mano
+ * quattro volte, al primo aggiornamento tre restano indietro — e un prezzo
+ * sbagliato su una pagina è peggio di nessun prezzo. Da qui si cambia una volta.
+ * `scripts/verifica-conformita.mjs` controlla che nel compilato non compaia una
+ * cifra diversa da questa, cioè che nessuno l'abbia ricopiata a mano.
+ *
+ * `+ IVA` fa parte della stringa e non si separa: la direttiva è che
+ * l'esclusione stia ACCANTO alla cifra, non in un asterisco in fondo.
+ *
+ * Il prezzo al metro quadro SCENDE al crescere della vasca, quindi è un minimo,
+ * non una tariffa. Chi scrive testi nuovi usi sempre «a partire da».
+ */
+export const PREZZO = {
+    daMq: 1250,
+    /** Per i titoli e i riquadri: breve, con il simbolo. */
+    testo: 'a partire da 1.250 € al m² + IVA',
+    /** Per la prosa e per i testi letti da una macchina. */
+    testoLungo: 'a partire da 1.250 € al metro quadrato + IVA',
+}
+
 export const SOCIAL = [
     { nome: 'Instagram', url: 'https://www.instagram.com/lunacostruzioni/' },
 ]

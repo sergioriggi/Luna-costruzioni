@@ -7,7 +7,7 @@
  * una risposta, e lo fa da qualunque cosa trovi — spesso male. Questo file
  * mette in un posto solo, in chiaro e senza markup, le cose che il sito dice
  * già sparse fra tutte le pagine: che il prodotto è in Tecnologia Rocks
- * Design, che l'inventore è la casa madre, che Luna è il concessionario
+ * Design, che l'inventore è la casa madre, che Luna è un concessionario
  * autorizzato per la Sicilia, e che le fotografie non sono di piscine nostre.
  *
  * REGOLA DEL FILE: qui non entra NIENTE che il sito non dica già altrove.
@@ -33,6 +33,7 @@ import {
     ANTEPRIMA,
     NAV,
     NAV_SECONDARIA,
+    PREZZO,
     PROVINCE,
     ROCKS_DESIGN,
     SITE_URL,
@@ -76,7 +77,7 @@ const NOTE = {
     '/sabbie': 'Le sabbie naturali e il colore dell’acqua che ne deriva.',
     '/giardini-e-opere-in-pietra': 'Cascate, laghetti e opere in pietra naturale, anche senza piscina.',
     '/hotel-e-resort': 'Piscine Rocks Design per strutture ricettive.',
-    '/quanto-costa': 'Che cosa sposta davvero il prezzo. Nessun listino: i preventivi si fanno dopo il sopralluogo.',
+    '/quanto-costa': 'Il prezzo di partenza — 1.250 € al m² + IVA — e le cinque voci che lo fanno salire. Preventivo dopo il sopralluogo, gratuito.',
     '/piscina-in-cemento-o-rocks-design': 'Confronto a due facce fra piscina tradizionale in cemento e Piscina Rocks Design: costi, tempi, permessi, manutenzione, forma — compreso dove conviene il cemento.',
     '/galleria': 'Fotografie di Piscine Rocks Design ultimate, realizzate dalla casa madre.',
     '/come-lavoriamo': 'Il percorso dal sopralluogo al collaudo, chiavi in mano.',
@@ -157,7 +158,7 @@ ${SOCIAL.map(s => `- ${s.nome}: ${s.url}`).join('\n')}
 - ${AZIENDA.nomeBreve} **non ha ancora consegnato una Piscina Rocks Design in ${AZIENDA.zona}**: è concessionario autorizzato, formato sulla tecnologia dalla casa madre, e ha alle spalle ${AZIENDA.annoRiferimento - AZIENDA.annoFondazione} anni di cantieri edili — movimento terra, scavi, costruzioni.
 - **Le fotografie del sito sono di ${ROCKS_DESIGN.nome}**, non di realizzazioni di ${AZIENDA.nomeBreve}. Mostrano piscine ultimate: le fasi di costruzione e gli impianti non si pubblicano, a tutela del brevetto.
 - ${AZIENDA.nomeBreve} **non riceve clienti in sede**: ci si incontra nel giardino del cliente.
-- **Non pubblichiamo un listino.** Il prezzo dipende da dimensione, accessibilità del giardino, modello e selezione delle rocce: si definisce dopo un sopralluogo, che è gratuito.
+- **Prezzo di partenza: ${PREZZO.testoLungo}.** È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento. Il prezzo esatto si definisce dopo un sopralluogo, che è gratuito.
 
 ## Pagine principali
 

@@ -22,7 +22,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { PHOTOS } from './media.config.mjs'
-import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE } from '../src/data/site.js'
+import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE, PREZZO } from '../src/data/site.js'
 import { ROTTE } from './rotte.mjs'
 
 /** Nomi di file ammessi in `/media/` (senza larghezza ed estensione). */
@@ -347,6 +347,41 @@ for (const rotta of ROTTE.filter(r => r.fotoApertura)) {
 const senzaFiligrana = PHOTOS.filter(p => p.noWatermark && !p.tags.includes('materiali'))
 if (senzaFiligrana.length > 0) {
     errori.push(`Foto di piscina senza filigrana nella whitelist: ${senzaFiligrana.map(p => p.slug).join(', ')}.`)
+}
+
+/*
+ * 10. Il prezzo pubblicato è UNO.
+ *
+ * `PREZZO` in src/data/site.js è la fonte unica, ma la cifra compare in frasi
+ * scritte a mano su quattro pagine e in `llms.txt`: la prossima persona che
+ * aggiunge un testo la ricopierà, e il giorno che il prezzo cambia una pagina
+ * resterà indietro. Un prezzo sbagliato su una pagina è peggio di nessun
+ * prezzo, e non si vede: la pagina funziona, è solo falsa.
+ *
+ * Si cercano nel testo visibile tutte le cifre in euro al metro quadro e si
+ * pretende che siano quella dichiarata. Non si controlla che il prezzo ci sia
+ * — su /privacy non deve esserci — ma che non ce ne sia uno diverso.
+ */
+{
+    /*
+     * Si confrontano NUMERI, non stringhe formattate. `Intl.NumberFormat` qui
+     * non è affidabile: su un Node con dati ICU ridotti `format(1250)` per
+     * it-IT restituisce «1250» invece di «1.250», e la guardia segnalerebbe
+     * come difforme la cifra giusta — provato. Togliendo i separatori il
+     * confronto non dipende più dalla localizzazione del runtime.
+     */
+    const soloCifre = t => Number(String(t).replace(/[^\d]/g, ''))
+    for (const file of pagine) {
+        const rel = path.relative(DIST, file)
+        const testo = (await fs.readFile(file, 'utf8')).replace(/<[^>]+>/g, ' ')
+        for (const t of testo.matchAll(/([\d.,]{3,9})\s*€\s*(?:al|\/)\s*m(?:etro)?\s*(?:quadrat[oi])?\s*²?/gi)) {
+            if (soloCifre(t[1]) === PREZZO.daMq) continue
+            errori.push(
+                `${rel}: prezzo al metro quadro difforme — «${t[0].trim()}» invece di ${PREZZO.daMq} €. ` +
+                    'La cifra si cambia in src/data/site.js (PREZZO), non nelle pagine.',
+            )
+        }
+    }
 }
 
 for (const a of avvisi) console.log('⚠︎ ', a)

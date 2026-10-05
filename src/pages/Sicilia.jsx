@@ -132,9 +132,10 @@ export default function Sicilia() {
                     <Rivela delay={160} className="scheda">
                         <h3 className="text-lg">Costo</h3>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
-                            Non c’è un listino. Il prezzo lo fanno dimensione, accessi al giardino, modello e opere di
-                            contorno; la distanza del cantiere entra nei trasporti. Il numero vero arriva dopo il
-                            sopralluogo, che come il preventivo non costa nulla. Le voci una per una sono in{' '}
+                            Si parte da 1.250 € al metro quadrato + IVA. Da lì in su contano dimensione, accessi al
+                            giardino, modello e opere di contorno; la distanza del cantiere entra nei trasporti. Il
+                            numero vero arriva dopo il sopralluogo, che come il preventivo non costa nulla. Le voci
+                            una per una sono in{' '}
                             <Link to="/quanto-costa" className="link-sottile font-medium text-accento">
                                 Quanto costa
                             </Link>

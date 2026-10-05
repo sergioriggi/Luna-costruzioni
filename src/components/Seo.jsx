@@ -201,9 +201,21 @@ export function schemaServizio({ nome, descrizione, area }) {
  *    abbiamo nessuno dei tre: `RECENSIONI` in `src/data/content.js` è vuoto di
  *    proposito, perché ci vanno solo recensioni vere.
  *
- * Il prezzo non si può mettere: `/quanto-costa` rifiuta il listino perché
- * dipende dal giardino, dagli accessi e dai massi. Un `Product` senza prezzo
- * non è catalogabile da Google, quindi non si dichiara un `Product`.
+ * ── LA PREMESSA È CAMBIATA IL 5 OTTOBRE 2026, E LA CONCLUSIONE NO ───────
+ * Quando ho scritto queste righe il sito non dichiarava alcun prezzo, e il
+ * motivo del `Product` assente era che un prezzo non c'era. Adesso c'è:
+ * `PREZZO` in `src/data/site.js`, 1.250 € al m² + IVA, pubblicato su
+ * /quanto-costa.
+ *
+ * Il `Product` resta comunque fuori, per una ragione diversa e più solida: è
+ * un **minimo al metro quadro**, e per lo snippet prodotto Google vuole un
+ * prezzo ASSOLUTO del bene. Un `UnitPriceSpecification` con `minPrice` 1250
+ * per `MTK` sarebbe veritiero in schema.org e insufficiente per Google: la
+ * segnalazione appena chiusa si riaprirebbe, con un messaggio diverso.
+ *
+ * Chi legge questo file fra sei mesi non trovi quindi una ragione scaduta: il
+ * prezzo esiste, e non basta. Se un giorno interessa davvero il risultato
+ * arricchito, la strada è `review`/`aggregateRating` con recensioni reali.
  *
  * Dove è finita l'attribuzione della tecnologia, che era il senso di quello
  * schema: nel nodo `Service` della stessa pagina. `schemaServizio` qui sopra

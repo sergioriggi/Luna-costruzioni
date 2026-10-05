@@ -5,6 +5,7 @@ import Rivela from '../components/Rivela'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { FATTORI_COSTO } from '../data/content'
+import { PREZZO } from '../data/site'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
@@ -13,9 +14,9 @@ const BRICIOLE = [
 
 const FAQ_COSTO = [
     {
-        domanda: 'Perché non pubblicate un listino?',
+        domanda: 'Quanto costa al metro quadro?',
         risposta:
-            'Perché non esistono due vasche uguali e un prezzo a metro quadro, in questo settore, dice poco: lo stesso progetto in un giardino accessibile e in uno raggiungibile solo a mano ha costi molto diversi. Un listino sarebbe rassicurante da leggere e sistematicamente sbagliato. Preferiamo spiegare che cosa sposta il preventivo e dare un numero reale dopo aver visto il giardino.',
+            `Una Piscina Rocks Design parte da 1.250 € al metro quadrato + IVA. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento, e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
@@ -25,7 +26,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Costa più o meno di una piscina tradizionale?',
         risposta:
-            'A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».',
+            'A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili: si parte da 1.250 € al metro quadrato + IVA. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».',
     },
     {
         domanda: 'Si può fare a lotti?',
@@ -44,7 +45,7 @@ export default function QuantoCosta() {
         <>
             <Seo
                 titolo="Quanto costa una Piscina Rocks Design | Luna Costruzioni"
-                descrizione="Nessun listino: contano dimensione, accessi al giardino, modello, cascate e opere di contorno. Sopralluogo e preventivo gratuiti in tutta la Sicilia."
+                descrizione="Piscine Rocks Design a partire da 1.250 € al m² + IVA. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratuiti in tutta la Sicilia."
                 percorso="/quanto-costa"
                 immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_COSTO)]}
@@ -58,13 +59,37 @@ export default function QuantoCosta() {
                         Quanto costa, davvero
                     </h1>
                     <p className="testo-lungo mt-6">
-                        È la prima domanda di tutti ed è giusto che lo sia. La risposta onesta è che{' '}
-                        <strong className="font-semibold text-testo">non esiste un listino</strong>: una Piscina
-                        Rocks Design non ha misure standard, quindi non ha nemmeno un prezzo standard.
+                        È la prima domanda di tutti ed è giusto che lo sia. Una Piscina Rocks Design è a{' '}
+                        <strong className="font-semibold text-testo">forma libera</strong>: non esistono misure da
+                        catalogo tipo 8×4, quindi non c'è una riga di prezzo da copiare. C'è però una cifra da cui
+                        si parte, ed è questa.
                     </p>
-                    <p className="testo-lungo mt-4">
-                        Quello che possiamo fare — e che quasi nessuno fa — è dirti in anticipo{' '}
-                        <strong className="font-semibold text-testo">quali sono le voci che spostano il
+
+                    {/*
+                      Il riquadro riusa la forma che la pagina ha già più in basso
+                      (sezione del bonus): non se ne inventa una nuova. `+ IVA`
+                      sta nella riga grande, accanto alla cifra, e non in un
+                      asterisco: l'esclusione dell'imposta non è una postilla.
+                    */}
+                    <div className="mt-8 rounded-lg border border-accento-700 bg-accento/[0.06] p-6 sm:p-7">
+                        <p className="font-display text-2xl leading-snug text-testo sm:text-3xl">
+                            Piscine Rocks Design {PREZZO.testo}
+                        </p>
+                        <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-300">
+                            Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e
+                            idromassaggio sono extra su richiesta. IVA dal 4% al 22% secondo il tipo di intervento:
+                            l'aliquota giusta la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo
+                            dopo il sopralluogo, che è gratuito.
+                        </p>
+                        <Link to="/contatti" className="bottone-primario mt-6">
+                            Chiedi il sopralluogo gratuito
+                        </Link>
+                    </div>
+
+                    <p className="testo-lungo mt-8">
+                        Da lì in su dipende dal giardino. Quello che possiamo fare — e che quasi nessuno fa — è
+                        dirti in anticipo{' '}
+                        <strong className="font-semibold text-testo">quali sono le cinque voci che spostano il
                         preventivo</strong>. Se le conosci, quando ricevi un’offerta (la nostra o quella di chiunque
                         altro) sai dove guardare.
                     </p>

@@ -274,8 +274,12 @@ export const CREDENZIALI = [
 ]
 
 /**
- * Voci di costo: nessun listino, ma i fattori che spostano davvero il prezzo.
- * Serve a qualificare i contatti e a intercettare le ricerche «quanto costa».
+ * Le voci che spostano il preventivo sopra il prezzo di partenza.
+ *
+ * Il minimo (`PREZZO` in src/data/site.js) è una cifra sola; questo elenco è
+ * ciò che la fa salire. Serve a qualificare i contatti e a intercettare le
+ * ricerche «quanto costa»: chi arriva qui vuole sapere perché due preventivi
+ * per la stessa superficie possono differire.
  */
 export const FATTORI_COSTO = [
     {
@@ -309,7 +313,7 @@ export const FAQ = [
     {
         domanda: 'Che cos’è esattamente una Piscina Rocks Design?',
         risposta:
-            'È una piscina realizzata con la Tecnologia Rocks Design®: le pareti sono formate da massi monolitici, il fondale è in sabbia naturale e non ci sono getti di cemento armato. L’acqua è mantenuta limpida da impianti di filtrazione e sanificazione. Il risultato somiglia a una caletta o a un’ansa di fiume, ma è una piscina a tutti gli effetti. La tecnologia è di Piscine Rocks Design; Luna Costruzioni S.r.l.s. è il concessionario autorizzato che la realizza in Sicilia.',
+            'È una piscina realizzata con la Tecnologia Rocks Design®: le pareti sono formate da massi monolitici, il fondale è in sabbia naturale e non ci sono getti di cemento armato. L’acqua è mantenuta limpida da impianti di filtrazione e sanificazione. Il risultato somiglia a una caletta o a un’ansa di fiume, ma è una piscina a tutti gli effetti. La tecnologia è di Piscine Rocks Design; Luna Costruzioni S.r.l.s. è un concessionario autorizzato che la realizza in Sicilia.',
     },
     {
         domanda: 'È la stessa cosa di una biopiscina con le piante?',
@@ -319,7 +323,7 @@ export const FAQ = [
     {
         domanda: 'Quanto costa una Piscina Rocks Design in Sicilia?',
         risposta:
-            'Non esiste un listino, perché non esistono misure standard. Il prezzo dipende da superficie, profondità, accessibilità del giardino, modello scelto e dagli elementi che decidi di integrare. Nella pagina dedicata trovi spiegate tutte le voci che spostano il preventivo; quando abbiamo visto il giardino ricevi un documento dettagliato, voce per voce.',
+            'Si parte da 1.250 € al metro quadrato + IVA. È un minimo e non una tariffa: il prezzo al metro quadro scende quando la vasca cresce, e da lì in su contano superficie, profondità, accessibilità del giardino, modello scelto e gli elementi che decidi di integrare. Fontana, giochi d’acqua e idromassaggio sono extra su richiesta. Nella pagina dedicata ci sono tutte le voci che spostano il preventivo; quando abbiamo visto il giardino ricevi un documento dettagliato, voce per voce.',
     },
     {
         domanda: 'Servono permessi? E la piscina fa aumentare le tasse sulla casa?',
