@@ -225,6 +225,10 @@ export default function ConfrontoCemento() {
                             <Link to="/piscine-rocks-design" className="link-sottile font-medium text-accento">
                                 La Piscina Rocks Design
                             </Link>
+                            . A quali condizioni l'ingresso digradante cambia l'aliquota IVA sta invece in{' '}
+                            <Link to="/quanto-costa" className="link-sottile font-medium text-accento">
+                                Quanto costa
+                            </Link>
                             .
                         </p>
                     </IntestazioneSezione>

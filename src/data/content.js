@@ -499,7 +499,7 @@ export const VANTAGGI_ROCKS = [
     {
         titolo: 'Chi non nuota entra lo stesso',
         testo:
-            'Con una vasca in cemento chi ha bambini piccoli, chi non nuota o chi fatica a camminare resta sul bordo, perché la scaletta verticale è l’unico modo di entrare. Con la spiaggia digradante ci si bagna a piccoli passi, fin dove si tocca.',
+            'Con una vasca in cemento chi ha bambini piccoli, chi non nuota o chi fatica a camminare resta sul bordo, perché la scaletta verticale è l’unico modo di entrare. Con la spiaggia digradante ci si bagna a piccoli passi, fin dove si tocca. Non è soltanto comodità: quando l’opera si qualifica come eliminazione di barriere architettoniche, previa asseverazione di un tecnico abilitato, cambia anche l’aliquota IVA dell’appalto.',
     },
     {
         titolo: 'La forma segue il terreno',

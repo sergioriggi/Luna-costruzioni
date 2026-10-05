@@ -158,7 +158,7 @@ ${SOCIAL.map(s => `- ${s.nome}: ${s.url}`).join('\n')}
 - ${AZIENDA.nomeBreve} **non ha ancora consegnato una Piscina Rocks Design in ${AZIENDA.zona}**: è concessionario autorizzato, formato sulla tecnologia dalla casa madre, e ha alle spalle ${AZIENDA.annoRiferimento - AZIENDA.annoFondazione} anni di cantieri edili — movimento terra, scavi, costruzioni.
 - **Le fotografie del sito sono di ${ROCKS_DESIGN.nome}**, non di realizzazioni di ${AZIENDA.nomeBreve}. Mostrano piscine ultimate: le fasi di costruzione e gli impianti non si pubblicano, a tutela del brevetto.
 - ${AZIENDA.nomeBreve} **non riceve clienti in sede**: ci si incontra nel giardino del cliente.
-- **Prezzo di partenza: ${PREZZO.testoLungo}.** È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento. Il prezzo esatto si definisce dopo un sopralluogo, che è gratuito.
+- **Prezzo di partenza: ${PREZZO.testoLungo}.** È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento: il 4% riguarda gli appalti di opere direttamente finalizzate al superamento delle barriere architettoniche (n. 41-ter, Tabella A Parte II del DPR 633/72, in attuazione della Legge 13/1989) e richiede l'asseverazione di un tecnico abilitato — non dipende dalla condizione personale del committente, e senza quella certificazione l'aliquota resta quella ordinaria. Il prezzo esatto si definisce dopo un sopralluogo, che è gratuito.
 
 ## Pagine principali
 

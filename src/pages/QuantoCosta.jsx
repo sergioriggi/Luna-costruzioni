@@ -16,7 +16,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Quanto costa al metro quadro?',
         risposta:
-            `Una Piscina Rocks Design parte da 1.250 € al metro quadrato + IVA. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento, e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
+            `Una Piscina Rocks Design parte da 1.250 € al metro quadrato + IVA. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento — il 4% riguarda i soli lavori che si qualificano come abbattimento di barriere architettoniche, come spiegato nella domanda sulle agevolazioni fiscali — e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
@@ -36,7 +36,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Ci sono agevolazioni fiscali?',
         risposta:
-            'Dipende dal tipo di intervento, dalla situazione dell’immobile e dalle norme in vigore nell’anno in cui apri il cantiere: è una valutazione che spetta al tuo commercialista o al tuo tecnico, non a noi. Diffida di chi te la promette al telefono senza aver visto una pratica.',
+            'Dipende dal tipo di intervento, dalla situazione dell’immobile e dalle norme in vigore nell’anno in cui apri il cantiere: è una valutazione che spetta al tuo commercialista o al tuo tecnico, non a noi. Diffida di chi te la promette al telefono senza aver visto una pratica. Una strada però esiste, e riguarda l’IVA più che la detrazione: il n. 41-ter della Tabella A, Parte II del DPR 633/72 porta l’aliquota al 4% per gli appalti di opere direttamente finalizzate al superamento delle barriere architettoniche, in attuazione della Legge 13/1989. L’ingresso digradante di una Piscina Rocks Design, dove si entra camminando invece di scendere una scaletta, è il tipo di caratteristica che può sostenere quella qualificazione: non la garantisce. Decide l’opera nel suo insieme, nel rispetto dei requisiti tecnici fissati dalla legge, e serve l’asseverazione di un tecnico abilitato; senza quella certificazione l’aliquota resta quella ordinaria. È cosa diversa dalla detrazione IRPEF per ristrutturazioni, che segue regole proprie.',
     },
 ]
 
@@ -75,11 +75,36 @@ export default function QuantoCosta() {
                         <p className="font-display text-2xl leading-snug text-testo sm:text-3xl">
                             Piscine Rocks Design {PREZZO.testo}
                         </p>
+                        {/*
+                          PERCHÉ IL 4% È NOMINATO, E PERCHÉ SOLO COME CONDIZIONE.
+                          L'intervallo 4%-22% stava già qui senza spiegazione, e
+                          sembrava arbitrario. Il 4% viene dal n. 41-ter della
+                          Tabella A, Parte II del DPR 633/72: appalti per opere
+                          direttamente finalizzate al superamento o
+                          all'eliminazione delle barriere architettoniche, in
+                          attuazione della Legge 13/1989.
+                          IL CONFINE DA NON SUPERARE: l'aliquota NON segue la
+                          condizione personale del committente — non basta avere
+                          la Legge 104. Segue l'OPERA, che deve rispettare i
+                          requisiti tecnici dell'art. 8.1.13 del DM 236/1989 ed
+                          essere asseverata da un tecnico abilitato; se manca
+                          anche uno solo dei requisiti obbligatori, al punto da
+                          impedire la certificazione di conformità, il 4% non si
+                          applica. Il DM resta in questo commento e fuori dal
+                          testo: in pagina sarebbe rumore, qui serve a chi
+                          manutiene.
+                          Quindi si scrive sempre una condizione, mai un diritto
+                          acquisito, e la chiusura che rimanda al tecnico non va
+                          tolta insieme a una riscrittura di stile: è la
+                          copertura, non un riempitivo.
+                        */}
                         <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-300">
                             Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e
                             idromassaggio sono extra su richiesta. IVA dal 4% al 22% secondo il tipo di intervento:
-                            l'aliquota giusta la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo
-                            dopo il sopralluogo, che è gratuito.
+                            il 4% è previsto quando l'opera si qualifica come eliminazione di barriere
+                            architettoniche ai sensi della Legge 13/1989, previa asseverazione di un tecnico
+                            abilitato. L'aliquota giusta la conferma il tuo tecnico o commercialista. Il prezzo
+                            esatto lo diamo dopo il sopralluogo, che è gratuito.
                         </p>
                         <Link to="/contatti" className="bottone-primario mt-6">
                             Chiedi il sopralluogo gratuito
