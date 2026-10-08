@@ -38,6 +38,9 @@ build/
 vite.config.js.timestamp-*
 .vite/
 
+# Stato temporaneo del server di Impeccable (live-server): non va versionato
+.impeccable/live/
+
 # Impeccable engine binary (~18 MB, per-platform): its launcher downloads
 # a version-pinned copy on first use, so it is not committed.
 .claude/skills/impeccable/scripts/bin/

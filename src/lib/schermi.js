@@ -10,3 +10,11 @@ export const SCHERMO_STRETTO = '(max-width: 900px)'
 
 /** Il complemento esatto: le due precariche non devono mai valere insieme. */
 export const SCHERMO_LARGO = '(min-width: 901px)'
+
+/**
+ * `sizes` della foto d'apertura della home. La usano `Home.jsx` sull'<img> e
+ * `scripts/prerender.mjs` sulla precarica nel <head>: se non coincidono il
+ * browser sceglie due larghezze diverse e scarica la foto due volte, proprio
+ * sull'LCP. Fino all'apertura divisa era `100vw` per entrambe.
+ */
+export const FOTO_APERTURA_SIZES = '(max-width: 900px) 100vw, 52vw'

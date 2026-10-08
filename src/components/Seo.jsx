@@ -54,7 +54,7 @@ export default function Seo({ titolo, descrizione, percorso, immagine, noindex =
             <meta property="og:description" content={descrizione} />
             <meta property="og:url" content={url} />
             <meta property="og:image" content={immagineAssoluta} />
-            <meta property="og:image:alt" content="Piscina realizzata in Tecnologia Rocks Design" />
+            <meta property="og:image:alt" content="Piscina espositiva Piscine Rocks Design della casa madre, in Lombardia" />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={titolo} />
@@ -79,7 +79,7 @@ export function schemaAzienda() {
         '@type': 'HomeAndConstructionBusiness',
         '@id': `${SITE_URL}/#azienda`,
         name: AZIENDA.nome,
-        description: `Impresa siciliana specializzata in piscine con spiaggia in sabbia e opere in pietra. ${AZIENDA.ruolo} per la ${AZIENDA.zona}.`,
+        description: `Impresa edile siciliana (movimento terra, scavi, opere in pietra), concessionario autorizzato Piscine Rocks Design in ${AZIENDA.zona}.`,
         url: SITE_URL,
         telephone: AZIENDA.telefonoRaw,
         email: AZIENDA.email,

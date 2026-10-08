@@ -1,6 +1,8 @@
 import media from '../data/media.json'
 import { pubblico, pubblicoSrcset } from '../lib/percorso'
 import { SCHERMO_STRETTO } from '../lib/schermi'
+import { testiFoto } from './Immagine'
+import { useLingua } from '../i18n/lingua'
 
 const indice = new Map(media.map(m => [m.slug, m]))
 
@@ -28,6 +30,7 @@ export function scheda(slug) {
  */
 export default function Foto({ slug, className = '', sizes = '100vw', priority = false, alt }) {
     const m = scheda(slug)
+    const { lingua } = useLingua()
 
     const img = (
         <img
@@ -35,7 +38,7 @@ export default function Foto({ slug, className = '', sizes = '100vw', priority =
             src={pubblico(m.fallback)}
             srcSet={pubblicoSrcset(m.srcset)}
             sizes={sizes}
-            alt={alt ?? m.alt}
+            alt={alt ?? testiFoto(m, lingua).alt}
             width={m.width}
             height={m.height}
             loading={priority ? 'eager' : 'lazy'}
@@ -44,7 +47,11 @@ export default function Foto({ slug, className = '', sizes = '100vw', priority =
         />
     )
 
-    if (!m.verticale) return img
+    // Una foto d'apertura senza ritaglio verticale sta comunque in un
+    // <picture>: React 19, davanti a un <img> con `fetchPriority="high"` fuori
+    // da un <picture>, emette da sé una seconda precarica nel <head>, accanto
+    // a quella di prerender.mjs. verifica-conformita.mjs la segnala.
+    if (!m.verticale) return priority ? <picture>{img}</picture> : img
 
     return (
         <picture>

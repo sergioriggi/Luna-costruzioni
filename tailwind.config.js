@@ -7,6 +7,8 @@
  * @type {import('tailwindcss').Config}
  */
 export default {
+    // `hover:` solo dove il mouse c'è: su telefono lo stato restava dopo il tocco.
+    future: { hoverOnlyWhenSupported: true },
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
@@ -28,6 +30,8 @@ export default {
                     alta: '#24404f',
                 },
                 testo: '#eef6f7',
+                /** Sabbia: cifre e prezzi, mai link o pulsanti (vedi nocturne.css) */
+                sabbia: '#e4d2aa',
 
                 /** Rampa neutra, una sola scala di luminosità */
                 neutro: {
@@ -57,8 +61,8 @@ export default {
                 },
             },
             fontFamily: {
-                display: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', 'sans-serif'],
-                sans: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+                display: ['Geist', 'Geist riserva', 'Geist riserva DejaVu', 'system-ui', 'sans-serif'],
+                sans: ['Geist', 'Geist riserva', 'Geist riserva DejaVu', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
             },
             fontSize: {
                 // scala del blueprint

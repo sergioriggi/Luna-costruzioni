@@ -104,6 +104,7 @@ export const AZIENDA = {
     /** Che cosa fa l'azienda: viene prima del marchio del prodotto. */
     attivita: 'Piscine e opere in pietra in Sicilia',
     ruolo: 'Concessionario Autorizzato Piscine Rocks Design',
+    ruoloEn: 'Authorised Piscine Rocks Design dealer',
     zona: 'Sicilia',
     referente: 'Luciano Naro',
     telefono: '+39 340 490 0710',
@@ -194,12 +195,23 @@ export const ROCKS_DESIGN = {
  * Il prezzo al metro quadro SCENDE al crescere della vasca, quindi è un minimo,
  * non una tariffa. Chi scrive testi nuovi usi sempre «a partire da».
  */
+const DA_MQ = 1250
+/** «1.250 €»: il punto delle migliaia scritto a mano, senza dipendere dall'ICU di Node. */
+const CIFRA = `${String(DA_MQ).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`
+
 export const PREZZO = {
-    daMq: 1250,
+    daMq: DA_MQ,
     /** Per i titoli e i riquadri: breve, con il simbolo. */
-    testo: 'a partire da 1.250 € al m² + IVA',
+    testo: `a partire da ${CIFRA} al m² + IVA`,
     /** Per la prosa e per i testi letti da una macchina. */
-    testoLungo: 'a partire da 1.250 € al metro quadrato + IVA',
+    testoLungo: `a partire da ${CIFRA} al metro quadrato + IVA`,
+    /**
+     * Solo la cifra con l'unità, per le frasi che la introducono a modo loro
+     * («si parte da …»). Esiste perché prima la stessa cifra era riscritta a
+     * mano in cinque punti: un ritocco al prezzo ne avrebbe dimenticato qualcuno.
+     */
+    cifraLunga: `${CIFRA} al metro quadrato + IVA`,
+    cifraBreve: `${CIFRA} al m² + IVA`,
 }
 
 export const SOCIAL = [
@@ -222,6 +234,8 @@ export const PROVINCE = [
         sigla: 'PA',
         intro:
             'Tra Mondello, Cefalù e le ville di Monreale e Bagheria i giardini sono spesso piccoli e chiusi da muri. Qui conta prima di tutto come entrano i mezzi: un cancello stretto sposta tempi e costi più della dimensione della vasca.',
+        introEn:
+            "Between Mondello, Cefalù and the villas of Monreale and Bagheria, gardens are often small and walled. What matters first is how the machines get in: a narrow gate changes time and cost more than the size of the pool.",
         localita: ['Mondello', 'Bagheria', 'Cefalù', 'Carini', 'Monreale', 'Termini Imerese'],
     },
     {
@@ -230,6 +244,8 @@ export const PROVINCE = [
         sigla: 'CT',
         intro:
             'Sulle pendici dell’Etna sotto il terreno si trova spesso roccia lavica, e lo scavo va valutato prima del disegno. In compenso la pietra scura del posto sta bene accanto ai massi della piscina.',
+        introEn:
+            "On the slopes of Etna there is often lava rock under the soil, so the dig has to be assessed before the design. On the other hand, the local dark stone sits well beside the pool's boulders.",
         localita: ['Aci Castello', 'Acireale', 'Mascalucia', 'Giarre', 'Caltagirone', 'Bronte'],
     },
     {
@@ -238,6 +254,8 @@ export const PROVINCE = [
         sigla: 'ME',
         intro:
             'Tra i Nebrodi, Taormina e le colline sullo Stretto quasi ogni lotto è in pendenza. Una vasca in massi segue il terreno invece di chiedere muri di contenimento alti: è il caso in cui questa tecnologia rende di più.',
+        introEn:
+            "Between the Nebrodi, Taormina and the hills above the Strait, almost every plot slopes. A boulder pool follows the ground instead of needing tall retaining walls: this is where the technology pays off most.",
         localita: ['Taormina', 'Milazzo', 'Barcellona Pozzo di Gotto', 'Sant’Agata di Militello', 'Capo d’Orlando'],
     },
     {
@@ -246,6 +264,8 @@ export const PROVINCE = [
         sigla: 'SR',
         intro:
             'Nel Val di Noto il calcare chiaro è nei muri, nelle case e nelle strade. La sabbia Giallo si accorda con calcare e tufo, e lascia alla piscina i colori che il posto ha già.',
+        introEn:
+            "In the Val di Noto pale limestone is in the walls, the houses and the streets. Giallo sand goes with limestone and tufa, and leaves the pool in the colours the place already has.",
         localita: ['Noto', 'Avola', 'Augusta', 'Floridia', 'Marzamemi'],
     },
     {
@@ -254,6 +274,8 @@ export const PROVINCE = [
         sigla: 'RG',
         intro:
             'Nel ragusano i terreni sono divisi da muri a secco e le case di campagna sono spesso masserie, tra carrubi e ulivi. È il contesto per cui è pensato il modello Mediterranea: pietra calda e piante che crescono già da sole.',
+        introEn:
+            "Around Ragusa the land is divided by dry-stone walls and country houses are often masserie among carob and olive trees. It is the setting the Mediterranea model is designed for: warm stone and plants that already grow on their own.",
         localita: ['Modica', 'Scicli', 'Marina di Ragusa', 'Vittoria', 'Comiso'],
     },
     {
@@ -262,6 +284,8 @@ export const PROVINCE = [
         sigla: 'TP',
         intro:
             'Da Marsala a Castellammare del Golfo vento e salsedine arrivano fino ai giardini. Massi, sabbia e ghiaia reggono il sale senza problemi; la scelta delicata è quella delle piante intorno alla vasca.',
+        introEn:
+            "From Marsala to Castellammare del Golfo, wind and salt spray reach right into the gardens. Boulders, sand and gravel cope with salt without trouble; the delicate choice is the planting around the pool.",
         localita: ['Marsala', 'Erice', 'Mazara del Vallo', 'Alcamo', 'Castellammare del Golfo'],
     },
     {
@@ -270,6 +294,8 @@ export const PROVINCE = [
         sigla: 'AG',
         intro:
             'Nell’agrigentino il riferimento per il colore è la marna bianca della Scala dei Turchi, a Realmonte. La sabbia Bianco è quella che le si avvicina di più, con un’avvertenza: al sole pieno riflette molto, e sulla spiaggia servono zone d’ombra.',
+        introEn:
+            "Around Agrigento the colour reference is the white marl of the Scala dei Turchi, at Realmonte. Bianco sand is the closest to it, with one caveat: in full sun it reflects a lot, and the beach needs shaded areas.",
         localita: ['Sciacca', 'Licata', 'Favara', 'Realmonte', 'Menfi'],
     },
     {
@@ -278,6 +304,8 @@ export const PROVINCE = [
         sigla: 'CL',
         intro:
             'È la provincia in cui l’impresa è nata e lavora dal 2021. Nell’entroterra nisseno l’estate è lunga e calda: una piscina qui si usa da aprile a ottobre, e l’ombra conta quanto l’acqua.',
+        introEn:
+            "This is the province where the company started and has worked since 2021. Inland, summers are long and hot: a pool here is used from April to October, and shade matters as much as water.",
         localita: ['Gela', 'Niscemi', 'San Cataldo', 'Mazzarino'],
     },
     {
@@ -286,6 +314,8 @@ export const PROVINCE = [
         sigla: 'EN',
         intro:
             'È la provincia più alta dell’isola: in collina l’inverno è freddo e la stagione dei bagni è più corta che sulla costa. Per questo la vasca va messa dove il sole arriva presto e resta a lungo.',
+        introEn:
+            "It is the island's highest province: in the hills winter is cold and the swimming season is shorter than on the coast. So the pool should go where the sun arrives early and stays late.",
         localita: ['Piazza Armerina', 'Nicosia', 'Leonforte', 'Aidone'],
     },
 ]

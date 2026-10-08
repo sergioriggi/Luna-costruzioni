@@ -2,8 +2,10 @@ import { Link } from '../lib/instradamento'
 import Seo from '../components/Seo'
 import { Sezione } from '../components/Sezione'
 import { PROVINCE } from '../data/site'
+import { useLingua } from '../i18n/lingua'
 
 export default function NonTrovata() {
+    const { t } = useLingua()
     return (
         <>
             <Seo
@@ -14,14 +16,17 @@ export default function NonTrovata() {
             />
             <Sezione>
                 <div className="mx-auto max-w-prosa text-center">
-                    <p className="occhiello">Errore 404</p>
-                    <h1 className="titolo-sezione">Questa pagina non esiste</h1>
+                    <p className="occhiello">{t('Errore 404', 'Error 404')}</p>
+                    <h1 className="titolo-sezione">{t('Questa pagina non esiste', 'This page does not exist')}</h1>
                     <p className="testo-lungo mt-5">
-                        Forse cercavi la galleria delle piscine o la tua provincia.
+                        {t(
+                            'Forse cercavi la galleria delle piscine o la tua provincia.',
+                            'Perhaps you were looking for the pool gallery, or your province.',
+                        )}
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        <Link to="/" className="bottone-primario">Torna alla home</Link>
-                        <Link to="/galleria" className="bottone-secondario">Vai alla galleria</Link>
+                        <Link to="/" className="bottone-primario">{t('Torna alla home', 'Back to the home page')}</Link>
+                        <Link to="/galleria" className="bottone-secondario">{t('Vai alla galleria', 'Go to the gallery')}</Link>
                     </div>
                     <ul className="mt-10 flex flex-wrap justify-center gap-2.5">
                         {PROVINCE.map(p => (

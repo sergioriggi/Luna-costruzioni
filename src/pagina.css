@@ -13,7 +13,10 @@
 
 /* ── blocco <style> dell'intestazione ─────────────────────────────────── */
 
-html { scroll-behavior: smooth; }
+/* Lo scorrimento morbido solo per chi non ha chiesto «riduci il movimento».
+   Prima stava qui senza condizioni e, caricato dopo index.css, vinceva sul
+   suo blocco `reduce`: la preferenza non aveva effetto. */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body { margin: 0; background: var(--color-bg); }
 a:hover { color: var(--color-accent-300); }
 input:hover, textarea:hover { border-color: var(--color-accent-600); }
@@ -39,7 +42,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     display: flex;
     align-items: center;
     gap: 28px;
-    padding: 14px 40px;
+    padding: 12px 40px; min-height: 72px;
     background: color-mix(in srgb, var(--color-bg) 88%, transparent);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-divider);
@@ -53,173 +56,424 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 /*
  * La testata ha sempre la stessa altezza, qualunque carattere stia usando.
  *
- * Prima il menù andava a capo quando non ci stava, e fra 900 e 1400 px ci
- * stava per pochi pixel: con Inter su due righe, con il carattere di sistema
- * (prima che Inter arrivasse) su una. All'arrivo di Inter la testata passava
- * da 51 a 91 px e tutta la pagina scendeva di 40: è il CLS 0,668 misurato da
- * PageSpeed su ogni pagina. Ora niente va a capo: il nome non si spezza, e se
- * le ancore non ci stanno scorrono di lato nella loro fascia. Il logo del
- * concessionario e il telefono restano sempre visibili.
+ * Il CLS 0,668 misurato da PageSpeed nasceva da qui: il menù andava a capo
+ * con un carattere e non con l'altro. Regola che resta: NIENTE va a capo.
+ * Le voci sono cinque e si mostrano solo da 1100 px in su, dove ci stanno
+ * anche con il carattere di riserva; sotto, il pannello del menù le
+ * sostituisce. Il logo del concessionario resta sempre visibile.
  */
 .pg-nav {
-    display: flex; align-items: center; gap: 22px;
-    margin-left: auto; font-size: 13px;
+    display: flex; align-items: center; gap: 12px;
+    margin-left: auto; font-size: 14px;
     min-width: 0;
 }
-.pg-nav-ancore {
-    display: flex; align-items: center; gap: 22px;
-    min-width: 0; overflow-x: auto; scrollbar-width: none;
-    /* Quando le ancore scorrono, l'ultima sfuma invece di apparire troncata. */
-    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
-}
-/* Da 1200 px in su le ancore ci stanno tutte (misurato): niente sfumatura. */
-@media (min-width: 1200px) { .pg-nav-ancore { mask-image: none; } }
-.pg-nav-ancore::-webkit-scrollbar { display: none; }
+.pg-nav-ancore { display: flex; align-items: center; gap: 24px; margin-right: 12px; min-width: 0; }
 .pg-nav a, .pg-header .btn, .pg-nav span, .pg-marchio-nome { white-space: nowrap; }
 .pg-concessionario, .pg-header .btn { flex-shrink: 0; }
 
-.pg-nav-voce { color: var(--color-neutral-400); text-decoration: none; }
-.pg-nav-voce:hover { color: var(--color-accent-300); }
+.pg-nav-voce {
+    position: relative; color: var(--color-neutral-300); text-decoration: none;
+    padding: 6px 0; transition: color .2s var(--ease);
+}
+.pg-nav-voce:hover { color: var(--color-text); }
+.pg-nav-voce[aria-current='page'] { color: var(--color-text); }
+.pg-nav-voce[aria-current='page']::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: var(--color-accent);
+}
 
 /* Marchio del concessionario: la placchetta segue la direttiva della casa
-   madre (logo nella fascia superiore, con link al sito ufficiale) dentro il
-   riquadro disegnato nel file approvato. */
+   madre (logo nella fascia superiore, con link al sito ufficiale). Il logo
+   era a 13 px di altezza, illeggibile: ora 22, e la placchetta non ha più un
+   secondo riquadro attorno — basta il fondo chiaro del logo. */
 .pg-concessionario {
-    display: flex; align-items: center; gap: 10px;
-    padding: 7px 14px; margin-left: 8px; text-decoration: none;
-    border: 1px solid var(--color-accent-700);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    display: flex; align-items: center; gap: 12px;
+    padding: 4px; text-decoration: none; border-radius: var(--radius-md);
+    transition: background .2s var(--ease);
 }
-.pg-concessionario:hover { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
-.pg-concessionario-logo { background: #f5efe6; border-radius: 5px; padding: 4px 6px; display: block; }
-.pg-concessionario-logo img { height: 13px; width: auto; }
+/* Gli effetti al passaggio del mouse che spostano o colorano un blocco
+   valgono solo dove c'è un puntatore: su telefono restavano accesi dopo il
+   tocco. Lo stesso fa `hoverOnlyWhenSupported` per le classi Tailwind. */
+@media (hover: hover) { .pg-concessionario:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); } }
+.pg-concessionario-logo { background: #f5efe6; border-radius: var(--radius-md); padding: 6px 9px; display: block; }
+.pg-concessionario-logo img { height: 22px; width: auto; }
 .pg-concessionario-testo { display: flex; flex-direction: column; gap: 1px; }
 .pg-concessionario-ruolo {
-    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--color-accent-300);
 }
 .pg-concessionario-nome {
     font-family: var(--font-heading); font-size: 13px;
-    letter-spacing: 0.04em; color: var(--color-text);
+    letter-spacing: 0.02em; color: var(--color-text);
 }
 
-/* Sotto i 1400 px la dicitura del concessionario lascerebbe il menù senza
-   spazio: resta il logo, e la dicitura per esteso è nel titolo del
-   collegamento e nel testo d'apertura (come su telefono). */
-/* (Dopo la regola di base della dicitura, altrimenti quella vincerebbe.) */
-@media (max-width: 1399px) {
+/* Pulsante pieno: la sola chiamata all'azione principale di ogni vista. */
+.pg-btn-pieno {
+    background: var(--color-accent); border-color: var(--color-accent);
+    color: var(--color-bg); font-weight: 600; text-decoration: none;
+    transition: background .2s var(--ease), transform .15s var(--ease);
+}
+@media (hover: hover) { .pg-btn-pieno:hover { background: var(--color-accent-400); color: var(--color-bg); } }
+.pg-btn-pieno:active { transform: translateY(1px); }
+.btn { transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease); }
+.btn:active { transform: translateY(1px); }
+.pg-testata-telefono, .pg-testata-preventivo { padding: 8px 14px; }
+.pg-testata-telefono { text-decoration: none; }
+
+/* — menù su schermo stretto — */
+.pg-menu { display: none; }
+.pg-menu-tasto {
+    list-style: none; cursor: pointer; width: 42px; height: 42px;
+    display: grid; place-items: center; border-radius: var(--radius-md);
+    border: 1px solid var(--color-divider);
+}
+.pg-menu-tasto::-webkit-details-marker { display: none; }
+.pg-menu-tasto span, .pg-menu-tasto span::before, .pg-menu-tasto span::after {
+    display: block; width: 18px; height: 1.5px; background: var(--color-text);
+    transition: transform .2s var(--ease), opacity .2s var(--ease);
+}
+.pg-menu-tasto span { position: relative; }
+.pg-menu-tasto span::before, .pg-menu-tasto span::after { content: ''; position: absolute; left: 0; }
+.pg-menu-tasto span::before { top: -6px; }
+.pg-menu-tasto span::after { top: 6px; }
+.pg-menu[open] .pg-menu-tasto span { background: transparent; }
+.pg-menu[open] .pg-menu-tasto span::before { transform: translateY(6px) rotate(45deg); }
+.pg-menu[open] .pg-menu-tasto span::after { transform: translateY(-6px) rotate(-45deg); }
+.pg-menu-pannello {
+    position: absolute; top: 100%; left: 0; right: 0;
+    max-height: calc(100dvh - 100%); overflow-y: auto;
+    padding: 8px 20px 24px; background: var(--color-bg);
+    border-bottom: 1px solid var(--color-divider);
+    box-shadow: 0 24px 48px -24px rgba(4, 12, 18, 0.9);
+}
+.pg-menu-pannello ul { list-style: none; margin: 0; padding: 0; }
+.pg-menu-pannello li a {
+    display: block; padding: 14px 0; font-family: var(--font-heading); font-size: 18px;
+    color: var(--color-text); text-decoration: none; border-bottom: 1px solid var(--color-divider);
+}
+.pg-menu-pannello li a[aria-current='page'] { color: var(--color-accent); }
+.pg-menu-azioni { display: grid; gap: 10px; margin-top: 20px; }
+
+/* Sotto i 1500 px la dicitura del concessionario lascia il posto al cambio
+   di lingua: resta il logo, con il nome per esteso nel titolo del link. */
+@media (max-width: 1499px) {
     .pg-concessionario-testo { display: none; }
 }
-
-/* ── sezione di apertura ──────────────────────────────────────────────── */
-
-.pg-eroe { position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; }
-.pg-eroe-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-/* Quando Foto.jsx avvolge l'<img> in un <picture> (ritaglio verticale per il
-   telefono), il contenitore non deve diventare un figlio flex di .pg-eroe: lo
-   si fa sparire dal layout e l'<img> resta posato su `inset: 0` come prima. */
-.pg-eroe picture { display: contents; }
-.pg-eroe-velo {
-    position: absolute; inset: 0;
-    background: linear-gradient(75deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 38%, transparent 78%);
+@media (max-width: 1099px) {
+    .pg-nav-ancore { display: none; }
+    .pg-menu { display: block; }
 }
-.pg-eroe-testo { position: relative; padding: 0 40px 84px; max-width: 780px; }
+@media (max-width: 699px) {
+    .pg-testata-telefono, .pg-testata-preventivo { display: none; }
+}
+
+/* ── angoli ─────────────────────────────────────────────────────────────
+   Una regola sola, e vale ovunque:
+     8 px  (--radius-md)  pulsanti, campi, etichette, il logo in testata;
+     14 px (--radius-lg)  schede, riquadri e fotografie;
+     pillola              solo i collegamenti alle province;
+     cerchio              solo i numeri delle fasi e il segno del FAQ.
+   Niente altri raggi. */
+
+/* ── ritmo delle sezioni ──────────────────────────────────────────────
+   Le sezioni sono a piena larghezza (il fondo arriva ai bordi) e il
+   contenuto sta in una colonna di 1320 px al centro: il padding laterale
+   cresce con lo schermo invece di lasciare il testo incollato a sinistra.
+   Al posto delle righe di separazione, che avevano tre larghezze diverse,
+   le sezioni si alternano fra il fondo e la tinta `pg-tinta`. */
+
+.pg-sezione {
+    --margine: max(40px, calc((100% - 1320px) / 2));
+    padding: 120px var(--margine) 128px;
+}
+.pg-tinta { background: var(--color-neutral-900); }
+/* L'occhiello era un <h6>: un titolo finto nella struttura della pagina, che
+   gli screen reader annunciavano come tale. Ora è un paragrafo con lo stesso
+   aspetto. */
+.pg-occhiello {
+    font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+    font-size: 13px; line-height: 1.12; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-accent-300); margin: 0 0 18px;
+}
+.pg-titolo {
+    font-size: clamp(30px, 3.2vw, 46px); line-height: 1.06; letter-spacing: -0.028em;
+    margin: 0 0 22px; text-wrap: balance;
+}
+.pg-intro { color: var(--color-neutral-300); margin: 0 0 56px; font-size: 16px; line-height: 1.65; }
+.pg-link-freccia {
+    display: inline-flex; gap: 6px; margin-top: 32px; font-size: 15px;
+    color: var(--color-accent); text-decoration: none; font-family: var(--font-heading);
+    transition: gap .2s var(--ease), color .2s var(--ease);
+}
+@media (hover: hover) { .pg-link-freccia:hover { gap: 10px; } }
+
+/* ── apertura ─────────────────────────────────────────────────────────── */
+
+.pg-eroe {
+    display: grid; grid-template-columns: minmax(0, 1fr) 52vw;
+    grid-template-areas: 'testo foto' 'fascia fascia';
+    min-height: min(820px, calc(100dvh - 72px));
+    background:
+        radial-gradient(60% 70% at 0% 30%, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 70%),
+        var(--color-bg);
+}
+.pg-eroe-testo {
+    grid-area: testo; align-self: center;
+    padding: 72px 64px 72px max(40px, calc((100vw - 1320px) / 2));
+    max-width: 760px;
+}
+.pg-eroe-figura { grid-area: foto; position: relative; margin: 0; min-height: 520px; }
+.pg-eroe-figura picture { display: contents; }
+
+/* ── la riga sulle foto (CreditoFoto.jsx) ─────────────────────────────────
+   Piccola, quieta, sempre sotto la foto e mai sopra: dice di chi sono le
+   piscine. Nelle foto a tutta altezza (apertura, hotel) la foto lascia una
+   fascia di 34 px in fondo alla sua casella e la riga ci sta dentro. */
+.credito-foto {
+    margin: 12px 0 0; font-size: 12px; line-height: 1.4;
+    color: var(--color-neutral-500);
+}
+.pg-eroe-figura .pg-eroe-foto, .pg-hotel-figura .pg-hotel-foto { inset: 0 0 auto 0; height: calc(100% - 34px); }
+.pg-figura-credito { position: absolute; left: 0; right: 0; bottom: 0; height: 34px; display: flex; align-items: center; padding: 0 16px; }
+.pg-figura-credito .credito-foto { margin: 0; }
+.pg-eroe-foto {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    border-bottom-left-radius: var(--radius-lg);
+}
 .pg-eroe-occhiello {
     font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--color-accent-300); margin: 0 0 20px;
+    text-transform: uppercase; color: var(--color-accent-300); margin: 0 0 22px;
 }
-.pg-eroe-titolo { font-size: 58px; line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 24px; max-width: 15em; }
-.pg-eroe-sommario { font-size: 17px; line-height: 1.6; color: var(--color-neutral-300); max-width: 34em; margin: 0 0 32px; }
+.pg-eroe-titolo {
+    font-size: clamp(40px, 4.4vw, 66px); line-height: 1.02; letter-spacing: -0.034em;
+    margin: 0 0 26px; max-width: 13em; text-wrap: balance;
+}
+.pg-eroe-sommario { font-size: 17px; line-height: 1.6; color: var(--color-neutral-300); max-width: 32em; margin: 0 0 34px; }
 .pg-azioni { display: flex; flex-wrap: wrap; gap: 12px; }
-.pg-btn-grande { padding: 10px 20px; font-size: 15px; text-decoration: none; }
+.pg-btn-grande { padding: 12px 22px; font-size: 15px; text-decoration: none; }
 
-/* ── fascia «chiavi in mano» ──────────────────────────────────────────── */
-
-.pg-fascia {
-    background: linear-gradient(120deg, var(--color-section) 0%, var(--color-section-glow) 100%);
-    padding: 40px;
+/* Il prezzo di partenza, sotto i pulsanti: in sabbia, con il rimando. */
+.pg-eroe-prezzo {
+    display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px;
+    margin-top: 32px; padding: 14px 18px; text-decoration: none;
+    border-radius: var(--radius-md); background: var(--color-sand-soft);
+    border: 1px solid color-mix(in srgb, var(--color-sand) 26%, transparent);
+    transition: background .2s var(--ease);
 }
-.pg-fascia-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px; max-width: 1180px; }
-.pg-fascia-titolo { font-family: var(--font-heading); font-size: 22px; margin: 0 0 6px; }
-.pg-fascia-testo { margin: 0; font-size: 13px; color: var(--color-accent-200); }
+@media (hover: hover) { .pg-eroe-prezzo:hover { background: color-mix(in srgb, var(--color-sand) 20%, transparent); } }
+.pg-eroe-prezzo-cifra {
+    font-family: var(--font-heading); font-size: 17px; color: var(--color-sand);
+    font-variant-numeric: tabular-nums;
+}
+.pg-eroe-prezzo-cifra::first-letter { text-transform: uppercase; }
+.pg-eroe-prezzo-link { font-size: 13px; color: var(--color-neutral-300); }
 
-/* ── sezioni ──────────────────────────────────────────────────────────── */
-
-.pg-sezione { padding: 96px 40px; }
-.pg-bordo { border-top: 1px solid var(--color-divider); }
-.pg-occhiello { color: var(--color-accent-300); margin: 0 0 18px; }
-.pg-titolo { font-size: 40px; line-height: 1.08; margin: 0 0 22px; }
-.pg-intro { color: var(--color-neutral-300); margin: 0 0 56px; }
+/* Le quattro credenziali: erano una fascia turchese a sé, ora chiudono
+   l'apertura su una riga, sotto testo e foto. */
+.pg-fascia {
+    grid-area: fascia; list-style: none; margin: 0;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px;
+    padding: 36px max(40px, calc((100vw - 1320px) / 2)) 44px;
+}
+.pg-fascia li { padding-top: 18px; border-top: 1px solid var(--color-divider); }
+.pg-fascia-titolo { font-family: var(--font-heading); font-size: 17px; margin: 0 0 6px; }
+.pg-fascia-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
 
 /* ── perché Piscine Rocks Design ──────────────────────────────────────── */
 
 .pg-piscine {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
-    gap: 64px; align-items: center; max-width: 1400px;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 80px; align-items: center;
 }
 .pg-definizioni { display: grid; gap: 2px; }
 .pg-definizione {
     display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px;
-    padding: 20px 0; border-top: 1px solid var(--color-divider);
+    padding: 20px 0;
 }
-.pg-definizione:last-child { border-bottom: 1px solid var(--color-divider); }
+.pg-definizione + .pg-definizione { border-top: 1px solid var(--color-divider); }
+.pg-definizione:first-child { padding-top: 0; }
 .pg-definizione-nome { font-family: var(--font-heading); margin: 0; font-size: 15px; }
 .pg-definizione-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
-.pg-piscine-foto { width: 100%; height: 620px; object-fit: cover; border-radius: var(--radius-lg); }
-
-/* ── celle affiancate (processo, dubbi) ───────────────────────────────── */
-
-.pg-celle {
-    display: grid; gap: 1px; background: var(--color-divider);
-    border-radius: var(--radius-md); overflow: hidden;
-}
-.pg-celle-strette { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.pg-celle-larghe { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.pg-cella { background: var(--color-bg); padding: 28px 24px 32px; }
-.pg-cella-larga { background: var(--color-bg); padding: 30px 26px 34px; }
-.pg-numero { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent); margin: 0 0 20px; }
-.pg-cella-titolo { font-family: var(--font-heading); font-size: 17px; margin: 0 0 10px; }
-.pg-cella-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
-.pg-etichetta { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-neutral-500); margin: 0 0 10px; }
-.pg-etichetta-accento { color: var(--color-accent-300); }
-.pg-domanda { font-family: var(--font-heading); font-size: 19px; margin: 0 0 22px; }
-.pg-risposta { margin: 0; font-size: 14px; color: var(--color-neutral-300); }
+.pg-piscine-foto { width: 100%; height: 600px; object-fit: cover; border-radius: var(--radius-lg); }
 
 /* ── realizzazioni ────────────────────────────────────────────────────── */
 
-.pg-testata { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
-.pg-testata-nota { margin: 0 0 6px auto; font-size: 14px; color: var(--color-neutral-500); max-width: 24em; }
-.pg-mosaico { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.pg-mosaico img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius-md); }
-.pg-doppia { grid-column: span 2; }
+/* Sette caselle: una grande 2×2, quattro piccole, due larghe in fondo. */
+.pg-mosaico {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 250px;
+}
+.pg-mosaico img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
+    transition: transform .5s var(--ease), filter .3s var(--ease);
+}
+@media (hover: hover) { .pg-mosaico img:hover { filter: brightness(1.08); } }
+.pg-mosaico > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.pg-mosaico > :nth-child(6), .pg-mosaico > :nth-child(7) { grid-column: span 2; }
 
-/* ── hotel e resort ───────────────────────────────────────────────────── */
+/* ── modelli ──────────────────────────────────────────────────────────── */
 
-.pg-tre { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-bottom: 44px; }
-.pg-tre-voce { padding-top: 20px; border-top: 1px solid var(--color-accent-700); }
+.pg-modelli { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pg-modello {
+    display: flex; flex-direction: column; text-decoration: none; color: var(--color-text);
+    border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+@media (hover: hover) { .pg-modello:hover { color: var(--color-text); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(3, 12, 18, 0.9); } }
+.pg-modello-foto { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.pg-modello-testo { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; flex: 1; }
+.pg-modello-nome { font-family: var(--font-heading); font-size: 22px; letter-spacing: -0.015em; }
+.pg-modello-nome::after { content: ' →'; color: var(--color-accent); transition: margin .2s var(--ease); }
+.pg-modello-riga { font-size: 14px; color: var(--color-neutral-400); }
+.pg-modello-sabbie { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+
+/* Su schermo largo le schede non sono tre uguali: la prima è grande e occupa
+   due righe, le altre due le stanno accanto una sopra l'altra, con la foto a
+   sinistra. Tre colonne identiche erano lo schema da modello di sito. */
+@media (min-width: 901px) {
+    .pg-modelli { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+    .pg-modello:first-child { grid-row: span 2; }
+    .pg-modello:first-child .pg-modello-foto { aspect-ratio: auto; flex: 1 1 auto; min-height: 340px; height: 0; }
+    .pg-modello:first-child .pg-modello-testo { flex: 0 0 auto; padding: 26px 30px 30px; }
+    .pg-modello:first-child .pg-modello-nome { font-size: 28px; }
+    .pg-modello:not(:first-child) { flex-direction: row; }
+    .pg-modello:not(:first-child) .pg-modello-foto { width: 44%; flex: 0 0 44%; aspect-ratio: auto; height: auto; min-height: 220px; }
+}
+.pg-sabbia {
+    font-size: 12px; padding: 3px 10px; border-radius: var(--radius-md);
+    color: var(--color-sand); background: var(--color-sand-soft);
+}
+
+/* ── chiavi in mano: la fascia turchese, con le fasi in linea ─────────── */
+
+.pg-processo {
+    background:
+        radial-gradient(70% 90% at 100% 0%, color-mix(in srgb, var(--color-section-ghost) 30%, transparent), transparent 70%),
+        linear-gradient(120deg, var(--color-section) 0%, var(--color-section-glow) 100%);
+}
+.pg-processo .pg-occhiello { color: var(--color-accent-200); }
+.pg-processo .pg-intro { color: var(--color-accent-100); }
+.pg-fasi {
+    list-style: none; margin: 0; padding: 0; position: relative;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px;
+}
+/* La linea che unisce i cinque numeri. */
+.pg-fasi::before {
+    content: ''; position: absolute; top: 21px; left: 22px; right: 22px; height: 1px;
+    background: color-mix(in srgb, var(--color-accent-200) 40%, transparent);
+}
+.pg-fase { position: relative; }
+.pg-fase-numero {
+    display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 22px;
+    border-radius: 50%; font-family: var(--font-heading); font-size: 16px;
+    color: var(--color-bg); background: var(--color-accent-200);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-section) 70%, transparent);
+    font-variant-numeric: tabular-nums;
+}
+.pg-fase-durata {
+    margin: 0 0 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-sand);
+}
+.pg-cella-titolo { font-family: var(--font-heading); font-size: 18px; margin: 0 0 10px; }
+.pg-cella-testo { margin: 0; font-size: 14px; color: var(--color-neutral-300); }
+.pg-processo .pg-cella-testo { color: var(--color-accent-100); }
+
+/* ── i quattro dubbi ──────────────────────────────────────────────────── */
+
+.pg-dubbi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pg-dubbio {
+    padding: 34px 36px 38px; border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+.pg-etichetta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-500); margin: 0 0 10px; }
+.pg-etichetta-accento { color: var(--color-accent-300); }
+.pg-domanda {
+    font-family: var(--font-heading); font-size: clamp(22px, 2vw, 27px); line-height: 1.2;
+    letter-spacing: -0.02em; margin: 0 0 26px; text-wrap: balance;
+}
+.pg-risposta { margin: 0; font-size: 15px; line-height: 1.65; color: var(--color-neutral-300); max-width: 36em; }
+
+/* ── hotel e resort: foto a sinistra fino al bordo, testo a destra ────── */
+
+.pg-hotel {
+    display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    background: var(--color-neutral-900);
+}
+.pg-hotel-figura { position: relative; margin: 0; min-height: 640px; }
+.pg-hotel-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pg-hotel-testo { padding: 112px max(40px, calc((100vw - 1320px) / 2)) 120px 72px; align-self: center; }
+.pg-tre { display: grid; gap: 22px; margin-bottom: 40px; max-width: 34em; }
+.pg-tre-voce { padding-top: 18px; border-top: 1px solid var(--color-accent-700); }
+.pg-hotel .pg-cella-testo { color: var(--color-neutral-400); }
 
 /* ── domande frequenti ────────────────────────────────────────────────── */
 
-.pg-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 0 64px; max-width: 1240px; }
-.pg-faq details { padding: 22px 0; border-top: 1px solid var(--color-divider); }
-.pg-faq details:last-child { border-bottom: 1px solid var(--color-divider); }
-.pg-faq summary { cursor: pointer; font-family: var(--font-heading); font-size: 16px; list-style: none; }
+.pg-faq-sezione { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 80px; align-items: start; }
+.pg-faq-testata { position: sticky; top: 120px; }
+.pg-faq-testata .pg-link-freccia { margin-top: 8px; }
+.pg-faq { display: grid; }
+.pg-faq details + details { border-top: 1px solid var(--color-divider); }
+.pg-faq details:first-child summary { padding-top: 0; }
+.pg-faq summary {
+    cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 24px;
+    padding: 22px 0; font-family: var(--font-heading); font-size: 17px; transition: color .2s var(--ease);
+}
+.pg-faq summary:hover { color: var(--color-accent-300); }
 .pg-faq summary::-webkit-details-marker { display: none; }
-.pg-faq details > p { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-400); max-width: 34em; }
+.pg-faq summary::after {
+    content: '+'; flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center;
+    border-radius: 50%; border: 1px solid var(--color-divider); color: var(--color-accent);
+    font-size: 18px; line-height: 1; transition: transform .25s var(--ease);
+}
+.pg-faq details[open] summary::after { transform: rotate(45deg); }
+.pg-faq details > p { margin: 0 0 24px; font-size: 15px; line-height: 1.65; color: var(--color-neutral-400); max-width: 40em; }
 
 /* ── zona operativa ───────────────────────────────────────────────────── */
 
-.pg-sicilia {
-    display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-    gap: 64px; align-items: center; max-width: 1400px;
+/* La mappa a tutta larghezza, il testo sotto in due colonne. */
+.pg-sicilia { display: flex; flex-direction: column; gap: 56px; }
+.pg-sicilia-testo {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 72px; align-items: end;
 }
-.pg-sicilia-foto { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-lg); }
+.pg-sicilia-intro { color: var(--color-neutral-300); max-width: 34em; margin: 0; }
+.pg-sicilia .pg-province { margin-bottom: 28px; }
+.pg-mappa { margin: 0; }
+.pg-mappa svg { width: 100%; height: auto; max-height: 620px; display: block; overflow: visible; }
+.pg-mappa-isola {
+    fill: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
+    stroke: color-mix(in srgb, var(--color-accent) 45%, transparent); stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+.pg-mappa-punto circle { fill: var(--color-accent); }
+.pg-mappa-punto text {
+    fill: var(--color-neutral-200); font-family: var(--font-heading); font-size: 17px;
+    paint-order: stroke; stroke: var(--color-bg); stroke-width: 5px;
+}
+.pg-mappa-nascita circle { fill: var(--color-sand); }
+.pg-mappa-nascita .pg-mappa-alone { fill: none; stroke: var(--color-sand); stroke-opacity: .45; }
+.pg-mappa figcaption { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; color: var(--color-neutral-400); }
+.pg-mappa-legenda { width: 10px; height: 10px; border-radius: 50%; background: var(--color-sand); flex-shrink: 0; }
+.pg-province { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pg-province a {
+    display: inline-block; padding: 7px 14px; font-size: 14px; text-decoration: none;
+    color: var(--color-neutral-200); border: 1px solid var(--color-divider); border-radius: 999px;
+    transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+@media (hover: hover) { .pg-province a:hover { color: var(--color-accent-300); border-color: var(--color-accent-600); } }
+
+/* Il ruolo di concessionario, per esteso, in fondo alla pagina. */
+.pg-nota-brevetto {
+    margin: 0; padding: 0 max(40px, calc((100% - 1320px) / 2)) 56px;
+    font-size: 12px; color: var(--color-neutral-500); max-width: none;
+}
 
 /* ── contatti ─────────────────────────────────────────────────────────── */
 
-.pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; max-width: 1240px; }
-.pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+.pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
+.pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-lg); }
 .pg-recapito-etichetta { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500); }
 .pg-recapito-valore { margin: 4px 0 0; font-family: var(--font-heading); font-size: 18px; }
 .pg-recapito-link {
@@ -234,6 +488,8 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-invio-nota { font-size: 13px; color: var(--color-neutral-500); }
 .pg-esito { margin: 0; font-size: 13px; color: var(--color-accent-300); min-height: 1.4em; }
 .pg-errore { margin: 4px 0 0; font-size: 12px; color: #f0a6a6; }
+.etichetta-seg { display: block; font-size: 12px; margin-bottom: 5px; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+.pg-btn-grande { min-height: 44px; }
 .pg-consenso { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--color-neutral-400); }
 .pg-consenso input { margin-top: 2px; accent-color: var(--color-accent); }
 .pg-esca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -260,74 +516,93 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     color: var(--color-neutral-500);
     max-width: 80em;
 }
-.pg-note-legali a { color: var(--color-neutral-400); text-decoration: none; }
-.pg-note-legali a:hover { color: var(--color-accent-300); }
-.pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
+/* I collegamenti nel testo legale si distinguevano dal testo solo per una
+   sfumatura di grigio (1,38:1): ora sono più chiari e sottolineati. */
+.pg-note-legali a, .pg-copyright a {
+    color: var(--color-neutral-300); text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    text-underline-offset: 3px; transition: color .2s var(--ease);
+}
+.pg-note-legali a:hover, .pg-copyright a:hover { color: var(--color-accent-300); }
 
-/* ── schermi stretti ──────────────────────────────────────────────────────
-   Il file approvato è disegnato per lo schermo largo: qui sotto le griglie a
-   colonne fisse si impilano, senza toccare l'aspetto desktop. */
+/* ── schermi stretti ────────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+    .pg-fasi { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
+    .pg-fasi::before { display: none; }
+    .pg-fascia { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 @media (max-width: 1100px) {
-    .pg-eroe-titolo { font-size: 46px; }
-    .pg-titolo { font-size: 34px; }
-    .pg-sezione { padding: 76px 32px; }
-    .pg-piscine, .pg-sicilia { gap: 44px; }
+    .pg-sezione { padding: 88px 32px 96px; }
+    .pg-piscine, .pg-sicilia, .pg-sicilia-testo { gap: 48px; }
     .pg-contatti { gap: 48px; }
+    .pg-faq-sezione { gap: 48px; }
+    .pg-hotel-testo { padding: 88px 32px 96px 48px; }
 }
 
+/* Il punto di rottura dell'apertura è SCHERMO_STRETTO (src/lib/schermi.js):
+   va tenuto uguale, perché da lì dipende anche la precarica della foto. */
 @media (max-width: 900px) {
-    .pg-header { padding: 12px 20px; gap: 16px; }
-    .pg-nav, .pg-nav-ancore { gap: 16px; }
-    /* Fra 701 e 900 px il nome a 16 px lascerebbe al menù troppo poco: con un
-       carattere di riserva largo il logo e il telefono uscirebbero di lato. */
+    .pg-header { padding: 12px 20px; gap: 12px; }
     .pg-marchio-nome { font-size: 14px; }
-    .pg-eroe { min-height: 520px; }
-    .pg-eroe-testo { padding: 0 20px 56px; }
-    .pg-eroe-titolo { font-size: 34px; }
-    .pg-eroe-sommario { font-size: 15px; }
-    .pg-fascia { padding: 32px 20px; }
-    .pg-sezione { padding: 64px 20px; }
-    .pg-titolo { font-size: 28px; }
-    .pg-intro { margin-bottom: 40px; }
-    .pg-piscine, .pg-sicilia, .pg-contatti { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-    .pg-piscine-foto { height: 380px; }
-    .pg-sicilia-foto { height: 300px; }
-    .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-    .pg-footer { padding: 40px 20px; }
-}
-
-@media (max-width: 900px) {
-    /* Sfumatura verticale: su schermo stretto quella a 75° coprirebbe la
-       foto invece del solo lato del testo. */
-    .pg-eroe { min-height: 0; }
-    .pg-eroe-testo { padding: 96px 20px 56px; }
-    .pg-eroe-velo {
-        background: linear-gradient(180deg,
-            color-mix(in srgb, var(--color-bg) 88%, transparent) 0%,
-            color-mix(in srgb, var(--color-bg) 68%, transparent) 46%,
-            color-mix(in srgb, var(--color-bg) 92%, transparent) 100%);
+    .pg-eroe {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: 'testo' 'foto' 'fascia';
+        min-height: 0;
     }
+    .pg-eroe-testo { padding: 48px 20px 36px; max-width: none; }
+    .pg-eroe-titolo { font-size: clamp(34px, 9vw, 44px); }
+    .pg-eroe-sommario { font-size: 16px; }
+    .pg-eroe-figura { min-height: 0; aspect-ratio: 4 / 3; }
+    .pg-eroe-foto { border-radius: 0; }
+    .pg-fascia { padding: 28px 20px 8px; gap: 20px; }
+    .pg-sezione { padding: 72px 20px 80px; }
+    .pg-intro { margin-bottom: 40px; font-size: 15px; }
+    .pg-piscine, .pg-sicilia, .pg-sicilia-testo, .pg-contatti, .pg-faq-sezione, .pg-hotel { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .pg-faq-testata { position: static; }
+        .pg-piscine-foto { height: 380px; }
+    .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .pg-modelli { grid-template-columns: minmax(0, 1fr); }
+    .pg-dubbi { grid-template-columns: minmax(0, 1fr); }
+    .pg-dubbio { padding: 26px 22px 28px; }
+    .pg-hotel-figura { min-height: 0; aspect-ratio: 4 / 3; }
+    .pg-hotel-testo { padding: 56px 20px 80px; }
+    .pg-footer { padding: 40px 20px; }
+    .pg-nota-brevetto { padding: 0 20px 40px; }
+    /* Su telefono il mosaico diventa una fila che scorre di lato: sette foto
+       impilate erano metri di pagina prima di arrivare al resto. */
+    .pg-mosaico {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%;
+        grid-auto-rows: 300px; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin: 0 -20px; padding: 0 20px; scroll-padding: 0 20px; scrollbar-width: none;
+    }
+    .pg-mosaico::-webkit-scrollbar { display: none; }
+    .pg-mosaico > * { scroll-snap-align: start; }
+    .pg-mosaico > :nth-child(n) { grid-column: auto; grid-row: auto; }
 }
 
 @media (max-width: 700px) {
-    /* Le ancore restano nel documento ma escono dalla fascia superiore:
-       su telefono occuperebbero mezzo schermo. Restano il marchio del
-       concessionario e il pulsante per chiamare, sulla riga sotto. */
-    .pg-header { flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
-    .pg-marchio-nome { font-size: 14px; }
-    .pg-nav { width: 100%; margin-left: 0; gap: 12px; }
-    .pg-nav-voce, .pg-nav-ancore { display: none; }
-    /* Del marchio del concessionario resta il logo: la dicitura per esteso
-       è nel titolo del collegamento e nel testo di apertura. */
-    .pg-concessionario { margin-left: 0; }
-    .pg-concessionario-testo { display: none; }
-    .pg-header .btn { margin-left: auto; }
-    .pg-mosaico { grid-template-columns: minmax(0, 1fr); }
-    .pg-doppia { grid-column: auto; }
-    .pg-mosaico img { height: 240px; }
+    .pg-header { min-height: 64px; }
+    .pg-marchio-nome { font-size: 13px; letter-spacing: 0.1em; }
+    .pg-marchio-riga { font-size: 10px; }
+    .pg-concessionario-logo { padding: 5px 7px; }
+    .pg-concessionario-logo img { height: 17px; }
+    .pg-fasi { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+    .pg-fase { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; padding-bottom: 28px; }
+    .pg-fase > :not(.pg-fase-numero) { grid-column: 2; }
+    .pg-fase-numero { grid-row: span 3; margin: 0; }
+    /* Su telefono la linea delle fasi torna, in verticale. */
+    .pg-fase:not(:last-child)::before {
+        content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 1px;
+        background: color-mix(in srgb, var(--color-accent-200) 40%, transparent);
+    }
     .pg-coppia { grid-template-columns: minmax(0, 1fr); }
-    .pg-faq { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .pg-fascia { grid-template-columns: minmax(0, 1fr); }
+    /* La mappa scende a ~350 px: a 17 unità i nomi diventerebbero 7 px. */
+    .pg-mappa-punto text { font-size: 30px; stroke-width: 8px; }
+    .pg-mappa-punto circle { r: 9px; }
+    .pg-mappa-nascita .pg-mappa-alone { r: 22px; }
 }
 
 /* Riga delle province in fondo al piè di pagina: collegamenti fitti ma
@@ -341,3 +616,53 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-footer-province .pg-footer-etichetta { display: inline; margin: 0 6px 0 0; }
 .pg-footer-province a { color: var(--color-neutral-400); text-decoration: none; }
 .pg-footer-province a:hover { color: var(--color-accent-300); }
+
+/* Su telefono la barra WhatsApp/telefono (AzioniRapide.jsx) è fissa in basso
+   e alta circa 90 px: il piè di pagina lascia sotto di sé lo spazio per non
+   finirci sotto. Prima la riserva era di 64 px e stava su <main>, quindi le
+   ultime righe del piè (Privacy, Cookie) restavano coperte. */
+@media (max-width: 639px) {
+    .pg-footer { padding-bottom: calc(40px + 96px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ── barra di contatto su telefono (AzioniRapide.jsx) ─────────────────────
+   Tre voci a un tocco su ogni pagina; una sola piena, il preventivo. Tiene
+   conto della tacca degli iPhone (viewport-fit=cover in index.html). */
+.pg-barra {
+    position: fixed; inset: auto 0 0 0; z-index: 40;
+    display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: var(--color-bg); border-top: 1px solid var(--color-divider);
+    transition: transform .26s var(--ease);
+}
+html[data-consenso-aperto] .pg-barra { transform: translateY(100%); transition-duration: .2s; }
+@media (min-width: 640px) { .pg-barra { display: none; } }
+/* Il pannello del menù finisce sopra la barra, non sotto. */
+@media (max-width: 639px) { .pg-menu-pannello { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); } }
+.pg-barra-voce {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    min-height: 48px; border-radius: var(--radius-md); white-space: nowrap;
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: var(--color-text); text-decoration: none;
+    background: var(--color-surface); border: 1px solid var(--color-divider);
+    touch-action: manipulation; -webkit-user-select: none; user-select: none;
+}
+.pg-barra-voce svg { flex-shrink: 0; }
+.pg-barra-voce:first-child svg { color: #25d366; }
+.pg-barra-voce:active { transform: translateY(1px); }
+.pg-barra-preventivo { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); font-weight: 600; }
+.pg-barra-preventivo:hover { color: var(--color-bg); }
+
+/* ── cambio di lingua in testata ─────────────────────────────────────── */
+.seg-compatto .seg-opt { padding: 6px 9px; font-size: 12px; letter-spacing: 0.04em; }
+.pg-testata-lingua { flex-shrink: 0; }
+.pg-menu-lingua { margin-top: 6px; justify-self: start; }
+@media (max-width: 899px) { .pg-testata-lingua { display: none; } }
+
+/* ── campi dei moduli su schermo touch ────────────────────────────────────
+   Safari su iPhone ingrandisce la pagina quando si tocca un campo con testo
+   sotto i 16 px, e non torna indietro. I campi erano a 14 px. */
+@media (pointer: coarse) {
+    .campo, .input, input, select, textarea { font-size: 16px; }
+}
+

@@ -4,6 +4,7 @@ import { Sezione } from '../components/Sezione'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA } from '../data/site'
 import BottoneTelefono from '../components/BottoneTelefono'
+import { useLingua } from '../i18n/lingua'
 
 /**
  * Pagina di conferma dopo un invio andato a buon fine.
@@ -21,6 +22,7 @@ import BottoneTelefono from '../components/BottoneTelefono'
  * Fuori dalla sitemap e `noindex`: non è una pagina da far trovare su Google.
  */
 export default function Grazie() {
+    const { t } = useLingua()
     return (
         <>
             <Seo
@@ -32,27 +34,29 @@ export default function Grazie() {
 
             <Sezione>
                 <div className="mx-auto max-w-2xl text-center">
-                    <p className="occhiello text-accento-300">Richiesta inviata</p>
-                    <h1 className="titolo-sezione mt-4">Grazie, l’abbiamo ricevuta.</h1>
+                    {/* Il titolo prende il fuoco all'arrivo: chi usa un lettore di
+                        schermo sente subito che la richiesta è partita. */}
+                    <h1 className="titolo-sezione mt-4 outline-none" tabIndex={-1} ref={el => el?.focus({ preventScroll: true })}>
+                        {t('Grazie, l’abbiamo ricevuta.', 'Thank you, we have received it.')}
+                    </h1>
 
                     <p className="testo-lungo mx-auto mt-6">
-                        {AZIENDA.referente} ti richiama entro 24 ore lavorative per fissare il
-                        sopralluogo. Se nel frattempo ti viene in mente un dettaglio sul giardino,
-                        tienilo da parte: è la prima cosa che chiederemo.
-                    </p>
-
-                    <p className="mx-auto mt-4 max-w-prosa text-[15px] leading-relaxed text-neutro-400">
-                        Hai fretta, o preferisci parlarne subito? Chiamare è la via più rapida.
+                        {t(
+                            `${AZIENDA.referente} ti richiama entro 24 ore lavorative per fissare il sopralluogo. Se nel frattempo ti viene in mente un dettaglio sul giardino, tienilo da parte: è la prima cosa che chiederemo.`,
+                            `${AZIENDA.referente} will call you back within 24 working hours to arrange the site visit. If a detail about the garden comes to mind in the meantime, keep it handy: it is the first thing we will ask.`,
+                        )}
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        <BottoneTelefono className="bottone-pieno">Chiama {AZIENDA.telefono}</BottoneTelefono>
-                        <BottoneWhatsApp />
+                        <BottoneTelefono className="bottone-secondario">{t('Chiama', 'Call')} {AZIENDA.telefono}</BottoneTelefono>
+                        <BottoneWhatsApp>{t('Scrivi su WhatsApp', 'Message us on WhatsApp')}</BottoneWhatsApp>
                     </div>
 
                     <p className="mt-10 text-sm text-neutro-500">
-                        Nel frattempo puoi <Link to="/galleria" className="link-sottile text-accento">vedere le piscine Rocks Design</Link>{' '}
-                        oppure leggere <Link to="/quanto-costa" className="link-sottile text-accento">che cosa sposta il prezzo</Link>.
+                        {t('Nel frattempo puoi ', 'In the meantime you can ')}
+                        <Link to="/galleria" className="link-sottile text-accento">{t('vedere le piscine Rocks Design', 'see the Rocks Design pools')}</Link>
+                        {t(' oppure leggere ', ' or read ')}
+                        <Link to="/quanto-costa" className="link-sottile text-accento">{t('che cosa sposta il prezzo', 'what moves the price')}</Link>.
                     </p>
                 </div>
             </Sezione>

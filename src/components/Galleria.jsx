@@ -1,17 +1,44 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import Immagine, { tutteLeFoto } from './Immagine'
+import Immagine, { tutteLeFoto, testiFoto } from './Immagine'
+import CreditoFoto from './CreditoFoto'
 import { pubblico, pubblicoSrcset } from '../lib/percorso'
+import { MODELLI } from '../data/modelli'
+import { useLingua } from '../i18n/lingua'
 
 const FILTRI = [
-    { tag: null, label: 'Tutte' },
-    { tag: 'caraibi', label: 'Modello Caraibi' },
-    { tag: 'mediterranea', label: 'Modello Mediterranea' },
-    { tag: 'alpi', label: 'Modello Alpi' },
-    { tag: 'cascate', label: 'Cascate' },
-    { tag: 'idromassaggio', label: 'Idromassaggio' },
-    { tag: 'sabbia', label: 'Sabbie naturali' },
-    { tag: 'notte', label: 'Illuminazione' },
+    { tag: null, label: 'Tutte', labelEn: 'All' },
+    { tag: 'caraibi', label: 'Modello Caraibi', labelEn: 'Caraibi model' },
+    { tag: 'mediterranea', label: 'Modello Mediterranea', labelEn: 'Mediterranea model' },
+    { tag: 'alpi', label: 'Modello Alpi', labelEn: 'Alpi model' },
+    { tag: 'cascate', label: 'Cascate', labelEn: 'Waterfalls' },
+    { tag: 'idromassaggio', label: 'Idromassaggio', labelEn: 'Hydromassage' },
+    { tag: 'sabbia', label: 'Sabbie naturali', labelEn: 'Natural sands' },
+    { tag: 'notte', label: 'Illuminazione', labelEn: 'Lighting' },
 ]
+
+/**
+ * Feste, ricevimenti e matrimoni: scatti della casa madre che raccontano un
+ * evento, non la piscina. Restano dove servono (la pagina hotel ne usa
+ * alcuni, con la sua didascalia), ma non nella galleria del prodotto.
+ */
+const FUORI_GALLERIA = new Set(['notte-luci-e-festa', 'ricevimento-a-bordo-acqua', 'cascata-e-massi-al-crepuscolo', 'cena-in-giardino'])
+
+/**
+ * I filtri per modello seguono le pagine dei modelli: una foto mostrata su
+ * /modelli/mediterranea è una Mediterranea anche qui. Prima i tag del
+ * manifest dicevano altro (la stessa foto «Caraibi» in galleria e
+ * «Mediterranea» sulla pagina del modello). Le foto che nessuna pagina di
+ * modello usa tengono il tag del manifest.
+ */
+const TAG_MODELLO = new Set(MODELLI.map(m => m.tag))
+const MODELLO_DI = new Map(MODELLI.flatMap(m => [m.copertina, ...m.galleria.map(g => g.slug)].map(slug => [slug, m.tag])))
+const FOTO_GALLERIA = tutteLeFoto
+    .filter(f => !FUORI_GALLERIA.has(f.slug))
+    .map(f => {
+        const modello = MODELLO_DI.get(f.slug)
+        if (!modello) return f
+        return { ...f, tags: [...f.tags.filter(tag => !TAG_MODELLO.has(tag)), modello] }
+    })
 
 /**
  * Galleria con lightbox.
@@ -27,6 +54,7 @@ const FILTRI = [
  * galleria.
  */
 export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-cols-3' }) {
+    const { t, lingua } = useLingua()
     const [filtro, setFiltro] = useState(null)
     const [aperta, setAperta] = useState(null)
 
@@ -36,11 +64,11 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                   const f = tutteLeFoto.find(x => x.slug === v.slug)
                   if (!f) throw new Error(`Immagine non trovata nel manifest: ${v.slug}`)
                   if (!v.didascalia) throw new Error(`Manca la didascalia di pagina per ${v.slug}`)
-                  return { ...f, caption: v.didascalia }
+                  return { ...f, alt: testiFoto(f, lingua).alt, caption: v.didascalia }
               })
-            : tutteLeFoto
+            : FOTO_GALLERIA.map(f => ({ ...f, ...testiFoto(f, lingua) }))
         return filtro ? base.filter(f => f.tags.includes(filtro)) : base
-    }, [filtro, voci])
+    }, [filtro, voci, lingua])
 
     const chiudi = useCallback(() => setAperta(null), [])
     const scorri = useCallback(
@@ -81,7 +109,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                                     : 'border border-testo/[0.16] text-neutro-400 hover:border-testo/[0.45] hover:text-testo'
                             }`}
                         >
-                            {f.label}
+                            {t(f.label, f.labelEn)}
                         </button>
                     ))}
                 </div>
@@ -109,8 +137,11 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                 ))}
             </ul>
 
+            {/* Ogni galleria del sito mostra piscine della casa madre: la riga lo dice sempre. */}
+            {foto.length > 0 && <CreditoFoto className="mt-6" />}
+
             {foto.length === 0 && (
-                <p className="testo-lungo">Nessuna immagine per questo filtro.</p>
+                <p className="testo-lungo">{t('Nessuna immagine per questo filtro.', 'No images for this filter.')}</p>
             )}
 
             {corrente && (
@@ -125,7 +156,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                         type="button"
                         onClick={chiudi}
                         className="absolute right-4 top-4 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20"
-                        aria-label="Chiudi"
+                        aria-label={t('Chiudi', 'Close')}
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="m6 6 12 12M18 6 6 18" strokeLinecap="round" />
@@ -136,7 +167,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                         type="button"
                         onClick={e => { e.stopPropagation(); scorri(-1) }}
                         className="absolute left-2 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20 sm:left-6"
-                        aria-label="Immagine precedente"
+                        aria-label={t('Immagine precedente', 'Previous image')}
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="m14 6-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -156,7 +187,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                             // fuori dal thread principale evita lo scatto
                             // dell'animazione di apertura su telefono.
                             decoding="async"
-                            className="mx-auto max-h-[76vh] w-auto rounded-xl object-contain"
+                            className="mx-auto max-h-[76vh] w-auto rounded-lg object-contain"
                         />
                         <figcaption className="mt-4 text-center text-sm text-neutro-300">
                             {corrente.caption ?? corrente.alt}
@@ -167,7 +198,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                         type="button"
                         onClick={e => { e.stopPropagation(); scorri(1) }}
                         className="absolute right-2 rounded-full bg-superficie/10 p-3 text-testo hover:bg-superficie/20 sm:right-6"
-                        aria-label="Immagine successiva"
+                        aria-label={t('Immagine successiva', 'Next image')}
                     >
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="m10 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />

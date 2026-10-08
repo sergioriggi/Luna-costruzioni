@@ -47,7 +47,12 @@ export default function Privacy() {
                         {t('Titolare del trattamento', 'Data controller')}
                     </h2>
                     <p>
-                        {AZIENDA.nome}, {AZIENDA.ruolo} {t('per la', 'for')} {AZIENDA.zona}.{' '}
+                        {AZIENDA.nome},{' '}
+                        {t(
+                            `${AZIENDA.ruolo} per la ${AZIENDA.zona}`,
+                            'authorised Piscine Rocks Design dealer in Sicily',
+                        )}
+                        .{' '}
                         {t(
                             'Per ogni richiesta relativa ai tuoi dati puoi scrivere a',
                             'For any request concerning your data you can write to',

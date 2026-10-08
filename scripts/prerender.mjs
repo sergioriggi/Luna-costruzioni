@@ -11,7 +11,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { ROTTE } from './rotte.mjs'
-import { SCHERMO_STRETTO, SCHERMO_LARGO } from '../src/lib/schermi.js'
+import { SCHERMO_STRETTO, SCHERMO_LARGO, FOTO_APERTURA_SIZES } from '../src/lib/schermi.js'
 
 const ROOT = path.resolve('.')
 const DIST = path.join(ROOT, 'dist')
@@ -89,7 +89,7 @@ export function precaricheFoto(slug) {
     const m = MEDIA.find(x => x.slug === slug)
     if (!m) throw new Error(`fotoApertura sconosciuta: ${slug}`)
     const link = (srcset, media) =>
-        `<link rel="preload" as="image" type="image/webp"${media ? ` media="${media}"` : ''} imagesrcset="${conBase(srcset)}" imagesizes="100vw" fetchpriority="high">`
+        `<link rel="preload" as="image" type="image/webp"${media ? ` media="${media}"` : ''} imagesrcset="${conBase(srcset)}" imagesizes="${FOTO_APERTURA_SIZES}" fetchpriority="high">`
     if (!m.verticale) return [link(m.srcset)]
     return [link(m.verticale.srcset, SCHERMO_STRETTO), link(m.srcset, SCHERMO_LARGO)]
 }

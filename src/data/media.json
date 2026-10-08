@@ -173,7 +173,16 @@
         "h": 1440
       }
     ],
-    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJQBOgAzIg6iY0yieAAPzJdUPkzAgCdxunDvyhVMp4Oye93FnEegW89obbPhysObRnF0b3lGLOqyRKPd2qUIAA"
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJQBOgAzIg6iY0yieAAPzJdUPkzAgCdxunDvyhVMp4Oye93FnEegW89obbPhysObRnF0b3lGLOqyRKPd2qUIAA",
+    "verticale": {
+      "width": 720,
+      "height": 540,
+      "widths": [
+        480,
+        720
+      ],
+      "srcset": "/media/villa-con-spiaggia-in-ghiaia-verticale-480.webp 480w, /media/villa-con-spiaggia-in-ghiaia-verticale-720.webp 720w"
+    }
   },
   {
     "slug": "notte-luci-e-festa",

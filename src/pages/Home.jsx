@@ -4,7 +4,11 @@ import { Suspense } from 'react'
 import Foto from '../components/Foto'
 import pigra, { aInattivita } from '../lib/pigra'
 import BottoneWhatsApp from '../components/BottoneWhatsApp'
-import { AZIENDA, ROCKS_DESIGN } from '../data/site'
+import { AZIENDA, ROCKS_DESIGN, PREZZO, PROVINCE } from '../data/site'
+import { MODELLI } from '../data/modelli'
+import MappaSicilia from '../components/MappaSicilia'
+import CreditoFoto from '../components/CreditoFoto'
+import { FOTO_APERTURA_SIZES } from '../lib/schermi'
 import { useLingua } from '../i18n/lingua'
 import BottoneTelefono from '../components/BottoneTelefono'
 
@@ -82,30 +86,40 @@ const DEFINIZIONI = [
 const FASI = [
     {
         titolo: 'Sopralluogo e progetto',
+        durata: 'Circa un’ora',
+        durataEn: 'About an hour',
         titoloEn: 'Site visit and design',
         testo: 'Veniamo sul posto, misuriamo e ascoltiamo. Dal rilievo nasce il disegno della vasca e di tutto il contorno.',
         testoEn: 'We come out, measure and listen. The survey becomes the drawing of the basin and its surroundings.',
     },
     {
         titolo: 'Scavi',
+        durata: 'Mezzi nostri',
+        durataEn: 'Our own machines',
         titoloEn: 'Excavation',
         testo: 'Scavo e movimentazione terra li eseguiamo noi, con mezzi e maestranze dell’impresa.',
         testoEn: 'We carry out the digging and earthworks ourselves, with our own machines and crews.',
     },
     {
         titolo: 'Realizzazione',
+        durata: 'Tecnologia Rocks Design®',
+        durataEn: 'Rocks Design Technology',
         titoloEn: 'Construction',
         testo: 'Realizzazione in Tecnologia Rocks Design e finiture in pietra: la vasca prende la forma disegnata.',
         testoEn: 'Rocks Design Technology and stone finishes: the basin takes the shape it was drawn.',
     },
     {
         titolo: 'Messa in opera',
+        durata: 'Impianti',
+        durataEn: 'Plant',
         titoloEn: 'Installation',
         testo: 'Filtrazione, illuminazione e allacciamenti installati e regolati sul posto.',
         testoEn: 'Filtration, lighting and connections installed and tuned on site.',
     },
     {
         titolo: 'Collaudo e consegna',
+        durata: 'Piena e pronta',
+        durataEn: 'Full and ready',
         titoloEn: 'Commissioning and handover',
         testo: 'Prove di tenuta e funzionamento, primo avviamento e istruzioni d’uso. La Piscina Rocks Design si consegna piena e pronta.',
         testoEn: 'Leak and function tests, first start-up and usage instructions. The pool is handed over full and ready.',
@@ -113,26 +127,35 @@ const FASI = [
 ]
 
 /**
- * Mosaico delle realizzazioni: quindici inquadrature, con la prima, la quarta
- * e l'ultima a doppia colonna come nel file approvato.
+ * Mosaico delle realizzazioni: sette inquadrature, non più quindici. Sulla
+ * home servono a dire «ecco il prodotto», non a sostituire la galleria; su
+ * telefono quindici foto impilate erano quasi diecimila pixel di scorrimento.
+ * L'ordine segue le caselle di `.pg-mosaico` (la prima è la grande, le ultime
+ * due sono larghe). Le foto dell'apertura, della sezione «perché» e delle
+ * schede dei modelli sono escluse: nessuna compare due volte.
  */
 const MOSAICO = [
-    { slug: 'oasi-aerea-sabbia-bianca', doppia: true },
-    { slug: 'palme-e-monoliti' },
-    { slug: 'ghiaietto-e-acqua-smeraldo' },
-    { slug: 'spiaggia-di-sabbia-privata', doppia: true },
-    { slug: 'villa-con-spiaggia-in-ghiaia' },
-    { slug: 'solarium-in-legno' },
-    { slug: 'riflessi-al-tramonto' },
-    { slug: 'area-benessere-vista-alto' },
-    { slug: 'bordo-in-legno-e-ciottoli' },
-    { slug: 'giardino-tropicale' },
-    { slug: 'acqua-turchese-notturna' },
-    { slug: 'oasi-con-pontile-e-palme' },
-    { slug: 'ombre-di-palme-sulla-sabbia' },
-    { slug: 'blu-della-sera' },
-    { slug: 'idromassaggio-naturale', doppia: true },
+    'oasi-aerea-sabbia-bianca',
+    'palme-e-monoliti',
+    'acqua-turchese-notturna',
+    'riflessi-al-tramonto',
+    'area-benessere-vista-alto',
+    'spiaggia-di-sabbia-privata',
+    'idromassaggio-naturale',
 ]
+
+/**
+ * Schede dei modelli in home. La riga sotto il nome è scritta per questa
+ * pagina: `claim` e `sintesi` compaiono già su /modelli e sulla pagina del
+ * modello, e una terza copia farebbe scattare misura-ripetizioni.mjs. Le foto
+ * non sono le copertine delle pagine dei modelli (quella del Mediterranea è
+ * l'apertura di questa pagina), ma inquadrature dalle loro gallerie.
+ */
+const SCHEDE_MODELLI = {
+    caraibi: { foto: 'oasi-con-pontile-e-palme', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },
+    mediterranea: { foto: 'solarium-in-legno', riga: 'Per masserie, ulivi e agrumeti.', rigaEn: 'For farmhouses, olive and citrus groves.' },
+    alpi: { foto: 'ghiaietto-e-acqua-smeraldo', riga: 'Per pendii e giardini piccoli.', rigaEn: 'For slopes and small gardens.' },
+}
 
 /** I quattro dubbi che fermano chi vuole una piscina. */
 const DUBBI = [
@@ -164,9 +187,9 @@ const DUBBI = [
         domanda: '«Sarà una vasca come tante.»',
         domandaEn: '“It will end up looking like every other pool.”',
         risposta:
-            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le piscine qui sopra non ce ne sono due uguali, e la tua non somiglierà a nessuna di quelle.',
+            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino, quindi non può somigliare a quella di un altro.',
         rispostaEn:
-            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two pools above are alike, and yours will not resemble any of them.',
+            'Rocks Design Technology is patented and the shapes are not from a catalogue: the pool is drawn around your garden, so it cannot copy anyone else’s.',
     },
 ]
 
@@ -177,12 +200,6 @@ const RICETTIVO = [
         titoloEn: 'Off-season build',
         testo: 'Programmiamo scavi e realizzazione nei mesi di chiusura, con date concordate in preventivo.',
         testoEn: 'We schedule excavation and construction in your closed months, on dates agreed in the quote.',
-    },
-    {
-        titolo: 'Un unico appalto',
-        titoloEn: 'One contract',
-        testo: 'Impresa edile e concessionario nella stessa azienda: nessun coordinamento tra fornitori a tuo carico.',
-        testoEn: 'Contractor and dealer in one company: no supplier coordination left to you.',
     },
     {
         titolo: 'Assistenza dopo il collaudo',
@@ -269,15 +286,16 @@ export default function Home() {
             />
 
             {/* ─────────────────────────── apertura ─────────────────────────── */}
+            {/*
+              Apertura divisa: testo sul fondo, foto a fianco e a piena
+              luce. Prima la foto stava sotto il testo con un velo dell'80%:
+              per leggere il titolo si spegneva proprio ciò che vende. Ora la
+              foto è di giorno, turchese, e nessun velo la copre.
+              La foto è precaricata da prerender.mjs con gli stessi `sizes`
+              (vedi `fotoApertura` in scripts/rotte.mjs): se cambiano qui,
+              vanno cambiati là, o il browser scarica due volte.
+            */}
             <section id="top" className="pg-eroe">
-                <Foto
-                    slug="illuminazione-calda-sui-monoliti"
-                    className="pg-eroe-foto"
-                    sizes="100vw"
-                    priority
-                    alt="Piscina Rocks Design illuminata di sera, con i massi monolitici in luce calda"
-                />
-                <div className="pg-eroe-velo" />
                 <div className="pg-eroe-testo">
                     <p className="pg-eroe-occhiello">
                         {t('Piscine Rocks Design in Sicilia', 'Piscine Rocks Design in Sicily')}
@@ -291,38 +309,46 @@ export default function Home() {
                     <p className="pg-eroe-sommario">
                         {t(
                             'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
-                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
+                            'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
                         )}
                     </p>
                     <div className="pg-azioni">
-                        <a className="btn btn-primary pg-btn-grande" href="#contatti">
+                        <a className="btn pg-btn-pieno pg-btn-grande" href="#contatti">
                             {t('Chiedi un preventivo', 'Ask for a quote')}
                         </a>
-                        <a className="btn btn-secondary pg-btn-grande" href="#realizzazioni">
+                        <a className="btn btn-secondary pg-btn-grande" href="#foto">
                             {t('Guarda le piscine', 'See the pools')}
                         </a>
                     </div>
+                    {/* Il prezzo di partenza viene da PREZZO, unica fonte: mai riscriverlo a mano. */}
+                    <Link to="/quanto-costa" className="pg-eroe-prezzo">
+                        <span className="pg-eroe-prezzo-cifra">{t(PREZZO.testo, `from €${PREZZO.daMq.toLocaleString('en-GB')} per m² + VAT`)}</span>
+                        <span className="pg-eroe-prezzo-link">{t('Che cosa sposta il prezzo', 'What moves the price')} →</span>
+                    </Link>
                 </div>
-            </section>
-
-            {/* ────────────────────── fascia chiavi in mano ─────────────────── */}
-            <div className="pg-fascia">
-                <div className="pg-fascia-griglia">
+                <figure className="pg-eroe-figura">
+                    <Foto
+                        slug="villa-con-spiaggia-in-ghiaia"
+                        className="pg-eroe-foto"
+                        sizes={FOTO_APERTURA_SIZES}
+                        priority
+                        alt={t('Piscina Rocks Design di giorno: acqua turchese, massi chiari e riva in ghiaia davanti a una villa', 'Piscine Rocks Design pool by day: turquoise water, pale boulders and a gravel shore in front of a villa')}
+                    />
+                    <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
+                </figure>
+                <ul className="pg-fascia">
                     {FASCIA.map(voce => (
-                        <div key={voce.titolo}>
+                        <li key={voce.titolo}>
                             <p className="pg-fascia-titolo">{t(voce.titolo, voce.titoloEn)}</p>
                             <p className="pg-fascia-testo">{t(voce.testo, voce.testoEn)}</p>
-                        </div>
+                        </li>
                     ))}
-                </div>
-            </div>
+                </ul>
+            </section>
 
             {/* ─────────────────── perché Piscine Rocks Design ──────────────── */}
             <section id="piscine" className="pg-sezione pg-piscine">
                 <div>
-                    <h6 className="pg-occhiello">
-                        {t('Perché Piscine Rocks Design', 'Why Piscine Rocks Design')}
-                    </h6>
                     <h2 className="pg-titolo" style={{ maxWidth: '20em' }}>
                         {t('Sembra un laghetto. Funziona come una piscina.', 'It looks like a lagoon. It works like a pool.')}
                     </h2>
@@ -346,7 +372,7 @@ export default function Home() {
                         slug="oasi-con-pontile"
                         className="pg-piscine-foto"
                         sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
-                        alt="Piscina Rocks Design con bordo in pietra e pontile in legno"
+                        alt={t('Piscina Rocks Design con bordo in pietra e pontile in legno', 'Piscine Rocks Design pool with a stone edge and a timber jetty')}
                     />
                     {/*
                       Qui c'era l'invito a visitare la piscina della casa madre
@@ -356,16 +382,81 @@ export default function Home() {
                     */}
                     <figcaption data-didascalia="">
                         {t(
-                            'Una Piscina Rocks Design ultimata e in funzione: bordo in massi, due getti che partono dalla roccia e una dépendance in legno alle spalle.',
-                            'A finished, working Piscine Rocks Design pool: a rock edge, two jets rising from the stone and a timber annexe behind.',
+                            'Bordo in massi, due getti che partono dalla roccia e una dépendance in legno alle spalle.',
+                            'A rock edge, two jets rising from the stone and a timber annexe behind.',
                         )}
                     </figcaption>
+                    <CreditoFoto />
                 </figure>
             </section>
 
+            {/* ────────────────────────── realizzazioni ─────────────────────── */}
+            <section id="foto" className="pg-sezione pg-tinta">
+                <h2 className="pg-titolo" style={{ maxWidth: '20em' }}>
+                    {t(
+                        'Com’è una Piscina Rocks Design finita.',
+                        'What a finished Piscine Rocks Design pool looks like.',
+                    )}
+                </h2>
+                <p className="pg-intro" style={{ maxWidth: '38em', marginBottom: 40 }}>
+                    {t('È il prodotto che costruiamo. In Sicilia non ne abbiamo ancora consegnata una.', 'It is the product we build. We have not yet handed one over in Sicily.')}
+                </p>
+                <div className="pg-mosaico">
+                    {MOSAICO.map((slug, i) => (
+                        <Foto
+                            key={slug}
+                            slug={slug}
+                            sizes={
+                                i === 0
+                                    ? '(max-width: 700px) 82vw, 50vw'
+                                    : '(max-width: 700px) 82vw, (max-width: 1100px) 50vw, 25vw'
+                            }
+                        />
+                    ))}
+                </div>
+                <CreditoFoto />
+                <Link to="/galleria" className="pg-link-freccia">
+                    {t('Tutte le fotografie, con i filtri per modello', 'Every photo, filterable by model')} →
+                </Link>
+            </section>
+
+            {/* ──────────────────────────── i modelli ───────────────────────── */}
+            <section id="modelli" className="pg-sezione">
+                <p className="pg-occhiello">{t('I modelli', 'The models')}</p>
+                <h2 className="pg-titolo" style={{ marginBottom: 40, maxWidth: '18em' }}>
+                    {t('Tre punti di partenza, nessuna vasca uguale.', 'Three starting points, no two pools alike.')}
+                </h2>
+                <div className="pg-modelli">
+                    {MODELLI.map((m, i) => {
+                        const scheda = SCHEDE_MODELLI[m.slug]
+                        return (
+                            <Link key={m.slug} to={`/modelli/${m.slug}`} className="pg-modello">
+                                <Foto
+                                    slug={scheda.foto}
+                                    className="pg-modello-foto"
+                                    sizes={i === 0 ? '(max-width: 900px) calc(100vw - 40px), 55vw' : '(max-width: 900px) calc(100vw - 40px), 20vw'}
+                                />
+                                <span className="pg-modello-testo">
+                                    <span className="pg-modello-nome">{m.nomeCompleto}</span>
+                                    <span className="pg-modello-riga">{t(scheda.riga, scheda.rigaEn)}</span>
+                                    <span className="pg-modello-sabbie">
+                                        {m.sabbie.map(sabbia => (
+                                            <span key={sabbia} className="pg-sabbia">{t(`Sabbia ${sabbia}`, `${sabbia} sand`)}</span>
+                                        ))}
+                                    </span>
+                                </span>
+                            </Link>
+                        )
+                    })}
+                </div>
+                <CreditoFoto />
+                <Link to="/modelli" className="pg-link-freccia">
+                    {t('Confronta i modelli', 'Compare the models')} →
+                </Link>
+            </section>
+
             {/* ───────────────────────── chiavi in mano ─────────────────────── */}
-            <section id="processo" className="pg-sezione pg-bordo">
-                <h6 className="pg-occhiello">{t('Chiavi in mano', 'Turnkey')}</h6>
+            <section id="processo" className="pg-sezione pg-processo">
                 <h2 className="pg-titolo" style={{ maxWidth: '22em' }}>
                     {t('Cinque fasi, un’unica impresa.', 'Five stages, one company.')}
                 </h2>
@@ -375,48 +466,20 @@ export default function Home() {
                         'Luna Costruzioni handles the whole process: we do not merely supply the pool, we build it. Excavation, construction, installation and commissioning all stay in the same hands, from quote to handover.',
                     )}
                 </p>
-                <div className="pg-celle pg-celle-strette">
+                <ol className="pg-fasi">
                     {FASI.map((fase, i) => (
-                        <div key={fase.titolo} className="pg-cella">
-                            <p className="pg-numero">{String(i + 1).padStart(2, '0')}</p>
+                        <li key={fase.titolo} className="pg-fase">
+                            <span className="pg-fase-numero" aria-hidden="true">{i + 1}</span>
+                            <p className="pg-fase-durata">{t(fase.durata, fase.durataEn)}</p>
                             <p className="pg-cella-titolo">{t(fase.titolo, fase.titoloEn)}</p>
                             <p className="pg-cella-testo">{t(fase.testo, fase.testoEn)}</p>
-                        </div>
+                        </li>
                     ))}
-                </div>
-            </section>
-
-            {/* ────────────────────────── realizzazioni ─────────────────────── */}
-            <section id="realizzazioni" className="pg-sezione pg-bordo">
-                <div className="pg-testata">
-                    <div>
-                        <h6 className="pg-occhiello">{t('Le piscine Rocks Design', 'Piscine Rocks Design')}</h6>
-                        <h2 className="pg-titolo" style={{ margin: 0, maxWidth: '20em' }}>
-                            {t(
-                                'Piscine Rocks Design ultimate, arredate e in funzione.',
-                                'Piscine Rocks Design finished, furnished and running.',
-                            )}
-                        </h2>
-                    </div>
-                    <p className="pg-testata-nota">
-                        {t('Fotografie di Piscine Rocks Design realizzate: è il prodotto che costruiamo per te.', 'Photographs of built Piscine Rocks Design pools: this is the product we build for you.')}
-                    </p>
-                </div>
-                <div className="pg-mosaico">
-                    {MOSAICO.map(voce => (
-                        <Foto
-                            key={voce.slug}
-                            slug={voce.slug}
-                            className={voce.doppia ? 'pg-doppia' : ''}
-                            sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 50vw, 33vw"
-                        />
-                    ))}
-                </div>
+                </ol>
             </section>
 
             {/* ───────────────────────── prima di decidere ──────────────────── */}
-            <section id="dubbi" className="pg-sezione pg-bordo">
-                <h6 className="pg-occhiello">{t('Prima di decidere', 'Before you decide')}</h6>
+            <section id="dubbi" className="pg-sezione">
                 <h2 className="pg-titolo" style={{ maxWidth: '21em' }}>
                     {t(
                         'Quattro dubbi fermano chi vuole una piscina. Li mettiamo sul tavolo subito.',
@@ -425,13 +488,13 @@ export default function Home() {
                 </h2>
                 <p className="pg-intro" style={{ maxWidth: '42em' }}>
                     {t(
-                        'Non sono obiezioni da smontare: sono i motivi reali per cui un preventivo resta nel cassetto. A ciascuno rispondiamo con un impegno che finisce nero su bianco nel contratto.',
-                        'These are not objections to argue away: they are the real reasons a quote stays in a drawer. To each we answer with a commitment that ends up in writing in the contract.',
+                        'Sono i motivi reali per cui un preventivo resta nel cassetto. A ciascuno rispondiamo con un impegno preciso; tempi e voci di costo finiscono nel contratto.',
+                        'These are the real reasons a quote stays in a drawer. We answer each with a specific commitment; timing and cost lines go into the contract.',
                     )}
                 </p>
-                <div className="pg-celle pg-celle-larghe">
+                <div className="pg-dubbi">
                     {DUBBI.map(d => (
-                        <div key={d.domanda} className="pg-cella-larga">
+                        <div key={d.domanda} className="pg-dubbio">
                             <p className="pg-etichetta">{t('Il dubbio', 'The doubt')}</p>
                             <p className="pg-domanda">{t(d.domanda, d.domandaEn)}</p>
                             <p className="pg-etichetta pg-etichetta-accento">{t('La nostra risposta', 'Our answer')}</p>
@@ -442,39 +505,89 @@ export default function Home() {
             </section>
 
             {/* ────────────────────────── hotel e resort ────────────────────── */}
-            <section id="hotel" className="pg-sezione pg-bordo">
-                <h6 className="pg-occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</h6>
-                <h2 className="pg-titolo" style={{ maxWidth: '22em' }}>
-                    {t(
-                        'Per una struttura ricettiva la piscina è la prima foto che il cliente guarda.',
-                        'For a hospitality business, the pool is the first photo a guest looks at.',
-                    )}
-                </h2>
-                <p className="pg-intro" style={{ maxWidth: '42em', marginBottom: 48 }}>
-                    {t(
-                        'Una Piscina Rocks Design non somiglia a nessun’altra vasca del territorio: è un motivo per scegliere la struttura e un contenuto che gira sui social dei tuoi ospiti. Lavoriamo con tempi e vincoli di chi deve restare aperto.',
-                        'A Piscine Rocks Design pool looks like nothing else nearby: it is a reason to book and content your guests share. We work around the constraints of a business that has to stay open.',
-                    )}
-                </p>
-                <div className="pg-tre">
-                    {RICETTIVO.map(v => (
-                        <div key={v.titolo} className="pg-tre-voce">
-                            <p className="pg-cella-titolo">{t(v.titolo, v.titoloEn)}</p>
-                            <p className="pg-cella-testo">{t(v.testo, v.testoEn)}</p>
-                        </div>
-                    ))}
+            <section id="hotel" className="pg-hotel">
+                <figure className="pg-hotel-figura">
+                    <Foto
+                        slug="blu-della-sera"
+                        className="pg-hotel-foto"
+                        sizes="(max-width: 900px) 100vw, 45vw"
+                        alt={t('Piscina Rocks Design illuminata di sera, con gli ospiti di un evento ai tavoli sullo sfondo', 'Piscine Rocks Design pool lit in the evening, with guests at tables in the background')}
+                    />
+                    <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
+                </figure>
+                <div className="pg-hotel-testo">
+                    <p className="pg-occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</p>
+                    <h2 className="pg-titolo" style={{ maxWidth: '16em' }}>
+                        {t(
+                            'Per una struttura ricettiva la piscina è la prima foto che il cliente guarda.',
+                            'For a hospitality business, the pool is the first photo a guest looks at.',
+                        )}
+                    </h2>
+                    <p className="pg-intro" style={{ maxWidth: '36em', marginBottom: 36 }}>
+                        {t(
+                            'Massi, sabbia e un ingresso a spiaggia, al posto della solita vasca rettangolare. Lavoriamo con i tempi e i vincoli di chi deve restare aperto.',
+                            'Boulders, sand and a walk-in beach instead of the usual rectangular tank. We work to the timings and constraints of a business that has to stay open.',
+                        )}
+                    </p>
+                    <div className="pg-tre">
+                        {RICETTIVO.map(v => (
+                            <div key={v.titolo} className="pg-tre-voce">
+                                <p className="pg-cella-titolo">{t(v.titolo, v.titoloEn)}</p>
+                                <p className="pg-cella-testo">{t(v.testo, v.testoEn)}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="pg-azioni">
+                        <a className="btn btn-primary pg-btn-grande" href="#contatti">
+                            {t('Richiedi una proposta per la struttura', 'Request a proposal for your property')}
+                        </a>
+                        <Link className="btn btn-ghost pg-btn-grande" to="/hotel-e-resort">
+                            {t('Hotel e resort, nel dettaglio', 'Hotels and resorts in detail')} →
+                        </Link>
+                    </div>
                 </div>
-                <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                    {t('Richiedi una proposta per la struttura', 'Request a proposal for your property')}
-                </a>
+            </section>
+
+            {/* ────────────────────────── zona operativa ────────────────────── */}
+            <section id="sicilia" className="pg-sezione pg-sicilia">
+                <MappaSicilia />
+                <div className="pg-sicilia-testo">
+                    <div>
+                        <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
+                        <p className="pg-sicilia-intro">
+                            {t(
+                                'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
+                                'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
+                            )}
+                        </p>
+                    </div>
+                    <div>
+                        <ul className="pg-province" aria-label={t('Le nove province', 'The nine provinces')}>
+                            {PROVINCE.map(p => (
+                                <li key={p.slug}>
+                                    <Link to={`/piscine-rocks-design/sicilia#${p.slug}`}>{p.nome}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="pg-azioni">
+                            <a className="btn btn-primary pg-btn-grande" href="#contatti">
+                                {t('Chiedi un preventivo', 'Ask for a quote')}
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* ───────────────────────── domande frequenti ──────────────────── */}
-            <section id="faq" className="pg-sezione pg-bordo">
-                <h6 className="pg-occhiello">{t('Domande frequenti', 'Frequently asked')}</h6>
-                <h2 className="pg-titolo" style={{ marginBottom: 48, maxWidth: '20em' }}>
-                    {t('Quello che ci chiedono prima di ogni preventivo.', 'What people ask us before any quote.')}
-                </h2>
+            <section id="faq" className="pg-sezione pg-tinta pg-faq-sezione">
+                <div className="pg-faq-testata">
+                    <h2 className="pg-titolo">
+                        {t('Quello che ci chiedono prima di ogni preventivo.', 'What people ask us before any quote.')}
+                    </h2>
+                    <Link to="/domande-frequenti" className="pg-link-freccia">
+                        {t('Tutte le domande', 'All questions')} →
+                    </Link>
+                </div>
                 <div className="pg-faq">
                     {DOMANDE.map(d => (
                         <details key={d.domanda}>
@@ -485,54 +598,18 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ────────────────────────── zona operativa ────────────────────── */}
-            <section id="sicilia" className="pg-sezione pg-bordo pg-sicilia">
-                <figure>
-                    <Foto
-                        slug="verde-tropicale-sull-acqua"
-                        className="pg-sicilia-foto"
-                        sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
-                        alt="Piscina Rocks Design ultimata, con vegetazione affacciata sull’acqua"
-                    />
-                </figure>
-                <div>
-                    <h6 className="pg-occhiello">{t('Zona operativa', 'Where we work')}</h6>
-                    <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
-                    <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
-                        {t(
-                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
-                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
-                        )}
-                    </p>
-                    <p style={{ color: 'var(--color-neutral-400)', maxWidth: '34em', margin: '0 0 32px', fontSize: 14 }}>
-                        {t(
-                            'Il referente di cantiere è sempre lo stesso, dalla prima visita in giardino al collaudo: si parla con una persona, non con un ufficio.',
-                            'The same person follows the job from the first visit to commissioning: you talk to a person, not an office.',
-                        )}
-                    </p>
-                    <div className="pg-azioni">
-                        <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                            {t('Parlane con Luciano', 'Talk to Luciano')}
-                        </a>
-                        <Link className="btn btn-secondary pg-btn-grande" to="/piscine-rocks-design/sicilia">
-                            {t('Provincia per provincia', 'Province by province')}
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
             {/* ─────────────────────────────  contatti ──────────────────────── */}
             {/* Riquadro finale: `data-cta-finale` lo riconosce scripts/misura-ripetizioni.mjs. */}
-            <section id="contatti" className="pg-sezione pg-bordo pg-contatti" data-cta-finale="">
+            <section id="contatti" className="pg-sezione pg-contatti" data-cta-finale="">
                 <div>
-                    <h6 className="pg-occhiello">{t('Contatti', 'Contact')}</h6>
+                    <p className="pg-occhiello">{t('Contatti', 'Contact')}</p>
                     <h2 className="pg-titolo" style={{ maxWidth: '18em' }}>
                         {t('Raccontaci il giardino.', 'Tell us about the garden.')}
                     </h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '32em', margin: '0 0 36px' }}>
                         {t(
-                            `Basta il comune e due righe sullo spazio che hai. Fissiamo un sopralluogo, gratuito come il preventivo, e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano. ${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
-                            `Your town and a couple of lines about your space are enough. We will arrange a site visit, free like the quote, and tell you what is possible, with timing and costs for the turnkey project. ${AZIENDA.referente} will call you back within 24 working hours.`,
+                            `Ci servono nome, telefono, e-mail e comune; due righe sullo spazio che hai ci aiutano. Fissiamo un sopralluogo, gratuito come il preventivo, e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano. ${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
+                            `We need your name, phone, email and town; a couple of lines about your space help. We will arrange a site visit, free, as is the quote, and tell you what is possible, with timing and costs for the turnkey project. ${AZIENDA.referente} will call you back within 24 working hours.`,
                         )}
                     </p>
                     <div className="pg-recapiti">
@@ -555,10 +632,10 @@ export default function Home() {
             </section>
 
             {/* Il ruolo di concessionario, per esteso: la tecnologia è della casa madre. */}
-            <p className="pg-sezione" style={{ padding: '0 40px 56px', margin: 0, fontSize: 12, color: 'var(--color-neutral-600)', maxWidth: '60em' }}>
+            <p className="pg-nota-brevetto">
                 {t(
                     `La Tecnologia Rocks Design è brevettata da ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} ne è concessionario autorizzato per la Sicilia, non l’inventrice.`,
-                    `Rocks Design Technology is patented by ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} is its authorised dealer for Sicily, not its inventor.`,
+                    `Rocks Design Technology is patented by ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} is one of its authorised dealers in Sicily, not its inventor.`,
                 )}
             </p>
         </div>

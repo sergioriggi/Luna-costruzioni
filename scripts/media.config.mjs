@@ -86,6 +86,13 @@ export const PHOTOS = [
         caption: 'Ghiaia e massi al posto del bordo piastrellato: verso la riva l’acqua si fa bassa.',
         tags: ['mediterranea', 'giorno'],
         hero: true,
+        // È l'apertura della home dall'8 ottobre 2026. Su telefono (≤900px) sta
+        // sotto il testo, a tutta larghezza in 4:3: con la sola scala normale il
+        // telefono scaricava la 960 da 192 KB e l'LCP di Lighthouse passava da
+        // 2,4 a 2,9 s. Il «verticale» qui è un 4:3 (il nome viene dal primo
+        // uso): 480 e 720 coprono 1× e circa 1,75× di un telefono (la densità di
+        // Lighthouse); qualità 56 perché la ghiaia è fitta di dettaglio e pesa: 88 KB.
+        verticale: { proporzione: [4, 3], larghezze: [480, 720], posizione: 'centre', qualita: 56 },
     },
     {
         slug: 'notte-luci-e-festa',

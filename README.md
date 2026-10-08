@@ -7,7 +7,7 @@ messa in opera e collaudo. Italiano con cambio lingua in inglese, SEO locale
 sulle nove province.
 
 L'impianto visivo e i contenuti della home seguono il **blueprint approvato**
-(`index.html` fornito dal committente): tema scuro, tipografia Inter, sezioni
+(`index.html` fornito dal committente): tema scuro, tipografia Geist, sezioni
 `piscine · processo · realizzazioni · dubbi · hotel · faq · sicilia · contatti`.
 
 > **Principio guida — di chi è questo sito**
@@ -64,7 +64,7 @@ npm run preview    # anteprima identica alla produzione
 | `npm run brand` | Estrae il logo ufficiale dal catalogo e genera la filigrana |
 | `npm run media` | Genera le immagini responsive filigranate da `media-sources/` |
 | `npm run media:manifest` | Rigenera solo `src/data/media.json` (quando cambiano didascalie o tag) |
-| `npm run fonts` | Scarica e self-hosta Inter |
+| `npm run fonts` | Scarica e self-hosta Geist |
 | `npm run assets` | `brand` + `media` + `fonts` |
 | `npm run lint` | Oxlint |
 | `npm start` | Avvia il server Node che serve `dist/` e l'endpoint contatti |
@@ -161,7 +161,7 @@ approfondimento. **Le due vanno tenute allineate.**
 | `--color-section` → `--color-section-glow` | `#123f4a` → `#17605f` | fascia «chiavi in mano» |
 
 I bordi usano `testo/[0.16]`, la stessa trasparenza del blueprint. Tipografia
-**Inter** (300–700), inclusa nel bundle da `src/fonts-woff2/`: nessuna
+**Geist** (variabile, 300–700; al posto di Inter dall’8 ottobre 2026), inclusa nel bundle da `src/fonts-woff2/`: nessuna
 richiesta a terze parti, nessun consenso cookie da chiedere per i font. Le classi di componente
 — `.bottone-*`, `.scheda`, `.campo`, `.occhiello`, `.titolo-sezione` — stanno
 in `src/index.css`.
@@ -455,7 +455,7 @@ con l'index di cartella e `404.html` come pagina di errore.
 media-sources/        sorgenti fotografici e catalogo — non pubblicati
 public/
   brand/              logo ufficiale estratto + filigrana (generati)
-  (i font Inter stanno in src/fonts-woff2/, non qui: entrano nel bundle)
+  (i font Geist stanno in src/fonts-woff2/, non qui: entrano nel bundle)
   media/              immagini pubblicate e filigranate (generate)
 scripts/
   build-brand-assets.mjs   estrae il logo dal catalogo, crea la filigrana

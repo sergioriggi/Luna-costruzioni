@@ -1,39 +1,83 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
-import { RICETTIVO } from '../data/content'
 import { useLingua } from '../i18n/lingua'
 import BottoneTelefono from '../components/BottoneTelefono'
 
 const BRICIOLE = [
     { to: '/', label: 'Home' },
-    { to: '/hotel-e-resort', label: 'Hotel e resort' },
+    { to: '/hotel-e-resort', label: 'Hotel e resort', labelEn: 'Hotels and resorts' },
 ]
 
 const RITORNI = [
     {
         titolo: 'Entra nelle fotografie dell’annuncio',
+        titoloEn: 'It shows up in the listing photos',
         testo:
-            'Su Booking, Airbnb o sul vostro sito la piscina è quasi sempre la prima immagine che l’ospite apre. Una vasca in roccia con spiaggia d’ingresso si distingue in una griglia di risultati dove tutte le altre sono rettangoli azzurri.',
+            'Su Booking, Airbnb o sul vostro sito la piscina è quasi sempre la prima immagine che l’ospite apre. In una griglia di risultati fatta quasi solo di vasche rettangolari, una piscina in roccia con spiaggia d’ingresso si riconosce subito.',
+        testoEn:
+            'On Booking, Airbnb or your own site the pool is almost always the first image a guest opens. In a grid of results made up almost entirely of rectangular pools, a rock pool with a walk-in beach is easy to pick out.',
     },
     {
         titolo: 'Gli ospiti la fotografano da soli',
+        titoloEn: 'Guests photograph it themselves',
         testo:
-            'È il tipo di scenario che finisce nelle storie e nei reel senza che dobbiate chiederlo. Contenuto gratuito, e con la vostra struttura riconoscibile dentro.',
+            'È il tipo di scenario che gli ospiti fotografano e condividono, con la vostra struttura riconoscibile dentro.',
+        testoEn:
+            'It is the kind of setting guests photograph and share, with your property recognisable in the shot.',
     },
     {
         titolo: 'Allunga la stagione',
+        titoloEn: 'It lengthens the season',
         testo:
-            'In Sicilia la piscina è usabile ben oltre l’estate piena. Illuminazione e zone benessere rendono lo spazio spendibile anche a settembre e ottobre, quando la concorrenza abbassa i prezzi.',
+            'In Sicilia la piscina si usa ben oltre l’estate piena: con illuminazione e zone benessere lo spazio lavora anche a settembre e ottobre.',
+        testoEn:
+            'In Sicily a pool is usable well beyond high summer: with lighting and a wellness area the space keeps working in September and October.',
     },
     {
-        titolo: 'Un solo interlocutore, un solo contratto',
+        titolo: 'Il cantiere resta fuori dalla stagione',
+        titoloEn: 'The build stays out of your season',
         testo:
-            'Impresa edile e concessionario nella stessa azienda: non dovete coordinare scavatoristi, fornitori e impiantisti, né arbitrare fra loro se qualcosa slitta.',
+            'Scavi e realizzazione si programmano nei mesi di chiusura, con le date scritte nel preventivo. L’obiettivo è riaprire con la piscina pronta, senza camere da tenere ferme per i lavori.',
+        testoEn:
+            'Excavation and construction are scheduled for the months you are closed, with the dates written into the quote. The aim is to reopen with the pool ready, without taking rooms out of service for the works.',
+    },
+]
+
+/**
+ * Come si lavora con una struttura aperta al pubblico. Non usa RICETTIVO di
+ * content.js: quelle tre voci stanno già in home, e «un unico appalto» resta
+ * solo in home e in /azienda.
+ */
+const METODO = [
+    {
+        titolo: 'Accessi e area di cantiere decisi prima',
+        titoloEn: 'Access and site area agreed first',
+        testo:
+            'Da dove entrano i mezzi, dove si depositano i massi e quale parte del giardino resta chiusa si concorda prima di iniziare, sulla pianta della struttura.',
+        testoEn:
+            'Where the machinery comes in, where the boulders are stored and which part of the grounds is closed off are agreed before work starts, on the plan of your property.',
+    },
+    {
+        titolo: 'A lotti, da una chiusura all’altra',
+        titoloEn: 'In stages, from one closed season to the next',
+        testo:
+            'Se il periodo di chiusura è breve, si realizza prima la vasca con le predisposizioni e si completano cascate, illuminazione o solarium nella chiusura successiva.',
+        testoEn:
+            'If your closed period is short, the pool is built first with the necessary provisions in place, and waterfalls, lighting or sun deck are completed in the following closed season.',
+    },
+    {
+        titolo: 'Assistenza dopo il collaudo',
+        titoloEn: 'Support after handover',
+        testo:
+            'Per impianto e manutenzione restiamo il vostro riferimento, e lavoriamo in Sicilia: se a stagione aperta serve un intervento, chiamate qualcuno che è sull’isola.',
+        testoEn:
+            'We remain your contact for the plant and maintenance, and we work in Sicily: if something needs attention mid-season, you are calling someone on the island.',
     },
 ]
 
@@ -44,7 +88,7 @@ export default function HotelResort() {
         <>
             <Seo
                 titolo="Piscine per hotel e resort in Sicilia | Luna Costruzioni"
-                descrizione="Per hotel, resort, agriturismi e B&B in Sicilia: Piscina Rocks Design con cantiere fuori stagione, un solo appalto e assistenza dopo il collaudo."
+                descrizione="Per hotel, resort, agriturismi e B&B in Sicilia: Piscina Rocks Design con cantiere fuori stagione, lavori a lotti e assistenza dopo il collaudo."
                 percorso="/hotel-e-resort"
                 immagine="oasi-con-pontile-e-palme-1280.jpg"
                 schema={[
@@ -57,22 +101,22 @@ export default function HotelResort() {
                     }),
                 ]}
             />
-            <Briciole voci={BRICIOLE} />
+            <Briciole voci={BRICIOLE.map(v => ({ ...v, label: t(v.label, v.labelEn) }))} />
 
             <Sezione>
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-[46em]">
-                        <p className="occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</p>
+                        <p className="occhiello">{t('Hotel, resort, B&B e agriturismi', 'Hotels, resorts, B&Bs and agriturismi')}</p>
                         <h1 className="titolo-sezione text-[32px] sm:text-[40px] lg:text-[46px]">
                             {t(
-                                'Per una struttura ricettiva la piscina è la prima foto che il cliente guarda.',
-                                'For a hospitality business, the pool is the first photo a guest looks at.',
+                                'Piscine per hotel, B&B e agriturismi in Sicilia.',
+                                'Pools for hotels, B&Bs and agriturismi in Sicily.',
                             )}
                         </h1>
                         <p className="testo-lungo mt-6">
                             {t(
-                                'Una piscina Rocks Design non somiglia a nessun’altra vasca del territorio: è un motivo per scegliere la struttura, non un servizio dato per scontato. Lavoriamo con i tempi e i vincoli di chi deve restare aperto.',
-                                'A Piscine Rocks Design pool looks like nothing else nearby: it is a reason to book, not a service taken for granted. We work around the constraints of a business that has to stay open.',
+                                'Una Piscina Rocks Design ha massi, sabbia e un ingresso a spiaggia, con una forma disegnata sul vostro terreno. Il cantiere si organizza sui tempi di chi ha ospiti da accogliere.',
+                                'A Piscine Rocks Design pool has boulders, sand and a walk-in beach, in a shape drawn around your grounds. The build is planned around the calendar of a business with guests to look after.',
                             )}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
@@ -90,6 +134,7 @@ export default function HotelResort() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -102,8 +147,8 @@ export default function HotelResort() {
                 <ul className="mt-12 grid gap-5 sm:grid-cols-2">
                     {RITORNI.map((r, i) => (
                         <Rivela as="li" key={r.titolo} delay={i * 80} className="rounded-md bg-notte p-6">
-                            <h2 className="font-display text-[17px] font-medium">{r.titolo}</h2>
-                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{r.testo}</p>
+                            <h2 className="font-display text-[17px] font-medium">{t(r.titolo, r.titoloEn)}</h2>
+                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{t(r.testo, r.testoEn)}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -112,10 +157,10 @@ export default function HotelResort() {
             <Sezione>
                 <IntestazioneSezione
                     occhiello={t('Come lavoriamo con voi', 'How we work with you')}
-                    titolo={t('Tre condizioni che mettiamo per iscritto', 'Three commitments we put in writing')}
+                    titolo={t('Il lavoro, organizzato attorno alla struttura', 'The work, planned around your property')}
                 />
                 <ul className="mt-12 grid gap-5 lg:grid-cols-3">
-                    {RICETTIVO.map((r, i) => (
+                    {METODO.map((r, i) => (
                         <Rivela as="li" key={r.titolo} delay={i * 80} className="scheda">
                             <h2 className="font-display text-[17px] font-medium">{t(r.titolo, r.titoloEn)}</h2>
                             <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{t(r.testo, r.testoEn)}</p>
@@ -126,7 +171,7 @@ export default function HotelResort() {
 
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
-                    occhiello={t('Realizzazioni', 'Projects')}
+                    occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
                     titolo={t('Vasche che reggono la fotografia', 'Pools that hold up in a photograph')}
                 />
                 <Rivela className="mt-12">
@@ -169,7 +214,11 @@ export default function HotelResort() {
                     'Indicateci periodo di chiusura, spazio disponibile e numero di camere: da lì si capisce se il cantiere sta tutto nei mesi in cui siete chiusi.',
                     'Tell us your closed season, the space available and how many rooms you have: that tells us whether the whole build fits into the months you are closed.',
                 )}
-                modulo={{ titolo: t('Richiedi una proposta', 'Request a proposal') }}
+                modulo={{
+                    titolo: t('Richiedi una proposta', 'Request a proposal'),
+                    tipologiaPreselezionata: 'Struttura ricettiva',
+                    interessePreselezionato: 'Struttura ricettiva / progetto commerciale',
+                }}
             />
         </>
     )
