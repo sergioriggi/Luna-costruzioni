@@ -37,3 +37,7 @@ build/
 # Vite specific
 vite.config.js.timestamp-*
 .vite/
+
+# Impeccable engine binary (~18 MB, per-platform): its launcher downloads
+# a version-pinned copy on first use, so it is not committed.
+.claude/skills/impeccable/scripts/bin/
