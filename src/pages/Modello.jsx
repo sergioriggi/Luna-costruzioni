@@ -8,8 +8,10 @@ import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
 import { MODELLI, SABBIE } from '../data/content'
 import { ROCKS_DESIGN } from '../data/site'
+import { useLingua } from '../i18n/lingua'
 
 export default function Modello() {
+    const { t } = useLingua()
     const { modello } = useParams()
     const m = MODELLI.find(x => x.slug === modello)
     if (!m) return <Navigate to="/404" replace />
@@ -21,6 +23,10 @@ export default function Modello() {
         { to: '/modelli', label: 'Modelli' },
         { to: `/modelli/${m.slug}`, label: m.nome },
     ]
+    // Lo schema resta in italiano; le briciole a schermo seguono la lingua.
+    const bricioleVisibili = briciole.map(v => (v.to === '/modelli' ? { ...v, label: t(v.label, 'Models') } : v))
+    const nomeCompleto = t(m.nomeCompleto, m.nomeCompletoEn)
+    const altroNome = x => t(x.nomeCompleto, x.nomeCompletoEn)
 
     return (
         <>
@@ -52,20 +58,21 @@ export default function Modello() {
                     }),
                 ]}
             />
-            <Briciole voci={briciole} />
+            <Briciole voci={bricioleVisibili} />
 
             <Sezione>
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
                     <Rivela className="max-w-prosa">
-                        <p className="occhiello">{m.claim}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{m.nomeCompleto}</h1>
-                        <p className="testo-lungo mt-6">{m.testo}</p>
+                        <p className="occhiello">{t(m.claim, m.claimEn)}</p>
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{nomeCompleto}</h1>
+                        <p className="testo-lungo mt-6">{t(m.testo, m.testoEn)}</p>
                         <p className="mt-6 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-200">
-                            <strong className="font-semibold">Quando ha senso sceglierlo:</strong> {m.adatto}
+                            <strong className="font-semibold">{t('Quando ha senso sceglierlo:', 'When it makes sense:')}</strong>{' '}
+                            {t(m.adatto, m.adattoEn)}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/contatti" className="bottone-pieno">Chiedi un preventivo</Link>
-                            <Link to="/quanto-costa" className="bottone-secondario">Quanto costa</Link>
+                            <Link to="/contatti" className="bottone-pieno">{t('Chiedi un preventivo', 'Ask for a quote')}</Link>
+                            <Link to="/quanto-costa" className="bottone-secondario">{t('Quanto costa', 'Costs')}</Link>
                         </div>
                     </Rivela>
                     <Rivela delay={120}>
@@ -83,28 +90,40 @@ export default function Modello() {
 
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
-                    occhiello={`Sabbie per il ${m.nome}`}
-                    titolo={sabbieModello.length > 1 ? 'Due strade possibili' : 'La sabbia che lo caratterizza'}
+                    occhiello={t(`Sabbie per il ${m.nome}`, `Sands for the ${m.nome}`)}
+                    titolo={
+                        sabbieModello.length > 1
+                            ? t('Due strade possibili', 'Two possible routes')
+                            : t('La sabbia che lo caratterizza', 'The sand that defines it')
+                    }
                 />
                 <ul className="mt-10 grid gap-6 sm:grid-cols-2">
                     {sabbieModello.map((s, i) => (
                         <Rivela as="li" key={s.nome} delay={i * 90} className="scheda">
-                            <h2 className="font-display text-2xl">Sabbia {s.nome}</h2>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{m.noteSabbie[s.nome]}</p>
+                            <h2 className="font-display text-2xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
+                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
+                                {t(m.noteSabbie[s.nome], m.noteSabbieEn?.[s.nome])}
+                            </p>
                         </Rivela>
                     ))}
                 </ul>
                 <Rivela className="mt-8">
                     <Link to="/sabbie" className="link-sottile text-sm font-medium text-accento">
-                        Tutte e tre le sabbie
+                        {t('Tutte e tre le sabbie', 'All three sands')}
                     </Link>
                 </Rivela>
             </Sezione>
 
             <Sezione>
-                <IntestazioneSezione occhiello="Foto della casa madre" titolo={`Il ${m.nome}, a lavori finiti`} />
+                <IntestazioneSezione
+                    occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
+                    titolo={t(`Il ${m.nome} nelle foto Piscine Rocks Design`, `The ${m.nome} in Piscine Rocks Design photos`)}
+                />
                 <Rivela className="mt-12">
-                    <Galleria filtrabile={false} voci={m.galleria} />
+                    <Galleria
+                        filtrabile={false}
+                        voci={m.galleria.map(v => ({ slug: v.slug, didascalia: t(v.didascalia, v.didascaliaEn) }))}
+                    />
                 </Rivela>
             </Sezione>
 
@@ -115,27 +134,30 @@ export default function Modello() {
             */}
             <Sezione sfondo="bg-superficie" className="!py-12">
                 <p className="max-w-prosa text-[0.95rem] leading-relaxed text-neutro-400">
-                    Se il giardino chiede altro, guarda anche il{' '}
+                    {t('Se il giardino chiede altro, guarda anche il', 'If your garden calls for something else, look at the')}{' '}
                     <Link to={`/modelli/${altri[0].slug}`} className="link-sottile font-medium text-accento">
-                        {altri[0].nomeCompleto}
+                        {altroNome(altri[0])}
                     </Link>{' '}
-                    e il{' '}
+                    {t('e il', 'and the')}{' '}
                     <Link to={`/modelli/${altri[1].slug}`} className="link-sottile font-medium text-accento">
-                        {altri[1].nomeCompleto}
+                        {altroNome(altri[1])}
                     </Link>
-                    , oppure i tre{' '}
+                    {t(', oppure i tre', ', or see all three')}{' '}
                     <Link to="/modelli" className="link-sottile font-medium text-accento">
-                        messi a confronto
+                        {t('messi a confronto', 'side by side')}
                     </Link>
                     .
                 </p>
             </Sezione>
 
             <ChiusuraContatto
-                occhiello="Preventivo"
-                titolo={`Un ${m.nome} nel tuo giardino`}
-                testo={`Mandaci due righe su spazio ed esposizione: capiamo presto se il ${m.nome} ci sta, o se ti conviene un altro modello.`}
-                modulo={{ titolo: `Richiedi un progetto ${m.nome}` }}
+                occhiello={t('Preventivo', 'Quote')}
+                titolo={t(`Un ${m.nome} nel tuo giardino`, `A ${m.nome} in your garden`)}
+                testo={t(
+                    `Mandaci due righe su spazio ed esposizione: capiamo presto se il ${m.nome} ci sta, o se ti conviene un altro modello.`,
+                    `Send us a couple of lines about the space and which way it faces: we will soon tell you whether the ${m.nome} fits, or whether another model suits you better.`,
+                )}
+                modulo={{ titolo: t(`Richiedi un progetto ${m.nome}`, `Request a ${m.nome} design`) }}
             />
         </>
     )

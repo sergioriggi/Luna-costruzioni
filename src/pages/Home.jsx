@@ -338,7 +338,7 @@ export default function Home() {
                         className="pg-eroe-foto"
                         sizes={FOTO_APERTURA_SIZES}
                         priority
-                        alt="Piscina Rocks Design di giorno: acqua turchese, massi chiari e riva in ghiaia davanti a una villa"
+                        alt={t('Piscina Rocks Design di giorno: acqua turchese, massi chiari e riva in ghiaia davanti a una villa', 'Piscine Rocks Design pool by day: turquoise water, pale boulders and a gravel shore in front of a villa')}
                     />
                     <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
@@ -378,7 +378,7 @@ export default function Home() {
                         slug="oasi-con-pontile"
                         className="pg-piscine-foto"
                         sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
-                        alt="Piscina Rocks Design con bordo in pietra e pontile in legno"
+                        alt={t('Piscina Rocks Design con bordo in pietra e pontile in legno', 'Piscine Rocks Design pool with a stone edge and a timber jetty')}
                     />
                     {/*
                       Qui c'era l'invito a visitare la piscina della casa madre
@@ -517,7 +517,7 @@ export default function Home() {
                         slug="blu-della-sera"
                         className="pg-hotel-foto"
                         sizes="(max-width: 900px) 100vw, 45vw"
-                        alt="Piscina Rocks Design illuminata di sera, con gli ospiti di un evento ai tavoli sullo sfondo"
+                        alt={t('Piscina Rocks Design illuminata di sera, con gli ospiti di un evento ai tavoli sullo sfondo', 'Piscine Rocks Design pool lit in the evening, with guests at tables in the background')}
                     />
                     <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
@@ -531,8 +531,8 @@ export default function Home() {
                     </h2>
                     <p className="pg-intro" style={{ maxWidth: '36em', marginBottom: 36 }}>
                         {t(
-                            'Una Piscina Rocks Design non somiglia a nessun’altra vasca del territorio: è un motivo per scegliere la struttura e un contenuto che gira sui social dei tuoi ospiti. Lavoriamo con tempi e vincoli di chi deve restare aperto.',
-                            'A Piscine Rocks Design pool looks like nothing else nearby: it is a reason to book and content your guests share. We work around the constraints of a business that has to stay open.',
+                            'Massi, sabbia e un ingresso a spiaggia, al posto della solita vasca rettangolare. Lavoriamo con i tempi e i vincoli di chi deve restare aperto.',
+                            'Boulders, sand and a walk-in beach instead of the usual rectangular tank. We work to the timings and constraints of a business that has to stay open.',
                         )}
                     </p>
                     <div className="pg-tre">

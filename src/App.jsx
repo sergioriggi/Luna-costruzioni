@@ -78,52 +78,30 @@ function InizioPagina() {
 }
 
 /**
- * Le pagine tradotte in inglese. Le altre, in modalità inglese, restano in
- * italiano: lo si dice con una riga in cima e si dichiara `lang="it"` sul loro
- * <main>, così un lettore di schermo non legge l'italiano con la voce inglese.
- * Prima la testata passava all'inglese e il resto della pagina no, senza
- * avvisare: sembrava un sito rotto.
+ * Il collegamento «salta al contenuto», nella lingua scelta. Componente a sé,
+ * come la testata, e non dentro `App`: chi legge la lingua deve stare accanto
+ * al confine <Suspense> delle rotte, mai sopra (errore #418, vedi fd3a113).
  */
-const TRADOTTE = new Set(['/', '/contatti', '/grazie', '/hotel-e-resort'])
-
-/**
- * La riga per le pagine non tradotte. È un componente a sé, fratello delle
- * rotte dentro <main>, e non un involucro attorno a <main>, per una ragione
- * precisa: la lingua salvata si applica dopo l'idratazione, e un componente
- * che legge la lingua SOPRA il confine <Suspense> delle rotte si ridisegna in
- * quel momento. React allora idrata le rotte ancora in attesa con il testo
- * inglese, contro un HTML italiano: errore #418 su ogni pagina in inglese.
- * Qui sotto la lingua la legge solo questa riga, e `lang` su <main> lo
- * imposta un effetto, fuori dal disegno.
- */
-function AvvisoLingua() {
-    const { lingua } = useLingua()
-    const { pathname } = useLocation()
-    const soloItaliano = lingua === 'en' && !TRADOTTE.has(pathname)
-    useEffect(() => {
-        const main = document.getElementById('contenuto')
-        if (!main) return
-        if (soloItaliano) main.setAttribute('lang', 'it')
-        else main.removeAttribute('lang')
-    }, [soloItaliano])
-    if (!soloItaliano) return null
-    return <p className="avviso-lingua" lang="en">This page is only available in Italian for now.</p>
+function SaltaAlContenuto() {
+    const { t } = useLingua()
+    return (
+        <a
+            href="#contenuto"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-superficie focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-testo focus:shadow-lg"
+        >
+            {t('Vai al contenuto', 'Skip to content')}
+        </a>
+    )
 }
 
 export default function App() {
     return (
         <FornitoreLingua>
         <div className="flex min-h-screen flex-col">
-            <a
-                href="#contenuto"
-                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-superficie focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-testo focus:shadow-lg"
-            >
-                Vai al contenuto
-            </a>
+            <SaltaAlContenuto />
             <InizioPagina />
             <Header />
             <main id="contenuto" className="flex-1">
-                <AvvisoLingua />
                 {/* Il confine serve alla navigazione verso una pagina non ancora
                     scaricata: la rotta cambia dentro una transizione, quindi a
                     schermo resta la pagina di prima finché non arriva il codice. */}

@@ -44,7 +44,7 @@ const FAQ_COSTO = [
         risposta:
             `A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili: si parte da ${PREZZO.cifraLunga}. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».`,
         rispostaEn:
-            `For the same area and the same standard of finish, the two are in the same range: prices start from ${CIFRA_EN}. What changes is where the money goes. Here more of it goes on selecting and moving the boulders, while concrete pours, formwork and linings disappear. The comparison should also include the surrounding works, which for a conventional pool are often quoted separately. The full side-by-side comparison is on the page “Concrete pool or Piscina Rocks Design?”.`,
+            `For the same area and the same standard of finish, the two are in the same range: prices start from ${CIFRA_EN}. What changes is where the money goes. Here more of it goes on selecting and moving the boulders, while concrete pours, formwork and linings disappear. The comparison should also include the surrounding works, which for a conventional pool are often quoted separately. The full side-by-side comparison is on the page “Concrete pool or Piscine Rocks Design pool?”.`,
     },
     {
         domanda: 'Si può fare a lotti?',
