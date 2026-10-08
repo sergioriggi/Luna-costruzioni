@@ -198,7 +198,7 @@
       "refersTo": "button-primary",
       "description": "The one filled call to action per view: Chiedi un preventivo.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Chiedi un preventivo</a>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;background:#38c6c0;color:#12202b;font:600 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1),transform .15s cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary:hover{background:#6fdcd5}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;background:#38c6c0;color:#12202b;font:600 15px/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1),transform .15s cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary:hover{background:#6fdcd5}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
     },
     {
       "name": "Outline Button",
@@ -206,7 +206,7 @@
       "refersTo": "button-outline",
       "description": "A second action with a different purpose, such as the hotel proposal.",
       "html": "<a class=\"ds-btn-outline\" href=\"#\">Richiedi una proposta per la struttura</a>",
-      "css": ".ds-btn-outline{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;color:#38c6c0;background:transparent;font:500 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-outline:hover{background:rgba(56,198,192,.12)}.ds-btn-outline:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+      "css": ".ds-btn-outline{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;color:#38c6c0;background:transparent;font:500 15px/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-outline:hover{background:rgba(56,198,192,.12)}.ds-btn-outline:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
     },
     {
       "name": "Secondary Button",
@@ -214,7 +214,7 @@
       "refersTo": "button-secondary",
       "description": "See-more actions such as Guarda le piscine.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">Guarda le piscine</a>",
-      "css": ".ds-btn-secondary{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid rgba(238,246,247,.16);color:#eef6f7;background:transparent;font:500 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-secondary:hover{background:rgba(238,246,247,.07)}.ds-btn-secondary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+      "css": ".ds-btn-secondary{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid rgba(238,246,247,.16);color:#eef6f7;background:transparent;font:500 15px/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-secondary:hover{background:rgba(238,246,247,.07)}.ds-btn-secondary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
     },
     {
       "name": "Text Field",
@@ -222,7 +222,7 @@
       "refersTo": "input",
       "description": "Enquiry form field with the label above.",
       "html": "<label class=\"ds-field\"><span>Nome e cognome</span><input placeholder=\"Mario Rossi\"></label>",
-      "css": ".ds-field{display:grid;gap:5px;font:12px Inter,system-ui,sans-serif;color:rgba(238,246,247,.7)}.ds-field input{min-height:36px;padding:6px 10px;border-radius:8px;border:1px solid rgba(238,246,247,.16);background:#1b2f3c;color:#eef6f7;font:14px Inter,system-ui,sans-serif}.ds-field input::placeholder{color:#8aa8b0}.ds-field input:focus-visible{outline:none;border-color:#38c6c0}"
+      "css": ".ds-field{display:grid;gap:5px;font:12px Geist,system-ui,sans-serif;color:rgba(238,246,247,.7)}.ds-field input{min-height:36px;padding:6px 10px;border-radius:8px;border:1px solid rgba(238,246,247,.16);background:#1b2f3c;color:#eef6f7;font:14px Geist,system-ui,sans-serif}.ds-field input::placeholder{color:#8aa8b0}.ds-field input:focus-visible{outline:none;border-color:#38c6c0}"
     },
     {
       "name": "Navigation",
@@ -230,7 +230,7 @@
       "refersTo": "navigation",
       "description": "Header links with the current page underlined in turquoise.",
       "html": "<nav class=\"ds-nav\"><a aria-current=\"page\" href=\"#\">Modelli</a><a href=\"#\">Le piscine</a><a href=\"#\">Quanto costa</a></nav>",
-      "css": ".ds-nav{display:flex;gap:24px;font:14px Inter,system-ui,sans-serif}.ds-nav a{position:relative;padding:6px 0;color:#cbdfe3;text-decoration:none;transition:color .2s cubic-bezier(0.22,1,0.36,1)}.ds-nav a:hover,.ds-nav a[aria-current=page]{color:#eef6f7}.ds-nav a[aria-current=page]::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:#38c6c0}"
+      "css": ".ds-nav{display:flex;gap:24px;font:14px Geist,system-ui,sans-serif}.ds-nav a{position:relative;padding:6px 0;color:#cbdfe3;text-decoration:none;transition:color .2s cubic-bezier(0.22,1,0.36,1)}.ds-nav a:hover,.ds-nav a[aria-current=page]{color:#eef6f7}.ds-nav a[aria-current=page]::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:#38c6c0}"
     },
     {
       "name": "Doubt Card",
@@ -238,7 +238,7 @@
       "refersTo": "card",
       "description": "Surface card for the four doubts: label, question, answer.",
       "html": "<div class=\"ds-card\"><p class=\"ds-card-label\">Il dubbio</p><p class=\"ds-card-q\">«Non so quanto costerà davvero.»</p><p class=\"ds-card-a\">Preventivo con voci separate, firmato prima di iniziare.</p></div>",
-      "css": ".ds-card{padding:34px 36px;border-radius:14px;background:#1b2f3c;border:1px solid rgba(238,246,247,.06);font-family:Inter,system-ui,sans-serif;color:#eef6f7}.ds-card-label{margin:0 0 10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8aa8b0}.ds-card-q{margin:0 0 20px;font-size:24px;line-height:1.2;letter-spacing:-.02em}.ds-card-a{margin:0;font-size:15px;line-height:1.65;color:#cbdfe3}"
+      "css": ".ds-card{padding:34px 36px;border-radius:14px;background:#1b2f3c;border:1px solid rgba(238,246,247,.06);font-family:Geist,system-ui,sans-serif;color:#eef6f7}.ds-card-label{margin:0 0 10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8aa8b0}.ds-card-q{margin:0 0 20px;font-size:24px;line-height:1.2;letter-spacing:-.02em}.ds-card-a{margin:0;font-size:15px;line-height:1.65;color:#cbdfe3}"
     },
     {
       "name": "Price Line",
@@ -246,7 +246,7 @@
       "refersTo": "price-line",
       "description": "The starting price in pale sand, linking to what moves it.",
       "html": "<a class=\"ds-price\" href=\"#\"><span>A partire da 1.250 € al m² + IVA</span><small>Che cosa sposta il prezzo →</small></a>",
-      "css": ".ds-price{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:14px 18px;border-radius:8px;background:rgba(228,210,170,.14);border:1px solid rgba(228,210,170,.26);text-decoration:none;font-family:Inter,system-ui,sans-serif;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-price span{font-size:17px;color:#e4d2aa;font-variant-numeric:tabular-nums}.ds-price small{font-size:13px;color:#cbdfe3}.ds-price:hover{background:rgba(228,210,170,.2)}"
+      "css": ".ds-price{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:14px 18px;border-radius:8px;background:rgba(228,210,170,.14);border:1px solid rgba(228,210,170,.26);text-decoration:none;font-family:Geist,system-ui,sans-serif;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-price span{font-size:17px;color:#e4d2aa;font-variant-numeric:tabular-nums}.ds-price small{font-size:13px;color:#cbdfe3}.ds-price:hover{background:rgba(228,210,170,.2)}"
     },
     {
       "name": "Sand Tag",
@@ -254,7 +254,7 @@
       "refersTo": "sand-tag",
       "description": "Sand name on a model card.",
       "html": "<span class=\"ds-sand\">Sabbia Bianco</span>",
-      "css": ".ds-sand{display:inline-block;padding:3px 10px;border-radius:8px;font:12px Inter,system-ui,sans-serif;color:#e4d2aa;background:rgba(228,210,170,.14)}"
+      "css": ".ds-sand{display:inline-block;padding:3px 10px;border-radius:8px;font:12px Geist,system-ui,sans-serif;color:#e4d2aa;background:rgba(228,210,170,.14)}"
     }
   ],
   "narrative": {

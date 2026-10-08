@@ -20,34 +20,34 @@ colors:
   divider: "color-mix(in srgb, #eef6f7 16%, transparent)"
 typography:
   display:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "clamp(40px, 4.4vw, 66px)"
     fontWeight: 500
     lineHeight: 1.02
     letterSpacing: "-0.034em"
   headline:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "clamp(30px, 3.2vw, 46px)"
     fontWeight: 500
     lineHeight: 1.06
     letterSpacing: "-0.028em"
   title:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "18px"
     fontWeight: 500
     lineHeight: 1.2
   body:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.65
   body-small:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Inter, 'Inter riserva', system-ui, sans-serif"
+    fontFamily: "Geist, 'Geist riserva', system-ui, sans-serif"
     fontSize: "12px"
     fontWeight: 500
     letterSpacing: "0.16em"
@@ -147,11 +147,11 @@ A night-sea ground, one pool-turquoise accent, and a pale sand kept for figures.
 
 ## Typography
 
-**Display Font:** Inter (with metric-matched fallbacks "Inter riserva" and system-ui)
-**Body Font:** Inter
-**Label Font:** Inter, uppercase with wide tracking
+**Display Font:** Geist, variable 300–700 (with metric-matched fallbacks "Geist riserva" and system-ui)
+**Body Font:** Geist
+**Label Font:** Geist, uppercase with wide tracking
 
-**Character:** One family, self-hosted, so there are no third-party font requests and no consent needed for them. Hierarchy comes from size, weight (300 to 600) and tracking, never from a second family. A trial of Geist (also self-hosted) is approved but not yet done; if adopted, it replaces Inter everywhere and the fallbacks must be retuned to avoid layout shift.
+**Character:** One family, self-hosted, so there are no third-party font requests and no consent needed for them. Hierarchy comes from size, weight (300 to 600) and tracking, never from a second family. Geist replaced Inter on 8 October 2026 (trial on the redesign branch): one variable file per subset, 29 KB for Latin against Inter's 48 KB. If the family changes again, re-measure the fallbacks with scripts/misura-riserva.py to avoid layout shift.
 
 ### Hierarchy
 - **Display** (500, clamp 40 to 66px, 1.02, -0.034em): the opening headline only. Balanced wrapping; no more than three lines on desktop.

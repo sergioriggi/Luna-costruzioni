@@ -59,8 +59,8 @@ export default {
                 },
             },
             fontFamily: {
-                display: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', 'sans-serif'],
-                sans: ['Inter', 'Inter riserva', 'Inter riserva DejaVu', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+                display: ['Geist', 'Geist riserva', 'Geist riserva DejaVu', 'system-ui', 'sans-serif'],
+                sans: ['Geist', 'Geist riserva', 'Geist riserva DejaVu', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
             },
             fontSize: {
                 // scala del blueprint

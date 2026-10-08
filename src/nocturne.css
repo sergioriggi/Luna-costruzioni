@@ -4,7 +4,7 @@
  * dell'aspetto: si ritocca qui.
  *
  * Differenze rispetto all'originale:
- *  - l'@import di Google Fonts è rimosso, Inter è nel bundle;
+ *  - l'@import di Google Fonts è rimosso, il carattere (Geist, al posto di Inter dall'8 ottobre 2026) è nel bundle;
  *  - la palette è stata ritarata sull'acqua della piscina: fondo blu notte
  *    invece che indaco, accento turchese invece che viola. Il fondo resta
  *    scuro di proposito — è ciò che fa risaltare le fotografie, che sono la
@@ -74,9 +74,9 @@
   --color-section-glow: #17605f;
   --color-section-ghost: #2a8a86;
 
-  --font-heading: "Inter", "Inter riserva", "Inter riserva DejaVu", system-ui, sans-serif;
+  --font-heading: "Geist", "Geist riserva", "Geist riserva DejaVu", system-ui, sans-serif;
   --font-heading-weight: 500;
-  --font-body: "Inter", "Inter riserva", "Inter riserva DejaVu", system-ui, sans-serif;
+  --font-body: "Geist", "Geist riserva", "Geist riserva DejaVu", system-ui, sans-serif;
 
   --space-1: 2.8px;
   --space-2: 5.6px;

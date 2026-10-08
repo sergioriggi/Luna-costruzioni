@@ -1,20 +1,22 @@
 /*
- * Caratteri di riserva con le misure di Inter.
+ * Caratteri di riserva con le misure di Geist.
  *
- * Finché Inter non è arrivato il testo si disegna con un carattere di
- * sistema; quando Inter arriva (`font-display: swap`) il testo va a capo in
+ * Finché Geist non è arrivato il testo si disegna con un carattere di
+ * sistema; quando Geist arriva (`font-display: swap`) il testo va a capo in
  * punti diversi e la pagina salta. Era lo spostamento misurato da PageSpeed
  * (CLS 0,668 su desktop): sul server di prova il carattere di sistema era più
- * largo di Inter, ogni paragrafo occupava più righe e al cambio tutto risaliva.
+ * largo del carattere vero, ogni paragrafo occupava più righe e al cambio tutto risaliva.
  *
  * Qui si dichiara un carattere locale riscalato perché occupi lo stesso
- * spazio di Inter: larghezza media (`size-adjust`) e altezza di riga
+ * spazio di Geist: larghezza media (`size-adjust`) e altezza di riga
  * (`ascent`/`descent-override`). Al cambio il testo resta dov'era.
  *
- * I valori sono MISURATI, non copiati: larghezza media dei glifi di Inter 400
- * e del carattere locale su un brano dei testi del sito, metriche verticali
- * di Inter (ascent 1984, descent 494, unità 2048) divise per il fattore di
- * scala. Si ripete il calcolo se cambia il carattere del sito.
+ * I valori sono MISURATI, non copiati, con scripts/misura-riserva.py:
+ * larghezza media dei glifi di Geist 400 e del carattere locale su un brano
+ * dei testi del sito, metriche verticali di Geist (ascent 1005, descent 295,
+ * unità 1000) divise per il fattore di scala. Si ripete il calcolo se cambia
+ * il carattere del sito. (Lo script, rifatto su Inter, ritrova i vecchi
+ * valori a meno di tre decimi di punto.)
  *
  * Due famiglie, perché un solo `size-adjust` non vale per caratteri diversi:
  * il browser usa la prima di cui trova il file sul sistema.
@@ -22,20 +24,20 @@
 
 /* Arial e i suoi equivalenti metrici (Liberation Sans su Linux, Arimo). */
 @font-face {
-    font-family: 'Inter riserva';
+    font-family: 'Geist riserva';
     src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Arimo');
-    size-adjust: 106.41%;
-    ascent-override: 91.04%;
-    descent-override: 22.67%;
+    size-adjust: 103.11%;
+    ascent-override: 97.47%;
+    descent-override: 28.61%;
     line-gap-override: 0%;
 }
 
 /* DejaVu Sans: il carattere di sistema dei Linux senza Arial. */
 @font-face {
-    font-family: 'Inter riserva DejaVu';
+    font-family: 'Geist riserva DejaVu';
     src: local('DejaVu Sans'), local('DejaVuSans');
-    size-adjust: 94.17%;
-    ascent-override: 102.88%;
-    descent-override: 25.62%;
+    size-adjust: 91.09%;
+    ascent-override: 110.33%;
+    descent-override: 32.39%;
     line-gap-override: 0%;
 }
