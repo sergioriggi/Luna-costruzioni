@@ -86,18 +86,28 @@ function InizioPagina() {
  */
 const TRADOTTE = new Set(['/', '/contatti', '/grazie', '/hotel-e-resort'])
 
-function Principale({ children }) {
+/**
+ * La riga per le pagine non tradotte. È un componente a sé, fratello delle
+ * rotte dentro <main>, e non un involucro attorno a <main>, per una ragione
+ * precisa: la lingua salvata si applica dopo l'idratazione, e un componente
+ * che legge la lingua SOPRA il confine <Suspense> delle rotte si ridisegna in
+ * quel momento. React allora idrata le rotte ancora in attesa con il testo
+ * inglese, contro un HTML italiano: errore #418 su ogni pagina in inglese.
+ * Qui sotto la lingua la legge solo questa riga, e `lang` su <main> lo
+ * imposta un effetto, fuori dal disegno.
+ */
+function AvvisoLingua() {
     const { lingua } = useLingua()
     const { pathname } = useLocation()
     const soloItaliano = lingua === 'en' && !TRADOTTE.has(pathname)
-    return (
-        <main id="contenuto" className="flex-1" lang={soloItaliano ? 'it' : undefined}>
-            {soloItaliano && (
-                <p className="avviso-lingua" lang="en">This page is only available in Italian for now.</p>
-            )}
-            {children}
-        </main>
-    )
+    useEffect(() => {
+        const main = document.getElementById('contenuto')
+        if (!main) return
+        if (soloItaliano) main.setAttribute('lang', 'it')
+        else main.removeAttribute('lang')
+    }, [soloItaliano])
+    if (!soloItaliano) return null
+    return <p className="avviso-lingua" lang="en">This page is only available in Italian for now.</p>
 }
 
 export default function App() {
@@ -112,7 +122,8 @@ export default function App() {
             </a>
             <InizioPagina />
             <Header />
-            <Principale>
+            <main id="contenuto" className="flex-1">
+                <AvvisoLingua />
                 {/* Il confine serve alla navigazione verso una pagina non ancora
                     scaricata: la rotta cambia dentro una transizione, quindi a
                     schermo resta la pagina di prima finché non arriva il codice. */}
@@ -123,7 +134,7 @@ export default function App() {
                         ))}
                     </Routes>
                 </Suspense>
-            </Principale>
+            </main>
             <Footer />
             <AzioniRapide />
             <BannerCookie />
