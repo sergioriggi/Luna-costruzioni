@@ -202,12 +202,6 @@ const RICETTIVO = [
         testoEn: 'We schedule excavation and construction in your closed months, on dates agreed in the quote.',
     },
     {
-        titolo: 'Un unico appalto',
-        titoloEn: 'One contract',
-        testo: 'Impresa edile e concessionario nella stessa azienda: nessun coordinamento tra fornitori a tuo carico.',
-        testoEn: 'Contractor and dealer in one company: no supplier coordination left to you.',
-    },
-    {
         titolo: 'Assistenza dopo il collaudo',
         titoloEn: 'Support after handover',
         testo: 'Restiamo il riferimento per impianto e manutenzione: siamo in Sicilia, non a mille chilometri.',
