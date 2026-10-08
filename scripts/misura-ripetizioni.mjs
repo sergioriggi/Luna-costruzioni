@@ -79,6 +79,11 @@ function testoDiMain(html) {
     // ripete per scelta su ogni pagina con foto: non è testo duplicato.
     corpo = togliElementi(corpo, 'data-credito-foto')
 
+    // I pulsanti (link con classe bottone/btn) contano come blocchi a sé: due
+    // pulsanti affiancati non sono una frase, e le loro etichette si ripetono
+    // per scelta («Chiedi un preventivo» è la stessa su tutto il sito).
+    corpo = corpo.replace(/<a\b[^>]*class="[^"]*\b(?:bottone|btn)[^"]*"[^>]*>([\s\S]*?)<\/a>/gi, '<p>$1</p>')
+
     const conCta = corpo
     corpo = togliElementi(corpo, 'data-cta-finale')
 
