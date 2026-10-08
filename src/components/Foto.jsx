@@ -44,7 +44,11 @@ export default function Foto({ slug, className = '', sizes = '100vw', priority =
         />
     )
 
-    if (!m.verticale) return img
+    // Una foto d'apertura senza ritaglio verticale sta comunque in un
+    // <picture>: React 19, davanti a un <img> con `fetchPriority="high"` fuori
+    // da un <picture>, emette da sé una seconda precarica nel <head>, accanto
+    // a quella di prerender.mjs. verifica-conformita.mjs la segnala.
+    if (!m.verticale) return priority ? <picture>{img}</picture> : img
 
     return (
         <picture>

@@ -159,51 +159,96 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-testata-telefono, .pg-testata-preventivo { display: none; }
 }
 
-/* ── sezione di apertura ──────────────────────────────────────────────── */
+/* ── ritmo delle sezioni ──────────────────────────────────────────────
+   Le sezioni sono a piena larghezza (il fondo arriva ai bordi) e il
+   contenuto sta in una colonna di 1320 px al centro: il padding laterale
+   cresce con lo schermo invece di lasciare il testo incollato a sinistra.
+   Al posto delle righe di separazione, che avevano tre larghezze diverse,
+   le sezioni si alternano fra il fondo e la tinta `pg-tinta`. */
 
-.pg-eroe { position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; }
-.pg-eroe-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-/* Quando Foto.jsx avvolge l'<img> in un <picture> (ritaglio verticale per il
-   telefono), il contenitore non deve diventare un figlio flex di .pg-eroe: lo
-   si fa sparire dal layout e l'<img> resta posato su `inset: 0` come prima. */
-.pg-eroe picture { display: contents; }
-.pg-eroe-velo {
-    position: absolute; inset: 0;
-    background: linear-gradient(75deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 38%, transparent 78%);
+.pg-sezione {
+    --margine: max(40px, calc((100% - 1320px) / 2));
+    padding: 120px var(--margine) 128px;
 }
-.pg-eroe-testo { position: relative; padding: 0 40px 84px; max-width: 780px; }
+.pg-tinta { background: var(--color-neutral-900); }
+.pg-occhiello { color: var(--color-accent-300); margin: 0 0 18px; }
+.pg-titolo {
+    font-size: clamp(30px, 3.2vw, 46px); line-height: 1.06; letter-spacing: -0.028em;
+    margin: 0 0 22px; text-wrap: balance;
+}
+.pg-intro { color: var(--color-neutral-300); margin: 0 0 56px; font-size: 16px; line-height: 1.65; }
+.pg-link-freccia {
+    display: inline-flex; gap: 6px; margin-top: 32px; font-size: 15px;
+    color: var(--color-accent); text-decoration: none; font-family: var(--font-heading);
+    transition: gap .2s, color .2s;
+}
+.pg-link-freccia:hover { gap: 10px; }
+
+/* ── apertura ─────────────────────────────────────────────────────────── */
+
+.pg-eroe {
+    display: grid; grid-template-columns: minmax(0, 1fr) 52vw;
+    grid-template-areas: 'testo foto' 'fascia fascia';
+    min-height: min(820px, calc(100dvh - 72px));
+    background:
+        radial-gradient(60% 70% at 0% 30%, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 70%),
+        var(--color-bg);
+}
+.pg-eroe-testo {
+    grid-area: testo; align-self: center;
+    padding: 72px 64px 72px max(40px, calc((100vw - 1320px) / 2));
+    max-width: 760px;
+}
+.pg-eroe-figura { grid-area: foto; position: relative; margin: 0; min-height: 520px; }
+.pg-eroe-figura picture { display: contents; }
+.pg-eroe-foto {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    border-bottom-left-radius: 28px;
+}
 .pg-eroe-occhiello {
     font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--color-accent-300); margin: 0 0 20px;
+    text-transform: uppercase; color: var(--color-accent-300); margin: 0 0 22px;
 }
-.pg-eroe-titolo { font-size: 58px; line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 24px; max-width: 15em; }
-.pg-eroe-sommario { font-size: 17px; line-height: 1.6; color: var(--color-neutral-300); max-width: 34em; margin: 0 0 32px; }
+.pg-eroe-titolo {
+    font-size: clamp(40px, 4.4vw, 66px); line-height: 1.02; letter-spacing: -0.034em;
+    margin: 0 0 26px; max-width: 13em; text-wrap: balance;
+}
+.pg-eroe-sommario { font-size: 17px; line-height: 1.6; color: var(--color-neutral-300); max-width: 32em; margin: 0 0 34px; }
 .pg-azioni { display: flex; flex-wrap: wrap; gap: 12px; }
-.pg-btn-grande { padding: 10px 20px; font-size: 15px; text-decoration: none; }
+.pg-btn-grande { padding: 12px 22px; font-size: 15px; text-decoration: none; }
 
-/* ── fascia «chiavi in mano» ──────────────────────────────────────────── */
-
-.pg-fascia {
-    background: linear-gradient(120deg, var(--color-section) 0%, var(--color-section-glow) 100%);
-    padding: 40px;
+/* Il prezzo di partenza, sotto i pulsanti: in sabbia, con il rimando. */
+.pg-eroe-prezzo {
+    display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px;
+    margin-top: 32px; padding: 14px 18px; text-decoration: none;
+    border-radius: var(--radius-md); background: var(--color-sand-soft);
+    border: 1px solid color-mix(in srgb, var(--color-sand) 26%, transparent);
+    transition: background .2s;
 }
-.pg-fascia-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px; max-width: 1180px; }
-.pg-fascia-titolo { font-family: var(--font-heading); font-size: 22px; margin: 0 0 6px; }
-.pg-fascia-testo { margin: 0; font-size: 13px; color: var(--color-accent-200); }
+.pg-eroe-prezzo:hover { background: color-mix(in srgb, var(--color-sand) 20%, transparent); }
+.pg-eroe-prezzo-cifra {
+    font-family: var(--font-heading); font-size: 17px; color: var(--color-sand);
+    font-variant-numeric: tabular-nums;
+}
+.pg-eroe-prezzo-cifra::first-letter { text-transform: uppercase; }
+.pg-eroe-prezzo-link { font-size: 13px; color: var(--color-neutral-300); }
 
-/* ── sezioni ──────────────────────────────────────────────────────────── */
-
-.pg-sezione { padding: 96px 40px; }
-.pg-bordo { border-top: 1px solid var(--color-divider); }
-.pg-occhiello { color: var(--color-accent-300); margin: 0 0 18px; }
-.pg-titolo { font-size: 40px; line-height: 1.08; margin: 0 0 22px; }
-.pg-intro { color: var(--color-neutral-300); margin: 0 0 56px; }
+/* Le quattro credenziali: erano una fascia turchese a sé, ora chiudono
+   l'apertura su una riga, sotto testo e foto. */
+.pg-fascia {
+    grid-area: fascia; list-style: none; margin: 0;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px;
+    padding: 36px max(40px, calc((100vw - 1320px) / 2)) 44px;
+}
+.pg-fascia li { padding-top: 18px; border-top: 1px solid var(--color-divider); }
+.pg-fascia-titolo { font-family: var(--font-heading); font-size: 17px; margin: 0 0 6px; }
+.pg-fascia-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
 
 /* ── perché Piscine Rocks Design ──────────────────────────────────────── */
 
 .pg-piscine {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
-    gap: 64px; align-items: center; max-width: 1400px;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 80px; align-items: center;
 }
 .pg-definizioni { display: grid; gap: 2px; }
 .pg-definizione {
@@ -213,59 +258,171 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-definizione:last-child { border-bottom: 1px solid var(--color-divider); }
 .pg-definizione-nome { font-family: var(--font-heading); margin: 0; font-size: 15px; }
 .pg-definizione-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
-.pg-piscine-foto { width: 100%; height: 620px; object-fit: cover; border-radius: var(--radius-lg); }
-
-/* ── celle affiancate (processo, dubbi) ───────────────────────────────── */
-
-.pg-celle {
-    display: grid; gap: 1px; background: var(--color-divider);
-    border-radius: var(--radius-md); overflow: hidden;
-}
-.pg-celle-strette { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.pg-celle-larghe { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.pg-cella { background: var(--color-bg); padding: 28px 24px 32px; }
-.pg-cella-larga { background: var(--color-bg); padding: 30px 26px 34px; }
-.pg-numero { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent); margin: 0 0 20px; }
-.pg-cella-titolo { font-family: var(--font-heading); font-size: 17px; margin: 0 0 10px; }
-.pg-cella-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
-.pg-etichetta { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-neutral-500); margin: 0 0 10px; }
-.pg-etichetta-accento { color: var(--color-accent-300); }
-.pg-domanda { font-family: var(--font-heading); font-size: 19px; margin: 0 0 22px; }
-.pg-risposta { margin: 0; font-size: 14px; color: var(--color-neutral-300); }
+.pg-piscine-foto { width: 100%; height: 600px; object-fit: cover; border-radius: var(--radius-lg); }
 
 /* ── realizzazioni ────────────────────────────────────────────────────── */
 
-.pg-testata { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
-.pg-testata-nota { margin: 0 0 6px auto; font-size: 14px; color: var(--color-neutral-500); max-width: 24em; }
-.pg-mosaico { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.pg-mosaico img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius-md); }
-.pg-doppia { grid-column: span 2; }
+.pg-testata { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px 32px; margin-bottom: 48px; }
+.pg-testata-nota { margin: 0 0 6px auto; font-size: 14px; color: var(--color-neutral-400); max-width: 24em; }
+.pg-testata .pg-link-freccia { margin-top: 0; }
+/* Sette caselle: una grande 2×2, quattro piccole, due larghe in fondo. */
+.pg-mosaico {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 250px;
+}
+.pg-mosaico img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);
+    transition: transform .5s ease, filter .3s;
+}
+.pg-mosaico img:hover { filter: brightness(1.08); }
+.pg-mosaico > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.pg-mosaico > :nth-child(6), .pg-mosaico > :nth-child(7) { grid-column: span 2; }
 
-/* ── hotel e resort ───────────────────────────────────────────────────── */
+/* ── modelli ──────────────────────────────────────────────────────────── */
 
-.pg-tre { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-bottom: 44px; }
-.pg-tre-voce { padding-top: 20px; border-top: 1px solid var(--color-accent-700); }
+.pg-modelli { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pg-modello {
+    display: flex; flex-direction: column; text-decoration: none; color: var(--color-text);
+    border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.pg-modello:hover { color: var(--color-text); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(3, 12, 18, 0.9); }
+.pg-modello-foto { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.pg-modello-testo { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; flex: 1; }
+.pg-modello-nome { font-family: var(--font-heading); font-size: 22px; letter-spacing: -0.015em; }
+.pg-modello-nome::after { content: ' →'; color: var(--color-accent); transition: margin .2s; }
+.pg-modello-riga { font-size: 14px; color: var(--color-neutral-400); }
+.pg-modello-sabbie { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.pg-sabbia {
+    font-size: 12px; padding: 3px 10px; border-radius: 4px;
+    color: var(--color-sand); background: var(--color-sand-soft);
+}
+
+/* ── chiavi in mano: la fascia turchese, con le fasi in linea ─────────── */
+
+.pg-processo {
+    background:
+        radial-gradient(70% 90% at 100% 0%, color-mix(in srgb, var(--color-section-ghost) 30%, transparent), transparent 70%),
+        linear-gradient(120deg, var(--color-section) 0%, var(--color-section-glow) 100%);
+}
+.pg-processo .pg-occhiello { color: var(--color-accent-200); }
+.pg-processo .pg-intro { color: var(--color-accent-100); }
+.pg-fasi {
+    list-style: none; margin: 0; padding: 0; position: relative;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px;
+}
+/* La linea che unisce i cinque numeri. */
+.pg-fasi::before {
+    content: ''; position: absolute; top: 21px; left: 22px; right: 22px; height: 1px;
+    background: color-mix(in srgb, var(--color-accent-200) 40%, transparent);
+}
+.pg-fase { position: relative; }
+.pg-fase-numero {
+    display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 22px;
+    border-radius: 50%; font-family: var(--font-heading); font-size: 16px;
+    color: var(--color-bg); background: var(--color-accent-200);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-section) 70%, transparent);
+    font-variant-numeric: tabular-nums;
+}
+.pg-fase-durata {
+    margin: 0 0 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-sand);
+}
+.pg-cella-titolo { font-family: var(--font-heading); font-size: 18px; margin: 0 0 10px; }
+.pg-cella-testo { margin: 0; font-size: 14px; color: var(--color-neutral-300); }
+.pg-processo .pg-cella-testo { color: var(--color-accent-100); }
+
+/* ── i quattro dubbi ──────────────────────────────────────────────────── */
+
+.pg-dubbi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pg-dubbio {
+    padding: 34px 36px 38px; border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+.pg-etichetta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-500); margin: 0 0 10px; }
+.pg-etichetta-accento { color: var(--color-accent-300); }
+.pg-domanda {
+    font-family: var(--font-heading); font-size: clamp(22px, 2vw, 27px); line-height: 1.2;
+    letter-spacing: -0.02em; margin: 0 0 26px; text-wrap: balance;
+}
+.pg-risposta { margin: 0; font-size: 15px; line-height: 1.65; color: var(--color-neutral-300); max-width: 36em; }
+
+/* ── hotel e resort: foto a sinistra fino al bordo, testo a destra ────── */
+
+.pg-hotel {
+    display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    background: var(--color-neutral-900);
+}
+.pg-hotel-figura { position: relative; margin: 0; min-height: 640px; }
+.pg-hotel-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pg-hotel-testo { padding: 112px max(40px, calc((100vw - 1320px) / 2)) 120px 72px; align-self: center; }
+.pg-tre { display: grid; gap: 22px; margin-bottom: 40px; max-width: 34em; }
+.pg-tre-voce { padding-top: 18px; border-top: 1px solid var(--color-accent-700); }
+.pg-hotel .pg-cella-testo { color: var(--color-neutral-400); }
 
 /* ── domande frequenti ────────────────────────────────────────────────── */
 
-.pg-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 0 64px; max-width: 1240px; }
-.pg-faq details { padding: 22px 0; border-top: 1px solid var(--color-divider); }
+.pg-faq-sezione { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 80px; align-items: start; }
+.pg-faq-testata { position: sticky; top: 120px; }
+.pg-faq-testata .pg-link-freccia { margin-top: 8px; }
+.pg-faq { display: grid; }
+.pg-faq details { border-top: 1px solid var(--color-divider); }
 .pg-faq details:last-child { border-bottom: 1px solid var(--color-divider); }
-.pg-faq summary { cursor: pointer; font-family: var(--font-heading); font-size: 16px; list-style: none; }
+.pg-faq summary {
+    cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 24px;
+    padding: 22px 0; font-family: var(--font-heading); font-size: 17px; transition: color .2s;
+}
+.pg-faq summary:hover { color: var(--color-accent-300); }
 .pg-faq summary::-webkit-details-marker { display: none; }
-.pg-faq details > p { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-400); max-width: 34em; }
+.pg-faq summary::after {
+    content: '+'; flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center;
+    border-radius: 50%; border: 1px solid var(--color-divider); color: var(--color-accent);
+    font-size: 18px; line-height: 1; transition: transform .25s;
+}
+.pg-faq details[open] summary::after { transform: rotate(45deg); }
+.pg-faq details > p { margin: 0 0 24px; font-size: 15px; line-height: 1.65; color: var(--color-neutral-400); max-width: 40em; }
 
 /* ── zona operativa ───────────────────────────────────────────────────── */
 
 .pg-sicilia {
-    display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-    gap: 64px; align-items: center; max-width: 1400px;
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 72px; align-items: center;
 }
-.pg-sicilia-foto { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-lg); }
+.pg-mappa { margin: 0; }
+.pg-mappa svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pg-mappa-isola {
+    fill: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
+    stroke: color-mix(in srgb, var(--color-accent) 45%, transparent); stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+.pg-mappa-punto circle { fill: var(--color-accent); }
+.pg-mappa-punto text {
+    fill: var(--color-neutral-200); font-family: var(--font-heading); font-size: 17px;
+    paint-order: stroke; stroke: var(--color-bg); stroke-width: 5px;
+}
+.pg-mappa-nascita circle { fill: var(--color-sand); }
+.pg-mappa-nascita .pg-mappa-alone { fill: none; stroke: var(--color-sand); stroke-opacity: .45; }
+.pg-mappa figcaption { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; color: var(--color-neutral-400); }
+.pg-mappa-legenda { width: 10px; height: 10px; border-radius: 50%; background: var(--color-sand); flex-shrink: 0; }
+.pg-province { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pg-province a {
+    display: inline-block; padding: 7px 14px; font-size: 14px; text-decoration: none;
+    color: var(--color-neutral-200); border: 1px solid var(--color-divider); border-radius: 999px;
+    transition: border-color .2s, color .2s;
+}
+.pg-province a:hover { color: var(--color-accent-300); border-color: var(--color-accent-600); }
+
+/* Il ruolo di concessionario, per esteso, in fondo alla pagina. */
+.pg-nota-brevetto {
+    margin: 0; padding: 0 max(40px, calc((100% - 1320px) / 2)) 56px;
+    font-size: 12px; color: var(--color-neutral-500); max-width: none;
+}
 
 /* ── contatti ─────────────────────────────────────────────────────────── */
 
-.pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; max-width: 1240px; }
+.pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
 .pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
 .pg-recapito-etichetta { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500); }
 .pg-recapito-valore { margin: 4px 0 0; font-family: var(--font-heading); font-size: 18px; }
@@ -311,47 +468,62 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-note-legali a:hover { color: var(--color-accent-300); }
 .pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
 
-/* ── schermi stretti ──────────────────────────────────────────────────────
-   Il file approvato è disegnato per lo schermo largo: qui sotto le griglie a
-   colonne fisse si impilano, senza toccare l'aspetto desktop. */
+/* ── schermi stretti ────────────────────────────────────────────────── */
 
-@media (max-width: 1100px) {
-    .pg-eroe-titolo { font-size: 46px; }
-    .pg-titolo { font-size: 34px; }
-    .pg-sezione { padding: 76px 32px; }
-    .pg-piscine, .pg-sicilia { gap: 44px; }
-    .pg-contatti { gap: 48px; }
+@media (max-width: 1200px) {
+    .pg-fasi { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
+    .pg-fasi::before { display: none; }
+    .pg-fascia { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (max-width: 1100px) {
+    .pg-sezione { padding: 88px 32px 96px; }
+    .pg-piscine, .pg-sicilia { gap: 48px; }
+    .pg-contatti { gap: 48px; }
+    .pg-faq-sezione { gap: 48px; }
+    .pg-hotel-testo { padding: 88px 32px 96px 48px; }
+}
+
+/* Il punto di rottura dell'apertura è SCHERMO_STRETTO (src/lib/schermi.js):
+   va tenuto uguale, perché da lì dipende anche la precarica della foto. */
 @media (max-width: 900px) {
     .pg-header { padding: 12px 20px; gap: 12px; }
     .pg-marchio-nome { font-size: 14px; }
-    .pg-eroe { min-height: 520px; }
-    .pg-eroe-testo { padding: 0 20px 56px; }
-    .pg-eroe-titolo { font-size: 34px; }
-    .pg-eroe-sommario { font-size: 15px; }
-    .pg-fascia { padding: 32px 20px; }
-    .pg-sezione { padding: 64px 20px; }
-    .pg-titolo { font-size: 28px; }
-    .pg-intro { margin-bottom: 40px; }
-    .pg-piscine, .pg-sicilia, .pg-contatti { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-    .pg-piscine-foto { height: 380px; }
-    .pg-sicilia-foto { height: 300px; }
-    .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-    .pg-footer { padding: 40px 20px; }
-}
-
-@media (max-width: 900px) {
-    /* Sfumatura verticale: su schermo stretto quella a 75° coprirebbe la
-       foto invece del solo lato del testo. */
-    .pg-eroe { min-height: 0; }
-    .pg-eroe-testo { padding: 96px 20px 56px; }
-    .pg-eroe-velo {
-        background: linear-gradient(180deg,
-            color-mix(in srgb, var(--color-bg) 88%, transparent) 0%,
-            color-mix(in srgb, var(--color-bg) 68%, transparent) 46%,
-            color-mix(in srgb, var(--color-bg) 92%, transparent) 100%);
+    .pg-eroe {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: 'testo' 'foto' 'fascia';
+        min-height: 0;
     }
+    .pg-eroe-testo { padding: 48px 20px 36px; max-width: none; }
+    .pg-eroe-titolo { font-size: clamp(34px, 9vw, 44px); }
+    .pg-eroe-sommario { font-size: 16px; }
+    .pg-eroe-figura { min-height: 0; aspect-ratio: 4 / 3; }
+    .pg-eroe-foto { border-radius: 0; }
+    .pg-fascia { padding: 28px 20px 8px; gap: 20px; }
+    .pg-sezione { padding: 72px 20px 80px; }
+    .pg-intro { margin-bottom: 40px; font-size: 15px; }
+    .pg-piscine, .pg-sicilia, .pg-contatti, .pg-faq-sezione, .pg-hotel { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .pg-faq-testata { position: static; }
+    .pg-testata-nota { margin-left: 0; }
+    .pg-piscine-foto { height: 380px; }
+    .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .pg-modelli { grid-template-columns: minmax(0, 1fr); }
+    .pg-dubbi { grid-template-columns: minmax(0, 1fr); }
+    .pg-dubbio { padding: 26px 22px 28px; }
+    .pg-hotel-figura { min-height: 0; aspect-ratio: 4 / 3; }
+    .pg-hotel-testo { padding: 56px 20px 80px; }
+    .pg-footer { padding: 40px 20px; }
+    .pg-nota-brevetto { padding: 0 20px 40px; }
+    /* Su telefono il mosaico diventa una fila che scorre di lato: sette foto
+       impilate erano metri di pagina prima di arrivare al resto. */
+    .pg-mosaico {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%;
+        grid-auto-rows: 300px; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin: 0 -20px; padding: 0 20px; scroll-padding: 0 20px; scrollbar-width: none;
+    }
+    .pg-mosaico::-webkit-scrollbar { display: none; }
+    .pg-mosaico > * { scroll-snap-align: start; }
+    .pg-mosaico > :nth-child(n) { grid-column: auto; grid-row: auto; }
 }
 
 @media (max-width: 700px) {
@@ -360,11 +532,21 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-marchio-riga { font-size: 10px; }
     .pg-concessionario-logo { padding: 5px 7px; }
     .pg-concessionario-logo img { height: 17px; }
-    .pg-mosaico { grid-template-columns: minmax(0, 1fr); }
-    .pg-doppia { grid-column: auto; }
-    .pg-mosaico img { height: 240px; }
+    .pg-fasi { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+    .pg-fase { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; padding-bottom: 28px; }
+    .pg-fase > :not(.pg-fase-numero) { grid-column: 2; }
+    .pg-fase-numero { grid-row: span 3; margin: 0; }
+    /* Su telefono la linea delle fasi torna, in verticale. */
+    .pg-fase:not(:last-child)::before {
+        content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 1px;
+        background: color-mix(in srgb, var(--color-accent-200) 40%, transparent);
+    }
     .pg-coppia { grid-template-columns: minmax(0, 1fr); }
-    .pg-faq { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .pg-fascia { grid-template-columns: minmax(0, 1fr); }
+    /* La mappa scende a ~350 px: a 17 unità i nomi diventerebbero 7 px. */
+    .pg-mappa-punto text { font-size: 30px; stroke-width: 8px; }
+    .pg-mappa-punto circle { r: 9px; }
+    .pg-mappa-nascita .pg-mappa-alone { r: 22px; }
 }
 
 /* Riga delle province in fondo al piè di pagina: collegamenti fitti ma
