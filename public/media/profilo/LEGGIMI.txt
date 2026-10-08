@@ -1,0 +1,6 @@
+Foto per la scheda Google Business Profile di Luna Costruzioni.
+Piscine espositive Piscine Rocks Design (in Lombardia), dalla cartella Drive
+del catalogo, con la filigrana «PISCINE ROCKS DESIGN» applicata come sul sito
+(scripts/prepare-media.mjs: 34% della larghezza, angolo in basso a destra).
+Non sono collegate da nessuna pagina: servono solo come indirizzo pubblico
+da cui Google scarica le immagini. Non presentarle come lavori di Luna.
