@@ -37,3 +37,6 @@ build/
 # Vite specific
 vite.config.js.timestamp-*
 .vite/
+
+# Stato temporaneo del server di Impeccable (live-server): non va versionato
+.impeccable/live/
