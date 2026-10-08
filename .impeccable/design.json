@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T09:43:20+00:00",
+  "title": "Design System: Luna Costruzioni",
+  "extensions": {
+    "colorMeta": {
+      "night-sea": {
+        "role": "neutral",
+        "displayName": "Night Sea",
+        "canonical": "#12202b",
+        "tonalRamp": [
+          "#0b141b",
+          "#12202b",
+          "#1a2a33",
+          "#1b2f3c",
+          "#24404f",
+          "#2e434c",
+          "#526972",
+          "#6f8b95"
+        ]
+      },
+      "night-sea-deep": {
+        "role": "neutral",
+        "displayName": "Night Sea Deep",
+        "canonical": "#1a2a33",
+        "tonalRamp": [
+          "#0b141b",
+          "#12202b",
+          "#1a2a33",
+          "#1b2f3c",
+          "#24404f",
+          "#2e434c",
+          "#526972",
+          "#6f8b95"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#1b2f3c",
+        "tonalRamp": [
+          "#0b141b",
+          "#12202b",
+          "#1a2a33",
+          "#1b2f3c",
+          "#24404f",
+          "#2e434c",
+          "#526972",
+          "#6f8b95"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "canonical": "#eef6f7",
+        "tonalRamp": [
+          "#1a2a33",
+          "#2e434c",
+          "#526972",
+          "#6f8b95",
+          "#8aa8b0",
+          "#a9c5cb",
+          "#cbdfe3",
+          "#e2eef0"
+        ]
+      },
+      "text-quiet": {
+        "role": "neutral",
+        "displayName": "Text Quiet",
+        "canonical": "#8aa8b0",
+        "tonalRamp": [
+          "#1a2a33",
+          "#2e434c",
+          "#526972",
+          "#6f8b95",
+          "#8aa8b0",
+          "#a9c5cb",
+          "#cbdfe3",
+          "#e2eef0"
+        ]
+      },
+      "pool-turquoise": {
+        "role": "primary",
+        "displayName": "Pool Turquoise",
+        "canonical": "#38c6c0",
+        "tonalRamp": [
+          "#103f3f",
+          "#14615f",
+          "#1a8380",
+          "#22a49f",
+          "#38c6c0",
+          "#6fdcd5",
+          "#a9ece7",
+          "#d3f5f2"
+        ]
+      },
+      "pale-sand": {
+        "role": "secondary",
+        "displayName": "Pale Sand",
+        "canonical": "#e4d2aa",
+        "tonalRamp": [
+          "#3a3222",
+          "#5a4d35",
+          "#7d6c4b",
+          "#a08c63",
+          "#c3ad80",
+          "#e4d2aa",
+          "#efe3c8",
+          "#f8f2e4"
+        ]
+      },
+      "band-deep": {
+        "role": "neutral",
+        "displayName": "Band Deep",
+        "canonical": "#123f4a",
+        "tonalRamp": [
+          "#0a252b",
+          "#123f4a",
+          "#17605f",
+          "#2a8a86"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The opening headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One per section."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, step and FAQ titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs, about 65 characters per line."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rationed uppercase signposts: one per three sections."
+      }
+    },
+    "shadows": [
+      {
+        "name": "lift-hover",
+        "value": "0 24px 50px -28px rgba(3, 12, 18, 0.9)",
+        "purpose": "Model cards on hover, with a 4px rise."
+      },
+      {
+        "name": "panel-drop",
+        "value": "0 24px 48px -24px rgba(4, 12, 18, 0.9)",
+        "purpose": "The open mobile menu panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The single curve for every transition; quick start, soft landing."
+      },
+      {
+        "name": "duration-control",
+        "value": "200ms",
+        "purpose": "Buttons, links, colour and border changes."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "700ms",
+        "purpose": "Below-the-fold section reveal (Rivela), off under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "700px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "menu",
+        "value": "1100px"
+      },
+      {
+        "name": "badge-text",
+        "value": "1400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled call to action per view: Chiedi un preventivo.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Chiedi un preventivo</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;background:#38c6c0;color:#12202b;font:600 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1),transform .15s cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary:hover{background:#6fdcd5}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "A second action with a different purpose, such as the hotel proposal.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Richiedi una proposta per la struttura</a>",
+      "css": ".ds-btn-outline{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid #38c6c0;color:#38c6c0;background:transparent;font:500 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-outline:hover{background:rgba(56,198,192,.12)}.ds-btn-outline:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "See-more actions such as Guarda le piscine.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Guarda le piscine</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;padding:12px 22px;border-radius:8px;border:1px solid rgba(238,246,247,.16);color:#eef6f7;background:transparent;font:500 15px/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-btn-secondary:hover{background:rgba(238,246,247,.07)}.ds-btn-secondary:focus-visible{outline:2px solid #38c6c0;outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Enquiry form field with the label above.",
+      "html": "<label class=\"ds-field\"><span>Nome e cognome</span><input placeholder=\"Mario Rossi\"></label>",
+      "css": ".ds-field{display:grid;gap:5px;font:12px Inter,system-ui,sans-serif;color:rgba(238,246,247,.7)}.ds-field input{min-height:36px;padding:6px 10px;border-radius:8px;border:1px solid rgba(238,246,247,.16);background:#1b2f3c;color:#eef6f7;font:14px Inter,system-ui,sans-serif}.ds-field input::placeholder{color:#8aa8b0}.ds-field input:focus-visible{outline:none;border-color:#38c6c0}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Header links with the current page underlined in turquoise.",
+      "html": "<nav class=\"ds-nav\"><a aria-current=\"page\" href=\"#\">Modelli</a><a href=\"#\">Le piscine</a><a href=\"#\">Quanto costa</a></nav>",
+      "css": ".ds-nav{display:flex;gap:24px;font:14px Inter,system-ui,sans-serif}.ds-nav a{position:relative;padding:6px 0;color:#cbdfe3;text-decoration:none;transition:color .2s cubic-bezier(0.22,1,0.36,1)}.ds-nav a:hover,.ds-nav a[aria-current=page]{color:#eef6f7}.ds-nav a[aria-current=page]::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:#38c6c0}"
+    },
+    {
+      "name": "Doubt Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Surface card for the four doubts: label, question, answer.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-card-label\">Il dubbio</p><p class=\"ds-card-q\">«Non so quanto costerà davvero.»</p><p class=\"ds-card-a\">Preventivo con voci separate, firmato prima di iniziare.</p></div>",
+      "css": ".ds-card{padding:34px 36px;border-radius:14px;background:#1b2f3c;border:1px solid rgba(238,246,247,.06);font-family:Inter,system-ui,sans-serif;color:#eef6f7}.ds-card-label{margin:0 0 10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8aa8b0}.ds-card-q{margin:0 0 20px;font-size:24px;line-height:1.2;letter-spacing:-.02em}.ds-card-a{margin:0;font-size:15px;line-height:1.65;color:#cbdfe3}"
+    },
+    {
+      "name": "Price Line",
+      "kind": "custom",
+      "refersTo": "price-line",
+      "description": "The starting price in pale sand, linking to what moves it.",
+      "html": "<a class=\"ds-price\" href=\"#\"><span>A partire da 1.250 € al m² + IVA</span><small>Che cosa sposta il prezzo →</small></a>",
+      "css": ".ds-price{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:14px 18px;border-radius:8px;background:rgba(228,210,170,.14);border:1px solid rgba(228,210,170,.26);text-decoration:none;font-family:Inter,system-ui,sans-serif;transition:background .2s cubic-bezier(0.22,1,0.36,1)}.ds-price span{font-size:17px;color:#e4d2aa;font-variant-numeric:tabular-nums}.ds-price small{font-size:13px;color:#cbdfe3}.ds-price:hover{background:rgba(228,210,170,.2)}"
+    },
+    {
+      "name": "Sand Tag",
+      "kind": "chip",
+      "refersTo": "sand-tag",
+      "description": "Sand name on a model card.",
+      "html": "<span class=\"ds-sand\">Sabbia Bianco</span>",
+      "css": ".ds-sand{display:inline-block;padding:3px 10px;border-radius:8px;font:12px Inter,system-ui,sans-serif;color:#e4d2aa;background:rgba(228,210,170,.14)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Builder's Calm",
+    "overview": "A contractor who does not need to raise its voice. The site speaks the way a good site manager does: plain words, one clear next step, and nothing promised that will not end up in the contract. Premium comes from restraint and precision, not from effects. The pools are the only thing on the page allowed to be spectacular, and they are photographs of real Piscine Rocks Design pools, so the interface steps back and lets them carry the light.\n\nThe ground is a deep night-sea blue. It is dark on purpose: turquoise water and pale stone read brightest against it, and the photos are what sells. Colour is spent sparingly: one turquoise for everything you can act on, and pale sand only for prices and numbers. Density is low; sections breathe, and each one does a single job. Motion is short, quiet and functional: it confirms an action or brings a section into view, never decorates.\n\nThe site belongs to the dealer, not the manufacturer. Luna Costruzioni leads every view; the Piscine Rocks Design mark appears as the product's credential, never as the masthead.",
+    "keyCharacteristics": [
+      "Dark, photo-led, one accent colour.",
+      "Plain, factual copy; no slogans, superlatives or invented proof.",
+      "One obvious way to ask for a quote from every view.",
+      "Flat surfaces separated by tone, not by shadows or lines.",
+      "Same rules on phone and desktop; the phone is not an afterthought."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Turquoise means \"you can act on this\". If it is not a link, a button or a focus state, it is not turquoise.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sand Means Numbers Rule",
+        "body": "Pale sand marks a figure (a price, a duration, a place of origin). If a sentence turns sand, something is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rationed Label Rule",
+        "body": "The small uppercase label above a heading is a signpost, not a habit: at most one per three sections, and never two sections in a row.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Job Rule",
+        "body": "Each section has one headline, at most one short paragraph and one way onward. If it needs a second explainer, it is two sections.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "Nothing casts a shadow until the visitor touches it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** let photographs carry the colour; keep the interface night-sea, turquoise and sand.",
+      "**Do** keep every interactive element pool turquoise (#38c6c0) and nothing else turquoise.",
+      "**Do** use the 8px / 14px / pill radius rule exactly as written in Shapes.",
+      "**Do** separate sections by background tone, not by lines.",
+      "**Do** keep one filled \"Chiedi un preventivo\" per view, with the same label everywhere.",
+      "**Do** run every transition on `cubic-bezier(0.22, 1, 0.36, 1)` and honour reduced motion."
+    ],
+    "donts": [
+      "**Don't** add a second accent colour, gradients on text, glows or glass effects.",
+      "**Don't** place badges, labels or captions on top of photographs.",
+      "**Don't** add shadows to elements at rest.",
+      "**Don't** load fonts, icons or scripts from third-party servers for the visual layer.",
+      "**Don't** put a small uppercase label above every heading.",
+      "**Don't** present the photos as Luna's own or Sicilian builds; they are Piscine Rocks Design pools, and captions and alt text say only what is visible."
+    ]
+  }
+}
