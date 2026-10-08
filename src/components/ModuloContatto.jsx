@@ -158,10 +158,9 @@ export default function ModuloContatto({
                     {t('oppure chiamaci: è la via più rapida.', 'or call us: it is the quickest way.')}
                 </p>
                 {/*
-                  * Qui l'invio non è riuscito, quindi si offrono i due canali
-                  * che funzionano di sicuro: il telefono e WhatsApp. La
-                  * casella non è ancora attiva — proporre solo la mail
-                  * significherebbe mandare il contatto nel vuoto due volte.
+                  * Qui l'invio non è riuscito, quindi oltre alla mail si offrono
+                  * i due canali che non dipendono dal programma di posta di chi
+                  * scrive: il telefono e WhatsApp.
                   */}
                 <div className="mt-6 flex flex-wrap gap-3">
                     <BottoneTelefono className="bottone-pieno">{t('Chiama', 'Call')} {AZIENDA.telefono}</BottoneTelefono>

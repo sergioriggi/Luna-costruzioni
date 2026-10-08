@@ -64,9 +64,8 @@ export function Briciole({ voci }) {
  *
  * `whatsapp` aggiunge il tasto per scrivere subito: serve alle pagine che non
  * ospitano il modulo di contatto, dove l'unica strada era un rimando a
- * /contatti — e quel modulo, finché la casella non è attiva, non consegna
- * niente. Su telefono la barra in basso c'è già; su computer, senza questo,
- * non c'era nulla.
+ * /contatti. Su telefono la barra in basso c'è già; su computer, senza
+ * questo, non c'era nulla.
  */
 export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Chiedi un preventivo' }, secondaria, whatsapp = false }) {
     // `data-cta-finale`: è il riquadro di chiusura, che la misura delle
