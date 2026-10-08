@@ -84,9 +84,14 @@ export default function BannerCookie() {
             role="dialog"
             aria-live="polite"
             aria-label={t('Preferenze cookie', 'Cookie preferences')}
-            className="fixed inset-x-3 bottom-24 z-[70] mx-auto max-w-2xl rounded-lg border border-testo/[0.16] bg-superficie p-5 shadow-morbida sm:bottom-6 sm:inset-x-6"
+            className="fixed inset-x-3 bottom-3 z-[70] rounded-lg border border-testo/[0.16] bg-superficie p-4 shadow-morbida sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm sm:p-5"
         >
             {/*
+              Posizione: in basso a sinistra, stretto, su schermo largo; in
+              fondo allo schermo su telefono. Prima stava al centro, sopra la
+              fascia delle credenziali, e su telefono copriva il pulsante
+              «Chiedi un preventivo» dell'apertura.
+
               QUESTO TESTO È CORTO DI PROPOSITO, e non per stile.
               Il banner è `position: fixed`, quindi sta sempre in viewport e
               compete per l'LCP. Misurato su /quanto-costa a 412×823: con il
@@ -110,11 +115,11 @@ export default function BannerCookie() {
                     {t('Cookie policy', 'Cookie policy')}
                 </Link>
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-                <button type="button" onClick={() => decidi('accettato')} className="bottone-primario px-5 py-2.5">
+            <div className="mt-3 flex gap-2">
+                <button type="button" onClick={() => decidi('accettato')} className="bottone-primario flex-1 px-4 py-2.5">
                     {t('Accetta', 'Accept')}
                 </button>
-                <button type="button" onClick={() => decidi('rifiutato')} className="bottone-secondario px-5 py-2.5">
+                <button type="button" onClick={() => decidi('rifiutato')} className="bottone-secondario flex-1 px-4 py-2.5">
                     {t('Solo necessari', 'Necessary only')}
                 </button>
             </div>

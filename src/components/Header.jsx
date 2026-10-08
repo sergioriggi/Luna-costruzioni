@@ -1,17 +1,30 @@
+import { useRef } from 'react'
+import { Link, useLocation } from '../lib/instradamento'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 import { pubblico, BASE_URL } from '../lib/percorso'
 import BottoneTelefono from './BottoneTelefono'
 
-/** Ancore della pagina unica, come nel file approvato. */
-const ANCORE = [
-    { id: 'piscine', label: 'Piscine', labelEn: 'Pools' },
-    { id: 'processo', label: 'Chiavi in mano', labelEn: 'Turnkey' },
-    { id: 'realizzazioni', label: 'Le piscine', labelEn: 'The pools' },
-    { id: 'dubbi', label: 'Prima di decidere', labelEn: 'Before you decide' },
-    { id: 'hotel', label: 'Hotel e resort', labelEn: 'Hotels' },
-    { id: 'faq', label: 'FAQ', labelEn: 'FAQ' },
-    { id: 'sicilia', label: 'Sicilia', labelEn: 'Sicily' },
+/**
+ * Voci della testata. Erano le sette ancore della pagina unica del blueprint:
+ * dalle pagine interne riportavano tutte alla home, e su telefono sparivano
+ * senza un menù al loro posto. Ora sono cinque pagine vere — le stesse che un
+ * cliente cerca — e le altre stanno nel pannello del menù e nel piè di pagina.
+ */
+const VOCI = [
+    { to: '/modelli', label: 'Modelli', labelEn: 'Models' },
+    { to: '/galleria', label: 'Le piscine', labelEn: 'The pools' },
+    { to: '/quanto-costa', label: 'Quanto costa', labelEn: 'Costs' },
+    { to: '/hotel-e-resort', label: 'Hotel e resort', labelEn: 'Hotels' },
+    { to: '/piscine-rocks-design/sicilia', label: 'Sicilia', labelEn: 'Sicily' },
+]
+
+/** Solo nel pannello: completano la mappa senza affollare la testata. */
+const VOCI_PANNELLO = [
+    { to: '/piscine-rocks-design', label: 'Come sono fatte', labelEn: 'How they are made' },
+    { to: '/come-lavoriamo', label: 'Come lavoriamo', labelEn: 'How we work' },
+    { to: '/domande-frequenti', label: 'Domande frequenti', labelEn: 'FAQ' },
+    { to: '/azienda', label: 'Chi siamo', labelEn: 'About us' },
 ]
 
 function IconaTelefono() {
@@ -24,9 +37,14 @@ function IconaTelefono() {
 
 export default function Header() {
     const { t } = useLingua()
-    // Le ancore puntano alla pagina iniziale: dalle pagine interne il
-    // collegamento riporta a casa, dalla pagina iniziale scorre e basta.
+    const { pathname } = useLocation()
+    const menu = useRef(null)
     const casa = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`
+    const corrente = to => (pathname === to || pathname.startsWith(`${to}/`) ? 'page' : undefined)
+    // Il pannello è un <details>: si apre anche senza JavaScript. Dopo un
+    // clic su una voce va richiuso a mano, perché la navigazione interna non
+    // ricarica la pagina.
+    const chiudi = () => menu.current?.removeAttribute('open')
 
     return (
         <header className="pg-header">
@@ -38,13 +56,11 @@ export default function Header() {
             </a>
 
             <nav className="pg-nav" aria-label={t('Navigazione principale', 'Main navigation')}>
-                {/* Le ancore in una fascia propria: se lo spazio non basta
-                    scorrono di lato invece di andare a capo (vedi pagina.css). */}
                 <span className="pg-nav-ancore">
-                    {ANCORE.map(voce => (
-                        <a key={voce.id} href={`${casa}#${voce.id}`} className="pg-nav-voce">
+                    {VOCI.map(voce => (
+                        <Link key={voce.to} to={voce.to} className="pg-nav-voce" aria-current={corrente(voce.to)}>
                             {t(voce.label, voce.labelEn)}
-                        </a>
+                        </Link>
                     ))}
                 </span>
 
@@ -62,24 +78,12 @@ export default function Header() {
                 >
                     <span className="pg-concessionario-logo">
                         {/*
-                          Il logo è reso a 62×13 px CSS, e il PNG che lo
-                          produce è 900×188 per 125 KB: quattordici volte più
-                          grande del necessario, scaricato su OGNI pagina e
-                          sopra la piega. Nella cascata di /quanto-costa
-                          occupava la banda da 895 a 1987 ms, in concorrenza
-                          con il CSS — e finché il CSS non arriva non c'è
-                          prima pittura, quindi non c'è LCP.
-                          La WebP da 240 px copre fino a DPR 3,8 e pesa 9,4 KB.
-
-                          Il PNG resta come `src` dell'`img`, e non è solo
-                          cortesia verso i browser antichi: `verifica-conformita.mjs`
+                          Il PNG resta come `src` dell'`img`: `verifica-conformita.mjs`
                           e `verifica-online.mjs` cercano esattamente la stringa
                           `/brand/rocks-design-logo.png` nella testata, perché la
-                          direttiva della casa madre impone quel logo lì. Se un
-                          giorno si sposta il fallback, vanno aggiornati anche
-                          quei due controlli. Serve ancora anche come
-                          apple-touch-icon in index.html, quindi il PNG grande
-                          non va rimpicciolito.
+                          direttiva della casa madre impone quel logo lì. Il
+                          browser scarica la WebP da 240 px (9,4 KB), che copre
+                          anche la resa più grande di oggi (24 px di altezza).
                         */}
                         <picture>
                             <source type="image/webp" srcSet={pubblico('/brand/rocks-design-logo-240.webp')} />
@@ -100,10 +104,39 @@ export default function Header() {
                     </span>
                 </a>
 
-                <BottoneTelefono className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                <BottoneTelefono className="btn btn-secondary pg-testata-telefono">
                     <IconaTelefono />
-                    340 490 0710
+                    {AZIENDA.telefono.replace(/^\+39\s*/, '')}
                 </BottoneTelefono>
+                <Link to="/contatti" className="btn pg-btn-pieno pg-testata-preventivo">
+                    {t('Preventivo', 'Get a quote')}
+                </Link>
+
+                <details ref={menu} className="pg-menu">
+                    <summary className="pg-menu-tasto" aria-label={t('Apri il menù', 'Open the menu')}>
+                        <span aria-hidden="true" />
+                    </summary>
+                    <div className="pg-menu-pannello">
+                        <ul>
+                            {[...VOCI, ...VOCI_PANNELLO].map(voce => (
+                                <li key={voce.to}>
+                                    <Link to={voce.to} onClick={chiudi} aria-current={corrente(voce.to)}>
+                                        {t(voce.label, voce.labelEn)}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="pg-menu-azioni">
+                            <Link to="/contatti" onClick={chiudi} className="btn pg-btn-pieno pg-btn-grande">
+                                {t('Chiedi un preventivo', 'Ask for a quote')}
+                            </Link>
+                            <BottoneTelefono className="btn btn-secondary pg-btn-grande">
+                                <IconaTelefono />
+                                {AZIENDA.telefono}
+                            </BottoneTelefono>
+                        </div>
+                    </div>
+                </details>
             </nav>
         </header>
     )

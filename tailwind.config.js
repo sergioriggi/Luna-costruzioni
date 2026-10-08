@@ -28,6 +28,8 @@ export default {
                     alta: '#24404f',
                 },
                 testo: '#eef6f7',
+                /** Sabbia: cifre e prezzi, mai link o pulsanti (vedi nocturne.css) */
+                sabbia: '#e4d2aa',
 
                 /** Rampa neutra, una sola scala di luminosità */
                 neutro: {

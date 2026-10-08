@@ -1,12 +1,35 @@
+import { useEffect, useState } from 'react'
 import { AZIENDA } from '../data/site'
 import BottoneWhatsApp from './BottoneWhatsApp'
 import BottoneTelefono from './BottoneTelefono'
 
-/** Barra di contatto sempre raggiungibile: su mobile è fissata in basso. */
+/**
+ * Barra di contatto fissata in basso, solo su telefono.
+ *
+ * Entra dopo i primi 60% di schermo scorsi, non prima: all'apertura i
+ * pulsanti sono già nella pagina, e la barra copriva il «Chiedi un
+ * preventivo» dell'apertura insieme al banner dei cookie. Nell'HTML
+ * pre-renderizzato parte nascosta (fuori schermo con `transform`, quindi
+ * senza spostare nulla: niente CLS) e resta raggiungibile da tastiera e da
+ * lettore di schermo solo quando è visibile.
+ */
 export default function AzioniRapide() {
+    const [visibile, setVisibile] = useState(false)
+
+    useEffect(() => {
+        const controlla = () => setVisibile(window.scrollY > window.innerHeight * 0.6)
+        controlla()
+        window.addEventListener('scroll', controlla, { passive: true })
+        return () => window.removeEventListener('scroll', controlla)
+    }, [])
+
     return (
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 sm:hidden">
-            <div className="pointer-events-auto flex gap-2 border-t border-testo/[0.16] bg-notte/95 p-3 backdrop-blur">
+        <div
+            className={`fixed inset-x-0 bottom-0 z-40 transition-transform duration-300 sm:hidden ${visibile ? 'translate-y-0' : 'pointer-events-none translate-y-full'}`}
+            aria-hidden={!visibile}
+            inert={visibile ? undefined : true}
+        >
+            <div className="flex gap-2 border-t border-testo/[0.16] bg-notte/95 p-3 backdrop-blur">
                 <BottoneWhatsApp
                     icona
                     className="flex flex-1 items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-3 text-sm font-semibold text-notte shadow-lg"
