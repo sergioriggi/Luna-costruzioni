@@ -146,13 +146,15 @@
  * transizione svanirebbe insieme alla classe e l'elemento comparirebbe di
  * scatto invece di entrare.
  */
+/* Breve e corta di corsa: a 0,7 s e 18 px si aspettava il testo mentre si
+   scorreva. Sotto il mezzo secondo l'entrata accompagna, non trattiene. */
 .rivela.nascosta {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px);
 }
 
 .rivela.anima {
-    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 
 /*

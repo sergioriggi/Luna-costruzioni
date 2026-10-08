@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useLocation } from '../lib/instradamento'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
 import { useLingua, SelettoreLingua } from '../i18n/lingua'
@@ -46,6 +46,18 @@ export default function Header() {
     // clic su una voce va richiuso a mano, perché la navigazione interna non
     // ricarica la pagina.
     const chiudi = () => menu.current?.removeAttribute('open')
+
+    // Esc chiude il pannello e riporta il fuoco sul tasto che l'ha aperto,
+    // come ci si aspetta da un menù a comparsa.
+    useEffect(() => {
+        const tasto = e => {
+            if (e.key !== 'Escape' || !menu.current?.open) return
+            menu.current.removeAttribute('open')
+            menu.current.querySelector('summary')?.focus()
+        }
+        document.addEventListener('keydown', tasto)
+        return () => document.removeEventListener('keydown', tasto)
+    }, [])
 
     return (
         <header className="pg-header">

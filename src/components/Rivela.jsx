@@ -44,6 +44,13 @@ const useEffettoDiLayout = typeof window !== 'undefined' ? useLayoutEffect : use
  *  - ciò che si anima è fuori campo mentre passa da invisibile a visibile,
  *    quindi il passaggio non si vede e non produce sfarfallio.
  */
+/**
+ * Tetto al ritardo a cascata: con `i * 110` la quarta scheda aspettava un
+ * terzo di secondo prima di partire. Oltre i 160 ms la cascata non si legge
+ * più come tale, si legge come lentezza.
+ */
+const RITARDO_MASSIMO = 160
+
 export default function Rivela({ as: Tag = 'div', delay = 0, className = '', children, ...resto }) {
     const ref = useRef(null)
 
@@ -90,7 +97,7 @@ export default function Rivela({ as: Tag = 'div', delay = 0, className = '', chi
         <Tag
             ref={ref}
             className={`${classi} ${className}`}
-            style={delay && stato !== 'ferma' ? { transitionDelay: `${delay}ms` } : undefined}
+            style={delay && stato !== 'ferma' ? { transitionDelay: `${Math.min(delay, RITARDO_MASSIMO)}ms` } : undefined}
             {...resto}
         >
             {children}

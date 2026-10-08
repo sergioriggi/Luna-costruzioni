@@ -91,12 +91,15 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     padding: 4px; text-decoration: none; border-radius: var(--radius-md);
     transition: background .2s var(--ease);
 }
-.pg-concessionario:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+/* Gli effetti al passaggio del mouse che spostano o colorano un blocco
+   valgono solo dove c'è un puntatore: su telefono restavano accesi dopo il
+   tocco. Lo stesso fa `hoverOnlyWhenSupported` per le classi Tailwind. */
+@media (hover: hover) { .pg-concessionario:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); } }
 .pg-concessionario-logo { background: #f5efe6; border-radius: var(--radius-md); padding: 6px 9px; display: block; }
 .pg-concessionario-logo img { height: 22px; width: auto; }
 .pg-concessionario-testo { display: flex; flex-direction: column; gap: 1px; }
 .pg-concessionario-ruolo {
-    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--color-accent-300);
 }
 .pg-concessionario-nome {
@@ -110,7 +113,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     color: var(--color-bg); font-weight: 600; text-decoration: none;
     transition: background .2s var(--ease), transform .15s var(--ease);
 }
-.pg-btn-pieno:hover { background: var(--color-accent-400); color: var(--color-bg); }
+@media (hover: hover) { .pg-btn-pieno:hover { background: var(--color-accent-400); color: var(--color-bg); } }
 .pg-btn-pieno:active { transform: translateY(1px); }
 .btn { transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease); }
 .btn:active { transform: translateY(1px); }
@@ -184,7 +187,14 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     padding: 120px var(--margine) 128px;
 }
 .pg-tinta { background: var(--color-neutral-900); }
-.pg-occhiello { color: var(--color-accent-300); margin: 0 0 18px; }
+/* L'occhiello era un <h6>: un titolo finto nella struttura della pagina, che
+   gli screen reader annunciavano come tale. Ora è un paragrafo con lo stesso
+   aspetto. */
+.pg-occhiello {
+    font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+    font-size: 13px; line-height: 1.12; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-accent-300); margin: 0 0 18px;
+}
 .pg-titolo {
     font-size: clamp(30px, 3.2vw, 46px); line-height: 1.06; letter-spacing: -0.028em;
     margin: 0 0 22px; text-wrap: balance;
@@ -195,7 +205,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     color: var(--color-accent); text-decoration: none; font-family: var(--font-heading);
     transition: gap .2s var(--ease), color .2s var(--ease);
 }
-.pg-link-freccia:hover { gap: 10px; }
+@media (hover: hover) { .pg-link-freccia:hover { gap: 10px; } }
 
 /* ── apertura ─────────────────────────────────────────────────────────── */
 
@@ -250,7 +260,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     border: 1px solid color-mix(in srgb, var(--color-sand) 26%, transparent);
     transition: background .2s var(--ease);
 }
-.pg-eroe-prezzo:hover { background: color-mix(in srgb, var(--color-sand) 20%, transparent); }
+@media (hover: hover) { .pg-eroe-prezzo:hover { background: color-mix(in srgb, var(--color-sand) 20%, transparent); } }
 .pg-eroe-prezzo-cifra {
     font-family: var(--font-heading); font-size: 17px; color: var(--color-sand);
     font-variant-numeric: tabular-nums;
@@ -298,7 +308,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
     transition: transform .5s var(--ease), filter .3s var(--ease);
 }
-.pg-mosaico img:hover { filter: brightness(1.08); }
+@media (hover: hover) { .pg-mosaico img:hover { filter: brightness(1.08); } }
 .pg-mosaico > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
 .pg-mosaico > :nth-child(6), .pg-mosaico > :nth-child(7) { grid-column: span 2; }
 
@@ -310,13 +320,26 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface);
     transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.pg-modello:hover { color: var(--color-text); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(3, 12, 18, 0.9); }
+@media (hover: hover) { .pg-modello:hover { color: var(--color-text); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(3, 12, 18, 0.9); } }
 .pg-modello-foto { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
 .pg-modello-testo { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; flex: 1; }
 .pg-modello-nome { font-family: var(--font-heading); font-size: 22px; letter-spacing: -0.015em; }
 .pg-modello-nome::after { content: ' →'; color: var(--color-accent); transition: margin .2s var(--ease); }
 .pg-modello-riga { font-size: 14px; color: var(--color-neutral-400); }
 .pg-modello-sabbie { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+
+/* Su schermo largo le schede non sono tre uguali: la prima è grande e occupa
+   due righe, le altre due le stanno accanto una sopra l'altra, con la foto a
+   sinistra. Tre colonne identiche erano lo schema da modello di sito. */
+@media (min-width: 901px) {
+    .pg-modelli { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+    .pg-modello:first-child { grid-row: span 2; }
+    .pg-modello:first-child .pg-modello-foto { aspect-ratio: auto; flex: 1 1 auto; min-height: 340px; height: 0; }
+    .pg-modello:first-child .pg-modello-testo { flex: 0 0 auto; padding: 26px 30px 30px; }
+    .pg-modello:first-child .pg-modello-nome { font-size: 28px; }
+    .pg-modello:not(:first-child) { flex-direction: row; }
+    .pg-modello:not(:first-child) .pg-modello-foto { width: 44%; flex: 0 0 44%; aspect-ratio: auto; height: auto; min-height: 220px; }
+}
 .pg-sabbia {
     font-size: 12px; padding: 3px 10px; border-radius: var(--radius-md);
     color: var(--color-sand); background: var(--color-sand-soft);
@@ -409,12 +432,16 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 
 /* ── zona operativa ───────────────────────────────────────────────────── */
 
-.pg-sicilia {
-    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 72px; align-items: center;
+/* La mappa a tutta larghezza, il testo sotto in due colonne. */
+.pg-sicilia { display: flex; flex-direction: column; gap: 56px; }
+.pg-sicilia-testo {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 72px; align-items: end;
 }
+.pg-sicilia-intro { color: var(--color-neutral-300); max-width: 34em; margin: 0; }
+.pg-sicilia .pg-province { margin-bottom: 28px; }
 .pg-mappa { margin: 0; }
-.pg-mappa svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pg-mappa svg { width: 100%; height: auto; max-height: 620px; display: block; overflow: visible; }
 .pg-mappa-isola {
     fill: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
     stroke: color-mix(in srgb, var(--color-accent) 45%, transparent); stroke-width: 1.5;
@@ -435,7 +462,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     color: var(--color-neutral-200); border: 1px solid var(--color-divider); border-radius: 999px;
     transition: border-color .2s var(--ease), color .2s var(--ease);
 }
-.pg-province a:hover { color: var(--color-accent-300); border-color: var(--color-accent-600); }
+@media (hover: hover) { .pg-province a:hover { color: var(--color-accent-300); border-color: var(--color-accent-600); } }
 
 /* Il ruolo di concessionario, per esteso, in fondo alla pagina. */
 .pg-nota-brevetto {
@@ -489,9 +516,14 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     color: var(--color-neutral-500);
     max-width: 80em;
 }
-.pg-note-legali a { color: var(--color-neutral-400); text-decoration: none; }
-.pg-note-legali a:hover { color: var(--color-accent-300); }
-.pg-copyright a { color: var(--color-neutral-500); text-decoration: none; }
+/* I collegamenti nel testo legale si distinguevano dal testo solo per una
+   sfumatura di grigio (1,38:1): ora sono più chiari e sottolineati. */
+.pg-note-legali a, .pg-copyright a {
+    color: var(--color-neutral-300); text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    text-underline-offset: 3px; transition: color .2s var(--ease);
+}
+.pg-note-legali a:hover, .pg-copyright a:hover { color: var(--color-accent-300); }
 
 /* ── schermi stretti ────────────────────────────────────────────────── */
 
@@ -503,7 +535,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 
 @media (max-width: 1100px) {
     .pg-sezione { padding: 88px 32px 96px; }
-    .pg-piscine, .pg-sicilia { gap: 48px; }
+    .pg-piscine, .pg-sicilia, .pg-sicilia-testo { gap: 48px; }
     .pg-contatti { gap: 48px; }
     .pg-faq-sezione { gap: 48px; }
     .pg-hotel-testo { padding: 88px 32px 96px 48px; }
@@ -527,7 +559,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-fascia { padding: 28px 20px 8px; gap: 20px; }
     .pg-sezione { padding: 72px 20px 80px; }
     .pg-intro { margin-bottom: 40px; font-size: 15px; }
-    .pg-piscine, .pg-sicilia, .pg-contatti, .pg-faq-sezione, .pg-hotel { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .pg-piscine, .pg-sicilia, .pg-sicilia-testo, .pg-contatti, .pg-faq-sezione, .pg-hotel { grid-template-columns: minmax(0, 1fr); gap: 36px; }
     .pg-faq-testata { position: static; }
         .pg-piscine-foto { height: 380px; }
     .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }

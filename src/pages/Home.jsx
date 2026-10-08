@@ -428,19 +428,19 @@ export default function Home() {
 
             {/* ──────────────────────────── i modelli ───────────────────────── */}
             <section id="modelli" className="pg-sezione">
-                <h6 className="pg-occhiello">{t('I modelli', 'The models')}</h6>
+                <p className="pg-occhiello">{t('I modelli', 'The models')}</p>
                 <h2 className="pg-titolo" style={{ marginBottom: 40, maxWidth: '18em' }}>
                     {t('Tre punti di partenza, nessuna vasca uguale.', 'Three starting points, no two pools alike.')}
                 </h2>
                 <div className="pg-modelli">
-                    {MODELLI.map(m => {
+                    {MODELLI.map((m, i) => {
                         const scheda = SCHEDE_MODELLI[m.slug]
                         return (
                             <Link key={m.slug} to={`/modelli/${m.slug}`} className="pg-modello">
                                 <Foto
                                     slug={scheda.foto}
                                     className="pg-modello-foto"
-                                    sizes="(max-width: 900px) calc(100vw - 40px), 30vw"
+                                    sizes={i === 0 ? '(max-width: 900px) calc(100vw - 40px), 55vw' : '(max-width: 900px) calc(100vw - 40px), 20vw'}
                                 />
                                 <span className="pg-modello-testo">
                                     <span className="pg-modello-nome">{m.nomeCompleto}</span>
@@ -522,7 +522,7 @@ export default function Home() {
                     <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
                 <div className="pg-hotel-testo">
-                    <h6 className="pg-occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</h6>
+                    <p className="pg-occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</p>
                     <h2 className="pg-titolo" style={{ maxWidth: '16em' }}>
                         {t(
                             'Per una struttura ricettiva la piscina è la prima foto che il cliente guarda.',
@@ -557,31 +557,29 @@ export default function Home() {
             {/* ────────────────────────── zona operativa ────────────────────── */}
             <section id="sicilia" className="pg-sezione pg-sicilia">
                 <MappaSicilia />
-                <div>
-                    <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
-                    <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
-                        {t(
-                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
-                            'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
-                        )}
-                    </p>
-                    <p style={{ color: 'var(--color-neutral-400)', maxWidth: '34em', margin: '0 0 28px', fontSize: 14 }}>
-                        {t(
-                            'Il referente di cantiere è sempre lo stesso, dalla prima visita in giardino al collaudo: si parla con una persona, non con un ufficio.',
-                            'The same person follows the job from the first visit to commissioning: you talk to a person, not an office.',
-                        )}
-                    </p>
-                    <ul className="pg-province" aria-label={t('Le nove province', 'The nine provinces')}>
-                        {PROVINCE.map(p => (
-                            <li key={p.slug}>
-                                <Link to={`/piscine-rocks-design/sicilia#${p.slug}`}>{p.nome}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="pg-azioni">
-                        <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                            {t('Chiedi un preventivo', 'Ask for a quote')}
-                        </a>
+                <div className="pg-sicilia-testo">
+                    <div>
+                        <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
+                        <p className="pg-sicilia-intro">
+                            {t(
+                                'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
+                                'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
+                            )}
+                        </p>
+                    </div>
+                    <div>
+                        <ul className="pg-province" aria-label={t('Le nove province', 'The nine provinces')}>
+                            {PROVINCE.map(p => (
+                                <li key={p.slug}>
+                                    <Link to={`/piscine-rocks-design/sicilia#${p.slug}`}>{p.nome}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="pg-azioni">
+                            <a className="btn btn-primary pg-btn-grande" href="#contatti">
+                                {t('Chiedi un preventivo', 'Ask for a quote')}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -610,7 +608,7 @@ export default function Home() {
             {/* Riquadro finale: `data-cta-finale` lo riconosce scripts/misura-ripetizioni.mjs. */}
             <section id="contatti" className="pg-sezione pg-contatti" data-cta-finale="">
                 <div>
-                    <h6 className="pg-occhiello">{t('Contatti', 'Contact')}</h6>
+                    <p className="pg-occhiello">{t('Contatti', 'Contact')}</p>
                     <h2 className="pg-titolo" style={{ maxWidth: '18em' }}>
                         {t('Raccontaci il giardino.', 'Tell us about the garden.')}
                     </h2>
