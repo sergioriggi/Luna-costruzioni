@@ -57,7 +57,7 @@ export default function Modelli() {
                                 />
                                 <div className="flex flex-1 flex-col p-6">
                                     <h2 className="font-display text-2xl">{m.nomeCompleto}</h2>
-                                    <p className="mt-1 text-sm font-medium text-accento">{m.claim}</p>
+                                    <p className="mt-1 text-sm font-medium text-neutro-300">{m.claim}</p>
                                     <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{m.sintesi}</p>
                                     <p className="mt-4 text-sm text-neutro-500">
                                         <strong className="font-semibold text-neutro-300">Sabbie:</strong>{' '}
@@ -108,7 +108,7 @@ export default function Modelli() {
                         <Immagine
                             slug="sabbie-naturali-campioni"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>
@@ -120,7 +120,7 @@ export default function Modelli() {
                         <ul className="mt-6 space-y-2 text-[1.0625rem] text-neutro-300">
                             {SABBIE.map(s => (
                                 <li key={s.nome} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accento" />
+                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutro-500" />
                                     <span>
                                         <strong className="font-semibold">{s.nome}</strong> — {s.acqua.toLowerCase()}
                                     </span>

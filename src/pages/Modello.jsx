@@ -60,7 +60,7 @@ export default function Modello() {
                         <p className="occhiello">{m.claim}</p>
                         <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{m.nomeCompleto}</h1>
                         <p className="testo-lungo mt-6">{m.testo}</p>
-                        <p className="mt-6 rounded-xl bg-accento/[0.08] px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-200">
+                        <p className="mt-6 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-200">
                             <strong className="font-semibold">Quando ha senso sceglierlo:</strong> {m.adatto}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
@@ -72,7 +72,7 @@ export default function Modello() {
                         <Immagine
                             slug={m.copertina}
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />

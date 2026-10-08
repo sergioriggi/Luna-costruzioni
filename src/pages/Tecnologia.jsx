@@ -62,7 +62,7 @@ export default function Tecnologia() {
                         <Immagine
                             slug="monolite-al-tramonto"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -107,7 +107,7 @@ export default function Tecnologia() {
                                     idromassaggio: 'area-benessere-vista-alto',
                                 }[el.slug]}
                                 ratio="4 / 3"
-                                className="rounded-lg shadow-morbida"
+                                className="rounded-lg"
                                 sizes="(min-width: 1024px) 48vw, 92vw"
                             />
                             <div>
@@ -148,7 +148,7 @@ export default function Tecnologia() {
                         </p>
                     </Rivela>
                 </div>
-                <Rivela className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
+                <Rivela className="mt-6 rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                     Se qualcuno ti promette una piscina «senza permessi» o «senza pratiche» prima ancora di aver visto
                     il terreno, stai parlando con la persona sbagliata. Anche gli effetti catastali e fiscali vanno
                     valutati caso per caso con il tuo professionista di fiducia.
@@ -167,7 +167,7 @@ export default function Tecnologia() {
                             <tr className="border-b border-testo/[0.16]">
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500"> </th>
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500">Piscina tradizionale</th>
-                                <th scope="col" className="py-4 font-semibold text-accento">Piscina Rocks Design</th>
+                                <th scope="col" className="py-4 font-semibold text-testo">Piscina Rocks Design</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -187,7 +187,7 @@ export default function Tecnologia() {
                   bisogno di un'altra risposta, e ha una pagina sua: senza questo
                   rimando le due si farebbero concorrenza sulla stessa ricerca.
                 */}
-                <Rivela className="mt-8 max-w-prosa rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-400">
+                <Rivela className="mt-8 max-w-prosa rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-400">
                     Qui sopra c’è <strong className="font-medium text-testo">come sono fatte</strong>. Se la domanda
                     è invece <strong className="font-medium text-testo">quale delle due scegliere</strong> — costi,
                     tempi, permessi, manutenzione, e dove conviene davvero il cemento — il confronto completo sta in

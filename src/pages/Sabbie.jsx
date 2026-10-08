@@ -68,7 +68,7 @@ export default function Sabbie() {
                         <Immagine
                             slug="sabbie-naturali-campioni"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />
@@ -93,7 +93,7 @@ export default function Sabbie() {
                                 }}
                             />
                             <h2 className="mt-5 font-display text-2xl">Sabbia {s.nome}</h2>
-                            <p className="mt-1 text-sm font-medium text-accento">{s.acqua}</p>
+                            <p className="mt-1 text-sm font-medium text-neutro-300">{s.acqua}</p>
                             <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{s.carattere}</p>
                             <p className="mt-auto pt-3 text-[0.9rem] leading-relaxed text-neutro-500">{s.nota}</p>
                         </Rivela>
@@ -110,7 +110,7 @@ export default function Sabbie() {
                         <Immagine
                             slug="sabbie-naturali-granulometria"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                     </Rivela>

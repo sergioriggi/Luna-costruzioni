@@ -160,7 +160,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                             // fuori dal thread principale evita lo scatto
                             // dell'animazione di apertura su telefono.
                             decoding="async"
-                            className="mx-auto max-h-[76vh] w-auto rounded-xl object-contain"
+                            className="mx-auto max-h-[76vh] w-auto rounded-lg object-contain"
                         />
                         <figcaption className="mt-4 text-center text-sm text-neutro-300">
                             {corrente.caption ?? corrente.alt}

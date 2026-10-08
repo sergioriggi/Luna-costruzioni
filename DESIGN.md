@@ -141,7 +141,7 @@ A night-sea ground, one pool-turquoise accent, and a pale sand kept for figures.
 - **Band Deep → Band Glow** (#123f4a → #17605f): the single turquoise band behind the five construction steps.
 
 ### Named Rules
-**The One Voice Rule.** Turquoise means "you can act on this". If it is not a link, a button or a focus state, it is not turquoise.
+**The One Voice Rule.** Turquoise means "you can act on this". If it is not a link, a button or a focus state, it is not turquoise. One documented exception: the pale step (#a9ece7) on the single small label that opens a page or a home-page section. Numbers, bullets, table headings and tinted boxes are never turquoise.
 
 **The Sand Means Numbers Rule.** Pale sand marks a figure (a price, a duration, a place of origin). If a sentence turns sand, something is wrong.
 
@@ -162,7 +162,7 @@ A night-sea ground, one pool-turquoise accent, and a pale sand kept for figures.
 - **Label** (500, 11 to 12px, 0.12 to 0.16em, uppercase): small labels above headings. Rationed: at most one in every three sections.
 
 ### Named Rules
-**The Rationed Label Rule.** The small uppercase label above a heading is a signpost, not a habit: at most one per three sections, and never two sections in a row.
+**The Rationed Label Rule.** The small uppercase label above a heading is a signpost, not a habit: at most one per three sections, and never two sections in a row. On inner pages it appears only in the page opening; section headings (`IntestazioneSezione`) never print one.
 
 ## Layout
 
@@ -212,13 +212,17 @@ Quiet until they matter.
 ### Navigation
 - **Header:** sticky, 72px (64px on phone), night-sea at 88% with a light blur, one bottom hairline. The Luna name leads on the left; five page links, the dealer badge (logo on a light plate, linked to the manufacturer), the phone number and the filled "Preventivo" button follow on the right. The current page gets a 1px turquoise underline.
 - **Below 1100px:** links move into a menu panel that opens even without JavaScript; the three-line icon turns into a cross.
-- **Phone:** a WhatsApp and call bar slides up from the bottom after the first 60% of the screen.
+- **Phone:** a fixed bar at the bottom of every page from first paint: WhatsApp, Chiama, and a filled Preventivo. It steps aside while the cookie banner is open and respects the iPhone safe area; the footer reserves space so nothing sits under it.
+- **Language:** a compact IT · EN switch in the header from 900px up, and in the menu panel below that.
 
 ### Price Line (signature)
 The starting price ("a partire da 1.250 € al m² + IVA") in pale sand, on a faint sand-tinted plate with a link to what moves the price. It comes from one setting in code and is never retyped.
 
 ### Construction Timeline (signature)
 Five numbered circles on one hairline inside the turquoise band, each with a sand duration label, title and two lines of text. On phone the line turns vertical.
+
+### Photo Credit (signature)
+Every pool photo or group of photos carries one fixed line underneath, never on top: "Piscine espositive Piscine Rocks Design, in Lombardia." / "Piscine Rocks Design display pools, in Lombardy." (`CreditoFoto.jsx`, 12px, Text Quiet). The photos are the manufacturer's display pools; the line says so every time, in the same words.
 
 ## Do's and Don'ts
 
@@ -227,7 +231,8 @@ Five numbered circles on one hairline inside the turquoise band, each with a san
 - **Do** keep every interactive element pool turquoise (#38c6c0) and nothing else turquoise.
 - **Do** use the 8px / 14px / pill radius rule exactly as written in Shapes.
 - **Do** separate sections by background tone, not by lines.
-- **Do** keep one filled "Chiedi un preventivo" per view, with the same label everywhere.
+- **Do** keep one filled "Chiedi un preventivo" per view, with the same label everywhere (the only variant is "Richiedi una proposta" on the hotel page; form submits say "Invia la richiesta").
+- **Do** put the photo credit line under every pool photo or gallery.
 - **Do** run every transition on `cubic-bezier(0.22, 1, 0.36, 1)` and honour reduced motion.
 
 ### Don't:
@@ -236,4 +241,4 @@ Five numbered circles on one hairline inside the turquoise band, each with a san
 - **Don't** add shadows to elements at rest.
 - **Don't** load fonts, icons or scripts from third-party servers for the visual layer.
 - **Don't** put a small uppercase label above every heading.
-- **Don't** present the photos as Luna's own or Sicilian builds; they are Piscine Rocks Design pools, and captions and alt text say only what is visible.
+- **Don't** present the photos as Luna's own or Sicilian builds; they are Piscine Rocks Design display pools in Lombardy, and captions, titles and alt text say only what is visible. No "Realizzazioni", no "ultimata", no watermark carrying Luna's name.

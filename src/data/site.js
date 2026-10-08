@@ -194,12 +194,23 @@ export const ROCKS_DESIGN = {
  * Il prezzo al metro quadro SCENDE al crescere della vasca, quindi è un minimo,
  * non una tariffa. Chi scrive testi nuovi usi sempre «a partire da».
  */
+const DA_MQ = 1250
+/** «1.250 €»: il punto delle migliaia scritto a mano, senza dipendere dall'ICU di Node. */
+const CIFRA = `${String(DA_MQ).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`
+
 export const PREZZO = {
-    daMq: 1250,
+    daMq: DA_MQ,
     /** Per i titoli e i riquadri: breve, con il simbolo. */
-    testo: 'a partire da 1.250 € al m² + IVA',
+    testo: `a partire da ${CIFRA} al m² + IVA`,
     /** Per la prosa e per i testi letti da una macchina. */
-    testoLungo: 'a partire da 1.250 € al metro quadrato + IVA',
+    testoLungo: `a partire da ${CIFRA} al metro quadrato + IVA`,
+    /**
+     * Solo la cifra con l'unità, per le frasi che la introducono a modo loro
+     * («si parte da …»). Esiste perché prima la stessa cifra era riscritta a
+     * mano in cinque punti: un ritocco al prezzo ne avrebbe dimenticato qualcuno.
+     */
+    cifraLunga: `${CIFRA} al metro quadrato + IVA`,
+    cifraBreve: `${CIFRA} al m² + IVA`,
 }
 
 export const SOCIAL = [

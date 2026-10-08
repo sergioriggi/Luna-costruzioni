@@ -80,7 +80,7 @@ export default function Azienda() {
                         <Immagine
                             slug="oasi-con-pontile"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -129,8 +129,8 @@ export default function Azienda() {
                         </ul>
                     </Rivela>
                     <Rivela delay={120} className="grid grid-cols-2 gap-4">
-                        <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
-                        <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="mt-10 rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
+                        <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="rounded-lg" sizes="(min-width: 1024px) 24vw, 45vw" />
+                        <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="mt-10 rounded-lg" sizes="(min-width: 1024px) 24vw, 45vw" />
                         <CreditoFoto className="col-span-2" />
                     </Rivela>
                 </div>

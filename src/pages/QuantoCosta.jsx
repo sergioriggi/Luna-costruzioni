@@ -18,7 +18,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Quanto costa al metro quadro?',
         risposta:
-            `Una Piscina Rocks Design parte da 1.250 € al metro quadrato + IVA. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento — il 4% riguarda i soli lavori che si qualificano come abbattimento di barriere architettoniche, come spiegato nella domanda sulle agevolazioni fiscali — e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
+            `Una Piscina Rocks Design parte da ${PREZZO.cifraLunga}. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento — il 4% riguarda i soli lavori che si qualificano come abbattimento di barriere architettoniche, come spiegato nella domanda sulle agevolazioni fiscali — e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
@@ -28,7 +28,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Costa più o meno di una piscina tradizionale?',
         risposta:
-            'A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili: si parte da 1.250 € al metro quadrato + IVA. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».',
+            `A parità di superficie e di livello di finitura, i due ordini di grandezza sono confrontabili: si parte da ${PREZZO.cifraLunga}. Cambia però la distribuzione della spesa: qui pesano di più la selezione e la movimentazione dei massi, mentre spariscono getti, casseri e rivestimenti. Nel confronto vanno considerate anche le opere di contorno, che in una piscina tradizionale sono spesso preventivate a parte. Il confronto completo fra le due, voce per voce, sta nella pagina «Piscina in cemento o Piscina Rocks Design?».`,
     },
     {
         domanda: 'Si può fare a lotti?',
@@ -47,7 +47,7 @@ export default function QuantoCosta() {
         <>
             <Seo
                 titolo="Quanto costa una Piscina Rocks Design | Luna Costruzioni"
-                descrizione="Piscine Rocks Design a partire da 1.250 € al m² + IVA. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratuiti in tutta la Sicilia."
+                descrizione={`Piscine Rocks Design ${PREZZO.testo}. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratuiti in tutta la Sicilia.`}
                 percorso="/quanto-costa"
                 immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_COSTO)]}
@@ -55,7 +55,10 @@ export default function QuantoCosta() {
             <Briciole voci={BRICIOLE} />
 
             <Sezione>
-                <Rivela className="max-w-prosa">
+                {/* Su schermo largo il prezzo sta a destra del testo d'apertura:
+                    prima la colonna di testo lasciava vuota metà pagina. */}
+                <Rivela className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-start lg:gap-x-16">
+                    <div className="max-w-prosa">
                     <p className="occhiello">Prezzi e preventivi</p>
                     <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
                         Quanto costa, davvero
@@ -66,6 +69,7 @@ export default function QuantoCosta() {
                         catalogo tipo 8×4, quindi non c'è una riga di prezzo da copiare. C'è però una cifra da cui
                         si parte, ed è questa.
                     </p>
+                    </div>
 
                     {/*
                       Il riquadro riusa la forma che la pagina ha già più in basso
@@ -73,8 +77,10 @@ export default function QuantoCosta() {
                       sta nella riga grande, accanto alla cifra, e non in un
                       asterisco: l'esclusione dell'imposta non è una postilla.
                     */}
-                    <div className="mt-8 rounded-lg border border-accento-700 bg-accento/[0.06] p-6 sm:p-7">
-                        <p className="font-display text-2xl leading-snug text-testo sm:text-3xl">
+                    {/* La riga del prezzo come in home (DESIGN.md, «Price Line»):
+                        cifra in sabbia, su lastra appena sabbiata. */}
+                    <div className="rounded-lg border border-sabbia/[0.26] bg-sabbia/[0.08] p-6 sm:p-7 lg:row-span-2">
+                        <p className="font-display text-2xl leading-snug text-sabbia sm:text-3xl" style={{ fontVariantNumeric: 'tabular-nums' }}>
                             Piscine Rocks Design {PREZZO.testo}
                         </p>
                         {/*
@@ -113,7 +119,7 @@ export default function QuantoCosta() {
                         </Link>
                     </div>
 
-                    <p className="testo-lungo mt-8">
+                    <p className="testo-lungo max-w-prosa lg:col-start-1">
                         Da lì in su dipende dal giardino. Quello che possiamo fare — e che quasi nessuno fa — è
                         dirti in anticipo{' '}
                         <strong className="font-semibold text-testo">quali sono le cinque voci che spostano il
@@ -131,7 +137,7 @@ export default function QuantoCosta() {
                 <ol className="mt-12 space-y-5">
                     {FATTORI_COSTO.map((f, i) => (
                         <Rivela as="li" key={f.titolo} delay={i * 70} className="scheda flex flex-col gap-4 sm:flex-row sm:gap-7">
-                            <span className="font-display text-3xl leading-none text-accento sm:w-16">
+                            <span className="font-display text-3xl leading-none text-sabbia sm:w-16">
                                 {String(i + 1).padStart(2, '0')}
                             </span>
                             <div>
@@ -149,7 +155,7 @@ export default function QuantoCosta() {
                         <Immagine
                             slug="villa-con-spiaggia-in-ghiaia"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                         <CreditoFoto />
@@ -166,7 +172,7 @@ export default function QuantoCosta() {
                                 'Che cosa succede dopo la consegna: chi fa l’assistenza, e da quanto lontano arriva?',
                             ].map(v => (
                                 <li key={v} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accento" />
+                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutro-500" />
                                     {v}
                                 </li>
                             ))}
@@ -192,7 +198,7 @@ export default function QuantoCosta() {
                             ['Preventivo dettagliato', 'Entro una o due settimane, scomposto voce per voce.'],
                         ].map(([t, d], i) => (
                             <Rivela as="li" key={t} delay={i * 100} className="rounded-lg bg-testo/[0.05] p-6">
-                                <span className="font-display text-2xl text-accento-300">{i + 1}</span>
+                                <span className="font-display text-2xl text-sabbia">{i + 1}</span>
                                 <h3 className="mt-2 text-base text-testo">{t}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-neutro-400">{d}</p>
                             </Rivela>
@@ -231,7 +237,7 @@ export default function QuantoCosta() {
                         ['96.000 €', 'tetto di spesa per unità immobiliare', 'La detrazione si recupera in 10 quote annuali di pari importo.'],
                     ].map(([n, etichetta, nota], i) => (
                         <Rivela key={n} delay={i * 100} className="scheda">
-                            <p className="font-display text-3xl text-accento">{n}</p>
+                            <p className="font-display text-3xl text-sabbia">{n}</p>
                             <p className="mt-1 text-sm text-testo">{etichetta}</p>
                             <p className="mt-3 text-sm leading-relaxed text-neutro-400">{nota}</p>
                         </Rivela>
@@ -250,7 +256,7 @@ export default function QuantoCosta() {
                                 'Riparazione e rinforzo della struttura per cedimenti.',
                             ].map(v => (
                                 <li key={v} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accento" />
+                                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-neutro-500" />
                                     {v}
                                 </li>
                             ))}
@@ -280,7 +286,7 @@ export default function QuantoCosta() {
                     </Rivela>
                 </div>
 
-                <Rivela className="mt-10 rounded-lg border border-accento-700 bg-accento/[0.06] p-6 sm:p-7">
+                <Rivela className="scheda mt-10">
                     <p className="font-display text-lg text-testo">
                         Una piscina nuova, di norma, non rientra nel bonus
                     </p>

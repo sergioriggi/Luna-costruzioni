@@ -38,12 +38,12 @@ export default function ComeLavoriamo() {
                 <ol className="mt-14 space-y-6">
                     {PERCORSO.map((p, i) => (
                         <Rivela as="li" key={p.numero} delay={i * 70} className="scheda flex flex-col gap-4 sm:flex-row sm:gap-8">
-                            <span className="font-display text-4xl leading-none text-accento sm:w-24">{p.numero}</span>
+                            <span className="font-display text-4xl leading-none text-sabbia sm:w-24">{p.numero}</span>
                             <div>
                                 <div className="flex flex-wrap items-baseline gap-3">
                                     <h2 className="text-xl">{p.titolo}</h2>
                                     {p.durata && (
-                                        <span className="rounded-full bg-superficie px-3 py-1 text-xs font-medium text-neutro-400">
+                                        <span className="rounded-md bg-sabbia/[0.1] px-3 py-1 text-xs font-medium text-sabbia">
                                             {p.durata}
                                         </span>
                                     )}
@@ -61,7 +61,7 @@ export default function ComeLavoriamo() {
                         <Immagine
                             slug="oasi-con-pontile"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                         <CreditoFoto />
@@ -71,7 +71,7 @@ export default function ComeLavoriamo() {
                         titolo="Il metodo è della casa madre, il cantiere è nostro"
                         testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e il corso ufficiale che abbiamo seguito sono suoi. Quello che mettiamo noi è il lavoro sul campo — le misure in giardino, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
                     >
-                        <p className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
+                        <p className="mt-6 rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             Per tutela del brevetto {ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di
                             cantiere, delle tecniche costruttive o degli impianti impiegati. Ogni passaggio te lo
                             spieghiamo di persona, in giardino.
@@ -95,8 +95,8 @@ export default function ComeLavoriamo() {
                         'Tempi di realizzazione e modalità di pagamento',
                         'Assistenza post-consegna e stagionalità',
                     ].map((v, i) => (
-                        <Rivela as="li" key={v} delay={i * 60} className="flex gap-3 rounded-xl bg-superficie px-5 py-4 text-[0.95rem] text-neutro-300 ring-1 ring-testo/[0.16]">
-                            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-accento" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <Rivela as="li" key={v} delay={i * 60} className="flex gap-3 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] text-neutro-300 ring-1 ring-testo/[0.16]">
+                            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-neutro-400" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                 <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             {v}

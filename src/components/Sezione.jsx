@@ -2,19 +2,35 @@ import { Link } from '../lib/instradamento'
 import Rivela from './Rivela'
 import BottoneWhatsApp from './BottoneWhatsApp'
 
+/**
+ * Sezione delle pagine interne. Stesso ritmo della home (pagina.css,
+ * `.pg-sezione`): 120/128 px sopra e sotto su schermo largo, 88/96 sotto i
+ * 1100, 72/80 su telefono; colonna di 1320 px (`.contenitore`). Prima le
+ * pagine interne avevano 80-96 px e 1240: uscendo dalla home sembrava un
+ * altro sito.
+ */
 export function Sezione({ id, className = '', sfondo = '', children }) {
     return (
-        <section id={id} className={`py-20 sm:py-24 ${sfondo} ${className}`}>
+        <section id={id} className={`pt-[72px] pb-20 md:pt-[88px] md:pb-24 xl:pt-[120px] xl:pb-32 ${sfondo} ${className}`}>
             <div className="contenitore">{children}</div>
         </section>
     )
 }
 
+/**
+ * Intestazione di sezione: titolo e, se c'è, una riga di testo.
+ *
+ * `occhiello` non si stampa più. La regola del sito (DESIGN.md, «The Rationed
+ * Label Rule») ammette al massimo un occhiello ogni tre sezioni, e le pagine
+ * interne ne avevano uno su ogni sezione: l'unico rimasto è quello in apertura
+ * di pagina. La prop resta accettata per non toccare ogni chiamata, e perché
+ * dice a chi legge il codice di che sezione si tratta.
+ */
+// eslint-disable-next-line no-unused-vars
 export function IntestazioneSezione({ occhiello, titolo, testo, allineamento = 'sinistra', children }) {
     const centro = allineamento === 'centro'
     return (
         <Rivela className={`max-w-prosa ${centro ? 'mx-auto text-center' : ''}`}>
-            {occhiello && <p className="occhiello">{occhiello}</p>}
             <h2 className="titolo-sezione">{titolo}</h2>
             {testo && <p className="testo-lungo mt-5">{testo}</p>}
             {children}
@@ -58,24 +74,18 @@ export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Chied
     return (
         <div data-cta-finale="">
         <Sezione>
-            <Rivela className="overflow-hidden rounded-lg bg-notte-800 px-6 py-14 text-center sm:px-14">
+            <Rivela className="overflow-hidden rounded-lg border border-testo/[0.08] bg-superficie px-6 py-14 text-center sm:px-14">
                 <h2 className="font-display text-3xl text-testo sm:text-4xl">{titolo}</h2>
                 <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-neutro-400">{testo}</p>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
                     <Link to={primaria.to} className="bottone-pieno">{primaria.label}</Link>
                     {secondaria && (
-                        <Link
-                            to={secondaria.to}
-                            className="bottone border border-testo/[0.16] text-testo hover:bg-superficie/10"
-                        >
+                        <Link to={secondaria.to} className="bottone-secondario">
                             {secondaria.label}
                         </Link>
                     )}
                     {whatsapp && (
-                        <BottoneWhatsApp
-                            icona
-                            className="bottone border border-testo/[0.16] text-testo hover:bg-superficie/10"
-                        />
+                        <BottoneWhatsApp icona className="bottone-secondario" />
                     )}
                 </div>
             </Rivela>

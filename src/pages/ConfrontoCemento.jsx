@@ -133,12 +133,12 @@ export default function ConfrontoCemento() {
                             ))}
                         </ul>
                     </Rivela>
-                    <Rivela delay={120} className="scheda border-accento-700 bg-accento/[0.06]">
+                    <Rivela delay={120} className="scheda">
                         <h2 className="font-display text-2xl">Scegli una Piscina Rocks Design se…</h2>
                         <ul className="mt-5 space-y-3.5 text-[1.0625rem] leading-relaxed text-neutro-300">
                             {QUANDO_ROCKS.map(v => (
                                 <li key={v} className="flex gap-3">
-                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accento" />
+                                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutro-500" />
                                     {v}
                                 </li>
                             ))}
@@ -162,7 +162,7 @@ export default function ConfrontoCemento() {
                             <tr className="border-b border-testo/[0.16]">
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500"> </th>
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500">Piscina in cemento</th>
-                                <th scope="col" className="py-4 font-semibold text-accento">Piscina Rocks Design</th>
+                                <th scope="col" className="py-4 font-semibold text-testo">Piscina Rocks Design</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -205,7 +205,7 @@ export default function ConfrontoCemento() {
                         <Immagine
                             slug="spiaggia-di-sabbia-privata"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                         <CreditoFoto />

@@ -50,7 +50,7 @@
 
 @layer components {
     .contenitore {
-        @apply mx-auto w-full max-w-[1240px] px-6 sm:px-10;
+        @apply mx-auto w-full max-w-[1400px] px-5 sm:px-10;
     }
 
     /* Occhiello: maiuscoletto spaziato sopra i titoli di sezione */
@@ -59,7 +59,8 @@
     }
 
     .titolo-sezione {
-        @apply mt-4 text-[30px] leading-[1.08] tracking-[-0.02em] sm:text-[34px] lg:text-[40px];
+        @apply mt-4 leading-[1.06] tracking-[-0.028em];
+        font-size: clamp(30px, 3.2vw, 46px);
     }
 
     .testo-lungo {
@@ -68,9 +69,10 @@
 
     /* Bottoni: contorno sottile, riempimento solo al passaggio */
     .bottone {
-        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border
+        @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-md border
                border-transparent px-5 py-2.5 font-display text-sm font-medium leading-tight
-               transition disabled:cursor-not-allowed disabled:opacity-45;
+               active:translate-y-px disabled:cursor-not-allowed disabled:opacity-45;
+        transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease);
     }
 
     .bottone-primario {
@@ -83,11 +85,11 @@
 
     /* Variante piena, per le chiamate all'azione principali */
     .bottone-pieno {
-        @apply bottone border-accento bg-accento text-notte hover:bg-accento-400 active:bg-accento-500;
+        @apply bottone border-accento bg-accento font-semibold text-notte hover:bg-accento-400 active:bg-accento-500;
     }
 
     .scheda {
-        @apply rounded-md bg-superficie p-6 sm:p-7;
+        @apply rounded-lg bg-superficie p-6 sm:p-7;
     }
 
     .campo {

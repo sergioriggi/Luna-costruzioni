@@ -5,7 +5,7 @@ import Rivela from '../components/Rivela'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import BottoneTelefono from '../components/BottoneTelefono'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
-import { AZIENDA, PROVINCE, ROCKS_DESIGN } from '../data/site'
+import { AZIENDA, PROVINCE, ROCKS_DESIGN, PREZZO } from '../data/site'
 
 /*
  * Una pagina sola per tutta l'isola.
@@ -93,7 +93,7 @@ export default function Sicilia() {
                         <Immagine
                             slug="villa-con-spiaggia-in-ghiaia"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -132,7 +132,7 @@ export default function Sicilia() {
                     <Rivela delay={160} className="scheda">
                         <h3 className="text-lg">Costo</h3>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
-                            Si parte da 1.250 € al metro quadrato + IVA. Da lì in su contano dimensione, accessi al
+                            Si parte da {PREZZO.cifraLunga}. Da lì in su contano dimensione, accessi al
                             giardino, modello e opere di contorno; la distanza del cantiere entra nei trasporti. Il
                             numero vero arriva dopo il sopralluogo, che come il preventivo non costa nulla. Le voci
                             una per una sono in{' '}

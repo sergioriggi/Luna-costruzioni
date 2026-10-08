@@ -1,3 +1,5 @@
+import { PREZZO } from './site.js'
+
 /**
  * Contenuti editoriali del sito.
  *
@@ -323,7 +325,7 @@ export const FAQ = [
     {
         domanda: 'Quanto costa una Piscina Rocks Design in Sicilia?',
         risposta:
-            'Si parte da 1.250 € al metro quadrato + IVA. È un minimo e non una tariffa: il prezzo al metro quadro scende quando la vasca cresce, e da lì in su contano superficie, profondità, accessibilità del giardino, modello scelto e gli elementi che decidi di integrare. Fontana, giochi d’acqua e idromassaggio sono extra su richiesta. Nella pagina dedicata ci sono tutte le voci che spostano il preventivo; quando abbiamo visto il giardino ricevi un documento dettagliato, voce per voce.',
+            `Si parte da ${PREZZO.cifraLunga}. È un minimo e non una tariffa: il prezzo al metro quadro scende quando la vasca cresce, e da lì in su contano superficie, profondità, accessibilità del giardino, modello scelto e gli elementi che decidi di integrare. Fontana, giochi d’acqua e idromassaggio sono extra su richiesta. Nella pagina dedicata ci sono tutte le voci che spostano il preventivo; quando abbiamo visto il giardino ricevi un documento dettagliato, voce per voce.`,
     },
     {
         domanda: 'Servono permessi? E la piscina fa aumentare le tasse sulla casa?',

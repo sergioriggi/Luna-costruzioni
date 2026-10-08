@@ -93,7 +93,7 @@ export default function Giardini() {
                         <Immagine
                             slug="bordo-in-legno-e-ciottoli"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
@@ -124,7 +124,7 @@ export default function Giardini() {
                         <Immagine
                             slug="palme-e-monoliti"
                             ratio="4 / 3"
-                            className="rounded-lg shadow-morbida"
+                            className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
                         <CreditoFoto />
