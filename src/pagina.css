@@ -70,7 +70,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 
 .pg-nav-voce {
     position: relative; color: var(--color-neutral-300); text-decoration: none;
-    padding: 6px 0; transition: color .2s;
+    padding: 6px 0; transition: color .2s var(--ease);
 }
 .pg-nav-voce:hover { color: var(--color-text); }
 .pg-nav-voce[aria-current='page'] { color: var(--color-text); }
@@ -86,10 +86,10 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-concessionario {
     display: flex; align-items: center; gap: 12px;
     padding: 4px; text-decoration: none; border-radius: var(--radius-md);
-    transition: background .2s;
+    transition: background .2s var(--ease);
 }
 .pg-concessionario:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
-.pg-concessionario-logo { background: #f5efe6; border-radius: 6px; padding: 6px 9px; display: block; }
+.pg-concessionario-logo { background: #f5efe6; border-radius: var(--radius-md); padding: 6px 9px; display: block; }
 .pg-concessionario-logo img { height: 22px; width: auto; }
 .pg-concessionario-testo { display: flex; flex-direction: column; gap: 1px; }
 .pg-concessionario-ruolo {
@@ -105,11 +105,11 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-btn-pieno {
     background: var(--color-accent); border-color: var(--color-accent);
     color: var(--color-bg); font-weight: 600; text-decoration: none;
-    transition: background .2s, transform .15s;
+    transition: background .2s var(--ease), transform .15s var(--ease);
 }
 .pg-btn-pieno:hover { background: var(--color-accent-400); color: var(--color-bg); }
 .pg-btn-pieno:active { transform: translateY(1px); }
-.btn { transition: background .2s, border-color .2s, color .2s, transform .15s; }
+.btn { transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease); }
 .btn:active { transform: translateY(1px); }
 .pg-testata-telefono, .pg-testata-preventivo { padding: 8px 14px; }
 .pg-testata-telefono { text-decoration: none; }
@@ -124,7 +124,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-menu-tasto::-webkit-details-marker { display: none; }
 .pg-menu-tasto span, .pg-menu-tasto span::before, .pg-menu-tasto span::after {
     display: block; width: 18px; height: 1.5px; background: var(--color-text);
-    transition: transform .2s, opacity .2s;
+    transition: transform .2s var(--ease), opacity .2s var(--ease);
 }
 .pg-menu-tasto span { position: relative; }
 .pg-menu-tasto span::before, .pg-menu-tasto span::after { content: ''; position: absolute; left: 0; }
@@ -159,6 +159,14 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-testata-telefono, .pg-testata-preventivo { display: none; }
 }
 
+/* ── angoli ─────────────────────────────────────────────────────────────
+   Una regola sola, e vale ovunque:
+     8 px  (--radius-md)  pulsanti, campi, etichette, il logo in testata;
+     14 px (--radius-lg)  schede, riquadri e fotografie;
+     pillola              solo i collegamenti alle province;
+     cerchio              solo i numeri delle fasi e il segno del FAQ.
+   Niente altri raggi. */
+
 /* ── ritmo delle sezioni ──────────────────────────────────────────────
    Le sezioni sono a piena larghezza (il fondo arriva ai bordi) e il
    contenuto sta in una colonna di 1320 px al centro: il padding laterale
@@ -180,7 +188,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-link-freccia {
     display: inline-flex; gap: 6px; margin-top: 32px; font-size: 15px;
     color: var(--color-accent); text-decoration: none; font-family: var(--font-heading);
-    transition: gap .2s, color .2s;
+    transition: gap .2s var(--ease), color .2s var(--ease);
 }
 .pg-link-freccia:hover { gap: 10px; }
 
@@ -203,7 +211,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-eroe-figura picture { display: contents; }
 .pg-eroe-foto {
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    border-bottom-left-radius: 28px;
+    border-bottom-left-radius: var(--radius-lg);
 }
 .pg-eroe-occhiello {
     font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.16em;
@@ -223,7 +231,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     margin-top: 32px; padding: 14px 18px; text-decoration: none;
     border-radius: var(--radius-md); background: var(--color-sand-soft);
     border: 1px solid color-mix(in srgb, var(--color-sand) 26%, transparent);
-    transition: background .2s;
+    transition: background .2s var(--ease);
 }
 .pg-eroe-prezzo:hover { background: color-mix(in srgb, var(--color-sand) 20%, transparent); }
 .pg-eroe-prezzo-cifra {
@@ -253,18 +261,16 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-definizioni { display: grid; gap: 2px; }
 .pg-definizione {
     display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px;
-    padding: 20px 0; border-top: 1px solid var(--color-divider);
+    padding: 20px 0;
 }
-.pg-definizione:last-child { border-bottom: 1px solid var(--color-divider); }
+.pg-definizione + .pg-definizione { border-top: 1px solid var(--color-divider); }
+.pg-definizione:first-child { padding-top: 0; }
 .pg-definizione-nome { font-family: var(--font-heading); margin: 0; font-size: 15px; }
 .pg-definizione-testo { margin: 0; font-size: 14px; color: var(--color-neutral-400); }
 .pg-piscine-foto { width: 100%; height: 600px; object-fit: cover; border-radius: var(--radius-lg); }
 
 /* ── realizzazioni ────────────────────────────────────────────────────── */
 
-.pg-testata { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px 32px; margin-bottom: 48px; }
-.pg-testata-nota { margin: 0 0 6px auto; font-size: 14px; color: var(--color-neutral-400); max-width: 24em; }
-.pg-testata .pg-link-freccia { margin-top: 0; }
 /* Sette caselle: una grande 2×2, quattro piccole, due larghe in fondo. */
 .pg-mosaico {
     display: grid; gap: 12px;
@@ -272,8 +278,8 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     grid-auto-rows: 250px;
 }
 .pg-mosaico img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);
-    transition: transform .5s ease, filter .3s;
+    width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
+    transition: transform .5s var(--ease), filter .3s var(--ease);
 }
 .pg-mosaico img:hover { filter: brightness(1.08); }
 .pg-mosaico > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
@@ -285,17 +291,17 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-modello {
     display: flex; flex-direction: column; text-decoration: none; color: var(--color-text);
     border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface);
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .pg-modello:hover { color: var(--color-text); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(3, 12, 18, 0.9); }
 .pg-modello-foto { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
 .pg-modello-testo { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; flex: 1; }
 .pg-modello-nome { font-family: var(--font-heading); font-size: 22px; letter-spacing: -0.015em; }
-.pg-modello-nome::after { content: ' →'; color: var(--color-accent); transition: margin .2s; }
+.pg-modello-nome::after { content: ' →'; color: var(--color-accent); transition: margin .2s var(--ease); }
 .pg-modello-riga { font-size: 14px; color: var(--color-neutral-400); }
 .pg-modello-sabbie { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
 .pg-sabbia {
-    font-size: 12px; padding: 3px 10px; border-radius: 4px;
+    font-size: 12px; padding: 3px 10px; border-radius: var(--radius-md);
     color: var(--color-sand); background: var(--color-sand-soft);
 }
 
@@ -368,18 +374,18 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-faq-testata { position: sticky; top: 120px; }
 .pg-faq-testata .pg-link-freccia { margin-top: 8px; }
 .pg-faq { display: grid; }
-.pg-faq details { border-top: 1px solid var(--color-divider); }
-.pg-faq details:last-child { border-bottom: 1px solid var(--color-divider); }
+.pg-faq details + details { border-top: 1px solid var(--color-divider); }
+.pg-faq details:first-child summary { padding-top: 0; }
 .pg-faq summary {
     cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 24px;
-    padding: 22px 0; font-family: var(--font-heading); font-size: 17px; transition: color .2s;
+    padding: 22px 0; font-family: var(--font-heading); font-size: 17px; transition: color .2s var(--ease);
 }
 .pg-faq summary:hover { color: var(--color-accent-300); }
 .pg-faq summary::-webkit-details-marker { display: none; }
 .pg-faq summary::after {
     content: '+'; flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center;
     border-radius: 50%; border: 1px solid var(--color-divider); color: var(--color-accent);
-    font-size: 18px; line-height: 1; transition: transform .25s;
+    font-size: 18px; line-height: 1; transition: transform .25s var(--ease);
 }
 .pg-faq details[open] summary::after { transform: rotate(45deg); }
 .pg-faq details > p { margin: 0 0 24px; font-size: 15px; line-height: 1.65; color: var(--color-neutral-400); max-width: 40em; }
@@ -410,7 +416,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-province a {
     display: inline-block; padding: 7px 14px; font-size: 14px; text-decoration: none;
     color: var(--color-neutral-200); border: 1px solid var(--color-divider); border-radius: 999px;
-    transition: border-color .2s, color .2s;
+    transition: border-color .2s var(--ease), color .2s var(--ease);
 }
 .pg-province a:hover { color: var(--color-accent-300); border-color: var(--color-accent-600); }
 
@@ -423,7 +429,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 /* ── contatti ─────────────────────────────────────────────────────────── */
 
 .pg-contatti { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
-.pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+.pg-recapiti { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-lg); }
 .pg-recapito-etichetta { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500); }
 .pg-recapito-valore { margin: 4px 0 0; font-family: var(--font-heading); font-size: 18px; }
 .pg-recapito-link {
@@ -504,8 +510,7 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-intro { margin-bottom: 40px; font-size: 15px; }
     .pg-piscine, .pg-sicilia, .pg-contatti, .pg-faq-sezione, .pg-hotel { grid-template-columns: minmax(0, 1fr); gap: 36px; }
     .pg-faq-testata { position: static; }
-    .pg-testata-nota { margin-left: 0; }
-    .pg-piscine-foto { height: 380px; }
+        .pg-piscine-foto { height: 380px; }
     .pg-definizione { grid-template-columns: minmax(0, 1fr); gap: 6px; }
     .pg-modelli { grid-template-columns: minmax(0, 1fr); }
     .pg-dubbi { grid-template-columns: minmax(0, 1fr); }

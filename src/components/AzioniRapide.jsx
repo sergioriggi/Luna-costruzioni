@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AZIENDA } from '../data/site'
 import BottoneWhatsApp from './BottoneWhatsApp'
 import BottoneTelefono from './BottoneTelefono'
@@ -8,22 +8,31 @@ import BottoneTelefono from './BottoneTelefono'
  *
  * Entra dopo i primi 60% di schermo scorsi, non prima: all'apertura i
  * pulsanti sono già nella pagina, e la barra copriva il «Chiedi un
- * preventivo» dell'apertura insieme al banner dei cookie. Nell'HTML
+ * preventivo» dell'apertura insieme al banner dei cookie.
+ *
+ * Il «quando» lo decide un IntersectionObserver su un segnaposto invisibile
+ * alto 60vh in cima al documento: la barra entra quando il segnaposto esce
+ * dallo schermo. Niente ascoltatore su `scroll`, che girerebbe a ogni
+ * fotogramma di scorrimento. Nell'HTML
  * pre-renderizzato parte nascosta (fuori schermo con `transform`, quindi
  * senza spostare nulla: niente CLS) e resta raggiungibile da tastiera e da
  * lettore di schermo solo quando è visibile.
  */
 export default function AzioniRapide() {
     const [visibile, setVisibile] = useState(false)
+    const soglia = useRef(null)
 
     useEffect(() => {
-        const controlla = () => setVisibile(window.scrollY > window.innerHeight * 0.6)
-        controlla()
-        window.addEventListener('scroll', controlla, { passive: true })
-        return () => window.removeEventListener('scroll', controlla)
+        if (!soglia.current || typeof IntersectionObserver === 'undefined') return
+        const osservatore = new IntersectionObserver(([voce]) => setVisibile(!voce.isIntersecting))
+        osservatore.observe(soglia.current)
+        return () => osservatore.disconnect()
     }, [])
 
     return (
+        <>
+        {/* Segnaposto: in cima al documento (il genitore non è posizionato), alto 60vh. */}
+        <div ref={soglia} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 h-[60vh] w-px" />
         <div
             className={`fixed inset-x-0 bottom-0 z-40 transition-transform duration-300 sm:hidden ${visibile ? 'translate-y-0' : 'pointer-events-none translate-y-full'}`}
             aria-hidden={!visibile}
@@ -44,5 +53,6 @@ export default function AzioniRapide() {
                 </BottoneTelefono>
             </div>
         </div>
+        </>
     )
 }

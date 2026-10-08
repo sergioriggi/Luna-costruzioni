@@ -353,9 +353,6 @@ export default function Home() {
             {/* ─────────────────── perché Piscine Rocks Design ──────────────── */}
             <section id="piscine" className="pg-sezione pg-piscine">
                 <div>
-                    <h6 className="pg-occhiello">
-                        {t('Perché Piscine Rocks Design', 'Why Piscine Rocks Design')}
-                    </h6>
                     <h2 className="pg-titolo" style={{ maxWidth: '20em' }}>
                         {t('Sembra un laghetto. Funziona come una piscina.', 'It looks like a lagoon. It works like a pool.')}
                     </h2>
@@ -398,20 +395,15 @@ export default function Home() {
 
             {/* ────────────────────────── realizzazioni ─────────────────────── */}
             <section id="realizzazioni" className="pg-sezione pg-tinta">
-                <div className="pg-testata">
-                    <div>
-                        <h6 className="pg-occhiello">{t('Le piscine Rocks Design', 'Piscine Rocks Design')}</h6>
-                        <h2 className="pg-titolo" style={{ margin: 0, maxWidth: '20em' }}>
-                            {t(
-                                'Piscine Rocks Design ultimate, arredate e in funzione.',
-                                'Piscine Rocks Design finished, furnished and running.',
-                            )}
-                        </h2>
-                    </div>
-                    <p className="pg-testata-nota">
-                        {t('Fotografie di Piscine Rocks Design realizzate: è il prodotto che costruiamo per te.', 'Photographs of built Piscine Rocks Design pools: this is the product we build for you.')}
-                    </p>
-                </div>
+                <h2 className="pg-titolo" style={{ maxWidth: '20em' }}>
+                    {t(
+                        'Piscine Rocks Design ultimate, arredate e in funzione.',
+                        'Piscine Rocks Design finished, furnished and running.',
+                    )}
+                </h2>
+                <p className="pg-intro" style={{ maxWidth: '38em', marginBottom: 40 }}>
+                    {t('Fotografie di Piscine Rocks Design realizzate: è il prodotto che costruiamo per te.', 'Photographs of built Piscine Rocks Design pools: this is the product we build for you.')}
+                </p>
                 <div className="pg-mosaico">
                     {MOSAICO.map((slug, i) => (
                         <Foto
@@ -432,17 +424,10 @@ export default function Home() {
 
             {/* ──────────────────────────── i modelli ───────────────────────── */}
             <section id="modelli" className="pg-sezione">
-                <div className="pg-testata">
-                    <div>
-                        <h6 className="pg-occhiello">{t('I modelli', 'The models')}</h6>
-                        <h2 className="pg-titolo" style={{ margin: 0, maxWidth: '18em' }}>
-                            {t('Tre punti di partenza, nessuna vasca uguale.', 'Three starting points, no two pools alike.')}
-                        </h2>
-                    </div>
-                    <Link to="/modelli" className="pg-link-freccia pg-testata-nota">
-                        {t('Confronta i modelli', 'Compare the models')} →
-                    </Link>
-                </div>
+                <h6 className="pg-occhiello">{t('I modelli', 'The models')}</h6>
+                <h2 className="pg-titolo" style={{ marginBottom: 40, maxWidth: '18em' }}>
+                    {t('Tre punti di partenza, nessuna vasca uguale.', 'Three starting points, no two pools alike.')}
+                </h2>
                 <div className="pg-modelli">
                     {MODELLI.map(m => {
                         const scheda = SCHEDE_MODELLI[m.slug]
@@ -466,11 +451,13 @@ export default function Home() {
                         )
                     })}
                 </div>
+                <Link to="/modelli" className="pg-link-freccia">
+                    {t('Confronta i modelli', 'Compare the models')} →
+                </Link>
             </section>
 
             {/* ───────────────────────── chiavi in mano ─────────────────────── */}
             <section id="processo" className="pg-sezione pg-processo">
-                <h6 className="pg-occhiello">{t('Chiavi in mano', 'Turnkey')}</h6>
                 <h2 className="pg-titolo" style={{ maxWidth: '22em' }}>
                     {t('Cinque fasi, un’unica impresa.', 'Five stages, one company.')}
                 </h2>
@@ -494,7 +481,6 @@ export default function Home() {
 
             {/* ───────────────────────── prima di decidere ──────────────────── */}
             <section id="dubbi" className="pg-sezione">
-                <h6 className="pg-occhiello">{t('Prima di decidere', 'Before you decide')}</h6>
                 <h2 className="pg-titolo" style={{ maxWidth: '21em' }}>
                     {t(
                         'Quattro dubbi fermano chi vuole una piscina. Li mettiamo sul tavolo subito.',
@@ -566,7 +552,6 @@ export default function Home() {
             <section id="sicilia" className="pg-sezione pg-sicilia">
                 <MappaSicilia />
                 <div>
-                    <h6 className="pg-occhiello">{t('Zona operativa', 'Where we work')}</h6>
                     <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
                         {t(
@@ -589,7 +574,7 @@ export default function Home() {
                     </ul>
                     <div className="pg-azioni">
                         <a className="btn btn-primary pg-btn-grande" href="#contatti">
-                            {t('Parlane con Luciano', 'Talk to Luciano')}
+                            {t('Chiedi un preventivo', 'Ask for a quote')}
                         </a>
                     </div>
                 </div>
@@ -598,7 +583,6 @@ export default function Home() {
             {/* ───────────────────────── domande frequenti ──────────────────── */}
             <section id="faq" className="pg-sezione pg-tinta pg-faq-sezione">
                 <div className="pg-faq-testata">
-                    <h6 className="pg-occhiello">{t('Domande frequenti', 'Frequently asked')}</h6>
                     <h2 className="pg-titolo">
                         {t('Quello che ci chiedono prima di ogni preventivo.', 'What people ask us before any quote.')}
                     </h2>

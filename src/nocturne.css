@@ -27,6 +27,10 @@
      Solo per cifre, prezzi e piccoli segni di rilievo — mai per i link né per
      i pulsanti, che restano turchesi. Sul fondo porta 11,6:1. */
   --color-sand: #e4d2aa;
+  /* Una sola curva per le transizioni del sito: parte svelta e si posa
+     piano, come un oggetto con un po' di peso. Sostituisce i vari `ease` ed
+     `ease-out` sparsi, che davano a ogni componente un passo diverso. */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --color-sand-soft: color-mix(in srgb, #e4d2aa 14%, transparent);
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
@@ -181,6 +185,7 @@ figcaption {
   background: var(--color-surface);
   border: 1px solid var(--color-divider); border-radius: var(--radius-md);
 }
+.input::placeholder { color: var(--color-neutral-500); opacity: 1; } /* 5,5:1 sul campo: il grigio di serie non arrivava a 4,5 */
 .input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
 .input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
 textarea.input { min-height: 90px; resize: vertical; }
