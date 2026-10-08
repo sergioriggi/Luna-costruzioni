@@ -51,7 +51,13 @@ export default function ModuloPagina() {
         if (dati.sito) return // robot
         const err = valida()
         setErrori(err)
-        if (Object.keys(err).length > 0) return
+        if (Object.keys(err).length > 0) {
+            // Fuoco sul primo campo da correggere: su telefono gli errori
+            // comparivano mezza pagina più su del pulsante, fuori dalla vista.
+            const primo = ['nome', 'tel', 'email', 'comune', 'consenso'].find(k => err[k])
+            e.currentTarget.elements.namedItem(primo)?.focus()
+            return
+        }
 
         setStato('invio')
         const risultato = await inviaLead(
@@ -95,20 +101,22 @@ export default function ModuloPagina() {
                 <div className="field">
                     <label htmlFor="nome">{t('Nome e cognome', 'Full name')}</label>
                     <input
-                        className="input" id="nome" name="nome" type="text" placeholder="Mario Rossi"
+                        className="input" id="nome" name="nome" type="text"
                         value={dati.nome} onChange={aggiorna} autoComplete="name"
                         aria-invalid={!!errori.nome}
+                        aria-describedby={errori.nome ? 'err-p-nome' : undefined}
                     />
-                    {errori.nome && <p className="pg-errore">{errori.nome}</p>}
+                    {errori.nome && <p className="pg-errore" id="err-p-nome">{errori.nome}</p>}
                 </div>
                 <div className="field">
                     <label htmlFor="tel">{t('Telefono', 'Phone')}</label>
                     <input
-                        className="input" id="tel" name="tel" type="tel" placeholder="333 000 0000"
+                        className="input" id="tel" name="tel" type="tel"
                         value={dati.tel} onChange={aggiorna} autoComplete="tel"
                         aria-invalid={!!errori.tel}
+                        aria-describedby={errori.tel ? 'err-p-tel' : undefined}
                     />
-                    {errori.tel && <p className="pg-errore">{errori.tel}</p>}
+                    {errori.tel && <p className="pg-errore" id="err-p-tel">{errori.tel}</p>}
                 </div>
             </div>
 
@@ -116,25 +124,27 @@ export default function ModuloPagina() {
                 <div className="field">
                     <label htmlFor="email">Email</label>
                     <input
-                        className="input" id="email" name="email" type="email" placeholder="nome@email.it"
+                        className="input" id="email" name="email" type="email"
                         value={dati.email} onChange={aggiorna} autoComplete="email"
                         aria-invalid={!!errori.email}
+                        aria-describedby={errori.email ? 'err-p-email' : undefined}
                     />
-                    {errori.email && <p className="pg-errore">{errori.email}</p>}
+                    {errori.email && <p className="pg-errore" id="err-p-email">{errori.email}</p>}
                 </div>
                 <div className="field">
                     <label htmlFor="comune">{t('Comune', 'Town')}</label>
                     <input
-                        className="input" id="comune" name="comune" type="text" placeholder="Palermo"
+                        className="input" id="comune" name="comune" type="text"
                         value={dati.comune} onChange={aggiorna} autoComplete="address-level2"
                         aria-invalid={!!errori.comune}
+                        aria-describedby={errori.comune ? 'err-p-comune' : undefined}
                     />
-                    {errori.comune && <p className="pg-errore">{errori.comune}</p>}
+                    {errori.comune && <p className="pg-errore" id="err-p-comune">{errori.comune}</p>}
                 </div>
             </div>
 
             <div className="field">
-                <span className="etichetta-seg" style={{ display: 'block', fontSize: 12, marginBottom: 5, color: 'color-mix(in srgb, var(--color-text) 70%, transparent)' }}>
+                <span className="etichetta-seg">
                     {t('Tipo di progetto', 'Project type')}
                 </span>
                 <div className="seg" role="radiogroup" aria-label={t('Tipo di progetto', 'Project type')}>
@@ -171,19 +181,23 @@ export default function ModuloPagina() {
             {/* Richiesto dal GDPR: senza consenso il contatto non si può trattare. */}
             <div>
                 <label className="pg-consenso" htmlFor="consenso">
-                    <input id="consenso" name="consenso" type="checkbox" checked={dati.consenso} onChange={aggiorna} />
+                    <input
+                        id="consenso" name="consenso" type="checkbox" checked={dati.consenso} onChange={aggiorna}
+                        aria-invalid={!!errori.consenso}
+                        aria-describedby={errori.consenso ? 'err-p-consenso' : undefined}
+                    />
                     <span>
                         {t('Ho letto l’', 'I have read the ')}
                         <Link to="/privacy">{t('informativa privacy', 'privacy notice')}</Link>
                         {t(' e acconsento al trattamento dei dati per essere ricontattato.', ' and consent to being contacted.')}
                     </span>
                 </label>
-                {errori.consenso && <p className="pg-errore">{errori.consenso}</p>}
+                {errori.consenso && <p className="pg-errore" id="err-p-consenso">{errori.consenso}</p>}
             </div>
 
             <div className="pg-invio">
-                <button className="btn btn-primary pg-btn-grande" type="submit" disabled={stato === 'invio'}>
-                    {stato === 'invio' ? t('Invio in corso…', 'Sending…') : t('Invia richiesta', 'Send request')}
+                <button className="btn pg-btn-pieno pg-btn-grande" type="submit" disabled={stato === 'invio'}>
+                    {stato === 'invio' ? t('Invio in corso…', 'Sending…') : t('Invia la richiesta', 'Send the request')}
                 </button>
                 <span className="pg-invio-nota">
                     {t(`Oppure chiama il ${AZIENDA.telefono}.`, `Or call ${AZIENDA.telefono}.`)}

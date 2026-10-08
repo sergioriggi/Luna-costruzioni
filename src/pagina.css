@@ -13,7 +13,10 @@
 
 /* ── blocco <style> dell'intestazione ─────────────────────────────────── */
 
-html { scroll-behavior: smooth; }
+/* Lo scorrimento morbido solo per chi non ha chiesto «riduci il movimento».
+   Prima stava qui senza condizioni e, caricato dopo index.css, vinceva sul
+   suo blocco `reduce`: la preferenza non aveva effetto. */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body { margin: 0; background: var(--color-bg); }
 a:hover { color: var(--color-accent-300); }
 input:hover, textarea:hover { border-color: var(--color-accent-600); }
@@ -148,7 +151,9 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-menu-pannello li a[aria-current='page'] { color: var(--color-accent); }
 .pg-menu-azioni { display: grid; gap: 10px; margin-top: 20px; }
 
-@media (max-width: 1399px) {
+/* Sotto i 1500 px la dicitura del concessionario lascia il posto al cambio
+   di lingua: resta il logo, con il nome per esteso nel titolo del link. */
+@media (max-width: 1499px) {
     .pg-concessionario-testo { display: none; }
 }
 @media (max-width: 1099px) {
@@ -456,6 +461,8 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-invio-nota { font-size: 13px; color: var(--color-neutral-500); }
 .pg-esito { margin: 0; font-size: 13px; color: var(--color-accent-300); min-height: 1.4em; }
 .pg-errore { margin: 4px 0 0; font-size: 12px; color: #f0a6a6; }
+.etichetta-seg { display: block; font-size: 12px; margin-bottom: 5px; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+.pg-btn-grande { min-height: 44px; }
 .pg-consenso { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--color-neutral-400); }
 .pg-consenso input { margin-top: 2px; accent-color: var(--color-accent); }
 .pg-esca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -577,3 +584,52 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
 .pg-footer-province .pg-footer-etichetta { display: inline; margin: 0 6px 0 0; }
 .pg-footer-province a { color: var(--color-neutral-400); text-decoration: none; }
 .pg-footer-province a:hover { color: var(--color-accent-300); }
+
+/* Su telefono la barra WhatsApp/telefono (AzioniRapide.jsx) è fissa in basso
+   e alta circa 90 px: il piè di pagina lascia sotto di sé lo spazio per non
+   finirci sotto. Prima la riserva era di 64 px e stava su <main>, quindi le
+   ultime righe del piè (Privacy, Cookie) restavano coperte. */
+@media (max-width: 639px) {
+    .pg-footer { padding-bottom: calc(40px + 96px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ── barra di contatto su telefono (AzioniRapide.jsx) ─────────────────────
+   Tre voci a un tocco su ogni pagina; una sola piena, il preventivo. Tiene
+   conto della tacca degli iPhone (viewport-fit=cover in index.html). */
+.pg-barra {
+    position: fixed; inset: auto 0 0 0; z-index: 40;
+    display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: var(--color-bg); border-top: 1px solid var(--color-divider);
+    transition: transform .26s var(--ease);
+}
+html[data-consenso-aperto] .pg-barra { transform: translateY(100%); transition-duration: .2s; }
+@media (min-width: 640px) { .pg-barra { display: none; } }
+/* Il pannello del menù finisce sopra la barra, non sotto. */
+@media (max-width: 639px) { .pg-menu-pannello { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); } }
+.pg-barra-voce {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    min-height: 48px; border-radius: var(--radius-md); white-space: nowrap;
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: var(--color-text); text-decoration: none;
+    background: var(--color-surface); border: 1px solid var(--color-divider);
+    touch-action: manipulation; -webkit-user-select: none; user-select: none;
+}
+.pg-barra-voce svg { flex-shrink: 0; }
+.pg-barra-voce:first-child svg { color: #25d366; }
+.pg-barra-voce:active { transform: translateY(1px); }
+.pg-barra-preventivo { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); font-weight: 600; }
+.pg-barra-preventivo:hover { color: var(--color-bg); }
+
+/* ── cambio di lingua in testata ─────────────────────────────────────── */
+.seg-compatto .seg-opt { padding: 6px 9px; font-size: 12px; letter-spacing: 0.04em; }
+.pg-testata-lingua { flex-shrink: 0; }
+.pg-menu-lingua { margin-top: 6px; justify-self: start; }
+@media (max-width: 899px) { .pg-testata-lingua { display: none; } }
+
+/* ── campi dei moduli su schermo touch ────────────────────────────────────
+   Safari su iPhone ingrandisce la pagina quando si tocca un campo con testo
+   sotto i 16 px, e non torna indietro. I campi erano a 14 px. */
+@media (pointer: coarse) {
+    .campo, .input, input, select, textarea { font-size: 16px; }
+}

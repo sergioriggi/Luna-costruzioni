@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useId, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 /**
  * Bilingue italiano / inglese.
@@ -53,26 +53,35 @@ export function useLingua() {
     return useContext(ContestoLingua)
 }
 
-/** Selettore di lingua: il gruppo `.seg` del file approvato. */
-export function SelettoreLingua({ className = '' }) {
+/**
+ * Selettore di lingua: il gruppo `.seg` del file approvato.
+ *
+ * Compare due volte nella stessa pagina (testata e piè), quindi ogni copia ha
+ * il suo `name`: con lo stesso nome i due gruppi di radio diventerebbero uno
+ * solo e scegliere in uno toglierebbe la spunta dall'altro. `compatto` mostra
+ * «IT · EN» per la testata; il nome per esteso resta nell'etichetta accessibile.
+ */
+export function SelettoreLingua({ className = '', compatto = false }) {
     const { lingua, setLingua } = useLingua()
+    const nome = `lingua-${useId()}`
     const opzioni = [
-        { codice: 'it', etichetta: 'Italiano' },
-        { codice: 'en', etichetta: 'English' },
+        { codice: 'it', etichetta: 'Italiano', breve: 'IT' },
+        { codice: 'en', etichetta: 'English', breve: 'EN' },
     ]
 
     return (
-        <div className={`seg ${className}`.trim()} role="group" aria-label="Lingua / Language">
+        <div className={`seg ${compatto ? 'seg-compatto' : ''} ${className}`.trim()} role="group" aria-label="Lingua / Language">
             {opzioni.map(o => (
                 <label key={o.codice} className="seg-opt" lang={o.codice}>
                     <input
                         type="radio"
-                        name="lingua"
+                        name={nome}
                         value={o.codice}
                         checked={lingua === o.codice}
                         onChange={() => setLingua(o.codice)}
+                        aria-label={compatto ? o.etichetta : undefined}
                     />
-                    {o.etichetta}
+                    {compatto ? o.breve : o.etichetta}
                 </label>
             ))}
         </div>

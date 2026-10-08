@@ -70,6 +70,15 @@ export default function BannerCookie() {
         }
     }, [])
 
+    // Segnala alla pagina che il banner è aperto: la barra di contatto su
+    // telefono (AzioniRapide) si fa da parte finché non si sceglie, invece di
+    // finirci sotto. Solo presentazione: il consenso non passa di qui.
+    useEffect(() => {
+        const radice = document.documentElement
+        if (visibile) radice.dataset.consensoAperto = ''
+        else delete radice.dataset.consensoAperto
+    }, [visibile])
+
     const decidi = scelta => {
         try { localStorage.setItem(CHIAVE, scelta) } catch { /* ignorato */ }
         setVisibile(false)

@@ -1,9 +1,10 @@
 import { useRef } from 'react'
 import { Link, useLocation } from '../lib/instradamento'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
-import { useLingua } from '../i18n/lingua'
+import { useLingua, SelettoreLingua } from '../i18n/lingua'
 import { pubblico, BASE_URL } from '../lib/percorso'
 import BottoneTelefono from './BottoneTelefono'
+import BottoneWhatsApp from './BottoneWhatsApp'
 
 /**
  * Voci della testata. Erano le sette ancore della pagina unica del blueprint:
@@ -104,6 +105,10 @@ export default function Header() {
                     </span>
                 </a>
 
+                {/* Il cambio di lingua sta in testata, non solo nel piè: chi arriva
+                    dall'estero deve trovarlo prima di leggere. Sotto i 900 px è nel
+                    pannello del menù. */}
+                <SelettoreLingua compatto className="pg-testata-lingua" />
                 <BottoneTelefono className="btn btn-secondary pg-testata-telefono">
                     <IconaTelefono />
                     {AZIENDA.telefono.replace(/^\+39\s*/, '')}
@@ -134,6 +139,10 @@ export default function Header() {
                                 <IconaTelefono />
                                 {AZIENDA.telefono}
                             </BottoneTelefono>
+                            <BottoneWhatsApp className="btn btn-secondary pg-btn-grande">
+                                WhatsApp
+                            </BottoneWhatsApp>
+                            <SelettoreLingua className="pg-menu-lingua" />
                         </div>
                     </div>
                 </details>

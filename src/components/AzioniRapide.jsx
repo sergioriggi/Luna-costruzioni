@@ -1,58 +1,43 @@
-import { useEffect, useRef, useState } from 'react'
-import { AZIENDA } from '../data/site'
+import { Link } from '../lib/instradamento'
+import { useLingua } from '../i18n/lingua'
 import BottoneWhatsApp from './BottoneWhatsApp'
 import BottoneTelefono from './BottoneTelefono'
 
 /**
- * Barra di contatto fissata in basso, solo su telefono.
+ * Barra di contatto fissata in basso, solo su telefono: WhatsApp, Chiama e
+ * Preventivo, a un tocco da ogni pagina.
  *
- * Entra dopo i primi 60% di schermo scorsi, non prima: all'apertura i
- * pulsanti sono già nella pagina, e la barra copriva il «Chiedi un
- * preventivo» dell'apertura insieme al banner dei cookie.
+ * C'è dal primo istante, già nell'HTML pre-renderizzato: niente JavaScript per
+ * farla comparire e niente spostamenti. Una versione precedente entrava solo
+ * dopo il 60% di schermo scorso, e il collaudo ha mostrato che così su 5
+ * pagine su 11 all'apertura non c'era niente da toccare: né telefono né
+ * preventivo. Il preventivo non c'era proprio.
  *
- * Il «quando» lo decide un IntersectionObserver su un segnaposto invisibile
- * alto 60vh in cima al documento: la barra entra quando il segnaposto esce
- * dallo schermo. Niente ascoltatore su `scroll`, che girerebbe a ogni
- * fotogramma di scorrimento. Nell'HTML
- * pre-renderizzato parte nascosta (fuori schermo con `transform`, quindi
- * senza spostare nulla: niente CLS) e resta raggiungibile da tastiera e da
- * lettore di schermo solo quando è visibile.
+ * Mentre il banner dei cookie è aperto la barra si fa da parte (regola
+ * `html[data-consenso-aperto]` in pagina.css): i due si coprivano a vicenda.
+ *
+ * Un solo pulsante pieno, il preventivo. WhatsApp tiene il suo verde solo
+ * nell'icona: un secondo colore pieno sullo schermo romperebbe la regola del
+ * turchese che vuol dire «si tocca». «Chiama» invece del numero: in 390 px il
+ * numero andava a capo.
  */
 export default function AzioniRapide() {
-    const [visibile, setVisibile] = useState(false)
-    const soglia = useRef(null)
-
-    useEffect(() => {
-        if (!soglia.current || typeof IntersectionObserver === 'undefined') return
-        const osservatore = new IntersectionObserver(([voce]) => setVisibile(!voce.isIntersecting))
-        osservatore.observe(soglia.current)
-        return () => osservatore.disconnect()
-    }, [])
+    const { t } = useLingua()
 
     return (
-        <>
-        {/* Segnaposto: in cima al documento (il genitore non è posizionato), alto 60vh. */}
-        <div ref={soglia} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 h-[60vh] w-px" />
-        <div
-            className={`fixed inset-x-0 bottom-0 z-40 transition-transform duration-300 sm:hidden ${visibile ? 'translate-y-0' : 'pointer-events-none translate-y-full'}`}
-            aria-hidden={!visibile}
-            inert={visibile ? undefined : true}
-        >
-            <div className="flex gap-2 border-t border-testo/[0.16] bg-notte/95 p-3 backdrop-blur">
-                <BottoneWhatsApp
-                    icona
-                    className="flex flex-1 items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-3 text-sm font-semibold text-notte shadow-lg"
-                >
-                    WhatsApp
-                </BottoneWhatsApp>
-                <BottoneTelefono className="flex flex-1 items-center justify-center gap-2 rounded-md bg-accento px-5 py-3 text-sm font-semibold text-notte shadow-lg">
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                        <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3Z" strokeLinejoin="round" />
-                    </svg>
-                    {AZIENDA.telefono}
-                </BottoneTelefono>
-            </div>
+        <div className="pg-barra sm:hidden">
+            <BottoneWhatsApp icona className="pg-barra-voce">
+                WhatsApp
+            </BottoneWhatsApp>
+            <BottoneTelefono className="pg-barra-voce">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                    <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3Z" strokeLinejoin="round" />
+                </svg>
+                {t('Chiama', 'Call')}
+            </BottoneTelefono>
+            <Link to="/contatti" className="pg-barra-voce pg-barra-preventivo">
+                {t('Preventivo', 'Get a quote')}
+            </Link>
         </div>
-        </>
     )
 }

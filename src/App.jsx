@@ -63,10 +63,16 @@ function InizioPagina() {
             try {
                 bersaglio = document.getElementById(decodeURIComponent(hash.slice(1)))
             } catch { /* ancora malformata: si resta dove si è */ }
-            bersaglio?.scrollIntoView()
+            bersaglio?.scrollIntoView({ behavior: 'instant' })
             return
         }
-        window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' })
+        // `instant` esplicito: prima c'era `'instant' in window ? … : 'auto'`,
+        // che cerca una variabile globale `instant` e dà sempre `auto`; e `auto`
+        // segue lo `scroll-behavior: smooth` del CSS. Risultato: ogni cambio di
+        // pagina faceva scorrere tutta la pagina nuova per ~750 ms, anche con
+        // «riduci il movimento». Un browser che non conosce `instant` ripiega
+        // sul comportamento del CSS, cioè quello di prima.
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }, [pathname, hash])
     return null
 }
@@ -83,7 +89,7 @@ export default function App() {
             </a>
             <InizioPagina />
             <Header />
-            <main id="contenuto" className="flex-1 pb-16 sm:pb-0">
+            <main id="contenuto" className="flex-1">
                 {/* Il confine serve alla navigazione verso una pagina non ancora
                     scaricata: la rotta cambia dentro una transizione, quindi a
                     schermo resta la pagina di prima finché non arriva il codice. */}

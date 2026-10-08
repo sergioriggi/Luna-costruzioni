@@ -616,8 +616,8 @@ export default function Home() {
                     </h2>
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '32em', margin: '0 0 36px' }}>
                         {t(
-                            `Basta il comune e due righe sullo spazio che hai. Fissiamo un sopralluogo, gratuito come il preventivo, e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano. ${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
-                            `Your town and a couple of lines about your space are enough. We will arrange a site visit, free like the quote, and tell you what is possible, with timing and costs for the turnkey project. ${AZIENDA.referente} will call you back within 24 working hours.`,
+                            `Ci servono nome, telefono, e-mail e comune; due righe sullo spazio che hai ci aiutano. Fissiamo un sopralluogo, gratuito come il preventivo, e ti diciamo cosa si può fare, con tempi e costi del progetto chiavi in mano. ${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
+                            `We need your name, phone, email and town; a couple of lines about your space help. We will arrange a site visit, free, as is the quote, and tell you what is possible, with timing and costs for the turnkey project. ${AZIENDA.referente} will call you back within 24 working hours.`,
                         )}
                     </p>
                     <div className="pg-recapiti">
