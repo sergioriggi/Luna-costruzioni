@@ -52,7 +52,7 @@ export function Briciole({ voci }) {
  * niente. Su telefono la barra in basso c'è già; su computer, senza questo,
  * non c'era nulla.
  */
-export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Richiedi un preventivo' }, secondaria, whatsapp = false }) {
+export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Chiedi un preventivo' }, secondaria, whatsapp = false }) {
     // `data-cta-finale`: è il riquadro di chiusura, che la misura delle
     // ripetizioni (scripts/misura-ripetizioni.mjs) conta a parte.
     return (

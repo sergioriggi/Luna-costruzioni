@@ -158,7 +158,6 @@ export default function Sabbie() {
             <Cta
                 titolo="Portiamo i campioni in giardino"
                 testo={`Durante il sopralluogo mettiamo le tre sabbie sotto il sole del tuo terreno. In tutta la ${AZIENDA.zona}, gratis.`}
-                primaria={{ to: '/contatti', label: 'Porta i campioni da me' }}
                 secondaria={{ to: '/modelli', label: 'Vedi i modelli' }}
                 whatsapp
             />

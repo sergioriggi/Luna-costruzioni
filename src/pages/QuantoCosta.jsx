@@ -1,4 +1,5 @@
 import { Link } from '../lib/instradamento'
+import BottoneTelefono from '../components/BottoneTelefono'
 import Seo, { schemaBriciole, schemaFaq } from '../components/Seo'
 import Immagine from '../components/Immagine'
 import CreditoFoto from '../components/CreditoFoto'
@@ -107,8 +108,8 @@ export default function QuantoCosta() {
                             abilitato. L'aliquota giusta la conferma il tuo tecnico o commercialista. Il prezzo
                             esatto lo diamo dopo il sopralluogo, che è gratuito.
                         </p>
-                        <Link to="/contatti" className="bottone-primario mt-6">
-                            Chiedi il sopralluogo gratuito
+                        <Link to="/contatti" className="bottone-pieno mt-6">
+                            Chiedi un preventivo
                         </Link>
                     </div>
 
@@ -198,7 +199,7 @@ export default function QuantoCosta() {
                         ))}
                     </ol>
                     <Rivela className="mt-10">
-                        <Link to="/contatti" className="bottone-pieno">Comincia da una telefonata</Link>
+                        <BottoneTelefono className="bottone-secondario">Comincia da una telefonata</BottoneTelefono>
                     </Rivela>
                 </div>
             </Sezione>

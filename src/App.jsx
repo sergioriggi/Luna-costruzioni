@@ -7,7 +7,7 @@ import AzioniRapide from './components/AzioniRapide'
 import BannerCookie from './components/BannerCookie'
 import Home from './pages/Home'
 import Grazie from './pages/Grazie'
-import { FornitoreLingua } from './i18n/lingua'
+import { FornitoreLingua, useLingua } from './i18n/lingua'
 
 /**
  * Le rotte del sito.
@@ -77,6 +77,29 @@ function InizioPagina() {
     return null
 }
 
+/**
+ * Le pagine tradotte in inglese. Le altre, in modalità inglese, restano in
+ * italiano: lo si dice con una riga in cima e si dichiara `lang="it"` sul loro
+ * <main>, così un lettore di schermo non legge l'italiano con la voce inglese.
+ * Prima la testata passava all'inglese e il resto della pagina no, senza
+ * avvisare: sembrava un sito rotto.
+ */
+const TRADOTTE = new Set(['/', '/contatti', '/grazie', '/hotel-e-resort'])
+
+function Principale({ children }) {
+    const { lingua } = useLingua()
+    const { pathname } = useLocation()
+    const soloItaliano = lingua === 'en' && !TRADOTTE.has(pathname)
+    return (
+        <main id="contenuto" className="flex-1" lang={soloItaliano ? 'it' : undefined}>
+            {soloItaliano && (
+                <p className="avviso-lingua" lang="en">This page is only available in Italian for now.</p>
+            )}
+            {children}
+        </main>
+    )
+}
+
 export default function App() {
     return (
         <FornitoreLingua>
@@ -89,7 +112,7 @@ export default function App() {
             </a>
             <InizioPagina />
             <Header />
-            <main id="contenuto" className="flex-1">
+            <Principale>
                 {/* Il confine serve alla navigazione verso una pagina non ancora
                     scaricata: la rotta cambia dentro una transizione, quindi a
                     schermo resta la pagina di prima finché non arriva il codice. */}
@@ -100,7 +123,7 @@ export default function App() {
                         ))}
                     </Routes>
                 </Suspense>
-            </main>
+            </Principale>
             <Footer />
             <AzioniRapide />
             <BannerCookie />

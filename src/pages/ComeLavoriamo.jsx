@@ -108,7 +108,6 @@ export default function ComeLavoriamo() {
             <Cta
                 titolo="Il primo passo è vedere il terreno"
                 testo="Il sopralluogo non costa nulla e non ti impegna a niente: è da lì che nasce il disegno della vasca."
-                primaria={{ to: '/contatti', label: 'Fissa un appuntamento' }}
                 secondaria={{ to: '/domande-frequenti', label: 'Leggi le FAQ' }}
                 whatsapp
             />

@@ -64,7 +64,7 @@ export default function Modello() {
                             <strong className="font-semibold">Quando ha senso sceglierlo:</strong> {m.adatto}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/contatti" className="bottone-primario">Chiedi un progetto {m.nome}</Link>
+                            <Link to="/contatti" className="bottone-pieno">Chiedi un preventivo</Link>
                             <Link to="/quanto-costa" className="bottone-secondario">Quanto costa</Link>
                         </div>
                     </Rivela>

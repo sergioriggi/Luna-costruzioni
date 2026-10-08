@@ -18,23 +18,35 @@ const BRICIOLE = [
 const RITORNI = [
     {
         titolo: 'Entra nelle fotografie dell’annuncio',
+        titoloEn: 'It shows up in the listing photos',
         testo:
             'Su Booking, Airbnb o sul vostro sito la piscina è quasi sempre la prima immagine che l’ospite apre. Una vasca in roccia con spiaggia d’ingresso si distingue in una griglia di risultati dove tutte le altre sono rettangoli azzurri.',
+        testoEn:
+            'On Booking, Airbnb or your own site the pool is almost always the first image a guest opens. A rock pool with a walk-in beach stands out in a grid of results where all the others are blue rectangles.',
     },
     {
         titolo: 'Gli ospiti la fotografano da soli',
+        titoloEn: 'Guests photograph it themselves',
         testo:
-            'È il tipo di scenario che finisce nelle storie e nei reel senza che dobbiate chiederlo. Contenuto gratuito, e con la vostra struttura riconoscibile dentro.',
+            'È il tipo di scenario che gli ospiti fotografano e condividono, con la vostra struttura riconoscibile dentro.',
+        testoEn:
+            'It is the kind of setting guests photograph and share, with your property recognisable in the shot.',
     },
     {
         titolo: 'Allunga la stagione',
+        titoloEn: 'It lengthens the season',
         testo:
-            'In Sicilia la piscina è usabile ben oltre l’estate piena. Illuminazione e zone benessere rendono lo spazio spendibile anche a settembre e ottobre, quando la concorrenza abbassa i prezzi.',
+            'In Sicilia la piscina si usa ben oltre l’estate piena: con illuminazione e zone benessere lo spazio lavora anche a settembre e ottobre.',
+        testoEn:
+            'In Sicily a pool is usable well beyond high summer: with lighting and a wellness area the space keeps working in September and October.',
     },
     {
         titolo: 'Un solo interlocutore, un solo contratto',
+        titoloEn: 'One contact, one contract',
         testo:
             'Impresa edile e concessionario nella stessa azienda: non dovete coordinare scavatoristi, fornitori e impiantisti, né arbitrare fra loro se qualcosa slitta.',
+        testoEn:
+            'Building contractor and dealer in one company: you do not have to coordinate diggers, suppliers and installers, or referee between them when something slips.',
     },
 ]
 
@@ -104,8 +116,8 @@ export default function HotelResort() {
                 <ul className="mt-12 grid gap-5 sm:grid-cols-2">
                     {RITORNI.map((r, i) => (
                         <Rivela as="li" key={r.titolo} delay={i * 80} className="rounded-md bg-notte p-6">
-                            <h2 className="font-display text-[17px] font-medium">{r.titolo}</h2>
-                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{r.testo}</p>
+                            <h2 className="font-display text-[17px] font-medium">{t(r.titolo, r.titoloEn)}</h2>
+                            <p className="mt-3 text-[14px] leading-relaxed text-neutro-400">{t(r.testo, r.testoEn)}</p>
                         </Rivela>
                     ))}
                 </ul>
@@ -171,7 +183,11 @@ export default function HotelResort() {
                     'Indicateci periodo di chiusura, spazio disponibile e numero di camere: da lì si capisce se il cantiere sta tutto nei mesi in cui siete chiusi.',
                     'Tell us your closed season, the space available and how many rooms you have: that tells us whether the whole build fits into the months you are closed.',
                 )}
-                modulo={{ titolo: t('Richiedi una proposta', 'Request a proposal') }}
+                modulo={{
+                    titolo: t('Richiedi una proposta', 'Request a proposal'),
+                    tipologiaPreselezionata: 'Struttura ricettiva',
+                    interessePreselezionato: 'Struttura ricettiva / progetto commerciale',
+                }}
             />
         </>
     )

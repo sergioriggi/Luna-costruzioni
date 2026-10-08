@@ -85,7 +85,7 @@ export default function Sicilia() {
                             tecnologia fatta con {ROCKS_DESIGN.nome}.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <a href="#contatti" className="bottone-primario">Dicci dove si trova il terreno</a>
+                            <a href="#contatti" className="bottone-pieno">Chiedi un preventivo</a>
                             <BottoneTelefono className="bottone-secondario" />
                         </div>
                     </Rivela>

@@ -50,7 +50,6 @@ export default function GalleriaPagina() {
             <Cta
                 titolo="Ti immagini la tua, qui dentro?"
                 testo="Raccontaci il tuo giardino: dal sopralluogo nasce un progetto che non somiglia a nessun altro."
-                primaria={{ to: '/contatti', label: 'Richiedi un preventivo' }}
                 secondaria={{ to: '/quanto-costa', label: 'Quanto costa' }}
                 whatsapp
             />

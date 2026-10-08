@@ -53,7 +53,6 @@ export default function Faq() {
             <Cta
                 titolo="Hai un’altra domanda?"
                 testo="Chiamaci o scrivici: ti rispondiamo con chiarezza, senza formule di rito."
-                primaria={{ to: '/contatti', label: 'Contattaci' }}
                 secondaria={{ to: '/piscine-rocks-design', label: 'La tecnologia' }}
                 whatsapp
             />

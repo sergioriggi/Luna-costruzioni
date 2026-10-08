@@ -135,7 +135,6 @@ export default function Modelli() {
             <Cta
                 titolo="Non riesci a decidere?"
                 testo="È normale, e non è un problema: guardando il giardino ti diciamo quale modello sfrutta meglio quello che hai già."
-                primaria={{ to: '/contatti', label: 'Chiedi un parere' }}
                 secondaria={{ to: '/quanto-costa', label: 'Quanto costa' }}
                 whatsapp
             />

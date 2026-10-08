@@ -85,7 +85,7 @@ export default function Giardini() {
                             lavori che stanno in piedi da soli.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/contatti" className="bottone-primario">Chiedi un preventivo</Link>
+                            <Link to="/contatti" className="bottone-pieno">Chiedi un preventivo</Link>
                             <Link to="/piscine-rocks-design" className="bottone-secondario">Vedi anche le piscine</Link>
                         </div>
                     </Rivela>

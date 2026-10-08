@@ -52,7 +52,7 @@ export default function Tecnologia() {
                             applicando la Tecnologia Rocks Design®, di cui non siamo inventori ma licenziatari ufficiali.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/contatti" className="bottone-primario">Chiedi un preventivo</Link>
+                            <Link to="/contatti" className="bottone-pieno">Chiedi un preventivo</Link>
                             <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="bottone-secondario">
                                 Sito ufficiale {ROCKS_DESIGN.nome}
                             </a>
@@ -201,7 +201,6 @@ export default function Tecnologia() {
             <Cta
                 titolo="Vuoi capire se il tuo giardino è adatto?"
                 testo="Bastano un sopralluogo e una chiacchierata. Ti diciamo subito cosa è possibile fare, e a quali condizioni."
-                primaria={{ to: '/contatti', label: 'Fissa un giorno' }}
                 secondaria={{ to: '/modelli', label: 'Vedi i modelli' }}
                 whatsapp
             />
