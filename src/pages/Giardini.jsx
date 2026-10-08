@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
@@ -80,8 +81,8 @@ export default function Giardini() {
                         </p>
                         <p className="testo-lungo mt-4">
                             Le realizziamo <strong className="font-semibold text-testo">anche senza piscina</strong>.
-                            Molti clienti ci chiamano per sistemare il terreno e la piscina arriva due anni dopo — o
-                            non arriva affatto, e va benissimo così.
+                            Si può sistemare il terreno adesso e fare la piscina più avanti, o non farla affatto: sono
+                            lavori che stanno in piedi da soli.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
                             <Link to="/contatti" className="bottone-primario">Chiedi un preventivo</Link>
@@ -96,6 +97,7 @@ export default function Giardini() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -125,6 +127,7 @@ export default function Giardini() {
                             className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
+                        <CreditoFoto />
                     </Rivela>
                     <IntestazioneSezione
                         occhiello="Un vantaggio pratico"
@@ -143,7 +146,7 @@ export default function Giardini() {
                 <IntestazioneSezione
                     occhiello="Opere di contorno"
                     titolo="Pietra, legno e verde attorno all’acqua"
-                    testo="Le immagini qui sotto mostrano le opere di contorno attorno a una Piscina Rocks Design: bordi, solarium, ghiaie e illuminazione."
+                    testo="Le foto qui sotto sono piscine espositive della casa madre, in Lombardia: mostrano il tipo di opere di contorno che realizziamo anche noi, cioè bordi, solarium, ghiaie e illuminazione."
                 />
                 <Rivela className="mt-12">
                     <Galleria

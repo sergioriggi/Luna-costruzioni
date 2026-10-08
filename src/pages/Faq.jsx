@@ -26,7 +26,7 @@ export default function Faq() {
                         Le risposte prima di chiamarci
                     </h1>
                     <p className="testo-lungo mt-6">
-                        Le domande che ci fanno più spesso i clienti siciliani. Se non trovi la tua, scrivici: rispondiamo
+                        Le domande che ci fa più spesso chi ci scrive dalla Sicilia. Se non trovi la tua, scrivici: rispondiamo
                         volentieri anche prima del sopralluogo.
                     </p>
                 </Rivela>

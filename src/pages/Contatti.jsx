@@ -2,6 +2,7 @@ import Seo, { schemaAzienda, schemaBriciole } from '../components/Seo'
 import ModuloContatto from '../components/ModuloContatto'
 import Rivela from '../components/Rivela'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import { Sezione, Briciole } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN, PROVINCE } from '../data/site'
 import BottoneTelefono from '../components/BottoneTelefono'
@@ -79,6 +80,7 @@ export default function Contatti() {
                             className="mt-10 rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 42vw, 92vw"
                         />
+                        <CreditoFoto />
                     </Rivela>
 
                     {/* Il riquadro di contatto, come in fondo alle altre pagine. */}

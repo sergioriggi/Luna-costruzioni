@@ -7,6 +7,7 @@ import BottoneWhatsApp from '../components/BottoneWhatsApp'
 import { AZIENDA, ROCKS_DESIGN, PREZZO, PROVINCE } from '../data/site'
 import { MODELLI } from '../data/modelli'
 import MappaSicilia from '../components/MappaSicilia'
+import CreditoFoto from '../components/CreditoFoto'
 import { FOTO_APERTURA_SIZES } from '../lib/schermi'
 import { useLingua } from '../i18n/lingua'
 import BottoneTelefono from '../components/BottoneTelefono'
@@ -186,9 +187,9 @@ const DUBBI = [
         domanda: '«Sarà una vasca come tante.»',
         domandaEn: '“It will end up looking like every other pool.”',
         risposta:
-            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le piscine qui sopra non ce ne sono due uguali, e la tua non somiglierà a nessuna di quelle.',
+            'La Tecnologia Rocks Design è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino, quindi non può somigliare a quella di un altro.',
         rispostaEn:
-            'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two pools above are alike, and yours will not resemble any of them.',
+            'Rocks Design Technology is patented and the shapes are not from a catalogue: the pool is drawn around your garden, so it cannot copy anyone else’s.',
     },
 ]
 
@@ -314,14 +315,14 @@ export default function Home() {
                     <p className="pg-eroe-sommario">
                         {t(
                             'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
-                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
+                            'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
                         )}
                     </p>
                     <div className="pg-azioni">
                         <a className="btn pg-btn-pieno pg-btn-grande" href="#contatti">
                             {t('Chiedi un preventivo', 'Ask for a quote')}
                         </a>
-                        <a className="btn btn-secondary pg-btn-grande" href="#realizzazioni">
+                        <a className="btn btn-secondary pg-btn-grande" href="#foto">
                             {t('Guarda le piscine', 'See the pools')}
                         </a>
                     </div>
@@ -339,6 +340,7 @@ export default function Home() {
                         priority
                         alt="Piscina Rocks Design di giorno: acqua turchese, massi chiari e riva in ghiaia davanti a una villa"
                     />
+                    <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
                 <ul className="pg-fascia">
                     {FASCIA.map(voce => (
@@ -386,23 +388,24 @@ export default function Home() {
                     */}
                     <figcaption data-didascalia="">
                         {t(
-                            'Una Piscina Rocks Design ultimata e in funzione: bordo in massi, due getti che partono dalla roccia e una dépendance in legno alle spalle.',
-                            'A finished, working Piscine Rocks Design pool: a rock edge, two jets rising from the stone and a timber annexe behind.',
+                            'Bordo in massi, due getti che partono dalla roccia e una dépendance in legno alle spalle.',
+                            'A rock edge, two jets rising from the stone and a timber annexe behind.',
                         )}
                     </figcaption>
+                    <CreditoFoto />
                 </figure>
             </section>
 
             {/* ────────────────────────── realizzazioni ─────────────────────── */}
-            <section id="realizzazioni" className="pg-sezione pg-tinta">
+            <section id="foto" className="pg-sezione pg-tinta">
                 <h2 className="pg-titolo" style={{ maxWidth: '20em' }}>
                     {t(
-                        'Piscine Rocks Design ultimate, arredate e in funzione.',
-                        'Piscine Rocks Design finished, furnished and running.',
+                        'Com’è una Piscina Rocks Design finita.',
+                        'What a finished Piscine Rocks Design pool looks like.',
                     )}
                 </h2>
                 <p className="pg-intro" style={{ maxWidth: '38em', marginBottom: 40 }}>
-                    {t('Fotografie di Piscine Rocks Design realizzate: è il prodotto che costruiamo per te.', 'Photographs of built Piscine Rocks Design pools: this is the product we build for you.')}
+                    {t('È il prodotto che costruiamo. In Sicilia non ne abbiamo ancora consegnata una.', 'It is the product we build. We have not yet handed one over in Sicily.')}
                 </p>
                 <div className="pg-mosaico">
                     {MOSAICO.map((slug, i) => (
@@ -417,6 +420,7 @@ export default function Home() {
                         />
                     ))}
                 </div>
+                <CreditoFoto />
                 <Link to="/galleria" className="pg-link-freccia">
                     {t('Tutte le fotografie, con i filtri per modello', 'Every photo, filterable by model')} →
                 </Link>
@@ -451,6 +455,7 @@ export default function Home() {
                         )
                     })}
                 </div>
+                <CreditoFoto />
                 <Link to="/modelli" className="pg-link-freccia">
                     {t('Confronta i modelli', 'Compare the models')} →
                 </Link>
@@ -489,8 +494,8 @@ export default function Home() {
                 </h2>
                 <p className="pg-intro" style={{ maxWidth: '42em' }}>
                     {t(
-                        'Non sono obiezioni da smontare: sono i motivi reali per cui un preventivo resta nel cassetto. A ciascuno rispondiamo con un impegno che finisce nero su bianco nel contratto.',
-                        'These are not objections to argue away: they are the real reasons a quote stays in a drawer. To each we answer with a commitment that ends up in writing in the contract.',
+                        'Sono i motivi reali per cui un preventivo resta nel cassetto. A ciascuno rispondiamo con un impegno preciso; tempi e voci di costo finiscono nel contratto.',
+                        'These are the real reasons a quote stays in a drawer. We answer each with a specific commitment; timing and cost lines go into the contract.',
                     )}
                 </p>
                 <div className="pg-dubbi">
@@ -514,6 +519,7 @@ export default function Home() {
                         sizes="(max-width: 900px) 100vw, 45vw"
                         alt="Piscina Rocks Design illuminata di sera, con gli ospiti di un evento ai tavoli sullo sfondo"
                     />
+                    <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
                 <div className="pg-hotel-testo">
                     <h6 className="pg-occhiello">{t('Hotel, resort e B&B', 'Hotels, resorts and guest houses')}</h6>
@@ -556,7 +562,7 @@ export default function Home() {
                     <p style={{ color: 'var(--color-neutral-300)', maxWidth: '34em', margin: '0 0 20px' }}>
                         {t(
                             'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
-                            'Luna Costruzioni S.r.l.s. is the authorised Piscine Rocks Design dealer for Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
+                            'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
                         )}
                     </p>
                     <p style={{ color: 'var(--color-neutral-400)', maxWidth: '34em', margin: '0 0 28px', fontSize: 14 }}>
@@ -637,7 +643,7 @@ export default function Home() {
             <p className="pg-nota-brevetto">
                 {t(
                     `La Tecnologia Rocks Design è brevettata da ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} ne è concessionario autorizzato per la Sicilia, non l’inventrice.`,
-                    `Rocks Design Technology is patented by ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} is its authorised dealer for Sicily, not its inventor.`,
+                    `Rocks Design Technology is patented by ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} is one of its authorised dealers in Sicily, not its inventor.`,
                 )}
             </p>
         </div>

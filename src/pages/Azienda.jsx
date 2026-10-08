@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaAzienda, schemaBriciole } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
@@ -83,6 +84,7 @@ export default function Azienda() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -129,6 +131,7 @@ export default function Azienda() {
                     <Rivela delay={120} className="grid grid-cols-2 gap-4">
                         <Immagine slug="spiaggia-di-sabbia-privata" ratio="3 / 4" className="rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
                         <Immagine slug="monolite-al-tramonto" ratio="3 / 4" className="mt-10 rounded-lg shadow-morbida" sizes="(min-width: 1024px) 24vw, 45vw" />
+                        <CreditoFoto className="col-span-2" />
                     </Rivela>
                 </div>
             </Sezione>
@@ -142,9 +145,9 @@ export default function Azienda() {
                         <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-400">
                             La <strong className="font-semibold text-testo">Tecnologia Rocks Design®</strong> —
                             brevetto, marchio e standard costruttivi — appartiene a {ROCKS_DESIGN.nome}.{' '}
-                            {AZIENDA.nome} ne è il <strong className="font-semibold text-testo">concessionario
-                            autorizzato per la {AZIENDA.zona}</strong>: siamo l’impresa che la applica sul territorio,
-                            con squadre formate sugli standard della casa madre.
+                            {AZIENDA.nome} è <strong className="font-semibold text-testo">uno dei due concessionari
+                            autorizzati in {AZIENDA.zona}</strong>: un’impresa edile che ha seguito il corso ufficiale
+                            Rocks Design e la applica sull’isola.
                         </p>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
                             Lo scriviamo perché è giusto sapere chi fa cosa: noi rispondiamo del cantiere e del

@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import { Sezione, IntestazioneSezione, Briciole, Cta } from '../components/Sezione'
 import { MODELLI, SABBIE } from '../data/content'
@@ -70,6 +71,7 @@ export default function Modelli() {
                         </Rivela>
                     ))}
                 </ul>
+                <CreditoFoto className="mt-6" />
             </Sezione>
 
             <Sezione sfondo="bg-superficie">

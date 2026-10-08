@@ -8,7 +8,8 @@
  * riporta:
  *
  *   1. ogni blocco di testo di almeno 25 caratteri che compare su più di 2
- *      pagine. Il riquadro finale di contatto (marcato `data-cta-finale`) è
+ *      pagine. La riga sulle foto (marcata `data-credito-foto`) non si conta.
+ *      Il riquadro finale di contatto (marcato `data-cta-finale`) è
  *      l'unica ripetizione ammessa: si conta a parte e non entra nell'elenco;
  *   2. quante volte compare «sopralluogo» (e «sopralluoghi») in ogni pagina —
  *      obiettivo: 3 o meno;
@@ -74,6 +75,9 @@ function testoDiMain(html) {
     let corpo = m[1]
         .replace(/<(script|style|svg|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
         .replace(/<!--[\s\S]*?-->/g, '')
+    // La riga che dice di chi sono le piscine in foto (CreditoFoto.jsx) si
+    // ripete per scelta su ogni pagina con foto: non è testo duplicato.
+    corpo = togliElementi(corpo, 'data-credito-foto')
 
     const conCta = corpo
     corpo = togliElementi(corpo, 'data-cta-finale')

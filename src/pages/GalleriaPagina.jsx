@@ -27,12 +27,13 @@ export default function GalleriaPagina() {
                         Piscine Rocks Design, una per una
                     </h1>
                     <p className="testo-lungo mt-6">
-                        Ogni immagine mostra una vasca diversa: forma, rocce e sabbia cambiano ogni volta. Usa i filtri
-                        per modello o per dettaglio.
+                        Le foto mostrano più Piscine Rocks Design, alcune da più angolazioni. Usa i filtri per modello
+                        o per dettaglio.
                     </p>
                     <p className="testo-lungo mt-4">
-                        Sono fotografie del produttore: mostrano piscine realizzate in Tecnologia Rocks Design®, cioè
-                        il prodotto che costruiamo. La tua non sarà una di queste — sarà disegnata sul tuo giardino.
+                        Sono piscine espositive della casa madre, in Lombardia, fotografate da {ROCKS_DESIGN.nome} e
+                        usate su licenza: è il prodotto che costruiamo. In Sicilia non ne abbiamo ancora consegnata una,
+                        e la tua sarà disegnata sul tuo giardino.
                     </p>
                 </Rivela>
 
@@ -41,7 +42,7 @@ export default function GalleriaPagina() {
                 </Rivela>
 
                 <p className="mt-10 text-sm text-neutro-500">
-                    Le immagini riportano il marchio {ROCKS_DESIGN.nome}. Condividendole sui social, taggaci con{' '}
+                    Le immagini riportano il marchio {ROCKS_DESIGN.nome}. Condividendole sui social, tagga {' '}
                     <span className="font-semibold text-neutro-300">{ROCKS_DESIGN.tag}</span>.
                 </p>
             </Sezione>

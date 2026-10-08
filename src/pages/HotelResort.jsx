@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
@@ -90,6 +91,7 @@ export default function HotelResort() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -126,7 +128,7 @@ export default function HotelResort() {
 
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
-                    occhiello={t('Realizzazioni', 'Projects')}
+                    occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
                     titolo={t('Vasche che reggono la fotografia', 'Pools that hold up in a photograph')}
                 />
                 <Rivela className="mt-12">

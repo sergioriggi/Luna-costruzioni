@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaFaq } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
@@ -21,7 +22,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
         risposta:
-            'No. Veniamo a vedere il giardino, misuriamo e prepariamo il preventivo senza alcun costo e senza impegno. Se misurando viene fuori che quello spazio non è adatto, te lo diciamo subito: è capitato e continuerà a capitare.',
+            'No. Veniamo a vedere il giardino, misuriamo e prepariamo il preventivo senza alcun costo e senza impegno. Se misurando viene fuori che quello spazio non è adatto, te lo diciamo subito, senza preventivo.',
     },
     {
         domanda: 'Costa più o meno di una piscina tradizionale?',
@@ -31,7 +32,7 @@ const FAQ_COSTO = [
     {
         domanda: 'Si può fare a lotti?',
         risposta:
-            'Sì, ed è una strada che consigliamo spesso. Si realizza la vasca con le predisposizioni necessarie e si completano in un secondo momento cascate, illuminazione scenografica, solarium o piantumazione. Predisporre durante il cantiere costa una frazione rispetto a intervenire dopo.',
+            'Sì, ed è una strada che conviene valutare. Si realizza la vasca con le predisposizioni necessarie e si completano in un secondo momento cascate, illuminazione scenografica, solarium o piantumazione. Predisporre durante il cantiere costa una frazione rispetto a intervenire dopo.',
     },
     {
         domanda: 'Ci sono agevolazioni fiscali?',
@@ -150,6 +151,7 @@ export default function QuantoCosta() {
                             className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
+                        <CreditoFoto />
                     </Rivela>
                     <IntestazioneSezione
                         occhiello="Come leggere un preventivo"

@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import { Sezione, IntestazioneSezione, Briciole, Cta } from '../components/Sezione'
 import { AZIENDA, ROCKS_DESIGN } from '../data/site'
@@ -16,7 +17,7 @@ export default function Tecnologia() {
         <>
             <Seo
                 titolo="Com’è fatta una Piscina Rocks Design | Luna Costruzioni"
-                descrizione="Pareti in massi monolitici, fondale in sabbia naturale, niente cemento armato: la Tecnologia Rocks Design® spiegata dal concessionario per la Sicilia."
+                descrizione="Massi monolitici, fondale in sabbia naturale, niente cemento armato: la Tecnologia Rocks Design® spiegata da un concessionario autorizzato in Sicilia."
                 percorso="/piscine-rocks-design"
                 immagine="monolite-al-tramonto-1280.jpg"
                 schema={[
@@ -65,6 +66,7 @@ export default function Tecnologia() {
                             sizes="(min-width: 1024px) 46vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -116,6 +118,7 @@ export default function Tecnologia() {
                         </Rivela>
                     ))}
                 </div>
+                <CreditoFoto className="mt-10" />
             </Sezione>
 
             <Sezione sfondo="bg-superficie">

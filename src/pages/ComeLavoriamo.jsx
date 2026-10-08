@@ -1,5 +1,6 @@
 import Seo, { schemaBriciole } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import { Sezione, IntestazioneSezione, Briciole, Cta } from '../components/Sezione'
 import { PERCORSO } from '../data/content'
@@ -63,11 +64,12 @@ export default function ComeLavoriamo() {
                             className="rounded-lg shadow-morbida"
                             sizes="(min-width: 1024px) 48vw, 92vw"
                         />
+                        <CreditoFoto />
                     </Rivela>
                     <IntestazioneSezione
                         occhiello="Chi fa cosa"
                         titolo="Il metodo è della casa madre, il cantiere è nostro"
-                        testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e la formazione delle squadre sono suoi. Quello che mettiamo noi è il lavoro sul campo — le misure in giardino, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
+                        testo="La Tecnologia Rocks Design® nasce dall'esperienza di Piscine Rocks Design nella lavorazione della roccia: il brevetto, gli standard costruttivi e il corso ufficiale che abbiamo seguito sono suoi. Quello che mettiamo noi è il lavoro sul campo — le misure in giardino, il cantiere, il rapporto con il tuo tecnico e l'assistenza negli anni successivi."
                     >
                         <p className="mt-6 rounded-xl border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             Per tutela del brevetto {ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di

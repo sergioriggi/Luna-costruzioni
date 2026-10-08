@@ -109,11 +109,17 @@ async function buildWatermark() {
     // viene compositata con gravity "southeast" e resta staccata dal bordo.
     // Il contorno scuro (paint-order: stroke) la rende leggibile anche sulla
     // sabbia bianca, senza bisogno di un riquadro opaco.
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="230">
+    //
+    // Solo il marchio della casa madre. Fino all'8 ottobre 2026 sotto c'era una
+    // seconda riga, «LUNA COSTRUZIONI · CONCESSIONARIO SICILIA»: su fotografie
+    // di piscine espositive della casa madre in Lombardia faceva leggere il
+    // nome di Luna e «Sicilia», cioè lavori di Luna in Sicilia, che non
+    // esistono ancora. La direttiva chiede il marchio Piscine Rocks Design
+    // sulle foto, non quello del concessionario. Non rimetterla.
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150">
   <g fill="#ffffff" stroke="#0a2226" stroke-opacity="0.55" stroke-linejoin="round"
      paint-order="stroke fill" font-family="Georgia, 'Times New Roman', serif">
     <text x="24" y="86" font-size="58" letter-spacing="13" stroke-width="7">PISCINE ROCKS DESIGN</text>
-    <text x="28" y="134" font-size="27" letter-spacing="6.4" stroke-width="4.5">LUNA COSTRUZIONI · CONCESSIONARIO SICILIA</text>
   </g>
 </svg>`
     await fs.mkdir(OUT, { recursive: true })

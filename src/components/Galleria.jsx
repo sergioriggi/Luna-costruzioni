@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Immagine, { tutteLeFoto } from './Immagine'
+import CreditoFoto from './CreditoFoto'
 import { pubblico, pubblicoSrcset } from '../lib/percorso'
 
 const FILTRI = [
@@ -108,6 +109,9 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                     </li>
                 ))}
             </ul>
+
+            {/* Ogni galleria del sito mostra piscine della casa madre: la riga lo dice sempre. */}
+            {foto.length > 0 && <CreditoFoto className="mt-6" />}
 
             {foto.length === 0 && (
                 <p className="testo-lungo">Nessuna immagine per questo filtro.</p>

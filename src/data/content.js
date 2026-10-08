@@ -99,7 +99,7 @@ export const SABBIE = [
     {
         nome: 'Giallo',
         acqua: 'Verde acqua caldo',
-        carattere: 'La via di mezzo, quella che sceglie la maggior parte dei clienti.',
+        carattere: 'La via di mezzo, fra il turchese del Bianco e lo smeraldo del Ticino.',
         nota: 'Si accorda bene con pietra calcarea e tufo, materiali diffusi nell’edilizia siciliana.',
     },
     {
@@ -202,7 +202,7 @@ export const DUBBI = [
         dubbio: '«Sarà una vasca come tante.»',
         dubbioEn: '“It will end up looking like every other pool.”',
         risposta:
-            'La Tecnologia Rocks Design® è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Fra le piscine qui sopra non ce ne sono due uguali.',
+            'La Tecnologia Rocks Design® è brevettata e le forme non sono a catalogo: la vasca si disegna sul tuo giardino. Non può somigliare a quella di un altro.',
         rispostaEn:
             'Rocks Design Technology is patented and the shapes are not from a catalogue: the basin is drawn around your garden. No two pools above are the same.',
     },
@@ -300,7 +300,7 @@ export const FATTORI_COSTO = [
     {
         titolo: 'Cascate, zone benessere, illuminazione',
         testo:
-            'Sono le voci che si possono aggiungere dopo. Molti clienti predispongono in fase di cantiere e completano l’anno successivo: costa meno che intervenire da zero.',
+            'Sono le voci che si possono aggiungere dopo: si predispongono durante il cantiere e si completano l’anno successivo, e costa meno che intervenire da zero.',
     },
     {
         titolo: 'Opere di contorno',
@@ -338,7 +338,7 @@ export const FAQ = [
     {
         domanda: 'Quanta manutenzione richiede?',
         risposta:
-            'È paragonabile a quella di una piscina di qualità: controllo periodico dei valori dell’acqua, pulizia e apertura e chiusura stagionale. In Sicilia la stagione è lunga, quindi molti clienti la tengono in funzione da aprile a ottobre. Alla consegna lasciamo istruzioni scritte e restiamo disponibili per l’assistenza.',
+            'È paragonabile a quella di una piscina di qualità: controllo periodico dei valori dell’acqua, pulizia e apertura e chiusura stagionale. In Sicilia la stagione è lunga: una piscina si può tenere in funzione da aprile a ottobre. Alla consegna lasciamo istruzioni scritte e restiamo disponibili per l’assistenza.',
     },
     {
         domanda: 'Quanto tempo serve per realizzarla?',
@@ -443,7 +443,7 @@ export const CONFRONTO_CEMENTO = [
     [
         'Chi la costruisce in Sicilia',
         'Molte imprese: preventivi facili da mettere a confronto',
-        'Solo un concessionario autorizzato Piscine Rocks Design',
+        'I concessionari autorizzati Piscine Rocks Design: in Sicilia sono due',
     ],
 ]
 
@@ -485,7 +485,7 @@ export const VANTAGGI_CEMENTO = [
     {
         titolo: 'Più preventivi da confrontare',
         testo:
-            'Le imprese che costruiscono piscine in cemento sono tante, in ogni provincia siciliana. È un mercato maturo, e questo è un vantaggio reale per chi compra: si chiedono tre offerte e si confrontano voce per voce. Una Piscina Rocks Design la realizza solo un concessionario autorizzato, quindi quel confronto non si può fare allo stesso modo.',
+            'Le imprese che costruiscono piscine in cemento sono tante, in ogni provincia siciliana. È un mercato maturo, e questo è un vantaggio reale per chi compra: si chiedono tre offerte e si confrontano voce per voce. Una Piscina Rocks Design la costruiscono solo i concessionari autorizzati, e in Sicilia sono due: si possono confrontare due preventivi, non dieci.',
     },
     {
         titolo: 'Accessori a catalogo',

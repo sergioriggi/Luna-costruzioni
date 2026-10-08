@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
 import Immagine from '../components/Immagine'
+import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
@@ -75,6 +76,7 @@ export default function Modello() {
                             sizes="(min-width: 1024px) 48vw, 92vw"
                             priority
                         />
+                        <CreditoFoto />
                     </Rivela>
                 </div>
             </Sezione>
@@ -100,7 +102,7 @@ export default function Modello() {
             </Sezione>
 
             <Sezione>
-                <IntestazioneSezione occhiello="Realizzazioni" titolo={`${m.nomeCompleto}, come si presenta ultimata`} />
+                <IntestazioneSezione occhiello="Foto della casa madre" titolo={`Il ${m.nome}, a lavori finiti`} />
                 <Rivela className="mt-12">
                     <Galleria filtrabile={false} voci={m.galleria} />
                 </Rivela>
