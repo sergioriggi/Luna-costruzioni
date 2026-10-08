@@ -41,3 +41,7 @@ vite.config.js.timestamp-*
 # Impeccable engine binary (~18 MB, per-platform): its launcher downloads
 # a version-pinned copy on first use, so it is not committed.
 .claude/skills/impeccable/scripts/bin/
+
+# Per-machine Claude Code and Impeccable settings (not shared)
+.claude/settings.local.json
+.impeccable/config.local.json
