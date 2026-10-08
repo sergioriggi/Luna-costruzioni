@@ -1,6 +1,7 @@
 import { Link } from '../lib/instradamento'
 import Rivela from './Rivela'
 import BottoneWhatsApp from './BottoneWhatsApp'
+import { useLingua } from '../i18n/lingua'
 
 /**
  * Sezione delle pagine interne. Stesso ritmo della home (pagina.css,
@@ -38,18 +39,20 @@ export function IntestazioneSezione({ occhiello, titolo, testo, allineamento = '
     )
 }
 
+/** `voci`: `[{ to, label, labelEn? }]`; senza `labelEn` resta l'italiano. */
 export function Briciole({ voci }) {
+    const { t } = useLingua()
     return (
-        <nav aria-label="Percorso di navigazione" className="border-b border-testo/[0.16] bg-superficie">
+        <nav aria-label={t('Percorso di navigazione', 'Breadcrumb')} className="border-b border-testo/[0.16] bg-superficie">
             <div className="contenitore">
                 <ol className="flex flex-wrap items-center gap-2 py-3 text-xs text-neutro-500">
                     {voci.map((v, i) => (
                         <li key={v.to} className="flex items-center gap-2">
                             {i > 0 && <span aria-hidden="true">/</span>}
                             {i === voci.length - 1 ? (
-                                <span aria-current="page" className="font-medium text-neutro-300">{v.label}</span>
+                                <span aria-current="page" className="font-medium text-neutro-300">{t(v.label, v.labelEn)}</span>
                             ) : (
-                                <Link to={v.to} className="hover:text-testo">{v.label}</Link>
+                                <Link to={v.to} className="hover:text-testo">{t(v.label, v.labelEn)}</Link>
                             )}
                         </li>
                     ))}
@@ -67,7 +70,9 @@ export function Briciole({ voci }) {
  * /contatti. Su telefono la barra in basso c'è già; su computer, senza
  * questo, non c'era nulla.
  */
-export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Chiedi un preventivo' }, secondaria, whatsapp = false }) {
+export function Cta({ titolo, testo, primaria, secondaria, whatsapp = false }) {
+    const { t } = useLingua()
+    const principale = primaria ?? { to: '/contatti', label: t('Chiedi un preventivo', 'Ask for a quote') }
     // `data-cta-finale`: è il riquadro di chiusura, che la misura delle
     // ripetizioni (scripts/misura-ripetizioni.mjs) conta a parte.
     return (
@@ -77,7 +82,7 @@ export function Cta({ titolo, testo, primaria = { to: '/contatti', label: 'Chied
                 <h2 className="font-display text-3xl text-testo sm:text-4xl">{titolo}</h2>
                 <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-neutro-400">{testo}</p>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <Link to={primaria.to} className="bottone-pieno">{primaria.label}</Link>
+                    <Link to={principale.to} className="bottone-pieno">{principale.label}</Link>
                     {secondaria && (
                         <Link to={secondaria.to} className="bottone-secondario">
                             {secondaria.label}

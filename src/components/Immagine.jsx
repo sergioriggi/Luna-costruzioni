@@ -1,5 +1,7 @@
 import media from '../data/media.json'
 import { pubblico, pubblicoSrcset } from '../lib/percorso'
+import { MEDIA_EN } from '../data/media-en'
+import { useLingua } from '../i18n/lingua'
 
 const indice = new Map(media.map(m => [m.slug, m]))
 
@@ -14,6 +16,12 @@ export function fotoConTag(tag) {
 }
 
 export const tutteLeFoto = media
+
+/** Alt e didascalia nella lingua scelta; senza voce inglese resta l'italiano. */
+export function testiFoto(m, lingua) {
+    const en = lingua === 'en' ? MEDIA_EN[m.slug] : undefined
+    return { alt: en?.alt ?? m.alt, caption: en?.caption ?? m.caption }
+}
 
 /**
  * <picture> responsive costruito dal manifest generato da `npm run media`.
@@ -31,6 +39,7 @@ export default function Immagine({
     children,
 }) {
     const m = foto(slug)
+    const { lingua } = useLingua()
     const aspetto = ratio ?? `${m.width} / ${m.height}`
 
     return (
@@ -58,7 +67,7 @@ export default function Immagine({
                 src={pubblico(m.fallback)}
                 srcSet={pubblicoSrcset(m.srcset)}
                 sizes={sizes}
-                alt={m.alt}
+                alt={testiFoto(m, lingua).alt}
                 width={m.width}
                 height={m.height}
                 loading={priority ? 'eager' : 'lazy'}

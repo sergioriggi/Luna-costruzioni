@@ -1,6 +1,7 @@
 import { useLocation } from '../lib/instradamento'
 import { linkWhatsApp, etichettaPagina } from '../lib/whatsapp'
 import { segnalaConversione } from '../lib/conversione'
+import { useLingua } from '../i18n/lingua'
 
 /** L'icona sta qui perché il tasto è uno solo: prima era incollata a mano. */
 export function IconaWhatsApp({ className = 'h-5 w-5' }) {
@@ -27,9 +28,10 @@ export default function BottoneWhatsApp({
     pagina,
     className = 'bottone-secondario',
     icona = false,
-    children = 'Scrivi su WhatsApp',
+    children,
 }) {
     const { pathname } = useLocation()
+    const { t } = useLingua()
     return (
         <a
             href={linkWhatsApp(pagina ?? etichettaPagina(pathname))}
@@ -47,7 +49,7 @@ export default function BottoneWhatsApp({
             }}
         >
             {icona && <IconaWhatsApp />}
-            {children}
+            {children ?? t('Scrivi su WhatsApp', 'Message us on WhatsApp')}
         </a>
     )
 }
