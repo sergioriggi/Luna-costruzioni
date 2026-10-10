@@ -40,6 +40,8 @@ import {
     SOCIAL,
 } from '../src/data/site.js'
 import { MODELLI } from '../src/data/content.js'
+import { GUIDA, PERCORSO_GUIDA, percorsoArticolo } from '../src/data/guida/index.js'
+import { testoPiano } from '../src/lib/testo-ricco.js'
 
 const DIST = path.resolve('./dist')
 
@@ -88,7 +90,12 @@ const NOTE = {
 /** La pagina che raccoglie le nove province, ciascuna con la sua ancora. */
 const SICILIA = '/piscine-rocks-design/sicilia'
 
+/** Gli articoli della guida: titolo e sintesi vengono dai loro dati. */
+const articoloDi = percorso => GUIDA.find(a => percorsoArticolo(a) === percorso)
+
 function titolo(percorso) {
+    if (percorso === PERCORSO_GUIDA) return `Guida alle Piscine Rocks Design in ${AZIENDA.zona}`
+    if (articoloDi(percorso)) return articoloDi(percorso).titolo
     if (percorso === SICILIA) return `Piscine Rocks Design in ${AZIENDA.zona}, provincia per provincia`
     const modello = MODELLI.find(m => percorso === `/modelli/${m.slug}`)
     if (modello) return modello.nomeCompleto
@@ -97,6 +104,8 @@ function titolo(percorso) {
 }
 
 function nota(percorso) {
+    if (percorso === PERCORSO_GUIDA) return 'Articoli che rispondono alle domande più frequenti su costi, permessi e manutenzione.'
+    if (articoloDi(percorso)) return testoPiano(articoloDi(percorso).sintesi)
     if (percorso === SICILIA) return 'Permessi, costi e stagione in Sicilia, e una sezione per ognuna delle nove province.'
     const modello = MODELLI.find(m => percorso === `/modelli/${m.slug}`)
     if (modello) return modello.sintesi
@@ -126,6 +135,7 @@ const elenco = percorsi =>
 
 const provinciale = p => p === SICILIA
 const modello = p => p.startsWith('/modelli/')
+const guida = p => p === PERCORSO_GUIDA || p.startsWith(`${PERCORSO_GUIDA}/`)
 
 const testo = `# ${AZIENDA.nome}
 
@@ -162,13 +172,17 @@ ${SOCIAL.map(s => `- ${s.nome}: ${s.url}`).join('\n')}
 
 ## Pagine principali
 
-${elenco(p => !provinciale(p) && !modello(p))}
+${elenco(p => !provinciale(p) && !modello(p) && !guida(p))}
 
 ## I modelli
 
 ${elenco(modello)}
 
-## Le province servite
+${GUIDA.length ? `## La guida
+
+${elenco(guida)}
+
+` : ''}## Le province servite
 
 ${elenco(provinciale)}
 ${PROVINCE.map(p => `  - [Provincia di ${p.nome}](${indirizzo(SICILIA)}#${p.slug}): ${p.localita.join(', ')}.`).join('\n')}
