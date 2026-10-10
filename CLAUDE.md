@@ -13,6 +13,8 @@ Costruzioni — post Facebook del mese» (il 27, un post ogni 2 giorni alle
 con l'app Meta «Luna social app» e il token nel Progetto Claude «Luna
 costruzioni» (`claude/credenziali-api.md`). Prima di programmare post nuovi
 leggi la coda (`/177378079005986/scheduled_posts`) e
-`claude/social-calendario.md`, e usa solo date libere.
+`claude/social-calendario.md`, e usa solo date libere; rileggi la coda
+subito prima di ogni programmazione. Quei due documenti stanno nel Progetto
+Claude, non in questo repo: se non li puoi leggere, non programmare nulla.
 
 `main` pubblica da solo su Hostinger: niente push diretti su main.
