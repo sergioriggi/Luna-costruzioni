@@ -3,6 +3,17 @@ import { AZIENDA, ROCKS_DESIGN, NAV, NAV_SECONDARIA, PROVINCE, SOCIAL } from '..
 import { useLingua, SelettoreLingua } from '../i18n/lingua'
 import BottoneTelefono from './BottoneTelefono'
 
+/**
+ * La guida compare fra le pagine solo quando ha almeno un articolo. Il dato
+ * arriva da vite.config.js (`__GUIDA_ATTIVA__`) e non da `src/data/guida`:
+ * importare gli articoli qui metterebbe tutta la guida nel JavaScript di ogni
+ * pagina, perché il piè di pagina è nel pezzo principale.
+ */
+const VOCE_GUIDA =
+    typeof __GUIDA_ATTIVA__ !== 'undefined' && __GUIDA_ATTIVA__
+        ? [{ to: '/guida', label: 'Guida', labelEn: 'Guide' }]
+        : []
+
 export default function Footer() {
     const { t } = useLingua()
 
@@ -59,7 +70,7 @@ export default function Footer() {
                 <div>
                     <p className="pg-footer-etichetta">{t('Pagine', 'Pages')}</p>
                     <ul className="pg-footer-elenco">
-                        {[...NAV, ...NAV_SECONDARIA].map(v => (
+                        {[...NAV, ...NAV_SECONDARIA, ...VOCE_GUIDA].map(v => (
                             <li key={v.to}>
                                 <Link to={v.to}>{t(v.label, v.labelEn)}</Link>
                             </li>

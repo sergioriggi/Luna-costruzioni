@@ -26,7 +26,7 @@ export function risolviImmagine(immagine) {
  * React 19 solleva automaticamente <title>, <meta> e <link> nel <head>,
  * quindi ogni pagina può dichiarare qui i propri metadati.
  */
-export default function Seo({ titolo, descrizione, percorso, immagine, noindex = false, schema }) {
+export default function Seo({ titolo, descrizione, percorso, immagine, noindex = false, schema, tipo = 'website' }) {
     const immagineAssoluta = risolviImmagine(immagine)
     const url = percorso === '/' ? `${SITE_URL}/` : `${SITE_URL}${percorso}`
     const blocchi = Array.isArray(schema) ? schema : schema ? [schema] : []
@@ -47,7 +47,7 @@ export default function Seo({ titolo, descrizione, percorso, immagine, noindex =
                 <meta name="robots" content={ANTEPRIMA ? 'noindex, nofollow' : 'noindex, follow'} />
             )}
 
-            <meta property="og:type" content="website" />
+            <meta property="og:type" content={tipo} />
             <meta property="og:site_name" content={`${AZIENDA.nome} — ${AZIENDA.attivita}`} />
             <meta property="og:locale" content="it_IT" />
             <meta property="og:title" content={titolo} />
@@ -169,6 +169,31 @@ export function schemaFaq(voci) {
             name: v.domanda,
             acceptedAnswer: { '@type': 'Answer', text: v.risposta },
         })),
+    }
+}
+
+/**
+ * Un articolo della guida.
+ *
+ * Autore ed editore sono l'impresa (`@id` del nodo azienda), non una persona:
+ * gli articoli non sono firmati, e inventare un autore sarebbe un dato falso.
+ * `about` porta il marchio, come `brand` negli altri nodi, così che chi legge
+ * con una macchina non attribuisca a Luna la tecnologia.
+ */
+export function schemaArticolo({ titolo, descrizione, percorso, immagine, pubblicato, aggiornato }) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: titolo,
+        description: descrizione,
+        mainEntityOfPage: `${SITE_URL}${percorso}`,
+        image: risolviImmagine(immagine),
+        datePublished: pubblicato,
+        dateModified: aggiornato || pubblicato,
+        inLanguage: 'it-IT',
+        author: { '@id': `${SITE_URL}/#azienda`, '@type': 'Organization', name: AZIENDA.nome },
+        publisher: { '@id': `${SITE_URL}/#azienda`, '@type': 'Organization', name: AZIENDA.nome },
+        about: { '@type': 'Brand', name: ROCKS_DESIGN.nome, url: ROCKS_DESIGN.sito },
     }
 }
 

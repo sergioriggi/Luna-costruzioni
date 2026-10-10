@@ -24,37 +24,28 @@ import path from 'path'
 import { PHOTOS } from './media.config.mjs'
 import { ROCKS_DESIGN, AZIENDA, ANTEPRIMA, INDIRIZZO_DICHIARATO, PROVINCE, PREZZO } from '../src/data/site.js'
 import { ROTTE } from './rotte.mjs'
+import { FRASI_DELLA_CASA_MADRE } from './frasi-casa-madre.mjs'
+import { verificaGuida } from './verifica-guida.mjs'
 
 /** Nomi di file ammessi in `/media/` (senza larghezza ed estensione). */
 const NOMI_AMMESSI = new Set(PHOTOS.flatMap(p => (p.verticale ? [p.slug, `${p.slug}-verticale`] : [p.slug])))
 
 const DIST = path.resolve('./dist')
 
-/**
- * Frasi tratte dal catalogo e dal sito ufficiale Piscine Rocks Design.
- * Sono qui come sentinelle: se ricompaiono nel sito, significa che qualcuno
- * ha incollato del testo invece di scriverlo. Ampliare l'elenco quando si
- * riceve nuovo materiale dalla casa madre.
- */
-const FRASI_DELLA_CASA_MADRE = [
-    'splendide rocce monolitiche',
-    'ode alla bellezza naturale',
-    'tributo alla maestosità',
-    'omaggio all’incantevole bellezza',
-    "omaggio all'incantevole bellezza",
-    'fondale come il mare',
-    'crediamo nel rispetto dell’ambiente',
-    'equiparate ai laghetti',
-    'riflessi cromatici',
-    'rumore bianco',
-    'angolo di paradiso',
-    'tre generazioni',
-    'trova il tuo angolo di paradiso',
-    'la musica dell’acqua',
-    'prodotto sartoriale',
-]
 const errori = []
 const avvisi = []
+
+/*
+ * 0. Gli articoli della guida, controllati sui loro dati prima che sul
+ * compilato: le regole che qui sotto non si possono vedere — il testo
+ * inglese, che non è nell'HTML statico, le affermazioni false, le cifre senza
+ * fonte — stanno in scripts/verifica-guida.mjs.
+ */
+{
+    const guida = await verificaGuida()
+    errori.push(...guida.errori)
+    avvisi.push(...guida.avvisi)
+}
 
 /** Pagine legali e 404: fuori dai controlli SEO, non sono contenuto. */
 const paginaDiServizio = rel => /^(privacy|cookie-policy|404)[/.]/.test(rel)

@@ -38,6 +38,8 @@ const ROTTE = [
     ['/contatti', pigra(() => import('./pages/Contatti'))],
     ['/piscine-rocks-design/sicilia', pigra(() => import('./pages/Sicilia'))],
     ['/piscine-rocks-design/:provincia', pigra(() => import('./pages/VecchiaProvincia'))],
+    ['/guida', pigra(() => import('./pages/Guida'))],
+    ['/guida/:articolo', pigra(() => import('./pages/Articolo'))],
     ['/grazie', Grazie],
     ['/privacy', pigra(() => import('./pages/Privacy'))],
     ['/cookie-policy', pigra(() => import('./pages/Cookie'))],

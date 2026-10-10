@@ -1,5 +1,17 @@
 /** Elenco delle rotte pubbliche: alimenta prerender, sitemap e controlli. */
 import { MODELLI } from '../src/data/content.js'
+import { GUIDA, PERCORSO_GUIDA, percorsoArticolo } from '../src/data/guida/index.js'
+
+/**
+ * La guida esiste solo se ha almeno un articolo: un indice vuoto sarebbe una
+ * pagina sottile nella sitemap, e un collegamento verso il nulla.
+ */
+const ROTTE_GUIDA = GUIDA.length
+    ? [
+          { percorso: PERCORSO_GUIDA, priorita: 0.7, frequenza: 'weekly' },
+          ...GUIDA.map(a => ({ percorso: percorsoArticolo(a), priorita: 0.7, frequenza: 'monthly' })),
+      ]
+    : []
 
 export const ROTTE = [
     // `fotoApertura`: la foto dell'eroe, che prerender.mjs precarica nel <head>.
@@ -20,6 +32,7 @@ export const ROTTE = [
     // Una pagina per tutta l'isola, con una sezione per provincia. Le nove
     // pagine provinciali di prima rispondono 301 verso la loro ancora.
     { percorso: '/piscine-rocks-design/sicilia', priorita: 0.8, frequenza: 'monthly' },
+    ...ROTTE_GUIDA,
     // Conferma dopo l'invio del modulo: fuori dalla sitemap e noindex, non è
     // una pagina da far trovare su Google. Serve come indirizzo di conversione.
     { percorso: '/grazie', priorita: 0.0, frequenza: 'yearly', esclusaDaSitemap: true },

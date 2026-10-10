@@ -3,6 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import { GUIDA } from './src/data/guida/index.js'
 
 /**
  * In sviluppo il sito è una SPA (fallback su index.html), ma in produzione
@@ -53,7 +54,14 @@ export default defineConfig({
     base: BASE,
     // L'anno del copyright viene fissato alla compilazione: a runtime
     // differirebbe fra markup pre-renderizzato e markup idratato.
-    define: { __ANNO_COMPILAZIONE__: new Date().getFullYear() },
+    //
+    // `__GUIDA_ATTIVA__` dice al piè di pagina se mostrare la voce «Guida»
+    // senza importare gli articoli: importando `GUIDA` finirebbe nel
+    // JavaScript principale il testo di tutta la guida, su ogni pagina.
+    define: {
+        __ANNO_COMPILAZIONE__: new Date().getFullYear(),
+        __GUIDA_ATTIVA__: GUIDA.length > 0,
+    },
     plugins: [react(), anteprimaPreRenderizzata()],
     build: {
         target: 'es2020',
