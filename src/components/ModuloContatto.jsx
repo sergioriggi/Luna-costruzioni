@@ -297,7 +297,7 @@ export default function ModuloContatto({
                     onChange={aggiorna}
                     aria-invalid={errori.privacy ? 'true' : undefined}
                     aria-describedby={errori.privacy ? 'err-privacy' : undefined}
-                    className="mt-1 h-4 w-4 rounded border-testo/[0.45] text-accento focus:ring-accento"
+                    className="mt-1 h-4 w-4 rounded-sm border-testo/45 text-accento focus:ring-accento"
                 />
                 <label htmlFor="privacy" className="text-sm text-neutro-400">
                     {t('Ho letto l’', 'I have read the ')}

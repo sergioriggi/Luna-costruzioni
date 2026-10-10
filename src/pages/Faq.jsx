@@ -26,7 +26,7 @@ export default function Faq() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('Domande frequenti', 'Frequently asked questions')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Le risposte prima di chiamarci', 'Answers before you call')}
                     </h1>
                     <p className="testo-lungo mt-6">
@@ -37,7 +37,7 @@ export default function Faq() {
                     </p>
                 </Rivela>
 
-                <div className="mx-auto mt-12 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                <div className="mx-auto mt-12 max-w-3xl divide-y divide-testo/16 border-y border-testo/16">
                     {FAQ.map((v, i) => (
                         <Rivela key={v.domanda} delay={i * 50}>
                             <details className="group py-5" name="faq">
