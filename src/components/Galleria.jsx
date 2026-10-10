@@ -106,7 +106,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                             className={`rounded-md px-4 py-2 text-sm font-medium transition ${
                                 filtro === f.tag
                                     ? 'bg-notte-800 text-neutro-200'
-                                    : 'border border-testo/[0.16] text-neutro-400 hover:border-testo/[0.45] hover:text-testo'
+                                    : 'border border-testo/16 text-neutro-400 hover:border-testo/45 hover:text-testo'
                             }`}
                         >
                             {t(f.label, f.labelEn)}
@@ -121,7 +121,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
                         <button
                             type="button"
                             onClick={() => setAperta(i)}
-                            className="group block w-full overflow-hidden rounded-lg text-left shadow-sm transition hover:shadow-morbida"
+                            className="group block w-full overflow-hidden rounded-lg text-left shadow-xs transition hover:shadow-morbida"
                         >
                             <Immagine
                                 slug={f.slug}
@@ -146,7 +146,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
 
             {corrente && (
                 <div
-                    className="fixed inset-0 z-[80] flex items-center justify-center bg-notte-800/95 p-4"
+                    className="fixed inset-0 z-80 flex items-center justify-center bg-notte-800/95 p-4"
                     role="dialog"
                     aria-modal="true"
                     aria-label={corrente.alt}

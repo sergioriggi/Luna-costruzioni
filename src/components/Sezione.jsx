@@ -43,7 +43,7 @@ export function IntestazioneSezione({ occhiello, titolo, testo, allineamento = '
 export function Briciole({ voci }) {
     const { t } = useLingua()
     return (
-        <nav aria-label={t('Percorso di navigazione', 'Breadcrumb')} className="border-b border-testo/[0.16] bg-superficie">
+        <nav aria-label={t('Percorso di navigazione', 'Breadcrumb')} className="border-b border-testo/16 bg-superficie">
             <div className="contenitore">
                 <ol className="flex flex-wrap items-center gap-2 py-3 text-xs text-neutro-500">
                     {voci.map((v, i) => (
@@ -78,7 +78,7 @@ export function Cta({ titolo, testo, primaria, secondaria, whatsapp = false }) {
     return (
         <div data-cta-finale="">
         <Sezione>
-            <Rivela className="overflow-hidden rounded-lg border border-testo/[0.08] bg-superficie px-6 py-14 text-center sm:px-14">
+            <Rivela className="overflow-hidden rounded-lg border border-testo/8 bg-superficie px-6 py-14 text-center sm:px-14">
                 <h2 className="font-display text-3xl text-testo sm:text-4xl">{titolo}</h2>
                 <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-neutro-400">{testo}</p>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">

@@ -35,7 +35,7 @@ export default function Contatti() {
                 <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[1fr_1.15fr] lg:items-start">
                     <Rivela className="lg:col-start-1">
                         <p className="occhiello">{t('Contatti', 'Contact')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Parliamo del tuo giardino', 'Let’s talk about your garden')}
                         </h1>
                         <p className="testo-lungo mt-6">
@@ -87,7 +87,7 @@ export default function Contatti() {
                             </div>
                         </dl>
 
-                        <p className="mt-10 rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
+                        <p className="mt-10 rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             {t(`Il marchio e la tecnologia sono di ${ROCKS_DESIGN.nome}.`, `The brand and the technology belong to ${ROCKS_DESIGN.nome}.`)}{' '}
                             <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="link-sottile font-medium text-testo">
                                 {t('Visita il sito ufficiale', 'Visit the official site')}

@@ -56,7 +56,7 @@ export default function Modelli() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('I modelli', 'The models')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Tre atmosfere, nessuna misura standard', 'Three moods, no standard sizes')}
                     </h1>
                     <p className="testo-lungo mt-6">
@@ -85,7 +85,7 @@ export default function Modelli() {
                         <Rivela as="li" key={m.slug} delay={i * 110} className="flex">
                             <Link
                                 to={`/modelli/${m.slug}`}
-                                className="group flex flex-col overflow-hidden rounded-lg bg-superficie shadow-sm transition hover:shadow-morbida"
+                                className="group flex flex-col overflow-hidden rounded-lg bg-superficie shadow-xs transition hover:shadow-morbida"
                             >
                                 <Immagine
                                     slug={m.copertina}
