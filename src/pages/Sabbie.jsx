@@ -78,7 +78,7 @@ export default function Sabbie() {
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t('Il fondale', 'The floor')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('È la sabbia a decidere il colore dell’acqua', 'The sand decides the colour of the water')}
                         </h1>
                         <p className="testo-lungo mt-6">
@@ -121,7 +121,7 @@ export default function Sabbie() {
                         <Rivela as="li" key={s.nome} delay={i * 100} className="scheda flex flex-col">
                             <span
                                 aria-hidden="true"
-                                className="h-16 w-16 rounded-full ring-1 ring-testo/[0.16]"
+                                className="h-16 w-16 rounded-full ring-1 ring-testo/16"
                                 style={{
                                     background: { Bianco: '#EFE9DC', Giallo: '#DFC48D', Ticino: '#CFCBBC' }[s.nome],
                                 }}
@@ -180,7 +180,7 @@ export default function Sabbie() {
                     occhiello={t('Domande frequenti', 'Frequently asked questions')}
                     titolo={t('Sulla sabbia, in particolare', 'About the sand')}
                 />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/16 border-y border-testo/16">
                     {FAQ_SABBIA.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-sabbia">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">

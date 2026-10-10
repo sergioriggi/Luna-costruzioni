@@ -25,7 +25,7 @@ export default function GalleriaPagina() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('Galleria', 'Gallery')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Piscine Rocks Design, una per una', 'Piscine Rocks Design pools, one by one')}
                     </h1>
                     <p className="testo-lungo mt-6">

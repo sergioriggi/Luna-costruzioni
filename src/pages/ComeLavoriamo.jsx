@@ -37,7 +37,7 @@ export default function ComeLavoriamo() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('Il metodo', 'The method')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Dal primo incontro alla prima nuotata', 'From first meeting to first swim')}
                     </h1>
                     <p className="testo-lungo mt-6">
@@ -56,7 +56,7 @@ export default function ComeLavoriamo() {
                                 <div className="flex flex-wrap items-baseline gap-3">
                                     <h2 className="text-xl">{t(p.titolo, p.titoloEn)}</h2>
                                     {p.durata && (
-                                        <span className="rounded-md bg-sabbia/[0.1] px-3 py-1 text-xs font-medium text-sabbia">
+                                        <span className="rounded-md bg-sabbia/10 px-3 py-1 text-xs font-medium text-sabbia">
                                             {t(p.durata, p.durataEn)}
                                         </span>
                                     )}
@@ -87,7 +87,7 @@ export default function ComeLavoriamo() {
                             'Rocks Design Technology® grew out of Piscine Rocks Design’s experience in working rock: the patent, the construction standards and the official training course we completed are theirs. What we bring is the work on the ground — measuring up in the garden, running the site, dealing with your surveyor or architect, and aftercare in the years that follow.',
                         )}
                     >
-                        <p className="mt-6 rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
+                        <p className="mt-6 rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                             {t(
                                 `Per tutela del brevetto ${ROCKS_DESIGN.nome} non pubblichiamo immagini delle fasi di cantiere, delle tecniche costruttive o degli impianti impiegati. Ogni passaggio te lo spieghiamo di persona, in giardino.`,
                                 `To protect the ${ROCKS_DESIGN.nome} patent, we do not publish images of the build stages, construction techniques or equipment used. We explain each step to you in person, in your garden.`,
@@ -105,7 +105,7 @@ export default function ComeLavoriamo() {
                 />
                 <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
                     {PREVENTIVO.map((v, i) => (
-                        <Rivela as="li" key={v.testo} delay={i * 60} className="flex gap-3 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] text-neutro-300 ring-1 ring-testo/[0.16]">
+                        <Rivela as="li" key={v.testo} delay={i * 60} className="flex gap-3 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] text-neutro-300 ring-1 ring-testo/16">
                             <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-neutro-400" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                 <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>

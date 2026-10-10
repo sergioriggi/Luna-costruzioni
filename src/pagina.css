@@ -1,4 +1,11 @@
 /*
+ * Le classi `pg-` stanno nello strato `utilities` di Tailwind 4, dopo le sue
+ * classi: come con Tailwind 3, a parità di specificità vince la regola che
+ * viene dopo, cioè questa. Fuori da ogni strato vincerebbero sempre.
+ */
+@layer utilities {
+
+/*
  * Impaginazione della pagina, ripresa dal file approvato `Luna_Costruzioni.dc.html`.
  *
  * Nel file di partenza queste regole vivevano in due posti: il blocco <style>
@@ -666,3 +673,4 @@ html[data-consenso-aperto] .pg-barra { transform: translateY(100%); transition-d
     .campo, .input, input, select, textarea { font-size: 16px; }
 }
 
+} /* fine @layer utilities */
