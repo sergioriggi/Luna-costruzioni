@@ -22,7 +22,9 @@
  * in euro va dichiarata con la sua fonte.
  */
 
-const ARTICOLI = []
+import piscinaPermessi from './piscina-interrata-permessi-sicilia.js'
+
+const ARTICOLI = [piscinaPermessi]
 
 /** Dal più recente. A parità di data, l'ordine di `ARTICOLI`. */
 export const GUIDA = ARTICOLI.map((a, i) => [a, i])
