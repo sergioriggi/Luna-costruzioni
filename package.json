@@ -40,5 +40,8 @@
   "description": "Sito web di Luna Costruzioni srl — Concessionario Autorizzato Piscine Rocks Design per la Sicilia.",
   "engines": {
     "node": ">=20.19"
+  },
+  "overrides": {
+    "postcss-selector-parser": "^7.1.6"
   }
 }
