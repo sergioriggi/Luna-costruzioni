@@ -16,7 +16,7 @@ function Blocco({ blocco }) {
     const testo = t(blocco.it, blocco.en)
     switch (blocco.tipo) {
         case 'h2':
-            return <h2 className="pt-6 font-display text-2xl leading-snug text-testo sm:text-3xl">{testo}</h2>
+            return <h2 className="pt-6 font-display text-2xl leading-snug text-testo sm:text-3xl sm:leading-9">{testo}</h2>
         case 'h3':
             return <h3 className="pt-2 font-display text-xl leading-snug text-testo">{testo}</h3>
         case 'elenco':
@@ -29,7 +29,7 @@ function Blocco({ blocco }) {
             )
         case 'nota':
             return (
-                <p className="rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-300">
+                <p className="rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-300">
                     <TestoRicco testo={testo} />
                 </p>
             )
@@ -84,7 +84,7 @@ export default function Articolo() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('Guida', 'Guide')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{t(a.titolo, a.titoloEn)}</h1>
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">{t(a.titolo, a.titoloEn)}</h1>
                     <p className="testo-lungo mt-6">{t(a.sintesi, a.sintesiEn)}</p>
                     <p className="mt-6 text-xs text-neutro-500">
                         <time dateTime={a.pubblicato}>
@@ -147,7 +147,7 @@ export default function Articolo() {
                 )}
 
                 {a.fonti?.length > 0 && (
-                    <div className="mt-12 max-w-prosa border-t border-testo/[0.16] pt-6">
+                    <div className="mt-12 max-w-prosa border-t border-testo/16 pt-6">
                         <p className="text-xs uppercase tracking-[0.12em] text-neutro-500">{t('Fonti', 'Sources')}</p>
                         <ul className="mt-3 space-y-1.5 text-sm text-neutro-400">
                             {a.fonti.map(f => (

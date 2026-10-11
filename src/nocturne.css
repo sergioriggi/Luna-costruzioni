@@ -1,4 +1,13 @@
 /*
+ * Tailwind 4 mette le sue regole in strati (base, components, utilities). Il
+ * CSS fuori da ogni strato vince sempre, quindi le regole sugli elementi qui
+ * sotto (`p`, `h1`…) avrebbero annullato `mt-4`, `text-sm`, `space-y-5`.
+ * Nello strato `base`, dopo il reset di Tailwind, fanno quello che facevano
+ * con Tailwind 3: battono il reset e cedono alle classi di utilità.
+ */
+@layer base {
+
+/*
  * Nocturne — sistema di design del sito, ripreso senza modifiche dal file
  * `nocturne.css` fornito con il progetto approvato. È la fonte di verità
  * dell'aspetto: si ritocca qui.
@@ -309,3 +318,4 @@ textarea.input { min-height: 90px; resize: vertical; }
 .dialog-body { font-size: 14px; opacity: 0.85; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
 
+} /* fine @layer base */

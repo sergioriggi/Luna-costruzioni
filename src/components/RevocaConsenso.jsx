@@ -80,7 +80,7 @@ export default function RevocaConsenso() {
     }
 
     return (
-        <div className="mt-5 rounded-lg border border-testo/[0.16] bg-superficie/60 p-5">
+        <div className="mt-5 rounded-lg border border-testo/16 bg-superficie/60 p-5">
             <p className="text-[0.95rem] leading-relaxed text-neutro-400">
                 {scelta === null
                     ? t('Verifico la tua scelta attuale…', 'Checking your current choice…')

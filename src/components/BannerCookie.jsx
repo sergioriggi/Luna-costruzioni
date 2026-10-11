@@ -93,7 +93,7 @@ export default function BannerCookie() {
             role="dialog"
             aria-live="polite"
             aria-label={t('Preferenze cookie', 'Cookie preferences')}
-            className="fixed inset-x-3 bottom-3 z-[70] rounded-lg border border-testo/[0.16] bg-superficie p-4 shadow-morbida sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm sm:p-5"
+            className="fixed inset-x-3 bottom-3 z-70 rounded-lg border border-testo/16 bg-superficie p-4 shadow-morbida sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm sm:p-5"
         >
             {/*
               Posizione: in basso a sinistra, stretto, su schermo largo; in

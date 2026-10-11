@@ -36,7 +36,7 @@ export default function Grazie() {
                 <div className="mx-auto max-w-2xl text-center">
                     {/* Il titolo prende il fuoco all'arrivo: chi usa un lettore di
                         schermo sente subito che la richiesta è partita. */}
-                    <h1 className="titolo-sezione mt-4 outline-none" tabIndex={-1} ref={el => el?.focus({ preventScroll: true })}>
+                    <h1 className="titolo-sezione mt-4 outline-hidden" tabIndex={-1} ref={el => el?.focus({ preventScroll: true })}>
                         {t('Grazie, l’abbiamo ricevuta.', 'Thank you, we have received it.')}
                     </h1>
 

@@ -34,7 +34,7 @@ export default function Privacy() {
             />
             <Briciole voci={BRICIOLE} />
             <Sezione>
-                <article className="max-w-prosa space-y-5 text-[1.0625rem] leading-relaxed text-neutro-400">
+                <article className="max-w-prosa space-y-5 [&>:last-child]:mb-0 text-[1.0625rem] leading-relaxed text-neutro-400">
                     <h1 className="font-display text-4xl text-testo">{t('Privacy policy', 'Privacy policy')}</h1>
                     <p className="text-sm text-neutro-500">
                         {t(

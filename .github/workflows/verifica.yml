@@ -38,12 +38,12 @@ jobs:
 
       # Guarda ciò che Hostinger installa davvero (`npm ci --omit=dev`): il
       # server Node, la posta e `sharp` stanno in `devDependencies` e restano
-      # fuori. Il passo NON blocca il job: da ottobre 2026 `braces` (usato da
-      # Tailwind 3 per leggere i glob di `content`, solo in compilazione) è
-      # segnalato senza che esista una versione corretta, e un avviso senza
-      # rimedio non deve saltare lint, build e conformità — che sono i
-      # controlli che contano per un articolo o una pagina. L'esito si legge
-      # comunque qui e nel riepilogo in fondo.
+      # fuori. Il passo NON blocca il job: un avviso su una dipendenza — anche
+      # senza rimedio, come `braces` con Tailwind 3 in ottobre 2026 — non deve
+      # saltare lint, build e conformità, che sono i controlli che contano per
+      # un articolo o una pagina. L'esito resta visibile qui e nel riepilogo
+      # in fondo; Hostinger non esegue l'audit, quindi non è mai stato un
+      # cancello di pubblicazione.
       - name: Vulnerabilità nelle dipendenze del sito
         continue-on-error: true
         run: npm audit --omit=dev --audit-level=high

@@ -80,7 +80,7 @@ export default function Sicilia() {
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t('Le nove province', 'All nine provinces')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Piscine Rocks Design in Sicilia', 'Piscine Rocks Design pools in Sicily')}
                         </h1>
                         <p className="testo-lungo mt-6">
@@ -187,7 +187,7 @@ export default function Sicilia() {
                             <li key={p.slug}>
                                 <a
                                     href={`#${p.slug}`}
-                                    className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
+                                    className="inline-block rounded-full border border-testo/16 bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
                                 >
                                     {p.nome}
                                 </a>
@@ -216,7 +216,7 @@ export default function Sicilia() {
                     occhiello={t('Domande', 'Questions')}
                     titolo={t('Tre domande che arrivano da tutta l’isola', 'Three questions we hear from across the island')}
                 />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/16 border-y border-testo/16">
                     {FAQ.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-sicilia">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">

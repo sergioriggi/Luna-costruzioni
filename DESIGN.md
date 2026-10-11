@@ -103,7 +103,7 @@ components:
 # Design System: Luna Costruzioni
 
 <!-- Fonte: il ramo `redesign` all'8 ottobre 2026. I token in codice stanno in
-     src/nocturne.css (fonte di verità) e tailwind.config.js; questo file li
+     src/nocturne.css (fonte di verità) e nel blocco @theme di src/index.css; questo file li
      descrive, non li sostituisce. Se cambiano là, va aggiornato qui. -->
 
 ## Overview

@@ -66,7 +66,7 @@ export default function Azienda() {
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t('Chi siamo', 'About us')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Un’impresa siciliana che lavora la pietra', 'A Sicilian contractor that works in stone')}
                         </h1>
                         <p className="testo-lungo mt-6">
@@ -145,7 +145,7 @@ export default function Azienda() {
                                 <li key={p.slug}>
                                     <Link
                                         to={`/piscine-rocks-design/sicilia#${p.slug}`}
-                                        className="inline-block rounded-full border border-testo/[0.16] bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
+                                        className="inline-block rounded-full border border-testo/16 bg-superficie px-4 py-2 text-sm text-neutro-300 transition hover:border-accento hover:text-accento-300"
                                     >
                                         {p.nome}
                                     </Link>
