@@ -17,4 +17,13 @@ leggi la coda (`/177378079005986/scheduled_posts`) e
 subito prima di ogni programmazione. Quei due documenti stanno nel Progetto
 Claude, non in questo repo: se non li puoi leggere, non programmare nulla.
 
-`main` pubblica da solo su Hostinger: niente push diretti su main.
+`main` pubblica da solo su Hostinger: niente push diretti su main. Si arriva
+su main solo unendo una PR con la CI «Lint, build e conformità» verde.
+
+Gli articoli della guida (rami `guida/<slug>`) li unisce la routine stessa
+«Luna Costruzioni — articolo della guida» (decisione di Sergio, 11 ottobre
+2026): tre controlli automatici, CI verde e un controllore indipendente
+(sub-agente che apre da solo ogni fonte) prima del merge; subito dopo il post
+Google Business. Sergio legge la notifica e, se serve, fa togliere l'articolo
+con una PR di revert. Tutto il resto (CI, dipendenze, design, pagine del sito)
+resta una PR che unisce Sergio.
