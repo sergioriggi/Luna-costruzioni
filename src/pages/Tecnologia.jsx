@@ -40,7 +40,7 @@ export default function Tecnologia() {
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t('Tecnologia Rocks Design®', 'Rocks Design Technology®')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Che cos’è una Piscina Rocks Design', 'What a Piscine Rocks Design pool is')}
                         </h1>
                         <p className="testo-lungo mt-6">
@@ -168,7 +168,7 @@ export default function Tecnologia() {
                         </p>
                     </Rivela>
                 </div>
-                <Rivela className="mt-6 rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
+                <Rivela className="mt-6 rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-sm leading-relaxed text-neutro-400">
                     {t(
                         'Se qualcuno ti promette una piscina «senza permessi» o «senza pratiche» prima ancora di aver visto il terreno, stai parlando con la persona sbagliata. Anche gli effetti catastali e fiscali vanno valutati caso per caso con il tuo professionista di fiducia.',
                         'If someone promises you a pool “with no permits” or “no paperwork” before they have even seen the land, you are talking to the wrong person. The effects on land registry and tax also need to be assessed case by case with your own adviser.',
@@ -190,7 +190,7 @@ export default function Tecnologia() {
                             )}
                         </caption>
                         <thead>
-                            <tr className="border-b border-testo/[0.16]">
+                            <tr className="border-b border-testo/16">
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500"> </th>
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500">
                                     {t('Piscina tradizionale', 'Conventional pool')}
@@ -202,7 +202,7 @@ export default function Tecnologia() {
                             {DIFFERENZE.map((riga, i) => {
                                 const [voce, tradizionale, rocks] = t(riga, DIFFERENZE_EN[i])
                                 return (
-                                    <tr key={riga[0]} className="border-b border-testo/[0.16]">
+                                    <tr key={riga[0]} className="border-b border-testo/16">
                                         <th scope="row" className="py-4 pr-4 font-medium text-testo">{voce}</th>
                                         <td className="py-4 pr-4 text-neutro-500">{tradizionale}</td>
                                         <td className="py-4 font-medium text-testo">{rocks}</td>
@@ -218,7 +218,7 @@ export default function Tecnologia() {
                   bisogno di un'altra risposta, e ha una pagina sua: senza questo
                   rimando le due si farebbero concorrenza sulla stessa ricerca.
                 */}
-                <Rivela className="mt-8 max-w-prosa rounded-lg border border-testo/[0.16] bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-400">
+                <Rivela className="mt-8 max-w-prosa rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-400">
                     {t('Qui sopra c’è ', 'Above is ')}
                     <strong className="font-medium text-testo">{t('come sono fatte', 'how they are built')}</strong>
                     {t('. Se la domanda è invece ', '. If your question is ')}

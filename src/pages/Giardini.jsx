@@ -90,7 +90,7 @@ export default function Giardini() {
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t('L’altra metà del nostro lavoro', 'The other half of our work')}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Giardini e opere in pietra', 'Gardens and stonework')}
                         </h1>
                         <p className="testo-lungo mt-6">

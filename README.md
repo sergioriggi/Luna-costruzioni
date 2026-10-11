@@ -147,8 +147,8 @@ Va eseguita dopo ogni `npm run build`, prima di pubblicare.
 ## Sistema visivo
 
 Tema scuro. La fonte di verità è **`src/nocturne.css`**, che definisce i token
-CSS; `tailwind.config.js` li rispecchia con nomi italiani per le pagine di
-approfondimento. **Le due vanno tenute allineate.**
+CSS; il blocco `@theme` in `src/index.css` (Tailwind 4) li rispecchia con
+nomi italiani per le pagine di approfondimento. **Le due vanno tenute allineate.**
 
 | Token | Valore | Uso |
 | --- | --- | --- |

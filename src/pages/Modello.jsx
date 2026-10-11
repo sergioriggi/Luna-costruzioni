@@ -64,7 +64,7 @@ export default function Modello() {
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
                     <Rivela className="max-w-prosa">
                         <p className="occhiello">{t(m.claim, m.claimEn)}</p>
-                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{nomeCompleto}</h1>
+                        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">{nomeCompleto}</h1>
                         <p className="testo-lungo mt-6">{t(m.testo, m.testoEn)}</p>
                         <p className="mt-6 rounded-lg bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-200">
                             <strong className="font-semibold">{t('Quando ha senso sceglierlo:', 'When it makes sense:')}</strong>{' '}
@@ -132,7 +132,7 @@ export default function Modello() {
               stanno su /modelli. Ripeterle qui metteva lo stesso testo su
               quattro pagine.
             */}
-            <Sezione sfondo="bg-superficie" className="!py-12">
+            <Sezione sfondo="bg-superficie" className="py-12!">
                 <p className="max-w-prosa text-[0.95rem] leading-relaxed text-neutro-400">
                     {t('Se il giardino chiede altro, guarda anche il', 'If your garden calls for something else, look at the')}{' '}
                     <Link to={`/modelli/${altri[0].slug}`} className="link-sottile font-medium text-accento">

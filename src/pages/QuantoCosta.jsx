@@ -84,7 +84,7 @@ export default function QuantoCosta() {
                 <Rivela className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-start lg:gap-x-16">
                     <div className="max-w-prosa">
                     <p className="occhiello">{t('Prezzi e preventivi', 'Prices and quotes')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Quanto costa, davvero', 'What it really costs')}
                     </h1>
                     <p className="testo-lungo mt-6">
@@ -108,8 +108,8 @@ export default function QuantoCosta() {
                     */}
                     {/* La riga del prezzo come in home (DESIGN.md, «Price Line»):
                         cifra in sabbia, su lastra appena sabbiata. */}
-                    <div className="rounded-lg border border-sabbia/[0.26] bg-sabbia/[0.08] p-6 sm:p-7 lg:row-span-2">
-                        <p className="font-display text-2xl leading-snug text-sabbia sm:text-3xl" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                    <div className="rounded-lg border border-sabbia/26 bg-sabbia/8 p-6 sm:p-7 lg:row-span-2">
+                        <p className="font-display text-2xl leading-snug text-sabbia sm:text-3xl sm:leading-9" style={{ fontVariantNumeric: 'tabular-nums' }}>
                             {t(
                                 `Piscine Rocks Design ${PREZZO.testo}`,
                                 `Piscine Rocks Design from €${PREZZO.daMq.toLocaleString('en-GB')} per m² + VAT`,
@@ -256,7 +256,7 @@ export default function QuantoCosta() {
                                 t('Entro una o due settimane, scomposto voce per voce.', 'Within one or two weeks, broken down item by item.'),
                             ],
                         ].map(([titolo, d], i) => (
-                            <Rivela as="li" key={i} delay={i * 100} className="rounded-lg bg-testo/[0.05] p-6">
+                            <Rivela as="li" key={i} delay={i * 100} className="rounded-lg bg-testo/5 p-6">
                                 <span className="font-display text-2xl text-sabbia">{i + 1}</span>
                                 <h3 className="mt-2 text-base text-testo">{titolo}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-neutro-400">{d}</p>
@@ -410,7 +410,7 @@ export default function QuantoCosta() {
                     occhiello={t('Domande frequenti', 'Frequently asked questions')}
                     titolo={t('Sui costi, senza giri di parole', 'About costs, in plain terms')}
                 />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/16 border-y border-testo/16">
                     {FAQ_COSTO.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-costo">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">

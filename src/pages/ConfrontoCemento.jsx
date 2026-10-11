@@ -138,7 +138,7 @@ export default function ConfrontoCemento() {
             <Sezione>
                 <Rivela className="max-w-prosa">
                     <p className="occhiello">{t('Il confronto', 'The comparison')}</p>
-                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+                    <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                         {t('Piscina in cemento o Piscina Rocks Design?', 'Concrete pool or Piscine Rocks Design pool?')}
                     </h1>
                     <p className="testo-lungo mt-6">
@@ -218,7 +218,7 @@ export default function ConfrontoCemento() {
                             )}
                         </caption>
                         <thead>
-                            <tr className="border-b border-testo/[0.16]">
+                            <tr className="border-b border-testo/16">
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500"> </th>
                                 <th scope="col" className="py-4 pr-4 font-semibold text-neutro-500">
                                     {t('Piscina in cemento', 'Concrete pool')}
@@ -230,7 +230,7 @@ export default function ConfrontoCemento() {
                             {CONFRONTO_CEMENTO.map((riga, i) => {
                                 const [voce, cemento, rocks] = t(riga, CONFRONTO_CEMENTO_EN[i])
                                 return (
-                                    <tr key={riga[0]} className="border-b border-testo/[0.16]">
+                                    <tr key={riga[0]} className="border-b border-testo/16">
                                         <th scope="row" className="py-4 pr-4 font-medium text-testo">{voce}</th>
                                         <td className="py-4 pr-4 text-neutro-500">{cemento}</td>
                                         <td className="py-4 font-medium text-testo">{rocks}</td>
@@ -323,7 +323,7 @@ export default function ConfrontoCemento() {
                     </Rivela>
                     <dl className="mt-10 grid gap-6 sm:grid-cols-3">
                         {TRE_COSE.map((v, i) => (
-                            <Rivela as="div" key={v.titolo} delay={i * 100} className="rounded-lg bg-testo/[0.05] p-6">
+                            <Rivela as="div" key={v.titolo} delay={i * 100} className="rounded-lg bg-testo/5 p-6">
                                 <dt className="font-display text-xl text-testo">{t(v.titolo, v.titoloEn)}</dt>
                                 <dd className="mt-2.5 text-sm leading-relaxed text-neutro-400">{t(v.testo, v.testoEn)}</dd>
                             </Rivela>
@@ -348,7 +348,7 @@ export default function ConfrontoCemento() {
                     occhiello={t('Domande frequenti', 'Frequently asked questions')}
                     titolo={t('Le domande che ci fanno a questo punto', 'The questions people ask at this point')}
                 />
-                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/[0.16] border-y border-testo/[0.16]">
+                <div className="mx-auto mt-10 max-w-3xl divide-y divide-testo/16 border-y border-testo/16">
                     {FAQ_CONFRONTO.map(v => (
                         <details key={v.domanda} className="group py-5" name="faq-confronto">
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
