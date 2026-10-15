@@ -23,8 +23,9 @@
  */
 
 import piscinaPermessi from './piscina-interrata-permessi-sicilia.js'
+import manutenzionePiscina from './manutenzione-piscina-sicilia.js'
 
-const ARTICOLI = [piscinaPermessi]
+const ARTICOLI = [piscinaPermessi, manutenzionePiscina]
 
 /** Dal più recente. A parità di data, l'ordine di `ARTICOLI`. */
 export const GUIDA = ARTICOLI.map((a, i) => [a, i])
