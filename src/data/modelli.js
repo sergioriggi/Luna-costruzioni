@@ -66,10 +66,12 @@ export const MODELLI = [
         adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
         adattoEn: 'Country houses, masserie, gardens with olive or citrus trees, restorations in historic settings.',
         tag: 'mediterranea',
-        /** Finché Rocks Design non manda le foto del Mediterranea con l'ulivo: solo un dettaglio neutro, niente galleria (critica del titolare, 21/10/2026). */
-        copertina: 'fondale-illuminato',
-        copertinaNeutra: true,
-        galleria: [],
+        /** Foto con l'ulivo dalla pagina Mediterranea di Rocks Design (indicazione del titolare, 21/10/2026). */
+        copertina: 'mediterranea-ulivo-in-primo-piano',
+        galleria: [
+            { slug: 'mediterranea-vasca-lunga-e-ulivo', didascalia: 'Vasca lunga tra massi e ciottoli, con l’ulivo davanti alla siepe.', didascaliaEn: 'A long pool between boulders and pebbles, with the olive tree in front of the hedge.' },
+            { slug: 'mediterranea-agave-e-ulivo', didascalia: 'Agave davanti, ulivo dietro: le piante che in Sicilia ci sono già.', didascaliaEn: 'An agave in front, an olive behind: plants Sicily already has.' },
+        ],
     },
     {
         slug: 'alpi',

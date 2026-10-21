@@ -58,6 +58,18 @@ export const MEDIA_EN = {
         alt: 'Timber sun deck overlooking a Rocks Design pool',
         caption: 'A slatted timber sun deck with loungers; on the far side the shore is gravel.',
     },
+    'mediterranea-ulivo-in-primo-piano': {
+        alt: 'Small Rocks Design pool in a lawn, with the trunk of an olive tree in the foreground',
+        caption: 'A small pool set in the lawn, with the olive tree in front.',
+    },
+    'mediterranea-vasca-lunga-e-ulivo': {
+        alt: 'Long, narrow Rocks Design pool between boulders and pebbles, with an olive tree behind',
+        caption: 'A long pool between boulders and pebbles; at the far end, the olive tree in front of the hedge.',
+    },
+    'mediterranea-agave-e-ulivo': {
+        alt: 'Small Rocks Design pool with an agave in the foreground and an olive tree behind',
+        caption: 'An agave in the foreground, an olive tree behind the pool.',
+    },
     'spiaggia-di-sabbia-privata': {
         alt: 'Wide natural sand beach in front of a Rocks Design pool',
         caption: 'A sand beach in front of the house: you walk into the water between rounded boulders.',
