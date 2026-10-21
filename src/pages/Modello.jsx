@@ -93,7 +93,7 @@ export default function Modello() {
                     titolo={t('Cinque colorazioni di sabbia', 'Five sand colours')}
                     testo={t(
                         'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quale usare su questo modello si decide a progetto, con i campioni veri sotto il sole del tuo giardino.',
-                        'Every Rocks Design sand colour can be used on this model: it is the floor that decides the colour of the water. The choice is made at the design stage, with the real samples in the sun in your garden.',
+                        'There are five Rocks Design sands, and it is the floor that decides the colour of the water. Which one to use on this model is decided at the design stage, with the real samples in the sun in your garden.',
                     )}
                 />
                 <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -116,7 +116,7 @@ export default function Modello() {
                 </Rivela>
             </Sezione>
 
-            <Sezione>
+            {m.galleria.length > 0 && <Sezione>
                 <IntestazioneSezione
                     occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
                     titolo={t(`Il ${m.nome} nelle foto Piscine Rocks Design`, `The ${m.nome} in Piscine Rocks Design photos`)}
@@ -127,7 +127,7 @@ export default function Modello() {
                         voci={m.galleria.map(v => ({ slug: v.slug, didascalia: t(v.didascalia, v.didascaliaEn) }))}
                     />
                 </Rivela>
-            </Sezione>
+            </Sezione>}
 
             {/*
               Gli altri due modelli come semplici link: le schede complete

@@ -148,10 +148,10 @@ const MOSAICO = [
  * Schede dei modelli in home. La riga sotto il nome è scritta per questa
  * pagina: `claim` e `sintesi` compaiono già su /modelli e sulla pagina del
  * modello, e una terza copia farebbe scattare misura-ripetizioni.mjs. Le foto
- * non sono le copertine delle pagine dei modelli, ma inquadrature dalle loro
- * gallerie. Il Mediterranea, finché Rocks Design non manda le foto con gli
- * ulivi, usa un dettaglio d'acqua neutro: sotto il suo nome non va mai una
- * foto con pini o ghiaietto alpino (critica del titolare, 21/10/2026).
+ * mostrano il modello: Caraibi con spiaggia e palme, Alpi con ghiaietto. Il
+ * Mediterranea, finché Rocks Design non manda le foto con l'ulivo, usa un
+ * dettaglio d'acqua neutro: sotto il suo nome non va mai una foto con pini o
+ * ghiaietto alpino (critica del titolare, 21/10/2026).
  */
 const SCHEDE_MODELLI = {
     caraibi: { foto: 'ombre-di-palme-sulla-sabbia', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },

@@ -16,21 +16,21 @@ export const MODELLI = [
         /** <title> (≤60) e description (≤150) della pagina del modello. */
         seo: {
             titolo: 'Modello Caraibi: piscina, sabbia e palme | Luna Costruzioni',
-            descrizione: 'Spiaggia larga in sabbia chiara, palme e banani, acqua turchese: il Modello Caraibi è per giardini ampi e soleggiati in Sicilia.',
+            descrizione: 'Spiaggia larga in sabbia chiara, palme e banani: il Modello Caraibi è per giardini ampi e soleggiati in Sicilia.',
         },
         nome: 'Caraibi',
         nomeCompleto: 'Modello Caraibi',
         nomeCompletoEn: 'Caraibi model',
-        claim: 'Sabbia chiara, palme, acqua turchese',
-        claimEn: 'Pale sand, palms, turquoise water',
+        claim: 'Spiaggia larga, palme, banani',
+        claimEn: 'Wide beach, palms, bananas',
         sintesi:
-            'La versione più scenografica: ampia spiaggia in sabbia chiara, vegetazione a foglia larga e acqua sui toni del turchese.',
+            'La versione più scenografica: ampia spiaggia in sabbia e vegetazione a foglia larga.',
         sintesiEn:
-            'The most striking of the three: a wide beach of pale sand, broad-leaved planting and water in shades of turquoise.',
+            'The most striking of the three: a wide sand beach and broad-leaved planting.',
         testo:
-            'Il Caraibi punta tutto sul contrasto fra il chiaro della sabbia e il turchese dell’acqua. Funziona quando c’è spazio per una spiaggia generosa: è lì che si mettono i lettini, ed è lì che si passa metà della giornata. La piantumazione — palme, banani, graminacee — serve a chiudere la scena e a creare ombra dove serve.',
+            'Il Caraibi punta tutto sulla spiaggia. Funziona quando c’è spazio per una spiaggia generosa: è lì che si mettono i lettini, ed è lì che si passa metà della giornata. La piantumazione — palme, banani, graminacee — serve a chiudere la scena e a creare ombra dove serve.',
         testoEn:
-            'The Caraibi plays on the contrast between pale sand and turquoise water. It works where there is room for a generous beach: that is where the sun loungers go, and where half the day is spent. The planting — palms, bananas, ornamental grasses — frames the scene and gives shade where it is needed.',
+            'The Caraibi is all about the beach. It works where there is room for a generous beach: that is where the sun loungers go, and where half the day is spent. The planting — palms, bananas, ornamental grasses — frames the scene and gives shade where it is needed.',
         adatto: 'Giardini ampi e soleggiati, ville con vista, strutture ricettive che vogliono una piscina riconoscibile in fotografia.',
         adattoEn: 'Large, sunny gardens, villas with a view, hospitality businesses that want a pool people recognise in photographs.',
         tag: 'caraibi',
@@ -47,29 +47,28 @@ export const MODELLI = [
         slug: 'mediterranea',
         /** <title> (≤60) e description (≤150) della pagina del modello. */
         seo: {
-            titolo: 'Modello Mediterranea, piscina tra ulivi | Luna Costruzioni',
-            descrizione: 'Ulivi, pietra chiara, acqua sui verdi: il Modello Mediterranea è la piscina con spiaggia per masserie, uliveti e agrumeti di Sicilia.',
+            titolo: 'Modello Mediterranea: piscina e piante mediterranee | Luna',
+            descrizione: 'Rocce dai toni caldi, oleandri, agavi e aromatiche: il Modello Mediterranea è la piscina con spiaggia per masserie, uliveti e agrumeti di Sicilia.',
         },
         nome: 'Mediterranea',
         nomeCompleto: 'Modello Mediterranea',
         nomeCompletoEn: 'Mediterranea model',
-        claim: 'Ulivi, pietra chiara, profumi',
-        claimEn: 'Olive trees, pale stone, scented plants',
+        claim: 'Rocce calde, oleandri, aromatiche',
+        claimEn: 'Warm rock, oleanders, herbs',
         sintesi:
-            'Il modello che in Sicilia si integra con meno sforzo: pietra locale ed essenze mediterranee, come ulivi e lavanda.',
+            'Il modello che in Sicilia si integra con meno sforzo: rocce dai toni caldi e piante mediterranee come oleandri, agavi e aromatiche.',
         sintesiEn:
-            'The model that settles most easily into a Sicilian garden: local stone and Mediterranean plants such as olives and lavender.',
+            'The model that settles most easily into a Sicilian garden: warm-toned rock and Mediterranean plants such as oleanders, agaves and herbs.',
         testo:
-            'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole — ulivi, lavanda, rosmarino, graminacee. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
+            'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole: oleandri, agavi, rosmarino, lavanda, e l’ulivo vicino all’acqua. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
         testoEn:
-            'Here the pool should not look as if it came out of a tropical catalogue, but as if it had always been part of the garden. The work uses warm-toned stone, gravel and plants that already grow on their own in Sicily — olives, lavender, rosemary, ornamental grasses. Next to a dry-stone wall or a citrus grove the result looks just like a natural hollow.',
+            'Here the pool should not look as if it came out of a tropical catalogue, but as if it had always been part of the garden. The work uses warm-toned stone, gravel and plants that already grow on their own in Sicily: oleanders, agaves, rosemary, lavender, and an olive tree by the water. Next to a dry-stone wall or a citrus grove the result looks just like a natural hollow.',
         adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
         adattoEn: 'Country houses, masserie, gardens with olive or citrus trees, restorations in historic settings.',
         tag: 'mediterranea',
-        copertina: 'riflessi-al-tramonto',
-        galleria: [
-            { slug: 'riflessi-al-tramonto', didascalia: 'Al tramonto l’acqua prende il verde dei massi e della ghiaia che la circondano.', didascaliaEn: 'At sunset the water takes on the green of the boulders and gravel around it.' },
-        ],
+        /** Finché Rocks Design non manda le foto del Mediterranea con l'ulivo: solo un dettaglio neutro, niente galleria (critica del titolare, 21/10/2026). */
+        copertina: 'fondale-illuminato',
+        galleria: [],
     },
     {
         slug: 'alpi',

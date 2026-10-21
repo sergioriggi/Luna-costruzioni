@@ -100,7 +100,7 @@ export default function Modelli() {
                                     <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{t(m.sintesi, m.sintesiEn)}</p>
                                     <p className="mt-4 text-sm text-neutro-500">
                                         <strong className="font-semibold text-neutro-300">{t('Sabbie:', 'Sands:')}</strong>{' '}
-                                        {t('tutte e cinque le colorazioni', 'all five colours')}
+                                        {t('cinque colorazioni, si sceglie a progetto', 'five colours, chosen at the design stage')}
                                     </p>
                                     <span className="mt-auto pt-5 text-sm font-semibold text-accento group-hover:underline">
                                         {t(`Scopri il ${m.nome}`, `Explore the ${m.nome}`)} →
