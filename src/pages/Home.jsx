@@ -148,12 +148,14 @@ const MOSAICO = [
  * Schede dei modelli in home. La riga sotto il nome è scritta per questa
  * pagina: `claim` e `sintesi` compaiono già su /modelli e sulla pagina del
  * modello, e una terza copia farebbe scattare misura-ripetizioni.mjs. Le foto
- * non sono le copertine delle pagine dei modelli (quella del Mediterranea è
- * l'apertura di questa pagina), ma inquadrature dalle loro gallerie.
+ * mostrano il modello: Caraibi con spiaggia e palme, Alpi con ghiaietto. Il
+ * Mediterranea, finché Rocks Design non manda le foto con l'ulivo, usa un
+ * dettaglio d'acqua neutro: sotto il suo nome non va mai una foto con pini o
+ * ghiaietto alpino (critica del titolare, 21/10/2026).
  */
 const SCHEDE_MODELLI = {
-    caraibi: { foto: 'oasi-con-pontile-e-palme', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },
-    mediterranea: { foto: 'solarium-in-legno', riga: 'Per masserie, ulivi e agrumeti.', rigaEn: 'For farmhouses, olive and citrus groves.' },
+    caraibi: { foto: 'ombre-di-palme-sulla-sabbia', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },
+    mediterranea: { foto: 'fondale-illuminato', riga: 'Per masserie, ulivi e agrumeti.', rigaEn: 'For farmhouses, olive and citrus groves.' },
     alpi: { foto: 'ghiaietto-e-acqua-smeraldo', riga: 'Per pendii e giardini piccoli.', rigaEn: 'For slopes and small gardens.' },
 }
 
@@ -439,11 +441,6 @@ export default function Home() {
                                 <span className="pg-modello-testo">
                                     <span className="pg-modello-nome">{m.nomeCompleto}</span>
                                     <span className="pg-modello-riga">{t(scheda.riga, scheda.rigaEn)}</span>
-                                    <span className="pg-modello-sabbie">
-                                        {m.sabbie.map(sabbia => (
-                                            <span key={sabbia} className="pg-sabbia">{t(`Sabbia ${sabbia}`, `${sabbia} sand`)}</span>
-                                        ))}
-                                    </span>
                                 </span>
                             </Link>
                         )

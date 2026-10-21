@@ -17,7 +17,6 @@ export default function Modello() {
     if (!m) return <Navigate to="/404" replace />
 
     const altri = MODELLI.filter(x => x.slug !== m.slug)
-    const sabbieModello = SABBIE.filter(s => m.sabbie.includes(s.nome))
     const briciole = [
         { to: '/', label: 'Home' },
         { to: '/modelli', label: 'Modelli' },
@@ -90,31 +89,34 @@ export default function Modello() {
 
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
-                    occhiello={t(`Sabbie per il ${m.nome}`, `Sands for the ${m.nome}`)}
-                    titolo={
-                        sabbieModello.length > 1
-                            ? t('Due strade possibili', 'Two possible routes')
-                            : t('La sabbia che lo caratterizza', 'The sand that defines it')
-                    }
+                    occhiello={t('Le sabbie', 'The sands')}
+                    titolo={t('Cinque colorazioni di sabbia', 'Five sand colours')}
+                    testo={t(
+                        'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quali si possono usare su questo modello lo verifichiamo a progetto, con i campioni veri sotto il sole del tuo giardino.',
+                        'There are five Rocks Design sands, and it is the floor that decides the colour of the water. Which ones can be used on this model is checked at the design stage, with the real samples in the sun in your garden.',
+                    )}
                 />
-                <ul className="mt-10 grid gap-6 sm:grid-cols-2">
-                    {sabbieModello.map((s, i) => (
-                        <Rivela as="li" key={s.nome} delay={i * 90} className="scheda">
-                            <h2 className="font-display text-2xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
-                                {t(m.noteSabbie[s.nome], m.noteSabbieEn?.[s.nome])}
-                            </p>
+                <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                    {SABBIE.map((s, i) => (
+                        <Rivela as="li" key={s.nome} delay={i * 60} className="scheda">
+                            <span
+                                aria-hidden="true"
+                                className="block h-10 w-10 rounded-full ring-1 ring-testo/16"
+                                style={{ background: s.colore }}
+                            />
+                            <h2 className="mt-4 font-display text-xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
+                            <p className="mt-2 text-[0.9rem] leading-relaxed text-neutro-400">{t(s.acqua, s.acquaEn)}</p>
                         </Rivela>
                     ))}
                 </ul>
                 <Rivela className="mt-8">
                     <Link to="/sabbie" className="link-sottile text-sm font-medium text-accento">
-                        {t('Tutte e tre le sabbie', 'All three sands')}
+                        {t('Tutte le sabbie, una per una', 'All the sands, one by one')}
                     </Link>
                 </Rivela>
             </Sezione>
 
-            <Sezione>
+            {m.galleria.length > 0 && <Sezione>
                 <IntestazioneSezione
                     occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
                     titolo={t(`Il ${m.nome} nelle foto Piscine Rocks Design`, `The ${m.nome} in Piscine Rocks Design photos`)}
@@ -125,7 +127,7 @@ export default function Modello() {
                         voci={m.galleria.map(v => ({ slug: v.slug, didascalia: t(v.didascalia, v.didascaliaEn) }))}
                     />
                 </Rivela>
-            </Sezione>
+            </Sezione>}
 
             {/*
               Gli altri due modelli come semplici link: le schede complete

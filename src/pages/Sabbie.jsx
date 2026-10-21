@@ -21,9 +21,9 @@ const GALLERIA = [
         didascaliaEn: 'Pale sand from above: at midday the only shade comes from the palms.',
     },
     {
-        slug: 'spiaggia-di-sabbia-privata',
-        didascalia: 'La sabbia continua sotto l’acqua: dove finisce la spiaggia comincia il fondale.',
-        didascaliaEn: 'The sand carries on under the water: where the beach ends, the floor begins.',
+        slug: 'getto-d-acqua',
+        didascalia: 'La riva in sabbia chiara scende sotto l’acqua: dove finisce la spiaggia comincia il fondale.',
+        didascaliaEn: 'The pale sand shore runs down under the water: where the beach ends, the floor begins.',
     },
     {
         slug: 'fondale-illuminato',
@@ -37,9 +37,9 @@ const FAQ_SABBIA = [
         domanda: 'La sabbia si può cambiare dopo?',
         domandaEn: 'Can the sand be changed later?',
         risposta:
-            'Sostituire la sabbia di una vasca già realizzata è un intervento possibile ma oneroso, e cambia il colore dell’acqua di tutta la piscina. Per questo la scelta si fa a progetto, guardando i campioni di persona e non a schermo: i tre toni sullo schermo di un telefono si somigliano molto più di quanto si somiglino davvero.',
+            'Sostituire la sabbia di una vasca già realizzata è un intervento possibile ma oneroso, e cambia il colore dell’acqua di tutta la piscina. Per questo la scelta si fa a progetto, guardando i campioni di persona e non a schermo: sullo schermo di un telefono i toni si somigliano molto più di quanto si somiglino davvero.',
         rispostaEn:
-            'Replacing the sand in a finished pool is possible but costly, and it changes the colour of the water across the whole pool. That is why the choice is made at the design stage, looking at the samples in person rather than on a screen: on a phone the three tones look far more alike than they really are.',
+            'Replacing the sand in a finished pool is possible but costly, and it changes the colour of the water across the whole pool. That is why the choice is made at the design stage, looking at the samples in person rather than on a screen: on a phone the tones look far more alike than they really are.',
     },
     {
         domanda: 'La sabbia scotta sotto il sole siciliano?',
@@ -66,10 +66,10 @@ export default function Sabbie() {
     return (
         <>
             <Seo
-                titolo="Le tre sabbie: Bianco, Giallo e Ticino | Luna Costruzioni"
-                descrizione="Il fondale è sabbia e dà il colore all’acqua: Bianco turchese, Giallo verde acqua, Ticino smeraldo. Campioni al sole del tuo giardino, in Sicilia."
+                titolo="Le cinque sabbie Rocks Design | Luna Costruzioni"
+                descrizione="Caraibi, Indonesia, Grecia, Malta, Islanda: il fondale è sabbia e dà il colore all’acqua. I campioni li vedi al sopralluogo, in Sicilia."
                 percorso="/sabbie"
-                immagine="sabbie-naturali-campioni-1280.jpg"
+                immagine="spiaggia-di-sabbia-privata-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_SABBIA)]}
             />
             <Briciole voci={briciole} />
@@ -93,14 +93,14 @@ export default function Sabbie() {
                         </p>
                         <p className="testo-lungo mt-4">
                             {t(
-                                'Sono disponibili tre selezioni. La scelta si fa di persona, mettendo i campioni sotto il sole del tuo giardino: è l’unico modo onesto per decidere, perché il colore dell’acqua dipende da quanta luce prende il fondale.',
-                                'There are three selections. The choice is made in person, with the samples laid out in the sun in your garden: it is the only honest way to decide, because the colour of the water depends on how much light reaches the floor.',
+                                'Le colorazioni sono cinque: Caraibi, Indonesia, Grecia, Malta e Islanda. La scelta si fa di persona, mettendo i campioni sotto il sole del tuo giardino: è l’unico modo onesto per decidere, perché il colore dell’acqua dipende da quanta luce prende il fondale.',
+                                'There are five colours: Caraibi, Indonesia, Grecia, Malta and Islanda. The choice is made in person, with the samples laid out in the sun in your garden: it is the only honest way to decide, because the colour of the water depends on how much light reaches the floor.',
                             )}
                         </p>
                     </Rivela>
                     <Rivela delay={120}>
                         <Immagine
-                            slug="sabbie-naturali-campioni"
+                            slug="spiaggia-di-sabbia-privata"
                             ratio="4 / 3"
                             className="rounded-lg"
                             sizes="(min-width: 1024px) 48vw, 92vw"
@@ -113,20 +113,19 @@ export default function Sabbie() {
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     allineamento="centro"
-                    occhiello={t('Le tre selezioni', 'The three selections')}
-                    titolo="Bianco, Giallo, Ticino"
+                    occhiello={t('Le cinque colorazioni', 'The five colours')}
+                    titolo={t('Personalizza il tuo fondale', 'Choose your pool floor')}
                 />
-                <ul className="mt-12 grid gap-6 lg:grid-cols-3">
+                <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {SABBIE.map((s, i) => (
                         <Rivela as="li" key={s.nome} delay={i * 100} className="scheda flex flex-col">
                             <span
                                 aria-hidden="true"
                                 className="h-16 w-16 rounded-full ring-1 ring-testo/16"
-                                style={{
-                                    background: { Bianco: '#EFE9DC', Giallo: '#DFC48D', Ticino: '#CFCBBC' }[s.nome],
-                                }}
+                                style={{ background: s.colore }}
                             />
                             <h2 className="mt-5 font-display text-2xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
+                            <p className="mt-1 text-sm text-neutro-400">{t(s.tono, s.tonoEn)}</p>
                             <p className="mt-1 text-sm font-medium text-neutro-300">{t(s.acqua, s.acquaEn)}</p>
                             <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{t(s.carattere, s.carattereEn)}</p>
                             <p className="mt-auto pt-3 text-[0.9rem] leading-relaxed text-neutro-500">{t(s.nota, s.notaEn)}</p>
@@ -135,22 +134,14 @@ export default function Sabbie() {
                 </ul>
                 <p className="mt-8 text-center text-sm text-neutro-500">
                     {t(
-                        'I riquadri colorati sono indicativi: nessuno schermo rende fedelmente una sabbia naturale.',
-                        'The colour swatches are only a guide: no screen shows a natural sand faithfully.',
+                        'I riquadri colorati sono indicativi: nessuno schermo rende fedelmente una sabbia naturale. I campioni veri li porta Luciano Naro al sopralluogo.',
+                        'The colour swatches are only a guide: no screen shows a natural sand faithfully. Luciano Naro brings the real samples to the site visit.',
                     )}
                 </p>
             </Sezione>
 
             <Sezione>
-                <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                    <Rivela>
-                        <Immagine
-                            slug="sabbie-naturali-granulometria"
-                            ratio="4 / 3"
-                            className="rounded-lg"
-                            sizes="(min-width: 1024px) 48vw, 92vw"
-                        />
-                    </Rivela>
+                <div className="max-w-prosa">
                     <IntestazioneSezione
                         occhiello={t('Non è sabbia da cantiere', 'Not builder’s sand')}
                         titolo={t('La granulometria conta quanto il colore', 'Grain size matters as much as colour')}
@@ -165,7 +156,7 @@ export default function Sabbie() {
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello={t('Come si vede in opera', 'How it looks in place')}
-                    titolo={t('Lo stesso materiale, tre risultati', 'One material, three results')}
+                    titolo={t('Come appare la sabbia in una piscina finita', 'How the sand looks in a finished pool')}
                 />
                 <Rivela className="mt-12">
                     <Galleria
@@ -200,8 +191,8 @@ export default function Sabbie() {
             <Cta
                 titolo={t('Portiamo i campioni in giardino', 'We bring the samples to your garden')}
                 testo={t(
-                    `Durante il sopralluogo mettiamo le tre sabbie sotto il sole del tuo terreno. In tutta la ${AZIENDA.zona}, gratis.`,
-                    'During the site visit we lay the three sands out in the sun on your land. Anywhere in Sicily, free of charge.',
+                    `Durante il sopralluogo mettiamo i campioni di sabbia sotto il sole del tuo terreno. In tutta la ${AZIENDA.zona}, gratis.`,
+                    'During the site visit we lay the sand samples out in the sun on your land. Anywhere in Sicily, free of charge.',
                 )}
                 primaria={{ to: '/contatti', label: t('Chiedi un preventivo', 'Ask for a quote') }}
                 secondaria={{ to: '/modelli', label: t('Vedi i modelli', 'See the models') }}

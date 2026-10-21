@@ -263,9 +263,9 @@ export const PROVINCE = [
         nome: 'Siracusa',
         sigla: 'SR',
         intro:
-            'Nel Val di Noto il calcare chiaro è nei muri, nelle case e nelle strade. La sabbia Giallo si accorda con calcare e tufo, e lascia alla piscina i colori che il posto ha già.',
+            'Nel Val di Noto il calcare chiaro è nei muri, nelle case e nelle strade. Una sabbia calda come la Malta si accorda con calcare e tufo, e lascia alla piscina i colori che il posto ha già.',
         introEn:
-            "In the Val di Noto pale limestone is in the walls, the houses and the streets. Giallo sand goes with limestone and tufa, and leaves the pool in the colours the place already has.",
+            "In the Val di Noto pale limestone is in the walls, the houses and the streets. A warm sand such as Malta goes with limestone and tufa, and leaves the pool in the colours the place already has.",
         localita: ['Noto', 'Avola', 'Augusta', 'Floridia', 'Marzamemi'],
     },
     {
@@ -293,9 +293,9 @@ export const PROVINCE = [
         nome: 'Agrigento',
         sigla: 'AG',
         intro:
-            'Nell’agrigentino il riferimento per il colore è la marna bianca della Scala dei Turchi, a Realmonte. La sabbia Bianco è quella che le si avvicina di più, con un’avvertenza: al sole pieno riflette molto, e sulla spiaggia servono zone d’ombra.',
+            'Nell’agrigentino il riferimento per il colore è la marna bianca della Scala dei Turchi, a Realmonte. La sabbia Caraibi, bianco perla, è quella che le si avvicina di più, con un’avvertenza: al sole pieno riflette molto, e sulla spiaggia servono zone d’ombra.',
         introEn:
-            "Around Agrigento the colour reference is the white marl of the Scala dei Turchi, at Realmonte. Bianco sand is the closest to it, with one caveat: in full sun it reflects a lot, and the beach needs shaded areas.",
+            "Around Agrigento the colour reference is the white marl of the Scala dei Turchi, at Realmonte. Caraibi sand, pearl white, is the closest to it, with one caveat: in full sun it reflects a lot, and the beach needs shaded areas.",
         localita: ['Sciacca', 'Licata', 'Favara', 'Realmonte', 'Menfi'],
     },
     {

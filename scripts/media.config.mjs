@@ -84,7 +84,7 @@ export const PHOTOS = [
         file: 'Immagine WhatsApp 2025-07-24 ore 20.08.28_6a7296b8.jpg',
         alt: 'Piscina Rocks Design davanti a una villa, con bordo in ciottoli e massi di granito',
         caption: 'Ghiaia e massi al posto del bordo piastrellato: verso la riva l’acqua si fa bassa.',
-        tags: ['mediterranea', 'giorno'],
+        tags: ['alpi', 'giorno'],
         hero: true,
         // È l'apertura della home dall'8 ottobre 2026. Su telefono (≤900px) sta
         // sotto il testo, a tutta larghezza in 4:3: con la sola scala normale il
@@ -286,22 +286,6 @@ export const PHOTOS = [
         alt: 'Piscina Rocks Design con pontile in legno, palme e sabbia bianca',
         caption: 'Passerella in legno sull’acqua, dépendance sul fondo e palme sulla spiaggia bianca.',
         tags: ['caraibi', 'aerea'],
-    },
-    {
-        slug: 'sabbie-naturali-campioni',
-        file: 'Immagine WhatsApp 2025-09-18 ore 16.57.33_d58977f4.jpg',
-        alt: 'Campioni delle sabbie naturali Rocks Design: Bianco, Giallo e Ticino',
-        caption: 'I campioni delle tre sabbie in barattolo: Bianco, Giallo e Ticino.',
-        tags: ['sabbia', 'materiali'],
-        noWatermark: true,
-    },
-    {
-        slug: 'sabbie-naturali-granulometria',
-        file: 'Immagine WhatsApp 2025-09-18 ore 16.57.32_df8c08ee.jpg',
-        alt: 'Granulometria a confronto delle sabbie naturali Bianco, Giallo e Ticino',
-        caption: 'Le tre sabbie sparse su un foglio per confrontare la grana: Ticino, Giallo e Bianco.',
-        tags: ['sabbia', 'materiali'],
-        noWatermark: true,
     },
 ]
 

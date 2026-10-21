@@ -32,7 +32,7 @@
      colore di testo e non solo come decorazione. */
   --color-accent-2: #7fd8cf; /* acquamarina più chiara, per le seconde voci */
   --color-divider: color-mix(in srgb, #eef6f7 16%, transparent);
-  /* Sabbia: il secondo colore del sito, preso dalle sabbie Bianco e Giallo.
+  /* Sabbia: il secondo colore del sito, preso dalle sabbie chiare.
      Solo per cifre, prezzi e piccoli segni di rilievo — mai per i link né per
      i pulsanti, che restano turchesi. Sul fondo porta 11,6:1. */
   --color-sand: #e4d2aa;
