@@ -56,9 +56,9 @@ export const MODELLI = [
         claim: 'Ulivi, pietra chiara, profumi',
         claimEn: 'Olive trees, pale stone, scented plants',
         sintesi:
-            'Il modello che in Sicilia si integra con meno sforzo: pietra locale, essenze mediterranee, acqua sui verdi.',
+            'Il modello che in Sicilia si integra con meno sforzo: pietra locale ed essenze mediterranee, come ulivi e lavanda.',
         sintesiEn:
-            'The model that settles most easily into a Sicilian garden: local stone, Mediterranean plants, water in shades of green.',
+            'The model that settles most easily into a Sicilian garden: local stone and Mediterranean plants such as olives and lavender.',
         testo:
             'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole — ulivi, lavanda, rosmarino, graminacee. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
         testoEn:
@@ -66,9 +66,8 @@ export const MODELLI = [
         adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
         adattoEn: 'Country houses, masserie, gardens with olive or citrus trees, restorations in historic settings.',
         tag: 'mediterranea',
-        copertina: 'solarium-in-legno',
+        copertina: 'riflessi-al-tramonto',
         galleria: [
-            { slug: 'bordo-in-legno-e-ciottoli', didascalia: 'Legno e ciottoli grigi: materiali che in un giardino di campagna ci sono già.', didascaliaEn: 'Timber and grey pebbles: materials a country garden already has.' },
             { slug: 'riflessi-al-tramonto', didascalia: 'Al tramonto l’acqua prende il verde dei massi e della ghiaia che la circondano.', didascaliaEn: 'At sunset the water takes on the green of the boulders and gravel around it.' },
         ],
     },
@@ -76,22 +75,22 @@ export const MODELLI = [
         slug: 'alpi',
         /** <title> (≤60) e description (≤150) della pagina del modello. */
         seo: {
-            titolo: 'Modello Alpi: piscina con acqua smeraldo | Luna Costruzioni',
-            descrizione: 'Roccia in primo piano, ghiaietto sui bordi, essenze basse e acqua smeraldo: il Modello Alpi regge pendii e giardini piccoli in Sicilia.',
+            titolo: 'Modello Alpi: roccia e ghiaietto | Luna Costruzioni',
+            descrizione: 'Roccia in primo piano, ghiaietto sui bordi ed essenze basse: il Modello Alpi regge pendii e giardini piccoli in Sicilia.',
         },
         nome: 'Alpi',
         nomeCompleto: 'Modello Alpi',
         nomeCompletoEn: 'Alpi model',
-        claim: 'Roccia, ghiaietto, acqua smeraldo',
-        claimEn: 'Rock, fine gravel, emerald water',
+        claim: 'Roccia, ghiaietto, essenze basse',
+        claimEn: 'Rock, fine gravel, low planting',
         sintesi:
-            'Il più sobrio dei tre: prevalgono pietra e ghiaietto, la vegetazione resta rada e l’acqua vira allo smeraldo.',
+            'Il più sobrio dei tre: prevalgono pietra e ghiaietto e la vegetazione resta rada.',
         sintesiEn:
-            'The most restrained of the three: stone and fine gravel lead, planting stays sparse and the water turns emerald.',
+            'The most restrained of the three: stone and fine gravel lead and planting stays sparse.',
         testo:
-            'L’Alpi rinuncia alla spiaggia estesa e mette in primo piano la roccia. Ghiaietto al posto della sabbia sui bordi, essenze basse e resistenti, un’acqua che tende al verde profondo dei laghi di montagna. È il modello che regge meglio le pendenze e i giardini piccoli, dove una spiaggia occuperebbe tutto lo spazio.',
+            'L’Alpi rinuncia alla spiaggia estesa e mette in primo piano la roccia. Ghiaietto al posto della sabbia sui bordi, essenze basse e resistenti, come in un giardino di montagna. È il modello che regge meglio le pendenze e i giardini piccoli, dove una spiaggia occuperebbe tutto lo spazio.',
         testoEn:
-            'The Alpi gives up the wide beach and puts the rock in front. Fine gravel instead of sand at the edges, low, hardy plants, and water that leans towards the deep green of a mountain lake. It is the model that copes best with slopes and small gardens, where a beach would take up all the space.',
+            'The Alpi gives up the wide beach and puts the rock in front. Fine gravel instead of sand at the edges, low, hardy plants, as in a mountain garden. It is the model that copes best with slopes and small gardens, where a beach would take up all the space.',
         adatto: 'Terreni in pendenza, giardini contenuti, case in collina e nell’entroterra.',
         adattoEn: 'Sloping plots, compact gardens, homes in the hills and inland.',
         tag: 'alpi',

@@ -178,8 +178,8 @@ export const SABBIE = [
     },
     {
         nome: 'Islanda',
-        tono: 'Grigio antracite, quasi nero',
-        tonoEn: 'Anthracite grey, almost black',
+        tono: 'Grigio antracite',
+        tonoEn: 'Anthracite grey',
         colore: '#4A4B4E',
         acqua: 'Blu intenso e profondo',
         acquaEn: 'Deep, intense blue',

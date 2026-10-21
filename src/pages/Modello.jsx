@@ -89,10 +89,10 @@ export default function Modello() {
 
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
-                    occhiello={t(`Sabbie per il ${m.nome}`, `Sands for the ${m.nome}`)}
-                    titolo={t('Cinque colorazioni, tutte possibili', 'Five colours, all possible')}
+                    occhiello={t('Le sabbie', 'The sands')}
+                    titolo={t('Cinque colorazioni di sabbia', 'Five sand colours')}
                     testo={t(
-                        'Ogni colorazione di sabbia Rocks Design si può scegliere su questo modello: è il fondale a decidere il colore dell’acqua. La scelta si fa a progetto, con i campioni veri sotto il sole del tuo giardino.',
+                        'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quale usare su questo modello si decide a progetto, con i campioni veri sotto il sole del tuo giardino.',
                         'Every Rocks Design sand colour can be used on this model: it is the floor that decides the colour of the water. The choice is made at the design stage, with the real samples in the sun in your garden.',
                     )}
                 />
