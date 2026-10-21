@@ -161,8 +161,8 @@ export const SABBIE = [
         acquaEn: 'A grey floor with a modern look',
         carattere: 'Granelli di tre colori mescolati: da lontano il fondale appare grigio.',
         carattereEn: 'Grains of three colours mixed together: from a distance the floor reads as grey.',
-        nota: 'È la scelta per chi vuole staccarsi dalla classica sabbia chiara.',
-        notaEn: 'The choice for anyone who wants to move away from the usual pale sand.',
+        nota: 'Per chi non vuole il solito fondo chiaro.',
+        notaEn: 'For anyone who does not want the usual pale floor.',
     },
     {
         nome: 'Malta',

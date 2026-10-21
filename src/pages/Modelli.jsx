@@ -100,7 +100,7 @@ export default function Modelli() {
                                     <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">{t(m.sintesi, m.sintesiEn)}</p>
                                     <p className="mt-4 text-sm text-neutro-500">
                                         <strong className="font-semibold text-neutro-300">{t('Sabbie:', 'Sands:')}</strong>{' '}
-                                        {t('cinque colorazioni, si sceglie a progetto', 'five colours, chosen at the design stage')}
+                                        {t('quali usare lo verifichiamo a progetto', 'which ones suit it is checked at the design stage')}
                                     </p>
                                     <span className="mt-auto pt-5 text-sm font-semibold text-accento group-hover:underline">
                                         {t(`Scopri il ${m.nome}`, `Explore the ${m.nome}`)} →
@@ -134,8 +134,8 @@ export default function Modelli() {
                         occhiello={t('Il dettaglio che decide', 'The deciding detail')}
                         titolo={t('Prima del modello, viene la sabbia', 'Before the model, the sand')}
                         testo={t(
-                            'È il fondale a dare il colore all’acqua: la stessa vasca con sabbia Caraibi o Islanda sembra un’altra piscina. Le colorazioni sono cinque: quale usare sul tuo modello lo decidiamo a progetto.',
-                            'The floor gives the water its colour: the same pool with Caraibi or Islanda sand looks like a different pool. There are five colours: which one suits your model is decided at the design stage.',
+                            'È il fondale a dare il colore all’acqua: la stessa vasca con sabbia Caraibi o Islanda sembra un’altra piscina. Le colorazioni sono cinque: quali si possono usare sul tuo modello lo verifichiamo a progetto.',
+                            'The floor gives the water its colour: the same pool with Caraibi or Islanda sand looks like a different pool. There are five colours: which ones can be used on your model is checked at the design stage.',
                         )}
                     >
                         <ul className="mt-6 space-y-2 text-[1.0625rem] text-neutro-300">

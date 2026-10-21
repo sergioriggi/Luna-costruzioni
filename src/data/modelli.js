@@ -60,9 +60,9 @@ export const MODELLI = [
         sintesiEn:
             'The model that settles most easily into a Sicilian garden: warm-toned rock and Mediterranean plants such as oleanders, agaves and herbs.',
         testo:
-            'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi, ghiaia e piante che in Sicilia crescono già da sole: oleandri, agavi, rosmarino, lavanda, e l’ulivo vicino all’acqua. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
+            'Qui la piscina non deve sembrare arrivata da un catalogo tropicale, ma essere sempre stata parte del giardino. Si lavora con pietra dai toni caldi e piante che in Sicilia crescono già da sole: oleandri, agavi, rosmarino, lavanda, e l’ulivo vicino all’acqua. Vicino a un muro a secco o a un agrumeto il risultato è indistinguibile da una conca naturale.',
         testoEn:
-            'Here the pool should not look as if it came out of a tropical catalogue, but as if it had always been part of the garden. The work uses warm-toned stone, gravel and plants that already grow on their own in Sicily: oleanders, agaves, rosemary, lavender, and an olive tree by the water. Next to a dry-stone wall or a citrus grove the result looks just like a natural hollow.',
+            'Here the pool should not look as if it came out of a tropical catalogue, but as if it had always been part of the garden. The work uses warm-toned stone and plants that already grow on their own in Sicily: oleanders, agaves, rosemary, lavender, and an olive tree by the water. Next to a dry-stone wall or a citrus grove the result looks just like a natural hollow.',
         adatto: 'Case di campagna, masserie, giardini con ulivi o agrumi, ristrutturazioni in contesti storici.',
         adattoEn: 'Country houses, masserie, gardens with olive or citrus trees, restorations in historic settings.',
         tag: 'mediterranea',

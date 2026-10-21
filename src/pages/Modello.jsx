@@ -92,8 +92,8 @@ export default function Modello() {
                     occhiello={t('Le sabbie', 'The sands')}
                     titolo={t('Cinque colorazioni di sabbia', 'Five sand colours')}
                     testo={t(
-                        'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quale usare su questo modello si decide a progetto, con i campioni veri sotto il sole del tuo giardino.',
-                        'There are five Rocks Design sands, and it is the floor that decides the colour of the water. Which one to use on this model is decided at the design stage, with the real samples in the sun in your garden.',
+                        'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quali si possono usare su questo modello lo verifichiamo a progetto, con i campioni veri sotto il sole del tuo giardino.',
+                        'There are five Rocks Design sands, and it is the floor that decides the colour of the water. Which ones can be used on this model is checked at the design stage, with the real samples in the sun in your garden.',
                     )}
                 />
                 <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

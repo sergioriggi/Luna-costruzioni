@@ -23,7 +23,7 @@ export default function Footer() {
                 <div>
                     <p className="pg-footer-marchio">{AZIENDA.nome}</p>
                     <p className="pg-footer-testo">
-                        {t('Impresa edile · Concessionario per la Sicilia', 'Building contractor · Dealer for Sicily')}
+                        {t('Impresa edile · Concessionario autorizzato in Sicilia', 'Building contractor · Authorised dealer in Sicily')}
                         <br />
                         <a href={ROCKS_DESIGN.sito} target="_blank" rel="noopener" className="pg-footer-link">
                             {ROCKS_DESIGN.nome}

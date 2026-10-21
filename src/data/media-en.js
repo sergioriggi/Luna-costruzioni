@@ -67,7 +67,7 @@ export const MEDIA_EN = {
         caption: 'Timber decking on one side, grey pebbles and rounded boulders on the other.',
     },
     'ghiaietto-e-acqua-smeraldo': {
-        alt: 'Rocks Design Alpi pool with fine gravel and emerald water',
+        alt: 'Rocks Design Alpi pool with fine gravel and boulders',
         caption: 'Fine gravel on the shore and stone slabs stepping down into the green water.',
     },
     'fondale-illuminato': {
