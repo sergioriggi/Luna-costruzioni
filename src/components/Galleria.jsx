@@ -31,7 +31,9 @@ const FUORI_GALLERIA = new Set(['notte-luci-e-festa', 'ricevimento-a-bordo-acqua
  * modello usa tengono il tag del manifest.
  */
 const TAG_MODELLO = new Set(MODELLI.map(m => m.tag))
-const MODELLO_DI = new Map(MODELLI.flatMap(m => [m.copertina, ...m.galleria.map(g => g.slug)].map(slug => [slug, m.tag])))
+// Una copertina neutra (il Mediterranea finché non arrivano le foto con l'ulivo)
+// non è una foto del modello: non riceve il tag del modello in /galleria.
+const MODELLO_DI = new Map(MODELLI.flatMap(m => [...(m.copertinaNeutra ? [] : [m.copertina]), ...m.galleria.map(g => g.slug)].map(slug => [slug, m.tag])))
 const FOTO_GALLERIA = tutteLeFoto
     .filter(f => !FUORI_GALLERIA.has(f.slug))
     .map(f => {
@@ -97,7 +99,7 @@ export default function Galleria({ filtrabile = true, voci, colonne = 'md:grid-c
         <div>
             {filtrabile && (
                 <div className="mb-8 flex flex-wrap gap-2">
-                    {FILTRI.map(f => (
+                    {FILTRI.filter(f => f.tag === null || FOTO_GALLERIA.some(x => x.tags.includes(f.tag))).map(f => (
                         <button
                             key={f.label}
                             type="button"

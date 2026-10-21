@@ -61,8 +61,8 @@ export default function Modelli() {
                     </h1>
                     <p className="testo-lungo mt-6">
                         {t(
-                            'Caraibi, Mediterranea e Alpi sono tre direzioni progettuali. Stabiliscono che tipo di roccia si sceglie, quale sabbia va sul fondale e quali piante chiudono la scena. Da lì in poi il progetto segue il tuo giardino, e nessuna vasca esce uguale a un’altra.',
-                            'Caraibi, Mediterranea and Alpi are three design directions. They set the kind of rock, the sand on the floor and the plants that frame the scene. From there the design follows your garden, and no two pools turn out the same.',
+                            'Caraibi, Mediterranea e Alpi sono tre direzioni progettuali. Stabiliscono che tipo di roccia si sceglie e quali piante chiudono la scena; la sabbia del fondale si sceglie a parte. Da lì in poi il progetto segue il tuo giardino, e nessuna vasca esce uguale a un’altra.',
+                            'Caraibi, Mediterranea and Alpi are three design directions. They set the kind of rock and the plants that frame the scene; the sand on the floor is chosen separately. From there the design follows your garden, and no two pools turn out the same.',
                         )}
                     </p>
                     <p className="testo-lungo mt-4">

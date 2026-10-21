@@ -68,6 +68,7 @@ export const MODELLI = [
         tag: 'mediterranea',
         /** Finché Rocks Design non manda le foto del Mediterranea con l'ulivo: solo un dettaglio neutro, niente galleria (critica del titolare, 21/10/2026). */
         copertina: 'fondale-illuminato',
+        copertinaNeutra: true,
         galleria: [],
     },
     {
