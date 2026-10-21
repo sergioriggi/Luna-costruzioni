@@ -116,13 +116,24 @@ export default function Sabbie() {
                     occhiello={t('Le cinque colorazioni', 'The five colours')}
                     titolo={t('Personalizza il tuo fondale', 'Choose your pool floor')}
                 />
+                <Rivela className="mx-auto mt-12 max-w-md">
+                    <Immagine
+                        slug="tavola-sabbie-rocks-design"
+                        className="rounded-lg"
+                        sizes="(min-width: 640px) 28rem, 92vw"
+                    />
+                    <p className="mt-3 text-center text-sm text-neutro-500">
+                        {t('La tavola Rocks Design delle cinque sabbie.', 'The Rocks Design board of the five sands.')}
+                    </p>
+                </Rivela>
                 <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {SABBIE.map((s, i) => (
                         <Rivela as="li" key={s.nome} delay={i * 100} className="scheda flex flex-col">
-                            <span
-                                aria-hidden="true"
-                                className="h-16 w-16 rounded-full ring-1 ring-testo/16"
-                                style={{ background: s.colore }}
+                            <Immagine
+                                slug={`sabbia-${s.nome.toLowerCase()}`}
+                                ratio="4 / 3"
+                                className="rounded-md"
+                                sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                             />
                             <h2 className="mt-5 font-display text-2xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
                             <p className="mt-1 text-sm text-neutro-400">{t(s.tono, s.tonoEn)}</p>
@@ -134,8 +145,8 @@ export default function Sabbie() {
                 </ul>
                 <p className="mt-8 text-center text-sm text-neutro-500">
                     {t(
-                        'I riquadri colorati sono indicativi: nessuno schermo rende fedelmente una sabbia naturale. I campioni veri li porta Luciano Naro al sopralluogo.',
-                        'The colour swatches are only a guide: no screen shows a natural sand faithfully. Luciano Naro brings the real samples to the site visit.',
+                        'Le foto sono i campioni Rocks Design visti da vicino, ma nessuno schermo rende fedelmente una sabbia naturale. I campioni veri li porta Luciano Naro al sopralluogo.',
+                        'The photos are close-ups of the Rocks Design samples, but no screen shows a natural sand faithfully. Luciano Naro brings the real samples to the site visit.',
                     )}
                 </p>
             </Sezione>

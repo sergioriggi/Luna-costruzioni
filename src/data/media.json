@@ -1283,5 +1283,234 @@
       }
     ],
     "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJbACdACIZjkjqbIF4I9/gAP7NUIjl10m3Dw8TmmMLG0DKJe860ZBqU+S4sKITSNOA7bT+aISMMIIm10tR7qBej/A5s/4r91kAOAAA"
+  },
+  {
+    "slug": "sabbia-caraibi",
+    "alt": "Campione della sabbia Caraibi Rocks Design, bianco perla, visto da vicino",
+    "caption": "Sabbia Caraibi: il campione Rocks Design visto da vicino.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 900,
+    "height": 1600,
+    "aspect": 0.5625,
+    "widths": [
+      480,
+      640,
+      900
+    ],
+    "fallback": "/media/sabbia-caraibi-900.jpg",
+    "srcset": "/media/sabbia-caraibi-480.webp 480w, /media/sabbia-caraibi-640.webp 640w, /media/sabbia-caraibi-900.webp 900w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 853
+      },
+      {
+        "w": 640,
+        "h": 1138
+      },
+      {
+        "w": 900,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAABQAwCdASoUACQAPwF6s1SrJ6+opWmZ8CAJaQAAJrLZqC/0AAD+2ZCnSiA8t+vlG+g5NHBAAAA="
+  },
+  {
+    "slug": "sabbia-indonesia",
+    "alt": "Campione della sabbia Indonesia Rocks Design, rosa corallo, visto da vicino",
+    "caption": "Sabbia Indonesia: il campione Rocks Design visto da vicino.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 1026,
+    "height": 1824,
+    "aspect": 0.5625,
+    "widths": [
+      480,
+      640,
+      960,
+      1026
+    ],
+    "fallback": "/media/sabbia-indonesia-1026.jpg",
+    "srcset": "/media/sabbia-indonesia-480.webp 480w, /media/sabbia-indonesia-640.webp 640w, /media/sabbia-indonesia-960.webp 960w, /media/sabbia-indonesia-1026.webp 1026w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 853
+      },
+      {
+        "w": 640,
+        "h": 1138
+      },
+      {
+        "w": 960,
+        "h": 1707
+      },
+      {
+        "w": 1026,
+        "h": 1824
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAwCdASoUACQAPwF8tlUrJ6SxpWgCMCAJaQDOsBA1G69iL4sjAAD+295keHNU7uAs88tCCNpVmXs8L5GLOZuoAAA="
+  },
+  {
+    "slug": "sabbia-grecia",
+    "alt": "Campione della sabbia Grecia Rocks Design, mista bianca, rosa e nera, visto da vicino",
+    "caption": "Sabbia Grecia: il campione Rocks Design visto da vicino.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 900,
+    "height": 1600,
+    "aspect": 0.5625,
+    "widths": [
+      480,
+      640,
+      900
+    ],
+    "fallback": "/media/sabbia-grecia-900.jpg",
+    "srcset": "/media/sabbia-grecia-480.webp 480w, /media/sabbia-grecia-640.webp 640w, /media/sabbia-grecia-900.webp 900w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 853
+      },
+      {
+        "w": 640,
+        "h": 1138
+      },
+      {
+        "w": 900,
+        "h": 1600
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAAAQAwCdASoUACQAPwF2r1KrJymipWzJYCAJaQAAKOJgTmAA/uGPm5cs7G0WuqdRq+Ss6esZoQAAAA=="
+  },
+  {
+    "slug": "sabbia-malta",
+    "alt": "Campione della sabbia Malta Rocks Design, dorata, visto da vicino",
+    "caption": "Sabbia Malta: il campione Rocks Design visto da vicino.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 1026,
+    "height": 1824,
+    "aspect": 0.5625,
+    "widths": [
+      480,
+      640,
+      960,
+      1026
+    ],
+    "fallback": "/media/sabbia-malta-1026.jpg",
+    "srcset": "/media/sabbia-malta-480.webp 480w, /media/sabbia-malta-640.webp 640w, /media/sabbia-malta-960.webp 960w, /media/sabbia-malta-1026.webp 1026w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 853
+      },
+      {
+        "w": 640,
+        "h": 1138
+      },
+      {
+        "w": 960,
+        "h": 1707
+      },
+      {
+        "w": 1026,
+        "h": 1824
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABQAwCdASoUACQAPwF4sVOvJyQkJWsx4CAJZwDGBA9HjZnFAAD+3c8HPXiPvJJS6ydhh4XpCW4OLDDiGGao0lbwgAA="
+  },
+  {
+    "slug": "sabbia-islanda",
+    "alt": "Campione della sabbia Islanda Rocks Design, grigio antracite, visto da vicino",
+    "caption": "Sabbia Islanda: il campione Rocks Design visto da vicino.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 1026,
+    "height": 1824,
+    "aspect": 0.5625,
+    "widths": [
+      480,
+      640,
+      960,
+      1026
+    ],
+    "fallback": "/media/sabbia-islanda-1026.jpg",
+    "srcset": "/media/sabbia-islanda-480.webp 480w, /media/sabbia-islanda-640.webp 640w, /media/sabbia-islanda-960.webp 960w, /media/sabbia-islanda-1026.webp 1026w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 853
+      },
+      {
+        "w": 640,
+        "h": 1138
+      },
+      {
+        "w": 960,
+        "h": 1707
+      },
+      {
+        "w": 1026,
+        "h": 1824
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAwCdASoUACQAPwF0rlGvJqmipW5h4CAJaQAAKDNRdYKmF34AAP7DnbbkHwUjbq+4pw/THuIOAAAA"
+  },
+  {
+    "slug": "tavola-sabbie-rocks-design",
+    "alt": "Tavola Piscine Rocks Design con le cinque sabbie per il fondale: Malta, Caraibi, Islanda, Indonesia e Grecia",
+    "caption": "La tavola Rocks Design delle cinque sabbie per il fondale.",
+    "tags": [
+      "campione-sabbia"
+    ],
+    "hero": false,
+    "width": 1424,
+    "height": 2048,
+    "aspect": 0.6953,
+    "widths": [
+      480,
+      640,
+      960,
+      1280,
+      1424
+    ],
+    "fallback": "/media/tavola-sabbie-rocks-design-1280.jpg",
+    "srcset": "/media/tavola-sabbie-rocks-design-480.webp 480w, /media/tavola-sabbie-rocks-design-640.webp 640w, /media/tavola-sabbie-rocks-design-960.webp 960w, /media/tavola-sabbie-rocks-design-1280.webp 1280w, /media/tavola-sabbie-rocks-design-1424.webp 1424w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 690
+      },
+      {
+        "w": 640,
+        "h": 920
+      },
+      {
+        "w": 960,
+        "h": 1381
+      },
+      {
+        "w": 1280,
+        "h": 1841
+      },
+      {
+        "w": 1424,
+        "h": 2048
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwBACdASoUAB0APwFwrlCrJiQiqA1RYCAJQBdmW0jPhqpdEWlJzD3MDTUrAAD+9hPdkGV1tmLTmFN5K/xvZdAPaEi6CvxDsjVJFBQFm3tzkkrnsnDFB9i/EJeFnqpGQwAAAA=="
   }
 ]
