@@ -130,12 +130,4 @@ export const MEDIA_EN = {
         alt: 'Rocks Design pool with a timber jetty, palms and white sand',
         caption: 'A timber walkway over the water, an outbuilding behind and palms on the white beach.',
     },
-    'sabbie-naturali-campioni': {
-        alt: 'Samples of the Rocks Design natural sands: Bianco, Giallo and Ticino',
-        caption: 'The three sands in jars: Bianco, Giallo and Ticino.',
-    },
-    'sabbie-naturali-granulometria': {
-        alt: 'Grain size of the Bianco, Giallo and Ticino natural sands compared',
-        caption: 'The three sands spread on a sheet to compare the grain: Ticino, Giallo and Bianco.',
-    },
 }

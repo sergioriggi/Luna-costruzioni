@@ -85,9 +85,9 @@ export const ELEMENTI = [
         occhiello: 'Il fondale',
         occhielloEn: 'The floor',
         testo:
-            'Il fondo è di sabbia, senza piastrelle né teli stampati. Scegliendo fra le tre selezioni disponibili — Bianco, Giallo e Ticino — decidi insieme al colore della spiaggia anche quello dell’acqua, perché è il fondale a restituire la tonalità che vedrai. La sabbia trattiene il calore del sole e lo restituisce a chi ci cammina sopra.',
+            'Il fondo è di sabbia, senza piastrelle né teli stampati. Scegliendo fra le cinque colorazioni disponibili (Caraibi, Indonesia, Grecia, Malta e Islanda) decidi insieme al colore della spiaggia anche quello dell’acqua, perché è il fondale a restituire la tonalità che vedrai. La sabbia trattiene il calore del sole e lo restituisce a chi ci cammina sopra.',
         testoEn:
-            'The floor is sand, with no tiles and no printed liner. When you choose between the three selections available — Bianco, Giallo and Ticino — you are choosing the colour of the water as well as the beach, because it is the floor that gives the water its shade. The sand holds the warmth of the sun and gives it back to whoever walks on it.',
+            'The floor is sand, with no tiles and no printed liner. When you choose between the five colours available (Caraibi, Indonesia, Grecia, Malta and Islanda) you are choosing the colour of the water as well as the beach, because it is the floor that gives the water its shade. The sand holds the warmth of the sun and gives it back to whoever walks on it.',
         tag: 'sabbia',
     },
     {
@@ -119,33 +119,74 @@ export const ELEMENTI = [
 /** I tre modelli stanno in un file loro: vedi il commento in `modelli.js`. */
 export { MODELLI } from './modelli.js'
 
+/**
+ * Le cinque colorazioni di sabbia Piscine Rocks Design, con i nomi ufficiali
+ * della casa madre (piscinerocksdesign.com/sabbia, verificato il 21 ottobre
+ * 2026). Prima qui c'erano tre nomi sbagliati (Bianco, Giallo, Ticino):
+ * li ha corretti il titolare di Rocks Design. Testi scritti da noi, non
+ * copiati dal sito della casa madre. `colore` serve solo al riquadro
+ * indicativo su /sabbie e /modelli.
+ */
 export const SABBIE = [
     {
-        nome: 'Bianco',
-        acqua: 'Turchese chiaro, molto luminoso',
-        acquaEn: 'Light turquoise, very bright',
-        carattere: 'La scelta più scenografica: massimo contrasto con il verde del giardino.',
-        carattereEn: 'The most striking choice: the strongest contrast with the green of the garden.',
-        nota: 'Sotto il sole pieno riflette molto; in Sicilia conviene prevedere zone d’ombra sulla spiaggia.',
-        notaEn: 'In full sun it reflects a lot; in Sicily it is worth planning shade on the beach.',
+        nome: 'Caraibi',
+        tono: 'Bianco perla',
+        tonoEn: 'Pearl white',
+        colore: '#EFEAE0',
+        acqua: 'Azzurro limpido e trasparente',
+        acquaEn: 'Clear, transparent blue',
+        carattere: 'La più chiara delle cinque: mette in risalto l’azzurro dell’acqua.',
+        carattereEn: 'The palest of the five: it brings out the blue of the water.',
+        nota: 'Al sole pieno riflette molto: in Sicilia conviene prevedere zone d’ombra sulla spiaggia.',
+        notaEn: 'In full sun it reflects a lot: in Sicily it is worth planning shade on the beach.',
     },
     {
-        nome: 'Giallo',
-        acqua: 'Verde acqua caldo',
-        acquaEn: 'Warm aqua green',
-        carattere: 'La via di mezzo, fra il turchese del Bianco e lo smeraldo del Ticino.',
-        carattereEn: 'The middle ground, between the turquoise of Bianco and the emerald of Ticino.',
-        nota: 'Si accorda bene con pietra calcarea e tufo, materiali diffusi nell’edilizia siciliana.',
+        nome: 'Indonesia',
+        tono: 'Rosa corallo',
+        tonoEn: 'Coral pink',
+        colore: '#E5C7BC',
+        acqua: 'Quasi trasparente, turchese molto chiaro',
+        acquaEn: 'Almost transparent, very light turquoise',
+        carattere: 'Un tono caldo e tenue, che lascia l’acqua chiarissima.',
+        carattereEn: 'A soft, warm tone that keeps the water very light.',
+        nota: 'Sta bene accanto a case e giardini di impianto classico.',
+        notaEn: 'It suits houses and gardens with a classic layout.',
+    },
+    {
+        nome: 'Grecia',
+        tono: 'Mix di bianco, rosa e nero',
+        tonoEn: 'A mix of white, pink and black',
+        colore: '#B8B3AE',
+        acqua: 'Fondale grigio, effetto moderno',
+        acquaEn: 'A grey floor with a modern look',
+        carattere: 'Granelli di tre colori mescolati: da lontano il fondale appare grigio.',
+        carattereEn: 'Grains of three colours mixed together: from a distance the floor reads as grey.',
+        nota: 'È la scelta per chi vuole staccarsi dalla classica sabbia chiara.',
+        notaEn: 'The choice for anyone who wants to move away from the usual pale sand.',
+    },
+    {
+        nome: 'Malta',
+        tono: 'Dorata',
+        tonoEn: 'Golden',
+        colore: '#D8B87C',
+        acqua: 'Verde smeraldo',
+        acquaEn: 'Emerald green',
+        carattere: 'Il tono più caldo: porta l’acqua sul verde.',
+        carattereEn: 'The warmest tone: it takes the water towards green.',
+        nota: 'Si accorda con pietra calcarea e tufo, materiali diffusi nell’edilizia siciliana.',
         notaEn: 'It sits well with limestone and tuff, materials common in Sicilian building.',
     },
     {
-        nome: 'Ticino',
-        acqua: 'Verde smeraldo profondo',
-        acquaEn: 'Deep emerald green',
-        carattere: 'Il tono più naturale, da fiume di montagna.',
-        carattereEn: 'The most natural tone, like a mountain river.',
-        nota: 'Regge bene la vicinanza a rocce scure e vegetazione fitta.',
-        notaEn: 'It works well next to dark rock and dense planting.',
+        nome: 'Islanda',
+        tono: 'Grigio antracite, quasi nero',
+        tonoEn: 'Anthracite grey, almost black',
+        colore: '#4A4B4E',
+        acqua: 'Blu intenso e profondo',
+        acquaEn: 'Deep, intense blue',
+        carattere: 'La più scura: dà profondità all’acqua e un aspetto contemporaneo.',
+        carattereEn: 'The darkest: it gives the water depth and a contemporary look.',
+        nota: 'Una scelta netta, da vedere di persona prima di decidere.',
+        notaEn: 'A bold choice, best seen in person before deciding.',
     },
 ]
 
@@ -432,9 +473,9 @@ export const FAQ = [
         domanda: 'Come faccio a capire come sarà prima di firmare?',
         domandaEn: 'How can I tell what it will look like before I sign?',
         risposta:
-            'Da due cose che vedi nel tuo giardino. Al sopralluogo Luciano Naro porta i campioni delle tre sabbie e li mette sotto il sole del tuo terreno, perché il colore dell’acqua nasce da lì. Poi il progetto disegna la forma della vasca sulle misure vere del giardino, con spiaggia, massi e accessi. Le fotografie del sito mostrano il prodotto; la tua piscina la vedi nel disegno, prima di firmare.',
+            'Da due cose che vedi nel tuo giardino. Al sopralluogo Luciano Naro porta i campioni delle sabbie e li mette sotto il sole del tuo terreno, perché il colore dell’acqua nasce da lì. Poi il progetto disegna la forma della vasca sulle misure vere del giardino, con spiaggia, massi e accessi. Le fotografie del sito mostrano il prodotto; la tua piscina la vedi nel disegno, prima di firmare.',
         rispostaEn:
-            'From two things you see in your own garden. At the site visit Luciano Naro brings samples of the three sands and puts them in the sun on your land, because that is where the colour of the water comes from. Then the design draws the shape of the pool on the real measurements of the garden, with beach, boulders and access. The photographs on this site show the product; you see your own pool in the drawing, before you sign.',
+            'From two things you see in your own garden. At the site visit Luciano Naro brings samples of the sands and puts them in the sun on your land, because that is where the colour of the water comes from. Then the design draws the shape of the pool on the real measurements of the garden, with beach, boulders and access. The photographs on this site show the product; you see your own pool in the drawing, before you sign.',
     },
     {
         domanda: 'Lavorate anche con hotel, agriturismi e b&b?',
@@ -449,7 +490,7 @@ export const FAQ = [
 export const DIFFERENZE = [
     ['Forma', 'Rettangolare o da catalogo', 'Disegnata sul giardino, mai due uguali'],
     ['Struttura', 'Cemento armato o pannelli prefabbricati', 'Massi monolitici, senza getti'],
-    ['Fondale', 'Piastrelle, PVC o telo stampato', 'Sabbia naturale: Bianco, Giallo o Ticino'],
+    ['Fondale', 'Piastrelle, PVC o telo stampato', 'Sabbia naturale, in cinque colorazioni'],
     ['Ingresso in acqua', 'Scaletta o gradini', 'Spiaggia digradante, si entra camminando'],
     ['Colore dell’acqua', 'Deciso dal rivestimento', 'Deciso dalla sabbia e dalla profondità'],
     ['Bordo', 'Marmo, gres o pietra tagliata', 'Roccia, ghiaia e sabbia'],
@@ -461,7 +502,7 @@ export const DIFFERENZE = [
 export const DIFFERENZE_EN = [
     ['Shape', 'Rectangular or from a catalogue', 'Drawn around the garden, never two alike'],
     ['Structure', 'Reinforced concrete or prefabricated panels', 'Monolithic boulders, no concrete pours'],
-    ['Floor', 'Tiles, PVC or a printed liner', 'Natural sand: Bianco, Giallo or Ticino'],
+    ['Floor', 'Tiles, PVC or a printed liner', 'Natural sand, in five colours'],
     ['Getting in', 'Ladder or steps', 'A sloping beach you walk into'],
     ['Water colour', 'Set by the lining', 'Set by the sand and the depth'],
     ['Edge', 'Marble, porcelain or cut stone', 'Rock, gravel and sand'],

@@ -117,7 +117,7 @@ export default function Tecnologia() {
                             <Immagine
                                 slug={{
                                     monoliti: 'palme-e-monoliti',
-                                    sabbie: 'sabbie-naturali-campioni',
+                                    sabbie: 'fondale-illuminato',
                                     cascate: 'cascata-e-massi-al-crepuscolo',
                                     idromassaggio: 'area-benessere-vista-alto',
                                 }[el.slug]}

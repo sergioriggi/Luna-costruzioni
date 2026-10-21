@@ -152,7 +152,7 @@ const MOSAICO = [
  * l'apertura di questa pagina), ma inquadrature dalle loro gallerie.
  */
 const SCHEDE_MODELLI = {
-    caraibi: { foto: 'oasi-con-pontile-e-palme', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },
+    caraibi: { foto: 'ombre-di-palme-sulla-sabbia', riga: 'Per giardini ampi e soleggiati.', rigaEn: 'For large, sunny gardens.' },
     mediterranea: { foto: 'solarium-in-legno', riga: 'Per masserie, ulivi e agrumeti.', rigaEn: 'For farmhouses, olive and citrus groves.' },
     alpi: { foto: 'ghiaietto-e-acqua-smeraldo', riga: 'Per pendii e giardini piccoli.', rigaEn: 'For slopes and small gardens.' },
 }
@@ -439,11 +439,6 @@ export default function Home() {
                                 <span className="pg-modello-testo">
                                     <span className="pg-modello-nome">{m.nomeCompleto}</span>
                                     <span className="pg-modello-riga">{t(scheda.riga, scheda.rigaEn)}</span>
-                                    <span className="pg-modello-sabbie">
-                                        {m.sabbie.map(sabbia => (
-                                            <span key={sabbia} className="pg-sabbia">{t(`Sabbia ${sabbia}`, `${sabbia} sand`)}</span>
-                                        ))}
-                                    </span>
                                 </span>
                             </Link>
                         )

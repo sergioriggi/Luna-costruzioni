@@ -135,7 +135,7 @@
     "alt": "Piscina Rocks Design davanti a una villa, con bordo in ciottoli e massi di granito",
     "caption": "Ghiaia e massi al posto del bordo piastrellato: verso la riva l’acqua si fa bassa.",
     "tags": [
-      "mediterranea",
+      "alpi",
       "giorno"
     ],
     "hero": true,
@@ -1283,90 +1283,5 @@
       }
     ],
     "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoUAA8APwFqrE6rJiQiMAgBYCAJbACdACIZjkjqbIF4I9/gAP7NUIjl10m3Dw8TmmMLG0DKJe860ZBqU+S4sKITSNOA7bT+aISMMIIm10tR7qBej/A5s/4r91kAOAAA"
-  },
-  {
-    "slug": "sabbie-naturali-campioni",
-    "alt": "Campioni delle sabbie naturali Rocks Design: Bianco, Giallo e Ticino",
-    "caption": "I campioni delle tre sabbie in barattolo: Bianco, Giallo e Ticino.",
-    "tags": [
-      "sabbia",
-      "materiali"
-    ],
-    "hero": false,
-    "width": 1600,
-    "height": 1200,
-    "aspect": 1.3333,
-    "widths": [
-      480,
-      640,
-      960,
-      1280,
-      1600
-    ],
-    "fallback": "/media/sabbie-naturali-campioni-1280.jpg",
-    "srcset": "/media/sabbie-naturali-campioni-480.webp 480w, /media/sabbie-naturali-campioni-640.webp 640w, /media/sabbie-naturali-campioni-960.webp 960w, /media/sabbie-naturali-campioni-1280.webp 1280w, /media/sabbie-naturali-campioni-1600.webp 1600w",
-    "sizes": [
-      {
-        "w": 480,
-        "h": 360
-      },
-      {
-        "w": 640,
-        "h": 480
-      },
-      {
-        "w": 960,
-        "h": 720
-      },
-      {
-        "w": 1280,
-        "h": 960
-      },
-      {
-        "w": 1600,
-        "h": 1200
-      }
-    ],
-    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAA8APwFqrU6rJiQiMAgBYCAJQBjehFPdSltngPpAVQAA9i1iSP1sWGZ5e7a/Z8kWlt2bXqy9oD/Im9ZzchvhE9SFy8hPmQczdwTEi20AoAAA"
-  },
-  {
-    "slug": "sabbie-naturali-granulometria",
-    "alt": "Granulometria a confronto delle sabbie naturali Bianco, Giallo e Ticino",
-    "caption": "Le tre sabbie sparse su un foglio per confrontare la grana: Ticino, Giallo e Bianco.",
-    "tags": [
-      "sabbia",
-      "materiali"
-    ],
-    "hero": false,
-    "width": 1200,
-    "height": 1600,
-    "aspect": 0.75,
-    "widths": [
-      480,
-      640,
-      960,
-      1200
-    ],
-    "fallback": "/media/sabbie-naturali-granulometria-1200.jpg",
-    "srcset": "/media/sabbie-naturali-granulometria-480.webp 480w, /media/sabbie-naturali-granulometria-640.webp 640w, /media/sabbie-naturali-granulometria-960.webp 960w, /media/sabbie-naturali-granulometria-1200.webp 1200w",
-    "sizes": [
-      {
-        "w": 480,
-        "h": 640
-      },
-      {
-        "w": 640,
-        "h": 853
-      },
-      {
-        "w": 960,
-        "h": 1280
-      },
-      {
-        "w": 1200,
-        "h": 1600
-      }
-    ],
-    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoUABsAPwForU8rJaQiMBgMAWAgCWMAxNgyHop1FjJRn9hpMoERV4jIEcAA/vMdcynhimwLMoOcBA3Ld6hePuNkCX0o3S2WWNmbI5Nlm5j8pITgLcveB4Yie9961qdE8yADFyisLD3My3OPmswQ1wAA"
   }
 ]
