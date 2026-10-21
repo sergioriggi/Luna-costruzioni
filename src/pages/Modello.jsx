@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from '../lib/instradamento'
 import Seo, { schemaBriciole, schemaServizio } from '../components/Seo'
-import Immagine from '../components/Immagine'
+import Immagine, { tutteLeFoto } from '../components/Immagine'
 import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
@@ -33,7 +33,7 @@ export default function Modello() {
                 titolo={m.seo.titolo}
                 descrizione={m.seo.descrizione}
                 percorso={`/modelli/${m.slug}`}
-                immagine={`${m.copertina}-1280.jpg`}
+                immagine={tutteLeFoto.find(f => f.slug === m.copertina)?.fallback}
                 schema={[
                     schemaBriciole(briciole),
                     /*

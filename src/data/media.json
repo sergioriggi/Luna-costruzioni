@@ -511,6 +511,111 @@
     "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAA8APwFqrU8rJiQiMAgBYCAJZACdLwAA/bk3+73yhHwAAM2ZtJIDUErnjfJk89StjzsyicpBz8x7Y7cVY+8AqvbxjAHSSHllOu5AFIcoWOAAAAA="
   },
   {
+    "slug": "mediterranea-ulivo-in-primo-piano",
+    "alt": "Piccola piscina Rocks Design in un prato, con il tronco di un ulivo in primo piano",
+    "caption": "Una piscina piccola in mezzo al prato, con l’ulivo davanti.",
+    "tags": [
+      "giorno",
+      "mediterranea"
+    ],
+    "hero": false,
+    "width": 700,
+    "height": 933,
+    "aspect": 0.7503,
+    "widths": [
+      480,
+      640,
+      700
+    ],
+    "fallback": "/media/mediterranea-ulivo-in-primo-piano-700.jpg",
+    "srcset": "/media/mediterranea-ulivo-in-primo-piano-480.webp 480w, /media/mediterranea-ulivo-in-primo-piano-640.webp 640w, /media/mediterranea-ulivo-in-primo-piano-700.webp 700w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 640
+      },
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 700,
+        "h": 933
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBQCdASoUABsAPuFcpE6opSOiN+gBEBwJQBOmZGwAc/+BUNrZmNqHvpNpRQhRSLJXwAD+79eUOINORnRfcoihXQbOTgdNQpLRGBiYJlXF00GGWszjbQx+HlAJ9OGaJpaJztDVkKVJJLiX1Q4+UgZuf7lOPyWQJ+nX5d1mfRvRwZ+ugAA="
+  },
+  {
+    "slug": "mediterranea-vasca-lunga-e-ulivo",
+    "alt": "Piscina Rocks Design stretta e lunga tra massi e ciottoli, con un ulivo sullo sfondo",
+    "caption": "Vasca lunga tra massi e ciottoli; in fondo, l’ulivo davanti alla siepe.",
+    "tags": [
+      "giorno",
+      "mediterranea"
+    ],
+    "hero": false,
+    "width": 700,
+    "height": 933,
+    "aspect": 0.7503,
+    "widths": [
+      480,
+      640,
+      700
+    ],
+    "fallback": "/media/mediterranea-vasca-lunga-e-ulivo-700.jpg",
+    "srcset": "/media/mediterranea-vasca-lunga-e-ulivo-480.webp 480w, /media/mediterranea-vasca-lunga-e-ulivo-640.webp 640w, /media/mediterranea-vasca-lunga-e-ulivo-700.webp 700w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 640
+      },
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 700,
+        "h": 933
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQBQCdASoUABsAPvFcqU6ppKQiN/qoATAeCWIApxQj/5756dMZeAyi2N0eqF6v2uK/VQAA/lkKfF/DMyTm61ZxIOj9j2VCfeLurXNFSF737rRbXk+f4np+s286ATi02vp8ke7pBQaWHrkyyAJeu3xkbOPv6r58UE9xTK1ysAAAAA=="
+  },
+  {
+    "slug": "mediterranea-agave-e-ulivo",
+    "alt": "Piccola piscina Rocks Design con un’agave in primo piano e un ulivo sullo sfondo",
+    "caption": "In primo piano un’agave, dietro la vasca un ulivo.",
+    "tags": [
+      "giorno",
+      "mediterranea"
+    ],
+    "hero": false,
+    "width": 700,
+    "height": 933,
+    "aspect": 0.7503,
+    "widths": [
+      480,
+      640,
+      700
+    ],
+    "fallback": "/media/mediterranea-agave-e-ulivo-700.jpg",
+    "srcset": "/media/mediterranea-agave-e-ulivo-480.webp 480w, /media/mediterranea-agave-e-ulivo-640.webp 640w, /media/mediterranea-agave-e-ulivo-700.webp 700w",
+    "sizes": [
+      {
+        "w": 480,
+        "h": 640
+      },
+      {
+        "w": 640,
+        "h": 853
+      },
+      {
+        "w": 700,
+        "h": 933
+      }
+    ],
+    "lqip": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwBACdASoUABsAPwFkq1ArJSOisBgMAWAgCWYAnSC9AVEm3eaHVyYhflUfFvc/sAAA/oMW4taLt5FSdNmzV0DUy1m7SOFTw2QiNC0y3fRegHbDIB+oI8O9wwCg9E41d7NT2rsaau5fHYpEgTsi1XpH8QbT2LNDJ32rlwR9qiC2jUVzEC9y4ZD1E754AA=="
+  },
+  {
     "slug": "spiaggia-di-sabbia-privata",
     "alt": "Ampia spiaggia in sabbia naturale davanti a una piscina Rocks Design",
     "caption": "Spiaggia di sabbia davanti alla casa: in acqua si scende camminando, tra massi tondi.",

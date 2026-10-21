@@ -162,6 +162,27 @@ export const PHOTOS = [
         tags: ['giorno', 'alpi'],
     },
     {
+        slug: 'mediterranea-ulivo-in-primo-piano',
+        file: 'rocks-design-mediterranea-ulivo-1.jpg',
+        alt: 'Piccola piscina Rocks Design in un prato, con il tronco di un ulivo in primo piano',
+        caption: 'Una piscina piccola in mezzo al prato, con l’ulivo davanti.',
+        tags: ['giorno', 'mediterranea'],
+    },
+    {
+        slug: 'mediterranea-vasca-lunga-e-ulivo',
+        file: 'rocks-design-mediterranea-ulivo-2.jpg',
+        alt: 'Piscina Rocks Design stretta e lunga tra massi e ciottoli, con un ulivo sullo sfondo',
+        caption: 'Vasca lunga tra massi e ciottoli; in fondo, l’ulivo davanti alla siepe.',
+        tags: ['giorno', 'mediterranea'],
+    },
+    {
+        slug: 'mediterranea-agave-e-ulivo',
+        file: 'rocks-design-mediterranea-ulivo-3.jpg',
+        alt: 'Piccola piscina Rocks Design con un’agave in primo piano e un ulivo sullo sfondo',
+        caption: 'In primo piano un’agave, dietro la vasca un ulivo.',
+        tags: ['giorno', 'mediterranea'],
+    },
+    {
         slug: 'spiaggia-di-sabbia-privata',
         file: 'Immagine WhatsApp 2025-07-24 ore 20.09.48_c6e00978.jpg',
         alt: 'Ampia spiaggia in sabbia naturale davanti a una piscina Rocks Design',
