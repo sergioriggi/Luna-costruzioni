@@ -21,7 +21,8 @@ const FILTRI = [
  * evento, non la piscina. Restano dove servono (la pagina hotel ne usa
  * alcuni, con la sua didascalia), ma non nella galleria del prodotto.
  */
-const FUORI_GALLERIA = new Set(['notte-luci-e-festa', 'ricevimento-a-bordo-acqua', 'cascata-e-massi-al-crepuscolo', 'cena-in-giardino'])
+// I campioni e la tavola delle sabbie stanno su /sabbie, non sono foto di piscine.
+const FUORI_GALLERIA = new Set(['notte-luci-e-festa', 'ricevimento-a-bordo-acqua', 'cascata-e-massi-al-crepuscolo', 'cena-in-giardino', 'sabbia-caraibi', 'sabbia-indonesia', 'sabbia-grecia', 'sabbia-malta', 'sabbia-islanda', 'tavola-sabbie-rocks-design'])
 
 /**
  * I filtri per modello seguono le pagine dei modelli: una foto mostrata su

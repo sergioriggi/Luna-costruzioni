@@ -130,4 +130,28 @@ export const MEDIA_EN = {
         alt: 'Rocks Design pool with a timber jetty, palms and white sand',
         caption: 'A timber walkway over the water, an outbuilding behind and palms on the white beach.',
     },
+    'sabbia-caraibi': {
+        alt: 'Close-up of the Rocks Design Caraibi sand sample, pearl white',
+        caption: 'Caraibi sand: a close-up of the Rocks Design sample.',
+    },
+    'sabbia-indonesia': {
+        alt: 'Close-up of the Rocks Design Indonesia sand sample, coral pink',
+        caption: 'Indonesia sand: a close-up of the Rocks Design sample.',
+    },
+    'sabbia-grecia': {
+        alt: 'Close-up of the Rocks Design Grecia sand sample, a mix of white, pink and black',
+        caption: 'Grecia sand: a close-up of the Rocks Design sample.',
+    },
+    'sabbia-malta': {
+        alt: 'Close-up of the Rocks Design Malta sand sample, golden',
+        caption: 'Malta sand: a close-up of the Rocks Design sample.',
+    },
+    'sabbia-islanda': {
+        alt: 'Close-up of the Rocks Design Islanda sand sample, anthracite grey',
+        caption: 'Islanda sand: a close-up of the Rocks Design sample.',
+    },
+    'tavola-sabbie-rocks-design': {
+        alt: 'Piscine Rocks Design board showing the five pool floor sands: Malta, Caraibi, Islanda, Indonesia and Grecia',
+        caption: 'The Rocks Design board of the five pool floor sands.',
+    },
 }

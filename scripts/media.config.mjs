@@ -159,7 +159,7 @@ export const PHOTOS = [
         file: 'Immagine WhatsApp 2025-07-24 ore 20.09.48_af48d0ac.jpg',
         alt: 'Solarium in legno affacciato su una piscina Rocks Design',
         caption: 'Solarium in doghe di legno con i lettini; sul lato opposto la riva è in ghiaia.',
-        tags: ['giorno', 'mediterranea'],
+        tags: ['giorno', 'alpi'],
     },
     {
         slug: 'spiaggia-di-sabbia-privata',
@@ -178,7 +178,7 @@ export const PHOTOS = [
     {
         slug: 'ghiaietto-e-acqua-smeraldo',
         file: 'Immagine WhatsApp 2025-10-02 ore 14.01.58_6a645cd2.jpg',
-        alt: 'Piscina Rocks Design modello Alpi con ghiaietto e acqua color smeraldo',
+        alt: 'Piscina Rocks Design modello Alpi con ghiaietto e massi',
         caption: 'Ghiaietto sulla riva e lastre di pietra che scendono nell’acqua verde come gradini.',
         tags: ['alpi', 'giorno'],
     },
@@ -286,6 +286,48 @@ export const PHOTOS = [
         alt: 'Piscina Rocks Design con pontile in legno, palme e sabbia bianca',
         caption: 'Passerella in legno sull’acqua, dépendance sul fondo e palme sulla spiaggia bianca.',
         tags: ['caraibi', 'aerea'],
+    },
+    {
+        slug: 'sabbia-caraibi',
+        file: 'rocks-design-sabbia-caraibi.jpeg',
+        alt: 'Campione della sabbia Caraibi Rocks Design, bianco perla, visto da vicino',
+        caption: 'Sabbia Caraibi: il campione Rocks Design visto da vicino.',
+        tags: ['campione-sabbia'],
+    },
+    {
+        slug: 'sabbia-indonesia',
+        file: 'rocks-design-sabbia-indonesia.jpeg',
+        alt: 'Campione della sabbia Indonesia Rocks Design, rosa corallo, visto da vicino',
+        caption: 'Sabbia Indonesia: il campione Rocks Design visto da vicino.',
+        tags: ['campione-sabbia'],
+    },
+    {
+        slug: 'sabbia-grecia',
+        file: 'rocks-design-sabbia-grecia.jpeg',
+        alt: 'Campione della sabbia Grecia Rocks Design, mista bianca, rosa e nera, visto da vicino',
+        caption: 'Sabbia Grecia: il campione Rocks Design visto da vicino.',
+        tags: ['campione-sabbia'],
+    },
+    {
+        slug: 'sabbia-malta',
+        file: 'rocks-design-sabbia-malta.jpeg',
+        alt: 'Campione della sabbia Malta Rocks Design, dorata, visto da vicino',
+        caption: 'Sabbia Malta: il campione Rocks Design visto da vicino.',
+        tags: ['campione-sabbia'],
+    },
+    {
+        slug: 'sabbia-islanda',
+        file: 'rocks-design-sabbia-islanda.jpeg',
+        alt: 'Campione della sabbia Islanda Rocks Design, grigio antracite, visto da vicino',
+        caption: 'Sabbia Islanda: il campione Rocks Design visto da vicino.',
+        tags: ['campione-sabbia'],
+    },
+    {
+        slug: 'tavola-sabbie-rocks-design',
+        file: 'rocks-design-tavola-sabbie.jpeg',
+        alt: 'Tavola Piscine Rocks Design con le cinque sabbie per il fondale: Malta, Caraibi, Islanda, Indonesia e Grecia',
+        caption: 'La tavola Rocks Design delle cinque sabbie per il fondale.',
+        tags: ['campione-sabbia'],
     },
 ]
 
