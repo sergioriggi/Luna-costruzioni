@@ -27,3 +27,7 @@ Gli articoli della guida (rami `guida/<slug>`) li unisce la routine stessa
 Google Business. Sergio legge la notifica e, se serve, fa togliere l'articolo
 con una PR di revert. Tutto il resto (CI, dipendenze, design, pagine del sito)
 resta una PR che unisce Sergio.
+
+## Regole di testo
+
+Mai scrivere che Luna ha realizzato piscine in Sicilia, e mai scrivere che non le ha realizzate (Sergio, 22/10/2026). Il credito foto "Piscine espositive Piscine Rocks Design, in Lombardia" resta.

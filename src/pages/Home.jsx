@@ -140,7 +140,7 @@ const MOSAICO = [
     'acqua-turchese-notturna',
     'riflessi-al-tramonto',
     'area-benessere-vista-alto',
-    'spiaggia-di-sabbia-privata',
+    'oasi-con-pontile-e-palme',
     'idromassaggio-naturale',
 ]
 
@@ -329,11 +329,11 @@ export default function Home() {
                 </div>
                 <figure className="pg-eroe-figura">
                     <Foto
-                        slug="villa-con-spiaggia-in-ghiaia"
+                        slug="spiaggia-di-sabbia-privata"
                         className="pg-eroe-foto"
                         sizes={FOTO_APERTURA_SIZES}
                         priority
-                        alt={t('Piscina Rocks Design di giorno: acqua turchese, massi chiari e riva in ghiaia davanti a una villa', 'Piscine Rocks Design pool by day: turquoise water, pale boulders and a gravel shore in front of a villa')}
+                        alt={t('Piscina Rocks Design con un’ampia spiaggia di sabbia davanti alla casa', 'Piscine Rocks Design pool with a wide sand beach in front of the house')}
                     />
                     <figcaption className="pg-figura-credito"><CreditoFoto /></figcaption>
                 </figure>
@@ -416,9 +416,6 @@ export default function Home() {
                     ))}
                 </div>
                 <CreditoFoto />
-                <p className="credito-foto">
-                    {t('In Sicilia non ne abbiamo ancora consegnata una: la tua sarà disegnata sul tuo giardino.', 'We have not yet handed one over in Sicily: yours will be designed around your garden.')}
-                </p>
                 <Link to="/galleria" className="pg-link-freccia">
                     {t('Tutte le fotografie, con i filtri per modello', 'Every photo, filterable by model')} →
                 </Link>

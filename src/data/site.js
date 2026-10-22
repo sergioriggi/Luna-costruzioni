@@ -225,7 +225,7 @@ export const SOCIAL = [
  *
  * `intro` è l'unico testo davvero locale: deve dire una cosa che vale per
  * quella provincia e non per le altre. Mai frasi che facciano pensare a
- * piscine già costruite lì: in Sicilia non ne abbiamo ancora consegnata una.
+ * piscine già costruite lì (e nemmeno frasi che dicano che non ce ne sono).
  */
 export const PROVINCE = [
     {

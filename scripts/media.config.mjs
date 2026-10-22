@@ -20,7 +20,7 @@
  * Il motivo per cui la distinzione conta: **Luna Costruzioni non ha ancora
  * realizzato una piscina.** È un'impresa edile attiva dal 2021 — movimento
  * terra, scavi, opere edili — che ha fatto il corso Rocks Design ed è
- * concessionaria autorizzata. Sa costruirle; non ne ha ancora costruite.
+ * concessionaria autorizzata. Il sito non dice né che ne ha costruite né che non ne ha costruite.
  *
  * Perciò i testi attorno a queste immagini affermano solo ciò che è vero:
  * sono Piscine Rocks Design ultimate e in funzione, cioè il PRODOTTO che

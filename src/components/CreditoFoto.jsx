@@ -4,9 +4,9 @@ import { useLingua } from '../i18n/lingua'
  * La riga fissa che dice di chi sono le piscine nelle fotografie.
  *
  * Tutte le foto di piscine del sito sono piscine espositive di Piscine Rocks
- * Design in Lombardia, usate su licenza. Luna Costruzioni non ha ancora
- * consegnato una piscina in Sicilia, e nessuna foto, didascalia o titolo deve
- * lasciarlo intendere. Questa riga accompagna ogni foto o gruppo di foto di
+ * Design in Lombardia, usate su licenza. Nessuna foto, didascalia o titolo
+ * deve farle passare per lavori di Luna (e il sito non dice mai né che Luna ha
+ * realizzato piscine in Sicilia né che non le ha realizzate: Sergio, 22/10/2026). Questa riga accompagna ogni foto o gruppo di foto di
  * piscine, sempre con le stesse parole: così non dipende da chi scriverà la
  * prossima didascalia.
  *

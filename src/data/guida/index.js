@@ -16,7 +16,7 @@
  *
  * ── CHE COSA UN ARTICOLO NON PUÒ DIRE ────────────────────────────────────
  * Le stesse regole del resto del sito, controllate dalla verifica:
- * Luna non ha ancora consegnato piscine in Sicilia; le foto sono piscine
+ * mai dire che Luna ha realizzato piscine, né che non le ha realizzate; le foto sono piscine
  * espositive della casa madre in Lombardia; nessun invito a visitare sedi o
  * piscine; il prezzo è solo `PREZZO` da `src/data/site.js`; ogni altra cifra
  * in euro va dichiarata con la sua fonte.

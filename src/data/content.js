@@ -334,8 +334,8 @@ export const CREDENZIALI = [
         /*
          * Questa voce porta la credenziale VERA, e va tenuta precisa.
          *
-         * Luna Costruzioni non ha ancora realizzato una piscina: ha fatto il
-         * corso Rocks Design ed è concessionaria autorizzata. Ciò che ha
+         * Luna Costruzioni ha fatto il corso Rocks Design ed è concessionaria
+         * autorizzata; il sito non dice mai se ha o non ha realizzato piscine. Ciò che ha
          * davvero alle spalle sono cinque anni di cantieri EDILI — movimento
          * terra, scavi, costruzioni — e per un cliente che deve affidare un
          * cantiere è l'argomento più solido disponibile: la piscina la posa
