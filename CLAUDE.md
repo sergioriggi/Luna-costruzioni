@@ -30,4 +30,4 @@ resta una PR che unisce Sergio.
 
 ## Regole di testo
 
-Mai scrivere che Luna ha realizzato piscine in Sicilia, e mai scrivere che non le ha realizzate (Sergio, 22/10/2026). Il credito foto "Piscine espositive Piscine Rocks Design, in Lombardia" resta.
+Mai scrivere che Luna ha realizzato piscine in Sicilia, e mai scrivere che non le ha realizzate (Sergio, 22/10/2026). Il credito foto/video è solo "Piscine Rocks Design": mai una regione o una città (niente Lombardia, Marche, Varese) (Sergio, 22/10/2026).

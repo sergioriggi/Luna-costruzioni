@@ -52,7 +52,8 @@ const PAROLE_MAX = 2500
  */
 const VIETATE = [
     [/showroom/i, 'showroom: il sito non ne ha e non ne promette'],
-    [/\bvarese\b/i, 'Varese: il sito non invita a visitare piscine della casa madre'],
+    [/\bvarese\b/i, 'Varese: il credito foto è solo «Piscine Rocks Design», senza città (regola del 22/10/2026)'],
+    [/\blombard(ia|y)\b|\bnelle\s+marche\b/i, 'regione nel credito foto: il credito è solo «Piscine Rocks Design» (regola del 22/10/2026)'],
     [/vien[ie]\s+a\s+(trovarci|vederl[ae])|venite\s+a\s+trovarci/i, 'invito a visitare'],
     [/\b(nella|la|alla)\s+nostra\s+sede\b|\bin\s+sede\b(?!\s+di\b)/i, 'sede visitabile: via Speranza è un indirizzo legale, non una sede'],
     [/visit(a|are|ate)\s+(la|le|una|alla|alle)\s+(nostr[ae]\s+)?piscin/i, 'invito a visitare una piscina'],

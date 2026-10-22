@@ -81,7 +81,7 @@ const NOTE = {
     '/hotel-e-resort': 'Piscine Rocks Design per strutture ricettive.',
     '/quanto-costa': 'Il prezzo di partenza — 1.250 € al m² + IVA — e le cinque voci che lo fanno salire. Preventivo dopo il sopralluogo, gratuito.',
     '/piscina-in-cemento-o-rocks-design': 'Confronto a due facce fra piscina tradizionale in cemento e Piscina Rocks Design: costi, tempi, permessi, manutenzione, forma — compreso dove conviene il cemento.',
-    '/galleria': 'Fotografie di piscine espositive Piscine Rocks Design della casa madre, in Lombardia.',
+    '/galleria': 'Fotografie di Piscine Rocks Design.',
     '/come-lavoriamo': 'Il percorso dal sopralluogo al collaudo, chiavi in mano.',
     '/domande-frequenti': 'Le domande più frequenti, con le risposte.',
     '/contatti': 'Come chiederci un sopralluogo: modulo, telefono, WhatsApp.',
@@ -165,7 +165,7 @@ ${SOCIAL.map(s => `- ${s.nome}: ${s.url}`).join('\n')}
 
 ## Precisazioni, perché non vengano dedotte male
 
-- **Le fotografie del sito sono di ${ROCKS_DESIGN.nome}**, piscine espositive in Lombardia, non realizzazioni di ${AZIENDA.nomeBreve}. Mostrano piscine finite: le fasi di costruzione e gli impianti non si pubblicano, a tutela del brevetto.
+- **Le fotografie del sito sono di ${ROCKS_DESIGN.nome}**, non realizzazioni di ${AZIENDA.nomeBreve}. Mostrano piscine finite: le fasi di costruzione e gli impianti non si pubblicano, a tutela del brevetto.
 - ${AZIENDA.nomeBreve} **non riceve clienti in sede**: ci si incontra nel giardino del cliente.
 - **Prezzo di partenza: ${PREZZO.testoLungo}.** È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento: il 4% riguarda gli appalti di opere direttamente finalizzate al superamento delle barriere architettoniche (n. 41-ter, Tabella A Parte II del DPR 633/72, in attuazione della Legge 13/1989) e richiede l'asseverazione di un tecnico abilitato — non dipende dalla condizione personale del committente, e senza quella certificazione l'aliquota resta quella ordinaria. Il prezzo esatto si definisce dopo un sopralluogo, che è gratuito.
 

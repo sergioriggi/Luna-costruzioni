@@ -112,7 +112,7 @@ async function buildWatermark() {
     //
     // Solo il marchio della casa madre. Fino all'8 ottobre 2026 sotto c'era una
     // seconda riga, «LUNA COSTRUZIONI · CONCESSIONARIO SICILIA»: su fotografie
-    // di piscine espositive della casa madre in Lombardia faceva leggere il
+    // di Piscine Rocks Design faceva leggere il
     // nome di Luna e «Sicilia», cioè lavori di Luna in Sicilia, che non
     // esistono ancora. La direttiva chiede il marchio Piscine Rocks Design
     // sulle foto, non quello del concessionario. Non rimetterla.

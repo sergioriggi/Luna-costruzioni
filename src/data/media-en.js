@@ -6,7 +6,7 @@
  * che non sono nel repository: aggiungere un campo voleva dire rifare le foto.
  * Chiave: lo slug. Una foto nuova senza voce qui resta con l'italiano.
  *
- * Come in italiano: sono piscine espositive della casa madre, in Lombardia.
+ * Come in italiano: sono fotografie di Piscine Rocks Design.
  * Nessun testo le presenta come lavori di Luna o come piscine in Sicilia.
  */
 export const MEDIA_EN = {
