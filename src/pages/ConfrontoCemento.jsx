@@ -209,8 +209,9 @@ export default function ConfrontoCemento() {
                         'Eight rows, no adjectives. Where the two pools are equal, it says so.',
                     )}
                 />
-                <Rivela className="mt-10 overflow-x-auto">
-                    <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+                <Rivela className="mt-10">
+                    {/* Sotto i 640 px la tabella si impila (CSS `.tabella-confronto` in pagina.css): prima la colonna Rocks Design restava fuori schermo. */}
+                    <table className="tabella-confronto w-full border-collapse text-left text-sm">
                         <caption className="sr-only">
                             {t(
                                 'Confronto fra piscina in cemento e Piscina Rocks Design, voce per voce',
@@ -232,8 +233,8 @@ export default function ConfrontoCemento() {
                                 return (
                                     <tr key={riga[0]} className="border-b border-testo/16">
                                         <th scope="row" className="py-4 pr-4 font-medium text-testo">{voce}</th>
-                                        <td className="py-4 pr-4 text-neutro-500">{cemento}</td>
-                                        <td className="py-4 font-medium text-testo">{rocks}</td>
+                                        <td className="py-4 pr-4 text-neutro-500" data-etichetta={t('Piscina in cemento', 'Concrete pool')}>{cemento}</td>
+                                        <td className="py-4 font-medium text-testo" data-etichetta="Piscina Rocks Design">{rocks}</td>
                                     </tr>
                                 )
                             })}

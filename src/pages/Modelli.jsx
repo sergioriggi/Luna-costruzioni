@@ -4,7 +4,7 @@ import Immagine from '../components/Immagine'
 import CreditoFoto from '../components/CreditoFoto'
 import Rivela from '../components/Rivela'
 import { Sezione, IntestazioneSezione, Briciole, Cta } from '../components/Sezione'
-import { MODELLI, SABBIE } from '../data/content'
+import { MODELLI, SABBIE, conArticolo } from '../data/content'
 import { useLingua } from '../i18n/lingua'
 
 const BRICIOLE = [
@@ -103,7 +103,7 @@ export default function Modelli() {
                                         {t('quali usare lo verifichiamo a progetto', 'which ones suit it is checked at the design stage')}
                                     </p>
                                     <span className="mt-auto pt-5 text-sm font-semibold text-accento group-hover:underline">
-                                        {t(`Scopri il ${m.nome}`, `Explore the ${m.nome}`)} →
+                                        {t(`Scopri ${conArticolo(m.nome)}`, `Explore the ${m.nome}`)} →
                                     </span>
                                 </div>
                             </Link>

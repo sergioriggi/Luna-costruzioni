@@ -26,8 +26,8 @@ const CAPOLUOGHI = {
     siracusa: { x: 714, y: 397, a: 'end', dx: -14 },
     ragusa: { x: 581, y: 439, a: 'end', dx: -14 },
     trapani: { x: 53, y: 112, a: 'start', dx: 14, dy: 18 },
-    agrigento: { x: 308, y: 325, a: 'middle', dy: -16 },
-    caltanissetta: { x: 422, y: 271, a: 'middle', dy: 30 },
+    agrigento: { x: 308, y: 325, a: 'end', dx: -14, dy: 5 },
+    caltanissetta: { x: 422, y: 271, a: 'start', dx: 22, dy: 30 },
     enna: { x: 474, y: 247, a: 'start', dx: 14, dy: -8 },
 }
 

@@ -555,10 +555,10 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-marchio-nome { font-size: 14px; }
     .pg-eroe {
         grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: 'testo' 'foto' 'fascia';
+        grid-template-areas: 'foto' 'testo' 'fascia';
         min-height: 0;
     }
-    .pg-eroe-testo { padding: 48px 20px 36px; max-width: none; }
+    .pg-eroe-testo { padding: 32px 20px 36px; max-width: none; }
     .pg-eroe-titolo { font-size: clamp(34px, 9vw, 44px); }
     .pg-eroe-sommario { font-size: 16px; }
     .pg-eroe-figura { min-height: 0; aspect-ratio: 4 / 3; }
@@ -593,8 +593,9 @@ input:hover, textarea:hover { border-color: var(--color-accent-600); }
     .pg-header { min-height: 64px; }
     .pg-marchio-nome { font-size: 13px; letter-spacing: 0.1em; }
     .pg-marchio-riga { font-size: 10px; }
-    .pg-concessionario-logo { padding: 5px 7px; }
-    .pg-concessionario-logo img { height: 17px; }
+    /* 17 px di altezza rendevano il marchio largo 82 px: illeggibile. */
+    .pg-concessionario-logo { padding: 5px 8px; }
+    .pg-concessionario-logo img { height: 26px; }
     .pg-fasi { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
     .pg-fase { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; padding-bottom: 28px; }
     .pg-fase > :not(.pg-fase-numero) { grid-column: 2; }
@@ -674,3 +675,20 @@ html[data-consenso-aperto] .pg-barra { transform: translateY(100%); transition-d
 }
 
 } /* fine @layer utilities */
+
+/* ── tabella di confronto (/piscine-rocks-design) ────────────────────────
+   Da 640 px in giù ogni riga diventa una scheda: voce in alto, poi le due
+   celle con la loro etichetta. Prima la tabella era larga 640 px fissi e la
+   colonna Rocks Design finiva fuori schermo senza nessun segnale. */
+@media (max-width: 639px) {
+    .tabella-confronto thead { display: none; }
+    .tabella-confronto, .tabella-confronto tbody, .tabella-confronto tr, .tabella-confronto th, .tabella-confronto td { display: block; }
+    .tabella-confronto tr { padding: 16px 0 18px; }
+    .tabella-confronto th[scope='row'] { padding: 0 0 8px; font-size: 15px; }
+    .tabella-confronto td { padding: 6px 0 0; }
+    .tabella-confronto td::before {
+        content: attr(data-etichetta);
+        display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--color-neutral-500); margin-bottom: 2px;
+    }
+}
