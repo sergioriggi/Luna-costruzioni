@@ -86,8 +86,8 @@ export default function Sicilia() {
                         </p>
                         <p className="testo-lungo mt-4">
                             {t(
-                                `Le fotografie del sito sono piscine della casa madre, costruite in Lombardia. In cantiere portiamo ${anniDiCantiere} anni di lavori edili sull’isola e la formazione sulla tecnologia fatta con ${ROCKS_DESIGN.nome}.`,
-                                `The photos on this site are the manufacturer’s pools, built in Lombardy. What we bring to the site is ${anniDiCantiere} years of building work on the island and our training in the technology with ${ROCKS_DESIGN.nome}.`,
+                                `Le fotografie del sito sono di ${ROCKS_DESIGN.nome}. In cantiere portiamo ${anniDiCantiere} anni di lavori edili sull’isola e la formazione sulla tecnologia fatta con ${ROCKS_DESIGN.nome}.`,
+                                `The photos on this site are by ${ROCKS_DESIGN.nome}. What we bring to the site is ${anniDiCantiere} years of building work on the island and our training in the technology with ${ROCKS_DESIGN.nome}.`,
                             )}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
@@ -105,8 +105,8 @@ export default function Sicilia() {
                         />
                         <p data-didascalia="" className="mt-3 text-sm text-neutro-500">
                             {t(
-                                'Una piscina della casa madre in Lombardia: ghiaia e massi al posto del bordo, acqua bassa dove si entra. Materiali che in un giardino siciliano non stonano.',
-                                'One of the manufacturer’s pools in Lombardy: gravel and boulders instead of a coping, shallow water where you walk in. Materials that sit comfortably in a Sicilian garden.',
+                                'Una Piscina Rocks Design: ghiaia e massi al posto del bordo, acqua bassa dove si entra. Materiali che in un giardino siciliano non stonano.',
+                                'A Piscine Rocks Design pool: gravel and boulders instead of a coping, shallow water where you walk in. Materials that sit comfortably in a Sicilian garden.',
                             )}
                         </p>
                     </Rivela>

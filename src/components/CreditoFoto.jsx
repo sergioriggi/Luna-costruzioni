@@ -3,8 +3,9 @@ import { useLingua } from '../i18n/lingua'
 /**
  * La riga fissa che dice di chi sono le piscine nelle fotografie.
  *
- * Tutte le foto di piscine del sito sono piscine espositive di Piscine Rocks
- * Design in Lombardia, usate su licenza. Nessuna foto, didascalia o titolo
+ * Tutte le foto di piscine del sito sono di Piscine Rocks Design, usate su
+ * licenza. Il credito dice solo «Piscine Rocks Design»: mai una regione o una
+ * città (Sergio, 22/10/2026). Nessuna foto, didascalia o titolo
  * deve farle passare per lavori di Luna (e il sito non dice mai né che Luna ha
  * realizzato piscine in Sicilia né che non le ha realizzate: Sergio, 22/10/2026). Questa riga accompagna ogni foto o gruppo di foto di
  * piscine, sempre con le stesse parole: così non dipende da chi scriverà la
@@ -19,7 +20,7 @@ export default function CreditoFoto({ className = '' }) {
     const { t } = useLingua()
     return (
         <p className={`credito-foto ${className}`.trim()} data-credito-foto="">
-            {t('Piscine espositive Piscine Rocks Design, in Lombardia.', 'Piscine Rocks Design display pools, in Lombardy.')}
+            {t('Foto: Piscine Rocks Design.', 'Photos: Piscine Rocks Design.')}
         </p>
     )
 }

@@ -112,6 +112,13 @@ for (const file of pagine) {
         }
     }
 
+    // 6b. il credito foto/video dice solo «Piscine Rocks Design»: mai una
+    //     regione o una città (Sergio, 22/10/2026).
+    const regione = testoVisibile.match(/\blombard(?:ia|y)\b|\bvarese\b|\bnelle\s+marche\b/i)
+    if (regione) {
+        errori.push(`${rel}: «${regione[0]}» nel testo: il credito foto è solo «Piscine Rocks Design», senza regione né città.`)
+    }
+
     // 7. Un'anteprima non deve mai uscire indicizzabile.
     // Il difetto si è già verificato: l'hosting compila il progetto da sé,
     // senza VITE_SITE_URL, e il sito si dichiarava di produzione. Da qui in

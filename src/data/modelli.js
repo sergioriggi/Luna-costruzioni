@@ -43,7 +43,7 @@ export const MODELLI = [
         adattoEn: 'Large, sunny gardens, villas with a view, hospitality businesses that want a pool people recognise in photographs.',
         tag: 'caraibi',
         copertina: 'oasi-aerea-sabbia-bianca',
-        /** Didascalie scritte per questa pagina: le foto sono della casa madre, in Lombardia. */
+        /** Didascalie scritte per questa pagina: le foto sono di Piscine Rocks Design. */
         galleria: [
             { slug: 'spiaggia-di-sabbia-privata', didascalia: 'La spiaggia in sabbia chiara davanti alla casa: in acqua si scende camminando.', didascaliaEn: 'The pale sand beach in front of the house: you walk down into the water.' },
             { slug: 'ombre-di-palme-sulla-sabbia', didascalia: 'Le palme piantate nella sabbia fanno l’ombra che una spiaggia chiara chiede.', didascaliaEn: 'Palms planted in the sand give the shade a pale beach needs.' },

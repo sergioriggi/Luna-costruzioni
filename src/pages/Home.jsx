@@ -376,8 +376,8 @@ export default function Home() {
                         alt={t('Piscina Rocks Design con bordo in pietra e pontile in legno', 'Piscine Rocks Design pool with a stone edge and a timber jetty')}
                     />
                     {/*
-                      Qui c'era l'invito a visitare la piscina della casa madre
-                      in Lombardia. Tolto per decisione del 30/09/2026: il sito
+                      Qui c'era l'invito a visitare la piscina della casa madre.
+                      Tolto per decisione del 30/09/2026: il sito
                       non propone più visite né viaggi. Resta la didascalia
                       della foto, che dice che cosa si vede.
                     */}

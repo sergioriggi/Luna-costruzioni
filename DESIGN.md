@@ -222,7 +222,7 @@ The starting price ("a partire da 1.250 € al m² + IVA") in pale sand, on a fa
 Five numbered circles on one hairline inside the turquoise band, each with a sand duration label, title and two lines of text. On phone the line turns vertical.
 
 ### Photo Credit (signature)
-Every pool photo or group of photos carries one fixed line underneath, never on top: "Piscine espositive Piscine Rocks Design, in Lombardia." / "Piscine Rocks Design display pools, in Lombardy." (`CreditoFoto.jsx`, 12px, Text Quiet). The photos are the manufacturer's display pools; the line says so every time, in the same words.
+Every pool photo or group of photos carries one fixed line underneath, never on top: "Foto: Piscine Rocks Design." / "Photos: Piscine Rocks Design." (`CreditoFoto.jsx`, 12px, Text Quiet). The credit names only Piscine Rocks Design, never a region or a city; the line says so every time, in the same words.
 
 ## Do's and Don'ts
 
@@ -241,4 +241,4 @@ Every pool photo or group of photos carries one fixed line underneath, never on 
 - **Don't** add shadows to elements at rest.
 - **Don't** load fonts, icons or scripts from third-party servers for the visual layer.
 - **Don't** put a small uppercase label above every heading.
-- **Don't** present the photos as Luna's own or Sicilian builds; they are Piscine Rocks Design display pools in Lombardy, and captions, titles and alt text say only what is visible. No "Realizzazioni", no "ultimata", no watermark carrying Luna's name.
+- **Don't** present the photos as Luna's own or Sicilian builds; they are Piscine Rocks Design photographs, and captions, titles and alt text say only what is visible. No "Realizzazioni", no "ultimata", no watermark carrying Luna's name.

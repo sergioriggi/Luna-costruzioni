@@ -178,8 +178,8 @@ export default function Giardini() {
                     occhiello={t('Opere di contorno', 'Surrounding works')}
                     titolo={t('Pietra, legno e verde attorno all’acqua', 'Stone, timber and planting around the water')}
                     testo={t(
-                        'Le foto qui sotto sono piscine espositive della casa madre, in Lombardia: mostrano il tipo di opere di contorno che realizziamo anche noi, cioè bordi, solarium, ghiaie e illuminazione.',
-                        'The photos below are the manufacturer’s display pools in Lombardy. They show the kind of surrounding work we also carry out: edges, sun decks, gravel and lighting.',
+                        'Le foto qui sotto sono di Piscine Rocks Design: mostrano il tipo di opere di contorno che realizziamo anche noi, cioè bordi, solarium, ghiaie e illuminazione.',
+                        'The photos below are by Piscine Rocks Design. They show the kind of surrounding work we also carry out: edges, sun decks, gravel and lighting.',
                     )}
                 />
                 <Rivela className="mt-12">

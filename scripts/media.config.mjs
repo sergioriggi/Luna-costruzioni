@@ -15,7 +15,7 @@
  *
  * ── PROVENIENZA: PERCHÉ I TESTI NON DICONO «LE NOSTRE, IN SICILIA» ───────
  * Queste fotografie sono materiale di Piscine Rocks Design, non cantieri di
- * Luna. Gli EXIF le collocano in Lombardia, dove sta la casa madre.
+ * Luna. Il credito dice solo «Piscine Rocks Design», senza regione né città.
  *
  * Il motivo per cui la distinzione conta: **Luna Costruzioni non ha ancora
  * realizzato una piscina.** È un'impresa edile attiva dal 2021 — movimento
