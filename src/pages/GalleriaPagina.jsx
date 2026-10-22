@@ -36,8 +36,8 @@ export default function GalleriaPagina() {
                     </p>
                     <p className="testo-lungo mt-4">
                         {t(
-                            `Sono piscine espositive della casa madre, in Lombardia, fotografate da ${ROCKS_DESIGN.nome} e usate su licenza: è il prodotto che costruiamo. In Sicilia non ne abbiamo ancora consegnata una, e la tua sarà disegnata sul tuo giardino.`,
-                            `They are the manufacturer's display pools in Lombardy, photographed by ${ROCKS_DESIGN.nome} and used under licence: this is the product we build. We have not yet handed one over in Sicily, and yours will be designed around your garden.`,
+                            `Sono piscine espositive della casa madre, in Lombardia, fotografate da ${ROCKS_DESIGN.nome} e usate su licenza: è il prodotto che costruiamo, e la tua sarà disegnata sul tuo giardino.`,
+                            `They are the manufacturer's display pools in Lombardy, photographed by ${ROCKS_DESIGN.nome} and used under licence: this is the product we build, and yours will be designed around your garden.`,
                         )}
                     </p>
                 </Rivela>

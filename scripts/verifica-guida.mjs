@@ -44,7 +44,7 @@ const PAROLE_MAX = 2500
 /**
  * Affermazioni che il sito non può fare, in italiano e in inglese.
  *
- * Ognuna corrisponde a un fatto: Luna non ha ancora consegnato piscine in
+ * Ognuna corrisponde a una regola: il sito non dice mai che Luna ha consegnato piscine in
  * Sicilia e non ha clienti di piscine da citare; non ha una sede visitabile
  * né una piscina espositiva, e dal 30/09/2026 il sito non invita più a vedere
  * quelle della casa madre; la tecnologia e il brevetto sono di Piscine Rocks
@@ -57,7 +57,7 @@ const VIETATE = [
     [/\b(nella|la|alla)\s+nostra\s+sede\b|\bin\s+sede\b(?!\s+di\b)/i, 'sede visitabile: via Speranza è un indirizzo legale, non una sede'],
     [/visit(a|are|ate)\s+(la|le|una|alla|alle)\s+(nostr[ae]\s+)?piscin/i, 'invito a visitare una piscina'],
     [/piscin[ae]\s+espositiv[ae]\s+(in|di|a)\s+sicilia/i, 'piscina espositiva in Sicilia: non esiste'],
-    [/(abbiamo|ho)\s+(già\s+)?(realizzato|costruito|consegnato|installato)/i, 'piscine già realizzate: Luna non ne ha ancora consegnate'],
+    [/(abbiamo|ho)\s+(già\s+)?(realizzato|costruito|consegnato|installato)/i, 'piscine già realizzate: il sito non lo dice mai (regola del 22/10/2026)'],
     [/\bnostr[aei]\s+(piscine|realizzazioni|lavori\s+realizzati|progetti\s+realizzati)/i, '«le nostre piscine/realizzazioni»: le foto sono della casa madre'],
     [/\bnostri\s+clienti\b/i, 'clienti di piscine: non ce ne sono ancora'],
     [/\b(decine|centinaia)\s+di\s+(piscine|clienti|progetti)/i, 'numeri di piscine o clienti'],

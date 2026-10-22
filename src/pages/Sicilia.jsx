@@ -40,12 +40,6 @@ const FAQ = [
             'Yes. Digging and laying are done by our own crews, who travel with our own machines. A distant site only means longer haulage for the boulders and the plant.',
     },
     {
-        domanda: 'Avete già piscine Rocks Design in Sicilia da farmi vedere?',
-        domandaEn: 'Do you already have Rocks Design pools in Sicily I can see?',
-        risposta: `Non ancora, e preferiamo dirlo subito. ${AZIENDA.nomeBreve} è concessionario autorizzato, formato sulla tecnologia da ${ROCKS_DESIGN.nome}; le fotografie del sito sono piscine della casa madre, in Lombardia. Quello che abbiamo alle spalle sono ${anniDiCantiere} anni di cantieri edili sull’isola: scavi, movimento terra, costruzioni.`,
-        rispostaEn: `Not yet, and we would rather say so up front. ${AZIENDA.nomeBreve} is an authorised dealer, trained in the technology by ${ROCKS_DESIGN.nome}; the photos on this site are the manufacturer’s pools in Lombardy. What we do have behind us is ${anniDiCantiere} years of building work on the island: excavation, earthworks, construction.`,
-    },
-    {
         domanda: 'La pratica edilizia la seguite voi?',
         domandaEn: 'Do you handle the planning application?',
         risposta:
@@ -92,8 +86,8 @@ export default function Sicilia() {
                         </p>
                         <p className="testo-lungo mt-4">
                             {t(
-                                `Una cosa va detta chiara: in Sicilia non abbiamo ancora consegnato una Piscina Rocks Design. Le fotografie del sito sono piscine della casa madre, costruite in Lombardia. In cantiere portiamo ${anniDiCantiere} anni di lavori edili sull’isola e la formazione sulla tecnologia fatta con ${ROCKS_DESIGN.nome}.`,
-                                `One thing should be said plainly: we have not yet handed over a Piscine Rocks Design pool in Sicily. The photos on this site are the manufacturer’s pools, built in Lombardy. What we bring to the site is ${anniDiCantiere} years of building work on the island and our training in the technology with ${ROCKS_DESIGN.nome}.`,
+                                `Le fotografie del sito sono piscine della casa madre, costruite in Lombardia. In cantiere portiamo ${anniDiCantiere} anni di lavori edili sull’isola e la formazione sulla tecnologia fatta con ${ROCKS_DESIGN.nome}.`,
+                                `The photos on this site are the manufacturer’s pools, built in Lombardy. What we bring to the site is ${anniDiCantiere} years of building work on the island and our training in the technology with ${ROCKS_DESIGN.nome}.`,
                             )}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
