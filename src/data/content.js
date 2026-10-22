@@ -117,7 +117,7 @@ export const ELEMENTI = [
 ]
 
 /** I tre modelli stanno in un file loro: vedi il commento in `modelli.js`. */
-export { MODELLI } from './modelli.js'
+export { MODELLI, conArticolo } from './modelli.js'
 
 /**
  * Le cinque colorazioni di sabbia Piscine Rocks Design, con i nomi ufficiali
@@ -707,9 +707,9 @@ export const VANTAGGI_ROCKS = [
         titolo: 'Chi non nuota entra lo stesso',
         titoloEn: 'People who do not swim can still get in',
         testo:
-            'Con una vasca in cemento chi ha bambini piccoli, chi non nuota o chi fatica a camminare resta sul bordo, perché la scaletta verticale è l’unico modo di entrare. Con la spiaggia digradante ci si bagna a piccoli passi, fin dove si tocca. Non è soltanto comodità: quando l’opera si qualifica come eliminazione di barriere architettoniche, previa asseverazione di un tecnico abilitato, cambia anche l’aliquota IVA dell’appalto.',
+            'Con una vasca in cemento chi ha bambini piccoli, chi non nuota o chi fatica a camminare resta sul bordo, perché la scaletta verticale è l’unico modo di entrare. Con la spiaggia digradante ci si bagna a piccoli passi, fin dove si tocca.',
         testoEn:
-            'With a concrete pool, people with small children, people who do not swim or who find walking difficult stay on the edge, because the vertical ladder is the only way in. With a sloping beach you get in a small step at a time, as far as you can stand. It is not only about comfort: when the work qualifies as the removal of architectural barriers, subject to sworn certification by a qualified technician, the VAT rate on the contract changes too.',
+            'With a concrete pool, people with small children, people who do not swim or who find walking difficult stay on the edge, because the vertical ladder is the only way in. With a sloping beach you get in a small step at a time, as far as you can stand.',
     },
     {
         titolo: 'La forma segue il terreno',

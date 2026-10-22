@@ -6,7 +6,7 @@ import Rivela from '../components/Rivela'
 import Galleria from '../components/Galleria'
 import ChiusuraContatto from '../components/ChiusuraContatto'
 import { Sezione, IntestazioneSezione, Briciole } from '../components/Sezione'
-import { MODELLI, SABBIE } from '../data/content'
+import { MODELLI, conArticolo } from '../data/content'
 import { ROCKS_DESIGN } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 
@@ -90,28 +90,15 @@ export default function Modello() {
             <Sezione sfondo="bg-superficie">
                 <IntestazioneSezione
                     occhiello={t('Le sabbie', 'The sands')}
-                    titolo={t('Cinque colorazioni di sabbia', 'Five sand colours')}
+                    titolo={t('Il colore dell’acqua lo decide il fondale', 'The floor decides the colour of the water')}
                     testo={t(
-                        'Le sabbie Rocks Design sono cinque ed è il fondale a decidere il colore dell’acqua. Quali si possono usare su questo modello lo verifichiamo a progetto, con i campioni veri sotto il sole del tuo giardino.',
-                        'There are five Rocks Design sands, and it is the floor that decides the colour of the water. Which ones can be used on this model is checked at the design stage, with the real samples in the sun in your garden.',
+                        'Le sabbie Rocks Design sono cinque. Quali si possono usare su questo modello lo verifichiamo a progetto, con i campioni veri sotto il sole del tuo giardino.',
+                        'There are five Rocks Design sands. Which ones can be used on this model is checked at the design stage, with the real samples in the sun in your garden.',
                     )}
                 />
-                <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-                    {SABBIE.map((s, i) => (
-                        <Rivela as="li" key={s.nome} delay={i * 60} className="scheda">
-                            <span
-                                aria-hidden="true"
-                                className="block h-10 w-10 rounded-full ring-1 ring-testo/16"
-                                style={{ background: s.colore }}
-                            />
-                            <h2 className="mt-4 font-display text-xl">{t(`Sabbia ${s.nome}`, `${s.nome} sand`)}</h2>
-                            <p className="mt-2 text-[0.9rem] leading-relaxed text-neutro-400">{t(s.acqua, s.acquaEn)}</p>
-                        </Rivela>
-                    ))}
-                </ul>
                 <Rivela className="mt-8">
                     <Link to="/sabbie" className="link-sottile text-sm font-medium text-accento">
-                        {t('Tutte le sabbie, una per una', 'All the sands, one by one')}
+                        {t('Le cinque sabbie, una per una', 'The five sands, one by one')}
                     </Link>
                 </Rivela>
             </Sezione>
@@ -119,7 +106,7 @@ export default function Modello() {
             {m.galleria.length > 0 && <Sezione>
                 <IntestazioneSezione
                     occhiello={t('Foto Piscine Rocks Design', 'Piscine Rocks Design photos')}
-                    titolo={t(`Il ${m.nome} nelle foto Piscine Rocks Design`, `The ${m.nome} in Piscine Rocks Design photos`)}
+                    titolo={t(`${conArticolo(m.nome, true)} nelle foto Piscine Rocks Design`, `The ${m.nome} in Piscine Rocks Design photos`)}
                 />
                 <Rivela className="mt-12">
                     <Galleria
@@ -156,7 +143,7 @@ export default function Modello() {
                 occhiello={t('Preventivo', 'Quote')}
                 titolo={t(`Un ${m.nome} nel tuo giardino`, `A ${m.nome} in your garden`)}
                 testo={t(
-                    `Mandaci due righe su spazio ed esposizione: capiamo presto se il ${m.nome} ci sta, o se ti conviene un altro modello.`,
+                    `Mandaci due righe su spazio ed esposizione: capiamo presto se ${conArticolo(m.nome)} ci sta, o se ti conviene un altro modello.`,
                     `Send us a couple of lines about the space and which way it faces: we will soon tell you whether the ${m.nome} fits, or whether another model suits you better.`,
                 )}
                 modulo={{ titolo: t(`Richiedi un progetto ${m.nome}`, `Request a ${m.nome} design`) }}

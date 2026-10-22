@@ -400,7 +400,7 @@ export default function Home() {
                     )}
                 </h2>
                 <p className="pg-intro" style={{ maxWidth: '38em', marginBottom: 40 }}>
-                    {t('È il prodotto che costruiamo. In Sicilia non ne abbiamo ancora consegnata una.', 'It is the product we build. We have not yet handed one over in Sicily.')}
+                    {t('È il prodotto che costruiamo, fotografato dalla casa madre.', 'It is the product we build, photographed by the manufacturer.')}
                 </p>
                 <div className="pg-mosaico">
                     {MOSAICO.map((slug, i) => (
@@ -416,6 +416,9 @@ export default function Home() {
                     ))}
                 </div>
                 <CreditoFoto />
+                <p className="credito-foto">
+                    {t('In Sicilia non ne abbiamo ancora consegnata una: la tua sarà disegnata sul tuo giardino.', 'We have not yet handed one over in Sicily: yours will be designed around your garden.')}
+                </p>
                 <Link to="/galleria" className="pg-link-freccia">
                     {t('Tutte le fotografie, con i filtri per modello', 'Every photo, filterable by model')} →
                 </Link>

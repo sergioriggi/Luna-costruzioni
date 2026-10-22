@@ -26,9 +26,9 @@ const FAQ_COSTO = [
         domanda: 'Quanto costa al metro quadro?',
         domandaEn: 'What does it cost per square metre?',
         risposta:
-            `Una Piscina Rocks Design parte da ${PREZZO.cifraLunga}. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'IVA va dal 4% al 22% secondo il tipo di intervento — il 4% riguarda i soli lavori che si qualificano come abbattimento di barriere architettoniche, come spiegato nella domanda sulle agevolazioni fiscali — e l'aliquota giusta la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
+            `Una Piscina Rocks Design parte da ${PREZZO.cifraLunga}. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
         rispostaEn:
-            `A Piscine Rocks Design pool starts from ${CIFRA_EN}. That is a minimum, not a rate: the price per square metre falls as the pool gets bigger, because excavation, plant and transport cost almost the same for a small pool as for a large one. Fountains, water features and hydromassage are optional extras. VAT ranges from 4% to 22% depending on the type of work. The 4% rate applies only to works that qualify as removing architectural barriers, as explained in the question on tax relief, and the correct rate is confirmed by your surveyor or your accountant. The exact figure for your garden comes after the site visit, which is free: the five items above tell you in advance what will push it up.`,
+            `A Piscine Rocks Design pool starts from ${CIFRA_EN}. That is a minimum, not a rate: the price per square metre falls as the pool gets bigger, because excavation, plant and transport cost almost the same for a small pool as for a large one. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and is confirmed by your surveyor or your accountant. The exact figure for your garden comes after the site visit, which is free: the five items above tell you in advance what will push it up.`,
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
@@ -58,9 +58,9 @@ const FAQ_COSTO = [
         domanda: 'Ci sono agevolazioni fiscali?',
         domandaEn: 'Is there any tax relief?',
         risposta:
-            'Dipende dal tipo di intervento, dalla situazione dell’immobile e dalle norme in vigore nell’anno in cui apri il cantiere: è una valutazione che spetta al tuo commercialista o al tuo tecnico, non a noi. Diffida di chi te la promette al telefono senza aver visto una pratica. Una strada però esiste, e riguarda l’IVA più che la detrazione: il n. 41-ter della Tabella A, Parte II del DPR 633/72 porta l’aliquota al 4% per gli appalti di opere direttamente finalizzate al superamento delle barriere architettoniche, in attuazione della Legge 13/1989. L’ingresso digradante di una Piscina Rocks Design, dove si entra camminando invece di scendere una scaletta, è il tipo di caratteristica che può sostenere quella qualificazione: non la garantisce. Decide l’opera nel suo insieme, nel rispetto dei requisiti tecnici fissati dalla legge, e serve l’asseverazione di un tecnico abilitato; senza quella certificazione l’aliquota resta quella ordinaria. È cosa diversa dalla detrazione IRPEF per ristrutturazioni, che segue regole proprie.',
+            'Dipende dal tipo di intervento, dalla situazione dell’immobile e dalle norme in vigore nell’anno in cui apri il cantiere: è una valutazione che spetta al tuo commercialista o al tuo tecnico, non a noi. Diffida di chi te la promette al telefono senza aver visto una pratica.',
         rispostaEn:
-            'It depends on the type of work, the situation of the property and the rules in force in the year you start the build: that assessment belongs to your accountant or your surveyor, not to us. Be wary of anyone who promises it over the phone without having seen any paperwork. There is one route, though, and it concerns VAT rather than a tax deduction: item 41-ter of Table A, Part II of Presidential Decree 633/72 reduces the rate to 4% for contracts for works directly aimed at overcoming architectural barriers, under Law 13/1989. The sloping entry of a Piscine Rocks Design pool, where you walk in instead of climbing down a ladder, is the kind of feature that can support that classification: it does not guarantee it. What counts is the work as a whole, meeting the technical requirements set by law, and it must be certified by a qualified professional; without that certification the standard rate applies. This is separate from the IRPEF income tax deduction for renovation work, which has its own rules.',
+            'It depends on the type of work, the situation of the property and the rules in force in the year you start the build: that assessment belongs to your accountant or your surveyor, not to us. Be wary of anyone who promises it over the phone without having seen any paperwork.',
     },
 ]
 
@@ -115,33 +115,10 @@ export default function QuantoCosta() {
                                 `Piscine Rocks Design from €${PREZZO.daMq.toLocaleString('en-GB')} per m² + VAT`,
                             )}
                         </p>
-                        {/*
-                          PERCHÉ IL 4% È NOMINATO, E PERCHÉ SOLO COME CONDIZIONE.
-                          L'intervallo 4%-22% stava già qui senza spiegazione, e
-                          sembrava arbitrario. Il 4% viene dal n. 41-ter della
-                          Tabella A, Parte II del DPR 633/72: appalti per opere
-                          direttamente finalizzate al superamento o
-                          all'eliminazione delle barriere architettoniche, in
-                          attuazione della Legge 13/1989.
-                          IL CONFINE DA NON SUPERARE: l'aliquota NON segue la
-                          condizione personale del committente — non basta avere
-                          la Legge 104. Segue l'OPERA, che deve rispettare i
-                          requisiti tecnici dell'art. 8.1.13 del DM 236/1989 ed
-                          essere asseverata da un tecnico abilitato; se manca
-                          anche uno solo dei requisiti obbligatori, al punto da
-                          impedire la certificazione di conformità, il 4% non si
-                          applica. Il DM resta in questo commento e fuori dal
-                          testo: in pagina sarebbe rumore, qui serve a chi
-                          manutiene.
-                          Quindi si scrive sempre una condizione, mai un diritto
-                          acquisito, e la chiusura che rimanda al tecnico non va
-                          tolta insieme a una riscrittura di stile: è la
-                          copertura, non un riempitivo.
-                        */}
                         <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-300">
                             {t(
-                                "Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. IVA dal 4% al 22% secondo il tipo di intervento: il 4% è previsto quando l'opera si qualifica come eliminazione di barriere architettoniche ai sensi della Legge 13/1989, previa asseverazione di un tecnico abilitato. L'aliquota giusta la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo dopo aver visto il giardino, e venire a vederlo non costa nulla.",
-                                'The price per square metre falls as the pool gets bigger. Fountains, water features and hydromassage are optional extras. VAT from 4% to 22% depending on the type of work: the 4% rate applies when the work qualifies as removing architectural barriers under Law 13/1989, subject to certification by a qualified professional. Your surveyor or accountant confirms the correct rate. We give the exact price once we have seen the garden, and coming to see it costs you nothing.',
+                                "Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo dopo aver visto il giardino, e venire a vederlo non costa nulla.",
+                                'The price per square metre falls as the pool gets bigger. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and your surveyor or accountant confirms it. We give the exact price once we have seen the garden, and coming to see it costs you nothing.',
                             )}
                         </p>
                         <Link to="/contatti" className="bottone-pieno mt-6">

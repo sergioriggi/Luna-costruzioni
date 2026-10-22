@@ -19,19 +19,21 @@ import { useLingua } from '../i18n/lingua'
  * `data-cta-finale` lo riconosce `scripts/misura-ripetizioni.mjs`, che conta
  * questo blocco a parte.
  */
-export default function ChiusuraContatto({ id = 'contatti', occhiello, titolo, testo, modulo = {} }) {
+export default function ChiusuraContatto({ id = 'contatti', occhiello, titolo, testo, modulo = {}, richiamo = false }) {
     const { t } = useLingua()
     return (
         <div data-cta-finale="">
             <Sezione id={id}>
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                     <IntestazioneSezione occhiello={occhiello} titolo={titolo} testo={testo}>
-                        <p className="testo-lungo mt-4">
-                            {t(
-                                `${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
-                                `${AZIENDA.referente} will call you back within 24 working hours.`,
-                            )}
-                        </p>
+                        {richiamo && (
+                            <p className="testo-lungo mt-4">
+                                {t(
+                                    `${AZIENDA.referente} ti richiama entro 24 ore lavorative.`,
+                                    `${AZIENDA.referente} will call you back within 24 working hours.`,
+                                )}
+                            </p>
+                        )}
                     </IntestazioneSezione>
                     <Rivela delay={100}>
                         <ModuloContatto {...modulo} />

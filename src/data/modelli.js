@@ -1,3 +1,11 @@
+/** Articolo determinativo giusto: «il Caraibi», «l'Alpi». */
+export const conArticolo = (nome, maiuscolo = false) => {
+    const vocale = /^[aeiou]/i.test(nome)
+    const art = vocale ? "L'" : 'Il '
+    const a = maiuscolo ? art : art.toLowerCase()
+    return `${a}${nome}`
+}
+
 /**
  * I tre modelli: Caraibi, Mediterranea, Alpi.
  *
@@ -102,7 +110,6 @@ export const MODELLI = [
             { slug: 'masso-luminoso-nell-acqua', didascalia: 'Massi grigi e un salto d’acqua tra i sassi: l’Alpi mette la roccia davanti a tutto.', didascaliaEn: 'Grey boulders and a fall of water between the stones: the Alpi puts rock first.' },
             { slug: 'monolite-al-tramonto', didascalia: 'Un solo masso nell’acqua ferma, con la fascia di luce per la sera.', didascaliaEn: 'A single boulder in still water, with a band of light for the evening.' },
             { slug: 'cascata-e-punto-luce', didascalia: 'Punti luce nei massi e una cascata sullo sfondo, senza spiaggia estesa.', didascaliaEn: 'Lights set in the boulders and a waterfall behind, with no wide beach.' },
-            { slug: 'acqua-in-movimento', didascalia: 'Il getto muove l’acqua davanti ai massi scuri della riva.', didascaliaEn: 'The jet stirs the water in front of the dark boulders on the edge.' },
         ],
     },
 ]
