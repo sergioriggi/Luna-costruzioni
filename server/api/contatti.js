@@ -9,6 +9,7 @@
 import express from 'express'
 import { convalidaLead, sembraUnRobot } from '../convalida.js'
 import { inviaLead } from '../posta.js'
+import { creaSegnalatoreAds } from '../google-ads.js'
 
 /**
  * Limitatore di frequenza in memoria, finestra scorrevole.
@@ -59,7 +60,7 @@ function limitatore({ limiteInvii, finestraMinuti, tettoOrario }) {
     }
 }
 
-export function creaRotteApi(configurazione) {
+export function creaRotteApi(configurazione, { segnalaAds = creaSegnalatoreAds(configurazione) } = {}) {
     const rotte = express.Router()
     const consenti = limitatore(configurazione.lead)
 
@@ -96,6 +97,9 @@ export function creaRotteApi(configurazione) {
             // dell'hosting resta utile senza diventare un archivio non
             // dichiarato nell'informativa privacy.
             console.log(`[lead] inviata — origine: ${dati.origine || 'sito'}`)
+            // Dopo la posta e senza aspettarla: il contatto è già al sicuro e la
+            // risposta al visitatore non deve dipendere da Google. Non lancia mai.
+            if (dati.gclid) void segnalaAds({ gclid: dati.gclid, idConversione: dati.idConversione })
             return res.json({ ok: true })
         } catch (errore) {
             console.error('[lead] invio fallito:', errore.message)

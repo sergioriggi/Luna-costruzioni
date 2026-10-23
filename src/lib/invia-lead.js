@@ -1,5 +1,6 @@
 import { AZIENDA } from '../data/site'
 import { segnalaConversione } from './conversione'
+import { gclidConsentito } from './clic-annuncio'
 
 /**
  * Invio di una richiesta di contatto.
@@ -121,9 +122,17 @@ async function inviaConWeb3Forms(dati, oggetto) {
  * punto unico d'invio, vale per tutti **per costruzione**, e nessuno può
  * dimenticarsene aggiungendo un modulo nuovo.
  */
-function confermato() {
-    segnalaConversione()
+function confermato(idConversione) {
+    segnalaConversione('modulo', idConversione)
     return INVIATO
+}
+
+function nuovoId() {
+    try {
+        return crypto.randomUUID()
+    } catch {
+        return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`
+    }
 }
 
 /**
@@ -131,6 +140,11 @@ function confermato() {
  *   `mailto` significa che il client di posta è già stato aperto.
  */
 export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costruzioni' } = {}) {
+    // Un identificativo per questo invio: il tag nel browser lo manda a Google
+    // come `transaction_id`, il server come `orderId`, così se partono entrambi
+    // Google conta una conversione sola. Non contiene nulla di personale.
+    const idConversione = nuovoId()
+
     if (CHIAVE_WEB3FORMS) {
         /*
          * Qualunque cosa vada storta — rete assente, blocco di un'estensione
@@ -145,7 +159,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         } catch {
             riuscito = false
         }
-        if (riuscito) return confermato()
+        if (riuscito) return confermato(idConversione)
         apriClientDiPosta(dati, oggetto)
         return RIPIEGO_POSTA
     }
@@ -154,6 +168,10 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         ...dati,
         sito: undefined,
         origine: typeof window !== 'undefined' ? window.location.pathname : '',
+        idConversione,
+        // Solo con il consenso dato: altrimenti stringa vuota e il server non
+        // segnala nulla a Google Ads (vedi `src/lib/clic-annuncio.js`).
+        gclid: gclidConsentito(),
     }
 
     let risposta
@@ -167,7 +185,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         return ERRORE // rete assente o richiesta bloccata
     }
 
-    if (risposta.ok) return confermato()
+    if (risposta.ok) return confermato(idConversione)
 
     // 404: nessun server dietro (hosting statico). 503: server presente ma
     // senza credenziali SMTP. In entrambi i casi il contatto va salvato.

@@ -98,7 +98,7 @@ const GA4 = import.meta.env.VITE_GA4_ID || ''
  * l'azione del modulo: è l'unica su cui l'offerta automatica deve imparare.
  * Quella è una spunta nel pannello, non una riga di codice.
  */
-export function segnalaConversione(azione = 'modulo') {
+export function segnalaConversione(azione = 'modulo', idTransazione = '') {
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return false
 
     // Ogni destinatario ha il proprio `try`: misurare non deve mai rompere un
@@ -112,6 +112,7 @@ export function segnalaConversione(azione = 'modulo') {
             window.gtag('event', 'conversion', {
                 send_to: invio,
                 ...(azione === 'modulo' ? { value: VALORE, currency: 'EUR' } : {}),
+                ...(azione === 'modulo' && idTransazione ? { transaction_id: idTransazione } : {}),
             })
             partito = true
         } catch { /* ignorato */ }

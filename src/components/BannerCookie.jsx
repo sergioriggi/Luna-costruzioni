@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from '../lib/instradamento'
 import { useLingua } from '../i18n/lingua'
+import { CHIAVE_CONSENSO, registraClicAnnuncio, dimenticaClicAnnuncio } from '../lib/clic-annuncio'
 
-export const CHIAVE = 'luna-consenso-cookie'
+export const CHIAVE = CHIAVE_CONSENSO
 
 /**
  * Banner cookie in **Consent Mode v2, modalità avanzata**.
@@ -61,6 +62,9 @@ export default function BannerCookie() {
      */
     useEffect(() => {
         caricaTag()
+        // Legge il `gclid` dall'indirizzo d'arrivo (solo in memoria finché non c'è
+        // consenso): vedi `src/lib/clic-annuncio.js`.
+        registraClicAnnuncio()
         try {
             const scelta = localStorage.getItem(CHIAVE)
             if (!scelta) setVisibile(true)
@@ -212,6 +216,7 @@ function caricaTag() {
  * `gtag` esista: senza identificatori configurati non è stato definito.
  */
 export function concediConsenso() {
+    registraClicAnnuncio()
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return
     window.gtag('consent', 'update', {
         ad_storage: 'granted',
@@ -229,6 +234,7 @@ export function concediConsenso() {
  * `src/components/RevocaConsenso.jsx`, insieme al resto dell'operazione.
  */
 export function negaConsenso() {
+    dimenticaClicAnnuncio()
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return
     window.gtag('consent', 'update', {
         ad_storage: 'denied',

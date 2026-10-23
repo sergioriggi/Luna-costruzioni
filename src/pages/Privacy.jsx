@@ -105,6 +105,13 @@ export default function Privacy() {
                         <a className="link-sottile text-accento" href="/cookie-policy">{t('cookie policy', 'cookie policy')}</a>.
                     </p>
 
+                    <p>
+                        {t(
+                            'Solo se acconsenti, e solo quando arrivi da un nostro annuncio, quando invii il modulo il nostro server comunica a Google Ads che da quel clic è nata una richiesta: trasmette l’identificativo del clic, l’ora e un codice casuale dell’invio, senza nome, e-mail, telefono né testo del messaggio. Serve a misurare gli annunci e a farli funzionare meglio; il trattamento si fonda sul consenso (art. 6.1.a GDPR) e si interrompe revocandolo dalla cookie policy.',
+                            'Only if you consent, and only when you arrive from one of our ads, when you submit the form our server tells Google Ads that the click led to an enquiry: it sends the click identifier, the time and a random submission code, without your name, email, phone number or message. This is used to measure the ads and make them work better; processing is based on consent (Art. 6(1)(a) GDPR) and stops when you withdraw it in the cookie policy.',
+                        )}
+                    </p>
+
                     <h2 className="pt-4 font-display text-2xl">
                         {t('Comunicazione dei dati', 'Disclosure of data')}
                     </h2>

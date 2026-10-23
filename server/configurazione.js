@@ -43,6 +43,30 @@ const smtp = {
     pass: testo('SMTP_PASS'),
 }
 
+/**
+ * Segnalazione lato server delle conversioni a Google Ads (`server/google-ads.js`).
+ * Tutto facoltativo: senza queste variabili il sito funziona come prima e la
+ * conversione resta affidata solo al tag nel browser.
+ */
+const ads = {
+    customerId: testo('GOOGLE_ADS_CUSTOMER_ID').replace(/\D/g, ''),
+    loginCustomerId: testo('GOOGLE_ADS_LOGIN_CUSTOMER_ID').replace(/\D/g, ''),
+    developerToken: testo('GOOGLE_ADS_DEVELOPER_TOKEN'),
+    clientId: testo('GOOGLE_ADS_CLIENT_ID'),
+    clientSecret: testo('GOOGLE_ADS_CLIENT_SECRET'),
+    refreshToken: testo('GOOGLE_ADS_REFRESH_TOKEN'),
+    /** Nome risorsa: `customers/<ID>/conversionActions/<ID>` */
+    azioneConversione: testo('GOOGLE_ADS_AZIONE_CONVERSIONE'),
+    versioneApi: testo('GOOGLE_ADS_VERSIONE_API', 'v26'),
+    valore: numero('GOOGLE_ADS_VALORE', 1),
+    /** `true`: Google convalida la richiesta ma non registra nulla. Per il primo collaudo. */
+    soloConvalida: booleano('GOOGLE_ADS_SOLO_CONVALIDA', false),
+}
+const adsAttivo = Boolean(
+    ads.customerId && ads.developerToken && ads.clientId && ads.clientSecret &&
+    ads.refreshToken && ads.azioneConversione,
+)
+
 /** Senza uno di questi tre non si può inviare nulla. */
 const postaAttiva = Boolean(smtp.host && smtp.user && smtp.pass)
 
@@ -95,6 +119,8 @@ export const CONFIGURAZIONE = Object.freeze({
     politicaContenuti: politicaContenuti(),
     postaAttiva,
     smtp: Object.freeze(smtp),
+    adsAttivo,
+    ads: Object.freeze(ads),
     lead: Object.freeze({
         // Il mittente deve essere una casella del dominio, altrimenti SPF e
         // DKIM non tornano e il messaggio finisce nello spam.

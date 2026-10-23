@@ -6,6 +6,9 @@
  * una garanzia — chiunque può inviare una richiesta senza passare dal modulo.
  */
 
+/** Forma di un `gclid` e dell'id di conversione: lettere, cifre, `_` e `-`. */
+const IDENTIFICATORE = /^[A-Za-z0-9_-]{10,200}$/
+
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/
 
 /** Limiti di lunghezza: un campo lungo un megabyte è sempre un abuso. */
@@ -50,6 +53,12 @@ export function convalidaLead(grezzo) {
         if (typeof dati[campo] === 'string' && dati[campo].length > massimo) {
             errori[campo] = `Testo troppo lungo (massimo ${massimo} caratteri).`
         }
+    }
+
+    // `gclid` e `idConversione` servono solo alla segnalazione ad Ads. Un valore
+    // malformato non deve far perdere il contatto: si scarta e basta.
+    for (const campo of ['gclid', 'idConversione']) {
+        if (typeof dati[campo] !== 'string' || !IDENTIFICATORE.test(dati[campo])) delete dati[campo]
     }
 
     return { dati, errori, valido: Object.keys(errori).length === 0 }

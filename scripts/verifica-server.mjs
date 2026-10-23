@@ -10,6 +10,8 @@
  */
 import { creaApplicazione } from '../server/avvio.js'
 import { CONFIGURAZIONE } from '../server/configurazione.js'
+import { creaSegnalatoreAds } from '../server/google-ads.js'
+import { convalidaLead } from '../server/convalida.js'
 
 const errori = []
 let eseguite = 0
@@ -184,6 +186,59 @@ if (!CONFIGURAZIONE.postaAttiva) {
 {
     const r = await chiedi('/api/inesistente')
     verifica('endpoint API ignoto → 404 JSON', r.status === 404)
+}
+
+// ── segnalazione lato server a Google Ads ────────────────────────────────
+{
+    const GCLID = 'Cj0KCQjw_esempio-1234'
+    const VALIDO_ADS = { nome: 'Mario Rossi', email: 'mario@example.it', telefono: '3330000000', consenso: true }
+
+    const c1 = convalidaLead({ ...VALIDO_ADS, gclid: GCLID, idConversione: 'abc-1234567890' })
+    verifica('gclid ben formato passa la convalida', c1.dati.gclid === GCLID && c1.valido)
+    const c2 = convalidaLead({ ...VALIDO_ADS, gclid: 'x" ; drop', idConversione: 'a b' })
+    verifica('gclid malformato viene scartato senza bocciare il contatto',
+        c2.valido && c2.dati.gclid === undefined && c2.dati.idConversione === undefined)
+
+    const chiamate = []
+    const finto = rispostaAds => async (url, opzioni) => {
+        chiamate.push({ url: String(url), opzioni })
+        if (String(url).includes('oauth2')) {
+            return new Response(JSON.stringify({ access_token: 'tok', expires_in: 3600 }), { status: 200 })
+        }
+        return new Response(JSON.stringify(rispostaAds), { status: 200 })
+    }
+    const config = {
+        adsAttivo: true,
+        ads: {
+            customerId: '2804042131', loginCustomerId: '', developerToken: 'dev', clientId: 'id',
+            clientSecret: 'sec', refreshToken: 'rt', azioneConversione: 'customers/2804042131/conversionActions/1',
+            versioneApi: 'v26', valore: 1, soloConvalida: false,
+        },
+    }
+
+    const spento = await creaSegnalatoreAds({ adsAttivo: false })({ gclid: GCLID })
+    verifica('senza credenziali la segnalazione è disattiva', spento.stato === 'disattivo')
+
+    const esito = await creaSegnalatoreAds(config, { fetchImpl: finto({}), adesso: () => new Date('2026-10-23T12:05:09Z') })(
+        { gclid: GCLID, idConversione: 'abc-1234567890' })
+    verifica('conversione segnalata', esito.stato === 'segnalata', esito.stato)
+    const carico = JSON.parse(chiamate.find(c => c.url.includes('googleads'))?.opzioni.body ?? '{}')
+    const conv = carico.conversions?.[0] ?? {}
+    verifica('invia gclid, azione e orderId', conv.gclid === GCLID && conv.orderId === 'abc-1234567890'
+        && conv.conversionAction === config.ads.azioneConversione)
+    verifica('formato data accettato da Ads', conv.conversionDateTime === '2026-10-23 12:05:09+00:00', conv.conversionDateTime)
+    verifica('dichiara il consenso e usa partialFailure',
+        conv.consent?.adUserData === 'GRANTED' && carico.partialFailure === true)
+    verifica('endpoint della customer giusta',
+        chiamate.some(c => c.url === 'https://googleads.googleapis.com/v26/customers/2804042131:uploadClickConversions'))
+
+    const rifiutata = await creaSegnalatoreAds(config, {
+        fetchImpl: finto({ partialFailureError: { message: 'gclid scaduto' } }),
+    })({ gclid: GCLID })
+    verifica('un partialFailureError non è un successo', rifiutata.stato === 'rifiutata', rifiutata.stato)
+
+    const guasto = await creaSegnalatoreAds(config, { fetchImpl: async () => { throw new Error('rete') } })({ gclid: GCLID })
+    verifica('un errore di rete non lancia', guasto.stato === 'errore', guasto.stato)
 }
 
 server.close()
