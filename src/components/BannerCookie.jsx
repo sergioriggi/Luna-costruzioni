@@ -159,11 +159,16 @@ function identificatori() {
  * partano i ping: serve a chi ha già acconsentito, perché il suo `granted`
  * arriva pochi istanti dopo, nello stesso effetto.
  *
- * `ads_data_redaction: true` rimuove l'identificatore del clic (`gclid`) dai
- * ping quando il consenso è negato. È una scelta esplicita: meno segnale per
- * la modellazione delle conversioni, meno dati trasmessi. Metterlo a `false`
- * darebbe a Google un'attribuzione più precisa anche senza consenso, e
- * andrebbe dichiarato diversamente nell'informativa.
+ * `ads_data_redaction` è a `false` per scelta, dal 23 ottobre 2026. A `true`
+ * il `gclid` veniva tolto dai ping di chi rifiuta (in produzione si vedeva
+ * `gclid=0` nell'indirizzo del ping), quindi un contatto di chi ha scelto
+ * «Solo necessari» arrivava a Google come evento anonimo, non legabile al clic
+ * sull'annuncio: e ai volumi di Luna, circa dieci clic al giorno, Google non
+ * ha dati sufficienti per stimarlo. Quelle conversioni andavano perse. Ora il
+ * `gclid` presente nell'indirizzo della pagina viaggia nel ping anche senza
+ * cookie, e fra le pagine grazie a `url_passthrough`. È un cambio di postura,
+ * non una correzione: rimetterlo a `true` richiede di rimettere a posto anche
+ * le due informative (`src/pages/Cookie.jsx`, `src/pages/Privacy.jsx`).
  *
  * `url_passthrough: true` fa sopravvivere `gclid` fra le pagine passandolo
  * negli indirizzi, dato che senza cookie non c'è dove tenerlo.
@@ -186,7 +191,7 @@ function caricaTag() {
         analytics_storage: 'denied',
         wait_for_update: 500,
     })
-    window.gtag('set', 'ads_data_redaction', true)
+    window.gtag('set', 'ads_data_redaction', false)
     window.gtag('set', 'url_passthrough', true)
 
     const s = document.createElement('script')

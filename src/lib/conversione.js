@@ -18,10 +18,10 @@
  * 2. Senza etichetta, nessun evento. Il consenso invece non è più un silenzio:
  *    dal 26 settembre 2026 il sito usa il Consent Mode v2 in modalità avanzata
  *    (`src/components/BannerCookie.jsx`), quindi `window.gtag` esiste sempre e
- *    la conversione parte anche da chi ha rifiutato — in forma anonima, senza
- *    cookie e senza identificatore del clic, come un ping che dice «è arrivata
- *    una richiesta» e nient'altro. Google la usa per stimare in aggregato le
- *    conversioni che non può attribuire.
+ *    la conversione parte anche da chi ha rifiutato — senza
+ *    cookie ma con l'identificatore del clic preso dall'indirizzo della pagina
+ *    (`ads_data_redaction` è `false` dal 23 ottobre 2026, vedi `BannerCookie.jsx`),
+ *    così Google può legare il contatto all'annuncio da cui è arrivato.
  *
  *    Prima qui c'era scritto il contrario, e la previsione che ne seguiva —
  *    «i numeri di Ads saranno più bassi delle richieste in casella» — non vale
