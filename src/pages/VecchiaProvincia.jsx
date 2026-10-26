@@ -2,7 +2,7 @@ import { Navigate, useParams } from '../lib/instradamento'
 import { PROVINCE } from '../data/site'
 
 /**
- * Le nove pagine provinciali di prima, ora sezioni di /piscine-rocks-design/sicilia.
+ * Le pagine provinciali di prima, ora sezioni di /piscine-rocks-design/sicilia.
  *
  * In produzione non si arriva mai qui: il server risponde 301 prima ancora di
  * servire la pagina (`public/.htaccess`, `server/sito-statico.js`). Questo

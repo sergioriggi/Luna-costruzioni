@@ -45,12 +45,18 @@ for (const percorso of ['/galleria', '/galleria/', '/quanto-costa', '/piscine-ro
 }
 
 // ── vecchie pagine provinciali: 301 verso l'ancora ─────────────────────
-for (const percorso of ['/piscine-rocks-design/palermo', '/piscine-rocks-design/enna/', '/piscine-rocks-design/agrigento/index.html']) {
+for (const percorso of ['/piscine-rocks-design/catania', '/piscine-rocks-design/enna/', '/piscine-rocks-design/agrigento/index.html']) {
     const r = await chiedi(percorso)
     const slug = percorso.split('/')[2]
     verifica(`${percorso} risponde 301`, r.status === 301, `ricevuto ${r.status}`)
     verifica(`${percorso} porta a #${slug}`, (r.headers.get('location') ?? '') === `/piscine-rocks-design/sicilia#${slug}`,
         r.headers.get('location') ?? 'nessun Location')
+}
+// Palermo e Trapani non sono più servite (26/10/2026): 301 alla pagina Sicilia senza ancora.
+for (const percorso of ['/piscine-rocks-design/palermo', '/piscine-rocks-design/trapani/']) {
+    const r = await chiedi(percorso)
+    verifica(`${percorso} risponde 301`, r.status === 301, `ricevuto ${r.status}`)
+    verifica(`${percorso} porta a /piscine-rocks-design/sicilia`, r.headers.get('location') === '/piscine-rocks-design/sicilia', r.headers.get('location') ?? 'nessun Location')
 }
 for (const percorso of ['/showroom', '/showroom/']) {
     const r = await chiedi(percorso)

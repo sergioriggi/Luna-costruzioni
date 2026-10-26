@@ -117,8 +117,9 @@ export function montaSito(app, { cartellaSito, politicaContenuti }) {
     })
 
     /**
-     * Le nove pagine provinciali di prima: 301 verso la loro sezione della
-     * pagina Sicilia. Stessa regola del `RewriteRule … [R=301,NE]` nel
+     * Le pagine provinciali di prima: 301 verso la loro sezione della
+     * pagina Sicilia. Palermo e Trapani non sono più servite (26/10/2026):
+     * i loro vecchi indirizzi vanno alla pagina Sicilia senza ancora. Stessa regola del `RewriteRule … [R=301,NE]` nel
      * .htaccess; qui l'elenco viene da `PROVINCE`, quindi non può divergere.
      */
     const vecchieProvince = new Set(PROVINCE.map(p => p.slug))
@@ -130,7 +131,12 @@ export function montaSito(app, { cartellaSito, politicaContenuti }) {
             return res.redirect(301, '/galleria')
         }
         const m = /^\/piscine-rocks-design\/([a-z]+)(?:\/|\/index\.html)?$/.exec(req.path)
-        if (!m || !vecchieProvince.has(m[1])) return avanti()
+        if (!m) return avanti()
+        if (m[1] === 'palermo' || m[1] === 'trapani') {
+            res.setHeader('Cache-Control', 'public, max-age=86400')
+            return res.redirect(301, '/piscine-rocks-design/sicilia')
+        }
+        if (!vecchieProvince.has(m[1])) return avanti()
         res.setHeader('Cache-Control', 'public, max-age=86400')
         return res.redirect(301, `/piscine-rocks-design/sicilia#${m[1]}`)
     })

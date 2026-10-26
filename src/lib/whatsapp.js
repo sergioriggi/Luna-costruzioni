@@ -34,7 +34,7 @@ const ECCEZIONI = {
 /**
  * `ancora` è il frammento dell'indirizzo, con o senza `#`: sulla pagina
  * Sicilia dice da quale provincia arriva il cliente (`#enna` → «Sicilia —
- * Enna»). Si accettano anche i nove indirizzi provinciali di prima, che il
+ * Enna»). Si accettano anche i vecchi indirizzi provinciali, che il
  * server ridirige ma che possono ancora circolare in vecchi link.
  */
 export function etichettaPagina(percorso = '', ancora = '') {

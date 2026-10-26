@@ -71,7 +71,7 @@ export default function QuantoCosta() {
         <>
             <Seo
                 titolo="Quanto costa una Piscina Rocks Design | Luna Costruzioni"
-                descrizione={`Piscine Rocks Design ${PREZZO.testo}. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratuiti in tutta la Sicilia.`}
+                descrizione={`Piscine Rocks Design ${PREZZO.testo}. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratis in 7 province.`}
                 percorso="/quanto-costa"
                 immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_COSTO)]}

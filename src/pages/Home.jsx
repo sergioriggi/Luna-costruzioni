@@ -276,7 +276,7 @@ export default function Home() {
     return (
         <div className="pg">
             <Seo
-                titolo="Luna Costruzioni | Piscine Rocks Design in tutta la Sicilia"
+                titolo="Luna Costruzioni | Piscine Rocks Design in Sicilia"
                 descrizione="Impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: piscina con spiaggia in sabbia chiavi in mano, scavi con mezzi propri."
                 percorso="/"
                 schema={[
@@ -549,16 +549,16 @@ export default function Home() {
                 <MappaSicilia />
                 <div className="pg-sicilia-testo">
                     <div>
-                        <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
+                        <h2 className="pg-titolo">{t('In Sicilia, provincia per provincia.', 'In Sicily, province by province.')}</h2>
                         <p className="pg-sicilia-intro">
                             {t(
-                                'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
-                                'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
+                                'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in sette province, per ville private e per strutture ricettive; Palermo e Trapani fanno capo all’altro concessionario.',
+                                'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in seven provinces, for private villas and for hotels and guest houses; Palermo and Trapani are covered by the other dealer.',
                             )}
                         </p>
                     </div>
                     <div>
-                        <ul className="pg-province" aria-label={t('Le nove province', 'The nine provinces')}>
+                        <ul className="pg-province" aria-label={t('Le province servite', 'Provinces we serve')}>
                             {PROVINCE.map(p => (
                                 <li key={p.slug}>
                                     <Link to={`/piscine-rocks-design/sicilia#${p.slug}`}>{p.nome}</Link>

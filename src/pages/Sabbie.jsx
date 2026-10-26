@@ -202,8 +202,8 @@ export default function Sabbie() {
             <Cta
                 titolo={t('Portiamo i campioni in giardino', 'We bring the samples to your garden')}
                 testo={t(
-                    `Durante il sopralluogo mettiamo i campioni di sabbia sotto il sole del tuo terreno. In tutta la ${AZIENDA.zona}, gratis.`,
-                    'During the site visit we lay the sand samples out in the sun on your land. Anywhere in Sicily, free of charge.',
+                    `Durante il sopralluogo mettiamo i campioni di sabbia sotto il sole del tuo terreno. Nelle sette province in cui lavoriamo, gratis.`,
+                    'During the site visit we lay the sand samples out in the sun on your land. In the seven provinces we serve, free of charge.',
                 )}
                 primaria={{ to: '/contatti', label: t('Chiedi un preventivo', 'Ask for a quote') }}
                 secondaria={{ to: '/modelli', label: t('Vedi i modelli', 'See the models') }}

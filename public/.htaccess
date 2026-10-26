@@ -53,7 +53,7 @@ RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|d
 </IfModule>
 
 
-# Le nove pagine provinciali di prima sono diventate sezioni di una pagina
+# Le pagine provinciali di prima sono diventate sezioni di una pagina
 # sola. Ogni vecchio indirizzo risponde 301 verso la sua ancora, così link e
 # posizioni già acquisiti passano alla pagina nuova. `NE` serve perché il `#`
 # arrivi al browser com'è, invece di diventare `%23`.
@@ -63,7 +63,10 @@ RedirectMatch 404 ^/(media-sources|src|scripts|server|public|node_modules|dist|d
     RewriteEngine On
     # La vecchia pagina /showroom non c'è più (decisione del 30/09/2026).
     RewriteRule ^showroom(/|/index\.html)?$ /galleria [R=301,L]
-    RewriteRule ^piscine-rocks-design/(palermo|catania|messina|siracusa|ragusa|trapani|agrigento|caltanissetta|enna)(/|/index\.html)?$ /piscine-rocks-design/sicilia#$1 [R=301,NE,L]
+    RewriteRule ^piscine-rocks-design/(catania|messina|siracusa|ragusa|agrigento|caltanissetta|enna)(/|/index\.html)?$ /piscine-rocks-design/sicilia#$1 [R=301,NE,L]
+    # Palermo e Trapani non sono più province servite (26/10/2026): i vecchi
+    # indirizzi vanno alla pagina Sicilia senza ancora.
+    RewriteRule ^piscine-rocks-design/(palermo|trapani)(/|/index\.html)?$ /piscine-rocks-design/sicilia [R=301,L]
 </IfModule>
 
 # Serve /galleria come /galleria/index.html senza redirect,

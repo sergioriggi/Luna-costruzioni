@@ -11,7 +11,7 @@ import { useLingua } from '../i18n/lingua'
 /*
  * Una pagina sola per tutta l'isola.
  *
- * Prima erano nove pagine, una per provincia, uguali al 95%: cambiavano il
+ * Prima erano nove pagine, una per provincia (oggi le province servite sono sette), uguali al 95%: cambiavano il
  * nome della città, una riga d'apertura e i nomi nelle FAQ. Piscine Rocks
  * Design le ha giudicate ripetitive, e avevano ragione. Qui il testo comune —
  * com'è fatta, permessi, costi, stagione — si scrive una volta; per ogni
@@ -32,12 +32,12 @@ const anniDiCantiere = AZIENDA.annoRiferimento - AZIENDA.annoFondazione
 
 const FAQ = [
     {
-        domanda: 'Lavorate in tutte e nove le province?',
-        domandaEn: 'Do you work in all nine provinces?',
+        domanda: 'In quali province lavorate?',
+        domandaEn: 'Which provinces do you work in?',
         risposta:
-            'Sì. Scavo e posa li fanno le squadre dell’impresa, che si spostano con i nostri mezzi: un cantiere lontano allunga solo i trasporti di massi e macchine.',
+            'In sette: Agrigento, Caltanissetta, Catania, Enna, Messina, Ragusa e Siracusa. Palermo e Trapani fanno capo all’altro concessionario Piscine Rocks Design per la Sicilia. Scavo e posa li fanno le squadre dell’impresa, che si spostano con i nostri mezzi: un cantiere lontano allunga solo i trasporti di massi e macchine.',
         rispostaEn:
-            'Yes. Digging and laying are done by our own crews, who travel with our own machines. A distant site only means longer haulage for the boulders and the plant.',
+            'Seven: Agrigento, Caltanissetta, Catania, Enna, Messina, Ragusa and Siracusa. Palermo and Trapani are covered by the other Piscine Rocks Design dealer for Sicily. Digging and laying are done by our own crews, who travel with our own machines. A distant site only means longer haulage for the boulders and the plant.',
     },
     {
         domanda: 'La pratica edilizia la seguite voi?',
@@ -54,15 +54,15 @@ export default function Sicilia() {
     return (
         <>
             <Seo
-                titolo="Piscine Rocks Design nelle nove province | Luna Costruzioni"
-                descrizione="Nove province: cosa cambia in Sicilia per una piscina con spiaggia in sabbia e pareti in roccia, tra roccia lavica, calcare, vento e pendenze."
+                titolo="Piscine Rocks Design in 7 province | Luna Costruzioni"
+                descrizione="Sette province: cosa cambia in Sicilia per una piscina con spiaggia in sabbia e pareti in roccia, tra roccia lavica, calcare, vento e pendenze."
                 percorso={PERCORSO_SICILIA}
                 schema={[
                     schemaBriciole(BRICIOLE),
                     schemaServizio({
                         nome: 'Realizzazione Piscine Rocks Design in Sicilia',
                         descrizione:
-                            'Progettazione e realizzazione di piscine in Tecnologia Rocks Design® nelle nove province siciliane, chiavi in mano.',
+                            'Progettazione e realizzazione di piscine in Tecnologia Rocks Design® in sette province siciliane (Agrigento, Caltanissetta, Catania, Enna, Messina, Ragusa, Siracusa), chiavi in mano.',
                         area: 'Sicilia',
                     }),
                     schemaFaq(FAQ),
@@ -73,15 +73,15 @@ export default function Sicilia() {
             <Sezione>
                 <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
                     <Rivela className="max-w-prosa">
-                        <p className="occhiello">{t('Le nove province', 'All nine provinces')}</p>
+                        <p className="occhiello">{t('Sette province', 'Seven provinces')}</p>
                         <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl sm:leading-none">
                             {t('Piscine Rocks Design in Sicilia', 'Piscine Rocks Design pools in Sicily')}
                         </h1>
                         <p className="testo-lungo mt-6">
                             <strong className="font-semibold text-testo">{AZIENDA.nome}</strong>{' '}
                             {t(
-                                `è ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Siamo un’impresa edile: scavo, movimento terra e posa dei massi li facciamo con mezzi e squadre nostre, da Trapani a Siracusa.`,
-                                'is an authorised Piscine Rocks Design dealer in Sicily. We are a building contractor: digging, earthworks and laying the boulders are done with our own machines and crews, from Trapani to Siracusa.',
+                                `è ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Siamo un’impresa edile: scavo, movimento terra e posa dei massi li facciamo con mezzi e squadre nostre, da Agrigento a Messina.`,
+                                'is an authorised Piscine Rocks Design dealer in Sicily. We are a building contractor: digging, earthworks and laying the boulders are done with our own machines and crews, from Agrigento to Messina.',
                             )}
                         </p>
                         <p className="testo-lungo mt-4">

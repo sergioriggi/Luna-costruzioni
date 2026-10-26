@@ -223,21 +223,15 @@ export const SOCIAL = [
  * sezione per provincia, con ancora `#slug`), il menù del modulo, lo schema
  * areaServed, WhatsApp e llms.txt.
  *
+ * Sono sette. Palermo e Trapani fanno capo all'altro concessionario Piscine
+ * Rocks Design per la Sicilia (accordo tra i due concessionari, Luciano,
+ * 26/10/2026): non vanno mai rimesse qui né altrove nel sito.
+ *
  * `intro` è l'unico testo davvero locale: deve dire una cosa che vale per
  * quella provincia e non per le altre. Mai frasi che facciano pensare a
  * piscine già costruite lì (e nemmeno frasi che dicano che non ce ne sono).
  */
 export const PROVINCE = [
-    {
-        slug: 'palermo',
-        nome: 'Palermo',
-        sigla: 'PA',
-        intro:
-            'Tra Mondello, Cefalù e le ville di Monreale e Bagheria i giardini sono spesso piccoli e chiusi da muri. Qui conta prima di tutto come entrano i mezzi: un cancello stretto sposta tempi e costi più della dimensione della vasca.',
-        introEn:
-            "Between Mondello, Cefalù and the villas of Monreale and Bagheria, gardens are often small and walled. What matters first is how the machines get in: a narrow gate changes time and cost more than the size of the pool.",
-        localita: ['Mondello', 'Bagheria', 'Cefalù', 'Carini', 'Monreale', 'Termini Imerese'],
-    },
     {
         slug: 'catania',
         nome: 'Catania',
@@ -277,16 +271,6 @@ export const PROVINCE = [
         introEn:
             "Around Ragusa the land is divided by dry-stone walls and country houses are often masserie among carob and olive trees. It is the setting the Mediterranea model is designed for: warm stone and plants that already grow on their own.",
         localita: ['Modica', 'Scicli', 'Marina di Ragusa', 'Vittoria', 'Comiso'],
-    },
-    {
-        slug: 'trapani',
-        nome: 'Trapani',
-        sigla: 'TP',
-        intro:
-            'Da Marsala a Castellammare del Golfo vento e salsedine arrivano fino ai giardini. Massi, sabbia e ghiaia reggono il sale senza problemi; la scelta delicata è quella delle piante intorno alla vasca.',
-        introEn:
-            "From Marsala to Castellammare del Golfo, wind and salt spray reach right into the gardens. Boulders, sand and gravel cope with salt without trouble; the delicate choice is the planting around the pool.",
-        localita: ['Marsala', 'Erice', 'Mazara del Vallo', 'Alcamo', 'Castellammare del Golfo'],
     },
     {
         slug: 'agrigento',
