@@ -25,13 +25,18 @@ export function FornitoreLingua({ children }) {
     // salva. Serve alle email in inglese per agenzie e proprietari stranieri:
     // un link a www.lunacostruzioni.it si apriva in italiano, e il visitatore
     // doveva trovare da solo il selettore IT · EN. Il parametro poi si toglie
-    // dall'indirizzo, così non finisce in condivisioni, canonical o statistiche.
+    // dall'indirizzo (se la scelta è salvata), così non finisce in condivisioni
+    // o statistiche.
     useEffect(() => {
         const dallIndirizzo = linguaDallIndirizzo()
         if (dallIndirizzo) {
             impostaLingua(dallIndirizzo)
-            try { localStorage.setItem(CHIAVE, dallIndirizzo) } catch { /* ignorato */ }
-            togliParametroLingua()
+            // Il parametro si toglie solo se la scelta è salvata: senza storage
+            // resta nell'indirizzo, così una ricarica riapre la stessa lingua.
+            try {
+                localStorage.setItem(CHIAVE, dallIndirizzo)
+                togliParametroLingua()
+            } catch { /* storage non disponibile: il parametro resta */ }
             return
         }
         try {
