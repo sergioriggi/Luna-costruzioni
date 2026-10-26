@@ -42,8 +42,10 @@ non l'inventrice, e il sito lo dichiara apertamente.
 
 ## Operating Context
 
-- Copertura: tutte le nove province siciliane, con una pagina Sicilia e
-  una sezione per provincia (`src/data/site.js`, `PROVINCE`).
+- Copertura: sette province siciliane (Agrigento, Caltanissetta, Catania,
+  Enna, Messina, Ragusa, Siracusa), con una pagina Sicilia e una sezione per
+  provincia (`src/data/site.js`, `PROVINCE`). Palermo e Trapani fanno capo
+  all'altro concessionario Piscine Rocks Design (26/10/2026).
 - Il cliente confronta tipicamente con la piscina tradizionale in cemento
   armato (`/piscina-in-cemento-o-rocks-design`) e valuta costi, permessi e tempi prima di
   chiedere un sopralluogo.
