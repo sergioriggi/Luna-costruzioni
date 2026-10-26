@@ -4,7 +4,8 @@ Sito ufficiale di **Luna Costruzioni S.r.l.s.**: impresa edile e concessionario
 autorizzato Piscine Rocks Design per la **Sicilia**. Realizza la piscina in
 Tecnologia Rocks Design® **chiavi in mano** — sopralluogo, scavi, realizzazione,
 messa in opera e collaudo. Italiano con cambio lingua in inglese, SEO locale
-sulle nove province.
+sulle sette province servite (Palermo e Trapani fanno capo all'altro
+concessionario, dal 26/10/2026).
 
 L'impianto visivo e i contenuti della home seguono il **blueprint approvato**
 (`index.html` fornito dal committente): tema scuro, tipografia Geist, sezioni
@@ -89,7 +90,7 @@ npm run preview    # anteprima identica alla produzione
 | `/domande-frequenti` | FAQ | Permessi, costi, manutenzione, tempi |
 | `/azienda` | Chi siamo | L'impresa, gli impegni, le province |
 | `/contatti` | Contatti | NAP completo + modulo |
-| `/piscine-rocks-design/sicilia` | Sicilia | Una pagina per tutta l'isola: il testo comune una volta sola, poi una sezione per provincia con ancora (`#palermo`, `#catania`, …). I vecchi `/piscine-rocks-design/<provincia>` rispondono 301 verso l'ancora |
+| `/piscine-rocks-design/sicilia` | Sicilia | Una pagina per tutta l'isola: il testo comune una volta sola, poi una sezione per provincia con ancora (`#catania`, `#messina`, …). I vecchi `/piscine-rocks-design/<provincia>` rispondono 301 verso l'ancora; `/palermo` e `/trapani` (province non più servite) verso la pagina senza ancora |
 | `/privacy`, `/cookie-policy` | Note legali | GDPR, `noindex` |
 
 Contenuti e dati stanno in `src/data/`:
@@ -119,7 +120,7 @@ alla memoria di chi aggiorna il sito:
 | Foto della piscina espositiva in prima pagina, con invito a vederla | **Non applicata**, per decisione del 30/09/2026: il sito non propone visite né viaggi. La vecchia `/showroom` risponde 301 verso `/galleria`. Luna non ha una sede visitabile, e l'indirizzo legale è un'abitazione privata |
 | **Vietato** pubblicare tecnica costruttiva, fasi di cantiere o impianti | I sorgenti stanno in `media-sources/`, **fuori** da `public/`: sul sito arrivano solo le immagini della whitelist in `scripts/media.config.mjs` |
 | Ogni foto deve riportare il marchio Piscine Rocks Design | Filigrana **impressa nel file** da `scripts/prepare-media.mjs`, non sovrapposta via CSS |
-| Indicare sempre la città / zona di riferimento | Nove pagine provinciali + zona citata in ogni pagina indicizzabile (verificato) |
+| Indicare sempre la città / zona di riferimento | Pagina Sicilia con una sezione per ciascuna delle sette province servite + zona citata in ogni pagina indicizzabile (verificato) |
 | Taggare `@piscinerocksdesign` sui social | Indicato in footer e in galleria |
 | Testo leggibile: paragrafi, grassetti, elenchi | Impaginazione tipografica dedicata, elenchi e tabelle di confronto |
 
@@ -237,8 +238,9 @@ locali tecnici o mezzi d'opera: sono contenuti vietati dalla casa madre a tutela
   su tutte le province, `Service` per pagina locale, `Product` per i tre modelli
   (con `manufacturer` sulla casa madre e Luna come venditore), `FAQPage`,
   `BreadcrumbList`.
-- **SEO locale**: nove pagine provinciali con testo, FAQ e località specifiche —
-  non testo duplicato con la città sostituita.
+- **SEO locale**: una pagina Sicilia con una sezione per ciascuna delle sette
+  province servite, con testo e località specifiche — non testo duplicato con
+  la città sostituita.
 - `sitemap.xml`, `robots.txt` e `llms.txt` generati dall'elenco rotte
   (`scripts/rotte.mjs`).
 - **Assistenti conversazionali**: `robots.txt` li ammette per nome e `llms.txt`

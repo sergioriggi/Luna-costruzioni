@@ -85,7 +85,7 @@ export default function Footer() {
             </div>
 
             {/*
-              Le nove province portano alla loro sezione della pagina Sicilia.
+              Le province servite portano alla loro sezione della pagina Sicilia.
               Una riga sola, in fondo.
             */}
             <p className="pg-footer-province">

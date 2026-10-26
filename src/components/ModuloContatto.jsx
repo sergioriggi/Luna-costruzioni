@@ -194,8 +194,8 @@ export default function ModuloContatto({
             </h2>
             <p className="mt-2 text-sm text-neutro-500">
                 {t(
-                    `Sopralluogo e preventivo sono gratuiti e senza impegno, in tutta la ${AZIENDA.zona}.`,
-                    'The site visit and the quote are free and carry no obligation, anywhere in Sicily.',
+                    `Sopralluogo e preventivo sono gratuiti e senza impegno, nelle sette province in cui lavoriamo.`,
+                    'The site visit and the quote are free and carry no obligation, in the seven provinces we serve.',
                 )}
             </p>
 

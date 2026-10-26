@@ -89,8 +89,8 @@ export default function Azienda() {
                             </Link>
                             .{' '}
                             {t(
-                                `In tutta la Sicilia; i lavori li segue ${AZIENDA.referente}.`,
-                                `Anywhere in Sicily; ${AZIENDA.referente} runs the work.`,
+                                `In sette province della Sicilia; i lavori li segue ${AZIENDA.referente}.`,
+                                `In seven provinces of Sicily; ${AZIENDA.referente} runs the work.`,
                             )}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
@@ -133,11 +133,11 @@ export default function Azienda() {
                 <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
                     <Rivela>
                         <p className="occhiello">{t('Dove lavoriamo', 'Where we work')}</p>
-                        <h2 className="titolo-sezione">{t('Tutta la Sicilia', 'All of Sicily')}</h2>
+                        <h2 className="titolo-sezione">{t('Sette province', 'Seven provinces')}</h2>
                         <p className="testo-lungo mt-5">
                             {t(
-                                'Raggiungiamo le nove province, per il cantiere e per l’assistenza negli anni successivi. Se il tuo terreno è fuori mano te lo diciamo prima di partire, insieme a che cosa comporta sui tempi.',
-                                'We cover all nine provinces, for the build and for aftercare in the years that follow. If your land is out of the way, we tell you before we start, along with what that means for the schedule.',
+                                'Raggiungiamo sette province — Palermo e Trapani fanno capo all’altro concessionario Piscine Rocks Design — per il cantiere e per l’assistenza negli anni successivi. Se il tuo terreno è fuori mano te lo diciamo prima di partire, insieme a che cosa comporta sui tempi.',
+                                'We cover seven provinces — Palermo and Trapani are handled by the other Piscine Rocks Design dealer — for the build and for aftercare in the years that follow. If your land is out of the way, we tell you before we start, along with what that means for the schedule.',
                             )}
                         </p>
                         <ul className="mt-7 flex flex-wrap gap-2">

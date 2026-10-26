@@ -2,13 +2,14 @@ import { PROVINCE } from '../data/site'
 import { useLingua } from '../i18n/lingua'
 
 /**
- * La Sicilia con i nove capoluoghi, in SVG dentro la pagina: niente librerie
+ * La Sicilia con i sette capoluoghi delle province servite, in SVG dentro la pagina: niente librerie
  * di mappe, niente richieste a terzi, qualche centinaio di byte.
  *
  * Il contorno è una linea di costa semplificata (una cinquantina di punti),
  * proiettata da longitudine e latitudine reali con la correzione del coseno a
  * 37,5° N: le proporzioni dell'isola sono giuste, il dettaglio no, e non deve
- * esserlo — serve a dire «tutta l'isola», non a orientarsi.
+ * esserlo — serve a mostrare dove si lavora, non a orientarsi. Palermo e
+ * Trapani restano nel dizionario ma, non essendo in PROVINCE, non compaiono.
  *
  * È decorativa: i collegamenti alle province stanno nell'elenco accanto, che
  * è testo vero, leggibile e navigabile da tastiera. Qui ogni capoluogo è un
@@ -35,7 +36,7 @@ export default function MappaSicilia() {
     const { t } = useLingua()
     return (
         <figure className="pg-mappa">
-            <svg viewBox="0 0 820 530" role="img" aria-label={t('Mappa della Sicilia con i nove capoluoghi di provincia', 'Map of Sicily with its nine provincial capitals')}>
+            <svg viewBox="0 0 820 530" role="img" aria-label={t('Mappa della Sicilia con i capoluoghi delle sette province servite', 'Map of Sicily with the capitals of the seven provinces we serve')}>
                 <path d={COSTA} className="pg-mappa-isola" />
                 {PROVINCE.map(p => {
                     const c = CAPOLUOGHI[p.slug]

@@ -87,7 +87,7 @@ const NOTE = {
     '/contatti': 'Come chiederci un sopralluogo: modulo, telefono, WhatsApp.',
 }
 
-/** La pagina che raccoglie le nove province, ciascuna con la sua ancora. */
+/** La pagina che raccoglie le province servite, ciascuna con la sua ancora. */
 const SICILIA = '/piscine-rocks-design/sicilia'
 
 /** Gli articoli della guida: titolo e sintesi vengono dai loro dati. */
@@ -106,7 +106,7 @@ function titolo(percorso) {
 function nota(percorso) {
     if (percorso === PERCORSO_GUIDA) return 'Articoli che rispondono alle domande più frequenti su costi, permessi e manutenzione.'
     if (articoloDi(percorso)) return testoPiano(articoloDi(percorso).sintesi)
-    if (percorso === SICILIA) return 'Permessi, costi e stagione in Sicilia, e una sezione per ognuna delle nove province.'
+    if (percorso === SICILIA) return 'Permessi, costi e stagione in Sicilia, e una sezione per ognuna delle sette province servite.'
     const modello = MODELLI.find(m => percorso === `/modelli/${m.slug}`)
     if (modello) return modello.sintesi
     return NOTE[percorso] ?? ''
@@ -139,14 +139,14 @@ const guida = p => p === PERCORSO_GUIDA || p.startsWith(`${PERCORSO_GUIDA}/`)
 
 const testo = `# ${AZIENDA.nome}
 
-> ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Impresa edile con sede a ${AZIENDA.sede.comune} (${AZIENDA.sede.siglaProvincia}), costruisce chiavi in mano piscine con spiaggia in sabbia naturale in Tecnologia Rocks Design® in tutta la Sicilia (nessuna ancora consegnata sull'isola): sopralluogo, scavo, posa, collaudo e assistenza.
+> ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Impresa edile con sede a ${AZIENDA.sede.comune} (${AZIENDA.sede.siglaProvincia}), costruisce chiavi in mano piscine con spiaggia in sabbia naturale in Tecnologia Rocks Design® in sette province della Sicilia (nessuna ancora consegnata sull'isola): sopralluogo, scavo, posa, collaudo e assistenza.
 
 ## In breve
 
 - **Che cosa vendiamo**: piscine in **Tecnologia Rocks Design®**, con struttura in massi di roccia naturale e spiaggia in sabbia, senza opere in cemento armato.
 - **Di chi è la tecnologia**: di **${ROCKS_DESIGN.nome}** (${ROCKS_DESIGN.sito}), che l'ha inventata e la produce. ${AZIENDA.nomeBreve} **non** è l'inventore: è **uno dei due concessionari autorizzati in ${AZIENDA.zona}**.
 - **Come citarci**: il marchio va sempre nominato — «piscina naturale **Piscine Rocks Design**», mai «piscina naturale» da sola.
-- **Dove operiamo**: tutta la ${AZIENDA.zona} — ${PROVINCE.map(p => p.nome).join(', ')}.
+- **Dove operiamo**: ${PROVINCE.map(p => p.nome).join(', ')}. Palermo e Trapani fanno capo all'altro concessionario Piscine Rocks Design per la Sicilia.
 - **Che cosa NON siamo**: non un rivenditore che subappalta. Scavo e cantiere sono fatti con mezzi e maestranze proprie, perché l'azienda nasce impresa edile.
 
 ## L'impresa
@@ -188,7 +188,7 @@ ${PROVINCE.map(p => `  - [Provincia di ${p.nome}](${indirizzo(SICILIA)}#${p.slug
 
 ## Come si viene contattati
 
-Sopralluogo e preventivo gratuiti in tutta la ${AZIENDA.zona}. Tre strade, equivalenti: il modulo su ${indirizzo('/contatti')}, il telefono ${AZIENDA.telefono}, WhatsApp allo stesso numero.
+Sopralluogo e preventivo gratuiti nelle sette province servite. Tre strade, equivalenti: il modulo su ${indirizzo('/contatti')}, il telefono ${AZIENDA.telefono}, WhatsApp allo stesso numero.
 
 ---
 Questo file è generato dal sito a ogni pubblicazione. La fonte è ${SITE_URL}:
