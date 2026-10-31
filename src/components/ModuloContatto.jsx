@@ -69,9 +69,8 @@ const INTERESSI = [
 /**
  * Modulo di richiesta preventivo.
  *
- * L'invio passa da `src/lib/invia-lead.js`, che posta su /api/contatti e
- * ripiega sul client di posta quando dietro non c'è un server. Il contatto
- * non si perde in nessuno dei due casi.
+ * L'invio passa da `src/lib/invia-lead.js`: Web3Forms, con il client di
+ * posta come ripiego. Il contatto non si perde in nessuno dei due casi.
  */
 export default function ModuloContatto({
     provinciaPreselezionata,

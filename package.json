@@ -15,8 +15,6 @@
     "verifica": "node scripts/verifica-conformita.mjs",
     "verifica:guida": "node scripts/verifica-guida.mjs",
     "media:manifest": "node scripts/prepare-media.mjs --manifest",
-    "start": "node app.js",
-    "verifica:server": "node scripts/verifica-server.mjs",
     "verifica:online": "node scripts/verifica-online.mjs"
   },
   "dependencies": {
@@ -31,9 +29,6 @@
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "compression": "^1.8.1",
-    "express": "^5.2.1",
-    "nodemailer": "^9.1.1",
     "oxlint": "^1.79.0",
     "sharp": "^0.35.4"
   },

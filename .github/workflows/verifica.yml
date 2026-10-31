@@ -37,10 +37,10 @@ jobs:
         run: npm ci
 
       # Blocca solo su un guasto GRAVE in ciò che finisce davvero nel sito
-      # (`dependencies`). Gli strumenti di compilazione e il server Node stanno
-      # in `devDependencies`, non girano in produzione, e un avviso medio lì
-      # non deve tingere di rosso un commit che non c'entra: quello si legge
-      # nel riepilogo, qui sotto.
+      # (`dependencies`). Gli strumenti che non compilano nulla (oxlint,
+      # sharp, i tipi) stanno in `devDependencies`, non girano in produzione,
+      # e un avviso medio lì non deve tingere di rosso un commit che non
+      # c'entra: quello si legge nel riepilogo, qui sotto.
       - name: Vulnerabilità nelle dipendenze del sito
         run: npm audit --omit=dev --audit-level=high
 
@@ -60,9 +60,6 @@ jobs:
 
       - name: Conformità alle direttive Piscine Rocks Design
         run: npm run verifica
-
-      - name: Collaudo del server Node
-        run: npm run verifica:server
 
       - name: Controlla che la build sia completa
         run: |
