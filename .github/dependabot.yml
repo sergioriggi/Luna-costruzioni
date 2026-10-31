@@ -1,0 +1,38 @@
+# Dependabot: uno sguardo a settimana ai pacchetti npm e alle versioni delle
+# GitHub Actions.
+#
+# Prima (31 ottobre 2026) niente si aggiornava da solo: `npm audit` in CI
+# guarda solo le dipendenze di build e i pacchetti si muovevano solo quando
+# una persona li toccava. Il cancello è «Verifica»: una PR di Dependabot che
+# rompe la build o le verifiche resta rossa e non si unisce. Gli aggiornamenti
+# minor e patch arrivano raggruppati in una PR per ecosistema; un major arriva
+# da solo, per essere letto. Al massimo tre PR aperte.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Rome
+    open-pull-requests-limit: 3
+    groups:
+      npm-minor-e-patch:
+        update-types: [minor, patch]
+    commit-message:
+      prefix: deps
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Rome
+    open-pull-requests-limit: 3
+    groups:
+      github-actions:
+        patterns: ['*']
+    commit-message:
+      prefix: ci
