@@ -1,12 +1,24 @@
-# Controllo del sito PUBBLICATO, a richiesta.
+# Controllo del sito PUBBLICATO: ogni 6 ore e a richiesta.
 #
 # `verifica.yml` controlla il codice a ogni push. Questo controlla il sito che
 # risponde a un cliente: fra i due c'è la build di Hostinger con le sue
 # variabili d'ambiente, che non stanno nel repository e che ci hanno già rotto
-# il sito una volta.
+# il sito una volta. Fino al 31 ottobre 2026 partiva solo a mano e puntava
+# ancora al dominio di anteprima di Hostinger: un sito rotto si sarebbe
+# scoperto solo quando qualcuno avesse pensato di lanciarlo.
 #
-# Si lancia con un tocco dall'app GitHub — Actions → «Controllo del sito
-# pubblicato» → Run workflow — senza terminale e senza npm.
+# Ora gira da solo ogni 6 ore sul dominio definitivo (www.lunacostruzioni.it,
+# attivo dall'11 settembre 2026) e si può ancora lanciare con un tocco
+# dall'app GitHub — Actions → «Controllo del sito pubblicato» → Run workflow —
+# anche su un altro indirizzo (per esempio l'anteprima di Hostinger).
+#
+# Solo letture (GET sulle pagine, HEAD sulle immagini e sui link): non tocca
+# il modulo contatti e non invia nulla.
+# Se è rosso, GitHub avvisa per email chi ha fatto l'ultimo commit a questo
+# file (nessun altro avviso per ora: un'email vera a chi deve agire è il passo
+# 4.6 del piano, da decidere); il primo passo è il log del run (riepilogo a
+# fondo pagina) e poi hPanel → sito Luna → log della build e variabili
+# d'ambiente (elenco nel README).
 #
 # Nessun `npm ci`: lo script non ha dipendenze (vedi la sua intestazione),
 # quindi il controllo finisce in pochi secondi e non c'è un'installazione che
@@ -14,20 +26,29 @@
 name: Controllo del sito pubblicato
 
 on:
+  schedule:
+    - cron: '41 */6 * * *'
   workflow_dispatch:
     inputs:
       indirizzo:
-        description: Indirizzo da controllare (il dominio definitivo quando sarà attivo)
-        required: true
-        default: https://salmon-camel-544200.hostingersite.com
+        description: Indirizzo da controllare (vuoto = il dominio definitivo)
+        required: false
+        default: https://www.lunacostruzioni.it
 
 permissions:
   contents: read
+
+# Un run alla volta per indirizzo, in coda: un lancio a mano su un'anteprima
+# non annulla il controllo programmato della produzione, e viceversa.
+concurrency:
+  group: controllo-online-${{ inputs.indirizzo || 'produzione' }}
+  cancel-in-progress: false
 
 jobs:
   online:
     name: Interroga il sito
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -35,5 +56,9 @@ jobs:
         with:
           node-version: 22
 
+      # L'indirizzo passa da una variabile d'ambiente, non interpolato nel
+      # comando: un valore con sintassi di shell resta una stringa.
       - name: Controlla il sito
-        run: node scripts/verifica-online.mjs "${{ inputs.indirizzo }}"
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo || 'https://www.lunacostruzioni.it' }}
+        run: node scripts/verifica-online.mjs "$INDIRIZZO"
