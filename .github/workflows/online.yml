@@ -12,10 +12,13 @@
 # dall'app GitHub — Actions → «Controllo del sito pubblicato» → Run workflow —
 # anche su un altro indirizzo (per esempio l'anteprima di Hostinger).
 #
-# Solo letture GET: non tocca il modulo contatti e non invia nulla.
+# Solo letture (GET sulle pagine, HEAD sulle immagini e sui link): non tocca
+# il modulo contatti e non invia nulla.
 # Se è rosso, GitHub avvisa per email chi ha fatto l'ultimo commit a questo
-# file; il primo passo è il log del run (riepilogo a fondo pagina) e poi hPanel
-# → sito Luna → log della build e variabili d'ambiente (elenco nel README).
+# file (nessun altro avviso per ora: un'email vera a chi deve agire è il passo
+# 4.6 del piano, da decidere); il primo passo è il log del run (riepilogo a
+# fondo pagina) e poi hPanel → sito Luna → log della build e variabili
+# d'ambiente (elenco nel README).
 #
 # Nessun `npm ci`: lo script non ha dipendenze (vedi la sua intestazione),
 # quindi il controllo finisce in pochi secondi e non c'è un'installazione che
@@ -35,9 +38,11 @@ on:
 permissions:
   contents: read
 
+# Un run alla volta per indirizzo, in coda: un lancio a mano su un'anteprima
+# non annulla il controllo programmato della produzione, e viceversa.
 concurrency:
-  group: controllo-online
-  cancel-in-progress: true
+  group: controllo-online-${{ inputs.indirizzo || 'produzione' }}
+  cancel-in-progress: false
 
 jobs:
   online:
@@ -51,5 +56,9 @@ jobs:
         with:
           node-version: 22
 
+      # L'indirizzo passa da una variabile d'ambiente, non interpolato nel
+      # comando: un valore con sintassi di shell resta una stringa.
       - name: Controlla il sito
-        run: node scripts/verifica-online.mjs "${{ inputs.indirizzo || 'https://www.lunacostruzioni.it' }}"
+        env:
+          INDIRIZZO: ${{ inputs.indirizzo || 'https://www.lunacostruzioni.it' }}
+        run: node scripts/verifica-online.mjs "$INDIRIZZO"
