@@ -370,6 +370,17 @@ filigranate** e il catalogo della casa madre, che include immagini delle fasi
 di cantiere — materiale che le direttive Piscine Rocks Design vietano di
 pubblicare. Non entra in `dist/`, e `npm run verifica` lo controlla.
 
+### Segreti
+
+Nessuna credenziale nel repository: il token Meta sta nel Progetto Claude, la
+password di info@ nei segreti di Supabase (repository `sussex-project`), le
+chiavi API nei pannelli. Ciò che è in `.env.production` è pubblico per natura
+(chiave Web3Forms, identificatori Google Ads) ed è spiegato lì riga per riga.
+`.github/workflows/secret-scan.yml` passa gitleaks sui commit nuovi di ogni
+push e pull request con le regole di `.gitleaks.toml`; un check rosso vuol dire
+che una credenziale è finita in un commit: si toglie e si rigenera, mai si
+aggiunge il valore alla lista di esclusione.
+
 ### Configurazione su Hostinger — preset Vite
 
 Hostinger importa il repository con **preset Vite** e **compila da sé**: non
