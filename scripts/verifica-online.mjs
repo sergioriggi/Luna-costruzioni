@@ -56,8 +56,18 @@ const DI_SERVIZIO = new Set(['/privacy', '/cookie-policy', '/404', '/grazie'])
 
 const indirizzo = percorso => `${ORIGINE}${percorso === '/' ? '/' : percorso}`
 
-/** Una richiesta con scadenza: un sito che non risponde non deve appendere la verifica. */
-async function chiedi(url, metodo = 'GET') {
+const pausa = ms => new Promise(r => setTimeout(r, ms))
+
+/**
+ * Una richiesta con scadenza: un sito che non risponde non deve appendere la
+ * verifica. Un 403, un 429 o una scadenza vengono riprovati UNA volta dopo
+ * due secondi: la rete di distribuzione di Hostinger risponde 403 a qualche
+ * richiesta quando ne arrivano diverse insieme (31 ottobre 2026: pagine
+ * diverse a ogni passata, tutte 200 se richieste da sole), e un controllo
+ * che ogni 6 ore grida al lupo per questo non lo leggerebbe più nessuno.
+ */
+async function chiedi(url, metodo = 'GET', tentativo = 1) {
+    let esito
     try {
         const risposta = await fetch(url, {
             method: metodo,
@@ -66,14 +76,19 @@ async function chiedi(url, metodo = 'GET') {
             signal: AbortSignal.timeout(20000),
         })
         const corpo = metodo === 'GET' ? await risposta.text() : ''
-        return { stato: risposta.status, intestazioni: risposta.headers, corpo }
+        esito = { stato: risposta.status, intestazioni: risposta.headers, corpo }
     } catch (e) {
-        return { stato: 0, intestazioni: new Headers(), corpo: '', errore: e.message }
+        esito = { stato: 0, intestazioni: new Headers(), corpo: '', errore: e.message }
     }
+    if (tentativo === 1 && (esito.stato === 403 || esito.stato === 429 || esito.stato === 0)) {
+        await pausa(2000)
+        return chiedi(url, metodo, 2)
+    }
+    return esito
 }
 
 /** Poche richieste alla volta: non serve martellare l'hosting per 29 pagine. */
-async function inCoda(elementi, lavoro, quante = 6) {
+async function inCoda(elementi, lavoro, quante = 3) {
     const esiti = []
     for (let i = 0; i < elementi.length; i += quante) {
         esiti.push(...(await Promise.all(elementi.slice(i, i + quante).map(lavoro))))
