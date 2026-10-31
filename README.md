@@ -67,8 +67,7 @@ npm run preview    # anteprima identica alla produzione
 | `npm run fonts` | Scarica e self-hosta Geist |
 | `npm run assets` | `brand` + `media` + `fonts` |
 | `npm run lint` | Oxlint |
-| `npm start` | Avvia il server Node che serve `dist/` e l'endpoint contatti |
-| `npm run verifica:server` | Collauda il server: URL puliti, 404, intestazioni, percorsi protetti, API |
+| `npm run verifica:online` | Interroga il sito pubblicato (lo stesso controllo del workflow «Controllo del sito pubblicato») |
 
 ---
 
@@ -269,22 +268,21 @@ pagina. Non metterci mai un segreto.
 | `VITE_BASE` | `/` — il sito è servito dalla radice del dominio |
 | `VITE_GA4_ID` | Analytics non viene configurato; il tag di Google parte comunque se c'è un ID Ads |
 
-### Di runtime — lette solo dal server Node
+### Il modulo contatti
 
-Esistono soltanto quando il sito gira come applicazione Node.js. Sull'hosting
-statico non ci sono, e il modulo ripiega sul client di posta del visitatore.
+Il sito è statico: non c'è nessun server nostro dietro il modulo. Con
+`VITE_WEB3FORMS_KEY` il browser posta a Web3Forms, che inoltra a
+`info@lunacostruzioni.it`; se l'invio non riesce, o la chiave manca, il modulo
+apre il client di posta del visitatore con la richiesta già compilata.
+**Nessun contatto va perso** in nessuno dei due casi (`src/lib/invia-lead.js`).
+`VITE_ENDPOINT_LEAD` sopravvive solo come scorciatoia per chi avesse un
+servizio esterno proprio a cui postare.
 
-| Variabile | Effetto se assente |
-| --- | --- |
-| `PORT` | 3000 (in produzione la impone l'hosting) |
-| `SMTP_HOST` `SMTP_USER` `SMTP_PASS` | `/api/contatti` risponde 503 e il modulo apre il client di posta: **nessun contatto va perso** |
-| `LEAD_MITTENTE` | Si usa `SMTP_USER`. Dev'essere una casella del dominio, o SPF e DKIM non tornano |
-| `LEAD_DESTINATARIO` | Si usa l'indirizzo aziendale di `src/data/site.js` |
-| `LEAD_LIMITE_INVII` `LEAD_FINESTRA_MINUTI` `LEAD_TETTO_ORARIO` | 5 invii per IP ogni 10 minuti, 60 all'ora in totale |
-
-`VITE_ENDPOINT_LEAD` sopravvive solo come scorciatoia per chi avesse già
-configurato un servizio esterno: senza di essa il modulo posta su
-`/api/contatti`, sulla stessa origine.
+Fino al 31 ottobre 2026 il repository conteneva anche un server Node
+(`server/`, Express e nodemailer) con l'endpoint `/api/contatti` via SMTP: non
+è mai andato in produzione sotto il preset Vite di Hostinger, e il suo
+collaudo in CI provava codice che nessuno eseguiva. È stato tolto; sta nella
+storia di git se un giorno servisse un'esecuzione Node vera.
 
 Il sito usa **Consent Mode v2 in modalità avanzata**
 (`src/components/BannerCookie.jsx`): il tag di Google si carica a ogni visita
@@ -294,23 +292,6 @@ le conversioni. Fino al 26 settembre 2026 il comportamento era l'opposto — il
 tag partiva solo dopo «Accetta» — e la misura non vedeva circa due visite su
 tre. Se si torna indietro su quel file, vanno rimesse a posto anche le due
 informative, che oggi descrivono questo comportamento.
-
-### Il server Node
-
-`app.js` avvia `server/`, che serve `dist/` e l'endpoint del modulo contatti.
-È la traduzione di `public/.htaccess`: URL puliti senza redirect, 404 reale,
-cache differenziata per estensione, intestazioni di sicurezza e CSP. **Le due
-implementazioni vanno tenute allineate.**
-
-Un guadagno che vale la pena notare: servendo solo `dist/`, il materiale non
-pubblicabile (`media-sources/`, con le foto non filigranate e il catalogo della
-casa madre) non è protetto da una lista di percorsi da ricordarsi di
-aggiornare — è fuori dalla radice servita, e basta.
-
-```
-npm run build && npm start        # http://localhost:3000
-npm run verifica:server           # collaudo automatico
-```
 
 ### Da completare prima del go-live
 
@@ -342,13 +323,13 @@ Hostinger importa il repository con **preset Vite** e compila da sé. Il
 repository contiene quindi **solo codice sorgente**: niente sito compilato
 committato nella radice, niente `.sito-pubblicato`.
 
-`.github/workflows/verifica.yml` esegue lint, build, conformità e collaudo del
-server a ogni push, ma **non pubblica nulla**: serve a dare un esito visibile
-sul commit prima che l'hosting compili.
+`.github/workflows/verifica.yml` esegue lint, build e conformità a ogni push,
+ma **non pubblica nulla**: serve a dare un esito visibile sul commit prima che
+l'hosting compili.
 
 `.github/workflows/online.yml` fa l'altra metà: interroga il **sito
 pubblicato** — pagine, indicizzazione, metadati, sitemap, materiale riservato —
-e si lancia a richiesta, anche dal telefono. Lo stesso controllo in locale:
+ogni 6 ore e a richiesta, anche dal telefono. Lo stesso controllo in locale:
 `npm run verifica:online https://indirizzo-del-sito`.
 
 > **Chi non ha un terminale** — iPad, iPhone, o semplicemente voglia di non
@@ -360,7 +341,7 @@ e si lancia a richiesta, anche dal telefono. Lo stesso controllo in locale:
 
 **`public/.htaccess` finisce in `dist/`** e dà a Hostinger gli URL puliti, il
 404 e gli header di cache. Contiene anche le regole che rendono irraggiungibili
-`media-sources/`, `src/`, `scripts/`, `server/` e i file di configurazione:
+`media-sources/`, `src/`, `scripts/` e i file di configurazione:
 regole che sotto il preset Vite sono ridondanti — servendo solo `dist/`, quel
 materiale è già fuori dalla radice servita — ma che restano perché tengono
 aperta la strada di un ritorno all'hosting statico.
@@ -388,20 +369,16 @@ deploy** se il sito viola le direttive Piscine Rocks Design, o se una build non
 di produzione uscisse indicizzabile.
 
 `--omit=dev` non è un'ottimizzazione: è ciò che tiene fuori dalla macchina di
-produzione il server Node, la posta e `sharp`, che alla build non servono. Sono
-in `devDependencies` per questo. Codice installato e mai eseguito resta
-comunque codice che qualcuno scansiona e segnala: dal 2026 lo scanner di
-Hostinger apriva sei vulnerabilità in `nodemailer` e `qs`, tutte in un server
-che sotto il preset Vite non parte nemmeno. Senza quei pacchetti l'installazione
-scende da 246 a 91 pacchetti.
+produzione `sharp`, oxlint e i tipi, che alla build non servono. Sono in
+`devDependencies` per questo. Codice installato e mai eseguito resta comunque
+codice che qualcuno scansiona e segnala: nel 2026 lo scanner di Hostinger
+apriva sei vulnerabilità in `nodemailer` e `qs`, pacchetti di un server Node
+che sotto il preset Vite non partiva nemmeno (tolto dal repository il 31
+ottobre 2026, con 85 pacchetti in meno da installare).
 
 **Non usare `--omit=optional`**: i binari nativi di rolldown (il compilatore di
 Vite 8) sono dichiarati come dipendenze *opzionali* del loro pacchetto, e
 saltandoli la build si ferma con «Cannot find native binding».
-
-Il giorno che il sito passasse a un'esecuzione Node vera — server attivo per
-spedire il modulo via SMTP — il comando torna a essere `npm ci` pieno: lì quei
-pacchetti servono davvero.
 
 Variabili d'ambiente da impostare nel pannello:
 

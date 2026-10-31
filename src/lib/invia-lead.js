@@ -7,16 +7,12 @@ import { segnalaConversione } from './conversione'
  * Punto unico per entrambi i moduli del sito. Prima di questo file la logica
  * era duplicata, con due corpi di messaggio diversi e due ripieghi diversi.
  *
- * ── Perché lo stesso bundle funziona su due hosting ──────────────────────
- * L'endpoint predefinito è `/api/contatti`, sulla stessa origine. Sul server
- * Node quell'indirizzo esiste e invia davvero l'e-mail. Sull'hosting statico
- * Apache non esiste: non è un file e non è una directory, quindi la
- * RewriteRule non si applica e la risposta è **404**. Qui il 404 viene
- * interpretato come «nessun server dietro» e si ripiega sul client di posta —
- * cioè esattamente il comportamento che il sito ha oggi.
- *
- * Vale lo stesso per il **503** che il server Node restituisce quando le
- * credenziali SMTP non sono configurate: il contatto non si perde mai.
+ * ── Nessun server nostro ─────────────────────────────────────────────────
+ * Il sito è statico. Fino al 31 ottobre 2026 esisteva anche un server Node
+ * con `/api/contatti` via SMTP, mai andato in produzione sotto il preset Vite
+ * di Hostinger; è stato tolto. Resta `VITE_ENDPOINT_LEAD` per chi avesse un
+ * servizio esterno proprio: senza chiave Web3Forms e senza quell'indirizzo si
+ * apre direttamente il client di posta.
  *
  * ── Web3Forms ────────────────────────────────────────────────────────────
  * Su hosting statico non esiste nessun server nostro, quindi il modulo
@@ -35,8 +31,8 @@ import { segnalaConversione } from './conversione'
  * Senza chiave non cambia niente: si torna al percorso di prima.
  */
 
-/** Override storico, per chi avesse già configurato un servizio esterno. */
-const ENDPOINT = import.meta.env.VITE_ENDPOINT_LEAD || '/api/contatti'
+/** Servizio esterno proprio, se mai configurato; altrimenti nessun endpoint. */
+const ENDPOINT = import.meta.env.VITE_ENDPOINT_LEAD || ''
 
 const CHIAVE_WEB3FORMS = import.meta.env.VITE_WEB3FORMS_KEY || ''
 const WEB3FORMS = 'https://api.web3forms.com/submit'
@@ -150,6 +146,12 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         return RIPIEGO_POSTA
     }
 
+    // Né chiave né servizio esterno: il client di posta è l'unica strada.
+    if (!ENDPOINT) {
+        apriClientDiPosta(dati, oggetto)
+        return RIPIEGO_POSTA
+    }
+
     const carico = {
         ...dati,
         sito: undefined,
@@ -169,8 +171,8 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
 
     if (risposta.ok) return confermato()
 
-    // 404: nessun server dietro (hosting statico). 503: server presente ma
-    // senza credenziali SMTP. In entrambi i casi il contatto va salvato.
+    // 404: il servizio esterno non c'è più. 503: c'è ma non può spedire.
+    // In entrambi i casi il contatto va salvato.
     if (risposta.status === 404 || risposta.status === 503) {
         apriClientDiPosta(dati, oggetto)
         return RIPIEGO_POSTA

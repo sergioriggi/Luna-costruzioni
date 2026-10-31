@@ -49,11 +49,9 @@ node scripts/verifica-online.mjs https://www.lunacostruzioni.it
 npm run lint && npm run build && npm run verifica
 ```
 
-`npm run verifica:server` collauda il server Node in `server/`. **Sotto il
-preset Vite quel server non è pubblicato** — online c'è `dist/`, statico — quindi
-è una prova del codice e non dice nulla su cosa sia online. Eseguilo solo se ti
-risulta che qualcuno abbia davvero messo online un'applicazione Node, e in quel
-caso dillo esplicitamente nel rapporto.
+Non esiste più un server Node nel repository (tolto il 31 ottobre 2026: sotto
+il preset Vite non è mai andato online). Online c'è `dist/`, statico, servito
+da Apache con `public/.htaccess`; il modulo contatti passa da Web3Forms.
 
 ## I controlli
 
@@ -109,7 +107,7 @@ segnalate:
 - Nessuna schermata deve dire «ricevuta» per una richiesta non partita.
 
 Per chiarezza, contro un equivoco ricorrente: **non esiste nessun ripiego su
-PEC**. Il destinatario è `AZIENDA.email` (`server/configurazione.js:102`), e la
+PEC**. Il destinatario è `AZIENDA.email` (`src/data/site.js`, inoltro di Web3Forms), e la
 PEC compare solo nella riga legale, dove la legge la impone.
 
 ### 4. Dati societari
