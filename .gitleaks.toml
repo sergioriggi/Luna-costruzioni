@@ -1,0 +1,56 @@
+# Regole per la scansione dei segreti (.github/workflows/secret-scan.yml).
+# Le regole predefinite di gitleaks più quelle delle credenziali che questo
+# progetto maneggia davvero: il token di sistema Meta (Graph API, nel Progetto
+# Claude, mai qui), la chiave Resend, il token API di Hostinger.
+#
+# La lista di esclusione contiene solo FORME, mai valori: .env.production è
+# versionato di proposito e porta la chiave Web3Forms (pubblica per progetto,
+# un UUID) e gli identificatori Google Ads (AW-...). Un valore vero non si
+# esclude mai: si toglie dal commit e si rigenera.
+
+title = "Luna Costruzioni, scansione segreti"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "meta-graph-token"
+description = "Token Meta Graph API (prefisso EAA)"
+regex = '''\bEAA[A-Za-z0-9]{40,}'''
+tags = ["key", "meta"]
+
+[[rules]]
+id = "resend-api-key"
+description = "Chiave API Resend (prefisso re_)"
+regex = '''\bre_[A-Za-z0-9]{20,}'''
+tags = ["key", "resend"]
+
+[[rules]]
+id = "hostinger-api-token"
+description = "Token API Hostinger assegnato in chiaro"
+regex = '''(?i)HOSTINGER[_A-Z]*TOKEN\s*[=:]\s*['"]?[A-Za-z0-9]{32,}'''
+tags = ["key", "hostinger"]
+
+[[rules]]
+id = "smtp-password"
+description = "Password SMTP assegnata in chiaro"
+regex = '''(?i)SMTP_PASS(WORD)?\s*=\s*['"]?[^\s'"]{8,}'''
+tags = ["password", "smtp"]
+
+[allowlist]
+description = "Segnaposto documentati e valori pubblici per natura"
+# Le espressioni qui sotto si confrontano con l'intera RIGA (non col solo
+# valore estratto, che è il confronto predefinito): così si esclude la forma
+# «nome della variabile = UUID», mai un UUID qualunque.
+regexTarget = "line"
+paths = [
+  '''\.env\.example$''',
+]
+regexes = [
+  # chiave Web3Forms: pubblica per progetto, finisce nel bundle del browser
+  '''VITE_WEB3FORMS_KEY=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}''',
+  # identificatori Google Ads e azioni di conversione: pubblici nel tag
+  '''AW-[0-9]{8,}(/[A-Za-z0-9_-]{10,})?''',
+  # identificatore GA4
+  '''G-[A-Z0-9]{8,12}''',
+]
