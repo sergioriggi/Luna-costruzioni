@@ -27,6 +27,18 @@ function Blocco({ blocco }) {
                     ))}
                 </ul>
             )
+        case 'foto': {
+            // Una foto accanto al paragrafo di cui parla. Le verticali restano
+            // strette, perché a tutta colonna sul computer sarebbero un muro.
+            const m = foto(blocco.slug)
+            const verticale = m.height > m.width
+            return (
+                <div className={`py-2 ${verticale ? 'max-w-md' : ''}`}>
+                    <Immagine slug={blocco.slug} className="rounded-lg" sizes={verticale ? '(min-width: 640px) 28rem, 92vw' : '(min-width: 1024px) 42rem, 92vw'} />
+                    {!m.tags.includes('campione-sabbia') && <CreditoFoto />}
+                </div>
+            )
+        }
         case 'nota':
             return (
                 <p className="rounded-lg border border-testo/16 bg-superficie px-5 py-4 text-[0.95rem] leading-relaxed text-neutro-300">
