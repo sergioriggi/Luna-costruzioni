@@ -16,8 +16,11 @@
  *   aggiornato    facoltativo, 'AAAA-MM-GG', non prima di `pubblicato`
  *   titolo, titoloEn, sintesi, sintesiEn
  *   seo           { titolo ≤ 60, descrizione ≤ 150 }
- *   foto          uno slug della whitelist (scripts/media.config.mjs)
- *   corpo         [{ tipo: 'p'|'h2'|'h3'|'nota', it, en } | { tipo: 'elenco', it: [], en: [] }]
+ *   foto          uno slug della whitelist (scripts/media.config.mjs): l'apertura
+ *   corpo         [{ tipo: 'p'|'h2'|'h3'|'nota', it, en } | { tipo: 'elenco', it: [], en: [] }
+ *                  | { tipo: 'foto', slug }]  — una foto accanto al paragrafo che la
+ *                  precede: deve mostrare quello di cui parla quel paragrafo.
+ *                  Alt e testo inglese vengono dal manifest delle foto.
  *   domande       facoltativo: [{ domanda, domandaEn, risposta, rispostaEn }]
  *   correlati     facoltativo: [{ to, label, labelEn }] verso pagine che esistono
  *   fonti         facoltativo: [{ titolo, url }] — ogni link esterno del testo sta qui
@@ -37,7 +40,24 @@ import { scomponi, testoPiano, interno } from '../src/lib/testo-ricco.js'
 
 const CARTELLA = path.resolve('./src/data/guida')
 const SLUG_FOTO = new Set(PHOTOS.map(p => p.slug))
-const TIPI = new Set(['p', 'h2', 'h3', 'nota', 'elenco'])
+const TIPI = new Set(['p', 'h2', 'h3', 'nota', 'elenco', 'foto'])
+
+/**
+ * Foto (regola di Sergio del 22/10/2026). Un articolo ha da due a tre
+ * immagini — l'apertura più una o due foto nel testo — e ognuna mostra quello
+ * di cui parla il paragrafo accanto. Se nel repository non esiste una foto
+ * dell'argomento il paragrafo resta senza immagine: per questo sotto le due
+ * immagini è un avviso e non un errore. Sopra le tre è un errore.
+ *
+ * Le foto qui sotto non vanno negli articoli: persone e feste, una villa con
+ * bagnante, notturne glamour scelte per riempire. La regola vale per gli
+ * articoli pubblicati da REGOLA_FOTO_DAL; per quelli di prima è un avviso.
+ */
+const REGOLA_FOTO_DAL = '2026-11-01'
+const FOTO_MAX = 3
+const FOTO_VIETATE = new Set(['villa-con-spiaggia-in-ghiaia', 'notte-luci-e-festa', 'ricevimento-a-bordo-acqua', 'blu-della-sera'])
+const TAG_VIETATI = new Set(['eventi'])
+const fotoVietata = slug => FOTO_VIETATE.has(slug) || (PHOTOS.find(p => p.slug === slug)?.tags ?? []).some(t => TAG_VIETATI.has(t))
 const PAROLE_MIN = 500
 const PAROLE_MAX = 2500
 
@@ -150,7 +170,11 @@ export async function verificaGuida() {
         corpo.forEach((b, i) => {
             if (!TIPI.has(b?.tipo)) return err(`blocco ${i + 1}: tipo «${b?.tipo}» non ammesso.`)
             if (b.tipo === 'h2') titoletti++
-            if (b.tipo === 'elenco') {
+            if (b.tipo === 'foto') {
+                if (!SLUG_FOTO.has(b.slug)) err(`blocco ${i + 1}: foto «${b.slug}» fuori dalla whitelist di scripts/media.config.mjs.`)
+                if (i === 0) err('blocco 1: una foto nel testo va dopo il paragrafo di cui parla, non in testa.')
+                if (corpo[i - 1]?.tipo === 'foto') err(`blocco ${i + 1}: due foto di fila; ognuna va accanto al suo paragrafo.`)
+            } else if (b.tipo === 'elenco') {
                 if (!Array.isArray(b.it) || !Array.isArray(b.en) || b.it.length === 0 || b.it.length !== b.en.length || ![...b.it, ...b.en].every(pieno)) {
                     err(`blocco ${i + 1}: un elenco vuole \`it\` ed \`en\` come liste piene della stessa lunghezza.`)
                 }
@@ -159,6 +183,17 @@ export async function verificaGuida() {
             }
         })
         if (titoletti < 2) err('servono almeno due sottotitoli (h2): un articolo senza struttura non si legge.')
+
+        const immagini = [a.foto, ...corpo.filter(b => b?.tipo === 'foto').map(b => b.slug)]
+        if (new Set(immagini).size !== immagini.length) err('la stessa foto compare due volte nell’articolo.')
+        if (immagini.length > FOTO_MAX) err(`${immagini.length} immagini: il massimo è ${FOTO_MAX}.`)
+        const regolaNuova = dataValida(a.pubblicato) && a.pubblicato >= REGOLA_FOTO_DAL
+        for (const slug of immagini.filter(fotoVietata)) {
+            const m = `foto «${slug}»: non va negli articoli della guida (persone, feste o foto scelte per riempire).`
+            if (regolaNuova) err(m)
+            else avvisi.push(`${dove}: ${m}`)
+        }
+        if (regolaNuova && immagini.length < 2) avvisi.push(`${dove}: una sola immagine. Se manca la foto dell'argomento va bene così, ma va chiesta.`)
 
         const domande = a.domande ?? []
         domande.forEach((d, i) => {
