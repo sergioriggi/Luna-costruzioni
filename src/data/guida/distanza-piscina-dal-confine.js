@@ -21,14 +21,14 @@ export default {
     titolo: 'Quanta distanza lasciare dal vicino quando fai la piscina',
     titoloEn: 'How much space to leave your neighbour when you build a pool',
     sintesi:
-        'Gli articoli 873, 878 e 889 del codice civile, il regolamento del tuo Comune che ha l’ultima parola e le misure da prendere in giardino prima del sopralluogo.',
+        'Gli articoli 873, 878 e 889 del codice civile, il regolamento del tuo Comune, che può chiedere di più, e le misure da prendere in giardino prima del sopralluogo.',
     sintesiEn:
-        'Articles 873, 878 and 889 of the Italian Civil Code, your municipality’s rules, which have the last word, and the measurements to take in the garden before the site visit.',
+        'Articles 873, 878 and 889 of the Italian Civil Code, your municipality’s rules, which can ask for more, and the measurements to take in the garden before the site visit.',
 
     seo: {
-        titolo: 'Distanza della piscina dal confine: le regole in Sicilia',
+        titolo: 'Distanza della piscina dal confine: codice civile e Comune',
         descrizione:
-            'Tre metri fra costruzioni, due metri per le cisterne, il muro di cinta e il regolamento del Comune: le distanze di una piscina dal confine.',
+            'Distanza della piscina dal confine: cosa dice il codice civile e cosa può chiedere in più il regolamento del tuo Comune.',
     },
 
     foto: 'solarium-in-legno',
@@ -36,14 +36,14 @@ export default {
     corpo: [
         {
             tipo: 'p',
-            it: 'La domanda arriva quasi sempre al sopralluogo, con il metro già in mano: quanto posso avvicinare la piscina al muro del vicino? Nei giardini delle villette a schiera, a San Cataldo come a Caltanissetta, lo spazio è quello che è. Mezzo metro in più o in meno decide se la vasca ci sta. La risposta parte dal codice civile e quasi sempre finisce all’ufficio tecnico del Comune.',
-            en: 'The question nearly always comes up at the site visit, tape measure already in hand: how close to the neighbour’s wall can the pool go? In the gardens of terraced houses, in San Cataldo as in Caltanissetta, the space is what it is. Half a metre either way decides whether the pool fits. The answer starts in the Civil Code and nearly always ends at the municipality’s planning office.',
+            it: 'La domanda arriva quasi sempre al sopralluogo, con il metro già in mano: quanto posso avvicinare la piscina al muro del vicino? Nei giardini delle villette a schiera come quelle di San Cataldo, lo spazio è quello che è. Mezzo metro in più o in meno decide se la vasca ci sta. La risposta parte dal codice civile e quasi sempre finisce all’ufficio tecnico del Comune.',
+            en: 'The question nearly always comes up at the site visit, tape measure already in hand: how close to the neighbour’s wall can the pool go? In the gardens of terraced houses like those in San Cataldo, the space is what it is. Half a metre either way decides whether the pool fits. The answer starts in the Civil Code and nearly always ends at the municipality’s planning office.',
         },
         { tipo: 'h2', it: 'Il codice civile sulle distanze', en: 'The Civil Code on distances' },
         {
             tipo: 'p',
-            it: 'Il codice civile regola le distanze fra terreni confinanti in una sezione apposita. Per una vasca scavata in giardino si guarda a due articoli, e nessuno dei due nomina le piscine.',
-            en: 'The Civil Code deals with distances between neighbouring plots in a section of its own. For a pool dug in a garden, people look to two of its articles, and neither of them mentions swimming pools.',
+            it: 'Il codice civile dedica alle distanze fra fondi vicini una sezione apposita. Per una vasca scavata in giardino si guarda a due articoli, e nessuno dei due nomina le piscine.',
+            en: 'The Civil Code devotes a section of its own to distances between neighbouring plots. For a pool dug in a garden, people look to two of its articles, and neither of them mentions swimming pools.',
         },
         {
             tipo: 'elenco',
@@ -58,8 +58,8 @@ export default {
         },
         {
             tipo: 'p',
-            it: 'Quale dei due articoli valga per una piscina interrata il codice non lo dice. Per questo al tecnico va mostrato tutto il progetto, compreso quello che esce dal terreno insieme alla vasca: un solarium rialzato, un muretto, un locale tecnico in muratura. Pensa a una villetta a Canicattì con il solarium più alto del prato: anche quello va sulla pianta. Prima di disegnare la piscina conviene farsi dare da lui un parere scritto sul tuo caso.',
-            en: 'The Code does not say which of the two articles applies to an in-ground pool. That is why your surveyor or architect needs to see the whole design, including anything that rises above the ground along with the pool: a raised sun deck, a low wall, a masonry plant room. Picture a house in Canicattì with a sun deck higher than the lawn: that goes on the plan too. Before the pool is drawn up, it is worth asking them for a written opinion on your case.',
+            it: 'Il codice non dice quale dei due valga per una piscina interrata. Per diverse sentenze della Cassazione la parte della vasca che sta tutta sotto il livello del terreno di solito non conta come costruzione per l’articolo 873; conta invece quello che esce dal terreno: un solarium rialzato, un muretto, un locale tecnico in muratura, una vasca rialzata sostenuta da un muro. Sull’articolo 889 i giudici non la pensano tutti allo stesso modo, e i due metri non valgono in automatico per ogni piscina. Per questo al tecnico va mostrato tutto il progetto, e prima di disegnare la piscina conviene farsi dare da lui un parere scritto sul tuo caso.',
+            en: 'The Code does not say which of the two applies to an in-ground pool. According to several Court of Cassation rulings, the part of the pool that lies entirely below ground level is usually not treated as a structure under Article 873; what rises above the ground is: a raised sun deck, a low wall, a masonry plant room, a raised pool held up by a wall. On Article 889 the courts do not all agree, and the two metres do not apply automatically to every pool. That is why your surveyor or architect needs to see the whole design, and before the pool is drawn up it is worth asking them for a written opinion on your case.',
         },
         { tipo: 'h2', it: 'Se sul confine c’è un muro', en: 'If there is a wall on the boundary' },
         {
@@ -69,15 +69,14 @@ export default {
         },
         {
             tipo: 'p',
-            it: 'Per l’articolo 889 il muro invece non sposta niente: le sue distanze valgono anche se sul confine c’è un muro divisorio. E con una siepe la domanda vera è dove passi la linea. In un terreno di contrada nell’Agrigentino capita che la siepe piantata quarant’anni fa stia un metro più in qua o più in là del confine catastale. Prima di misurare, i punti di confine vanno trovati sul posto da un tecnico.',
-            en: 'For Article 889, on the other hand, the wall changes nothing: its distances apply even when there is a dividing wall on the boundary. And with a hedge, the real question is where the line runs. On a rural plot near Agrigento, the hedge planted forty years ago may stand a metre to one side of the cadastral boundary. Before anyone measures, a surveyor needs to find the boundary points on site.',
+            it: 'Per l’articolo 889 il muro invece non sposta niente: le sue distanze valgono anche se sul confine c’è un muro divisorio. E con una siepe la domanda vera è dove passi la linea. In un terreno di campagna capita che la siepe piantata quarant’anni fa stia un metro più in qua o più in là del confine catastale. Prima di misurare, i punti di confine vanno trovati sul posto da un tecnico.',
+            en: 'For Article 889, on the other hand, the wall changes nothing: its distances apply even when there is a dividing wall on the boundary. And with a hedge, the real question is where the line runs. On a rural plot, the hedge planted forty years ago may stand a metre to one side of the cadastral boundary. Before anyone measures, a surveyor needs to find the boundary points on site.',
         },
-        { tipo: 'foto', slug: 'mediterranea-ulivo-in-primo-piano' },
-        { tipo: 'h2', it: 'L’ultima parola è del Comune', en: 'The municipality has the last word' },
+        { tipo: 'h2', it: 'Il regolamento del Comune', en: 'Your municipality’s rules' },
         {
             tipo: 'p',
-            it: 'Gli articoli 873 e 889 lasciano spazio alle regole locali. La misura che vale per il tuo giardino sta nel regolamento edilizio e nelle norme tecniche del piano regolatore del tuo Comune, e cambia da un Comune all’altro: a Gela e a Caltagirone le norme possono essere diverse. Chi le legge per te è il tecnico che firma la pratica.',
-            en: 'Articles 873 and 889 both leave room for local rules. The distance that applies to your garden is set out in your municipality’s building regulations and in the technical rules of its local plan, and it varies from one municipality to the next: the rules in Gela and in Caltagirone may differ. The person who reads them for you is the professional who signs the planning application.',
+            it: 'Gli articoli 873 e 889 lasciano spazio alle regole locali. La misura che vale per il tuo giardino sta nel regolamento edilizio e nelle norme tecniche del piano regolatore del tuo Comune e cambia da un Comune all’altro. Chi le legge per te è il tecnico che firma la pratica.',
+            en: 'Articles 873 and 889 both leave room for local rules. The distance that applies to your garden is set out in your municipality’s building regulations and in the technical rules of its local plan, and it varies from one municipality to the next. The person who reads them for you is the professional who signs the planning application.',
         },
         {
             tipo: 'p',
@@ -93,7 +92,7 @@ export default {
         {
             tipo: 'elenco',
             it: [
-                'quanto spazio c’è fra il punto dove pensi la vasca e il confine, misurato dalla linea di confine;',
+                'quanto spazio c’è fra il punto dove immagini la vasca e il confine, misurato dalla linea di confine;',
                 'le costruzioni del vicino a ridosso del confine, casa, garage o magazzino, e a quanti metri stanno;',
                 'i muri di cinta, dove sono e quanto sono alti;',
                 'tubi e pozzetti che già passano nel giardino, tuoi o del vicino;',
@@ -109,8 +108,8 @@ export default {
         },
         {
             tipo: 'p',
-            it: 'Il sopralluogo parte da lì e va più veloce. In un giardino di paese a Niscemi, largo dieci metri, sapere subito quanto spazio lasciare dal lato del vicino cambia la forma della vasca: se il lato verso il vicino è vincolato, la vasca va disegnata lunga e stretta.',
-            en: 'The site visit starts from there and goes faster. In a town garden in Niscemi, ten metres wide, knowing straight away how much room to leave on the neighbour’s side changes the shape of the pool: if the side towards the neighbour is constrained, the pool has to be drawn long and narrow.',
+            it: 'Il sopralluogo parte da lì e va più veloce. In un giardino largo dieci metri, sapere subito quanto spazio lasciare dal lato del vicino cambia la forma della vasca: se il lato verso il vicino è vincolato, la vasca va disegnata lunga e stretta.',
+            en: 'The site visit starts from there and goes faster. In a garden ten metres wide, knowing straight away how much room to leave on the neighbour’s side changes the shape of the pool: if the side towards the neighbour is constrained, the pool has to be drawn long and narrow.',
         },
         { tipo: 'h2', it: 'Una vasca disegnata sullo spazio che c’è', en: 'A pool drawn around the space you have' },
         {
@@ -121,8 +120,8 @@ export default {
         { tipo: 'foto', slug: 'mediterranea-vasca-lunga-e-ulivo' },
         {
             tipo: 'p',
-            it: 'Al sopralluogo, che è gratuito, misuriamo il giardino insieme a te e vediamo dove la vasca può stare: Luna Costruzioni è un’impresa edile che fa anche scavi e movimento terra, oltre che concessionario autorizzato Piscine Rocks Design per la Sicilia. Il controllo delle distanze sul regolamento comunale lo fa il tecnico che firma la pratica: il tuo, oppure lo seguiamo noi come servizio a parte, se lo vuoi. Per il prezzo la misura della vasca è la prima voce; le altre sono in [Quanto costa](/quanto-costa).',
-            en: 'At the site visit, which is free, we measure the garden with you and see where the pool can go: Luna Costruzioni is a building firm that also does excavation and earthworks, as well as an authorised Piscine Rocks Design dealer for Sicily. Checking the distances against the municipal rules is the job of the professional who signs the application: your own, or we can handle it as a separate service if you want. On price, the size of the pool is the first item; the others are in [Costs](/quanto-costa).',
+            it: 'Al sopralluogo, che è gratuito, misuriamo il giardino insieme a te e vediamo dove la vasca può stare: Luna Costruzioni è un’impresa edile che fa anche scavi e movimento terra, oltre che concessionario autorizzato Piscine Rocks Design per la Sicilia. Il controllo delle distanze sul regolamento comunale lo fa il tecnico che firma la pratica: il tuo di fiducia oppure, se vuoi, ce ne occupiamo noi come servizio a parte. Per il prezzo la misura della vasca è la prima voce; le altre sono in [Quanto costa](/quanto-costa).',
+            en: 'At the site visit, which is free, we measure the garden with you and see where the pool can go: Luna Costruzioni is a building firm that also does excavation and earthworks, as well as an authorised Piscine Rocks Design dealer for Sicily. Checking the distances against the municipal rules is the job of the professional who signs the application: your own, or, if you prefer, we can take care of it as a separate service. On price, the size of the pool is the first item; the others are in [Costs](/quanto-costa).',
         },
     ],
 
@@ -131,9 +130,9 @@ export default {
             domanda: 'A quanti metri dal confine si può fare una piscina interrata?',
             domandaEn: 'How far from the boundary can an in-ground pool go?',
             risposta:
-                'Il codice civile non dà una misura scritta per le piscine. Le distanze a cui si guarda sono tre metri fra costruzioni (articolo 873) e due metri dal confine per pozzi e cisterne (articolo 889), e in tutti e due i casi contano anche le regole del tuo Comune. La misura che vale per il tuo terreno te la dà un tecnico dopo aver letto le norme comunali.',
+                'Il codice civile non dà una misura scritta per le piscine. Si guarda ai tre metri fra costruzioni dell’articolo 873, che di solito riguardano le parti che escono dal terreno (solarium, muretti, locale tecnico), e ai due metri dal confine per pozzi e cisterne dell’articolo 889, che per le piscine i giudici non applicano tutti allo stesso modo. In tutti e due i casi il regolamento del tuo Comune può chiedere di più. La misura che vale per il tuo terreno te la dà un tecnico dopo aver letto le norme comunali.',
             rispostaEn:
-                'The Civil Code gives no written distance for swimming pools. The distances people look to are three metres between structures (Article 873) and two metres from the boundary for wells and cisterns (Article 889), and in both cases your municipality’s rules count as well. The distance that applies to your plot comes from a qualified professional who has read the municipal rules.',
+                'The Civil Code gives no written distance for swimming pools. People look to the three metres between structures in Article 873, which usually concern the parts that rise above the ground (sun deck, low walls, plant room), and to the two metres from the boundary for wells and cisterns in Article 889, which the courts do not all apply to pools in the same way. In both cases your municipality’s rules can ask for more. The distance that applies to your plot comes from a qualified professional who has read the municipal rules.',
         },
         {
             domanda: 'Se sul confine c’è un muro di cinta cambia qualcosa?',
