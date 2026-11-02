@@ -33,7 +33,7 @@ export default {
             'Permesso di costruire, vincolo paesaggistico e fascia dei 150 metri: cosa serve per una piscina interrata in Sicilia, con le norme citate.',
     },
 
-    foto: 'villa-con-spiaggia-in-ghiaia',
+    foto: 'oasi-con-pontile',
 
     corpo: [
         {

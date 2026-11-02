@@ -66,7 +66,7 @@ export default function Articolo() {
     const domande = a.domande ?? []
     const altri = GUIDA.filter(x => x.slug !== a.slug).slice(0, 3)
     // Le foto di materiali (i campioni di sabbia) non mostrano piscine: niente credito.
-    const credito = !foto(a.foto).tags.includes('materiali')
+    const credito = !foto(a.foto).tags.includes('campione-sabbia')
 
     return (
         <>
