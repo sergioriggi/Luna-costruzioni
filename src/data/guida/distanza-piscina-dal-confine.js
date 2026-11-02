@@ -3,8 +3,10 @@
  * (Keyword Planner, novembre 2026), domanda che sul sito non aveva risposta.
  * Search Console sui 90 giorni non porta query su questo tema: il sito ha
  * ancora pochissime impressioni, quindi il volume ha deciso più dello storico.
- * Le norme citate sono aperte su Normattiva; nessuna sentenza è citata perché
- * non è stata letta da una fonte ufficiale.
+ * Le norme citate sono aperte su Normattiva. Sentenze: Cass. ord. 345/2024
+ * (massima su Brocardi) per la piscina come costruzione ai fini dell'art. 873;
+ * Cass. ord. 13154/2025 (commento su lexced.com, unica fonte trovata) per
+ * l'art. 889 non applicato in automatico alle piscine.
  */
 
 const CC_873 =
@@ -162,5 +164,7 @@ export default {
         { titolo: 'Codice civile, art. 873 – Distanze nelle costruzioni (Normattiva)', url: CC_873 },
         { titolo: 'Codice civile, art. 878 – Muro di cinta (Normattiva)', url: CC_878 },
         { titolo: 'Codice civile, art. 889 – Distanze per pozzi, cisterne, fosse e tubi (Normattiva)', url: CC_889 },
+        { titolo: 'Cassazione civile, sez. II, ordinanza 345 del 5 gennaio 2024 – piscina e distanze (massima, Brocardi)', url: 'https://brocardi.it/massimario/76513.html' },
+        { titolo: 'Cassazione civile, sez. II, ordinanza 13154/2025 – piscina e art. 889 (commento, Lexced)', url: 'https://www.lexced.com/giurisprudenza-civile/distanza-legale-piscina-la-cassazione-chiarisce/' },
     ],
 }
