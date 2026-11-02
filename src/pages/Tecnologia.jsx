@@ -56,7 +56,7 @@ export default function Tecnologia() {
                             <strong className="font-semibold text-testo">{ROCKS_DESIGN.nome}</strong>.{' '}
                             {t(`${AZIENDA.nome} ne è `, `${AZIENDA.nome} is `)}
                             <strong className="font-semibold text-testo">
-                                {t(`concessionario autorizzato per la ${AZIENDA.zona}`, 'an authorised dealer for Sicily')}
+                                {t(`uno dei due concessionari autorizzati in ${AZIENDA.zona}`, 'one of the two authorised dealers in Sicily')}
                             </strong>
                             {t(
                                 ': progettiamo e realizziamo sul territorio applicando la Tecnologia Rocks Design®, di cui non siamo inventori ma licenziatari ufficiali.',
