@@ -50,11 +50,11 @@ export default {
         {
             tipo: 'elenco',
             it: [
-                `**Articolo 873, le costruzioni.** Le [costruzioni su fondi confinanti](${CC_873}), se non sono unite o aderenti, vanno tenute ad almeno tre metri l’una dall’altra. Il regolamento locale può chiedere una distanza maggiore.`,
+                `**Articolo 873, le costruzioni.** Le [costruzioni su fondi confinanti](${CC_873}), se non sono unite o aderenti, vanno tenute ad almeno tre metri l’una dall’altra. Il regolamento locale può chiedere una distanza maggiore. I tre metri si contano fra la tua opera e la costruzione del vicino, non dal confine; una distanza dal confine, se c’è, la fissa il regolamento comunale.`,
                 `**Articolo 889, pozzi e cisterne.** Chi apre [pozzi, cisterne, fosse di latrina o di concime vicino al confine](${CC_889}) deve lasciare almeno due metri fra il confine e il punto più vicino del perimetro interno dell’opera. Per i tubi dell’acqua e del gas la distanza minima dal confine è di un metro. Anche qui restano ferme le regole dei regolamenti locali.`,
             ],
             en: [
-                `**Article 873, buildings and structures.** [Structures on neighbouring plots](${CC_873}), unless joined or touching, must be kept at least three metres apart. Local regulations may require a greater distance.`,
+                `**Article 873, buildings and structures.** [Structures on neighbouring plots](${CC_873}), unless joined or touching, must be kept at least three metres apart. Local regulations may require a greater distance. The three metres are measured between your structure and your neighbour’s building, not from the boundary; any distance from the boundary is set by the municipal rules.`,
                 `**Article 889, wells and cisterns.** Anyone opening [wells, cisterns, cesspits or manure pits near the boundary](${CC_889}) must leave at least two metres between the boundary and the nearest point of the inner perimeter of the work. For water and gas pipes the minimum distance from the boundary is one metre. Here too, the provisions of local regulations still apply.`,
             ],
         },
@@ -132,9 +132,9 @@ export default {
             domanda: 'A quanti metri dal confine si può fare una piscina interrata?',
             domandaEn: 'How far from the boundary can an in-ground pool go?',
             risposta:
-                'Il codice civile non dà una misura scritta per le piscine. Si guarda ai tre metri fra costruzioni dell’articolo 873, che riguardano le opere non completamente interrate (anche la piscina, se esce in parte dal terreno, un solarium rialzato, un locale tecnico in muratura), e ai due metri dal confine per pozzi e cisterne dell’articolo 889, che per la Cassazione non si applicano in automatico alle piscine. In tutti e due i casi il regolamento del tuo Comune può chiedere di più. La misura che vale per il tuo terreno te la dà un tecnico dopo aver letto le norme comunali.',
+                'Il codice civile non dà una misura scritta per le piscine. Si guarda ai tre metri fra costruzioni dell’articolo 873, misurati dalla costruzione del vicino e non dal confine, che riguardano le opere non completamente interrate (anche la piscina, se esce in parte dal terreno; di solito anche un solarium rialzato o un locale tecnico in muratura), e ai due metri dal confine per pozzi e cisterne dell’articolo 889, che per la Cassazione non si applicano in automatico alle piscine. In tutti e due i casi il regolamento del tuo Comune può chiedere di più. La misura che vale per il tuo terreno te la dà un tecnico dopo aver letto le norme comunali.',
             rispostaEn:
-                'The Civil Code gives no written distance for swimming pools. People look to the three metres between structures in Article 873, which concern works that are not completely underground (including the pool itself if it is partly above ground, a raised sun deck, a masonry plant room), and to the two metres from the boundary for wells and cisterns in Article 889, which, according to the Court of Cassation, do not apply automatically to pools. In both cases your municipality’s rules can ask for more. The distance that applies to your plot comes from a qualified professional who has read the municipal rules.',
+                'The Civil Code gives no written distance for swimming pools. People look to the three metres between structures in Article 873, measured from your neighbour’s building rather than from the boundary, which concern works that are not completely underground (including the pool itself if it is partly above ground, and usually a raised sun deck or a masonry plant room), and to the two metres from the boundary for wells and cisterns in Article 889, which, according to the Court of Cassation, do not apply automatically to pools. In both cases your municipality’s rules can ask for more. The distance that applies to your plot comes from a qualified professional who has read the municipal rules.',
         },
         {
             domanda: 'Se sul confine c’è un muro di cinta cambia qualcosa?',
