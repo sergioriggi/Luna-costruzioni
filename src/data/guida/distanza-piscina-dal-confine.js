@@ -38,8 +38,8 @@ export default {
     corpo: [
         {
             tipo: 'p',
-            it: 'La domanda arriva quasi sempre al sopralluogo, con il metro già in mano: quanto posso avvicinare la piscina al muro del vicino? Nei giardini delle villette a schiera come quelle di San Cataldo, lo spazio è quello che è. Mezzo metro in più o in meno decide se la vasca ci sta. La risposta parte dal codice civile e quasi sempre finisce all’ufficio tecnico del Comune.',
-            en: 'The question nearly always comes up at the site visit, tape measure already in hand: how close to the neighbour’s wall can the pool go? In the gardens of terraced houses like those in San Cataldo, the space is what it is. Half a metre either way decides whether the pool fits. The answer starts in the Civil Code and nearly always ends at the municipality’s planning office.',
+            it: 'La domanda arriva quasi sempre al sopralluogo, con il metro già in mano: quanto posso avvicinare la piscina al muro del vicino? Nei giardini delle villette a schiera lo spazio è quello che è. Mezzo metro in più o in meno decide se la vasca ci sta. La risposta parte dal codice civile e quasi sempre finisce all’ufficio tecnico del Comune.',
+            en: 'The question nearly always comes up at the site visit, tape measure already in hand: how close to the neighbour’s wall can the pool go? In the gardens of terraced houses the space is what it is. Half a metre either way decides whether the pool fits. The answer starts in the Civil Code and nearly always ends at the municipality’s planning office.',
         },
         { tipo: 'h2', it: 'Il codice civile sulle distanze', en: 'The Civil Code on distances' },
         {
@@ -102,7 +102,7 @@ export default {
             ],
             en: [
                 'how much space there is between where you picture the pool and the boundary, measured from the boundary line;',
-                'your neighbour’s buildings close to the boundary, whether a house, garage or store, and how many metres away they are;',
+                'your neighbour’s buildings close to the boundary, whether a house, garage or shed, and how many metres away they are;',
                 'boundary walls, where they are and how high;',
                 'any pipes and inspection chambers already running through the garden, yours or your neighbour’s;',
                 'where you would like paving around the pool and where the plant room could go.',
