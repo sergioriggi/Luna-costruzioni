@@ -180,9 +180,9 @@ const DUBBI = [
         domanda: '«Dopo la consegna, chi mi assiste?»',
         domandaEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso che è venuto a vedere il giardino la prima volta. Un numero, non un centralino.',
+            'Luna Costruzioni S.r.l.s. è uno dei due concessionari autorizzati in Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso che è venuto a vedere il giardino la prima volta. Un numero, non un centralino.',
         rispostaEn:
-            'Luna Costruzioni S.r.l.s. is an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who first came to see your garden. One number, not a call centre.',
+            'Luna Costruzioni S.r.l.s. is one of the two authorised dealers in Sicily: we stay on the island and your contact stays Luciano Naro, the same person who first came to see your garden. One number, not a call centre.',
     },
     {
         domanda: '«Sarà una vasca come tante.»',
@@ -277,7 +277,7 @@ export default function Home() {
         <div className="pg">
             <Seo
                 titolo="Luna Costruzioni | Piscine Rocks Design in tutta la Sicilia"
-                descrizione="Impresa edile e concessionario autorizzato Piscine Rocks Design per la Sicilia: piscina con spiaggia in sabbia chiavi in mano, scavi con mezzi propri."
+                descrizione="Impresa edile, uno dei due concessionari autorizzati Piscine Rocks Design in Sicilia: piscina con spiaggia in sabbia, scavi con mezzi propri."
                 percorso="/"
                 schema={[
                     schemaAzienda(),
@@ -309,7 +309,7 @@ export default function Home() {
                     </h1>
                     <p className="pg-eroe-sommario">
                         {t(
-                            'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
+                            'Luna Costruzioni S.r.l.s. è uno dei due concessionari autorizzati Piscine Rocks Design in Sicilia e, in quanto impresa edile, realizza la piscina in Tecnologia Rocks Design chiavi in mano: scavi, realizzazione, messa in opera e collaudo. Un solo interlocutore per tutto il cantiere.',
                             'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily and, as a building contractor, delivers your Rocks Design Technology pool turnkey: excavation, construction, installation and commissioning. One point of contact for the whole job.',
                         )}
                     </p>
@@ -552,7 +552,7 @@ export default function Home() {
                         <h2 className="pg-titolo">{t('Su tutta la Sicilia.', 'Across Sicily.')}</h2>
                         <p className="pg-sicilia-intro">
                             {t(
-                                'Luna Costruzioni S.r.l.s. è concessionario autorizzato Piscine Rocks Design per la Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
+                                'Luna Costruzioni S.r.l.s. è uno dei due concessionari autorizzati Piscine Rocks Design in Sicilia. Lavoriamo in tutte e nove le province, per ville private e per strutture ricettive.',
                                 'Luna Costruzioni S.r.l.s. is an authorised Piscine Rocks Design dealer in Sicily. We work in all nine provinces, for private villas and for hotels and guest houses.',
                             )}
                         </p>
@@ -630,7 +630,7 @@ export default function Home() {
             {/* Il ruolo di concessionario, per esteso: la tecnologia è della casa madre. */}
             <p className="pg-nota-brevetto">
                 {t(
-                    `La Tecnologia Rocks Design è brevettata da ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} ne è concessionario autorizzato per la Sicilia, non l’inventrice.`,
+                    `La Tecnologia Rocks Design è brevettata da ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} ne è uno dei due concessionari autorizzati in Sicilia, non l’inventrice.`,
                     `Rocks Design Technology is patented by ${ROCKS_DESIGN.nome}. ${AZIENDA.nome} is one of its authorised dealers in Sicily, not its inventor.`,
                 )}
             </p>

@@ -86,7 +86,7 @@ export default function Header() {
                     href={ROCKS_DESIGN.sito}
                     target="_blank"
                     rel="noopener"
-                    title={`${ROCKS_DESIGN.nome} — sito ufficiale. ${AZIENDA.nome} è concessionario autorizzato per la ${AZIENDA.zona}`}
+                    title={`${ROCKS_DESIGN.nome} — sito ufficiale. ${AZIENDA.nome} è uno dei due concessionari autorizzati in ${AZIENDA.zona}`}
                     className="pg-concessionario"
                 >
                     <span className="pg-concessionario-logo">
