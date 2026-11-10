@@ -118,8 +118,8 @@ export default function ComeLavoriamo() {
             <Cta
                 titolo={t('Il primo passo è vedere il terreno', 'The first step is seeing the site')}
                 testo={t(
-                    'Il sopralluogo non costa nulla e non ti impegna a niente: è da lì che nasce il disegno della vasca.',
-                    'The site visit is free and commits you to nothing. It is where the design of the pool begins.',
+                    'Sopralluogo sul terreno, senza impegno: è da lì che nasce il disegno della vasca.',
+                    'Site survey on your land, with no obligation: it is where the design of the pool begins.',
                 )}
                 primaria={{ to: '/contatti', label: t('Chiedi un preventivo', 'Ask for a quote') }}
                 secondaria={{ to: '/domande-frequenti', label: t('Leggi le FAQ', 'Read the FAQ') }}

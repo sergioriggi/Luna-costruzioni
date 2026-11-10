@@ -68,8 +68,8 @@ export default function Guida() {
             <Cta
                 titolo={t('Una domanda che qui non trovi?', 'A question you cannot find here?')}
                 testo={t(
-                    'Scrivici o chiamaci: rispondiamo noi, e il sopralluogo in giardino è gratuito.',
-                    'Write or call us: you will hear back from us directly, and the site visit is free.',
+                    'Scrivici o chiamaci: rispondiamo noi, e fissiamo un sopralluogo sul terreno, senza impegno.',
+                    'Write or call us: you will hear back from us directly, and we will arrange a site survey on your land, with no obligation.',
                 )}
                 whatsapp
             />

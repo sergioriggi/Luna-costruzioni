@@ -145,8 +145,8 @@ export default function Sicilia() {
                         <h3 className="text-lg">{t('Costo', 'Cost')}</h3>
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-neutro-400">
                             {t(
-                                `Si parte da ${PREZZO.cifraLunga}. Da lì in su contano dimensione, accessi al giardino, modello e opere di contorno; la distanza del cantiere entra nei trasporti. Il numero vero arriva dopo il sopralluogo, che come il preventivo non costa nulla. Le voci una per una sono in`,
-                                `Prices start from €${PREZZO.daMq.toLocaleString('en-GB')} per square metre, excluding VAT. Above that, what counts is size, access to the garden, the model and the surrounding works; the distance to the site goes into transport. The real figure comes after the site visit, which, like the quote, is free. Each item is set out in`,
+                                `Si parte da ${PREZZO.cifraLunga}. Da lì in su contano dimensione, accessi al giardino, modello e opere di contorno; la distanza del cantiere entra nei trasporti. Il numero vero arriva dopo il sopralluogo sul terreno, senza impegno. Le voci una per una sono in`,
+                                `Prices start from €${PREZZO.daMq.toLocaleString('en-GB')} per square metre, excluding VAT. Above that, what counts is size, access to the garden, the model and the surrounding works; the distance to the site goes into transport. The real figure comes after the site survey on your land, with no obligation. Each item is set out in`,
                             )}{' '}
                             <Link to="/quanto-costa" className="link-sottile font-medium text-accento">
                                 {t('Quanto costa', 'Costs')}

@@ -122,8 +122,8 @@ export default {
         { tipo: 'foto', slug: 'mediterranea-vasca-lunga-e-ulivo' },
         {
             tipo: 'p',
-            it: 'Al sopralluogo, che è gratuito, misuriamo il giardino insieme a te e vediamo dove la vasca può stare: Luna Costruzioni è un’impresa edile che fa anche scavi e movimento terra, oltre che concessionario autorizzato Piscine Rocks Design per la Sicilia. Il controllo delle distanze sul regolamento comunale lo fa il tecnico che firma la pratica: il tuo di fiducia oppure, se vuoi, ce ne occupiamo noi come servizio a parte. Per il prezzo la misura della vasca è la prima voce; le altre sono in [Quanto costa](/quanto-costa).',
-            en: 'At the site visit, which is free, we measure the garden with you and see where the pool can go: Luna Costruzioni is a building firm that also does excavation and earthworks, as well as an authorised Piscine Rocks Design dealer for Sicily. Checking the distances against the municipal rules is the job of the professional who signs the application: your own, or, if you prefer, we can take care of it as a separate service. On price, the size of the pool is the first item; the others are in [Costs](/quanto-costa).',
+            it: 'Al sopralluogo sul terreno, senza impegno, misuriamo il giardino insieme a te e vediamo dove la vasca può stare: Luna Costruzioni è un’impresa edile che fa anche scavi e movimento terra, oltre che concessionario autorizzato Piscine Rocks Design per la Sicilia. Il controllo delle distanze sul regolamento comunale lo fa il tecnico che firma la pratica: il tuo di fiducia oppure, se vuoi, ce ne occupiamo noi come servizio a parte. Per il prezzo la misura della vasca è la prima voce; le altre sono in [Quanto costa](/quanto-costa).',
+            en: 'At the site survey on your land, with no obligation, we measure the garden with you and see where the pool can go: Luna Costruzioni is a building firm that also does excavation and earthworks, as well as an authorised Piscine Rocks Design dealer for Sicily. Checking the distances against the municipal rules is the job of the professional who signs the application: your own, or, if you prefer, we can take care of it as a separate service. On price, the size of the pool is the first item; the others are in [Costs](/quanto-costa).',
         },
     ],
 
@@ -148,9 +148,9 @@ export default {
             domanda: 'Chi controlla che le distanze siano rispettate?',
             domandaEn: 'Who checks that the distances are respected?',
             risposta:
-                'Il tecnico che firma la pratica edilizia, sul progetto e sulle norme del tuo Comune. Al sopralluogo gratuito misuriamo con te il giardino, così il tecnico parte da numeri veri.',
+                'Il tecnico che firma la pratica edilizia, sul progetto e sulle norme del tuo Comune. Al sopralluogo sul terreno, senza impegno, misuriamo con te il giardino, così il tecnico parte da numeri veri.',
             rispostaEn:
-                'The professional who signs the planning application, working from the design and your municipality’s rules. At the free site visit we measure the garden with you, so they start from real figures.',
+                'The professional who signs the planning application, working from the design and your municipality’s rules. At the site survey on your land, with no obligation, we measure the garden with you, so they start from real figures.',
         },
     ],
 
