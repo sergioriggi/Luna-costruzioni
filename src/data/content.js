@@ -274,9 +274,9 @@ export const DUBBI = [
         dubbio: '«Dopo la consegna, chi mi assiste?»',
         dubbioEn: '“Once it is handed over, who helps me?”',
         risposta:
-            'Siamo concessionario autorizzato per la Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
+            'Siamo uno dei due concessionari autorizzati in Sicilia: restiamo sull’isola e il referente resta Luciano Naro, lo stesso del primo sopralluogo. Un numero, non un centralino.',
         rispostaEn:
-            'We are an authorised dealer for Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
+            'We are one of the two authorised dealers in Sicily: we stay on the island and your contact stays Luciano Naro, the same person who came for the first visit. One number, not a call centre.',
     },
     {
         dubbio: '«Sarà una vasca come tante.»',

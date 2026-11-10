@@ -52,7 +52,7 @@ export default function Modello() {
                      */
                     schemaServizio({
                         nome: `${m.nomeCompleto} — piscina Rocks Design`,
-                        descrizione: `${m.sintesi} Realizzato con Tecnologia Rocks Design® di ${ROCKS_DESIGN.nome}: Luna Costruzioni S.r.l.s. è concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.`,
+                        descrizione: `${m.sintesi} Realizzato con Tecnologia Rocks Design® di ${ROCKS_DESIGN.nome}: Luna Costruzioni S.r.l.s. è uno dei due concessionari autorizzati in Sicilia, non l'inventore della tecnologia.`,
                         area: 'Sicilia',
                     }),
                 ]}

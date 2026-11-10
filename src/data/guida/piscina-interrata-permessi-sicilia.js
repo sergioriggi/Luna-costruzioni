@@ -120,7 +120,7 @@ export default {
         { tipo: 'h2', it: 'Chi segue la pratica', en: 'Who handles the application' },
         {
             tipo: 'p',
-            it: 'La pratica la firma un tecnico abilitato: geometra, architetto o ingegnere. Puoi affidarla al tuo professionista di fiducia. Se preferisci, Luna Costruzioni, concessionario autorizzato Piscine Rocks Design per la Sicilia, può occuparsi anche del disbrigo delle pratiche: è un servizio a parte, quotato separatamente dai lavori, e lo attivi solo se vuoi.',
+            it: 'La pratica la firma un tecnico abilitato: geometra, architetto o ingegnere. Puoi affidarla al tuo professionista di fiducia. Se preferisci, Luna Costruzioni, uno dei due concessionari autorizzati Piscine Rocks Design in Sicilia, può occuparsi anche del disbrigo delle pratiche: è un servizio a parte, quotato separatamente dai lavori, e lo attivi solo se vuoi.',
             en: 'The application is signed by a qualified professional: a surveyor (geometra), architect or engineer. You can give it to the professional you already trust. If you prefer, Luna Costruzioni, an authorised Piscine Rocks Design dealer for Sicily, can also handle the paperwork: it is a separate service, priced separately from the works, and you take it only if you want it.',
         },
         {
