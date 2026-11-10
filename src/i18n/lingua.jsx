@@ -20,7 +20,25 @@ export function FornitoreLingua({ children }) {
     const [lingua, impostaLingua] = useState('it')
 
     // La scelta si legge dopo l'idratazione: il markup statico è sempre italiano.
+    //
+    // `?lang=en` (o `?lang=it`) nell'indirizzo vince sulla scelta salvata e la
+    // salva. Serve alle email in inglese per agenzie e proprietari stranieri:
+    // un link a www.lunacostruzioni.it si apriva in italiano, e il visitatore
+    // doveva trovare da solo il selettore IT · EN. Il parametro poi si toglie
+    // dall'indirizzo (se la scelta è salvata), così non finisce in condivisioni
+    // o statistiche.
     useEffect(() => {
+        const dallIndirizzo = linguaDallIndirizzo()
+        if (dallIndirizzo) {
+            impostaLingua(dallIndirizzo)
+            // Il parametro si toglie solo se la scelta è salvata: senza storage
+            // resta nell'indirizzo, così una ricarica riapre la stessa lingua.
+            try {
+                localStorage.setItem(CHIAVE, dallIndirizzo)
+                togliParametroLingua()
+            } catch { /* storage non disponibile: il parametro resta */ }
+            return
+        }
         try {
             const salvata = localStorage.getItem(CHIAVE)
             if (salvata === 'en' || salvata === 'it') impostaLingua(salvata)
@@ -47,6 +65,25 @@ export function FornitoreLingua({ children }) {
     )
 
     return <ContestoLingua.Provider value={valore}>{children}</ContestoLingua.Provider>
+}
+
+/** `it` o `en` dal parametro `lang` dell'indirizzo, altrimenti null. */
+export function linguaDallIndirizzo(search = typeof window !== 'undefined' ? window.location.search : '') {
+    try {
+        const valore = new URLSearchParams(search).get('lang')
+        const codice = valore ? valore.trim().toLowerCase().slice(0, 2) : ''
+        return codice === 'en' || codice === 'it' ? codice : null
+    } catch {
+        return null
+    }
+}
+
+function togliParametroLingua() {
+    try {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('lang')
+        window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
+    } catch { /* ignorato */ }
 }
 
 export function useLingua() {
