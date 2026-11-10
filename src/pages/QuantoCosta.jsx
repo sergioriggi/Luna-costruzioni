@@ -26,9 +26,9 @@ const FAQ_COSTO = [
         domanda: 'Quanto costa al metro quadro?',
         domandaEn: 'What does it cost per square metre?',
         risposta:
-            `Una Piscina Rocks Design parte da ${PREZZO.cifraLunga}. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo, che è gratuito: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
+            `Una Piscina Rocks Design parte da ${PREZZO.cifraLunga}. È un minimo, non una tariffa: il prezzo al metro quadro scende quando la piscina cresce, perché scavo, impianti e trasporti pesano quasi uguale su una vasca piccola e su una grande. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o il tuo commercialista. Il numero esatto per il tuo giardino arriva dopo il sopralluogo sul terreno, senza impegno: sulle cinque voci qui sopra si capisce in anticipo che cosa lo farà salire.`,
         rispostaEn:
-            `A Piscine Rocks Design pool starts from ${CIFRA_EN}. That is a minimum, not a rate: the price per square metre falls as the pool gets bigger, because excavation, plant and transport cost almost the same for a small pool as for a large one. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and is confirmed by your surveyor or your accountant. The exact figure for your garden comes after the site visit, which is free: the five items above tell you in advance what will push it up.`,
+            `A Piscine Rocks Design pool starts from ${CIFRA_EN}. That is a minimum, not a rate: the price per square metre falls as the pool gets bigger, because excavation, plant and transport cost almost the same for a small pool as for a large one. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and is confirmed by your surveyor or your accountant. The exact figure for your garden comes after the site survey on your land, with no obligation: the five items above tell you in advance what will push it up.`,
     },
     {
         domanda: 'Il sopralluogo e il preventivo si pagano?',
@@ -71,7 +71,7 @@ export default function QuantoCosta() {
         <>
             <Seo
                 titolo="Quanto costa una Piscina Rocks Design | Luna Costruzioni"
-                descrizione={`Piscine Rocks Design ${PREZZO.testo}. Cosa fa variare il prezzo, extra e IVA. Sopralluogo e preventivo gratuiti in tutta la Sicilia.`}
+                descrizione={`Piscine Rocks Design ${PREZZO.testo}. Cosa fa variare il prezzo, extra e IVA. Sopralluogo sul terreno, senza impegno.`}
                 percorso="/quanto-costa"
                 immagine="villa-con-spiaggia-in-ghiaia-1280.jpg"
                 schema={[schemaBriciole(BRICIOLE), schemaFaq(FAQ_COSTO)]}
@@ -117,8 +117,8 @@ export default function QuantoCosta() {
                         </p>
                         <p className="mt-4 text-[0.95rem] leading-relaxed text-neutro-300">
                             {t(
-                                "Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo dopo aver visto il giardino, e venire a vederlo non costa nulla.",
-                                'The price per square metre falls as the pool gets bigger. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and your surveyor or accountant confirms it. We give the exact price once we have seen the garden, and coming to see it costs you nothing.',
+                                "Il prezzo al metro quadro scende quando la piscina cresce. Fontana, giochi d'acqua e idromassaggio sono extra su richiesta. L'aliquota IVA dipende dal tipo di intervento e la conferma il tuo tecnico o commercialista. Il prezzo esatto lo diamo dopo il sopralluogo sul terreno, senza impegno.",
+                                'The price per square metre falls as the pool gets bigger. Fountains, water features and hydromassage are optional extras. The VAT rate depends on the type of work and your surveyor or accountant confirms it. We give the exact price after the site survey on your land, with no obligation.',
                             )}
                         </p>
                         <Link to="/contatti" className="bottone-pieno mt-6">

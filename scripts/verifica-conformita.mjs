@@ -119,6 +119,14 @@ for (const file of pagine) {
         errori.push(`${rel}: «${regione[0]}» nel testo: il credito foto è solo «Piscine Rocks Design», senza regione né città.`)
     }
 
+    // 6c. il sopralluogo si scrive solo «sopralluogo sul terreno, senza
+    //     impegno»: mai «gratuito», «gratis», «a nostre spese» o «free»
+    //     (Sergio, 5 e 9 nov 2026).
+    const gratis = testoVisibile.match(/\bgratuit[oaie]\b|\bgratis\b|a nostre spese|non costa nulla|free of charge|\bfor free\b|\bis free\b|costs you nothing/i)
+    if (gratis) {
+        errori.push(`${rel}: «${gratis[0]}» nel testo: il sopralluogo si scrive solo «sopralluogo sul terreno, senza impegno».`)
+    }
+
     // 7. Un'anteprima non deve mai uscire indicizzabile.
     // Il difetto si è già verificato: l'hosting compila il progetto da sé,
     // senza VITE_SITE_URL, e il sito si dichiarava di produzione. Da qui in

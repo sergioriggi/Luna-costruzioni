@@ -19,7 +19,7 @@ export default function Contatti() {
         <>
             <Seo
                 titolo="Contatti: Luciano Naro, +39 340 490 0710 | Luna Costruzioni"
-                descrizione="Sopralluogo e preventivo gratuiti in tutta la Sicilia. Telefono, WhatsApp o modulo: risponde Luciano Naro, non un centralino, entro 24 ore lavorative."
+                descrizione="Sopralluogo sul terreno, senza impegno, in tutta la Sicilia. Telefono, WhatsApp o modulo: risponde Luciano Naro entro 24 ore lavorative."
                 percorso="/contatti"
                 schema={[schemaAzienda(), schemaBriciole(BRICIOLE)]}
             />

@@ -177,8 +177,8 @@ export default function Articolo() {
             <Cta
                 titolo={t('Il passo successivo è vedere il tuo giardino', 'The next step is seeing your garden')}
                 testo={t(
-                    'Il sopralluogo è gratuito e non ti impegna: è lì che il progetto e il prezzo diventano tuoi.',
-                    'The site visit is free and commits you to nothing: that is where the design and the price become yours.',
+                    'Sopralluogo sul terreno, senza impegno: è lì che il progetto e il prezzo diventano tuoi.',
+                    'Site survey on your land, with no obligation: that is where the design and the price become yours.',
                 )}
                 whatsapp
             />
