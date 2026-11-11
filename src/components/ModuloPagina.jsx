@@ -19,9 +19,8 @@ const VUOTO = {
 /**
  * Modulo di contatto della pagina, con i campi del file approvato.
  *
- * L'invio passa da `src/lib/invia-lead.js`, che posta su /api/contatti e
- * ripiega sul client di posta quando dietro non c'è un server (hosting
- * statico) o quando le credenziali SMTP non sono configurate.
+ * L'invio passa da `src/lib/invia-lead.js`: Web3Forms, con il client di
+ * posta come ripiego quando l'invio non riesce o la chiave manca.
  */
 export default function ModuloPagina() {
     const { t } = useLingua()

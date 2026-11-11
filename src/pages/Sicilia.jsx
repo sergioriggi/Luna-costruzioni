@@ -17,7 +17,7 @@ import { useLingua } from '../i18n/lingua'
  * com'è fatta, permessi, costi, stagione — si scrive una volta; per ogni
  * provincia resta solo ciò che è davvero suo, in una sezione con ancora
  * (`#palermo`, `#catania`, …). I vecchi indirizzi rispondono 301 verso
- * l'ancora giusta: vedi `public/.htaccess` e `server/sito-statico.js`.
+ * l'ancora giusta: vedi `public/.htaccess`.
  */
 
 const PERCORSO_SICILIA = '/piscine-rocks-design/sicilia'
