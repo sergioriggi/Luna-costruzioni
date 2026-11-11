@@ -1,0 +1,59 @@
+# Regole per la scansione dei segreti (.github/workflows/secret-scan.yml).
+# Le regole predefinite di gitleaks più quelle delle credenziali che questo
+# progetto maneggia davvero: il token di sistema Meta (Graph API, nel Progetto
+# Claude, mai qui), la chiave Resend, il token API di Hostinger.
+#
+# La lista di esclusione contiene solo FORME, mai valori, e nessun file
+# intero: .env.production è versionato di proposito e porta la chiave
+# Web3Forms (pubblica per progetto, un UUID) e gli identificatori Google Ads
+# (AW-...). Ogni forma è ancorata all'INTERA riga «NOME=valore», così una
+# riga che porta anche altro (un secondo valore, un commento con dentro una
+# chiave) non viene esclusa. Un valore vero non si esclude mai: si toglie dal
+# commit e si rigenera. .env.example non ha esclusioni: deve contenere solo
+# segnaposto vuoti, e se un giorno ci finisse una credenziale vera deve
+# essere segnalata come ovunque.
+
+title = "Luna Costruzioni, scansione segreti"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "meta-graph-token"
+description = "Token Meta Graph API (prefisso EAA)"
+regex = '''\bEAA[A-Za-z0-9]{40,}'''
+tags = ["key", "meta"]
+
+[[rules]]
+id = "resend-api-key"
+description = "Chiave API Resend (prefisso re_)"
+regex = '''\bre_[A-Za-z0-9]{20,}'''
+tags = ["key", "resend"]
+
+[[rules]]
+id = "hostinger-api-token"
+description = "Token API Hostinger assegnato in chiaro"
+regex = '''(?i)HOSTINGER[_A-Z]*TOKEN\s*[=:]\s*['"]?[A-Za-z0-9]{32,}'''
+tags = ["key", "hostinger"]
+
+[[rules]]
+id = "smtp-password"
+description = "Password SMTP assegnata in chiaro"
+regex = '''(?i)SMTP_PASS(WORD)?\s*=\s*['"]?[^\s'"]{8,}'''
+tags = ["password", "smtp"]
+
+[allowlist]
+description = "Valori pubblici per natura, nella sola forma NOME=valore su una riga intera"
+# Confronto sull'intera riga (non sul solo valore estratto, che è il
+# predefinito) perché la forma da escludere è «nome della variabile = valore»,
+# mai il valore da solo; e ancorato con ^ e $ perché la riga deve contenere
+# SOLO quello.
+regexTarget = "line"
+regexes = [
+  # chiave Web3Forms: pubblica per progetto, finisce nel bundle del browser
+  '''^\s*VITE_WEB3FORMS_KEY=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\s*$''',
+  # identificatori Google Ads e azioni di conversione: pubblici nel tag
+  '''^\s*VITE_GOOGLE_ADS[A-Z_]*=AW-[0-9]{8,}(/[A-Za-z0-9_-]{10,})?\s*$''',
+  # identificatore GA4
+  '''^\s*VITE_GA4_ID=G-[A-Z0-9]{8,12}\s*$''',
+]
