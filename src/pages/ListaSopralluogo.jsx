@@ -51,8 +51,8 @@ export default function ListaSopralluogo() {
                             </h1>
                             <p className="testo-lungo mt-6">
                                 {t(
-                                    `Cinque pagine da stampare o da compilare sul telefono, con le norme che valgono in ${AZIENDA.zona} e le misure da prendere in giardino prima di chiedere un preventivo.`,
-                                    'Five pages to print or fill in on your phone, with the rules that apply in Sicily and the measurements to take in the garden before you ask for a quote. The checklist is written in Italian: there is no English edition.',
+                                    `Cinque pagine da stampare e compilare a penna, con le norme che valgono in ${AZIENDA.zona} e le misure da prendere in giardino prima di chiedere un preventivo.`,
+                                    'Five pages to print and fill in by hand, with the rules that apply in Sicily and the measurements to take in the garden before you ask for a quote. The checklist is written in Italian: there is no English edition.',
                                 )}
                             </p>
                         </Rivela>

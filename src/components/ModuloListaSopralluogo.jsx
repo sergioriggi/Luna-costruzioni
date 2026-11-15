@@ -91,7 +91,7 @@ export default function ModuloListaSopralluogo() {
                     {t('Ecco la lista.', 'Here is the checklist.')}
                 </p>
                 <p className="testo-lungo mt-3">
-                    {t('Cinque pagine in PDF, da stampare o da compilare sul telefono.', 'Five pages in PDF, in Italian, to print or fill in on your phone.')}
+                    {t('Cinque pagine in PDF, da stampare e compilare a penna.', 'Five pages in PDF, in Italian, to print and fill in by hand.')}
                 </p>
                 <a href={pubblico(PDF_LISTA)} download className="bottone-pieno mt-6 inline-flex min-h-[44px]">
                     {t('Scarica la lista (PDF)', 'Download the checklist (PDF, in Italian)')}
