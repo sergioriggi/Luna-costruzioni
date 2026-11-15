@@ -98,9 +98,11 @@ export default function ModuloListaSopralluogo() {
                 </a>
                 <p className="testo-lungo mt-6">
                     {t(
-                        'Quando hai compilato la scheda dell’ultima pagina, mandacela con qualche foto del giardino su WhatsApp oppure dal ',
-                        'Once you have filled in the form on the last page, send it to us with a few photos of the garden on WhatsApp or through the ',
+                        'Quando hai compilato la scheda dell’ultima pagina, fotografala e mandacela con qualche foto del giardino su WhatsApp oppure per e-mail a ',
+                        'Once you have filled in the form on the last page, take a photo of it and send it to us with a few photos of the garden on WhatsApp or by email to ',
                     )}
+                    <a href={`mailto:${AZIENDA.email}`} className="link-sottile text-accento">{AZIENDA.email}</a>.{' '}
+                    {t('Per una domanda senza allegati c’è anche il ', 'For a question without attachments there is also the ')}
                     <Link to="/contatti" className="link-sottile text-accento">{t('modulo contatti', 'contact form')}</Link>.
                 </p>
                 <div className="mt-5">
