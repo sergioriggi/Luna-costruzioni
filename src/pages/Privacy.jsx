@@ -71,6 +71,12 @@ export default function Privacy() {
                             'Through the contact forms we collect name, e-mail, telephone, province, town and the text of your message. The data are processed solely to reply to your enquiry, prepare a quote and arrange the site visit. They are not used for marketing purposes without a further, separate consent from you.',
                         )}
                     </p>
+                    <p>
+                        {t(
+                            'Con il modulo della lista da compilare prima del sopralluogo raccogliamo nome, e-mail e comune, per darti la lista in PDF. Solo se spunti la casella facoltativa li usiamo anche per scriverti una volta e proporti un sopralluogo sul terreno.',
+                            'Through the form for the checklist to fill in before the site survey we collect name, e-mail and town, in order to give you the checklist in PDF. Only if you tick the optional box do we also use them to write to you once and suggest a site survey on your land.',
+                        )}
+                    </p>
 
                     <h2 className="pt-4 font-display text-2xl">{t('Base giuridica', 'Legal basis')}</h2>
                     <p>

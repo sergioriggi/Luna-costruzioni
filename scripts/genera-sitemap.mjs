@@ -85,8 +85,14 @@ const ASSISTENTI = [
 const GRUPPO_ASSISTENTI = `# Assistenti conversazionali: ammessi di proposito.
 ${ASSISTENTI.map(a => `User-agent: ${a}`).join('\n')}
 Allow: /
+Disallow: /download/
 `
 
+// /download/ contiene il PDF della lista del lead magnet: si scarica solo
+// dopo aver lasciato i dati nel modulo di /guida/lista-sopralluogo, e da solo
+// in Google sarebbe un risultato che salta il modulo. Vale anche per il gruppo
+// degli assistenti, che non eredita le regole di `*`.
+//
 // Su indirizzo provvisorio il sito resta fuori dai motori di ricerca
 const robots = ANTEPRIMA
     ? `# Anteprima su indirizzo provvisorio: non indicizzare.
@@ -95,6 +101,7 @@ Disallow: /
 `
     : `User-agent: *
 Allow: /
+Disallow: /download/
 
 ${GRUPPO_ASSISTENTI}
 Sitemap: ${SITE_URL}/sitemap.xml

@@ -3,6 +3,7 @@ import Seo, { schemaBriciole, schemaArticolo, schemaFaq } from '../components/Se
 import Immagine, { foto } from '../components/Immagine'
 import CreditoFoto from '../components/CreditoFoto'
 import TestoRicco from '../components/TestoRicco'
+import RiquadroListaSopralluogo from '../components/RiquadroListaSopralluogo'
 import Rivela from '../components/Rivela'
 import { Sezione, Briciole, Cta } from '../components/Sezione'
 import { GUIDA, PERCORSO_GUIDA, percorsoArticolo } from '../data/guida'
@@ -139,6 +140,9 @@ export default function Articolo() {
                         </dl>
                     </div>
                 )}
+
+                {/* Il lead magnet: in fondo a OGNI articolo, prima delle fonti. */}
+                <RiquadroListaSopralluogo className="mt-16 max-w-prosa" />
 
                 {(a.correlati?.length > 0 || altri.length > 0) && (
                     <nav aria-label={t('Da leggere anche', 'Read next')} className="mt-16 max-w-prosa">

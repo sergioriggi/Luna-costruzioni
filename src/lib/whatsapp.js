@@ -29,6 +29,7 @@ const ECCEZIONI = {
     '/azienda': 'L’azienda',
     '/piscine-rocks-design': 'Piscine Rocks Design',
     '/galleria': 'Galleria',
+    '/guida/lista-sopralluogo': 'Lista sopralluogo',
 }
 
 /**

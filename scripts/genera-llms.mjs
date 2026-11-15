@@ -69,6 +69,7 @@ const TITOLI = {
     '/galleria': 'Foto Piscine Rocks Design',
     '/domande-frequenti': 'Domande frequenti',
     '/piscina-in-cemento-o-rocks-design': 'Piscina in cemento o Piscina Rocks Design?',
+    '/guida/lista-sopralluogo': 'Piscina in giardino: la lista da compilare prima del sopralluogo (PDF)',
 }
 
 const NOTE = {
@@ -85,6 +86,7 @@ const NOTE = {
     '/come-lavoriamo': 'Il percorso dal sopralluogo al collaudo, chiavi in mano.',
     '/domande-frequenti': 'Le domande più frequenti, con le risposte.',
     '/contatti': 'Come chiederci un sopralluogo: modulo, telefono, WhatsApp.',
+    '/guida/lista-sopralluogo': 'Lista in PDF di 5 pagine, in italiano: permessi, vincoli sul mare, distanze dal confine, accesso dei mezzi, budget e una scheda del giardino da compilare. Si scarica dopo aver lasciato nome, e-mail e comune.',
 }
 
 /** La pagina che raccoglie le nove province, ciascuna con la sua ancora. */
