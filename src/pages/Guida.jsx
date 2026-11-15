@@ -2,6 +2,7 @@ import { Link, Navigate } from '../lib/instradamento'
 import Seo, { schemaBriciole } from '../components/Seo'
 import Rivela from '../components/Rivela'
 import { Sezione, Briciole, Cta } from '../components/Sezione'
+import RiquadroListaSopralluogo from '../components/RiquadroListaSopralluogo'
 import { GUIDA, PERCORSO_GUIDA, percorsoArticolo } from '../data/guida'
 import { AZIENDA } from '../data/site'
 import { formattaData } from '../lib/date'
@@ -63,6 +64,8 @@ export default function Guida() {
                         </Rivela>
                     ))}
                 </ol>
+
+                <RiquadroListaSopralluogo className="mt-14 max-w-prosa" />
             </Sezione>
 
             <Cta

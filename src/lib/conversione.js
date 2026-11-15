@@ -86,6 +86,8 @@ const GA4 = import.meta.env.VITE_GA4_ID || ''
 
 /**
  * @param {'modulo'|'whatsapp'|'telefono'} azione
+ * @param {Record<string, string>} [parametri] parametri in più per
+ *   `generate_lead` in GA4 (per ora solo `lead_type`, vedi invia-lead.js).
  *
  * Il valore in euro accompagna **solo** l'invio del modulo. Un clic su
  * «chiama» o su WhatsApp non è una conversazione avvenuta: su mobile capita
@@ -98,7 +100,7 @@ const GA4 = import.meta.env.VITE_GA4_ID || ''
  * l'azione del modulo: è l'unica su cui l'offerta automatica deve imparare.
  * Quella è una spunta nel pannello, non una riga di codice.
  */
-export function segnalaConversione(azione = 'modulo') {
+export function segnalaConversione(azione = 'modulo', parametri = {}) {
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return false
 
     // Ogni destinatario ha il proprio `try`: misurare non deve mai rompere un
@@ -119,7 +121,7 @@ export function segnalaConversione(azione = 'modulo') {
 
     if (azione === 'modulo' && GA4) {
         try {
-            window.gtag('event', 'generate_lead', { send_to: GA4 })
+            window.gtag('event', 'generate_lead', { ...parametri, send_to: GA4 })
             partito = true
         } catch { /* ignorato */ }
     }

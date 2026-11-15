@@ -9,6 +9,8 @@ import { GUIDA, PERCORSO_GUIDA, percorsoArticolo } from '../src/data/guida/index
 const ROTTE_GUIDA = GUIDA.length
     ? [
           { percorso: PERCORSO_GUIDA, priorita: 0.7, frequenza: 'weekly' },
+          // Il lead magnet: la lista in PDF in cambio di nome, e-mail e comune.
+          { percorso: `${PERCORSO_GUIDA}/lista-sopralluogo`, priorita: 0.6, frequenza: 'monthly' },
           ...GUIDA.map(a => ({ percorso: percorsoArticolo(a), priorita: 0.7, frequenza: 'monthly' })),
       ]
     : []

@@ -136,6 +136,7 @@ export async function verificaGuida() {
         // ── Forma ────────────────────────────────────────────────────────
         if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(a.slug ?? '') || a.slug.length > 70) err('slug non valido (minuscole, cifre e trattini, al massimo 70 caratteri).')
         if (slugVisti.has(a.slug)) err('slug duplicato.')
+        if (a.slug === 'lista-sopralluogo') err('slug riservato: /guida/lista-sopralluogo è la pagina del lead magnet.')
         slugVisti.add(a.slug)
         if (!file.includes(`${a.slug}.js`)) err(`il file dovrebbe chiamarsi ${a.slug}.js.`)
 

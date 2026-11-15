@@ -121,16 +121,20 @@ async function inviaConWeb3Forms(dati, oggetto) {
  * punto unico d'invio, vale per tutti **per costruzione**, e nessuno può
  * dimenticarsene aggiungendo un modulo nuovo.
  */
-function confermato() {
-    segnalaConversione()
+function confermato(tipoLead) {
+    segnalaConversione('modulo', tipoLead ? { lead_type: tipoLead } : {})
     return INVIATO
 }
 
 /**
+ * `tipoLead` distingue in GA4 da quale modulo arriva il contatto (parametro
+ * `lead_type` di `generate_lead`). Il modulo contatti non lo passa e manda
+ * l'evento di sempre; la lista del lead magnet passa `lista_sopralluogo`.
+ *
  * @returns {Promise<'inviato'|'mailto'|'errore'>}
  *   `mailto` significa che il client di posta è già stato aperto.
  */
-export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costruzioni' } = {}) {
+export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costruzioni', tipoLead } = {}) {
     if (CHIAVE_WEB3FORMS) {
         /*
          * Qualunque cosa vada storta — rete assente, blocco di un'estensione
@@ -145,7 +149,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         } catch {
             riuscito = false
         }
-        if (riuscito) return confermato()
+        if (riuscito) return confermato(tipoLead)
         apriClientDiPosta(dati, oggetto)
         return RIPIEGO_POSTA
     }
@@ -167,7 +171,7 @@ export async function inviaLead(dati, { oggetto = 'Richiesta dal sito Luna Costr
         return ERRORE // rete assente o richiesta bloccata
     }
 
-    if (risposta.ok) return confermato()
+    if (risposta.ok) return confermato(tipoLead)
 
     // 404: nessun server dietro (hosting statico). 503: server presente ma
     // senza credenziali SMTP. In entrambi i casi il contatto va salvato.

@@ -39,6 +39,8 @@ const ROTTE = [
     ['/piscine-rocks-design/sicilia', pigra(() => import('./pages/Sicilia'))],
     ['/piscine-rocks-design/:provincia', pigra(() => import('./pages/VecchiaProvincia'))],
     ['/guida', pigra(() => import('./pages/Guida'))],
+    // La pagina del lead magnet prima della rotta degli articoli, che la prenderebbe.
+    ['/guida/lista-sopralluogo', pigra(() => import('./pages/ListaSopralluogo'))],
     ['/guida/:articolo', pigra(() => import('./pages/Articolo'))],
     ['/grazie', Grazie],
     ['/privacy', pigra(() => import('./pages/Privacy'))],
