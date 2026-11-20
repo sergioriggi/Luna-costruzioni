@@ -127,6 +127,15 @@ for (const file of pagine) {
         errori.push(`${rel}: «${gratis[0]}» nel testo: il sopralluogo si scrive solo «sopralluogo sul terreno, senza impegno».`)
     }
 
+    // 6d. Luna è «uno dei due concessionari autorizzati in Sicilia»: mai
+    //     «concessionario … per la Sicilia» / «dealer for Sicily», che fa
+    //     intendere l'esclusiva; e il sito non dice né che Luna ha costruito
+    //     piscine in Sicilia né che non ne ha costruite (Sergio, 22 ott 2026).
+    const esclusiva = testoVisibile.match(/concessionari[oa][^.]{0,60}\bper la Sicilia\b|dealer for Sicily|nessuna ancora consegnata|non ne abbiamo ancora costruit/i)
+    if (esclusiva) {
+        errori.push(`${rel}: «${esclusiva[0]}» nel testo: si scrive «uno dei due concessionari autorizzati in Sicilia», e niente sul numero di piscine costruite in Sicilia.`)
+    }
+
     // 7. Un'anteprima non deve mai uscire indicizzabile.
     // Il difetto si è già verificato: l'hosting compila il progetto da sé,
     // senza VITE_SITE_URL, e il sito si dichiarava di produzione. Da qui in
@@ -388,6 +397,13 @@ if (senzaFiligrana.length > 0) {
             )
         }
     }
+}
+
+/* 10b. Le stesse frasi vietate (6d) anche in llms.txt, che non è una pagina. */
+{
+    const llms = await fs.readFile(path.join(DIST, 'llms.txt'), 'utf8').catch(() => null)
+    const m = llms && llms.match(/concessionari[oa][^.]{0,60}\bper la Sicilia\b|dealer for Sicily|nessuna ancora consegnata|non ne abbiamo ancora costruit/i)
+    if (m) errori.push(`llms.txt: «${m[0]}»: si scrive «uno dei due concessionari autorizzati in Sicilia», e niente sul numero di piscine costruite in Sicilia.`)
 }
 
 for (const a of avvisi) console.log('⚠︎ ', a)

@@ -47,8 +47,8 @@ const FASCIA = [
     {
         titolo: 'Concessionario autorizzato',
         titoloEn: 'Authorised dealer',
-        testo: 'Piscine Rocks Design per la Sicilia: Tecnologia Rocks Design brevettata.',
-        testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
+        testo: 'Uno dei due concessionari Piscine Rocks Design in Sicilia. Tecnologia Rocks Design brevettata.',
+        testoEn: 'One of the two Piscine Rocks Design dealers in Sicily. Patented Rocks Design Technology.',
     },
     {
         // Vedi la nota estesa in `content.js` (CREDENZIALI): la credenziale

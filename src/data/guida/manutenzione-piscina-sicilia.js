@@ -131,7 +131,7 @@ export default {
         {
             tipo: 'p',
             it: 'Luna Costruzioni è uno dei due concessionari autorizzati Piscine Rocks Design in Sicilia. Alla consegna ti lasciamo istruzioni scritte su come gestire la piscina e ti mostriamo di persona come si pulisce il fondale. Dopo la consegna restiamo disponibili per l’assistenza, e siamo in Sicilia. Le altre domande pratiche sono nelle [domande frequenti](/domande-frequenti).',
-            en: 'Luna Costruzioni is an authorised Piscine Rocks Design dealer for Sicily. At handover we leave you written instructions on running the pool and show you in person how to clean the floor. After handover we remain available for support, and we are in Sicily. Other practical questions are answered in the [frequently asked questions](/domande-frequenti).',
+            en: 'Luna Costruzioni is one of the two authorised Piscine Rocks Design dealers in Sicily. At handover we leave you written instructions on running the pool and show you in person how to clean the floor. After handover we remain available for support, and we are in Sicily. Other practical questions are answered in the [frequently asked questions](/domande-frequenti).',
         },
         {
             tipo: 'nota',

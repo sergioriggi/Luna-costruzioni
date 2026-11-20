@@ -16,7 +16,7 @@ import { PREZZO } from './site.js'
  * Chi aggiorna il sito è pregato di mantenere questa regola.
  *
  * Il prodotto è in Tecnologia Rocks Design®: Luna Costruzioni S.r.l.s. è
- * concessionario autorizzato per la Sicilia, non l'inventore della tecnologia.
+ * uno dei due concessionari autorizzati in Sicilia, non l'inventore della tecnologia.
  */
 
 /**
@@ -327,8 +327,8 @@ export const CREDENZIALI = [
     {
         titolo: 'Concessionario autorizzato',
         titoloEn: 'Authorised dealer',
-        testo: 'Piscine Rocks Design per la Sicilia: Tecnologia Rocks Design® brevettata.',
-        testoEn: 'Piscine Rocks Design for Sicily: patented Rocks Design Technology.',
+        testo: 'Uno dei due concessionari Piscine Rocks Design in Sicilia. Tecnologia Rocks Design® brevettata.',
+        testoEn: 'One of the two Piscine Rocks Design dealers in Sicily. Patented Rocks Design Technology.',
     },
     {
         /*
