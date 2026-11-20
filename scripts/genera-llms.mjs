@@ -7,8 +7,8 @@
  * una risposta, e lo fa da qualunque cosa trovi — spesso male. Questo file
  * mette in un posto solo, in chiaro e senza markup, le cose che il sito dice
  * già sparse fra tutte le pagine: che il prodotto è in Tecnologia Rocks
- * Design, che l'inventore è la casa madre, che Luna è un concessionario
- * autorizzato per la Sicilia, e che le fotografie non sono di piscine nostre.
+ * Design, che l'inventore è la casa madre, che Luna è uno dei due
+ * concessionari autorizzati in Sicilia, e che le fotografie non sono di piscine nostre.
  *
  * REGOLA DEL FILE: qui non entra NIENTE che il sito non dica già altrove.
  * Un file nato per essere citato testualmente è l'ultimo posto dove mettere
@@ -75,7 +75,7 @@ const TITOLI = {
 const NOTE = {
     '/': 'Pagina iniziale: che cosa è una Piscina Rocks Design e perché non è una piscina in cemento.',
     '/piscine-rocks-design': 'Il prodotto e la Tecnologia Rocks Design: struttura in massi, spiaggia in sabbia, nessuna opera in cemento armato.',
-    '/azienda': 'Chi è Luna Costruzioni: impresa edile siciliana dal 2021, concessionario autorizzato per la Sicilia.',
+    '/azienda': 'Chi è Luna Costruzioni: impresa edile siciliana dal 2021, uno dei due concessionari autorizzati in Sicilia.',
     '/modelli': 'I tre modelli disponibili: Caraibi, Mediterranea, Alpi.',
     '/sabbie': 'Le sabbie naturali e il colore dell’acqua che ne deriva.',
     '/giardini-e-opere-in-pietra': 'Cascate, laghetti e opere in pietra naturale, anche senza piscina.',
@@ -141,7 +141,7 @@ const guida = p => p === PERCORSO_GUIDA || p.startsWith(`${PERCORSO_GUIDA}/`)
 
 const testo = `# ${AZIENDA.nome}
 
-> ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Impresa edile con sede a ${AZIENDA.sede.comune} (${AZIENDA.sede.siglaProvincia}), costruisce chiavi in mano piscine con spiaggia in sabbia naturale in Tecnologia Rocks Design® in tutta la Sicilia (nessuna ancora consegnata sull'isola): sopralluogo, scavo, posa, collaudo e assistenza.
+> Uno dei due concessionari autorizzati Piscine Rocks Design in ${AZIENDA.zona}. Impresa edile con sede a ${AZIENDA.sede.comune} (${AZIENDA.sede.siglaProvincia}), costruisce chiavi in mano piscine con spiaggia in sabbia naturale in Tecnologia Rocks Design® in tutta la Sicilia: sopralluogo, scavo, posa, collaudo e assistenza.
 
 ## In breve
 

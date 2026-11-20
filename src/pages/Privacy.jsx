@@ -49,8 +49,8 @@ export default function Privacy() {
                     <p>
                         {AZIENDA.nome},{' '}
                         {t(
-                            `${AZIENDA.ruolo} per la ${AZIENDA.zona}`,
-                            'authorised Piscine Rocks Design dealer in Sicily',
+                            `uno dei due concessionari autorizzati Piscine Rocks Design in ${AZIENDA.zona}`,
+                            'one of the two authorised Piscine Rocks Design dealers in Sicily',
                         )}
                         .{' '}
                         {t(

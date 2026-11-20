@@ -80,8 +80,8 @@ export default function Sicilia() {
                         <p className="testo-lungo mt-6">
                             <strong className="font-semibold text-testo">{AZIENDA.nome}</strong>{' '}
                             {t(
-                                `è ${AZIENDA.ruolo} per la ${AZIENDA.zona}. Siamo un’impresa edile: scavo, movimento terra e posa dei massi li facciamo con mezzi e squadre nostre, da Trapani a Siracusa.`,
-                                'is an authorised Piscine Rocks Design dealer in Sicily. We are a building contractor: digging, earthworks and laying the boulders are done with our own machines and crews, from Trapani to Siracusa.',
+                                `è uno dei due concessionari autorizzati Piscine Rocks Design in ${AZIENDA.zona}. Siamo un’impresa edile: scavo, movimento terra e posa dei massi li facciamo con mezzi e squadre nostre, da Trapani a Siracusa.`,
+                                'is one of the two authorised Piscine Rocks Design dealers in Sicily. We are a building contractor: digging, earthworks and laying the boulders are done with our own machines and crews, from Trapani to Siracusa.',
                             )}
                         </p>
                         <p className="testo-lungo mt-4">
